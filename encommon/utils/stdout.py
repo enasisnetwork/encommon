@@ -7,12 +7,12 @@ is permitted, for more information consult the project license file.
 
 
 
+from re import compile
 from re import sub as re_sub
 from sys import stdout
 from typing import Any
 from typing import Literal
 
-from .common import ANSICODE
 from .common import JOINABLE
 
 

@@ -8,7 +8,6 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
-from re import compile
 from typing import Union
 
 
