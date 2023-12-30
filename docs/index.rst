@@ -5,3 +5,4 @@ encommon
    :maxdepth: 1
 
    encommon.types
+   encommon.utils
