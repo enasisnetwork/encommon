@@ -1,5 +1,8 @@
 -r reqs-install.txt
 
+types-croniter
+types-python-dateutil
+
 pytest
 pytest-asyncio
 pytest-clarity
