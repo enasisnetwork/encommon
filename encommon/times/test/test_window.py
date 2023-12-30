@@ -40,6 +40,8 @@ def test_Window() -> None:
     assert repr(window).startswith(
         '<encommon.times.window.Window')
 
+    assert isinstance(hash(window), int)
+
     assert str(window).startswith(
         '<encommon.times.window.Window')
 
