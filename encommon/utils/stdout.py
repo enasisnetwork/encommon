@@ -17,6 +17,11 @@ from .common import JOINABLE
 
 
 
+ANSICODE = compile(
+    r'\x1b\[[^A-Za-z]*[A-Za-z]')
+
+
+
 def print_ansi(
     string: str = '',
     method: Literal['stdout', 'print'] = 'stdout',

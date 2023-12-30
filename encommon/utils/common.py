@@ -26,8 +26,3 @@ PATHABLE = Union[
     list[str | Path],
     tuple[str | Path],
     set[str]]
-
-
-
-ANSICODE = compile(
-    r'\x1b\[[^A-Za-z]*[A-Za-z]')
