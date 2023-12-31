@@ -34,9 +34,7 @@ def test_Times() -> None:
     assert repr(times) == (
         "Times('1970-01-01T"
         "00:00:00.000000+0000')")
-
     assert isinstance(hash(times), int)
-
     assert str(times) == (
         '1970-01-01T00:00:00'
         '.000000+0000')
