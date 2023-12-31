@@ -40,6 +40,13 @@ def test_ConfigFile(
     assert attrs == ['path', 'config']
 
 
+    assert repr(file).startswith(
+        '<encommon.config.files.ConfigFile')
+    assert isinstance(hash(file), int)
+    assert str(file).startswith(
+        '<encommon.config.files.ConfigFile')
+
+
     assert file.path.name == 'bwayne.yml'
     assert list(file.config) == ['name']
 
@@ -63,6 +70,13 @@ def test_ConfigFiles(
     assert attrs == [
         'paths', 'config',
         '_ConfigFiles__merged']
+
+
+    assert repr(files).startswith(
+        '<encommon.config.files.ConfigFiles')
+    assert isinstance(hash(files), int)
+    assert str(files).startswith(
+        '<encommon.config.files.ConfigFiles')
 
 
     assert len(files.paths) == 2

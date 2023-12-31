@@ -25,6 +25,7 @@ def test_Message() -> None:
     Perform various tests associated with relevant routines.
     """
 
+
     message = Message(
         time=UNIXMPOCH,
         level='info',
@@ -36,11 +37,19 @@ def test_Message() -> None:
         none=None,
         string='foo')
 
-    assert len(message.__dict__) == 3
+    attrs = list(message.__dict__)
 
-    assert hasattr(message, '_Message__level')
-    assert hasattr(message, '_Message__time')
-    assert hasattr(message, '_Message__fields')
+    assert attrs == [
+        '_Message__level',
+        '_Message__time',
+        '_Message__fields']
+
+
+    assert repr(message).startswith(
+        'Message(level="info", time="1970')
+    assert isinstance(hash(message), int)
+    assert str(message).startswith(
+        'Message(level="info", time="1970')
 
 
     assert repr(message) == (
@@ -101,19 +110,28 @@ def test_Logger(
     :param caplog: pytest object for capturing log message.
     """
 
+
     logger = Logger(
         stdo_level='info',
         file_level='info',
         file_path=f'{tmp_path}/test.log')
 
-    assert len(logger.__dict__) == 6
+    attrs = list(logger.__dict__)
 
-    assert hasattr(logger, '_Logger__stdo_level')
-    assert hasattr(logger, '_Logger__file_level')
-    assert hasattr(logger, '_Logger__file_path')
-    assert hasattr(logger, '_Logger__started')
-    assert hasattr(logger, '_Logger__logger_stdo')
-    assert hasattr(logger, '_Logger__logger_file')
+    assert attrs == [
+        '_Logger__stdo_level',
+        '_Logger__file_level',
+        '_Logger__file_path',
+        '_Logger__started',
+        '_Logger__logger_stdo',
+        '_Logger__logger_file']
+
+
+    assert repr(logger).startswith(
+        '<encommon.config.logger.Logger')
+    assert isinstance(hash(logger), int)
+    assert str(logger).startswith(
+        '<encommon.config.logger.Logger')
 
 
     assert logger.stdo_level == 'info'

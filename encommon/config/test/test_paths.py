@@ -39,6 +39,13 @@ def test_ConfigPath(
     assert attrs == ['path', 'config']
 
 
+    assert repr(path).startswith(
+        '<encommon.config.paths.ConfigPath')
+    assert isinstance(hash(path), int)
+    assert str(path).startswith(
+        '<encommon.config.paths.ConfigPath')
+
+
     assert path.path == config_path
     assert len(path.config) == 2
 
@@ -60,6 +67,13 @@ def test_ConfigPaths(
     assert attrs == [
         'paths', 'config',
         '_ConfigPaths__merged']
+
+
+    assert repr(paths).startswith(
+        '<encommon.config.paths.ConfigPaths')
+    assert isinstance(hash(paths), int)
+    assert str(paths).startswith(
+        '<encommon.config.paths.ConfigPaths')
 
 
     assert len(paths.paths) == 1

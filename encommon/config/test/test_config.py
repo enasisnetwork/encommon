@@ -73,6 +73,13 @@ def test_Config(
         '_Config__crypts']
 
 
+    assert repr(config).startswith(
+        '<encommon.config.config.Config')
+    assert isinstance(hash(config), int)
+    assert str(config).startswith(
+        '<encommon.config.config.Config')
+
+
     assert len(config.files.paths) == 2
     assert len(config.paths.paths) == 1
     assert len(config.cargs) == 1
