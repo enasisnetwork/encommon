@@ -58,8 +58,7 @@ def test_ConfigPaths(
     attrs = list(paths.__dict__)
 
     assert attrs == [
-        'paths',
-        'config',
+        'paths', 'config',
         '_ConfigPaths__merged']
 
 

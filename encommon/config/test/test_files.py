@@ -61,8 +61,7 @@ def test_ConfigFiles(
     attrs = list(files.__dict__)
 
     assert attrs == [
-        'paths',
-        'config',
+        'paths', 'config',
         '_ConfigFiles__merged']
 
 
