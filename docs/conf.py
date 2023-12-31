@@ -40,3 +40,6 @@ intersphinx_mapping = {
     'pathlib': ('https://docs.python.org/3', None),
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None)}
+
+nitpick_ignore = [
+    ('py:class', 'pydantic.main.BaseModel')]
