@@ -1,6 +1,7 @@
 -r reqs-install.txt
 
 types-croniter
+types-PyYAML
 types-python-dateutil
 
 pytest

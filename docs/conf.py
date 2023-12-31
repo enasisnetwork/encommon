@@ -30,7 +30,8 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
-    'sphinx.ext.viewcode']
+    'sphinx.ext.viewcode',
+    'sphinxcontrib.autodoc_pydantic']
 
 html_theme = 'sphinx_rtd_theme'
 
@@ -40,3 +41,6 @@ intersphinx_mapping = {
     'pathlib': ('https://docs.python.org/3', None),
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None)}
+
+nitpick_ignore = [
+    ('py:class', 'pydantic.main.BaseModel')]

@@ -42,6 +42,7 @@ mypy
 pylint
 
 sphinx
+autodoc_pydantic
 sphinx-autodoc-typehints
 sphinx-rtd-theme
 
