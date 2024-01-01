@@ -38,7 +38,6 @@ def test_Crypts(
     :param phrases: Dictionary of randomly generated phrases.
     """
 
-
     crypts = Crypts(phrases)
 
     attrs = list(crypts.__dict__)

@@ -22,7 +22,6 @@ def test_Times() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     times = Times(0, format=STAMP_SIMPLE)
 
     attrs = list(times.__dict__)
@@ -34,9 +33,7 @@ def test_Times() -> None:
     assert repr(times) == (
         "Times('1970-01-01T"
         "00:00:00.000000+0000')")
-
     assert isinstance(hash(times), int)
-
     assert str(times) == (
         '1970-01-01T00:00:00'
         '.000000+0000')

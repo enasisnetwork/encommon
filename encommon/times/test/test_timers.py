@@ -20,7 +20,6 @@ def test_Timers() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     timers = Timers({'one': 1})
 
     attrs = list(timers.__dict__)
@@ -32,9 +31,7 @@ def test_Timers() -> None:
 
     assert repr(timers).startswith(
         '<encommon.times.timers.Timers')
-
     assert isinstance(hash(timers), int)
-
     assert str(timers).startswith(
         '<encommon.times.timers.Timers')
 

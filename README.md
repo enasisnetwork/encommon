@@ -17,9 +17,9 @@ pip install git+https://github.com/enasisnetwork/encommon
 ```
 
 ## Documentation
-Documentation can be found on [Read the Docs](https://encommon.readthedocs.io).
-If you venture into the sections below you will be able to use the `sphinx`
-recipe to build the documention in `docs/html` for local consumption.
+Documentation is on [Read the Docs](https://encommon.readthedocs.io).
+Should you venture into the sections below you will be able to use the
+`sphinx` recipe to build documention in the `docs/html` directory.
 
 ## Quick start for local development
 Start by cloning the repository to your local machine.
@@ -32,8 +32,8 @@ make -s venv-create
 ```
 
 ### Execute the linters and tests
-The comprehensive approach is to use the `check` recipe. This will stop on any
-failure that is encountered.
+The comprehensive approach is to use the `check` recipe. This will stop on
+any failure that is encountered.
 ```
 make -s check
 ```

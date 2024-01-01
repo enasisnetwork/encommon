@@ -18,7 +18,7 @@ from encommon import VERSION  # noqa: E402
 
 
 project = 'encommon'
-copyright = '2023, Enasis Network'
+copyright = '2024, Enasis Network'
 author = 'Enasis Network'
 master_doc = 'index'
 nitpicky = True

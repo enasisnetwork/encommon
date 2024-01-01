@@ -21,7 +21,6 @@ def test_Window() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     window = Window('* * * * *', 330, 630)
 
     attrs = list(window.__dict__)
@@ -39,9 +38,7 @@ def test_Window() -> None:
 
     assert repr(window).startswith(
         '<encommon.times.window.Window')
-
     assert isinstance(hash(window), int)
-
     assert str(window).startswith(
         '<encommon.times.window.Window')
 

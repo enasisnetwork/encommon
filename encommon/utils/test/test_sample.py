@@ -58,7 +58,6 @@ def test_load_sample(
 
     assert sample == expect
 
-
     sample = load_sample(
         path=path,
         content=source | {'list': [1]},
