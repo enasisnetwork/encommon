@@ -21,7 +21,6 @@ def test_Window() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     window = Window('* * * * *', 330, 630)
 
     attrs = list(window.__dict__)

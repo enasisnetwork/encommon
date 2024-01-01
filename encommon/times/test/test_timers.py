@@ -20,7 +20,6 @@ def test_Timers() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     timers = Timers({'one': 1})
 
     attrs = list(timers.__dict__)

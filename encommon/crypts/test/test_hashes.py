@@ -16,7 +16,6 @@ def test_Hashes() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     hashes = Hashes('string')
 
     attrs = list(hashes.__dict__)

@@ -22,7 +22,6 @@ def test_Times() -> None:
     Perform various tests associated with relevant routines.
     """
 
-
     times = Times(0, format=STAMP_SIMPLE)
 
     attrs = list(times.__dict__)
