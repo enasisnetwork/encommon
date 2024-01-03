@@ -9,6 +9,7 @@ is permitted, for more information consult the project license file.
 
 from .paths import resolve_path
 from .paths import resolve_paths
+from .paths import stats_path
 from .regexp import rgxp_match
 from .sample import load_sample
 from .sample import prep_sample
@@ -28,4 +29,5 @@ __all__ = [
     'resolve_path',
     'resolve_paths',
     'rgxp_match',
+    'stats_path',
     'strip_ansi']
