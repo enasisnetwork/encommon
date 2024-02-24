@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Optional
 
 from .common import PATHABLE
-from .regexp import rgxp_match
+from .match import rgxp_match
 
 
 

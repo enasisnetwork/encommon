@@ -7,8 +7,8 @@ is permitted, for more information consult the project license file.
 
 
 
-from ..regexp import fuzz_match
-from ..regexp import rgxp_match
+from ..match import fuzz_match
+from ..match import rgxp_match
 
 
 

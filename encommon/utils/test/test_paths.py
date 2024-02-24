@@ -76,12 +76,12 @@ def test_stats_path() -> None:
     assert list(stats) == [
         '/utils/__init__.py',
         '/utils/common.py',
+        '/utils/match.py',
         '/utils/paths.py',
-        '/utils/regexp.py',
         '/utils/sample.py',
         '/utils/stdout.py',
         '/utils/test/__init__.py',
+        '/utils/test/test_match.py',
         '/utils/test/test_paths.py',
-        '/utils/test/test_regexp.py',
         '/utils/test/test_sample.py',
         '/utils/test/test_stdout.py']
