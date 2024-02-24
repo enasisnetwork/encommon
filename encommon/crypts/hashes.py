@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from base64 import b64encode
+from hashlib import md5
 from hashlib import sha1
 from hashlib import sha256
 from hashlib import sha512
@@ -60,6 +61,21 @@ class Hashes:
         """
 
         return self.__string
+
+
+    @property
+    def md5(
+        self,
+    ) -> str:
+        """
+        Return the property for attribute from the class instance.
+
+        :returns: Property for attribute from the class instance.
+        """
+
+        encode = self.__string.encode()
+
+        return md5(encode).hexdigest()
 
 
     @property
