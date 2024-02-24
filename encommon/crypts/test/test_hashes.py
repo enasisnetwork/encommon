@@ -34,6 +34,9 @@ def test_Hashes() -> None:
     assert hashes.string == 'string'
 
 
+    assert hashes.md5.startswith('b4')
+    assert hashes.md5.endswith('0f21')
+
     assert hashes.sha1.startswith('ec')
     assert hashes.sha1.endswith('904d')
 
