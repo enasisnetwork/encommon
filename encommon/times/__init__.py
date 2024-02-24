@@ -7,7 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
-from .parse import duration
+from .duration import Duration
 from .parse import parse_time
 from .parse import shift_time
 from .parse import since_time
@@ -19,10 +19,10 @@ from .window import Window
 
 
 __all__ = [
+    'Duration',
     'Timers',
     'Times',
     'Window',
-    'duration',
     'parse_time',
     'shift_time',
     'since_time',

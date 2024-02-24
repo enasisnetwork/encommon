@@ -64,6 +64,10 @@ def test_Times() -> None:
     assert times.human == UNIXHPOCH
     assert times.elapsed >= 1672531200
 
+    assert times.before == (
+        '1969-12-31T23:59:59.999999Z')
+    assert times.after == (
+        '1970-01-01T00:00:00.000001Z')
 
     stamp = times.stamp(
         tzname='US/Central')

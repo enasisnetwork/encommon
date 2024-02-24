@@ -13,7 +13,6 @@ from pytest import mark
 from pytest import raises
 
 from ..common import utcdatetime
-from ..parse import duration
 from ..parse import parse_time
 from ..parse import shift_time
 from ..parse import since_time
@@ -207,75 +206,3 @@ def test_since_time() -> None:
 
     assert since_time(dtime) > 0
     assert since_time(dtime) < 2
-
-
-
-def test_duration() -> None:
-    """
-    Perform various tests associated with relevant routines.
-    """
-
-    second = 60
-    hour = second * 60
-    day = hour * 24
-    week = day * 7
-    month = day * 30
-    quarter = day * 90
-    year = day * 365
-
-
-    expects = {
-
-        year: ('1y', '1 year'),
-        year + 1: ('1y', '1 year'),
-        year - 1: (
-            '12mon4d23h59m',
-            '12 months, 4 days'),
-
-        quarter: ('3mon', '3 months'),
-        quarter + 1: ('3mon', '3 months'),
-        quarter - 1: (
-            '2mon4w1d23h59m',
-            '2 months, 4 weeks'),
-
-        month: ('1mon', '1 month'),
-        month + 1: ('1mon', '1 month'),
-        month - 1: (
-            '4w1d23h59m',
-            '4 weeks, 1 day'),
-
-        week: ('1w', '1 week'),
-        week + 1: ('1w', '1 week'),
-        week - 1: (
-            '6d23h59m',
-            '6 days, 23 hours'),
-
-        day: ('1d', '1 day'),
-        day + 1: ('1d', '1 day'),
-        day - 1: (
-            '23h59m',
-            '23 hours, 59 minutes'),
-
-        hour: ('1h', '1 hour'),
-        hour + 1: ('1h', '1 hour'),
-        hour - 1: ('59m', '59 minutes'),
-
-        second: ('1m', '1 minute'),
-        second + 1: ('1m', '1 minute'),
-        second - 1: ('59s', 'just now')}
-
-
-    for source, expect in expects.items():
-
-        durated = duration(
-            seconds=source,
-            compact=True)
-
-        assert durated == expect[0]
-
-        durated = duration(
-            seconds=source,
-            compact=False,
-            maximum=2)
-
-        assert durated == expect[1]

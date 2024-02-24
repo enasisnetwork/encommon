@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from datetime import datetime
+from datetime import timedelta
 from datetime import timezone
 from typing import Optional
 
@@ -343,6 +344,42 @@ class Times:
         """
 
         return since_time(self.__source)
+
+
+    @property
+    def before(
+        self,
+    ) -> 'Times':
+        """
+        Return new object containing time just before the time.
+
+        :returns: Object containing time just before the time.
+        """
+
+        delta = timedelta(
+            microseconds=1)
+
+        source = self.__source - delta
+
+        return Times(source)
+
+
+    @property
+    def after(
+        self,
+    ) -> 'Times':
+        """
+        Return new object containing time just after the time.
+
+        :returns: Object containing time just after the time.
+        """
+
+        delta = timedelta(
+            microseconds=1)
+
+        source = self.__source + delta
+
+        return Times(source)
 
 
     def stamp(
