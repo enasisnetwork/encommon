@@ -9,6 +9,7 @@ is permitted, for more information consult the project license file.
 
 from typing import Literal
 from typing import Union
+from typing import get_args
 
 
 
@@ -17,14 +18,16 @@ DURAGROUP = Literal[
     'day', 'hour', 'minute',
     'second']
 
-DURASHORT = {
-    'year': 'y',
-    'month': 'mon',
-    'week': 'w',
-    'day': 'd',
-    'hour': 'h',
-    'minute': 'm',
-    'second': 's'}
+DURASHORT = Literal[
+    'y', 'mon', 'w',
+    'd', 'h', 'm', 's']
+
+DURAMAPS = dict(zip(
+    get_args(DURAGROUP),
+    get_args(DURASHORT)))
+
+DURAUNITS = Union[
+    DURAGROUP, DURASHORT]
 
 
 
@@ -49,16 +52,20 @@ class Duration:
 
     :param seconds: Period in seconds that will be iterated.
     :param smart: Determines if we hide seconds after minute.
+    :param groups: Determine the amount of groups to show,
+        ensuring the larger units are returned before smaller.
     """
 
     __source: float
     __smart: bool
+    __groups: int
 
 
     def __init__(
         self,
         seconds: int | float,
         smart: bool = True,
+        groups: int = len(DURAMAPS),
     ) -> None:
         """
         Initialize instance for class using provided parameters.
@@ -66,6 +73,7 @@ class Duration:
 
         self.__source = float(seconds)
         self.__smart = bool(smart)
+        self.__groups = int(groups)
 
 
     def __repr__(
@@ -77,7 +85,11 @@ class Duration:
         :returns: String representation for values from instance.
         """
 
-        return f'Duration({self.source}, {self.smart})'
+        return (
+            f'Duration('
+            f'seconds={self.source}, '
+            f'smart={self.smart}, '
+            f'groups={self.groups})')
 
 
     def __hash__(
@@ -290,16 +302,31 @@ class Duration:
     @property
     def groups(
         self,
-    ) -> dict[DURAGROUP, int]:
+    ) -> int:
+        """
+        Return the property for attribute from the class instance.
+
+        :returns: Property for attribute from the class instance.
+        """
+
+        return self.__groups
+
+
+    def units(
+        self,
+        short: bool = False,
+    ) -> dict[DURAUNITS, int]:
         """
         Return the groups of time units with each relevant value.
 
+        :param short: Determine if we should use the short hand.
         :returns: Groups of time units with each relevant value.
         """
 
-        seconds = int(self.__source)
+        source = self.__source
+        seconds = int(source)
 
-        returned: dict[DURAGROUP, int] = {}
+        returned: dict[DURAUNITS, int] = {}
 
         groups: dict[DURAGROUP, int] = {
             'year': 31536000,
@@ -308,6 +335,7 @@ class Duration:
             'day': 86400,
             'hour': 3600,
             'minute': 60}
+
 
         for key, value in groups.items():
 
@@ -320,10 +348,73 @@ class Duration:
 
             seconds %= value
 
-        if seconds >= 1:
+
+        if (source < 60
+                or (seconds >= 1
+                    and source > 60)):
             returned['second'] = seconds
 
-        return returned
+        if (self.__smart
+                and 'second' in returned
+                and len(returned) >= 2):
+            del returned['second']
+
+
+        items = (
+            list(returned.items())
+            [:self.__groups])
+
+        if short is False:
+            return dict(items)
+
+        return {
+            DURAMAPS[k]: v
+            for k, v in items}
+
+
+    def __duration(
+        self,
+        delim: str = ' ',
+        short: bool = True,
+    ) -> str:
+        """
+        Return the compact format calculated from source duration.
+
+        :param delim: Optional delimiter for between the groups.
+        :param short: Determine if we should use the short hand.
+        :returns: Compact format calculated from source duration.
+        """
+
+        parts: list[str] = []
+
+        groups = self.units(short)
+        spaced = '' if short else ' '
+
+        for part, value in groups.items():
+
+            unit: str = part
+
+            if (short is False
+                    and value != 1):
+                unit += 's'
+
+            parts.append(
+                f'{value}{spaced}{unit}')
+
+        return delim.join(parts)
+
+
+    @property
+    def short(
+        self,
+    ) -> str:
+        """
+        Return the compact format calculated from source duration.
+
+        :returns: Compact format calculated from source duration.
+        """
+
+        return self.__duration()
 
 
     @property
@@ -336,23 +427,7 @@ class Duration:
         :returns: Compact format calculated from source duration.
         """
 
-        parts: list[str] = []
-
-        source = self.__source
-        groups = self.groups
-
-        for part, value in groups.items():
-
-            if (part == 'second'
-                    and self.__smart
-                    and source >= 60):
-                continue
-
-            unit = DURASHORT[part]
-
-            parts.append(f'{value}{unit}')
-
-        return ''.join(parts)
+        return self.short.replace(' ', '')
 
 
     @property
@@ -365,26 +440,7 @@ class Duration:
         :returns: Compact format calculated from source duration.
         """
 
-        parts: list[str] = []
-
-        source = self.__source
-        groups = self.groups
-
-        if source < 60:
+        if self.__source < 60:
             return 'just now'
 
-        for part, value in groups.items():
-
-            if (part == 'second'
-                    and self.__smart
-                    and source >= 60):
-                continue
-
-            unit = (
-                f'{part}s'
-                if value != 1
-                else part)
-
-            parts.append(f'{value} {unit}')
-
-        return ', '.join(parts)
+        return self.__duration(', ', False)
