@@ -16,44 +16,97 @@ def test_Duration() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    duration = Duration(60)
+    duration = Duration(95401)
 
     attrs = list(duration.__dict__)
 
     assert attrs == [
         '_Duration__source',
-        '_Duration__smart']
+        '_Duration__smart',
+        '_Duration__groups']
 
 
     assert repr(duration) == (
-        'Duration(60.0, True)')
+        'Duration('
+        'seconds=95401.0, '
+        'smart=True, '
+        'groups=7)')
+
     assert isinstance(hash(duration), int)
-    assert str(duration) == '1m'
+    assert str(duration) == '1d2h30m'
 
 
-    assert int(duration) == 60
-    assert float(duration) == 60
+    assert int(duration) == 95401
+    assert float(duration) == 95401
 
-    assert duration + 1 == 61
-    assert duration + duration == 120
-    assert duration - 1 == 59
+    assert duration + 1 == 95402
+    assert duration + duration == 190802
+    assert duration - 1 == 95400
     assert duration - duration == 0
 
     assert duration == duration
-    assert duration != Duration(61)
+    assert duration != Duration(60)
     assert duration != 'invalid'
 
-    assert duration > Duration(59)
-    assert duration >= Duration(60)
-    assert duration < Duration(61)
-    assert duration <= Duration(60)
+    assert duration > Duration(95400)
+    assert duration >= Duration(95401)
+    assert duration < Duration(95402)
+    assert duration <= Duration(95401)
 
 
-    assert duration.source == 60
+    assert duration.source == 95401
     assert duration.smart is True
+    assert duration.groups == 7
 
-    assert duration.compact == '1m'
-    assert duration.verbose == '1 minute'
+    assert duration.short == '1d 2h 30m'
+    assert duration.compact == '1d2h30m'
+    assert duration.verbose == (
+        '1 day, 2 hours, 30 minutes')
+
+    assert duration.units() == {
+        'day': 1,
+        'hour': 2,
+        'minute': 30}
+
+
+    duration = Duration(
+        seconds=7501,
+        smart=False)
+
+    assert duration.short == '2h 5m 1s'
+    assert duration.compact == '2h5m1s'
+    assert duration.verbose == (
+        '2 hours, 5 minutes, 1 second')
+
+
+    duration = Duration(
+        seconds=694800,
+        smart=False,
+        groups=3)
+
+    assert duration.short == '1w 1d 1h'
+    assert duration.compact == '1w1d1h'
+    assert duration.verbose == (
+        '1 week, 1 day, 1 hour')
+
+
+    duration = Duration(36295261)
+
+    assert duration.units() == {
+        'year': 1,
+        'week': 3,
+        'month': 1,
+        'day': 4,
+        'hour': 2,
+        'minute': 1}
+
+    assert duration.units(True) == {
+        'y': 1,
+        'w': 3,
+        'mon': 1,
+        'd': 4,
+        'h': 2,
+        'm': 1}
 
 
 
