@@ -25,7 +25,7 @@ SAMPLES = (
 
 
 
-def test_Config(
+def test_Config(  # noqa: CFQ001
     config_path: Path,
 ) -> None:
     """
@@ -102,6 +102,26 @@ def test_Config(
 
     expect = prep_sample(
         content=_config2,
+        replace={
+            'config_path': str(config_path)})
+
+    assert sample == expect
+
+
+    _params1 = config.params
+    _params2 = config.params
+
+    assert _params1 is _params2
+
+    sample = load_sample(
+        path=SAMPLES.joinpath('params.json'),
+        update=ENPYRWS,
+        content=_params1.model_dump(),
+        replace={
+            'config_path': str(config_path)})
+
+    expect = prep_sample(
+        content=_params2.model_dump(),
         replace={
             'config_path': str(config_path)})
 
