@@ -1,13 +1,13 @@
 # Enasis Network Common Library
 
+Common classes and functions used in various public and private projects for
+[Enasis Network](https://github.com/enasisnetwork).
+
 [![](https://img.shields.io/github/actions/workflow/status/enasisnetwork/encommon/build.yml?style=flat-square&label=GitHub%20actions)](https://github.com/enasisnetwork/encommon/actions)<br>
 [![codecov](https://codecov.io/gh/enasisnetwork/encommon/graph/badge.svg?token=7PGOXKJU0E)](https://codecov.io/gh/enasisnetwork/encommon)<br>
 [![](https://img.shields.io/readthedocs/encommon?style=flat-square&label=Read%20the%20Docs)](https://encommon.readthedocs.io/en/stable)<br>
 [![](https://img.shields.io/pypi/v/encommon.svg?style=flat-square&label=PyPi%20version)](https://pypi.org/project/encommon)<br>
 [![](https://img.shields.io/pypi/dm/encommon?style=flat-square&label=PyPi%20downloads)](https://pypi.org/project/encommon)
-
-Common classes and functions used in various public and private projects for
-[Enasis Network](https://github.com/enasisnetwork).
 
 ## Installing the package
 Installing stable from the PyPi repository
