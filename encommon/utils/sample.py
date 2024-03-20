@@ -98,7 +98,7 @@ def load_sample(
     :param update: Determine whether the sample is updated.
     :param content: Content which will be processed for JSON.
     :param default: Callable used when stringifying values.
-    :param replace: Optional string values to replace in path.
+    :param replace: Optional string values to replace in file.
     :returns: Content after processing using JSON functions.
     """
 

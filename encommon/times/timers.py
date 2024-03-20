@@ -130,8 +130,8 @@ class Timers:
         Update the existing timer from mapping within the cache.
 
         :param unique: Unique identifier for the timer in mapping.
-        :param started: Determines when the time starts for timer.
         :param minimum: Determines minimum seconds that must pass.
+        :param started: Determines when the time starts for timer.
         """
 
         timer = self.__timing
