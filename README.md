@@ -1,12 +1,13 @@
 # Enasis Network Common Library
 
-[![](https://img.shields.io/github/actions/workflow/status/enasisnetwork/encommon/build.yml?style=flat-square&label=GitHub%20actions)](https://github.com/enasisnetwork/encommon/actions)
-[![](https://img.shields.io/readthedocs/encommon?style=flat-square&label=Read%20the%20Docs)](https://encommon.readthedocs.io/en/stable)
-[![](https://img.shields.io/pypi/v/encommon.svg?style=flat-square&label=PyPi%20version)](https://pypi.org/project/encommon)
-[![](https://img.shields.io/pypi/dm/encommon?style=flat-square&label=PyPi%20downloads)](https://pypi.org/project/encommon)
-
 Common classes and functions used in various public and private projects for
 [Enasis Network](https://github.com/enasisnetwork).
+
+[![](https://img.shields.io/github/actions/workflow/status/enasisnetwork/encommon/build.yml?style=flat-square&label=GitHub%20actions)](https://github.com/enasisnetwork/encommon/actions)<br>
+[![codecov](https://codecov.io/gh/enasisnetwork/encommon/graph/badge.svg?token=7PGOXKJU0E)](https://codecov.io/gh/enasisnetwork/encommon)<br>
+[![](https://img.shields.io/readthedocs/encommon?style=flat-square&label=Read%20the%20Docs)](https://encommon.readthedocs.io/en/stable)<br>
+[![](https://img.shields.io/pypi/v/encommon.svg?style=flat-square&label=PyPi%20version)](https://pypi.org/project/encommon)<br>
+[![](https://img.shields.io/pypi/dm/encommon?style=flat-square&label=PyPi%20downloads)](https://pypi.org/project/encommon)
 
 ## Installing the package
 Installing stable from the PyPi repository
@@ -49,12 +50,16 @@ information found in the `htmlcov` folder in the root of the project.
 make -s pytest
 ```
 
-## Future features and subpackages
-
-### `netdom` subpackage
-This package will include class objects for handling network addresses and
-other functions to assist with validating and normalizing domain names.
-
-### `formats` subpackage
-This package will include class objects to help with dealing with verious
-formats of data. These formats will include Jinja2, CSV, and HTML.
+## Build and upload to PyPi
+Build the package.
+```
+make -s pypackage
+```
+Upload to the test PyPi.
+```
+make -s pypi-upload-test
+```
+Upload to the prod PyPi.
+```
+make -s pypi-upload-prod
+```

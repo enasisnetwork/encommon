@@ -312,6 +312,12 @@ pytest: \
 		output to <c90>htmlcov<c37>..<c0>)
 	@$(VENV_DEVELOP)/bin/coverage html 1>/dev/null
 	$(call MAKE_PR1NT,<cD>DONE<c0>)
+	@#
+	$(call MAKE_PR3NT,\
+		<c37>Write <c90>coveragepy<c37> \
+		output to <c90>coverage.xml<c37>..<c0>)
+	@$(VENV_DEVELOP)/bin/coverage xml 1>/dev/null
+	$(call MAKE_PR1NT,<cD>DONE<c0>)
 
 
 
