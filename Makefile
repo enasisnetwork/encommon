@@ -110,7 +110,7 @@ cleanup-pycache:
 		2>/dev/null || true
 	@find . \
 		-name '*.pyc' \
-		-exec rm -rf '{}' \; \
+		-delete \; \
 		2>/dev/null || true
 	$(call MAKE_PR1NT,<cD>DONE<c0>)
 	@#
@@ -136,11 +136,13 @@ cleanup-pytest:
 		cache files..<c0>)
 	@find . \
 		-name '.pytest_cache' \
+		-maxdepth 1 \
 		-exec rm -rf '{}' \; \
 		2>/dev/null || true
 	@find . \
 		-name 'pytestdebug.log' \
-		-exec rm -rf '{}' \; \
+		-maxdepth 1 \
+		-delete \; \
 		2>/dev/null || true
 	$(call MAKE_PR1NT,<cD>DONE<c0>)
 
@@ -158,10 +160,17 @@ cleanup-coveragepy:
 		cache files..<c0>)
 	@find . \
 		-name 'htmlcov' \
+		-maxdepth 1 \
 		-exec rm -rf '{}' \; \
 		2>/dev/null || true
 	@find . \
 		-name '.coverage' \
+		-maxdepth 1 \
+		-exec rm -rf '{}' \; \
+		2>/dev/null || true
+	@find . \
+		-name 'coverage.xml' \
+		-maxdepth 1 \
 		-exec rm -rf '{}' \; \
 		2>/dev/null || true
 	$(call MAKE_PR1NT,<cD>DONE<c0>)
@@ -180,6 +189,7 @@ cleanup-mypy:
 		cache files..<c0>)
 	@find . \
 		-name '.mypy_cache' \
+		-maxdepth 1 \
 		-exec rm -rf '{}' \; \
 		2>/dev/null || true
 	$(call MAKE_PR1NT,<cD>DONE<c0>)
