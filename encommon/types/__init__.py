@@ -8,10 +8,12 @@ is permitted, for more information consult the project license file.
 
 
 from .dicts import merge_dicts
+from .dicts import sort_dict
 from .empty import Empty
 
 
 
 __all__ = [
     'Empty',
-    'merge_dicts']
+    'merge_dicts',
+    'sort_dict']
