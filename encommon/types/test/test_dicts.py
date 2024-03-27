@@ -10,6 +10,23 @@ is permitted, for more information consult the project license file.
 from copy import deepcopy
 
 from ..dicts import merge_dicts
+from ..dicts import sort_dict
+
+
+
+DICT1 = {
+    'dict1': 'dict1',
+    'str': 'd1string',
+    'list': ['d1list'],
+    'dict': {'key': 'd1value'},
+    'bool': False}
+
+DICT2 = {
+    'dict2': 'dict2',
+    'str': 'd2string',
+    'list': ['d2list'],
+    'dict': {'key': 'd2value'},
+    'bool': True}
 
 
 
@@ -18,19 +35,8 @@ def test_merge_dicts() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    dict1 = {
-        'dict1': 'dict1',
-        'str': 'd1string',
-        'list': ['d1list'],
-        'dict': {'key': 'd1value'},
-        'bool': False}
-
-    dict2 = {
-        'dict2': 'dict2',
-        'str': 'd2string',
-        'list': ['d2list'],
-        'dict': {'key': 'd2value'},
-        'bool': True}
+    dict1 = deepcopy(DICT1)
+    dict2 = deepcopy(DICT2)
 
     dict1['recurse'] = deepcopy(dict1)
     dict2['recurse'] = deepcopy(dict2)
@@ -100,3 +106,17 @@ def test_merge_dicts() -> None:
             'list': ['d1list'],
             'dict': {'key': 'd1value'},
             'bool': False}}
+
+
+
+def test_sort_dict() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+    assert sort_dict(DICT1) == {
+        'bool': False,
+        'dict': {'key': 'd1value'},
+        'dict1': 'dict1',
+        'list': ['d1list'],
+        'str': 'd1string'}

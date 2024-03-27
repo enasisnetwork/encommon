@@ -58,3 +58,29 @@ def merge_dicts(
 
         elif force is True:
             dict1[key] = value
+
+
+
+def sort_dict(
+    value: dict[Any, Any],
+    reverse: bool = False,
+) -> dict[Any, Any]:
+    """
+    Sort the keys within the dictionary and return new one.
+
+    Example
+    -------
+    >>> foo = {'b': 'be', 'a': 'ey'}
+    >>> sort_dict(foo)
+    {'a': 'ey', 'b': 'be'}
+    >>> sort_dict(foo, True)
+    {'b': 'be', 'a': 'ey'}
+
+    :param value: Dictionary whose keys are sorted into new.
+    :param reverse: Optionally reverse the sort direction.
+    :returns: New dictionary with keys sorted alphabetical.
+    """
+
+    return dict(sorted(
+        value.items(),
+        reverse=reverse))
