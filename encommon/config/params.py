@@ -20,7 +20,9 @@ class ConfigParams(BaseModel, extra='forbid'):
     """
     Process and validate the common configuration parameters.
 
+    :param paths: Complete or relative path to config paths.
     :param data: Keyword arguments passed to Pydantic model.
+        This parameter is picked up by autodoc, please ignore.
     """
 
     paths: Optional[list[str]] = None
@@ -31,7 +33,11 @@ class LoggerParams(BaseModel, extra='forbid'):
     """
     Process and validate the common configuration parameters.
 
+    :param stdo_level: Minimum log message severity level.
+    :param file_level: Minimum log message severity level.
+    :param file_path: Enables writing to the filesystem path.
     :param data: Keyword arguments passed to Pydantic model.
+        This parameter is picked up by autodoc, please ignore.
     """
 
     stdo_level: Optional[LOGLEVELS] = None
@@ -44,7 +50,11 @@ class Params(BaseModel, extra='forbid'):
     """
     Process and validate the common configuration parameters.
 
+    :param enconfig: Configuration for the `.Config` object.
+    :param enlogger: Configuration for the `.Logger` object.
+    :param encrypts: Configuration for the `.Crypts` object.
     :param data: Keyword arguments passed to Pydantic model.
+        This parameter is picked up by autodoc, please ignore.
     """
 
     enconfig: Optional[ConfigParams] = None

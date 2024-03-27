@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 
 
 NUMERISH = compile(r'^\-?\d+(\.\d+)?$')
-SNAPABLE = compile(r'^\-|\+[\d\@a-z]+$')
+SNAPABLE = compile(r'^(\-|\+)[\d\@a-z\-\+]+$')
 STRINGNOW = {'None', 'null', 'now'}
 
 NUMERIC = Union[int, float]
