@@ -214,11 +214,9 @@ def array_ansi(  # noqa: CFQ001, CFQ004
             if not isinstance(value, _type):
                 continue
 
-            label = (
-                f'<c{colors.label}>{name}<c0>')
-
             output.append(
-                f'{prefix} {label}')
+                f'{prefix} '
+                f'<c{colors.label}>{name}<c0>')
 
             return _process(
                 source=value,
