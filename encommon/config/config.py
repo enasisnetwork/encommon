@@ -155,9 +155,9 @@ class Config:
         self,
     ) -> Params:
         """
-        Return the configuration in the object format for files.
+        Return the Pydantic model containing the configuration.
 
-        :returns: Configuration in the object format for files.
+        :returns: Pydantic model containing the configuration.
         """
 
         if self.__params is not None:

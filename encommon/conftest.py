@@ -21,6 +21,7 @@ def config_path(
     Construct the directory and files needed for the tests.
 
     :param tmp_path: pytest object for temporal filesystem.
+    :returns: New resolved filesystem path object instance.
     """
 
 
@@ -40,4 +41,4 @@ def config_path(
         .write_text('name: Tony Stark'))
 
 
-    return tmp_path
+    return tmp_path.resolve()
