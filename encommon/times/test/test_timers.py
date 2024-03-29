@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from pathlib import Path
 from time import sleep
 
 from pytest import raises
@@ -25,8 +26,10 @@ def test_Timers() -> None:
     attrs = list(timers.__dict__)
 
     assert attrs == [
-        '_Timers__timing',
-        '_Timers__caches']
+        '_Timers__timers',
+        '_Timers__cache_file',
+        '_Timers__cache_name',
+        '_Timers__cache_dict']
 
 
     assert repr(timers).startswith(
@@ -36,7 +39,11 @@ def test_Timers() -> None:
         '<encommon.times.timers.Timers')
 
 
-    assert timers.timing == {'one': 1}
+    assert timers.timers == {'one': 1}
+    assert timers.cache_file is not None
+    assert len(timers.cache_dict) == 1
+    assert timers.cache_name is not None
+
 
     assert not timers.ready('one')
     sleep(1.1)
@@ -47,6 +54,42 @@ def test_Timers() -> None:
 
     assert timers.ready('two')
     assert not timers.ready('two')
+
+
+
+def test_Timers_cache(
+    tmp_path: Path,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param tmp_path: pytest object for temporal filesystem.
+    """
+
+    cache_file = (
+        f'{tmp_path}/timers.db')
+
+    timers1 = Timers(
+        timers={'one': 1},
+        cache_file=cache_file)
+
+    assert not timers1.ready('one')
+
+    sleep(0.75)
+
+    timers2 = Timers(
+        timers={'one': 1},
+        cache_file=cache_file)
+
+    assert not timers1.ready('one')
+    assert not timers2.ready('one')
+
+    sleep(0.25)
+
+    timers2.load_cache()
+
+    assert timers1.ready('one')
+    assert timers2.ready('one')
 
 
 
