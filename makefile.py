@@ -103,6 +103,7 @@ def makeread(
     """
     Return the contents using the provided filesystem path.
 
+    :param path: Complete or relative path to the makefile.
     :returns: Contents using the provided filesystem path.
     """
 
