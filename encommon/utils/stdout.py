@@ -7,11 +7,18 @@ is permitted, for more information consult the project license file.
 
 
 
+from dataclasses import dataclass
 from re import compile
 from re import sub as re_sub
 from sys import stdout
 from typing import Any
 from typing import Literal
+from typing import Optional
+from typing import Union
+
+from encommon.times import Duration
+from encommon.times import Times
+from encommon.types import Empty
 
 from .common import JOINABLE
 
@@ -19,6 +26,40 @@ from .common import JOINABLE
 
 ANSICODE = compile(
     r'\x1b\[[^A-Za-z]*[A-Za-z]')
+
+ANSIARRAL = Union[
+    list[Any],
+    tuple[Any, ...],
+    set[Any]]
+
+ANSIARRAD = dict[Any, Any]
+
+ANSIARRAY = Union[
+    ANSIARRAL,
+    ANSIARRAD]
+
+
+
+@dataclass(frozen=True)
+class ArrayColors:
+    """
+    Colors used to colorize the provided array like object.
+    """
+
+    label: int = 37
+    key: int = 97
+
+    bool: int = 93
+    none: int = 33
+    str: int = 92
+    num: int = 93
+
+    times: int = 96
+    empty: int = 36
+    other: int = 91
+
+    colon: int = 37
+    hyphen: int = 37
 
 
 
@@ -121,3 +162,174 @@ def strip_ansi(
     """  # noqa: D301 LIT102
 
     return re_sub(ANSICODE, '', string)
+
+
+
+def array_ansi(  # noqa: CFQ001, CFQ004
+    source: ANSIARRAY,
+    *,
+    indent: int = 0,
+    colors: ArrayColors = ArrayColors(),
+) -> str:
+    """
+    Print the ANSI colorized iterable to the standard output.
+
+    .. note::
+       This massive function should be refactored, possibly
+       into a class with methods where there are functions.
+
+    :param source: Value in supported and iterable formats.
+    :param indent: How many levels for initial indentation.
+    :param colors: Determine colors used with different types.
+    :returns: ANSI colorized string using inline directives.
+    """
+
+    output: list[str] = []
+
+    repeat = f'<c{colors.other}>REPEAT<c0>'
+
+
+    def _append(
+        prefix: str,
+        value: Any,  # noqa: ANN401
+        indent: int,
+        refers: set[int],
+    ) -> None:
+
+        if id(value) in refers:
+            return output.append(
+                f'{prefix} {repeat}')
+
+        refers.add(id(value))
+
+
+        types = {
+            'dict': dict,
+            'list': list,
+            'tuple': tuple,
+            'set': set}
+
+        for name, _type in types.items():
+
+            if not isinstance(value, _type):
+                continue
+
+            output.append(
+                f'{prefix} '
+                f'<c{colors.label}>{name}<c0>')
+
+            return _process(
+                source=value,
+                indent=indent + 2,
+                refers=refers)
+
+
+        value = _concrete(value)
+
+        output.append(
+            f'{prefix} {value}')
+
+
+    def _concrete(
+        source: Any,  # noqa: ANN401
+    ) -> str:
+
+        color = colors.other
+
+        if isinstance(source, bool):
+            color = colors.bool
+
+        if isinstance(source, int | float):
+            color = colors.num
+
+        elif isinstance(source, str):
+            color = colors.str
+
+        elif source is None:
+            color = colors.none
+
+        elif isinstance(source, Duration):
+            color = colors.times
+
+        elif isinstance(source, Times):
+            color = colors.times
+
+        elif source is Empty:
+            color = colors.empty
+
+        string = f'<c{color}>{source}<c0>'
+
+        if isinstance(source, str):
+            string = f"'{string}'"
+
+        return string
+
+
+    def _dict(
+        source: ANSIARRAD,
+        indent: int,
+        refers: Optional[set[int]] = None,
+    ) -> None:
+
+        assert isinstance(source, dict)
+
+        for key, value in source.items():
+
+            prefix = (
+                f'{" " * indent}'
+                f'<c{colors.key}>{key}'
+                f'<c{colors.colon}>:<c0>')
+
+            _append(
+                prefix, value, indent,
+                refers=refers or set())
+
+
+    def _list(
+        source: ANSIARRAL,
+        indent: int,
+        refers: Optional[set[int]] = None,
+    ) -> None:
+
+        assert isinstance(
+            source, (list, tuple, set))
+
+        for value in source:
+
+            prefix = (
+                f'{" " * indent}'
+                f'<c{colors.hyphen}>-<c0>')
+
+            _append(
+                prefix, value, indent,
+                refers=refers or set())
+
+
+    def _process(
+        source: ANSIARRAD | ANSIARRAL,
+        **kwargs: Any,
+    ) -> None:
+
+        if isinstance(source, dict):
+            return _dict(source, **kwargs)
+
+        return _list(source, **kwargs)
+
+
+    if isinstance(source, dict):
+        _dict(source, indent)
+
+    elif isinstance(source, list):
+        _list(source, indent)
+
+    elif isinstance(source, tuple):
+        _list(source, indent)
+
+    elif isinstance(source, set):
+        _list(source, indent)
+
+
+    _output = [
+        make_ansi(x) for x in output]
+
+    return '\n'.join(_output)
