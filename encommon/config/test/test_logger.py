@@ -14,7 +14,6 @@ from _pytest.logging import LogCaptureFixture
 
 from ..logger import Logger
 from ..logger import Message
-from ...times.common import UNIXEPOCH
 from ...times.common import UNIXMPOCH
 from ...utils.stdout import strip_ansi
 
@@ -35,7 +34,8 @@ def test_Message() -> None:
         int=1,
         list=[1, '2', 3],
         none=None,
-        string='foo')
+        string='foo',
+        elapsed=0.69420)
 
     attrs = list(message.__dict__)
 
@@ -60,7 +60,8 @@ def test_Message() -> None:
         'float="1.0", '
         'int="1", '
         'list="[1, \'2\', 3]", '
-        'string="foo")')
+        'string="foo", '
+        'elapsed="0.69")')
 
     assert str(message) == repr(message)
 
@@ -73,19 +74,21 @@ def test_Message() -> None:
         'float': '1.0',
         'int': '1',
         'list': "[1, '2', 3]",
-        'string': 'foo'}
+        'string': 'foo',
+        'elapsed': '0.69'}
 
 
     output = strip_ansi(message.stdo_output)
 
     assert output == (
         'level="info"'
-        f' time="{UNIXEPOCH}"'
+        ' time="1970-01-01T00:00:00Z"'
         ' dict="{\'foo\': \'bar\'}"'
         ' float="1.0"'
         ' int="1"'
         ' list="[1, \'2\', 3]"'
-        ' string="foo"')
+        ' string="foo"'
+        ' elapsed="0.69"')
 
 
     assert message.file_output == (
@@ -95,7 +98,8 @@ def test_Message() -> None:
         ' "float": "1.0",'
         ' "int": "1",'
         ' "list": "[1, \'2\', 3]",'
-        ' "string": "foo"}')
+        ' "string": "foo",'
+        ' "elapsed": "0.69"}')
 
 
 

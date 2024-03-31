@@ -60,7 +60,7 @@ class Message:
     -------
     >>> message = Message('info', '1970-01-01', foo='bar')
     >>> strip_ansi(message.stdo_output)
-    'level="info" time="1970-01-01T00:00:00+0000" foo="bar"'
+    'level="info" time="1970-01-01T00:00:00Z" foo="bar"'
 
     :param level: Severity which log message is classified.
     :param time: What time the log message actually occurred.
@@ -94,6 +94,10 @@ class Message:
 
             if value in [None, Empty]:
                 continue
+
+            if (key == 'elapsed'
+                    and isinstance(value, float)):
+                value = round(value, 2)
 
             value = str(value)
 
@@ -188,6 +192,11 @@ class Message:
             'time': self.__time.simple}
 
         fields |= dict(self.__fields)
+
+
+        fields['time'] = (
+            fields['time']
+            .replace('+0000', 'Z'))
 
 
         output: list[str] = []
