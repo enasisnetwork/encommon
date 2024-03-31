@@ -9,17 +9,12 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 
+from . import SAMPLES
 from ..files import ConfigFile
 from ..files import ConfigFiles
 from ... import ENPYRWS
 from ...utils.sample import load_sample
 from ...utils.sample import prep_sample
-
-
-
-SAMPLES = (
-    Path(__file__).parent
-    .joinpath('samples'))
 
 
 

@@ -63,6 +63,7 @@ def test_Times() -> None:
     assert times.subsec == UNIXMPOCH
     assert times.human == UNIXHPOCH
     assert times.elapsed >= 1672531200
+    assert times.since >= 1672531200
 
     assert times.before == (
         '1969-12-31T23:59:59.999999Z')
