@@ -223,9 +223,9 @@ def test_array_ansi() -> None:  # noqa: CFQ001
         '      - 2\n'
         '    bool: False\n'
         '    dict: dict\n'
-        '      str: REPEAT\n'
+        "      str: 'value'\n"
         '      list: REPEAT\n'
-        '      bool: REPEAT\n'
+        '      bool: False\n'
         'Empty: Empty\n'
         'Duration: 2d5h\n'
         f'Times: {UNIXMPOCH}')
