@@ -15,7 +15,9 @@ class CryptsParams(BaseModel, extra='forbid'):
     """
     Process and validate the common configuration parameters.
 
+    :param phrases: Passphrases that are used in operations.
     :param data: Keyword arguments passed to Pydantic model.
+        Parameter is picked up by autodoc, please ignore.
     """
 
     phrases: dict[str, str]

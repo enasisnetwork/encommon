@@ -178,11 +178,16 @@ def array_ansi(  # noqa: CFQ001, CFQ004
        This massive function should be refactored, possibly
        into a class with methods where there are functions.
 
+    Example
+    -------
+    >>> array_ansi({'foo': 'bar'})
+    "\\x1b[0;97mfoo\\x1b[0;37m:\\x1b[0;0m...
+
     :param source: Value in supported and iterable formats.
     :param indent: How many levels for initial indentation.
     :param colors: Determine colors used with different types.
     :returns: ANSI colorized string using inline directives.
-    """
+    """  # noqa: D301 LIT102
 
     output: list[str] = []
 
