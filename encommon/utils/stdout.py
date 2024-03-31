@@ -200,13 +200,16 @@ def array_ansi(  # noqa: CFQ001, CFQ004
             return output.append(
                 f'{prefix} {repeat}')
 
-        refers.add(id(value))
+
+        if isinstance(value, list | tuple | dict):
+            refers.add(id(value))
 
 
         types = {
-            'dict': dict,
             'list': list,
             'tuple': tuple,
+            'dict': dict,
+            'frozenset': frozenset,
             'set': set}
 
         for name, _type in types.items():
