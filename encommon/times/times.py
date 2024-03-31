@@ -347,6 +347,19 @@ class Times:
 
 
     @property
+    def since(
+        self,
+    ) -> float:
+        """
+        Determine the time in seconds that occured since instance.
+
+        :returns: Time in seconds that occured between the values.
+        """
+
+        return since_time(self.__source)
+
+
+    @property
     def before(
         self,
     ) -> 'Times':
