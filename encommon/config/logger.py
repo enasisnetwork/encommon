@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Any
 from typing import Literal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from .common import LOGLEVELS
 from .common import config_path
@@ -31,6 +32,9 @@ from ..times.common import PARSABLE
 from ..times.times import Times
 from ..types.empty import Empty
 from ..utils.stdout import kvpair_ansi
+
+if TYPE_CHECKING:
+    from .params import LoggerParams
 
 
 
@@ -143,9 +147,9 @@ class Message:
         self,
     ) -> LOGLEVELS:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__level
@@ -156,9 +160,9 @@ class Message:
         self,
     ) -> Times:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return Times(self.__time)
@@ -169,9 +173,9 @@ class Message:
         self,
     ) -> dict[str, str]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return dict(self.__fields)
@@ -283,9 +287,10 @@ class Logger:
     >>> logger.start()
     >>> logger.log_i(message='testing')
 
-    :param stdo_level: Minimum log message severity level.
-    :param file_level: Minimum log message severity level.
+    :param stdo_level: Minimum level for the message to pass.
+    :param file_level: Minimum level for the message to pass.
     :param file_path: Enables writing to the filesystem path.
+    :param params: Parameters for instantiating the instance.
     """
 
     __stdo_level: Optional[LOGLEVELS]
@@ -304,10 +309,16 @@ class Logger:
         stdo_level: Optional[LOGLEVELS] = None,
         file_level: Optional[LOGLEVELS] = None,
         file_path: Optional[str | Path] = None,
+        params: Optional['LoggerParams'] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
+
+        if params is not None:
+            stdo_level = params.stdo_level
+            file_level = params.file_level
+            file_path = params.file_path
 
         if file_path is not None:
             file_path = config_path(file_path)
@@ -327,9 +338,9 @@ class Logger:
         self,
     ) -> Optional[LOGLEVELS]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__stdo_level
@@ -340,9 +351,9 @@ class Logger:
         self,
     ) -> Optional[LOGLEVELS]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__file_level
@@ -353,9 +364,9 @@ class Logger:
         self,
     ) -> Optional[Path]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__file_path
@@ -366,9 +377,9 @@ class Logger:
         self,
     ) -> bool:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__started
@@ -379,9 +390,9 @@ class Logger:
         self,
     ) -> _Logger:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__logger_stdo
@@ -392,9 +403,9 @@ class Logger:
         self,
     ) -> _Logger:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__logger_file

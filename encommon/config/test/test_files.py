@@ -87,8 +87,11 @@ def test_ConfigFiles(
 
     assert _merged1 is not _merged2
 
+    sample_path = Path(
+        f'{SAMPLES}/files.json')
+
     sample = load_sample(
-        path=SAMPLES.joinpath('files.json'),
+        path=sample_path,
         update=ENPYRWS,
         content=_merged1,
         replace={

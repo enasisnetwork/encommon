@@ -90,9 +90,9 @@ class Config:
         self,
     ) -> ConfigFiles:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__files
@@ -103,9 +103,9 @@ class Config:
         self,
     ) -> ConfigPaths:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__paths
@@ -116,9 +116,9 @@ class Config:
         self,
     ) -> dict[str, Any]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__cargs
@@ -142,9 +142,9 @@ class Config:
         self,
     ) -> Callable:  # type: ignore
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__model
@@ -191,10 +191,8 @@ class Config:
         enlogger = (
             self.params.enlogger)
 
-        assert enlogger is not None
-
-        self.__logger = Logger(
-            **enlogger.model_dump())
+        self.__logger = (
+            Logger(params=enlogger))
 
         return self.__logger
 
@@ -213,9 +211,7 @@ class Config:
         encrypts = (
             self.params.encrypts)
 
-        assert encrypts is not None
-
-        self.__crypts = Crypts(
-            **encrypts.model_dump())
+        self.__crypts = (
+            Crypts(params=encrypts))
 
         return self.__crypts

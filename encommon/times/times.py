@@ -34,7 +34,7 @@ class Times:
 
     :param source: Time in various forms that will be parsed.
     :param anchor: Optional relative time; for snap notation.
-    :param format: Optional format for the timestamp string.
+    :param format: Optional format when source is timestamp.
     :param tzname: Name of the timezone associated to source.
         This is not relevant in timezone included in source.
     """
@@ -260,9 +260,9 @@ class Times:
         self,
     ) -> datetime:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__source
@@ -403,7 +403,7 @@ class Times:
         """
         Return the timestamp using provided format for instance.
 
-        :param format: Optional format for the timestamp string.
+        :param format: Optional format when source is timestamp.
         :param tzname: Name of the timezone associated to source.
             This is not relevant in timezone included in source.
         :returns: Timestamp using provided format for instance.

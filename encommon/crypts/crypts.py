@@ -10,8 +10,13 @@ is permitted, for more information consult the project license file.
 from re import compile
 from re import match as re_match
 from re import sub as re_sub
+from typing import Optional
+from typing import TYPE_CHECKING
 
 from cryptography.fernet import Fernet
+
+if TYPE_CHECKING:
+    from .params import CryptsParams
 
 
 
@@ -33,6 +38,7 @@ class Crypts:
     'example'
 
     :param phrases: Passphrases that are used in operations.
+    :param params: Parameters for instantiating the instance.
     """
 
     __phrases: dict[str, str]
@@ -40,11 +46,17 @@ class Crypts:
 
     def __init__(
         self,
-        phrases: dict[str, str],
+        phrases: Optional[dict[str, str]] = None,
+        params: Optional['CryptsParams'] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
+
+        phrases = phrases or {}
+
+        if params is not None:
+            phrases |= params.phrases
 
         if 'default' not in phrases:
             raise ValueError('default')
@@ -57,9 +69,9 @@ class Crypts:
         self,
     ) -> dict[str, str]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return dict(self.__phrases)

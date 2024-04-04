@@ -278,9 +278,9 @@ class Duration:
         self,
     ) -> float:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__source
@@ -291,9 +291,9 @@ class Duration:
         self,
     ) -> bool:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__smart
@@ -304,9 +304,9 @@ class Duration:
         self,
     ) -> int:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__groups

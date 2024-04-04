@@ -109,9 +109,9 @@ class Window:
         self,
     ) -> SCHEDULE:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return copy(self.__schedule)
@@ -122,9 +122,9 @@ class Window:
         self,
     ) -> Times:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return Times(self.__start)
@@ -135,9 +135,9 @@ class Window:
         self,
     ) -> Times:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return Times(self.__stop)
@@ -148,9 +148,9 @@ class Window:
         self,
     ) -> Times:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return Times(self.__anchor)
@@ -161,9 +161,9 @@ class Window:
         self,
     ) -> float:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__delay
@@ -174,9 +174,9 @@ class Window:
         self,
     ) -> Times:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return Times(self.__winext)
@@ -187,9 +187,9 @@ class Window:
         self,
     ) -> Times:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return Times(self.__wilast)
@@ -200,9 +200,9 @@ class Window:
         self,
     ) -> bool:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__walked
