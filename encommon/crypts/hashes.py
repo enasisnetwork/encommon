@@ -55,9 +55,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__string
@@ -68,9 +68,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         encode = self.__string.encode()
@@ -83,9 +83,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         string = self.__string.encode()
@@ -98,9 +98,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         string = self.__string.encode()
@@ -113,9 +113,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         string = self.__string.encode()
@@ -128,9 +128,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         string = self.__string
@@ -144,9 +144,9 @@ class Hashes:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         string = self.__string.encode()

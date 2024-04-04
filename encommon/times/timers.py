@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from sqlite3 import Connection
 
 
+
 TABLE = (
     """
     create table
@@ -159,9 +160,9 @@ class Timers:
         self,
     ) -> dict[str, float]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return dict(self.__timers)
@@ -172,9 +173,9 @@ class Timers:
         self,
     ) -> 'Connection':
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__cache_file
@@ -185,9 +186,9 @@ class Timers:
         self,
     ) -> dict[str, Times]:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return dict(self.__cache_dict)
@@ -198,9 +199,9 @@ class Timers:
         self,
     ) -> str:
         """
-        Return the property for attribute from the class instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Property for attribute from the class instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.__cache_name
@@ -231,7 +232,7 @@ class Timers:
         cache = caches[unique]
         timer = timers[unique]
 
-        ready = cache.elapsed >= timer
+        ready = cache.since >= timer
 
         if ready and update:
             self.update(unique)
@@ -278,7 +279,7 @@ class Timers:
         timers = self.__timers
         caches = self.__cache_dict
 
-        if unique in caches:
+        if unique in timers:
             raise ValueError('unique')
 
         timers[unique] = float(minimum)

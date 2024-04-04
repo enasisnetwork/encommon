@@ -88,8 +88,12 @@ def test_Config(  # noqa: CFQ001
 
     assert _config1 is not _config2
 
+
+    sample_path = Path(
+        f'{SAMPLES}/config.json')
+
     sample = load_sample(
-        path=SAMPLES.joinpath('config.json'),
+        path=sample_path,
         update=ENPYRWS,
         content=_config1,
         replace={
@@ -108,8 +112,12 @@ def test_Config(  # noqa: CFQ001
 
     assert _params1 is _params2
 
+
+    sample_path = Path(
+        f'{SAMPLES}/params.json')
+
     sample = load_sample(
-        path=SAMPLES.joinpath('params.json'),
+        path=sample_path,
         update=ENPYRWS,
         content=_params1.model_dump(),
         replace={

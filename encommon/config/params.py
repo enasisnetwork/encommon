@@ -33,8 +33,8 @@ class LoggerParams(BaseModel, extra='forbid'):
     """
     Process and validate the common configuration parameters.
 
-    :param stdo_level: Minimum log message severity level.
-    :param file_level: Minimum log message severity level.
+    :param stdo_level: Minimum level for the message to pass.
+    :param file_level: Minimum level for the message to pass.
     :param file_path: Enables writing to the filesystem path.
     :param data: Keyword arguments passed to Pydantic model.
         Parameter is picked up by autodoc, please ignore.

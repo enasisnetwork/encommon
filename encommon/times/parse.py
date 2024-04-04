@@ -73,7 +73,7 @@ def parse_time(  # noqa: CFQ004
 
     :param source: Time in various forms that will be parsed.
     :param anchor: Optional relative time; for snap notation.
-    :param format: Optional format for the timestamp string.
+    :param format: Optional format when source is timestamp.
     :param tzname: Name of the timezone associated to source.
         This is not relevant in timezone included in source.
     :returns: Python datetime object containing related time.
