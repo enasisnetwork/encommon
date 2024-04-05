@@ -60,7 +60,7 @@ def prep_sample(
 
     prefix = 'encommon_sample'
 
-    replace = replace or {}
+    replace = dict(replace or {})
 
     replace |= {
         'PROJECT': PROJECT,
