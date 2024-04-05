@@ -90,7 +90,7 @@ class Hashes:
 
         string = self.__string.encode()
 
-        return sha1(string).hexdigest()  # noqa: S324
+        return sha1(string).hexdigest()
 
 
     @property
@@ -151,6 +151,6 @@ class Hashes:
 
         string = self.__string.encode()
 
-        digest = sha1(string).digest()  # noqa: S324
+        digest = sha1(string).digest()
 
         return b64encode(digest).decode()
