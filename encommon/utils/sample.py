@@ -20,11 +20,11 @@ from .. import WORKSPACE
 
 
 def prep_sample(
-    content: Any,  # noqa: ANN401
+    content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[dict[str, str]] = None,
-) -> Any:  # noqa: ANN401
+    replace: Optional[dict[str, str | Path]] = None,
+) -> Any:
     """
     Return the content after processing using JSON functions.
 
@@ -55,10 +55,14 @@ def prep_sample(
     replace = replace or {}
 
     replace |= {
-        'PROJECT': str(PROJECT.resolve()),
-        'WORKSPACE': str(WORKSPACE.resolve())}
+        'PROJECT': PROJECT,
+        'WORKSPACE': WORKSPACE}
 
     for old, new in replace.items():
+
+        if isinstance(new, Path):
+            new = str(new)
+
         content = content.replace(
             new, f'_/{prefix}/{old}/_')
 
@@ -72,8 +76,8 @@ def load_sample(
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[dict[str, str]] = None,
-) -> Any:  # noqa: ANN401
+    replace: Optional[dict[str, str | Path]] = None,
+) -> Any:
     """
     Load the sample file and compare using provided content.
 
@@ -115,7 +119,7 @@ def load_sample(
             dumps(content, indent=2))
 
 
-    def _load_sample() -> Any:  # noqa: ANN401
+    def _load_sample() -> Any:
         return loads(
             path.read_text(
                 encoding='utf-8'))
@@ -124,7 +128,7 @@ def load_sample(
     if path.exists():
         loaded = _load_sample()
 
-    if not path.exists():  # noqa: SIM114
+    if not path.exists():
         _save_sample()
 
     elif (update is True
