@@ -65,11 +65,11 @@ def makeout(
     replace = r'\033[0;\1m'
 
 
-    if prefix:
-
-        assert prefix in get_args(PREFIX)
+    if prefix is not None:
 
         string = f'{string.lstrip(" ")}'
+
+        assert prefix in get_args(PREFIX)
 
         padding = 3
         _prefix = ''
