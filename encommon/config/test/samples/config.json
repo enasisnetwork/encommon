@@ -1,17 +1,18 @@
 {
   "enconfig": {
     "paths": [
-      "_/encommon_sample/config_path/_"
+      "_/encommon_sample/PROJECT/_/config/test/samples/stark",
+      "_/encommon_sample/PROJECT/_/config/test/samples/wayne"
     ]
   },
   "enlogger": {
     "stdo_level": "info",
-    "file_level": "warning",
-    "file_path": null
+    "file_level": "info",
+    "file_path": "_/encommon_sample/pytemp/_/config.log"
   },
   "encrypts": {
     "phrases": {
-      "default": "fernetphrase"
+      "default": "phrase"
     }
   }
 }

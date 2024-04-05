@@ -13,17 +13,8 @@ from pathlib import Path
 from typing import Any
 from typing import Callable
 from typing import Optional
-from typing import Union
 
-from .. import PROJECT
-from .. import WORKSPACE
-
-
-
-_REPLACE = Union[
-    dict[str, str],
-    dict[str, str | Path],
-    dict[str, Path]]
+from .common import REPLACE
 
 
 
@@ -31,7 +22,7 @@ def prep_sample(
     content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[_REPLACE] = None,
+    replace: Optional[REPLACE] = None,
 ) -> Any:
     """
     Return the content after processing using JSON functions.
@@ -51,7 +42,7 @@ def prep_sample(
 
     :param content: Content which will be processed for JSON.
     :param default: Callable used when stringifying values.
-    :param replace: Optional string values to replace in path.
+    :param replace: Optional values to replace in the path.
     :returns: Content after processing using JSON functions.
     """
 
@@ -60,11 +51,7 @@ def prep_sample(
 
     prefix = 'encommon_sample'
 
-    replace = dict(replace or {})
-
-    replace |= {
-        'PROJECT': PROJECT,
-        'WORKSPACE': WORKSPACE}
+    replace = replace or {}
 
     for old, new in replace.items():
 
@@ -79,12 +66,12 @@ def prep_sample(
 
 
 def load_sample(
-    path: Path,
+    path: str | Path,
     content: Optional[Any] = None,
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[_REPLACE] = None,
+    replace: Optional[REPLACE] = None,
 ) -> Any:
     """
     Load the sample file and compare using provided content.
@@ -114,7 +101,10 @@ def load_sample(
     :returns: Content after processing using JSON functions.
     """
 
+    path = Path(path).resolve()
+
     loaded: Optional[Any] = None
+
 
     content = prep_sample(
         content=content,

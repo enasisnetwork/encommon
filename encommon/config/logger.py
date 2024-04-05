@@ -99,8 +99,8 @@ class Message:
             if value in [None, Empty]:
                 continue
 
-            if (key == 'elapsed'
-                    and isinstance(value, float)):
+            if (isinstance(value, float)
+                    and key == 'elapsed'):
                 value = round(value, 2)
 
             value = str(value)
@@ -205,9 +205,14 @@ class Message:
 
         output: list[str] = []
 
-        for key, value in fields.items():
-            output.append(
-                kvpair_ansi(key, value))
+        items = fields.items()
+
+        for field, value in items:
+
+            _value = kvpair_ansi(
+                field, value)
+
+            output.append(_value)
 
         return ' '.join(output)
 
@@ -235,7 +240,7 @@ class Message:
 
 class FileFormatter(Formatter):
     """
-    Supplement class for built-in logging exception formatter.
+    Supplement class for built-in logger exception formatter.
     """
 
 

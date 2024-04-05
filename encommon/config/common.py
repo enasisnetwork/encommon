@@ -18,6 +18,7 @@ from yaml import load
 from .. import PROJECT
 from .. import WORKSPACE
 from ..utils.common import PATHABLE
+from ..utils.common import REPLACE
 from ..utils.paths import resolve_path
 from ..utils.paths import resolve_paths
 
@@ -58,7 +59,7 @@ def config_path(
     path: str | Path,
 ) -> Path:
     """
-    Resolve the provided path and replace the magic keywords.
+    Resolve the provided path replacing the magic keywords.
 
     .. note::
        This function simply wraps one from utils subpackage.
@@ -68,8 +69,8 @@ def config_path(
     """
 
     replace = {
-        'PROJECT': str(PROJECT),
-        'WORKSPACE': str(WORKSPACE)}
+        'PROJECT': PROJECT,
+        'WORKSPACE': WORKSPACE}
 
     return resolve_path(path, replace)
 
@@ -77,10 +78,10 @@ def config_path(
 
 def config_paths(
     paths: PATHABLE,
-    replace: Optional[dict[str, str]] = None,
+    replace: Optional[REPLACE] = None,
 ) -> tuple[Path, ...]:
     """
-    Resolve the provided paths and replace the magic keywords.
+    Resolve the provided paths replacing the magic keywords.
 
     .. note::
        This function simply wraps one from utils subpackage.
@@ -90,7 +91,7 @@ def config_paths(
     """
 
     replace = {
-        'PROJECT': str(PROJECT),
-        'WORKSPACE': str(WORKSPACE)}
+        'PROJECT': PROJECT,
+        'WORKSPACE': WORKSPACE}
 
     return resolve_paths(paths, replace)

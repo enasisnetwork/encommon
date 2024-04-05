@@ -89,13 +89,16 @@ class ConfigFiles:
         :returns: Configuration in dictionary format for files.
         """
 
-        if self.__merged is not None:
-            return deepcopy(self.__merged)
+        config = self.config
+        merged = self.__merged
 
-        merged: dict[str, Any] = {}
+        if merged is not None:
+            return deepcopy(merged)
+
+        merged = {}
 
 
-        for _, file in self.config.items():
+        for file in config.values():
 
             source = file.config
 
@@ -107,4 +110,4 @@ class ConfigFiles:
 
         self.__merged = merged
 
-        return deepcopy(self.__merged)
+        return deepcopy(merged)

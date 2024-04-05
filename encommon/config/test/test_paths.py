@@ -9,12 +9,32 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 
+from pytest import fixture
+
 from . import SAMPLES
 from ..paths import ConfigPath
 from ..paths import ConfigPaths
 from ... import ENPYRWS
+from ... import PROJECT
 from ...utils.sample import load_sample
 from ...utils.sample import prep_sample
+
+
+
+@fixture
+def paths(
+    config_path: Path,
+) -> ConfigPaths:
+    """
+    Construct the instance for use in the downstream tests.
+
+    :param config_path: Custom fixture for populating paths.
+    :returns: Newly constructed instance of related class.
+    """
+
+    return ConfigPaths([
+        f'{SAMPLES}/stark',
+        f'{SAMPLES}/wayne'])
 
 
 
@@ -29,33 +49,38 @@ def test_ConfigPath(
 
     path = ConfigPath(config_path)
 
+
     attrs = list(path.__dict__)
 
-    assert attrs == ['path', 'config']
+    assert attrs == [
+        'path',
+        'config']
 
 
-    assert repr(path).startswith(
-        '<encommon.config.paths.ConfigPath')
-    assert isinstance(hash(path), int)
-    assert str(path).startswith(
-        '<encommon.config.paths.ConfigPath')
+    assert repr(path)[:22] == (
+        '<encommon.config.paths')
+
+    assert hash(path) > 0
+
+    assert str(path)[:22] == (
+        '<encommon.config.paths')
 
 
     assert path.path == config_path
-    assert len(path.config) == 2
+    assert set(path.config) == {
+        f'{config_path}/config.yml'}
 
 
 
 def test_ConfigPaths(
-    config_path: Path,
+    paths: ConfigPaths,
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
-    :param config_path: Custom fixture for populating paths.
+    :param paths: Custom fixture for the configuration paths.
     """
 
-    paths = ConfigPaths(config_path)
 
     attrs = list(paths.__dict__)
 
@@ -64,35 +89,49 @@ def test_ConfigPaths(
         '_ConfigPaths__merged']
 
 
-    assert repr(paths).startswith(
-        '<encommon.config.paths.ConfigPaths')
-    assert isinstance(hash(paths), int)
-    assert str(paths).startswith(
-        '<encommon.config.paths.ConfigPaths')
+    assert repr(paths)[:22] == (
+        '<encommon.config.paths')
+
+    assert hash(paths) > 0
+
+    assert str(paths)[:22] == (
+        '<encommon.config.paths')
 
 
-    assert len(paths.paths) == 1
-    assert len(paths.config) == 1
+    assert len(paths.paths) == 2
+    assert len(paths.config) == 2
 
 
-    _merged1 = paths.merged
-    _merged2 = paths.merged
+    replaces = {
+        'PROJECT': PROJECT}
 
-    assert _merged1 is not _merged2
-
-    sample_path = Path(
+    sample_path = (
         f'{SAMPLES}/paths.json')
 
     sample = load_sample(
         path=sample_path,
         update=ENPYRWS,
-        content=_merged1,
-        replace={
-            'config_path': str(config_path)})
+        content=paths.merged,
+        replace=replaces)
 
     expect = prep_sample(
-        content=_merged2,
-        replace={
-            'config_path': str(config_path)})
+        content=paths.merged,
+        replace=replaces)
 
     assert sample == expect
+
+
+
+def test_ConfigPaths_cover(
+    paths: ConfigPaths,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param paths: Custom fixture for the configuration paths.
+    """
+
+    merged1 = paths.merged
+    merged2 = paths.merged
+
+    assert merged1 is not merged2

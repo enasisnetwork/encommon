@@ -97,19 +97,24 @@ class ConfigPaths:
         :returns: Configuration in dictionary format for paths.
         """
 
-        if self.__merged is not None:
-            return deepcopy(self.__merged)
+        config = self.config
+        merged = self.__merged
 
-        merged: dict[str, Any] = {}
+        if merged is not None:
+            return deepcopy(merged)
+
+        merged = {}
 
 
-        for _, path in self.config.items():
+        for path in config.values():
 
-            for key, file in path.config.items():
+            items = path.config.items()
+
+            for key, file in items:
 
                 merged[key] = file.config
 
 
         self.__merged = merged
 
-        return deepcopy(self.__merged)
+        return deepcopy(merged)

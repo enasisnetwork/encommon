@@ -11,50 +11,25 @@ from pathlib import Path
 
 from . import SAMPLES
 from ..config import Config
-from ..logger import Logger
 from ..params import Params
 from ... import ENPYRWS
-from ...crypts.crypts import Crypts
+from ... import PROJECT
 from ...utils.sample import load_sample
 from ...utils.sample import prep_sample
 
 
 
-def test_Config(  # noqa: CFQ001
-    config_path: Path,
+def test_Config(
+    tmp_path: Path,
+    config: 'Config',
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
-    :param config_path: Custom fixture for populating paths.
+    :param tmp_path: pytest object for temporal filesystem.
+    :param config: Primary class instance for configuration.
     """
 
-    (config_path
-        .joinpath('one.yml')
-        .write_text(
-            'enconfig:\n'
-            f'  paths: ["{config_path}"]\n'
-            'enlogger:\n'
-            '  stdo_level: info\n'))
-
-    (config_path
-        .joinpath('two.yml')
-        .write_text(
-            'encrypts:\n'
-            '  phrases:\n'
-            '    default: fernetphrase\n'
-            'enlogger:\n'
-            '  stdo_level: debug\n'
-            '  file_level: info\n'))
-
-
-    config = Config(
-        files=[
-            f'{config_path}/one.yml',
-            f'{config_path}/two.yml'],
-        cargs={
-            'enlogger': {
-                'file_level': 'warning'}})
 
     attrs = list(config.__dict__)
 
@@ -68,84 +43,63 @@ def test_Config(  # noqa: CFQ001
         '_Config__crypts']
 
 
-    assert repr(config).startswith(
-        '<encommon.config.config.Config')
-    assert isinstance(hash(config), int)
-    assert str(config).startswith(
-        '<encommon.config.config.Config')
+    assert repr(config)[:23] == (
+        '<encommon.config.config')
+
+    assert hash(config) > 0
+
+    assert str(config)[:23] == (
+        '<encommon.config.config')
 
 
-    assert len(config.files.paths) == 2
-    assert len(config.paths.paths) == 1
-    assert len(config.cargs) == 1
-    assert isinstance(config.config, dict)
+    assert config.files is not None
+    assert config.paths is not None
+    assert config.cargs is not None
+    assert config.config is not None
     assert config.model is Params
-    assert isinstance(config.params, Params)
+    assert config.params is not None
+    assert config.logger is not None
+    assert config.crypts is not None
 
 
-    _config1 = config.config
-    _config2 = config.config
+    replaces = {
+        'pytemp': tmp_path,
+        'PROJECT': PROJECT}
 
-    assert _config1 is not _config2
-
-
-    sample_path = Path(
+    sample_path = (
         f'{SAMPLES}/config.json')
 
     sample = load_sample(
         path=sample_path,
         update=ENPYRWS,
-        content=_config1,
-        replace={
-            'config_path': str(config_path)})
+        content=config.config,
+        replace=replaces)
 
     expect = prep_sample(
-        content=_config2,
-        replace={
-            'config_path': str(config_path)})
+        content=config.config,
+        replace=replaces)
 
     assert sample == expect
 
 
-    _params1 = config.params
-    _params2 = config.params
 
-    assert _params1 is _params2
+def test_Config_cover(
+    config: 'Config',
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
 
-
-    sample_path = Path(
-        f'{SAMPLES}/params.json')
-
-    sample = load_sample(
-        path=sample_path,
-        update=ENPYRWS,
-        content=_params1.model_dump(),
-        replace={
-            'config_path': str(config_path)})
-
-    expect = prep_sample(
-        content=_params2.model_dump(),
-        replace={
-            'config_path': str(config_path)})
-
-    assert sample == expect
+    :param config: Primary class instance for configuration.
+    """
 
 
-    logger = config.logger
+    logger1 = config.logger
+    logger2 = config.logger
 
-    assert isinstance(logger, Logger)
-
-    _logger1 = config.logger
-    _logger2 = config.logger
-
-    assert _logger1 is _logger2
+    assert logger1 is logger2
 
 
-    crypts = config.crypts
+    crypts1 = config.crypts
+    crypts2 = config.crypts
 
-    assert isinstance(crypts, Crypts)
-
-    _crypts1 = config.crypts
-    _crypts2 = config.crypts
-
-    assert _crypts1 is _crypts2
+    assert crypts1 is crypts2

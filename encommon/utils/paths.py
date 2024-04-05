@@ -12,20 +12,22 @@ from pathlib import Path
 from typing import Optional
 
 from .common import PATHABLE
+from .common import REPLACE
 from .match import rgxp_match
+from ..types import sort_dict
 
 
 
-_REPLACE = dict[str, str]
+STATS_PATH = dict[str, stat_result]
 
 
 
 def resolve_path(
     path: str | Path,
-    replace: Optional[_REPLACE] = None,
+    replace: Optional[REPLACE] = None,
 ) -> Path:
     """
-    Resolve the provided path and replace the magic keywords.
+    Resolve the provided path replacing the magic keywords.
 
     Example
     -------
@@ -33,14 +35,19 @@ def resolve_path(
     PosixPath('/foo/bar')
 
     :param path: Complete or relative path for processing.
-    :param replace: Optional string values to replace in path.
+    :param replace: Optional values to replace in the path.
     :returns: New resolved filesystem path object instance.
     """
 
     path = str(path).strip()
 
     if replace is not None:
+
         for old, new in replace.items():
+
+            if isinstance(new, Path):
+                new = str(new)
+
             path = path.replace(old, new)
 
     return Path(path).resolve()
@@ -49,10 +56,10 @@ def resolve_path(
 
 def resolve_paths(
     paths: PATHABLE,
-    replace: Optional[_REPLACE] = None,
+    replace: Optional[REPLACE] = None,
 ) -> tuple[Path, ...]:
     """
-    Resolve the provided paths and replace the magic keywords.
+    Resolve the provided paths replacing the magic keywords.
 
     .. note::
        This will remove duplicative paths from the returned.
@@ -63,7 +70,7 @@ def resolve_paths(
     (PosixPath('/foo/bar'),)
 
     :param paths: Complete or relative paths for processing.
-    :param replace: Optional string values to replace in path.
+    :param replace: Optional values to replace in the path.
     :returns: New resolved filesystem path object instances.
     """
 
@@ -74,13 +81,13 @@ def resolve_paths(
 
     for path in paths:
 
-        _path = resolve_path(
-            str(path), replace)
+        resolved = resolve_path(
+            path, replace)
 
-        if _path in returned:
+        if resolved in returned:
             continue
 
-        returned.append(_path)
+        returned.append(resolved)
 
     return tuple(returned)
 
@@ -88,9 +95,9 @@ def resolve_paths(
 
 def stats_path(
     path: str | Path,
-    replace: Optional[_REPLACE] = None,
+    replace: Optional[REPLACE] = None,
     ignore: Optional[list[str]] = None,
-) -> dict[str, stat_result]:
+) -> STATS_PATH:
     """
     Collect stats object for the complete or relative path.
 
@@ -108,18 +115,20 @@ def stats_path(
     12
 
     :param path: Complete or relative path for enumeration.
-    :param replace: Optional string values to replace in path.
+    :param replace: Optional values to replace in the path.
     :param ignore: Paths matching these patterns are ignored.
     :returns: Metadata for files recursively found in path.
     """
 
     path = Path(path).resolve()
 
-    returned: dict[str, stat_result] = {}
+    returned: STATS_PATH = {}
 
 
     def _ignore() -> bool:
+
         assert ignore is not None
+
         return rgxp_match(
             str(item), ignore)
 
@@ -145,4 +154,4 @@ def stats_path(
                 item.stat())
 
 
-    return dict(sorted(returned.items()))
+    return sort_dict(returned)

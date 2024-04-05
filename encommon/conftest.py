@@ -11,6 +11,45 @@ from pathlib import Path
 
 from pytest import fixture
 
+from .config import Config
+from .config.test import SAMPLES
+
+
+
+def config_factory(
+    tmp_path: Path,
+) -> Config:
+    """
+    Construct the instance for use in the downstream tests.
+
+    :param tmp_path: pytest object for temporal filesystem.
+    :returns: Newly constructed instance of related class.
+    """
+
+    (tmp_path
+        .joinpath('config.yml')
+        .write_text(
+            'enconfig:\n'
+            '  paths:\n'
+            f"    - '{SAMPLES}/stark'\n"
+            f"    - '{SAMPLES}/wayne'\n"
+            'enlogger:\n'
+            '  stdo_level: info\n'
+            'encrypts:\n'
+            '  phrases:\n'
+            '    default: phrase\n'))
+
+    config_log = f'{tmp_path}/config.log'
+
+    cargs = {
+        'enlogger': {
+            'file_path': config_log,
+            'file_level': 'info'}}
+
+    return Config(
+        files=f'{tmp_path}/config.yml',
+        cargs=cargs)
+
 
 
 @fixture
@@ -24,21 +63,21 @@ def config_path(
     :returns: New resolved filesystem path object instance.
     """
 
-
-    Path.mkdir(
-        Path(f'{tmp_path}/wayne'))
-
-    (Path(f'{tmp_path}/wayne')
-        .joinpath('bwayne.yml')
-        .write_text('name: Bruce Wayne'))
-
-
-    Path.mkdir(
-        Path(f'{tmp_path}/stark'))
-
-    (Path(f'{tmp_path}/stark')
-        .joinpath('tstark.yml')
-        .write_text('name: Tony Stark'))
-
+    config_factory(tmp_path)
 
     return tmp_path.resolve()
+
+
+
+@fixture
+def config(
+    tmp_path: Path,
+) -> Config:
+    """
+    Construct the instance for use in the downstream tests.
+
+    :param tmp_path: pytest object for temporal filesystem.
+    :returns: Newly constructed instance of related class.
+    """
+
+    return config_factory(tmp_path)
