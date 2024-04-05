@@ -40,20 +40,24 @@ def test_Crypts(
 
     crypts = Crypts(phrases)
 
+
     attrs = list(crypts.__dict__)
 
     assert attrs == [
         '_Crypts__phrases']
 
 
-    assert repr(crypts).startswith(
-        '<encommon.crypts.crypts.Crypts')
-    assert isinstance(hash(crypts), int)
-    assert str(crypts).startswith(
-        '<encommon.crypts.crypts.Crypts')
+    assert repr(crypts)[:23] == (
+        '<encommon.crypts.crypts')
+
+    assert hash(crypts) > 0
+
+    assert str(crypts)[:23] == (
+        '<encommon.crypts.crypts')
 
 
     assert crypts.phrases == phrases
+    assert len(crypts.keygen()) == 44
 
 
 
@@ -115,6 +119,7 @@ def test_Crypts_raises(
 
 
     with raises(ValueError) as reason:
-        crypts.decrypt('$ENCRYPT;1.1;f;oo')
+        string = '$ENCRYPT;1.1;f;oo'
+        crypts.decrypt(string)
 
     assert str(reason.value) == 'version'
