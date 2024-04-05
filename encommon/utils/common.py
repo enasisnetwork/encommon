@@ -25,3 +25,10 @@ PATHABLE = Union[
     list[str | Path],
     tuple[str | Path],
     set[str]]
+
+
+
+REPLACE = Union[
+    dict[str, str],
+    dict[str, str | Path],
+    dict[str, Path]]

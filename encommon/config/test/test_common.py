@@ -9,6 +9,7 @@ is permitted, for more information consult the project license file.
 
 from ..common import config_load
 from ..common import config_path
+from ..common import config_paths
 from ... import PROJECT
 from ... import WORKSPACE
 
@@ -30,5 +31,25 @@ def test_config_path() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    assert config_path('PROJECT') == PROJECT
-    assert config_path('WORKSPACE') == WORKSPACE
+
+    path = config_path('PROJECT')
+
+    assert path == PROJECT
+
+
+    path = config_path('WORKSPACE')
+
+    assert path == WORKSPACE
+
+
+
+def test_config_paths() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+    paths = config_paths([
+        'PROJECT', 'WORKSPACE'])
+
+    assert paths == (
+        PROJECT, WORKSPACE)

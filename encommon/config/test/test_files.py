@@ -9,12 +9,28 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 
+from pytest import fixture
+
 from . import SAMPLES
 from ..files import ConfigFile
 from ..files import ConfigFiles
-from ... import ENPYRWS
-from ...utils.sample import load_sample
-from ...utils.sample import prep_sample
+
+
+
+@fixture
+def files(
+    config_path: Path,
+) -> ConfigFiles:
+    """
+    Construct the instance for use in the downstream tests.
+
+    :param config_path: Custom fixture for populating paths.
+    :returns: Newly constructed instance of related class.
+    """
+
+    return ConfigFiles([
+        f'{SAMPLES}/wayne/bwayne.yml',
+        f'{SAMPLES}/stark/tstark.yml'])
 
 
 
@@ -27,79 +43,81 @@ def test_ConfigFile(
     :param config_path: Custom fixture for populating paths.
     """
 
-    file = ConfigFile(
-        f'{config_path}/wayne/bwayne.yml')
+    config_file = Path(
+        f'{config_path}/config.yml')
+
+    file = ConfigFile(config_file)
+
 
     attrs = list(file.__dict__)
 
-    assert attrs == ['path', 'config']
+    assert attrs == [
+        'path',
+        'config']
 
 
-    assert repr(file).startswith(
-        '<encommon.config.files.ConfigFile')
-    assert isinstance(hash(file), int)
-    assert str(file).startswith(
-        '<encommon.config.files.ConfigFile')
+    assert repr(file)[:22] == (
+        '<encommon.config.files')
+
+    assert hash(file) > 0
+
+    assert str(file)[:22] == (
+        '<encommon.config.files')
 
 
-    assert file.path.name == 'bwayne.yml'
-    assert list(file.config) == ['name']
+    assert file.path == config_file
+    assert set(file.config) == {
+        'enconfig',
+        'enlogger',
+        'encrypts'}
 
 
 
 def test_ConfigFiles(
-    config_path: Path,
+    files: ConfigFiles,
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
-    :param config_path: Custom fixture for populating paths.
+    :param files: Custom fixture for the configuration files.
     """
 
-    files = ConfigFiles([
-        f'{config_path}/wayne/bwayne.yml',
-        f'{config_path}/stark/tstark.yml'])
 
     attrs = list(files.__dict__)
 
     assert attrs == [
-        'paths', 'config',
+        'paths',
+        'config',
         '_ConfigFiles__merged']
 
 
-    assert repr(files).startswith(
-        '<encommon.config.files.ConfigFiles')
-    assert isinstance(hash(files), int)
-    assert str(files).startswith(
-        '<encommon.config.files.ConfigFiles')
+    assert repr(files)[:22] == (
+        '<encommon.config.files')
+
+    assert hash(files) > 0
+
+    assert str(files)[:22] == (
+        '<encommon.config.files')
 
 
     assert len(files.paths) == 2
     assert len(files.config) == 2
 
+    assert files.merged == {
+        'name': 'Bruce Wayne'}
 
-    files = ConfigFiles(
-        f'{config_path}/wayne/bwayne.yml')
 
 
-    _merged1 = files.merged
-    _merged2 = files.merged
+def test_ConfigFiles_cover(
+    files: ConfigFiles,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
 
-    assert _merged1 is not _merged2
+    :param files: Custom fixture for the configuration files.
+    """
 
-    sample_path = Path(
-        f'{SAMPLES}/files.json')
+    merged1 = files.merged
+    merged2 = files.merged
 
-    sample = load_sample(
-        path=sample_path,
-        update=ENPYRWS,
-        content=_merged1,
-        replace={
-            'config_path': str(config_path)})
-
-    expect = prep_sample(
-        content=_merged2,
-        replace={
-            'config_path': str(config_path)})
-
-    assert sample == expect
+    assert merged1 is not merged2

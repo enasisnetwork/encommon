@@ -34,34 +34,45 @@ def test_load_sample(
     :param tmp_path: pytest object for temporal filesystem.
     """
 
-    path = (
-        Path(tmp_path)
-        .joinpath('samples.json'))
+    prefix = 'encommon_sample'
 
     source = {
         'list': ['bar', 'baz'],
         'tuple': (1, 2),
         'project': PROJECT,
-        'other': '/path/to/other'}
+        'other': '/pat/h'}
 
     expect = {
         'list': ['bar', 'baz'],
         'tuple': [1, 2],
-        'project': '_/encommon_sample/PROJECT/_',
-        'other': '_/encommon_sample/tmp_path/_'}
+        'project': f'_/{prefix}/PROJECT/_',
+        'other': f'_/{prefix}/tmp_path/_'}
+
+
+    replaces = {
+        'PROJECT': str(PROJECT),
+        'tmp_path': '/pat/h'}
+
+
+    sample_path = (
+        f'{tmp_path}/samples.json')
 
     sample = load_sample(
-        path=path,
+        path=sample_path,
         update=ENPYRWS,
         content=source,
-        replace={'tmp_path': '/path/to/other'})
+        replace=replaces)
 
     assert sample == expect
 
-    sample = load_sample(
-        path=path,
-        content=source | {'list': [1]},
-        update=True,
-        replace={'tmp_path': '/path/to/other'})
 
-    assert sample == expect | {'list': [1]}
+    source |= {'list': [1, 3, 2]}
+    expect |= {'list': [1, 3, 2]}
+
+    sample = load_sample(
+        path=sample_path,
+        content=source,
+        update=True,
+        replace=replaces)
+
+    assert sample == expect
