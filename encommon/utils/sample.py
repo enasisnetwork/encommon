@@ -13,9 +13,17 @@ from pathlib import Path
 from typing import Any
 from typing import Callable
 from typing import Optional
+from typing import Union
 
 from .. import PROJECT
 from .. import WORKSPACE
+
+
+
+_REPLACE = Union[
+    dict[str, str],
+    dict[str, str | Path],
+    dict[str, Path]]
 
 
 
@@ -23,7 +31,7 @@ def prep_sample(
     content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[dict[str, str | Path]] = None,
+    replace: Optional[_REPLACE] = None,
 ) -> Any:
     """
     Return the content after processing using JSON functions.
@@ -76,7 +84,7 @@ def load_sample(
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[dict[str, str | Path]] = None,
+    replace: Optional[_REPLACE] = None,
 ) -> Any:
     """
     Load the sample file and compare using provided content.
