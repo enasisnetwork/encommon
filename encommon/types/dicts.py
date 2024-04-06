@@ -49,12 +49,16 @@ def merge_dicts(
         elif (isinstance(dict1[key], list)
                 and isinstance(value, list)
                 and merge_list is True):
-            dict1[key] = [] + dict1[key] + value
+
+            dict1[key] = (
+                [] + dict1[key] + value)
 
         elif (isinstance(dict1[key], dict)
                 and isinstance(value, dict)
                 and merge_dict is True):
-            merge_dicts(dict1[key], value, force)
+
+            merge_dicts(
+                dict1[key], value, force)
 
         elif force is True:
             dict1[key] = value
@@ -81,6 +85,8 @@ def sort_dict(
     :returns: New dictionary with keys sorted alphabetical.
     """
 
-    return dict(sorted(
+    items = sorted(
         value.items(),
-        reverse=reverse))
+        reverse=reverse)
+
+    return dict(items)
