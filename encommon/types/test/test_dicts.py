@@ -14,14 +14,14 @@ from ..dicts import sort_dict
 
 
 
-DICT1 = {
+_DICT1 = {
     'dict1': 'dict1',
     'str': 'd1string',
     'list': ['d1list'],
     'dict': {'key': 'd1value'},
     'bool': False}
 
-DICT2 = {
+_DICT2 = {
     'dict2': 'dict2',
     'str': 'd2string',
     'list': ['d2list'],
@@ -35,8 +35,8 @@ def test_merge_dicts() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    dict1 = deepcopy(DICT1)
-    dict2 = deepcopy(DICT2)
+    dict1 = deepcopy(_DICT1)
+    dict2 = deepcopy(_DICT2)
 
     dict1['recurse'] = deepcopy(dict1)
     dict2['recurse'] = deepcopy(dict2)
@@ -114,7 +114,7 @@ def test_sort_dict() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    assert sort_dict(DICT1) == {
+    assert sort_dict(_DICT1) == {
         'bool': False,
         'dict': {'key': 'd1value'},
         'dict1': 'dict1',

@@ -22,14 +22,17 @@ def test_EmptyType() -> None:
 
     empty = EmptyType()
 
+
     attrs = list(empty.__dict__)
 
     assert attrs == [
         '_EmptyType__empty']
 
+
     assert repr(empty) == 'Empty'
-    assert isinstance(hash(empty), int)
+    assert hash(empty) > 0
     assert str(empty) == 'Empty'
+
 
     assert not (Empty or None)
     assert Empty is empty

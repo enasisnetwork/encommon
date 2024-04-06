@@ -17,7 +17,7 @@ SPACED = ' '
 
 
 
-def striplower(
+def strplwr(
     value: str,
 ) -> str:
     """
@@ -25,7 +25,7 @@ def striplower(
 
     Example
     -------
-    >>> striplower('  Foo ')
+    >>> strplwr('  Foo ')
     'foo'
 
     :param value: String which will be stripped and lowered.

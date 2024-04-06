@@ -51,8 +51,13 @@ class EmptyType:
         :returns: Same instance of class that first instantiated.
         """
 
-        if cls.__empty is None:
-            cls.__empty = object.__new__(cls)
+        empty = cls.__empty
+
+        if empty is not None:
+            return empty
+
+        cls.__empty = (
+            object.__new__(cls))
 
         return cls.__empty
 
