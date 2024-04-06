@@ -20,15 +20,19 @@ if TYPE_CHECKING:
 
 
 
-TABLE = (
+CACHE_TABLE = (
     """
-    create table
-     if not exists
+    create table if not exists
      {0} (
       "unique" text not null,
       "update" text not null,
      primary key ("unique"));
     """)  # noqa: LIT003
+
+
+
+_TIMERS = dict[str, float]
+_CACHED = dict[str, Times]
 
 
 
@@ -58,10 +62,10 @@ class Timers:
     :param cache_name: Optional override default table name.
     """
 
-    __timers: dict[str, float]
-    __cache_file: 'Connection'
-    __cache_name: str
-    __cache_dict: dict[str, Times]
+    __timers: _TIMERS
+    __sqlite: 'Connection'
+    __table: str
+    __cached: _CACHED
 
 
     def __init__(
@@ -74,30 +78,34 @@ class Timers:
         Initialize instance for class using provided parameters.
         """
 
-        timers = timers or {}
+
+        timers = dict(timers or {})
+
+        items = timers.items()
+
+        for key, value in items:
+            timers[key] = float(value)
 
 
-        self.__timers = {
-            k: float(v)
-            for k, v in
-            timers.items()}
+        sqlite = SQLite(cache_file)
+
+        sqlite.execute(
+            CACHE_TABLE
+            .format(cache_name))
+
+        sqlite.commit()
 
 
-        cached = SQLite(cache_file)
+        cached: _CACHED = {}
 
-        cached.execute(
-            TABLE.format(cache_name))
-
-        cached.commit()
-
-        self.__cache_file = cached
-        self.__cache_name = cache_name
+        for timer in timers:
+            cached[timer] = Times()
 
 
-        self.__cache_dict = {
-            x: Times()
-            for x in
-            self.__timers}
+        self.__timers = timers
+        self.__sqlite = sqlite
+        self.__table = cache_name
+        self.__cached = cached
 
 
         self.load_cache()
@@ -111,9 +119,9 @@ class Timers:
         Load the timers cache from the database into attribute.
         """
 
-        cached = self.__cache_file
-        table = self.__cache_name
-        cachem = self.__cache_dict
+        cached = self.__sqlite
+        table = self.__table
+        cachem = self.__cached
 
         cursor = cached.execute(
             f'select * from {table}'
@@ -138,19 +146,29 @@ class Timers:
         Save the timers cache from the attribute into database.
         """
 
-        cached = self.__cache_file
-        table = self.__cache_name
-        cachem = self.__cache_dict
+        insert = tuple[str, str]
+        inserts: list[insert] = []
 
-        insert = [
-            (k, str(v)) for k, v
-            in cachem.items()]
+
+        cached = self.__sqlite
+        table = self.__table
+        cachem = self.__cached
+
+
+        items = cachem.items()
+
+        for key, value in items:
+
+            append = (key, str(value))
+
+            inserts.append(append)
+
 
         cached.executemany(
             (f'replace into {table}'
              ' ("unique", "update")'
              ' values (?, ?)'),
-            tuple(insert))
+            tuple(sorted(inserts)))
 
         cached.commit()
 
@@ -158,7 +176,7 @@ class Timers:
     @property
     def timers(
         self,
-    ) -> dict[str, float]:
+    ) -> _TIMERS:
         """
         Return the value for the attribute from class instance.
 
@@ -178,20 +196,7 @@ class Timers:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__cache_file
-
-
-    @property
-    def cache_dict(
-        self,
-    ) -> dict[str, Times]:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return dict(self.__cache_dict)
+        return self.__sqlite
 
 
     @property
@@ -204,7 +209,20 @@ class Timers:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__cache_name
+        return self.__table
+
+
+    @property
+    def cache_dict(
+        self,
+    ) -> _CACHED:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return dict(self.__cached)
 
 
     def ready(
@@ -219,12 +237,12 @@ class Timers:
            For performance reasons, this method will not notice
            changes within the database unless refreshed first.
 
-        :param unique: Unique identifier for the timer in mapping.
+        :param unique: Which timer configuration from reference.
         :param update: Determines whether or not time is updated.
         """
 
         timers = self.__timers
-        caches = self.__cache_dict
+        caches = self.__cached
 
         if unique not in caches:
             raise ValueError('unique')
@@ -248,11 +266,11 @@ class Timers:
         """
         Update the existing timer from mapping within the cache.
 
-        :param unique: Unique identifier for the timer in mapping.
+        :param unique: Which timer configuration from reference.
         :param started: Override the start time for timer value.
         """
 
-        caches = self.__cache_dict
+        caches = self.__cached
 
         if unique not in caches:
             raise ValueError('unique')
@@ -271,13 +289,13 @@ class Timers:
         """
         Update the existing timer from mapping within the cache.
 
-        :param unique: Unique identifier for the timer in mapping.
-        :param minimum: Determines minimum seconds that must pass.
-        :param started: Determines when the time starts for timer.
+        :param unique: Which timer configuration from reference.
+        :param minimum: Determine minimum seconds that must pass.
+        :param started: Determine when time starts for the timer.
         """
 
         timers = self.__timers
-        caches = self.__cache_dict
+        caches = self.__cached
 
         if unique in timers:
             raise ValueError('unique')

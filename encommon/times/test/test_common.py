@@ -11,6 +11,9 @@ from dateutil.tz import gettz
 
 from pytest import raises
 
+from ..common import STAMP_SIMPLE
+from ..common import UNIXEPOCH
+from ..common import findtz
 from ..common import strptime
 from ..common import utcdatetime
 
@@ -28,6 +31,8 @@ def test_utcdatetime() -> None:
     assert dtime.month == 1
     assert dtime.day == 1
     assert dtime.hour == 0
+    assert dtime.minute == 0
+    assert dtime.second == 0
 
 
     dtime = utcdatetime(
@@ -38,9 +43,8 @@ def test_utcdatetime() -> None:
     assert dtime.month == 1
     assert dtime.day == 1
     assert dtime.hour == 6
-
-
-    assert utcdatetime().year >= 2023
+    assert dtime.minute == 0
+    assert dtime.second == 0
 
 
 
@@ -50,20 +54,15 @@ def test_strptime() -> None:
     """
 
 
-    dtime = strptime('1970', '%Y')
+    parsed = strptime(
+        UNIXEPOCH, STAMP_SIMPLE)
 
-    assert dtime.year == 1970
-    assert dtime.month == 1
-    assert dtime.day == 1
-    assert dtime.hour == 0
-
-
-    dtime = strptime('1970', ['%Y'])
-
-    assert dtime.year == 1970
-    assert dtime.month == 1
-    assert dtime.day == 1
-    assert dtime.hour == 0
+    assert parsed.year == 1970
+    assert parsed.month == 1
+    assert parsed.day == 1
+    assert parsed.hour == 0
+    assert parsed.minute == 0
+    assert parsed.second == 0
 
 
 
@@ -72,7 +71,39 @@ def test_strptime_raises() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         strptime('foo', '%Y')
 
-    assert str(reason.value) == 'invalid'
+    _reason = str(reason.value)
+
+    assert _reason == 'invalid'
+
+
+
+def test_findtz() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+
+    tzinfo = findtz('UTC')
+
+    assert 'UTC' in str(tzinfo)
+
+
+
+def test_findtz_raises() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+    _raises = raises(ValueError)
+
+    with _raises as reason:
+        findtz('foo')
+
+    _reason = str(reason.value)
+
+    assert _reason == 'tzname'

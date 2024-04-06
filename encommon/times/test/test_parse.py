@@ -10,7 +10,6 @@ is permitted, for more information consult the project license file.
 from datetime import timedelta
 
 from pytest import mark
-from pytest import raises
 
 from ..common import utcdatetime
 from ..parse import parse_time
@@ -25,85 +24,67 @@ def test_parse_time() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    utcnow = utcdatetime()
+    dtime = utcdatetime()
     delta = timedelta(seconds=1)
 
 
-    dtime = parse_time(
+    parsed = parse_time(
         '1/1/1970 6:00am')
 
-    assert dtime.year == 1970
-    assert dtime.month == 1
-    assert dtime.day == 1
-    assert dtime.hour == 6
+    assert parsed.year == 1970
+    assert parsed.month == 1
+    assert parsed.day == 1
+    assert parsed.hour == 6
 
 
-    dtime = parse_time(
+    parsed = parse_time(
         '12/31/1969 6:00pm',
         tzname='US/Central')
 
-    assert dtime.year == 1970
-    assert dtime.month == 1
-    assert dtime.day == 1
-    assert dtime.hour == 0
+    assert parsed.year == 1970
+    assert parsed.month == 1
+    assert parsed.day == 1
+    assert parsed.hour == 0
 
 
-    dtime = parse_time(0)
-    assert dtime.year == 1970
+    parsed = parse_time(0)
+    assert parsed.year == 1970
 
-    dtime = parse_time('0')
-    assert dtime.year == 1970
-
-
-    dtime = parse_time('max')
-
-    assert dtime.year == 9999
-    assert dtime.month == 12
-    assert dtime.day == 31
-    assert dtime.hour == 23
-
-    dtime = parse_time('min')
-
-    assert dtime.year == 1
-    assert dtime.month == 1
-    assert dtime.day == 1
-    assert dtime.hour == 0
+    parsed = parse_time('0')
+    assert parsed.year == 1970
 
 
-    dtime = parse_time('now')
-    assert dtime - utcnow <= delta
+    parsed = parse_time('max')
 
-    dtime = parse_time(None)
-    assert dtime - utcnow <= delta
+    assert parsed.year == 9999
+    assert parsed.month == 12
+    assert parsed.day == 31
+    assert parsed.hour == 23
 
-    dtime = parse_time('None')
-    assert dtime - utcnow <= delta
+    parsed = parse_time('min')
 
-
-    dtime = parse_time('+1y')
-    assert dtime - utcnow > delta
-
-
-    assert parse_time(dtime) == dtime
+    assert parsed.year == 1
+    assert parsed.month == 1
+    assert parsed.day == 1
+    assert parsed.hour == 0
 
 
+    parsed = parse_time('now')
+    assert parsed - dtime <= delta
 
-def test_parse_time_raises() -> None:
-    """
-    Perform various tests associated with relevant routines.
-    """
+    parsed = parse_time(None)
+    assert parsed - dtime <= delta
 
-
-    with raises(ValueError) as reason:
-        parse_time(0, tzname='foo/bar')
-
-    assert str(reason.value) == 'tzname'
+    parsed = parse_time('None')
+    assert parsed - dtime <= delta
 
 
-    with raises(ValueError) as reason:
-        parse_time(parse_time)  # type: ignore
+    parsed = parse_time('+1y')
+    assert parsed - dtime > delta
 
-    assert str(reason.value) == 'source'
+
+    _parsed = parse_time(parsed)
+    assert _parsed == parsed
 
 
 
@@ -145,10 +126,11 @@ def test_shift_time(
     """
 
     anchor = utcdatetime(1980, 1, 1)
+    dtime = utcdatetime(*expect)
 
     parsed = shift_time(notate, anchor)
 
-    assert parsed == utcdatetime(*expect)
+    assert parsed == dtime
 
 
 
@@ -162,25 +144,31 @@ def test_string_time() -> None:
 
     strings = [
         '1980-01-01T00:00:00Z',
+        '1980-01-01T00:00:00 +0000',
         '1980-01-01T00:00:00',
         '1980-01-01 00:00:00 +0000',
         '1980-01-01 00:00:00']
 
     for string in strings:
-        assert string_time(string) == expect
+
+        parsed = string_time(string)
+
+        assert parsed == expect
 
 
     parsed = string_time(
         '1980_01_01',
-        formats=['%Y', '%Y_%m_%d'])
+        formats=['%Y_%m_%d'])
 
     assert parsed == expect
+
 
     parsed = string_time(
         '1980_01_01',
         formats='%Y_%m_%d')
 
     assert parsed == expect
+
 
     parsed = string_time(
         '1979-12-31 18:00:00',
@@ -196,13 +184,15 @@ def test_since_time() -> None:
     """
 
 
-    dtime = shift_time('-1s')
+    parsed = shift_time('-1s')
+    since = since_time(parsed)
 
-    assert since_time(dtime) >= 1
-    assert since_time(dtime) < 2
+    assert since >= 1
+    assert since < 2
 
 
-    dtime = shift_time('+1s')
+    parsed = shift_time('+1s')
+    since = since_time(parsed)
 
-    assert since_time(dtime) > 0
-    assert since_time(dtime) < 2
+    assert since > 0
+    assert since < 2

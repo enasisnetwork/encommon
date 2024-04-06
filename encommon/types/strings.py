@@ -7,6 +7,16 @@ is permitted, for more information consult the project license file.
 
 
 
+COMMAS = ', '
+COMMAD = ','
+
+NEWLINE = '\n'
+
+SEMPTY = ''
+SPACED = ' '
+
+
+
 def striplower(
     value: str,
 ) -> str:

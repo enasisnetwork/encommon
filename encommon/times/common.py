@@ -10,30 +10,61 @@ is permitted, for more information consult the project license file.
 from contextlib import suppress
 from datetime import datetime
 from datetime import timezone
+from datetime import tzinfo
 from re import compile
 from typing import Any
+from typing import Optional
 from typing import TYPE_CHECKING
 from typing import Union
+
+from dateutil.tz import gettz
+
 if TYPE_CHECKING:
     from .times import Times
 
 
 
-NUMERISH = compile(r'^\-?\d+(\.\d+)?$')
-SNAPABLE = compile(r'^(\-|\+)[\d\@a-z\-\+]+$')
-STRINGNOW = {'None', 'null', 'now'}
+NUMERISH = compile(
+    r'^\-?\d+(\.\d+)?$')
+
+SNAPABLE = compile(
+    r'^(\-|\+)[\d\@a-z\-\+]+$')
+
+STRINGNOW = {
+    'None', 'null', 'now'}
+
+
 
 NUMERIC = Union[int, float]
-PARSABLE = Union[str, NUMERIC, datetime, 'Times']
-SCHEDULE = Union[str, dict[str, int]]
 
-UNIXEPOCH = '1970-01-01T00:00:00+0000'
-UNIXMPOCH = '1970-01-01T00:00:00.000000+0000'
-UNIXHPOCH = '01/01/1970 12:00AM UTC'
+PARSABLE = Union[
+    str, NUMERIC,
+    datetime, 'Times']
 
-STAMP_SIMPLE = '%Y-%m-%dT%H:%M:%S%z'
-STAMP_SUBSEC = '%Y-%m-%dT%H:%M:%S.%f%z'
-STAMP_HUMAN = '%m/%d/%Y %I:%M%p %Z'
+SCHEDULE = Union[
+    str, dict[str, int]]
+
+
+
+UNIXEPOCH = (
+    '1970-01-01T00:00:00+0000')
+
+UNIXMPOCH = (
+    '1970-01-01T00:00:00.000000+0000')
+
+UNIXHPOCH = (
+    '01/01/1970 12:00AM UTC')
+
+
+
+STAMP_SIMPLE = (
+    '%Y-%m-%dT%H:%M:%S%z')
+
+STAMP_SUBSEC = (
+    '%Y-%m-%dT%H:%M:%S.%f%z')
+
+STAMP_HUMAN = (
+    '%m/%d/%Y %I:%M%p %Z')
 
 
 
@@ -57,14 +88,16 @@ def utcdatetime(
     :returns: Instance of datetime within the UTC timezone.
     """
 
+    tzinfo = timezone.utc
+
     if not args and not kwargs:
-        return datetime.now(tz=timezone.utc)
+        return datetime.now(tz=tzinfo)
 
     if 'tzinfo' not in kwargs:
-        kwargs['tzinfo'] = timezone.utc
+        kwargs['tzinfo'] = tzinfo
 
     return (
-        datetime(*args, **kwargs)  # noqa: DTZ001
+        datetime(*args, **kwargs)
         .astimezone(timezone.utc))
 
 
@@ -86,6 +119,8 @@ def strptime(
     :returns: Python datetime object containing related time.
     """
 
+    tzinfo = timezone.utc
+
     if isinstance(formats, str):
         formats = [formats]
 
@@ -93,14 +128,60 @@ def strptime(
     def _strptime(
         format: str,
     ) -> datetime:
+
         return (
             datetime
             .strptime(source, format)
-            .astimezone(timezone.utc))
+            .astimezone(tzinfo))
 
 
     for format in formats:
+
         with suppress(ValueError):
             return _strptime(format)
 
+
     raise ValueError('invalid')
+
+
+
+def strftime(
+    source: datetime,
+    format: str,
+) -> str:
+    """
+    Return the timestamp string for datetime object provided.
+
+    .. note::
+       This function is extremely pedantic and cosmetic.
+
+    :param source: Python datetime instance containing source.
+    :param format: Format for the timestamp string returned.
+    :returns: Timestamp string for datetime object provided.
+    """
+
+    return (
+        datetime
+        .strftime(source, format))
+
+
+
+def findtz(
+    tzname: Optional[str] = None,
+) -> tzinfo:
+    """
+    Return the located timezone object for the provided name.
+
+    :param tzname: Name of the timezone associated to source.
+    :returns: Located timezone object for the provided name.
+    """
+
+    if tzname is None:
+        return timezone.utc
+
+    tzinfo = gettz(tzname)
+
+    if tzinfo is None:
+        raise ValueError('tzname')
+
+    return tzinfo

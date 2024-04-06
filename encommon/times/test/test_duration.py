@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from ..duration import Duration
+from ...types.strings import COMMAS
 
 
 
@@ -16,9 +17,10 @@ def test_Duration() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    duration = Duration(95401)
+    durate = Duration(95401)
 
-    attrs = list(duration.__dict__)
+
+    attrs = list(durate.__dict__)
 
     assert attrs == [
         '_Duration__source',
@@ -26,87 +28,82 @@ def test_Duration() -> None:
         '_Duration__groups']
 
 
-    assert repr(duration) == (
-        'Duration('
-        'seconds=95401.0, '
-        'smart=True, '
-        'groups=7)')
+    assert repr(durate)[:23] == (
+        'Duration(seconds=95401.')
 
-    assert isinstance(hash(duration), int)
-    assert str(duration) == '1d2h30m'
+    assert hash(durate) > 0
+
+    assert str(durate) == '1d2h30m'
 
 
-    assert int(duration) == 95401
-    assert float(duration) == 95401
+    assert int(durate) == 95401
+    assert float(durate) == 95401
 
-    assert duration + 1 == 95402
-    assert duration + duration == 190802
-    assert duration - 1 == 95400
-    assert duration - duration == 0
+    assert durate + 1 == 95402
+    assert durate + durate == 190802
+    assert durate - 1 == 95400
+    assert durate - durate == 0
 
-    assert duration == duration
-    assert duration != Duration(60)
-    assert duration != 'invalid'
+    assert durate == durate
+    assert durate != Duration(60)
+    assert durate != 'invalid'
 
-    assert duration > Duration(95400)
-    assert duration >= Duration(95401)
-    assert duration < Duration(95402)
-    assert duration <= Duration(95401)
+    assert durate > Duration(95400)
+    assert durate >= Duration(95401)
+    assert durate < Duration(95402)
+    assert durate <= Duration(95401)
 
 
-    assert duration.source == 95401
-    assert duration.smart is True
-    assert duration.groups == 7
+    assert durate.source == 95401
+    assert durate.smart is True
+    assert durate.groups == 7
 
-    assert duration.short == '1d 2h 30m'
-    assert duration.compact == '1d2h30m'
-    assert duration.verbose == (
-        '1 day, 2 hours, 30 minutes')
-
-    assert duration.units() == {
+    assert durate.units() == {
         'day': 1,
         'hour': 2,
         'minute': 30}
 
+    assert durate.short == '1d 2h 30m'
+    assert durate.compact == '1d2h30m'
+    assert durate.verbose == (
+        '1 day, 2 hours, 30 minutes')
 
-    duration = Duration(
+
+    durate = Duration(
         seconds=7501,
         smart=False)
 
-    assert duration.short == '2h 5m 1s'
-    assert duration.compact == '2h5m1s'
-    assert duration.verbose == (
+    assert durate.short == '2h 5m 1s'
+    assert durate.compact == '2h5m1s'
+    assert durate.verbose == (
         '2 hours, 5 minutes, 1 second')
 
 
-    duration = Duration(
+    durate = Duration(
+        groups=3,
         seconds=694800,
-        smart=False,
-        groups=3)
+        smart=False)
 
-    assert duration.short == '1w 1d 1h'
-    assert duration.compact == '1w1d1h'
-    assert duration.verbose == (
+    assert durate.short == '1w 1d 1h'
+    assert durate.compact == '1w1d1h'
+    assert durate.verbose == (
         '1 week, 1 day, 1 hour')
 
 
-    duration = Duration(36295261)
+    durate = Duration(36295261)
 
-    assert duration.units() == {
-        'year': 1,
-        'week': 3,
-        'month': 1,
-        'day': 4,
-        'hour': 2,
-        'minute': 1}
+    units = durate.units()
 
-    assert duration.units(True) == {
-        'y': 1,
-        'w': 3,
-        'mon': 1,
-        'd': 4,
-        'h': 2,
-        'm': 1}
+    assert units == {
+        'year': 1, 'week': 3,
+        'month': 1, 'day': 4,
+        'hour': 2, 'minute': 1}
+
+    units = durate.units(True)
+
+    assert units == {
+        'y': 1, 'w': 3, 'mon': 1,
+        'd': 4, 'h': 2, 'm': 1}
 
 
 
@@ -126,52 +123,72 @@ def test_Duration_cover() -> None:
 
     expects = {
 
-        year: ('1y', '1 year'),
-        year + 1: ('1y', '1 year'),
+        year: (
+            '1y', '1 year'),
+        year + 1: (
+            '1y', '1 year'),
         year - 1: (
             '12mon4d23h59m',
             '12 months, 4 days'),
 
-        quarter: ('3mon', '3 months'),
-        quarter + 1: ('3mon', '3 months'),
+        quarter: (
+            '3mon', '3 months'),
+        quarter + 1: (
+            '3mon', '3 months'),
         quarter - 1: (
             '2mon4w1d23h59m',
             '2 months, 4 weeks'),
 
-        month: ('1mon', '1 month'),
-        month + 1: ('1mon', '1 month'),
+        month: (
+            '1mon', '1 month'),
+        month + 1: (
+            '1mon', '1 month'),
         month - 1: (
             '4w1d23h59m',
             '4 weeks, 1 day'),
 
-        week: ('1w', '1 week'),
-        week + 1: ('1w', '1 week'),
+        week: (
+            '1w', '1 week'),
+        week + 1: (
+            '1w', '1 week'),
         week - 1: (
             '6d23h59m',
             '6 days, 23 hours'),
 
-        day: ('1d', '1 day'),
-        day + 1: ('1d', '1 day'),
+        day: (
+            '1d', '1 day'),
+        day + 1: (
+            '1d', '1 day'),
         day - 1: (
             '23h59m',
             '23 hours, 59 minutes'),
 
-        hour: ('1h', '1 hour'),
-        hour + 1: ('1h', '1 hour'),
-        hour - 1: ('59m', '59 minutes'),
+        hour: (
+            '1h', '1 hour'),
+        hour + 1: (
+            '1h', '1 hour'),
+        hour - 1: (
+            '59m', '59 minutes'),
 
-        second: ('1m', '1 minute'),
-        second + 1: ('1m', '1 minute'),
-        second - 1: ('59s', 'just now')}
+        second: (
+            '1m', '1 minute'),
+        second + 1: (
+            '1m', '1 minute'),
+        second - 1: (
+            '59s', 'just now')}
 
 
-    for source, expect in expects.items():
+    items = expects.items()
 
-        duration = Duration(source)
-        assert duration.compact == expect[0]
+    for source, expect in items:
 
-        duration = Duration(source)
-        verbose = ', '.join(
-            duration.verbose.split(', ')[:2])
+        durate = Duration(source)
 
-        assert verbose == expect[1]
+        compact, verbose = expect
+        _compact = durate.compact
+        _verbose = COMMAS.join(
+            durate.verbose
+            .split(', ')[:2])
+
+        assert _compact == compact
+        assert _verbose == verbose

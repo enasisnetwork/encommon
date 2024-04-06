@@ -27,22 +27,24 @@ def test_Timers() -> None:
 
     assert attrs == [
         '_Timers__timers',
-        '_Timers__cache_file',
-        '_Timers__cache_name',
-        '_Timers__cache_dict']
+        '_Timers__sqlite',
+        '_Timers__table',
+        '_Timers__cached']
 
 
-    assert repr(timers).startswith(
-        '<encommon.times.timers.Timers')
-    assert isinstance(hash(timers), int)
-    assert str(timers).startswith(
-        '<encommon.times.timers.Timers')
+    assert repr(timers)[:22] == (
+        '<encommon.times.timers')
+
+    assert hash(timers) > 0
+
+    assert str(timers)[:22] == (
+        '<encommon.times.timers')
 
 
     assert timers.timers == {'one': 1}
     assert timers.cache_file is not None
-    assert len(timers.cache_dict) == 1
     assert timers.cache_name is not None
+    assert len(timers.cache_dict) == 1
 
 
     assert not timers.ready('one')
@@ -101,19 +103,31 @@ def test_Timers_raises() -> None:
     timers = Timers({'one': 1})
 
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         timers.ready('dne')
 
-    assert str(reason.value) == 'unique'
+    _reason = str(reason.value)
+
+    assert _reason == 'unique'
 
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         timers.update('dne')
 
-    assert str(reason.value) == 'unique'
+    _reason = str(reason.value)
+
+    assert _reason == 'unique'
 
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         timers.create('one', 1)
 
-    assert str(reason.value) == 'unique'
+    _reason = str(reason.value)
+
+    assert _reason == 'unique'

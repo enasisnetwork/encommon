@@ -21,7 +21,10 @@ def test_Window() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    window = Window('* * * * *', 330, 630)
+    window = Window(
+        schedule='* * * * *',
+        start=330, stop=630)
+
 
     attrs = list(window.__dict__)
 
@@ -36,11 +39,13 @@ def test_Window() -> None:
         '_Window__walked']
 
 
-    assert repr(window).startswith(
-        '<encommon.times.window.Window')
-    assert isinstance(hash(window), int)
-    assert str(window).startswith(
-        '<encommon.times.window.Window')
+    assert repr(window)[:22] == (
+        '<encommon.times.window')
+
+    assert hash(window) > 0
+
+    assert str(window)[:22] == (
+        '<encommon.times.window')
 
 
     assert window.schedule == '* * * * *'

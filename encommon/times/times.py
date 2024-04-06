@@ -7,17 +7,17 @@ is permitted, for more information consult the project license file.
 
 
 
+from contextlib import suppress
 from datetime import datetime
 from datetime import timedelta
-from datetime import timezone
 from typing import Optional
-
-from dateutil.tz import gettz
 
 from .common import PARSABLE
 from .common import STAMP_HUMAN
 from .common import STAMP_SIMPLE
 from .common import STAMP_SUBSEC
+from .common import findtz
+from .common import strftime
 from .parse import parse_time
 from .parse import since_time
 
@@ -40,6 +40,7 @@ class Times:
     """
 
     __source: datetime
+    __hashed: int
 
 
     def __init__(
@@ -54,11 +55,15 @@ class Times:
         Initialize instance for class using provided parameters.
         """
 
-        self.__source = parse_time(
+        parsed = parse_time(
             source=source,
             anchor=anchor,
             format=format,
             tzname=tzname)
+
+        self.__source = parsed
+        self.__hashed = int(
+            self.mpoch * 1000)
 
 
     def __repr__(
@@ -82,7 +87,7 @@ class Times:
         :returns: Boolean indicating outcome from the operation.
         """
 
-        return int(self.mpoch * 100000)
+        return int(1e9 + self.__hashed)
 
 
     def __str__(
@@ -103,7 +108,7 @@ class Times:
         """
         Built-in method representing numeric value for instance.
 
-        :returns: Numeric representation for values from instance.
+        :returns: Numeric representation for value in instance.
         """
 
         return int(self.epoch)
@@ -115,7 +120,7 @@ class Times:
         """
         Built-in method representing numeric value for instance.
 
-        :returns: Numeric representation for values from instance.
+        :returns: Numeric representation for value in instance.
         """
 
         return float(self.epoch)
@@ -168,13 +173,16 @@ class Times:
         :returns: Boolean indicating outcome from the operation.
         """
 
-        try:
-            parsed = parse_time(other)  # type: ignore
+        source = self.__source
 
-        except Exception:
-            return False
+        with suppress(Exception):
 
-        return self.__source == parsed
+            parsed = parse_time(
+                other)  # type: ignore
+
+            return source == parsed
+
+        return False
 
 
     def __ne__(
@@ -278,7 +286,9 @@ class Times:
         :returns: Seconds since the Unix epoch for the instance.
         """
 
-        return self.__source.timestamp()
+        source = self.__source
+
+        return source.timestamp()
 
 
     @property
@@ -369,10 +379,10 @@ class Times:
         :returns: Object containing time just before the time.
         """
 
-        delta = timedelta(
-            microseconds=1)
+        source = self.__source
 
-        source = self.__source - delta
+        source -= timedelta(
+            microseconds=1)
 
         return Times(source)
 
@@ -387,10 +397,10 @@ class Times:
         :returns: Object containing time just after the time.
         """
 
-        delta = timedelta(
-            microseconds=1)
+        source = self.__source
 
-        source = self.__source + delta
+        source += timedelta(
+            microseconds=1)
 
         return Times(source)
 
@@ -409,21 +419,13 @@ class Times:
         :returns: Timestamp using provided format for instance.
         """
 
-        parsed = self.__source
+        source = self.__source
 
+        tzinfo = findtz(tzname)
 
-        if tzname is not None:
-            tzinfo = gettz(tzname)
-        else:
-            tzinfo = timezone.utc
+        parsed = source.astimezone(tzinfo)
 
-        if tzinfo is None:
-            raise ValueError('tzname')
-
-
-        return datetime.strftime(
-            parsed.astimezone(tzinfo),
-            format)
+        return strftime(parsed, format)
 
 
     def shift(
@@ -437,6 +439,6 @@ class Times:
         :returns: New instance of the class using shifted time.
         """
 
-        return Times(
-            source=notate,
-            anchor=self.__source)
+        source = self.__source
+
+        return Times(notate, anchor=source)

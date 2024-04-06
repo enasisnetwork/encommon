@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from .common import findtz
 from .duration import Duration
 from .parse import parse_time
 from .parse import shift_time
@@ -20,6 +21,7 @@ from .window import Window
 
 __all__ = [
     'Duration',
+    'findtz',
     'Timers',
     'Times',
     'Window',
