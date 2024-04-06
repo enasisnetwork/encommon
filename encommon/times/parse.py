@@ -15,7 +15,6 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from dateutil import parser
-from dateutil.tz import gettz
 
 from snaptime import snap
 
@@ -23,6 +22,7 @@ from .common import NUMERISH
 from .common import PARSABLE
 from .common import SNAPABLE
 from .common import STRINGNOW
+from .common import findtz
 from .common import strptime
 from .common import utcdatetime
 
@@ -87,14 +87,7 @@ def parse_time(  # noqa: CFQ004
             and re_match(NUMERISH, source)):
         source = float(source)
 
-
-    if tzname is not None:
-        tzinfo = gettz(tzname)
-    else:
-        tzinfo = timezone.utc
-
-    if tzinfo is None:
-        raise ValueError('tzname')
+    tzinfo = findtz(tzname)
 
 
     if isinstance(source, (int, float)):
@@ -129,7 +122,7 @@ def parse_time(  # noqa: CFQ004
             .astimezone(timezone.utc))
 
 
-    raise ValueError('source')
+    raise ValueError('source')  # NOCVR
 
 
 
@@ -159,13 +152,10 @@ def shift_time(
     :returns: Python datetime object containing related time.
     """
 
-    anchor = parse_time(anchor, tzname=tzname)
+    anchor = parse_time(
+        anchor, tzname=tzname)
 
-    parsed = snap(anchor, notate)
-
-    assert isinstance(parsed, datetime)
-
-    return parsed
+    return snap(anchor, notate)
 
 
 
@@ -195,18 +185,14 @@ def string_time(
     :returns: Python datetime object containing related time.
     """
 
-    parsed: Optional[datetime] = None
-
     if formats is not None:
         with suppress(ValueError):
-            parsed = strptime(source, formats)
+            return strptime(source, formats)
 
-    if parsed is None:
-        parsed = parser.parse(source)
+    parsed = parser.parse(source)
 
-    assert isinstance(parsed, datetime)
-
-    return parse_time(parsed, tzname=tzname)
+    return parse_time(
+        parsed, tzname=tzname)
 
 
 
@@ -234,4 +220,6 @@ def since_time(
 
     delta = stop - start
 
-    return abs(delta.total_seconds())
+    since = delta.total_seconds()
+
+    return abs(since)

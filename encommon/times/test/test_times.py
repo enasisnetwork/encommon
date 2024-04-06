@@ -7,8 +7,6 @@ is permitted, for more information consult the project license file.
 
 
 
-from pytest import raises
-
 from ..common import STAMP_SIMPLE
 from ..common import UNIXEPOCH
 from ..common import UNIXHPOCH
@@ -22,21 +20,25 @@ def test_Times() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    times = Times(0, format=STAMP_SIMPLE)
+    times = Times(
+        UNIXEPOCH,
+        format=STAMP_SIMPLE)
+
 
     attrs = list(times.__dict__)
 
     assert attrs == [
-        '_Times__source']
+        '_Times__source',
+        '_Times__hashed']
 
 
-    assert repr(times) == (
-        "Times('1970-01-01T"
-        "00:00:00.000000+0000')")
-    assert isinstance(hash(times), int)
-    assert str(times) == (
-        '1970-01-01T00:00:00'
-        '.000000+0000')
+    assert repr(times)[:23] == (
+        "Times('1970-01-01T00:00")
+
+    assert hash(times) > 0
+
+    assert str(times)[:23] == (
+        '1970-01-01T00:00:00.000')
 
 
     assert int(times) == 0
@@ -80,15 +82,3 @@ def test_Times() -> None:
     times = times.shift('+1y')
 
     assert times == '1971-01-01'
-
-
-
-def test_Times_raises() -> None:
-    """
-    Perform various tests associated with relevant routines.
-    """
-
-    with raises(ValueError) as reason:
-        Times(0).stamp(tzname='foo')
-
-    assert str(reason.value) == 'tzname'

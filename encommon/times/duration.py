@@ -11,6 +11,10 @@ from typing import Literal
 from typing import Union
 from typing import get_args
 
+from ..types.strings import COMMAS
+from ..types.strings import SEMPTY
+from ..types.strings import SPACED
+
 
 
 DURAGROUP = Literal[
@@ -33,7 +37,7 @@ DURAUNITS = Union[
 
 class Duration:
     """
-    Convert provided the seconds into a human friendly format.
+    Convert the provided seconds in a human friendly format.
 
     Example
     -------
@@ -52,8 +56,8 @@ class Duration:
 
     :param seconds: Period in seconds that will be iterated.
     :param smart: Determines if we hide seconds after minute.
-    :param groups: Determine the amount of groups to show,
-        ensuring the larger units are returned before smaller.
+    :param groups: Determine the quantity of groups to show,
+        ensuring larger units are returned before smaller.
     """
 
     __source: float
@@ -122,7 +126,7 @@ class Duration:
         """
         Built-in method representing numeric value for instance.
 
-        :returns: Numeric representation for values from instance.
+        :returns: Numeric representation for value in instance.
         """
 
         return int(self.__source)
@@ -134,7 +138,7 @@ class Duration:
         """
         Built-in method representing numeric value for instance.
 
-        :returns: Numeric representation for values from instance.
+        :returns: Numeric representation for value in instance.
         """
 
         return float(self.__source)
@@ -326,7 +330,7 @@ class Duration:
         source = self.__source
         seconds = int(source)
 
-        returned: dict[DURAUNITS, int] = {}
+        units: dict[DURAUNITS, int] = {}
 
         groups: dict[DURAGROUP, int] = {
             'year': 31536000,
@@ -337,60 +341,67 @@ class Duration:
             'minute': 60}
 
 
-        for key, value in groups.items():
+        items = groups.items()
+
+        for key, value in items:
 
             if seconds < value:
                 continue
 
             _value = seconds // value
-
-            returned[key] = _value
-
             seconds %= value
 
-
-        if (source < 60
-                or (seconds >= 1
-                    and source > 60)):
-            returned['second'] = seconds
-
-        if (self.__smart
-                and 'second' in returned
-                and len(returned) >= 2):
-            del returned['second']
+            units[key] = _value
 
 
-        items = (
-            list(returned.items())
+        if ((seconds >= 1
+                and source > 60)
+                or source < 60):
+            units['second'] = seconds
+
+        if ('second' in units
+                and len(units) >= 2
+                and self.__smart):
+            del units['second']
+
+
+        _groups = (
+            list(units.items())
             [:self.__groups])
 
         if short is False:
-            return dict(items)
+            return dict(_groups)
 
         return {
             DURAMAPS[k]: v
-            for k, v in items}
+            for k, v in _groups}
 
 
     def __duration(
         self,
-        delim: str = ' ',
+        delim: str = SPACED,
         short: bool = True,
     ) -> str:
         """
-        Return the compact format calculated from source duration.
+        Return the compact format determined by source duration.
 
         :param delim: Optional delimiter for between the groups.
         :param short: Determine if we should use the short hand.
-        :returns: Compact format calculated from source duration.
+        :returns: Compact format determined by source duration.
         """
 
         parts: list[str] = []
 
         groups = self.units(short)
-        spaced = '' if short else ' '
 
-        for part, value in groups.items():
+        space = (
+            SEMPTY if short
+            else SPACED)
+
+
+        items = groups.items()
+
+        for part, value in items:
 
             unit: str = part
 
@@ -399,7 +410,8 @@ class Duration:
                 unit += 's'
 
             parts.append(
-                f'{value}{spaced}{unit}')
+                f'{value}{space}{unit}')
+
 
         return delim.join(parts)
 
@@ -409,9 +421,9 @@ class Duration:
         self,
     ) -> str:
         """
-        Return the compact format calculated from source duration.
+        Return the compact format determined by source duration.
 
-        :returns: Compact format calculated from source duration.
+        :returns: Compact format determined by source duration.
         """
 
         return self.__duration()
@@ -422,12 +434,13 @@ class Duration:
         self,
     ) -> str:
         """
-        Return the compact format calculated from source duration.
+        Return the compact format determined by source duration.
 
-        :returns: Compact format calculated from source duration.
+        :returns: Compact format determined by source duration.
         """
 
-        return self.short.replace(' ', '')
+        return self.short.replace(
+            SPACED, SEMPTY)
 
 
     @property
@@ -435,12 +448,13 @@ class Duration:
         self,
     ) -> str:
         """
-        Return the verbose format calculated from source duration.
+        Return the verbose format determined by source duration.
 
-        :returns: Compact format calculated from source duration.
+        :returns: Verbose format determined by source duration.
         """
 
         if self.__source < 60:
             return 'just now'
 
-        return self.__duration(', ', False)
+        return self.__duration(
+            COMMAS, False)
