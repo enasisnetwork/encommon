@@ -14,6 +14,8 @@ from typing import Any
 from typing import Callable
 from typing import Optional
 
+from . import read_text
+from . import save_text
 from .common import REPLACE
 
 
@@ -113,14 +115,18 @@ def load_sample(
 
 
     def _save_sample() -> None:
-        path.write_text(
-            dumps(content, indent=2))
+
+        dumped = dumps(
+            content, indent=2)
+
+        save_text(path, dumped)
 
 
     def _load_sample() -> Any:
-        return loads(
-            path.read_text(
-                encoding='utf-8'))
+
+        read = read_text(path)
+
+        return loads(read)
 
 
     if path.exists():
