@@ -50,9 +50,9 @@ class Params(BaseModel, extra='forbid'):
     """
     Process and validate the common configuration parameters.
 
-    :param enconfig: Configuration for the `.Config` object.
-    :param enlogger: Configuration for the `.Logger` object.
-    :param encrypts: Configuration for the `.Crypts` object.
+    :param enconfig: Configuration for the Config instance.
+    :param enlogger: Configuration for the Logger instance.
+    :param encrypts: Configuration for the Crypts instance.
     :param data: Keyword arguments passed to Pydantic model.
         Parameter is picked up by autodoc, please ignore.
     """

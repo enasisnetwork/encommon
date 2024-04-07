@@ -23,12 +23,12 @@ def rgxp_match(
 
     Example
     -------
-    >>> rgxp_match('one', ['one', 'two'])
+    >>> rgxp_match('one', ['on*', 'two'])
     True
 
     Example
     -------
-    >>> rgxp_match('uno', ['one', 'two'])
+    >>> rgxp_match('uno', ['on*', 'two'])
     False
 
     :param values: Value or values to enumerate for matching.
@@ -86,12 +86,12 @@ def fuzz_match(
 
     Example
     -------
-    >>> rgxp_match('one', ['one', 'two'])
+    >>> rgxp_match('one', ['on[a-z]', 'two'])
     True
 
     Example
     -------
-    >>> rgxp_match('uno', ['one', 'two'])
+    >>> rgxp_match('uno', ['on[a-z]', 'two'])
     False
 
     :param values: Value or values to enumerate for matching.

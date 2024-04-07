@@ -14,6 +14,7 @@ from .config import Config
 from .files import ConfigFile
 from .files import ConfigFiles
 from .logger import Logger
+from .logger import Message
 from .params import ConfigParams
 from .params import LoggerParams
 from .params import Params
@@ -31,6 +32,7 @@ __all__ = [
     'ConfigPaths',
     'Logger',
     'LoggerParams',
+    'Message',
     'Params',
     'config_load',
     'config_path',
