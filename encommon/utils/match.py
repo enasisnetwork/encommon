@@ -51,6 +51,7 @@ def rgxp_match(
 
 
     def _matches() -> bool:
+
         return bool(
             function(pattern, value))
 

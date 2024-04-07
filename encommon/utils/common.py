@@ -12,10 +12,7 @@ from typing import Union
 
 
 
-JOINABLE = (
-    list  # type: ignore
-    | tuple  # type: ignore
-    | set)  # type: ignore
+JOINABLE = (list, tuple, set)
 
 
 
@@ -32,3 +29,42 @@ REPLACE = Union[
     dict[str, str],
     dict[str, str | Path],
     dict[str, Path]]
+
+
+
+def read_text(
+    path: str | Path,
+) -> str:
+    """
+    Read the text content from within the provided file path.
+
+    :param path: Complete or relative path to the text file.
+    :returns: Text content that was read from the file path.
+    """
+
+    path = Path(path).resolve()
+
+    return path.read_text(
+        encoding='utf-8')
+
+
+
+def save_text(
+    path: str | Path,
+    content: str,
+) -> str:
+    """
+    Save the provided text content to the provided file path.
+
+    :param path: Complete or relative path to the text file.
+    :param content: Content that will be written to the file.
+    :returns: Text content that was read from the file path.
+    """
+
+    path = Path(path).resolve()
+
+    path.write_text(
+        data=content,
+        encoding='utf-8')
+
+    return read_text(path)

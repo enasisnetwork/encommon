@@ -16,11 +16,13 @@ from typing import Literal
 from typing import Optional
 from typing import Union
 
-from encommon.times import Duration
-from encommon.times import Times
-from encommon.types import Empty
-
 from .common import JOINABLE
+from ..times import Duration
+from ..times import Times
+from ..types import Empty
+from ..types.strings import COMMAD
+from ..types.strings import NEWLINE
+from ..types.strings import SEMPTY
 
 
 
@@ -49,6 +51,9 @@ class ArrayColors:
     label: int = 37
     key: int = 97
 
+    colon: int = 37
+    hyphen: int = 37
+
     bool: int = 93
     none: int = 33
     str: int = 92
@@ -58,13 +63,10 @@ class ArrayColors:
     empty: int = 36
     other: int = 91
 
-    colon: int = 37
-    hyphen: int = 37
-
 
 
 def print_ansi(
-    string: str = '',
+    string: str = SEMPTY,
     method: Literal['stdout', 'print'] = 'stdout',
     output: bool = True,
 ) -> str:
@@ -133,8 +135,8 @@ def kvpair_ansi(
     :returns: ANSI colorized string using inline directives.
     """  # noqa: D301 LIT102
 
-    if isinstance(value, JOINABLE):  # type: ignore
-        value = ','.join([
+    if isinstance(value, JOINABLE):
+        value = COMMAD.join([
             str(x) for x in value])
 
     elif not isinstance(value, str):
@@ -161,7 +163,7 @@ def strip_ansi(
     :returns: Provided string with the ANSI codes removed.
     """  # noqa: D301 LIT102
 
-    return re_sub(ANSICODE, '', string)
+    return re_sub(ANSICODE, SEMPTY, string)
 
 
 
@@ -340,4 +342,4 @@ def array_ansi(  # noqa: CFQ001, CFQ004
     _output = [
         make_ansi(x) for x in output]
 
-    return '\n'.join(_output)
+    return NEWLINE.join(_output)

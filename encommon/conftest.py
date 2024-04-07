@@ -13,6 +13,7 @@ from pytest import fixture
 
 from .config import Config
 from .config.test import SAMPLES
+from .utils import save_text
 
 
 
@@ -26,9 +27,9 @@ def config_factory(
     :returns: Newly constructed instance of related class.
     """
 
-    (tmp_path
-        .joinpath('config.yml')
-        .write_text(
+    save_text(
+        f'{tmp_path}/config.yml',
+        content=(
             'enconfig:\n'
             '  paths:\n'
             f"    - '{SAMPLES}/stark'\n"

@@ -81,6 +81,7 @@ def test_stats_path() -> None:
         '/utils/sample.py',
         '/utils/stdout.py',
         '/utils/test/__init__.py',
+        '/utils/test/test_common.py',
         '/utils/test/test_match.py',
         '/utils/test/test_paths.py',
         '/utils/test/test_sample.py',

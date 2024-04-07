@@ -102,10 +102,11 @@ def stats_path(
     Collect stats object for the complete or relative path.
 
     .. testsetup::
+       >>> from . import save_text
        >>> path = Path(getfixture('tmpdir'))
        >>> file = path.joinpath('hello.txt')
-       >>> file.write_text('Hello world!')
-       12
+       >>> save_text(file, 'Hello world!')
+       'Hello world!'
 
     Example
     -------
@@ -150,8 +151,9 @@ def stats_path(
             key = resolve_path(
                 item, replace)
 
-            returned[str(key)] = (
-                item.stat())
+            stat = item.stat()
+
+            returned[str(key)] = stat
 
 
     return sort_dict(returned)
