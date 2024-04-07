@@ -7,23 +7,42 @@ is permitted, for more information consult the project license file.
 
 
 
+from typing import TYPE_CHECKING
+
+from pytest import fixture
 from pytest import mark
 
-from ..common import PARSABLE
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
 
+if TYPE_CHECKING:
+    from ..common import PARSABLE
 
 
-def test_Window() -> None:
+
+@fixture
+def window() -> Window:
     """
-    Perform various tests associated with relevant routines.
+    Construct the instance for use in the downstream tests.
+
+    :returns: Newly constructed instance of related class.
     """
 
-    window = Window(
+    return Window(
         schedule='* * * * *',
         start=330, stop=630)
+
+
+
+def test_Window(
+    window: Window,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param window: Primary class instance for window object.
+    """
 
 
     attrs = list(window.__dict__)
@@ -49,14 +68,41 @@ def test_Window() -> None:
 
 
     assert window.schedule == '* * * * *'
+
     assert window.start == '1970-01-01T00:05:30Z'
+
     assert window.stop == '1970-01-01T00:10:30Z'
+
     assert window.anchor == window.start
+
     assert window.delay == 0.0
+
+    assert window.last == '1970-01-01T00:05:00Z'
+
+    assert window.next == '1970-01-01T00:06:00Z'
+
+    assert window.walked is False
+
+
+
+def test_Window_cover(
+    window: Window,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param window: Primary class instance for window object.
+    """
+
+
+    window = Window(
+        schedule='* * * * *',
+        start=window.start,
+        stop=window.stop)
+
     assert window.last == '1970-01-01T00:05:00Z'
     assert window.next == '1970-01-01T00:06:00Z'
     assert window.walked is False
-
 
     for count in range(100):
         if window.walk() is False:
@@ -71,15 +117,13 @@ def test_Window() -> None:
     assert window.walked is True
 
 
-    window = Window({'minutes': 1}, 300, 600)
+    window = Window(
+        schedule={'minutes': 1},
+        start=window.start,
+        stop=window.stop)
 
-    assert window.schedule == {'minutes': 1}
-    assert window.start == '1970-01-01T00:05:00Z'
-    assert window.stop == '1970-01-01T00:10:00Z'
-    assert window.anchor == window.start
-    assert window.delay == 0.0
-    assert window.last == '1970-01-01T00:04:00Z'
-    assert window.next == '1970-01-01T00:05:00Z'
+    assert window.last == '1970-01-01T00:04:30Z'
+    assert window.next == '1970-01-01T00:05:30Z'
     assert window.walked is False
 
     for count in range(100):
@@ -90,12 +134,15 @@ def test_Window() -> None:
     assert count == 5
     assert not window.walk()
 
-    assert window.last == '1970-01-01T00:10:00Z'
-    assert window.next == '1970-01-01T00:10:00Z'
+    assert window.last == '1970-01-01T00:10:30Z'
+    assert window.next == '1970-01-01T00:10:30Z'
     assert window.walked is True
 
 
-    window = Window('* * * * *', '+5m', '+10m')
+    window = Window(
+        schedule='* * * * *',
+        start='+5m', stop='+10m')
+
     assert not window.walk(False)
 
 
@@ -115,7 +162,7 @@ def test_Window() -> None:
      ('0 * * * *', 3661, False, (3600, 7200))])
 def test_window_croniter(
     schedule: str,
-    anchor: PARSABLE,
+    anchor: 'PARSABLE',
     backward: bool,
     expect: tuple[int, int],
 ) -> None:
@@ -151,7 +198,7 @@ def test_window_croniter(
      ({'hours': 1}, 3661, False, (3661, 7261))])
 def test_window_interval(
     schedule: dict[str, int],
-    anchor: PARSABLE,
+    anchor: 'PARSABLE',
     backward: bool,
     expect: tuple[int, int],
 ) -> None:

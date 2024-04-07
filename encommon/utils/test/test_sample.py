@@ -40,18 +40,23 @@ def test_load_sample(
         'list': ['bar', 'baz'],
         'tuple': (1, 2),
         'project': PROJECT,
-        'other': '/pat/h'}
+        'other': '/pat/h',
+        'devnull': '/dev/null'}
 
     expect = {
         'list': ['bar', 'baz'],
         'tuple': [1, 2],
         'project': f'_/{prefix}/PROJECT/_',
-        'other': f'_/{prefix}/tmp_path/_'}
+        'other': f'_/{prefix}/pytemp/_',
+        'devnull': '/dev/null'}
 
+
+    devnull = Path('/dev/null')
 
     replaces = {
+        devnull: 'nothing here',
         'PROJECT': str(PROJECT),
-        'tmp_path': '/pat/h'}
+        'pytemp': '/pat/h'}
 
 
     sample_path = (
@@ -61,7 +66,7 @@ def test_load_sample(
         path=sample_path,
         update=ENPYRWS,
         content=source,
-        replace=replaces)
+        replace=replaces)  # type: ignore
 
     assert sample == expect
 
@@ -73,6 +78,6 @@ def test_load_sample(
         path=sample_path,
         content=source,
         update=True,
-        replace=replaces)
+        replace=replaces)  # type: ignore
 
     assert sample == expect

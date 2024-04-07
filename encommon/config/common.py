@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 from typing import Literal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from yaml import SafeLoader
 from yaml import load
@@ -18,10 +19,12 @@ from yaml import load
 from .. import PROJECT
 from .. import WORKSPACE
 from ..utils import read_text
-from ..utils.common import PATHABLE
-from ..utils.common import REPLACE
-from ..utils.paths import resolve_path
-from ..utils.paths import resolve_paths
+from ..utils import resolve_path
+from ..utils import resolve_paths
+
+if TYPE_CHECKING:
+    from ..utils.common import PATHABLE
+    from ..utils.common import REPLACE
 
 
 
@@ -44,10 +47,10 @@ def config_load(
     :returns: New resolved filesystem path object instance.
     """
 
-    read = read_text(
+    loaded = read_text(
         config_path(path))
 
-    parsed = load(read, SafeLoader)
+    parsed = load(loaded, SafeLoader)
 
     assert isinstance(parsed, dict)
 
@@ -77,8 +80,8 @@ def config_path(
 
 
 def config_paths(
-    paths: PATHABLE,
-    replace: Optional[REPLACE] = None,
+    paths: 'PATHABLE',
+    replace: Optional['REPLACE'] = None,
 ) -> tuple[Path, ...]:
     """
     Resolve the provided paths replacing the magic keywords.

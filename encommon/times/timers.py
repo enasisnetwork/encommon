@@ -57,22 +57,23 @@ class Timers:
     True
 
     :param timers: Seconds that are used for each of timers.
-    :param cache_file: Optional path to SQLite database for
+    :param file: Optional path to SQLite database for
         cache. This will allow for use between executions.
-    :param cache_name: Optional override default table name.
+    :param table: Optional override default table name.
     """
 
-    __timers: _TIMERS
+    __config: _TIMERS
     __sqlite: 'Connection'
+    __file: str
     __table: str
-    __cached: _CACHED
+    __cache: _CACHED
 
 
     def __init__(
         self,
         timers: Optional[dict[str, NUMERIC]] = None,
-        cache_file: str = ':memory:',
-        cache_name: str = 'encommon_timers',
+        file: str = ':memory:',
+        table: str = 'timers',
     ) -> None:
         """
         Initialize instance for class using provided parameters.
@@ -87,11 +88,11 @@ class Timers:
             timers[key] = float(value)
 
 
-        sqlite = SQLite(cache_file)
+        sqlite = SQLite(file)
 
         sqlite.execute(
             CACHE_TABLE
-            .format(cache_name))
+            .format(table))
 
         sqlite.commit()
 
@@ -102,10 +103,11 @@ class Timers:
             cached[timer] = Times()
 
 
-        self.__timers = timers
+        self.__config = timers
         self.__sqlite = sqlite
-        self.__table = cache_name
-        self.__cached = cached
+        self.__file = file
+        self.__table = table
+        self.__cache = cached
 
 
         self.load_cache()
@@ -121,7 +123,7 @@ class Timers:
 
         cached = self.__sqlite
         table = self.__table
-        cachem = self.__cached
+        cachem = self.__cache
 
         cursor = cached.execute(
             f'select * from {table}'
@@ -152,7 +154,7 @@ class Timers:
 
         cached = self.__sqlite
         table = self.__table
-        cachem = self.__cached
+        cachem = self.__cache
 
 
         items = cachem.items()
@@ -183,11 +185,11 @@ class Timers:
         :returns: Value for the attribute from class instance.
         """
 
-        return dict(self.__timers)
+        return dict(self.__config)
 
 
     @property
-    def cache_file(
+    def sqlite(
         self,
     ) -> 'Connection':
         """
@@ -200,7 +202,20 @@ class Timers:
 
 
     @property
-    def cache_name(
+    def file(
+        self,
+    ) -> str:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__file
+
+
+    @property
+    def table(
         self,
     ) -> str:
         """
@@ -213,7 +228,7 @@ class Timers:
 
 
     @property
-    def cache_dict(
+    def cache(
         self,
     ) -> _CACHED:
         """
@@ -222,7 +237,7 @@ class Timers:
         :returns: Value for the attribute from class instance.
         """
 
-        return dict(self.__cached)
+        return dict(self.__cache)
 
 
     def ready(
@@ -241,14 +256,14 @@ class Timers:
         :param update: Determines whether or not time is updated.
         """
 
-        timers = self.__timers
-        caches = self.__cached
+        config = self.__config
+        caches = self.__cache
 
         if unique not in caches:
             raise ValueError('unique')
 
         cache = caches[unique]
-        timer = timers[unique]
+        timer = config[unique]
 
         ready = cache.since >= timer
 
@@ -270,7 +285,7 @@ class Timers:
         :param started: Override the start time for timer value.
         """
 
-        caches = self.__cached
+        caches = self.__cache
 
         if unique not in caches:
             raise ValueError('unique')
@@ -294,13 +309,13 @@ class Timers:
         :param started: Determine when time starts for the timer.
         """
 
-        timers = self.__timers
-        caches = self.__cached
+        config = self.__config
+        caches = self.__cache
 
-        if unique in timers:
+        if unique in config:
             raise ValueError('unique')
 
-        timers[unique] = float(minimum)
+        config[unique] = float(minimum)
         caches[unique] = Times(started)
 
         self.save_cache()

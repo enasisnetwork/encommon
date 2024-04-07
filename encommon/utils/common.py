@@ -17,8 +17,7 @@ JOINABLE = (list, tuple, set)
 
 
 PATHABLE = Union[
-    str,
-    Path,
+    str, Path,
     list[str | Path],
     tuple[str | Path],
     set[str]]
@@ -28,7 +27,10 @@ PATHABLE = Union[
 REPLACE = Union[
     dict[str, str],
     dict[str, str | Path],
-    dict[str, Path]]
+    dict[str, Path],
+    dict[str, str],
+    dict[str | Path, str],
+    dict[Path, str]]
 
 
 

@@ -36,7 +36,6 @@ def test_Hashes() -> None:
 
     assert hashes.string == 'string'
 
-
     assert hashes.md5[:3] == 'b45'
     assert hashes.md5[-2:] == '21'
 

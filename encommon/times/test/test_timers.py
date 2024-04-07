@@ -10,26 +10,48 @@ is permitted, for more information consult the project license file.
 from pathlib import Path
 from time import sleep
 
+from pytest import fixture
 from pytest import raises
 
 from ..timers import Timers
 
 
 
-def test_Timers() -> None:
+@fixture
+def timers(
+    tmp_path: Path,
+) -> Timers:
     """
-    Perform various tests associated with relevant routines.
+    Construct the instance for use in the downstream tests.
+
+    :param tmp_path: pytest object for temporal filesystem.
+    :returns: Newly constructed instance of related class.
     """
 
-    timers = Timers({'one': 1})
+    return Timers(
+        timers={'one': 1},
+        file=f'{tmp_path}/cache.db')
+
+
+
+def test_Timers(
+    timers: Timers,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param timers: Primary class instance for timers object.
+    """
+
 
     attrs = list(timers.__dict__)
 
     assert attrs == [
-        '_Timers__timers',
+        '_Timers__config',
         '_Timers__sqlite',
+        '_Timers__file',
         '_Timers__table',
-        '_Timers__cached']
+        '_Timers__cache']
 
 
     assert repr(timers)[:22] == (
@@ -42,65 +64,83 @@ def test_Timers() -> None:
 
 
     assert timers.timers == {'one': 1}
-    assert timers.cache_file is not None
-    assert timers.cache_name is not None
-    assert len(timers.cache_dict) == 1
+
+    assert timers.sqlite is not None
+
+    assert timers.file[-8:] == 'cache.db'
+
+    assert timers.table == 'timers'
+
+    assert list(timers.cache) == ['one']
+
+
+
+def test_Timers_cover(
+    timers: Timers,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param timers: Primary class instance for timers object.
+    """
 
 
     assert not timers.ready('one')
+
     sleep(1.1)
+
     assert timers.ready('one')
 
 
     timers.create('two', 2, 0)
 
     assert timers.ready('two')
+
     assert not timers.ready('two')
 
 
 
 def test_Timers_cache(
-    tmp_path: Path,
+    timers: Timers,
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
-    :param tmp_path: pytest object for temporal filesystem.
+    :param timers: Primary class instance for timers object.
     """
 
-    cache_file = (
-        f'{tmp_path}/timers.db')
-
     timers1 = Timers(
-        timers={'one': 1},
-        cache_file=cache_file)
+        timers={'uno': 1},
+        file=timers.file)
 
-    assert not timers1.ready('one')
+    assert not timers1.ready('uno')
 
     sleep(0.75)
 
     timers2 = Timers(
-        timers={'one': 1},
-        cache_file=cache_file)
+        timers={'uno': 1},
+        file=timers.file)
 
-    assert not timers1.ready('one')
-    assert not timers2.ready('one')
+    assert not timers1.ready('uno')
+    assert not timers2.ready('uno')
 
     sleep(0.25)
 
     timers2.load_cache()
 
-    assert timers1.ready('one')
-    assert timers2.ready('one')
+    assert timers1.ready('uno')
+    assert timers2.ready('uno')
 
 
 
-def test_Timers_raises() -> None:
+def test_Timers_raises(
+    timers: Timers,
+) -> None:
     """
     Perform various tests associated with relevant routines.
-    """
 
-    timers = Timers({'one': 1})
+    :param timers: Primary class instance for timers object.
+    """
 
 
     _raises = raises(ValueError)

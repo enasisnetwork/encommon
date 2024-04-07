@@ -10,11 +10,14 @@ is permitted, for more information consult the project license file.
 from os import stat_result
 from pathlib import Path
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from .common import PATHABLE
-from .common import REPLACE
 from .match import rgxp_match
 from ..types import sort_dict
+
+if TYPE_CHECKING:
+    from .common import PATHABLE
+    from .common import REPLACE
 
 
 
@@ -24,7 +27,7 @@ STATS_PATH = dict[str, stat_result]
 
 def resolve_path(
     path: str | Path,
-    replace: Optional[REPLACE] = None,
+    replace: Optional['REPLACE'] = None,
 ) -> Path:
     """
     Resolve the provided path replacing the magic keywords.
@@ -43,7 +46,12 @@ def resolve_path(
 
     if replace is not None:
 
-        for old, new in replace.items():
+        items = replace.items()
+
+        for old, new in items:
+
+            if isinstance(old, Path):
+                old = str(old)
 
             if isinstance(new, Path):
                 new = str(new)
@@ -55,8 +63,8 @@ def resolve_path(
 
 
 def resolve_paths(
-    paths: PATHABLE,
-    replace: Optional[REPLACE] = None,
+    paths: 'PATHABLE',
+    replace: Optional['REPLACE'] = None,
 ) -> tuple[Path, ...]:
     """
     Resolve the provided paths replacing the magic keywords.
@@ -95,7 +103,7 @@ def resolve_paths(
 
 def stats_path(
     path: str | Path,
-    replace: Optional[REPLACE] = None,
+    replace: Optional['REPLACE'] = None,
     ignore: Optional[list[str]] = None,
 ) -> STATS_PATH:
     """

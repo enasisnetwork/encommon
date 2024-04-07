@@ -11,15 +11,18 @@ from copy import deepcopy
 from typing import Any
 from typing import Callable
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from .common import config_paths
 from .files import ConfigFiles
 from .logger import Logger
 from .params import Params
 from .paths import ConfigPaths
-from ..crypts.crypts import Crypts
-from ..types.dicts import merge_dicts
-from ..utils.common import PATHABLE
+from ..crypts import Crypts
+from ..types import merge_dicts
+
+if TYPE_CHECKING:
+    from ..utils.common import PATHABLE
 
 
 
@@ -52,8 +55,8 @@ class Config:
     def __init__(
         self,
         *,
-        files: Optional[PATHABLE] = None,
-        paths: Optional[PATHABLE] = None,
+        files: Optional['PATHABLE'] = None,
+        paths: Optional['PATHABLE'] = None,
         cargs: Optional[dict[str, Any]] = None,
         model: Optional[Callable] = None,  # type: ignore
     ) -> None:

@@ -15,6 +15,8 @@ from typing import TYPE_CHECKING
 
 from cryptography.fernet import Fernet
 
+from ..types.strings import SEMPTY
+
 if TYPE_CHECKING:
     from .params import CryptsParams
 
@@ -157,4 +159,4 @@ def crypt_clean(
     :param value: String value that will returned decrypted.
     """
 
-    return re_sub(r'[\n\s]', '', value)
+    return re_sub(r'[\n\s]', SEMPTY, value)

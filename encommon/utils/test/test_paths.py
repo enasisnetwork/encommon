@@ -13,7 +13,7 @@ from ..paths import resolve_path
 from ..paths import resolve_paths
 from ..paths import stats_path
 from ... import PROJECT
-from ...times.times import Times
+from ...times import Times
 
 
 
@@ -61,7 +61,7 @@ def test_stats_path() -> None:
 
     stats = stats_path(
         f'{PROJECT}/utils',
-        replace={str(PROJECT): '/'},
+        replace={PROJECT: '/'},
         ignore=[r'\S+\.pyc'])
 
     stat = stats['/utils/paths.py']

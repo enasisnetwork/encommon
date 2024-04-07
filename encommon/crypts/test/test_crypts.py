@@ -12,33 +12,37 @@ from pytest import mark
 from pytest import raises
 
 from ..crypts import Crypts
+from ..params import CryptsParams
 
 
 
 @fixture
-def phrases() -> dict[str, str]:
+def crypts() -> Crypts:
     """
-    Construct randomly generated Fernet keys for passphrases.
+    Construct the instance for use in the downstream tests.
 
-    :returns: Randomly generated Fernet keys for passphrases.
+    :returns: Newly constructed instance of related class.
     """
 
-    return {
+    phrases = {
         'default': Crypts.keygen(),
         'secrets': Crypts.keygen()}
+
+    params = CryptsParams(
+        phrases=phrases)
+
+    return Crypts(params=params)
 
 
 
 def test_Crypts(
-    phrases: dict[str, str],
+    crypts: Crypts,
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
-    :param phrases: Dictionary of randomly generated phrases.
+    :param crypts: Primary class instance for the encryption.
     """
-
-    crypts = Crypts(phrases)
 
 
     attrs = list(crypts.__dict__)
@@ -56,7 +60,8 @@ def test_Crypts(
         '<encommon.crypts.crypts')
 
 
-    assert crypts.phrases == phrases
+    assert len(crypts.phrases) == 2
+
     assert len(crypts.keygen()) == 44
 
 
@@ -66,21 +71,20 @@ def test_Crypts(
     [('foo', 'default'),
      ('foo', 'secrets')])
 def test_Crypts_iterate(
+    crypts: Crypts,
     value: str,
     unique: str,
-    phrases: dict[str, str],
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
+    :param crypts: Primary class instance for the encryption.
     :param value: String value that will returned encrypted.
     :param unique: Unique identifier of mapping passphrase.
-    :param phrases: Dictionary of randomly generated phrases.
     """
 
-    crypts = Crypts(phrases)
-
-    encrypt = crypts.encrypt(value, unique)
+    encrypt = (
+        crypts.encrypt(value, unique))
 
     split = encrypt.split(';')
 
@@ -94,32 +98,45 @@ def test_Crypts_iterate(
 
 
 def test_Crypts_raises(
-    phrases: dict[str, str],
+    crypts: Crypts,
 ) -> None:
     """
     Perform various tests associated with relevant routines.
 
-    :param phrases: Dictionary of randomly generated phrases.
+    :param crypts: Primary class instance for the encryption.
     """
 
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         Crypts({'foo': 'bar'})
 
-    assert str(reason.value) == 'default'
+    _reason = str(reason.value)
+
+    assert _reason == 'default'
 
 
-    crypts = Crypts(phrases)
+    crypts = Crypts(
+        crypts.phrases)
 
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         crypts.decrypt('foo')
 
-    assert str(reason.value) == 'string'
+    _reason = str(reason.value)
+
+    assert _reason == 'string'
 
 
-    with raises(ValueError) as reason:
+    _raises = raises(ValueError)
+
+    with _raises as reason:
         string = '$ENCRYPT;1.1;f;oo'
         crypts.decrypt(string)
 
-    assert str(reason.value) == 'version'
+    _reason = str(reason.value)
+
+    assert _reason == 'version'
