@@ -7,13 +7,13 @@ is permitted, for more information consult the project license file.
 
 
 
-from ..strings import strplwr
+from ..strings import striplower
 
 
 
-def test_strplwr() -> None:
+def test_striplower() -> None:
     """
     Perform various tests associated with relevant routines.
     """
 
-    assert strplwr(' Foo ') == 'foo'
+    assert striplower(' Foo ') == 'foo'
