@@ -94,7 +94,10 @@ class Message:
         self.__time = Times(time)
         self.__fields = {}
 
-        for key, value in kwargs.items():
+        items = kwargs.items()
+
+        for key, value in items:
+
 
             if (hasattr(value, '__len__')
                     and not len(value)):
@@ -103,6 +106,7 @@ class Message:
             if value in [None, Empty]:
                 continue
 
+
             if isinstance(value, JOINABLE):
 
                 values = sorted(
@@ -110,9 +114,12 @@ class Message:
 
                 value = COMMAD.join(values)
 
+
             if (isinstance(value, float)
                     and key == 'elapsed'):
+
                 value = round(value, 2)
+
 
             value = str(value)
 

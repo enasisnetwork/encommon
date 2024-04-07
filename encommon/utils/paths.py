@@ -46,7 +46,9 @@ def resolve_path(
 
     if replace is not None:
 
-        for old, new in replace.items():
+        items = replace.items()
+
+        for old, new in items:
 
             if isinstance(old, Path):
                 old = str(old)

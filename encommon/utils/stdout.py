@@ -290,7 +290,9 @@ def array_ansi(  # noqa: CFQ001, CFQ004
 
         assert isinstance(source, dict)
 
-        for key, value in source.items():
+        items = source.items()
+
+        for key, value in items:
 
             prefix = (
                 f'{" " * indent}'
