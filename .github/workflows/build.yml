@@ -54,9 +54,3 @@ jobs:
         run: |
           make -s venv-create
           make -s check
-
-      - name: Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          file: ./coverage.xml
-          fail_ci_if_error: true
