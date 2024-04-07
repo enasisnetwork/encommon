@@ -29,7 +29,6 @@ extensions = [
     'sphinx_autodoc_typehints',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
-    'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinxcontrib.autodoc_pydantic']
 

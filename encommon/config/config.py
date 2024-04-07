@@ -32,7 +32,7 @@ class Config:
 
     .. note::
        Configuration loaded from files is validated with the
-       Pydantic model :class:`.Params`.
+       Pydantic model :class:`encommon.config.Params`.
 
     :param files: Complete or relative path to config files.
     :param paths: Complete or relative path to config paths.
