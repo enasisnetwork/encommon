@@ -13,7 +13,7 @@ from ..paths import resolve_path
 from ..paths import resolve_paths
 from ..paths import stats_path
 from ... import PROJECT
-from ...times.times import Times
+from ...times import Times
 
 
 

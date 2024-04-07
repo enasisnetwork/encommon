@@ -18,7 +18,7 @@ from ..logger import Message
 from ..params import LoggerParams
 from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
-from ...utils.stdout import strip_ansi
+from ...utils import strip_ansi
 
 
 

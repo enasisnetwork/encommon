@@ -17,8 +17,8 @@ from .files import ConfigFiles
 from .logger import Logger
 from .params import Params
 from .paths import ConfigPaths
-from ..crypts.crypts import Crypts
-from ..types.dicts import merge_dicts
+from ..crypts import Crypts
+from ..types import merge_dicts
 from ..utils.common import PATHABLE
 
 

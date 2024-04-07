@@ -12,7 +12,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 from .common import LOGLEVELS
-from ..crypts.params import CryptsParams
+from ..crypts import CryptsParams
 
 
 

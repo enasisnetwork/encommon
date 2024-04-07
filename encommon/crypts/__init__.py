@@ -9,9 +9,11 @@ is permitted, for more information consult the project license file.
 
 from .crypts import Crypts
 from .hashes import Hashes
+from .params import CryptsParams
 
 
 
 __all__ = [
     'Crypts',
+    'CryptsParams',
     'Hashes']

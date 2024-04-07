@@ -16,8 +16,8 @@ from ..paths import ConfigPath
 from ..paths import ConfigPaths
 from ... import ENPYRWS
 from ... import PROJECT
-from ...utils.sample import load_sample
-from ...utils.sample import prep_sample
+from ...utils import load_sample
+from ...utils import prep_sample
 
 
 

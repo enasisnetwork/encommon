@@ -127,9 +127,9 @@ def load_sample(
 
     def _load_sample() -> Any:
 
-        read = read_text(path)
+        loaded = read_text(path)
 
-        return loads(read)
+        return loads(loaded)
 
 
     if path.exists():

@@ -28,9 +28,9 @@ from typing import TYPE_CHECKING
 
 from .common import LOGLEVELS
 from .common import config_path
+from ..times import Times
 from ..times.common import PARSABLE
-from ..times.times import Times
-from ..types.empty import Empty
+from ..types import Empty
 from ..types.strings import COMMAD
 from ..types.strings import COMMAS
 from ..types.strings import SPACED

@@ -29,7 +29,7 @@ def test_readsave_text(
         f'{tmp_path}/test.txt',
         content)
 
-    read = read_text(
+    loaded = read_text(
         f'{tmp_path}/test.txt')
 
-    assert read == content
+    assert loaded == content

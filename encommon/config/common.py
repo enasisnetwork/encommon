@@ -18,10 +18,10 @@ from yaml import load
 from .. import PROJECT
 from .. import WORKSPACE
 from ..utils import read_text
+from ..utils import resolve_path
+from ..utils import resolve_paths
 from ..utils.common import PATHABLE
 from ..utils.common import REPLACE
-from ..utils.paths import resolve_path
-from ..utils.paths import resolve_paths
 
 
 
@@ -44,10 +44,10 @@ def config_load(
     :returns: New resolved filesystem path object instance.
     """
 
-    read = read_text(
+    loaded = read_text(
         config_path(path))
 
-    parsed = load(read, SafeLoader)
+    parsed = load(loaded, SafeLoader)
 
     assert isinstance(parsed, dict)
 
