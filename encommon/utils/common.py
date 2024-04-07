@@ -28,7 +28,10 @@ PATHABLE = Union[
 REPLACE = Union[
     dict[str, str],
     dict[str, str | Path],
-    dict[str, Path]]
+    dict[str, Path],
+    dict[str, str],
+    dict[str | Path, str],
+    dict[Path, str]]
 
 
 

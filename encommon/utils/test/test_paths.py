@@ -61,7 +61,7 @@ def test_stats_path() -> None:
 
     stats = stats_path(
         f'{PROJECT}/utils',
-        replace={str(PROJECT): '/'},
+        replace={PROJECT: '/'},
         ignore=[r'\S+\.pyc'])
 
     stat = stats['/utils/paths.py']

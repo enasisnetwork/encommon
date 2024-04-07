@@ -57,6 +57,9 @@ def prep_sample(
 
     for old, new in replace.items():
 
+        if isinstance(old, Path):
+            old = str(old)
+
         if isinstance(new, Path):
             new = str(new)
 

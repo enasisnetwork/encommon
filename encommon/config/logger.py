@@ -31,6 +31,8 @@ from .common import config_path
 from ..times.common import PARSABLE
 from ..times.times import Times
 from ..types.empty import Empty
+from ..types.strings import COMMAS
+from ..types.strings import SPACED
 from ..utils.stdout import kvpair_ansi
 
 if TYPE_CHECKING:
@@ -123,7 +125,7 @@ class Message:
 
         fields |= dict(self.__fields)
 
-        message = ', '.join([
+        message = COMMAS.join([
             f'{k}="{v}"' for k, v
             in fields.items()])
 
@@ -214,7 +216,7 @@ class Message:
 
             output.append(_value)
 
-        return ' '.join(output)
+        return SPACED.join(output)
 
 
     @property

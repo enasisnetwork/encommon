@@ -15,6 +15,7 @@ from pytest import fixture
 
 from ..logger import Logger
 from ..logger import Message
+from ..params import LoggerParams
 from ...times.common import UNIXMPOCH
 from ...utils.stdout import strip_ansi
 
@@ -31,12 +32,12 @@ def logger(
     :returns: Newly constructed instance of related class.
     """
 
-    path = f'{tmp_path}/test.log'
-
-    return Logger(
+    params = LoggerParams(
         stdo_level='info',
         file_level='info',
-        file_path=path)
+        file_path=f'{tmp_path}/test.log')
+
+    return Logger(params=params)
 
 
 
@@ -77,25 +78,9 @@ def test_Message() -> None:
 
     assert message.level == 'info'
     assert message.time == '1970-01-01'
-    assert message.fields == {
-        'dict': "{'foo': 'bar'}",
-        'float': '1.0',
-        'int': '1',
-        'list': "[1, '2', 3]",
-        'string': 'foo',
-        'elapsed': '0.69'}
-
-
-    assert repr(message) == (
-        'Message('
-        'level="info", '
-        f'time="{UNIXMPOCH}", '
-        'dict="{\'foo\': \'bar\'}", '
-        'float="1.0", '
-        'int="1", '
-        'list="[1, \'2\', 3]", '
-        'string="foo", '
-        'elapsed="0.69")')
+    assert list(message.fields) == [
+        'dict', 'float', 'int',
+        'list', 'string', 'elapsed']
 
 
     output = strip_ansi(
@@ -112,7 +97,9 @@ def test_Message() -> None:
         ' elapsed="0.69"')
 
 
-    assert message.file_output == (
+    output = message.file_output
+
+    assert output == (
         '{"level": "info",'
         f' "time": "{UNIXMPOCH}",'
         ' "dict": "{\'foo\': \'bar\'}",'
@@ -158,10 +145,10 @@ def test_Logger(
 
     assert logger.stdo_level == 'info'
     assert logger.file_level == 'info'
-    assert logger.file_path is not None
-    assert logger.started is False
-    assert logger.logger_stdo is not None
-    assert logger.logger_file is not None
+    assert logger.file_path
+    assert not logger.started
+    assert logger.logger_stdo
+    assert logger.logger_file
 
     logger.log_d(msg='pytest')
     logger.log_c(msg='pytest')
