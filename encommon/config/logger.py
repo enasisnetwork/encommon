@@ -29,7 +29,6 @@ from typing import TYPE_CHECKING
 from .common import LOGLEVELS
 from .common import config_path
 from ..times import Times
-from ..times.common import PARSABLE
 from ..types import Empty
 from ..types.strings import COMMAD
 from ..types.strings import COMMAS
@@ -39,6 +38,7 @@ from ..utils.common import JOINABLE
 
 if TYPE_CHECKING:
     from .params import LoggerParams
+    from ..times.common import PARSABLE
 
 
 
@@ -83,7 +83,7 @@ class Message:
     def __init__(
         self,
         level: LOGLEVELS,
-        time: Optional[PARSABLE] = None,
+        time: Optional['PARSABLE'] = None,
         **kwargs: Any,
     ) -> None:
         """

@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 from typing import Literal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from yaml import SafeLoader
 from yaml import load
@@ -20,8 +21,10 @@ from .. import WORKSPACE
 from ..utils import read_text
 from ..utils import resolve_path
 from ..utils import resolve_paths
-from ..utils.common import PATHABLE
-from ..utils.common import REPLACE
+
+if TYPE_CHECKING:
+    from ..utils.common import PATHABLE
+    from ..utils.common import REPLACE
 
 
 
@@ -77,8 +80,8 @@ def config_path(
 
 
 def config_paths(
-    paths: PATHABLE,
-    replace: Optional[REPLACE] = None,
+    paths: 'PATHABLE',
+    replace: Optional['REPLACE'] = None,
 ) -> tuple[Path, ...]:
     """
     Resolve the provided paths replacing the magic keywords.

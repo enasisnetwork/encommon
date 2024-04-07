@@ -11,12 +11,15 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from .common import config_load
 from .common import config_path
 from .common import config_paths
 from ..types import merge_dicts
-from ..utils.common import PATHABLE
+
+if TYPE_CHECKING:
+    from ..utils.common import PATHABLE
 
 
 
@@ -63,7 +66,7 @@ class ConfigFiles:
 
     def __init__(
         self,
-        paths: PATHABLE,
+        paths: 'PATHABLE',
         force: bool = False,
     ) -> None:
         """

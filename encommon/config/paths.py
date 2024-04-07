@@ -12,11 +12,14 @@ from glob import glob
 from pathlib import Path
 from typing import Any
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from .common import config_path
 from .common import config_paths
 from .files import ConfigFile
-from ..utils.common import PATHABLE
+
+if TYPE_CHECKING:
+    from ..utils.common import PATHABLE
 
 
 
@@ -71,7 +74,7 @@ class ConfigPaths:
 
     def __init__(
         self,
-        paths: PATHABLE,
+        paths: 'PATHABLE',
         force: bool = False,
     ) -> None:
         """

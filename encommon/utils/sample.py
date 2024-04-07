@@ -13,10 +13,13 @@ from pathlib import Path
 from typing import Any
 from typing import Callable
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from . import read_text
 from . import save_text
-from .common import REPLACE
+
+if TYPE_CHECKING:
+    from .common import REPLACE
 
 
 
@@ -24,7 +27,7 @@ def prep_sample(
     content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[REPLACE] = None,
+    replace: Optional['REPLACE'] = None,
 ) -> Any:
     """
     Return the content after processing using JSON functions.
@@ -76,7 +79,7 @@ def load_sample(
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[REPLACE] = None,
+    replace: Optional['REPLACE'] = None,
 ) -> Any:
     """
     Load the sample file and compare using provided content.

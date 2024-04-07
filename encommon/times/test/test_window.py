@@ -7,13 +7,17 @@ is permitted, for more information consult the project license file.
 
 
 
+from typing import TYPE_CHECKING
+
 from pytest import fixture
 from pytest import mark
 
-from ..common import PARSABLE
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
+
+if TYPE_CHECKING:
+    from ..common import PARSABLE
 
 
 
@@ -158,7 +162,7 @@ def test_Window_cover(
      ('0 * * * *', 3661, False, (3600, 7200))])
 def test_window_croniter(
     schedule: str,
-    anchor: PARSABLE,
+    anchor: 'PARSABLE',
     backward: bool,
     expect: tuple[int, int],
 ) -> None:
@@ -194,7 +198,7 @@ def test_window_croniter(
      ({'hours': 1}, 3661, False, (3661, 7261))])
 def test_window_interval(
     schedule: dict[str, int],
-    anchor: PARSABLE,
+    anchor: 'PARSABLE',
     backward: bool,
     expect: tuple[int, int],
 ) -> None:

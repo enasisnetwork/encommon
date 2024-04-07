@@ -8,9 +8,9 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from . import SAMPLES
-from ..config import Config
 from ..logger import Logger
 from ..params import Params
 from ... import ENPYRWS
@@ -18,6 +18,9 @@ from ... import PROJECT
 from ...crypts import Crypts
 from ...utils import load_sample
 from ...utils import prep_sample
+
+if TYPE_CHECKING:
+    from ..config import Config
 
 
 
