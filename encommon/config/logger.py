@@ -42,8 +42,8 @@ if TYPE_CHECKING:
 
 
 
-LOGGER_FILE = 'encommon.logger.file'
-LOGGER_STDO = 'encommon.logger.stdo'
+LOGR_FILE = 'encommon.logger.file'
+LOGR_STDO = 'encommon.logger.stdo'
 
 LOGSEVERS = {
     'critical': int(CRITICAL),
@@ -322,8 +322,8 @@ class Logger:
 
     __started: bool
 
-    __logger_stdo: _Logger
-    __logger_file: _Logger
+    __logr_stdo: _Logger
+    __logr_file: _Logger
 
 
     def __init__(
@@ -352,8 +352,11 @@ class Logger:
 
         self.__started = False
 
-        self.__logger_stdo = getLogger(LOGGER_STDO)
-        self.__logger_file = getLogger(LOGGER_FILE)
+        logr_stdo = getLogger(LOGR_STDO)
+        logr_file = getLogger(LOGR_FILE)
+
+        self.__logr_stdo = logr_stdo
+        self.__logr_file = logr_file
 
 
     @property
@@ -418,7 +421,7 @@ class Logger:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__logger_stdo
+        return self.__logr_stdo
 
 
     @property
@@ -431,7 +434,7 @@ class Logger:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__logger_file
+        return self.__logr_file
 
 
     def start(
@@ -445,39 +448,47 @@ class Logger:
         file_level = self.__file_level
         file_path = self.__file_path
 
-        logger_stdo = self.__logger_stdo
-        logger_file = self.__logger_file
+        logr_stdo = self.__logr_stdo
+        logr_file = self.__logr_file
 
 
-        logger_root = getLogger()
-        logger_root.setLevel(NOTSET)
+        logr_root = getLogger()
 
-        logger_stdo.handlers = [NullHandler()]
-        logger_file.handlers = [NullHandler()]
+        logr_root.setLevel(NOTSET)
+
+        logr_stdo.handlers = [NullHandler()]
+        logr_file.handlers = [NullHandler()]
 
 
         if stdo_level is not None:
 
-            stdoh = StreamHandler()
-            format = Formatter('%(message)s')
             level = LOGSEVERS[stdo_level]
 
-            stdoh.setLevel(level)
-            stdoh.setFormatter(format)
+            handstdo = StreamHandler()
 
-            logger_stdo.handlers = [stdoh]
+            format = Formatter(
+                '%(message)s')
+
+            logr_stdo.handlers = [handstdo]
+
+            handstdo.setLevel(level)
+            handstdo.setFormatter(format)
 
 
         if file_path and file_level:
 
-            fileh = FileHandler(file_path)
-            format = FileFormatter('%(message)s')
             level = LOGSEVERS[file_level]
 
-            fileh.setLevel(level)
-            fileh.setFormatter(format)
+            handfile = (
+                FileHandler(file_path))
 
-            logger_file.handlers = [fileh]
+            format = FileFormatter(
+                '%(message)s')
+
+            logr_file.handlers = [handfile]
+
+            handfile.setLevel(level)
+            handfile.setFormatter(format)
 
 
         self.__started = True
@@ -490,11 +501,11 @@ class Logger:
         Deinitialize the Python logging library using parameters.
         """
 
-        logger_stdo = self.__logger_stdo
-        logger_file = self.__logger_file
+        logr_stdo = self.__logr_stdo
+        logr_file = self.__logr_file
 
-        logger_stdo.handlers = [NullHandler()]
-        logger_file.handlers = [NullHandler()]
+        logr_stdo.handlers = [NullHandler()]
+        logr_file.handlers = [NullHandler()]
 
         self.__started = False
 
@@ -520,19 +531,21 @@ class Logger:
         file_level = self.__file_level
         file_path = self.__file_path
 
-        logger_stdo = self.__logger_stdo
-        logger_file = self.__logger_file
+        logr_stdo = self.__logr_stdo
+        logr_file = self.__logr_file
 
         message = Message(level, **kwargs)
 
         if stdo_level is not None:
-            logger_stdo.log(
+
+            logr_stdo.log(
                 level=LOGSEVERS[level],
                 msg=message.stdo_output,
                 exc_info=exc_info)
 
         if file_path and file_level:
-            logger_file.log(
+
+            logr_file.log(
                 level=LOGSEVERS[level],
                 msg=message.file_output,
                 exc_info=exc_info)
@@ -540,94 +553,64 @@ class Logger:
 
     def log_c(
         self,
-        *,
-        exc_info: Optional[Exception] = None,
         **kwargs: Any,
     ) -> None:
         """
         Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
-        self.log(
-            level='critical',
-            exc_info=exc_info,
-            **kwargs)
+        self.log('critical', **kwargs)
 
 
     def log_d(
         self,
-        *,
-        exc_info: Optional[Exception] = None,
         **kwargs: Any,
     ) -> None:
         """
         Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
-        self.log(
-            level='debug',
-            exc_info=exc_info,
-            **kwargs)
+        self.log('debug', **kwargs)
 
 
     def log_e(
         self,
-        *,
-        exc_info: Optional[Exception] = None,
         **kwargs: Any,
     ) -> None:
         """
         Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
-        self.log(
-            level='error',
-            exc_info=exc_info,
-            **kwargs)
+        self.log('error', **kwargs)
 
 
     def log_i(
         self,
-        *,
-        exc_info: Optional[Exception] = None,
         **kwargs: Any,
     ) -> None:
         """
         Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
-        self.log(
-            level='info',
-            exc_info=exc_info,
-            **kwargs)
+        self.log('info', **kwargs)
 
 
     def log_w(
         self,
-        *,
-        exc_info: Optional[Exception] = None,
         **kwargs: Any,
     ) -> None:
         """
         Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
-        self.log(
-            level='warning',
-            exc_info=exc_info,
-            **kwargs)
+        self.log('warning', **kwargs)

@@ -142,8 +142,8 @@ def test_Logger(
         '_Logger__file_level',
         '_Logger__file_path',
         '_Logger__started',
-        '_Logger__logger_stdo',
-        '_Logger__logger_file']
+        '_Logger__logr_stdo',
+        '_Logger__logr_file']
 
 
     assert repr(logger)[:23] == (
