@@ -31,9 +31,11 @@ from .common import config_path
 from ..times.common import PARSABLE
 from ..times.times import Times
 from ..types.empty import Empty
+from ..types.strings import COMMAD
 from ..types.strings import COMMAS
 from ..types.strings import SPACED
-from ..utils.stdout import kvpair_ansi
+from ..utils import kvpair_ansi
+from ..utils.common import JOINABLE
 
 if TYPE_CHECKING:
     from .params import LoggerParams
@@ -100,6 +102,13 @@ class Message:
 
             if value in [None, Empty]:
                 continue
+
+            if isinstance(value, JOINABLE):
+
+                values = sorted(
+                    str(x) for x in value)
+
+                value = COMMAD.join(values)
 
             if (isinstance(value, float)
                     and key == 'elapsed'):
@@ -491,9 +500,9 @@ class Logger:
         **kwargs: Any,
     ) -> None:
         """
-        Prepare keyword arguments and log to the relevant outputs.
+        Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception to include with trace.
+        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
@@ -529,9 +538,9 @@ class Logger:
         **kwargs: Any,
     ) -> None:
         """
-        Prepare keyword arguments and log to the relevant outputs.
+        Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception to include with trace.
+        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
@@ -548,9 +557,9 @@ class Logger:
         **kwargs: Any,
     ) -> None:
         """
-        Prepare keyword arguments and log to the relevant outputs.
+        Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception to include with trace.
+        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
@@ -567,9 +576,9 @@ class Logger:
         **kwargs: Any,
     ) -> None:
         """
-        Prepare keyword arguments and log to the relevant outputs.
+        Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception to include with trace.
+        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
@@ -586,9 +595,9 @@ class Logger:
         **kwargs: Any,
     ) -> None:
         """
-        Prepare keyword arguments and log to the relevant outputs.
+        Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception to include with trace.
+        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 
@@ -605,9 +614,9 @@ class Logger:
         **kwargs: Any,
     ) -> None:
         """
-        Prepare keyword arguments and log to the relevant outputs.
+        Prepare keyword arguments and log to configured output.
 
-        :param exc_info: Optional exception to include with trace.
+        :param exc_info: Optional exception included with trace.
         :param kwargs: Keyword arguments for populating message.
         """
 

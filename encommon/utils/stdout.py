@@ -42,6 +42,10 @@ ANSIARRAY = Union[
 
 
 
+_REPEAT = (list, tuple, dict)
+
+
+
 @dataclass(frozen=True)
 class ArrayColors:
     """
@@ -208,25 +212,28 @@ def array_ansi(  # noqa: CFQ001, CFQ004
                 f'{prefix} {repeat}')
 
 
-        if isinstance(value, list | tuple | dict):
+        if isinstance(value, _REPEAT):
             refers.add(id(value))
 
 
-        types = {
+        typing = {
             'list': list,
             'tuple': tuple,
             'dict': dict,
             'frozenset': frozenset,
             'set': set}
 
-        for name, _type in types.items():
+        items = typing.items()
+
+        for name, _type in items:
 
             if not isinstance(value, _type):
                 continue
 
             output.append(
                 f'{prefix} '
-                f'<c{colors.label}>{name}<c0>')
+                f'<c{colors.label}>'
+                f'{name}<c0>')
 
             return _process(
                 source=value,

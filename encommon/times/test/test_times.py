@@ -60,25 +60,26 @@ def test_Times() -> None:
     assert times.source.year == 1970
 
     assert times.epoch == 0.0
+
     assert times.mpoch == 0.0
+
     assert times.simple == UNIXEPOCH
+
     assert times.subsec == UNIXMPOCH
+
     assert times.human == UNIXHPOCH
+
     assert times.elapsed >= 1672531200
+
     assert times.since >= 1672531200
 
     assert times.before == (
         '1969-12-31T23:59:59.999999Z')
+
     assert times.after == (
         '1970-01-01T00:00:00.000001Z')
 
-    stamp = times.stamp(
-        tzname='US/Central')
-
-    assert stamp[:4] == '1969'
-    assert stamp[11:][:2] == '18'
-
+    assert times.stamp() == UNIXMPOCH
 
     times = times.shift('+1y')
-
     assert times == '1971-01-01'

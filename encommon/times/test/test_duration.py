@@ -55,7 +55,9 @@ def test_Duration() -> None:
 
 
     assert durate.source == 95401
+
     assert durate.smart is True
+
     assert durate.groups == 7
 
     assert durate.units() == {
@@ -64,10 +66,18 @@ def test_Duration() -> None:
         'minute': 30}
 
     assert durate.short == '1d 2h 30m'
+
     assert durate.compact == '1d2h30m'
+
     assert durate.verbose == (
         '1 day, 2 hours, 30 minutes')
 
+
+
+def test_Duration_cover() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
 
     durate = Duration(
         seconds=7501,
@@ -92,22 +102,20 @@ def test_Duration() -> None:
 
     durate = Duration(36295261)
 
-    units = durate.units()
-
+    units = durate.units(False)
     assert units == {
         'year': 1, 'week': 3,
         'month': 1, 'day': 4,
         'hour': 2, 'minute': 1}
 
     units = durate.units(True)
-
     assert units == {
         'y': 1, 'w': 3, 'mon': 1,
         'd': 4, 'h': 2, 'm': 1}
 
 
 
-def test_Duration_cover() -> None:
+def test_Duration_iterate() -> None:
     """
     Perform various tests associated with relevant routines.
     """

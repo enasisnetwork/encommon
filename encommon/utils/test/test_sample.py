@@ -47,7 +47,7 @@ def test_load_sample(
         'list': ['bar', 'baz'],
         'tuple': [1, 2],
         'project': f'_/{prefix}/PROJECT/_',
-        'other': f'_/{prefix}/tmp_path/_',
+        'other': f'_/{prefix}/pytemp/_',
         'devnull': '/dev/null'}
 
 
@@ -56,7 +56,7 @@ def test_load_sample(
     replaces = {
         devnull: 'nothing here',
         'PROJECT': str(PROJECT),
-        'tmp_path': '/pat/h'}
+        'pytemp': '/pat/h'}
 
 
     sample_path = (

@@ -20,9 +20,11 @@ def test_config_load() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    path = 'PROJECT/../.yamllint'
+    loaded = config_load(
+        'PROJECT/../.yamllint')
 
-    assert len(config_load(path)) == 2
+    assert list(loaded) == [
+        'extends', 'rules']
 
 
 

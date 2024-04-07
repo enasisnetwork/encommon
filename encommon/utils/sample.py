@@ -42,9 +42,9 @@ def prep_sample(
     >>> prep_sample({'one': Empty})
     {'one': 'Empty'}
 
-    :param content: Content which will be processed for JSON.
+    :param content: Content that will be processed as JSON.
     :param default: Callable used when stringifying values.
-    :param replace: Optional values to replace in the path.
+    :param replace: Optional values to replace in the file.
     :returns: Content after processing using JSON functions.
     """
 
@@ -98,11 +98,11 @@ def load_sample(
     >>> load_sample(sample)
     {'one': 'two'}
 
-    :param path: Complete or relative path to the sample file.
+    :param path: Complete or relative path for the sample.
     :param update: Determine whether the sample is updated.
-    :param content: Content which will be processed for JSON.
+    :param content: Content that will be processed as JSON.
     :param default: Callable used when stringifying values.
-    :param replace: Optional string values to replace in file.
+    :param replace: Optional values to replace in the file.
     :returns: Content after processing using JSON functions.
     """
 

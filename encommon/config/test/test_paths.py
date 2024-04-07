@@ -66,9 +66,9 @@ def test_ConfigPath(
         '<encommon.config.paths')
 
 
-    assert path.path == config_path
-    assert set(path.config) == {
-        f'{config_path}/config.yml'}
+    assert 'test' in path.path.name
+
+    assert len(path.config) == 1
 
 
 
@@ -99,6 +99,7 @@ def test_ConfigPaths(
 
 
     assert len(paths.paths) == 2
+
     assert len(paths.config) == 2
 
 

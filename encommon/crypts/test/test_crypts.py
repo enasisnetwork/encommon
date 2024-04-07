@@ -61,6 +61,7 @@ def test_Crypts(
 
 
     assert len(crypts.phrases) == 2
+
     assert len(crypts.keygen()) == 44
 
 

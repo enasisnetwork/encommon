@@ -11,11 +11,13 @@ from pathlib import Path
 
 from . import SAMPLES
 from ..config import Config
+from ..logger import Logger
 from ..params import Params
 from ... import ENPYRWS
 from ... import PROJECT
-from ...utils.sample import load_sample
-from ...utils.sample import prep_sample
+from ...crypts import Crypts
+from ...utils import load_sample
+from ...utils import prep_sample
 
 
 
@@ -52,14 +54,21 @@ def test_Config(
         '<encommon.config.config')
 
 
-    assert config.files is not None
-    assert config.paths is not None
-    assert config.cargs is not None
-    assert config.config is not None
+    assert 'ConfigFiles' in str(config.files)
+
+    assert 'ConfigPaths' in str(config.paths)
+
+    assert len(config.cargs) == 1
+
+    assert len(config.config) == 3
+
     assert config.model is Params
-    assert config.params is not None
-    assert config.logger is not None
-    assert config.crypts is not None
+
+    assert isinstance(config.params, Params)
+
+    assert isinstance(config.logger, Logger)
+
+    assert isinstance(config.crypts, Crypts)
 
 
     replaces = {

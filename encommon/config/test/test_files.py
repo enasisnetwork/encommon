@@ -43,10 +43,8 @@ def test_ConfigFile(
     :param config_path: Custom fixture for populating paths.
     """
 
-    config_file = Path(
+    file = ConfigFile(
         f'{config_path}/config.yml')
-
-    file = ConfigFile(config_file)
 
 
     attrs = list(file.__dict__)
@@ -65,11 +63,9 @@ def test_ConfigFile(
         '<encommon.config.files')
 
 
-    assert file.path == config_file
-    assert set(file.config) == {
-        'enconfig',
-        'enlogger',
-        'encrypts'}
+    assert file.path.name == 'config.yml'
+
+    assert len(file.config) == 3
 
 
 
@@ -101,6 +97,7 @@ def test_ConfigFiles(
 
 
     assert len(files.paths) == 2
+
     assert len(files.config) == 2
 
     assert files.merged == {

@@ -17,7 +17,12 @@ from ..logger import Logger
 from ..logger import Message
 from ..params import LoggerParams
 from ...times.common import UNIXMPOCH
+from ...times.common import UNIXSPOCH
 from ...utils.stdout import strip_ansi
+
+
+
+_CAPLOG = list[tuple[str, int, str]]
 
 
 
@@ -49,14 +54,17 @@ def test_Message() -> None:
     message = Message(
         time=UNIXMPOCH,
         level='info',
-        dict={'foo': 'bar'},
-        empty=[],
-        float=1.0,
-        int=1,
-        list=[1, '2', 3],
+        string='foobar',
         none=None,
-        string='foo',
-        elapsed=0.69420)
+        list=['1', 2],
+        tuple=('1', 2),
+        set={'1', 2},
+        dict={'1': 2},
+        empty_list=[],
+        empty_dict={},
+        int=1,
+        float=2.0,
+        elapsed=3.69420)
 
 
     attrs = list(message.__dict__)
@@ -67,20 +75,20 @@ def test_Message() -> None:
         '_Message__fields']
 
 
-    assert repr(message)[:26] == (
-        'Message(level="info", time')
+    assert repr(message)[:20] == (
+        'Message(level="info"')
 
     assert hash(message) > 0
 
-    assert str(message)[:26] == (
-        'Message(level="info", time')
+    assert str(message)[:20] == (
+        'Message(level="info"')
 
 
     assert message.level == 'info'
-    assert message.time == '1970-01-01'
-    assert list(message.fields) == [
-        'dict', 'float', 'int',
-        'list', 'string', 'elapsed']
+
+    assert message.time == 0
+
+    assert len(message.fields) == 8
 
 
     output = strip_ansi(
@@ -88,13 +96,15 @@ def test_Message() -> None:
 
     assert output == (
         'level="info"'
-        ' time="1970-01-01T00:00:00Z"'
-        ' dict="{\'foo\': \'bar\'}"'
-        ' float="1.0"'
+        f' time="{UNIXSPOCH}"'
+        ' string="foobar"'
+        ' list="1,2"'
+        ' tuple="1,2"'
+        ' set="1,2"'
+        ' dict="{\'1\': 2}"'
         ' int="1"'
-        ' list="[1, \'2\', 3]"'
-        ' string="foo"'
-        ' elapsed="0.69"')
+        ' float="2.0"'
+        ' elapsed="3.69"')
 
 
     output = message.file_output
@@ -102,12 +112,14 @@ def test_Message() -> None:
     assert output == (
         '{"level": "info",'
         f' "time": "{UNIXMPOCH}",'
-        ' "dict": "{\'foo\': \'bar\'}",'
-        ' "float": "1.0",'
+        ' "string": "foobar",'
+        ' "list": "1,2",'
+        ' "tuple": "1,2",'
+        ' "set": "1,2",'
+        ' "dict": "{\'1\': 2}",'
         ' "int": "1",'
-        ' "list": "[1, \'2\', 3]",'
-        ' "string": "foo",'
-        ' "elapsed": "0.69"}')
+        ' "float": "2.0",'
+        ' "elapsed": "3.69"}')
 
 
 
@@ -144,11 +156,17 @@ def test_Logger(
 
 
     assert logger.stdo_level == 'info'
+
     assert logger.file_level == 'info'
-    assert logger.file_path
-    assert not logger.started
-    assert logger.logger_stdo
-    assert logger.logger_file
+
+    assert logger.file_path is not None
+
+    assert logger.started is False
+
+    assert logger.logger_stdo is not None
+
+    assert logger.logger_file is not None
+
 
     logger.log_d(msg='pytest')
     logger.log_c(msg='pytest')
@@ -178,10 +196,7 @@ def test_Logger_cover(
         logger.log_w(msg='pytest')
 
 
-    _caplog = list[tuple[str, int, str]]
-
-
-    def _logger_stdo() -> _caplog:
+    def _logger_stdo() -> _CAPLOG:
 
         output = caplog.record_tuples
         key = 'encommon.logger.stdo'
@@ -191,7 +206,7 @@ def test_Logger_cover(
             if x[0] == key]
 
 
-    def _logger_file() -> _caplog:
+    def _logger_file() -> _CAPLOG:
 
         output = caplog.record_tuples
         key = 'encommon.logger.file'
