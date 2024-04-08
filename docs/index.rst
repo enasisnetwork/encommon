@@ -2,44 +2,54 @@ Configuration Container
 =======================
 
 .. autoclass:: encommon.config.Config
+   :members:
    :noindex:
 .. autoclass:: encommon.config.ConfigParams
+   :members:
    :noindex:
 
 Parameters Container
 ====================
 .. autoclass:: encommon.config.Params
+   :members:
    :noindex:
 
 Configuration Content
 =====================
 .. autoclass:: encommon.config.ConfigFile
+   :members:
    :noindex:
 .. autoclass:: encommon.config.ConfigFiles
+   :members:
    :noindex:
 .. autoclass:: encommon.config.ConfigPath
+   :members:
    :noindex:
 .. autoclass:: encommon.config.ConfigPaths
+   :members:
    :noindex:
 
 Configuration Logger
 ====================
 
 .. autoclass:: encommon.config.Logger
+   :members:
    :noindex:
 .. autoclass:: encommon.config.LoggerParams
+   :members:
    :noindex:
 .. autoclass:: encommon.config.Message
+   :members:
    :noindex:
 
 Configuration Utilities
 =======================
 
-.. autoclass:: encommon.config.config_load
+.. autofunction:: encommon.config.config_load
    :noindex:
-.. autoclass:: encommon.config.config_path
+.. autofunction:: encommon.config.config_path
    :noindex:
-.. autoclass:: encommon.config.config_paths
+.. autofunction:: encommon.config.config_paths
    :noindex:
 
 
@@ -47,97 +57,104 @@ Encryption and Decryption
 =========================
 
 .. autoclass:: encommon.crypts.Crypts
+   :members:
    :noindex:
 .. autoclass:: encommon.crypts.CryptsParams
+   :members:
    :noindex:
 
 Hashing Algorithms
 ==================
 
 .. autoclass:: encommon.crypts.Hashes
+   :members:
    :noindex:
 
 Advanced Time Structures
 ========================
 .. autoclass:: encommon.times.Times
+   :members:
    :noindex:
 .. autoclass:: encommon.times.Duration
+   :members:
    :noindex:
 .. autoclass:: encommon.times.Timers
+   :members:
    :noindex:
 .. autoclass:: encommon.times.Window
+   :members:
    :noindex:
 
 Datetime and Helpers
 ====================
-.. autoclass:: encommon.times.parse_time
+.. autofunction:: encommon.times.parse_time
    :noindex:
-.. autoclass:: encommon.times.shift_time
+.. autofunction:: encommon.times.shift_time
    :noindex:
-.. autoclass:: encommon.times.since_time
+.. autofunction:: encommon.times.since_time
    :noindex:
-.. autoclass:: encommon.times.string_time
+.. autofunction:: encommon.times.string_time
    :noindex:
-.. autoclass:: encommon.times.findtz
+.. autofunction:: encommon.times.findtz
    :noindex:
 
 
 Unique Python Types
 ===================
 
-.. autoclass:: encommon.types.Empty
+.. autodata:: encommon.types.Empty
    :noindex:
 
 Python Type Utilities
 =====================
 
-.. autoclass:: encommon.types.merge_dicts
+.. autofunction:: encommon.types.merge_dicts
    :noindex:
-.. autoclass:: encommon.types.sort_dict
+.. autofunction:: encommon.types.sort_dict
    :noindex:
-.. autoclass:: encommon.types.striplower
+.. autofunction:: encommon.types.striplower
    :noindex:
 
 Colorized Standard Output
 =========================
 
-.. autoclass:: encommon.utils.array_ansi
+.. autofunction:: encommon.utils.array_ansi
    :noindex:
-.. autoclass:: encommon.utils.kvpair_ansi
+.. autofunction:: encommon.utils.kvpair_ansi
    :noindex:
-.. autoclass:: encommon.utils.make_ansi
+.. autofunction:: encommon.utils.make_ansi
    :noindex:
-.. autoclass:: encommon.utils.print_ansi
+.. autofunction:: encommon.utils.print_ansi
    :noindex:
-.. autoclass:: encommon.utils.strip_ansi
+.. autofunction:: encommon.utils.strip_ansi
    :noindex:
 
 Test Sample Utilities
 =====================
 
-.. autoclass:: encommon.utils.load_sample
+.. autofunction:: encommon.utils.load_sample
    :noindex:
-.. autoclass:: encommon.utils.prep_sample
+.. autofunction:: encommon.utils.prep_sample
    :noindex:
 
 Matching Expressions
 ====================
 
-.. autoclass:: encommon.utils.fuzz_match
+.. autofunction:: encommon.utils.fuzz_match
    :noindex:
-.. autoclass:: encommon.utils.rgxp_match
+.. autofunction:: encommon.utils.rgxp_match
    :noindex:
 
 File System and Paths
 =====================
 
-.. autoclass:: encommon.utils.read_text
+.. autofunction:: encommon.utils.read_text
    :noindex:
-.. autoclass:: encommon.utils.save_text
+.. autofunction:: encommon.utils.save_text
    :noindex:
-.. autoclass:: encommon.utils.resolve_path
+.. autofunction:: encommon.utils.resolve_path
    :noindex:
-.. autoclass:: encommon.utils.resolve_paths
+.. autofunction:: encommon.utils.resolve_paths
    :noindex:
-.. autoclass:: encommon.utils.stats_path
+.. autofunction:: encommon.utils.stats_path
    :noindex:
