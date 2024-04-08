@@ -124,7 +124,7 @@ class Config:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__cargs
+        return deepcopy(self.__cargs)
 
 
     @property
@@ -163,21 +163,25 @@ class Config:
         :returns: Pydantic model containing the configuration.
         """
 
-        if self.__params is not None:
-            return self.__params
+        params = self.__params
 
-        cargs = self.__cargs
+        if params is not None:
+            return params
+
+
         merged = self.files.merged
 
         merge_dicts(
             dict1=merged,
-            dict2=deepcopy(cargs),
+            dict2=self.cargs,
             force=True)
 
-        self.__params = (
-            self.__model(**merged))
+        params = self.model(**merged)
 
-        return self.__params
+
+        self.__params = params
+
+        return params
 
 
     @property
