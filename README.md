@@ -1,13 +1,23 @@
 # Enasis Network Common Library
 
-Common classes and functions used in various public and private projects for
-[Enasis Network](https://github.com/enasisnetwork).
+> :information_source: This project has not released its first major version.
+
+Common classes and functions used in various public and private projects.
 
 [![](https://img.shields.io/github/actions/workflow/status/enasisnetwork/encommon/build.yml?style=flat-square&label=GitHub%20actions)](https://github.com/enasisnetwork/encommon/actions)<br>
-[![codecov](https://codecov.io/gh/enasisnetwork/encommon/graph/badge.svg?token=7PGOXKJU0E)](https://codecov.io/gh/enasisnetwork/encommon)<br>
+[![codecov](https://img.shields.io/codecov/c/github/enasisnetwork/encommon?token=7PGOXKJU0E&style=flat-square&logoColor=FFFFFF&label=Coverage)](https://codecov.io/gh/enasisnetwork/encommon)<br>
 [![](https://img.shields.io/readthedocs/encommon?style=flat-square&label=Read%20the%20Docs)](https://encommon.readthedocs.io/en/stable)<br>
 [![](https://img.shields.io/pypi/v/encommon.svg?style=flat-square&label=PyPi%20version)](https://pypi.org/project/encommon)<br>
 [![](https://img.shields.io/pypi/dm/encommon?style=flat-square&label=PyPi%20downloads)](https://pypi.org/project/encommon)
+
+## Documentation
+Documentation is on [Read the Docs](https://encommon.readthedocs.io).
+Should you venture into the sections below you will be able to use the
+`sphinx` recipe to build documention in the `docs/html` directory.
+
+## Projects using library
+- [Enasis Network Remote Connect](https://github.com/enasisnetwork/enconnect)
+- [Enasis Network Homie Automate](https://github.com/enasisnetwork/enhomie)
 
 ## Installing the package
 Installing stable from the PyPi repository
@@ -18,11 +28,6 @@ Installing latest from GitHub repository
 ```
 pip install git+https://github.com/enasisnetwork/encommon
 ```
-
-## Documentation
-Documentation is on [Read the Docs](https://encommon.readthedocs.io).
-Should you venture into the sections below you will be able to use the
-`sphinx` recipe to build documention in the `docs/html` directory.
 
 ## Quick start for local development
 Start by cloning the repository to your local machine.
