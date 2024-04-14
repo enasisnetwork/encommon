@@ -16,6 +16,8 @@ from ..params import Params
 from ... import ENPYRWS
 from ... import PROJECT
 from ...crypts import Crypts
+from ...types import inrepr
+from ...types import instr
 from ...utils import load_sample
 from ...utils import prep_sample
 
@@ -48,13 +50,15 @@ def test_Config(
         '_Config__crypts']
 
 
-    assert 1 <= repr(config).find(
-        'config.Config object')
+    assert inrepr(
+        'config.Config object',
+        config)
 
     assert hash(config) > 0
 
-    assert 1 <= str(config).find(
-        'config.Config object')
+    assert instr(
+        'config.Config object',
+        config)
 
 
     assert 'ConfigFiles' in str(config.files)

@@ -8,6 +8,8 @@ is permitted, for more information consult the project license file.
 
 
 from ..hashes import Hashes
+from ...types import inrepr
+from ...types import instr
 
 
 
@@ -25,13 +27,15 @@ def test_Hashes() -> None:
         '_Hashes__string']
 
 
-    assert 1 <= repr(hashes).find(
-        'hashes.Hashes object')
+    assert inrepr(
+        'hashes.Hashes object',
+        hashes)
 
     assert hash(hashes) > 0
 
-    assert 1 <= str(hashes).find(
-        'hashes.Hashes object')
+    assert instr(
+        'hashes.Hashes object',
+        hashes)
 
 
     assert hashes.string == 'string'

@@ -15,6 +15,8 @@ from pytest import mark
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
+from ...types import inrepr
+from ...types import instr
 
 if TYPE_CHECKING:
     from ..common import PARSABLE
@@ -58,13 +60,15 @@ def test_Window(
         '_Window__walked']
 
 
-    assert 1 <= repr(window).find(
-        'window.Window object')
+    assert inrepr(
+        'window.Window object',
+        window)
 
     assert hash(window) > 0
 
-    assert 1 <= str(window).find(
-        'window.Window object')
+    assert instr(
+        'window.Window object',
+        window)
 
 
     assert window.schedule == '* * * * *'

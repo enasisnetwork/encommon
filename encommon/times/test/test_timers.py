@@ -14,6 +14,8 @@ from pytest import fixture
 from pytest import raises
 
 from ..timers import Timers
+from ...types import inrepr
+from ...types import instr
 
 
 
@@ -54,13 +56,15 @@ def test_Timers(
         '_Timers__cache']
 
 
-    assert 1 <= repr(timers).find(
-        'timers.Timers object')
+    assert inrepr(
+        'timers.Timers object',
+        timers)
 
     assert hash(timers) > 0
 
-    assert 1 <= str(timers).find(
-        'timers.Timers object')
+    assert instr(
+        'timers.Timers object',
+        timers)
 
 
     assert timers.timers == {'one': 1}

@@ -18,6 +18,8 @@ from ..logger import Message
 from ..params import LoggerParams
 from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
+from ...types import inrepr
+from ...types import instr
 from ...utils import strip_ansi
 
 
@@ -75,13 +77,15 @@ def test_Message() -> None:
         '_Message__fields']
 
 
-    assert repr(message)[:20] == (
-        'Message(level="info"')
+    assert inrepr(
+        'Message(level="info"',
+        message)
 
     assert hash(message) > 0
 
-    assert str(message)[:20] == (
-        'Message(level="info"')
+    assert instr(
+        'Message(level="info"',
+        message)
 
 
     assert message.level == 'info'
@@ -146,13 +150,15 @@ def test_Logger(
         '_Logger__logr_file']
 
 
-    assert 1 <= repr(logger).find(
-        'logger.Logger object')
+    assert inrepr(
+        'logger.Logger object',
+        logger)
 
     assert hash(logger) > 0
 
-    assert 1 <= str(logger).find(
-        'logger.Logger object')
+    assert instr(
+        'logger.Logger object',
+        logger)
 
 
     assert logger.stdo_level == 'info'

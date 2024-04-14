@@ -14,6 +14,8 @@ from pytest import fixture
 from . import SAMPLES
 from ..files import ConfigFile
 from ..files import ConfigFiles
+from ...types import inrepr
+from ...types import instr
 
 
 
@@ -54,13 +56,15 @@ def test_ConfigFile(
         'config']
 
 
-    assert 1 <= repr(file).find(
-        'files.ConfigFile object')
+    assert inrepr(
+        'files.ConfigFile object',
+        file)
 
     assert hash(file) > 0
 
-    assert 1 <= str(file).find(
-        'files.ConfigFile object')
+    assert instr(
+        'files.ConfigFile object',
+        file)
 
 
     assert file.path.name == 'config.yml'
@@ -87,13 +91,15 @@ def test_ConfigFiles(
         '_ConfigFiles__merged']
 
 
-    assert 1 <= repr(files).find(
-        'files.ConfigFiles object')
+    assert inrepr(
+        'files.ConfigFiles object',
+        files)
 
     assert hash(files) > 0
 
-    assert 1 <= str(files).find(
-        'files.ConfigFiles object')
+    assert instr(
+        'files.ConfigFiles object',
+        files)
 
 
     assert len(files.paths) == 2
