@@ -58,13 +58,13 @@ def test_Window(
         '_Window__walked']
 
 
-    assert repr(window)[:22] == (
-        '<encommon.times.window')
+    assert 1 <= repr(window).find(
+        'window.Window object')
 
     assert hash(window) > 0
 
-    assert str(window)[:22] == (
-        '<encommon.times.window')
+    assert 1 <= str(window).find(
+        'window.Window object')
 
 
     assert window.schedule == '* * * * *'

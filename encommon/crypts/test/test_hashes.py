@@ -25,13 +25,13 @@ def test_Hashes() -> None:
         '_Hashes__string']
 
 
-    assert repr(hashes)[:23] == (
-        '<encommon.crypts.hashes')
+    assert 1 <= repr(hashes).find(
+        'hashes.Hashes object')
 
     assert hash(hashes) > 0
 
-    assert str(hashes)[:23] == (
-        '<encommon.crypts.hashes')
+    assert 1 <= str(hashes).find(
+        'hashes.Hashes object')
 
 
     assert hashes.string == 'string'

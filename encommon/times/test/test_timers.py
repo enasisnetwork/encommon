@@ -54,13 +54,13 @@ def test_Timers(
         '_Timers__cache']
 
 
-    assert repr(timers)[:22] == (
-        '<encommon.times.timers')
+    assert 1 <= repr(timers).find(
+        'timers.Timers object')
 
     assert hash(timers) > 0
 
-    assert str(timers)[:22] == (
-        '<encommon.times.timers')
+    assert 1 <= str(timers).find(
+        'timers.Timers object')
 
 
     assert timers.timers == {'one': 1}

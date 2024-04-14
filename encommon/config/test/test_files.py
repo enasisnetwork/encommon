@@ -54,13 +54,13 @@ def test_ConfigFile(
         'config']
 
 
-    assert repr(file)[:22] == (
-        '<encommon.config.files')
+    assert 1 <= repr(file).find(
+        'files.ConfigFile object')
 
     assert hash(file) > 0
 
-    assert str(file)[:22] == (
-        '<encommon.config.files')
+    assert 1 <= str(file).find(
+        'files.ConfigFile object')
 
 
     assert file.path.name == 'config.yml'
@@ -87,13 +87,13 @@ def test_ConfigFiles(
         '_ConfigFiles__merged']
 
 
-    assert repr(files)[:22] == (
-        '<encommon.config.files')
+    assert 1 <= repr(files).find(
+        'files.ConfigFiles object')
 
     assert hash(files) > 0
 
-    assert str(files)[:22] == (
-        '<encommon.config.files')
+    assert 1 <= str(files).find(
+        'files.ConfigFiles object')
 
 
     assert len(files.paths) == 2

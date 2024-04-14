@@ -7,16 +7,13 @@ is permitted, for more information consult the project license file.
 
 
 
+from sqlite3 import Connection
 from sqlite3 import connect as SQLite
 from typing import Optional
-from typing import TYPE_CHECKING
 
 from .common import NUMERIC
 from .common import PARSABLE
 from .times import Times
-
-if TYPE_CHECKING:
-    from sqlite3 import Connection
 
 
 
@@ -63,7 +60,7 @@ class Timers:
     """
 
     __config: _TIMERS
-    __sqlite: 'Connection'
+    __sqlite: Connection
     __file: str
     __table: str
     __cache: _CACHED
@@ -191,7 +188,7 @@ class Timers:
     @property
     def sqlite(
         self,
-    ) -> 'Connection':
+    ) -> Connection:
         """
         Return the value for the attribute from class instance.
 

@@ -48,13 +48,13 @@ def test_Config(
         '_Config__crypts']
 
 
-    assert repr(config)[:23] == (
-        '<encommon.config.config')
+    assert 1 <= repr(config).find(
+        'config.Config object')
 
     assert hash(config) > 0
 
-    assert str(config)[:23] == (
-        '<encommon.config.config')
+    assert 1 <= str(config).find(
+        'config.Config object')
 
 
     assert 'ConfigFiles' in str(config.files)
