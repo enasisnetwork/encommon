@@ -147,6 +147,15 @@ Python Type Utilities
 .. autofunction:: encommon.types.striplower
    :noindex:
 
+.. autofunction:: encommon.types.hasstr
+   :noindex:
+
+.. autofunction:: encommon.types.inrepr
+   :noindex:
+
+.. autofunction:: encommon.types.instr
+   :noindex:
+
 Colorized Standard Output
 =========================
 

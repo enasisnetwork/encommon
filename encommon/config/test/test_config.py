@@ -61,9 +61,13 @@ def test_Config(
         config)
 
 
-    assert 'ConfigFiles' in str(config.files)
+    assert instr(
+        'files.ConfigFiles object',
+        config.files)
 
-    assert 'ConfigPaths' in str(config.paths)
+    assert instr(
+        'paths.ConfigPaths object',
+        config.paths)
 
     assert len(config.cargs) == 1
 
