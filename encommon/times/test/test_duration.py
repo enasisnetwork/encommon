@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from ..duration import Duration
+from ...types import inrepr
 from ...types.strings import COMMAS
 
 
@@ -28,8 +29,9 @@ def test_Duration() -> None:
         '_Duration__groups']
 
 
-    assert repr(durate)[:23] == (
-        'Duration(seconds=95401.')
+    assert inrepr(
+        'Duration(seconds=95401',
+        durate)
 
     assert hash(durate) > 0
 

@@ -12,6 +12,8 @@ from ..common import UNIXEPOCH
 from ..common import UNIXHPOCH
 from ..common import UNIXMPOCH
 from ..times import Times
+from ...types import inrepr
+from ...types import instr
 
 
 
@@ -32,13 +34,15 @@ def test_Times() -> None:
         '_Times__hashed']
 
 
-    assert repr(times)[:23] == (
-        "Times('1970-01-01T00:00")
+    assert inrepr(
+        "Times('1970-01-01T00:00",
+        times)
 
     assert hash(times) > 0
 
-    assert str(times)[:23] == (
-        '1970-01-01T00:00:00.000')
+    assert instr(
+        '1970-01-01T00:00:00.000',
+        times)
 
 
     assert int(times) == 0

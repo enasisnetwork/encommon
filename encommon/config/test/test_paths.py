@@ -16,6 +16,8 @@ from ..paths import ConfigPath
 from ..paths import ConfigPaths
 from ... import ENPYRWS
 from ... import PROJECT
+from ...types import inrepr
+from ...types import instr
 from ...utils import load_sample
 from ...utils import prep_sample
 
@@ -57,13 +59,15 @@ def test_ConfigPath(
         'config']
 
 
-    assert 1 <= repr(path).find(
-        'paths.ConfigPath object')
+    assert inrepr(
+        'paths.ConfigPath object',
+        path)
 
     assert hash(path) > 0
 
-    assert 1 <= str(path).find(
-        'paths.ConfigPath object')
+    assert instr(
+        'paths.ConfigPath object',
+        path)
 
 
     assert 'test' in path.path.name
@@ -89,13 +93,15 @@ def test_ConfigPaths(
         '_ConfigPaths__merged']
 
 
-    assert 1 <= repr(paths).find(
-        'paths.ConfigPaths object')
+    assert inrepr(
+        'paths.ConfigPaths object',
+        paths)
 
     assert hash(paths) > 0
 
-    assert 1 <= str(paths).find(
-        'paths.ConfigPaths object')
+    assert instr(
+        'paths.ConfigPaths object',
+        paths)
 
 
     assert len(paths.paths) == 2

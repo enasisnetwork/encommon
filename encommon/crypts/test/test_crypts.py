@@ -13,6 +13,8 @@ from pytest import raises
 
 from ..crypts import Crypts
 from ..params import CryptsParams
+from ...types import inrepr
+from ...types import instr
 
 
 
@@ -51,13 +53,15 @@ def test_Crypts(
         '_Crypts__phrases']
 
 
-    assert 1 <= repr(crypts).find(
-        'crypts.Crypts object')
+    assert inrepr(
+        'crypts.Crypts object',
+        crypts)
 
     assert hash(crypts) > 0
 
-    assert 1 <= str(crypts).find(
-        'crypts.Crypts object')
+    assert instr(
+        'crypts.Crypts object',
+        crypts)
 
 
     assert len(crypts.phrases) == 2
