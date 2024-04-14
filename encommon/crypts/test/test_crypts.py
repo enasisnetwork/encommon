@@ -51,13 +51,13 @@ def test_Crypts(
         '_Crypts__phrases']
 
 
-    assert repr(crypts)[:23] == (
-        '<encommon.crypts.crypts')
+    assert 1 <= repr(crypts).find(
+        'crypts.Crypts object')
 
     assert hash(crypts) > 0
 
-    assert str(crypts)[:23] == (
-        '<encommon.crypts.crypts')
+    assert 1 <= str(crypts).find(
+        'crypts.Crypts object')
 
 
     assert len(crypts.phrases) == 2

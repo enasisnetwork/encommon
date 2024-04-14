@@ -146,13 +146,13 @@ def test_Logger(
         '_Logger__logr_file']
 
 
-    assert repr(logger)[:23] == (
-        '<encommon.config.logger')
+    assert 1 <= repr(logger).find(
+        'logger.Logger object')
 
     assert hash(logger) > 0
 
-    assert str(logger)[:23] == (
-        '<encommon.config.logger')
+    assert 1 <= str(logger).find(
+        'logger.Logger object')
 
 
     assert logger.stdo_level == 'info'

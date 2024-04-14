@@ -39,20 +39,52 @@ class Duration:
     """
     Convert the provided seconds in a human friendly format.
 
-    Example
-    -------
-    >>> Duration(86400 * 700).compact
+    Example: Common Methods
+    -----------------------
+    >>> durate = Duration(6048e4)
+    >>> durate.short
+    '1y 11mon 5d'
+    >>> durate.compact
     '1y11mon5d'
-
-    Example
-    -------
-    >>> Duration(86400 * 700).verbose
+    >>> durate.verbose
     '1 year, 11 months, 5 days'
 
-    Example
-    -------
-    >>> Duration(7201, False).verbose
+    Example: Dump the Units
+    -----------------------
+    >>> durate = Duration(6048e4)
+    >>> durate.units()
+    {'year': 1, 'month': 11, 'day': 5}
+
+    Example: Disable Smart Seconds
+    ------------------------------
+    >>> durate = Duration(7201, False)
+    >>> durate.compact
+    '2h1s'
+    >>> durate.verbose
     '2 hours, 1 second'
+
+    Example: Basic Operators
+    ------------------------
+    >>> durate1 = Duration(1000)
+    >>> durate2 = Duration(2000)
+    >>> durate1 == durate2
+    False
+    >>> durate1 != durate2
+    True
+    >>> durate1 > durate2
+    False
+    >>> durate1 >= durate2
+    False
+    >>> durate1 < durate2
+    True
+    >>> durate1 <= durate2
+    True
+    >>> durate1 + durate2
+    3000.0
+    >>> durate1 - durate2
+    -1000.0
+    >>> durate2 - durate1
+    1000.0
 
     :param seconds: Period in seconds that will be iterated.
     :param smart: Determines if we hide seconds after minute.

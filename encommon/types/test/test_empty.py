@@ -30,7 +30,9 @@ def test_EmptyType() -> None:
 
 
     assert repr(empty) == 'Empty'
+
     assert hash(empty) > 0
+
     assert str(empty) == 'Empty'
 
 

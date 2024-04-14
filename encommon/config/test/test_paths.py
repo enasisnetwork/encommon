@@ -57,13 +57,13 @@ def test_ConfigPath(
         'config']
 
 
-    assert repr(path)[:22] == (
-        '<encommon.config.paths')
+    assert 1 <= repr(path).find(
+        'paths.ConfigPath object')
 
     assert hash(path) > 0
 
-    assert str(path)[:22] == (
-        '<encommon.config.paths')
+    assert 1 <= str(path).find(
+        'paths.ConfigPath object')
 
 
     assert 'test' in path.path.name
@@ -89,13 +89,13 @@ def test_ConfigPaths(
         '_ConfigPaths__merged']
 
 
-    assert repr(paths)[:22] == (
-        '<encommon.config.paths')
+    assert 1 <= repr(paths).find(
+        'paths.ConfigPaths object')
 
     assert hash(paths) > 0
 
-    assert str(paths)[:22] == (
-        '<encommon.config.paths')
+    assert 1 <= str(paths).find(
+        'paths.ConfigPaths object')
 
 
     assert len(paths.paths) == 2
