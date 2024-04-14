@@ -9,7 +9,6 @@ is permitted, for more information consult the project license file.
 
 from ..duration import Duration
 from ...types import inrepr
-from ...types import instr
 from ...types.strings import COMMAS
 
 
