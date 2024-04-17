@@ -18,7 +18,7 @@ from ..crypts import CryptsParams
 
 class ConfigParams(BaseModel, extra='forbid'):
     """
-    Process and validate the common configuration parameters.
+    Process and validate the core configuration parameters.
 
     :param paths: Complete or relative path to config paths.
     :param data: Keyword arguments passed to Pydantic model.
@@ -31,7 +31,7 @@ class ConfigParams(BaseModel, extra='forbid'):
 
 class LoggerParams(BaseModel, extra='forbid'):
     """
-    Process and validate the common configuration parameters.
+    Process and validate the core configuration parameters.
 
     :param stdo_level: Minimum level for the message to pass.
     :param file_level: Minimum level for the message to pass.
@@ -48,7 +48,7 @@ class LoggerParams(BaseModel, extra='forbid'):
 
 class Params(BaseModel, extra='forbid'):
     """
-    Process and validate the common configuration parameters.
+    Process and validate the core configuration parameters.
 
     :param enconfig: Configuration for the Config instance.
     :param enlogger: Configuration for the Logger instance.

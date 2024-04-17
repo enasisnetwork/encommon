@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 class CryptsParams(BaseModel, extra='forbid'):
     """
-    Process and validate the common configuration parameters.
+    Process and validate the core configuration parameters.
 
     :param phrases: Passphrases that are used in operations.
     :param data: Keyword arguments passed to Pydantic model.
