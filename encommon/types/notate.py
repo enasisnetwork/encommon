@@ -8,7 +8,6 @@ is permitted, for more information consult the project license file.
 
 
 from contextlib import suppress
-from copy import copy
 from re import compile
 from re import match as re_match
 from typing import Any
@@ -49,7 +48,7 @@ def getate(
     :param delim: Override default delimiter between parts.
     """
 
-    sourze: Any = copy(source)
+    sourze: Any = source
 
     split = path.split(delim)
 
