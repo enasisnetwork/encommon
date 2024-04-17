@@ -43,9 +43,8 @@ def config_factory(
     config_log = f'{tmp_path}/config.log'
 
     cargs = {
-        'enlogger': {
-            'file_path': config_log,
-            'file_level': 'info'}}
+        'enlogger/file_path': config_log,
+        'enlogger/file_level': 'info'}
 
     return Config(
         files=f'{tmp_path}/config.yml',

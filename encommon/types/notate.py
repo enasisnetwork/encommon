@@ -43,9 +43,23 @@ def getate(
     """
     Collect the value within the dictionary using notation.
 
+    Example
+    -------
+    >>> source = {'foo': {'bar': 'baz'}}
+    >>> getate(source, 'foo/bar')
+    'baz'
+
+    Example
+    -------
+    >>> source = {'foo': ['bar', 'baz']}
+    >>> getate(source, 'foo/1')
+    'baz'
+
     :param source: Dictionary object processed in notation.
     :param path: Path to the value within the source object.
+    :param default: Value to use if none is found in source.
     :param delim: Override default delimiter between parts.
+    :returns: Value that was located within provided source.
     """
 
     sourze: Any = source
@@ -99,9 +113,18 @@ def setate(
     path: str,
     value: Any,  # noqa: ANN401
     delim: str = '/',
-) -> _SETABLE:
+) -> None:
     """
     Define the value within the dictionary using notation.
+
+    Example
+    -------
+    >>> source = {'foo': {'bar': 'baz'}}
+    >>> source['foo']['bar']
+    'baz'
+    >>> setate(source, 'foo/bar', 'bop')
+    >>> source['foo']['bar']
+    'bop'
 
     :param source: Dictionary object processed in notation.
     :param path: Path to the value within the source object.
@@ -109,7 +132,7 @@ def setate(
     :param delim: Override default delimiter between parts.
     """
 
-    return _setvalue(source, path, value, delim)
+    _setvalue(source, path, value, delim)
 
 
 
@@ -120,6 +143,13 @@ def delate(
 ) -> None:
     """
     Delete the value within the dictionary using notation.
+
+    Example
+    -------
+    >>> source = {'foo': {'bar': 'baz'}}
+    >>> delate(source, 'foo/bar')
+    >>> source
+    {'foo': {}}
 
     :param source: Dictionary object processed in notation.
     :param path: Path to the value within the source object.
@@ -167,7 +197,7 @@ def _setpath(
     path: str,
     value: Any,  # noqa: ANN401
     delim: str = '/',
-) -> _SETABLE:
+) -> None:
     """
     Define the value within the dictionary using notation.
 
@@ -178,6 +208,7 @@ def _setpath(
     :param path: Path to the value within the source object.
     :param value: Value which will be defined at noted point.
     :param delim: Override default delimiter between parts.
+    :returns: Original provided source containing the value.
     """
 
 
@@ -212,15 +243,15 @@ def _setpath(
         with suppress(IndexError):
             update = source[index]
 
-        value = _setvalue(
+        _setvalue(
             update, path,
             value, delim)
 
         if length == index:
-            source.append(value)
+            source.append(update)
 
         elif length > index:
-            source[index] = value
+            source[index] = update
 
 
     elif isinstance(source, dict):
@@ -230,14 +261,11 @@ def _setpath(
         with suppress(KeyError):
             update = source[base]
 
-        value = _setvalue(
+        _setvalue(
             update, path,
             value, delim)
 
-        source[base] = value
-
-
-    return source
+        source[base] = update
 
 
 
@@ -246,7 +274,7 @@ def _setvalue(
     path: str,
     value: Any,  # noqa: ANN401
     delim: str = '/',
-) -> _SETABLE:
+) -> None:
     """
     Define the value within the dictionary using notation.
 
@@ -257,6 +285,7 @@ def _setvalue(
     :param path: Path to the value within the source object.
     :param value: Value which will be defined at noted point.
     :param delim: Override default delimiter between parts.
+    :returns: Original provided source containing the value.
     """
 
 
@@ -290,6 +319,3 @@ def _setvalue(
 
     if isinstance(source, dict):
         source[path] = value
-
-
-    return source
