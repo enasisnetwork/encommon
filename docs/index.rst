@@ -3,20 +3,18 @@ Configuration Container
 
 .. autoclass:: encommon.config.Config
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
-.. autopydantic_model:: encommon.config.ConfigParams
+.. autoclass:: encommon.config.ConfigParams
    :members:
-   :show-inheritance:
    :noindex:
 
 Parameters Container
 ====================
 
-.. autopydantic_model:: encommon.config.Params
+.. autoclass:: encommon.config.Params
    :members:
-   :show-inheritance:
    :noindex:
 
 Configuration Content
@@ -24,22 +22,22 @@ Configuration Content
 
 .. autoclass:: encommon.config.ConfigFile
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigFiles
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigPath
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigPaths
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 Configuration Logger
@@ -47,17 +45,16 @@ Configuration Logger
 
 .. autoclass:: encommon.config.Logger
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
-.. autopydantic_model:: encommon.config.LoggerParams
+.. autoclass:: encommon.config.LoggerParams
    :members:
-   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.Message
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 Configuration Utilities
@@ -77,12 +74,11 @@ Encryption and Decryption
 
 .. autoclass:: encommon.crypts.Crypts
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
-.. autopydantic_model:: encommon.crypts.CryptsParams
+.. autoclass:: encommon.crypts.CryptsParams
    :members:
-   :show-inheritance:
    :noindex:
 
 Hashing Algorithms
@@ -90,7 +86,7 @@ Hashing Algorithms
 
 .. autoclass:: encommon.crypts.Hashes
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 Advanced Time Structures
@@ -98,22 +94,22 @@ Advanced Time Structures
 
 .. autoclass:: encommon.times.Times
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 .. autoclass:: encommon.times.Duration
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 .. autoclass:: encommon.times.Timers
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 .. autoclass:: encommon.times.Window
    :members:
-   :show-inheritance:
+   :inherited-members:
    :noindex:
 
 Datetime and Helpers
