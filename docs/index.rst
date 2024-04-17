@@ -156,6 +156,18 @@ Python Type Utilities
 .. autofunction:: encommon.types.instr
    :noindex:
 
+Python Notation Helpers
+=======================
+
+.. autofunction:: encommon.types.getate
+   :noindex:
+
+.. autofunction:: encommon.types.setate
+   :noindex:
+
+.. autofunction:: encommon.types.delate
+   :noindex:
+
 Colorized Standard Output
 =========================
 
