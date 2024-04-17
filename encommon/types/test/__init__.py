@@ -15,6 +15,7 @@ _DICT1 = {
     'dict1': 'dict1',
     'str': 'd1string',
     'list': ['d1list'],
+    'tuple': (1, 2),
     'dict': {'key': 'd1dict'},
     'bool': False}
 
@@ -22,6 +23,7 @@ _DICT2 = {
     'dict2': 'dict2',
     'str': 'd2string',
     'list': ['d2list'],
+    'tuple': (3, 4),
     'dict': {'key': 'd2dict'},
     'bool': True}
 

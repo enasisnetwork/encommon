@@ -8,7 +8,9 @@ is permitted, for more information consult the project license file.
 
 
 from contextlib import suppress
+from copy import copy
 from re import compile
+from re import match as re_match
 from typing import Any
 from typing import Optional
 from typing import Union
@@ -47,7 +49,7 @@ def getate(
     :param delim: Override default delimiter between parts.
     """
 
-    sourze: Any = source
+    sourze: Any = copy(source)
 
     split = path.split(delim)
 
@@ -183,21 +185,30 @@ def _setpath(
     setable = isinstance(
         source, dict | list)
 
-    if setable is False:
-        raise ValueError('source')
+    assert setable is True
 
 
     base, path = (
         path.split(delim, 1))
+
+    next = (
+        path.split(delim, 1)[0])
+
+
+    default: _SETABLE = {}
+
+    if re_match(_INTEGER, next):
+        default = []
 
     update: Any
 
 
     if isinstance(source, list):
 
+        length = len(source)
         index = int(base)
 
-        update = []
+        update = default
 
         with suppress(IndexError):
             update = source[index]
@@ -206,16 +217,16 @@ def _setpath(
             update, path,
             value, delim)
 
-        if len(source) > index:
-            source[index] = value
-
-        elif len(source) == index:
+        if length == index:
             source.append(value)
+
+        elif length > index:
+            source[index] = value
 
 
     elif isinstance(source, dict):
 
-        update = {}
+        update = default
 
         with suppress(KeyError):
             update = source[base]

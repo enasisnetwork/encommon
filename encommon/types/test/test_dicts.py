@@ -38,6 +38,7 @@ def test_merge_dicts() -> None:
         'str': 'd1string',
         'list': ['d1list', 'd2list'],
         'dict': {'key': 'd1dict'},
+        'tuple': (1, 2),
         'bool': False,
         'nested': [_DICT1, _DICT2],
         'recurse': {
@@ -46,6 +47,7 @@ def test_merge_dicts() -> None:
             'str': 'd1string',
             'list': ['d1list', 'd2list'],
             'dict': {'key': 'd1dict'},
+            'tuple': (1, 2),
             'bool': False}}
 
 
@@ -60,6 +62,7 @@ def test_merge_dicts() -> None:
         'str': 'd2string',
         'list': ['d1list', 'd2list'],
         'dict': {'key': 'd2dict'},
+        'tuple': (3, 4),
         'bool': True,
         'nested': [_DICT1, _DICT2],
         'recurse': {
@@ -68,6 +71,7 @@ def test_merge_dicts() -> None:
             'str': 'd2string',
             'list': ['d1list', 'd2list'],
             'dict': {'key': 'd2dict'},
+            'tuple': (3, 4),
             'bool': True}}
 
 
@@ -86,6 +90,7 @@ def test_merge_dicts() -> None:
         'str': 'd1string',
         'list': ['d1list'],
         'dict': {'key': 'd1dict'},
+        'tuple': (1, 2),
         'bool': False,
         'nested': [_DICT1],
         'recurse': {
@@ -93,6 +98,7 @@ def test_merge_dicts() -> None:
             'str': 'd1string',
             'list': ['d1list'],
             'dict': {'key': 'd1dict'},
+            'tuple': (1, 2),
             'bool': False}}
 
 
@@ -105,6 +111,7 @@ def test_sort_dict() -> None:
     assert sort_dict(_DICT1) == {
         'bool': False,
         'dict': {'key': 'd1dict'},
+        'tuple': (1, 2),
         'dict1': 'dict1',
         'list': ['d1list'],
         'str': 'd1string'}
