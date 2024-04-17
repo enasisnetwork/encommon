@@ -3,11 +3,12 @@ Configuration Container
 
 .. autoclass:: encommon.config.Config
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigParams
    :members:
+   :show-inheritance:
    :noindex:
 
 Parameters Container
@@ -15,6 +16,7 @@ Parameters Container
 
 .. autoclass:: encommon.config.Params
    :members:
+   :show-inheritance:
    :noindex:
 
 Configuration Content
@@ -22,22 +24,22 @@ Configuration Content
 
 .. autoclass:: encommon.config.ConfigFile
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigFiles
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigPath
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.ConfigPaths
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 Configuration Logger
@@ -45,16 +47,17 @@ Configuration Logger
 
 .. autoclass:: encommon.config.Logger
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.LoggerParams
    :members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.config.Message
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 Configuration Utilities
@@ -74,11 +77,12 @@ Encryption and Decryption
 
 .. autoclass:: encommon.crypts.Crypts
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.crypts.CryptsParams
    :members:
+   :show-inheritance:
    :noindex:
 
 Hashing Algorithms
@@ -86,7 +90,7 @@ Hashing Algorithms
 
 .. autoclass:: encommon.crypts.Hashes
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 Advanced Time Structures
@@ -94,22 +98,22 @@ Advanced Time Structures
 
 .. autoclass:: encommon.times.Times
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.times.Duration
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.times.Timers
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 .. autoclass:: encommon.times.Window
    :members:
-   :inherited-members:
+   :show-inheritance:
    :noindex:
 
 Datetime and Helpers
