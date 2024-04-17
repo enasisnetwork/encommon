@@ -20,6 +20,7 @@ from .params import Params
 from .paths import ConfigPaths
 from ..crypts import Crypts
 from ..types import merge_dicts
+from ..types import setate
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
@@ -124,7 +125,16 @@ class Config:
         :returns: Value for the attribute from class instance.
         """
 
-        return deepcopy(self.__cargs)
+        returned: dict[str, Any] = {}
+
+        cargs = deepcopy(self.__cargs)
+
+        items = cargs.items()
+
+        for key, value in items:
+            setate(returned, key, value)
+
+        return deepcopy(returned)
 
 
     @property
