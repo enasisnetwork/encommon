@@ -9,24 +9,12 @@ is permitted, for more information consult the project license file.
 
 from copy import deepcopy
 
+from . import _DICT1
+from . import _DICT1R
+from . import _DICT2
+from . import _DICT2R
 from ..dicts import merge_dicts
 from ..dicts import sort_dict
-
-
-
-_DICT1 = {
-    'dict1': 'dict1',
-    'str': 'd1string',
-    'list': ['d1list'],
-    'dict': {'key': 'd1value'},
-    'bool': False}
-
-_DICT2 = {
-    'dict2': 'dict2',
-    'str': 'd2string',
-    'list': ['d2list'],
-    'dict': {'key': 'd2value'},
-    'bool': True}
 
 
 
@@ -35,11 +23,8 @@ def test_merge_dicts() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    dict1 = deepcopy(_DICT1)
-    dict2 = deepcopy(_DICT2)
-
-    dict1['recurse'] = deepcopy(dict1)
-    dict2['recurse'] = deepcopy(dict2)
+    dict1 = deepcopy(_DICT1R)
+    dict2 = deepcopy(_DICT2R)
 
 
     source = deepcopy(dict1)
@@ -52,14 +37,15 @@ def test_merge_dicts() -> None:
         'dict2': 'dict2',
         'str': 'd1string',
         'list': ['d1list', 'd2list'],
-        'dict': {'key': 'd1value'},
+        'dict': {'key': 'd1dict'},
         'bool': False,
+        'nested': [_DICT1, _DICT2],
         'recurse': {
             'dict1': 'dict1',
             'dict2': 'dict2',
             'str': 'd1string',
             'list': ['d1list', 'd2list'],
-            'dict': {'key': 'd1value'},
+            'dict': {'key': 'd1dict'},
             'bool': False}}
 
 
@@ -73,14 +59,15 @@ def test_merge_dicts() -> None:
         'dict2': 'dict2',
         'str': 'd2string',
         'list': ['d1list', 'd2list'],
-        'dict': {'key': 'd2value'},
+        'dict': {'key': 'd2dict'},
         'bool': True,
+        'nested': [_DICT1, _DICT2],
         'recurse': {
             'dict1': 'dict1',
             'dict2': 'dict2',
             'str': 'd2string',
             'list': ['d1list', 'd2list'],
-            'dict': {'key': 'd2value'},
+            'dict': {'key': 'd2dict'},
             'bool': True}}
 
 
@@ -98,13 +85,14 @@ def test_merge_dicts() -> None:
         'dict2': 'dict2',
         'str': 'd1string',
         'list': ['d1list'],
-        'dict': {'key': 'd1value'},
+        'dict': {'key': 'd1dict'},
         'bool': False,
+        'nested': [_DICT1],
         'recurse': {
             'dict1': 'dict1',
             'str': 'd1string',
             'list': ['d1list'],
-            'dict': {'key': 'd1value'},
+            'dict': {'key': 'd1dict'},
             'bool': False}}
 
 
@@ -116,7 +104,7 @@ def test_sort_dict() -> None:
 
     assert sort_dict(_DICT1) == {
         'bool': False,
-        'dict': {'key': 'd1value'},
+        'dict': {'key': 'd1dict'},
         'dict1': 'dict1',
         'list': ['d1list'],
         'str': 'd1string'}
