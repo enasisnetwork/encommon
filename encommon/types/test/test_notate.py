@@ -78,11 +78,12 @@ def test_setate() -> None:
     source = deepcopy(_DICT1R)
 
 
-    value = setate([], '0', 1)
-    assert value == [1]
-
-    value = setate({}, '0', 1)
-    assert value == {'0': 1}
+    path = 'list/1'
+    before = getate(source, path)
+    setate(source, path, 1)
+    after = getate(source, path)
+    assert after == 1
+    assert before is None
 
 
     path = 'recurse/dict/key'
