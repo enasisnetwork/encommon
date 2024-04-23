@@ -35,7 +35,7 @@ _CACHED = dict[str, Times]
 
 class Timers:
     """
-    Track timers on unique key and determine when to proceed.
+    Track timers on unique key determining when to proceed.
 
     .. warning::
        This class will use an in-memory database for cache,
@@ -56,7 +56,7 @@ class Timers:
     :param timers: Seconds that are used for each of timers.
     :param file: Optional path to SQLite database for
         cache. This will allow for use between executions.
-    :param table: Optional override default table name.
+    :param table: Optional override the default table name.
     """
 
     __config: _TIMERS
@@ -88,8 +88,7 @@ class Timers:
         sqlite = SQLite(file)
 
         sqlite.execute(
-            CACHE_TABLE
-            .format(table))
+            CACHE_TABLE.format(table))
 
         sqlite.commit()
 
