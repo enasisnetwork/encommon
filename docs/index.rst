@@ -6,7 +6,7 @@ Configuration Container
    :show-inheritance:
    :noindex:
 
-.. autoclass:: encommon.config.ConfigParams
+.. autopydantic_model:: encommon.config.ConfigParams
    :members:
    :show-inheritance:
    :noindex:
@@ -14,7 +14,7 @@ Configuration Container
 Parameters Container
 ====================
 
-.. autoclass:: encommon.config.Params
+.. autopydantic_model:: encommon.config.Params
    :members:
    :show-inheritance:
    :noindex:
@@ -50,7 +50,7 @@ Configuration Logger
    :show-inheritance:
    :noindex:
 
-.. autoclass:: encommon.config.LoggerParams
+.. autopydantic_model:: encommon.config.LoggerParams
    :members:
    :show-inheritance:
    :noindex:
@@ -80,7 +80,7 @@ Encryption and Decryption
    :show-inheritance:
    :noindex:
 
-.. autoclass:: encommon.crypts.CryptsParams
+.. autopydantic_model:: encommon.crypts.CryptsParams
    :members:
    :show-inheritance:
    :noindex:
