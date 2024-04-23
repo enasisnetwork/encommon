@@ -56,7 +56,7 @@ class Timers:
     :param timers: Seconds that are used for each of timers.
     :param file: Optional path to SQLite database for
         cache. This will allow for use between executions.
-    :param table: Optional override the default table name.
+    :param table: Optional override for default table name.
     """
 
     __config: _TIMERS
