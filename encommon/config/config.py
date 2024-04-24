@@ -200,6 +200,8 @@ class Config:
     ) -> Logger:
         """
         Initialize the Python logging library using parameters.
+
+        :returns: Instance of Python logging library created.
         """
 
         if self.__logger is not None:
@@ -220,6 +222,8 @@ class Config:
     ) -> Crypts:
         """
         Initialize the encryption instance using the parameters.
+
+        :returns: Instance of the encryption instance created.
         """
 
         if self.__crypts is not None:

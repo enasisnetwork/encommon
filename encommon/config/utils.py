@@ -80,6 +80,7 @@ def config_paths(
        This function simply wraps one from utils subpackage.
 
     :param paths: Complete or relative paths for processing.
+    :param replace: Optional values to replace in the path.
     :returns: New resolved filesystem path object instances.
     """
 

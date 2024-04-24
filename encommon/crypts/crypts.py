@@ -157,6 +157,7 @@ def crypt_clean(
     Return the parsed and normalized encrypted string value.
 
     :param value: String value that will returned decrypted.
+    :returns: Parsed and normalized encrypted string value.
     """
 
     return re_sub(r'[\n\s]', SEMPTY, value)

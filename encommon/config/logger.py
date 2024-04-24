@@ -276,6 +276,7 @@ class FileFormatter(Formatter):
         Specifically overrides method for formatting exceptions.
 
         :param ei: Exception information provided by the logger.
+        :returns: String representation for the filesystem path.
         """
 
         reason = super().formatException(ei)

@@ -202,7 +202,7 @@ def test_Window_cover(
 
 
 @mark.parametrize(
-    'schedule,anchor,backward,expect',
+    'window,anchor,backward,expect',
     [('* * * * *', 0, False, (0, 60)),
      ('* * * * *', 1, False, (0, 60)),
      ('* * * * *', 0, True, (-60, 0)),
@@ -215,7 +215,7 @@ def test_Window_cover(
      ('0 * * * *', 3660, False, (3600, 7200)),
      ('0 * * * *', 3661, False, (3600, 7200))])
 def test_window_croniter(
-    schedule: str,
+    window: str,
     anchor: 'PARSABLE',
     backward: bool,
     expect: tuple[int, int],
@@ -223,22 +223,22 @@ def test_window_croniter(
     """
     Perform various tests associated with relevant routines.
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param anchor: Optionally define time anchor for window.
     :param backward: Optionally operate the window backward.
     :param expect: Expected output from the testing routine.
     """
 
-    window = window_croniter(
-        schedule, anchor, backward)
+    croniter = window_croniter(
+        window, anchor, backward)
 
-    assert window[0] == expect[0]
-    assert window[1] == expect[1]
+    assert croniter[0] == expect[0]
+    assert croniter[1] == expect[1]
 
 
 
 @mark.parametrize(
-    'schedule,anchor,backward,expect',
+    'window,anchor,backward,expect',
     [({'seconds': 60}, 0, False, (0, 60)),
      ({'seconds': 60}, 1, False, (1, 61)),
      ({'seconds': 60}, 0, True, (-60, 0)),
@@ -251,7 +251,7 @@ def test_window_croniter(
      ({'hours': 1}, 3660, False, (3660, 7260)),
      ({'hours': 1}, 3661, False, (3661, 7261))])
 def test_window_interval(
-    schedule: dict[str, int],
+    window: dict[str, int],
     anchor: 'PARSABLE',
     backward: bool,
     expect: tuple[int, int],
@@ -259,14 +259,14 @@ def test_window_interval(
     """
     Perform various tests associated with relevant routines.
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param anchor: Optionally define time anchor for window.
     :param backward: Optionally operate the window backward.
     :param expect: Expected output from the testing routine.
     """
 
-    window = window_interval(
-        schedule, anchor, backward)
+    interval = window_interval(
+        window, anchor, backward)
 
-    assert window[0] == expect[0]
-    assert window[1] == expect[1]
+    assert interval[0] == expect[0]
+    assert interval[1] == expect[1]

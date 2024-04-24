@@ -66,7 +66,7 @@ class WindowParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param start: Determine the start for scheduling window.
     :param stop: Determine the ending for scheduling window.
     :param anchor: Optionally define time anchor for window.

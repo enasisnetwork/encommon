@@ -390,6 +390,7 @@ class Windows:
 
         :param unique: Unique identifier for the related child.
         :param params: Parameters for instantiating the instance.
+        :returns: Newly constructed instance of related class.
         """
 
         windows = self.params.windows

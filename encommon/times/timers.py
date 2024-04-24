@@ -319,6 +319,7 @@ class Timers:
 
         :param unique: Unique identifier for the related child.
         :param params: Parameters for instantiating the instance.
+        :returns: Newly constructed instance of related class.
         """
 
         timers = self.params.timers

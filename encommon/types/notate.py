@@ -208,7 +208,6 @@ def _setpath(
     :param path: Path to the value within the source object.
     :param value: Value which will be defined at noted point.
     :param delim: Override default delimiter between parts.
-    :returns: Original provided source containing the value.
     """
 
 
@@ -285,7 +284,6 @@ def _setvalue(
     :param path: Path to the value within the source object.
     :param value: Value which will be defined at noted point.
     :param delim: Override default delimiter between parts.
-    :returns: Original provided source containing the value.
     """
 
 
