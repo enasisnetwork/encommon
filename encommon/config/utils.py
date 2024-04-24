@@ -9,7 +9,6 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 from typing import Any
-from typing import Literal
 from typing import Optional
 from typing import TYPE_CHECKING
 
@@ -25,15 +24,6 @@ from ..utils import resolve_paths
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
     from ..utils.common import REPLACE
-
-
-
-LOGLEVELS = Literal[
-    'critical',
-    'debug',
-    'error',
-    'info',
-    'warning']
 
 
 

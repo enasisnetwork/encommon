@@ -16,10 +16,10 @@ from .common import PARSABLE
 from .common import STAMP_HUMAN
 from .common import STAMP_SIMPLE
 from .common import STAMP_SUBSEC
-from .common import findtz
-from .common import strftime
 from .parse import parse_time
 from .parse import since_time
+from .utils import findtz
+from .utils import strftime
 
 
 

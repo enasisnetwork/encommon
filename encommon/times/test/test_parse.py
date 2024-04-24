@@ -11,11 +11,11 @@ from datetime import timedelta
 
 from pytest import mark
 
-from ..common import utcdatetime
 from ..parse import parse_time
 from ..parse import shift_time
 from ..parse import since_time
 from ..parse import string_time
+from ..utils import utcdatetime
 
 
 

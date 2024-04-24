@@ -13,9 +13,9 @@ from pytest import raises
 
 from ..common import STAMP_SIMPLE
 from ..common import UNIXEPOCH
-from ..common import findtz
-from ..common import strptime
-from ..common import utcdatetime
+from ..utils import findtz
+from ..utils import strptime
+from ..utils import utcdatetime
 
 
 

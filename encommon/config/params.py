@@ -11,7 +11,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
-from .common import LOGLEVELS
+from .logger import LOGLEVELS
 from ..crypts import CryptsParams
 
 

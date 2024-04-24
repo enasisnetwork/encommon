@@ -13,9 +13,9 @@ from typing import Any
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from .common import config_load
-from .common import config_path
-from .common import config_paths
+from .utils import config_load
+from .utils import config_path
+from .utils import config_paths
 from ..types import merge_dicts
 
 if TYPE_CHECKING:

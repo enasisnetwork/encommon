@@ -9,8 +9,8 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 
-from ..common import read_text
-from ..common import save_text
+from ..files import read_text
+from ..files import save_text
 
 
 

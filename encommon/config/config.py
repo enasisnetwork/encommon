@@ -13,11 +13,11 @@ from typing import Callable
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from .common import config_paths
 from .files import ConfigFiles
 from .logger import Logger
 from .params import Params
 from .paths import ConfigPaths
+from .utils import config_paths
 from ..crypts import Crypts
 from ..types import merge_dicts
 from ..types import setate

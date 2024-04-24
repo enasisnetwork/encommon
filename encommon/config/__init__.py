@@ -7,9 +7,6 @@ is permitted, for more information consult the project license file.
 
 
 
-from .common import config_load
-from .common import config_path
-from .common import config_paths
 from .config import Config
 from .files import ConfigFile
 from .files import ConfigFiles
@@ -20,6 +17,9 @@ from .params import LoggerParams
 from .params import Params
 from .paths import ConfigPath
 from .paths import ConfigPaths
+from .utils import config_load
+from .utils import config_path
+from .utils import config_paths
 
 
 

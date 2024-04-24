@@ -15,8 +15,8 @@ from typing import Callable
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from . import read_text
-from . import save_text
+from .files import read_text
+from .files import save_text
 
 if TYPE_CHECKING:
     from .common import REPLACE

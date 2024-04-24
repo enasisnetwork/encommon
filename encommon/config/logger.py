@@ -26,8 +26,7 @@ from typing import Literal
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from .common import LOGLEVELS
-from .common import config_path
+from .utils import config_path
 from ..times import Times
 from ..types import Empty
 from ..types.strings import COMMAD
@@ -44,6 +43,13 @@ if TYPE_CHECKING:
 
 LOGR_FILE = 'encommon.logger.file'
 LOGR_STDO = 'encommon.logger.stdo'
+
+LOGLEVELS = Literal[
+    'critical',
+    'debug',
+    'error',
+    'info',
+    'warning']
 
 LOGSEVERS = {
     'critical': int(CRITICAL),
