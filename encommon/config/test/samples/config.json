@@ -12,7 +12,9 @@
   },
   "encrypts": {
     "phrases": {
-      "default": "phrase"
+      "default": {
+        "phrase": "phrase"
+      }
     }
   }
 }

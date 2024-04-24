@@ -11,6 +11,19 @@ from pydantic import BaseModel
 
 
 
+class CryptParams(BaseModel, extra='forbid'):
+    """
+    Process and validate the core configuration parameters.
+
+    :param phrase: Passphrases that are used in operations.
+    :param data: Keyword arguments passed to Pydantic model.
+        Parameter is picked up by autodoc, please ignore.
+    """
+
+    phrase: str
+
+
+
 class CryptsParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
@@ -20,4 +33,4 @@ class CryptsParams(BaseModel, extra='forbid'):
         Parameter is picked up by autodoc, please ignore.
     """
 
-    phrases: dict[str, str]
+    phrases: dict[str, CryptParams]

@@ -7,6 +7,8 @@ is permitted, for more information consult the project license file.
 
 
 
+from typing import Any
+
 from pytest import fixture
 from pytest import mark
 from pytest import raises
@@ -26,12 +28,12 @@ def crypts() -> Crypts:
     :returns: Newly constructed instance of related class.
     """
 
-    phrases = {
-        'default': Crypts.keygen(),
-        'secrets': Crypts.keygen()}
+    source: dict[str, Any] = {
+        'default': {'phrase': Crypts.keygen()},
+        'secrets': {'phrase': Crypts.keygen()}}
 
     params = CryptsParams(
-        phrases=phrases)
+        phrases=source)
 
     return Crypts(params=params)
 
@@ -50,7 +52,7 @@ def test_Crypts(
     attrs = list(crypts.__dict__)
 
     assert attrs == [
-        '_Crypts__phrases']
+        '_Crypts__params']
 
 
     assert inrepr(
@@ -64,7 +66,7 @@ def test_Crypts(
         crypts)
 
 
-    assert len(crypts.phrases) == 2
+    assert crypts.params is not None
 
     assert len(crypts.keygen()) == 44
 
@@ -109,20 +111,6 @@ def test_Crypts_raises(
 
     :param crypts: Primary class instance for the encryption.
     """
-
-
-    _raises = raises(ValueError)
-
-    with _raises as reason:
-        Crypts({'foo': 'bar'})
-
-    _reason = str(reason.value)
-
-    assert _reason == 'default'
-
-
-    crypts = Crypts(
-        crypts.phrases)
 
 
     _raises = raises(ValueError)

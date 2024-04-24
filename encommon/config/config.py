@@ -242,6 +242,8 @@ class Config:
         encrypts = (
             self.params.encrypts)
 
+        assert encrypts is not None
+
         self.__crypts = (
             Crypts(params=encrypts))
 

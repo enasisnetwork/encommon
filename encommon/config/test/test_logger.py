@@ -142,6 +142,7 @@ def test_Logger(
     attrs = list(logger.__dict__)
 
     assert attrs == [
+        '_Logger__params',
         '_Logger__stdo_level',
         '_Logger__file_level',
         '_Logger__file_path',
@@ -160,6 +161,8 @@ def test_Logger(
         'logger.Logger object',
         logger)
 
+
+    assert logger.params is not None
 
     assert logger.stdo_level == 'info'
 
