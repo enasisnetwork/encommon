@@ -348,9 +348,9 @@ class Times:
         self,
     ) -> float:
         """
-        Determine the time in seconds that occured since instance.
+        Determine the time in seconds occurring since instance.
 
-        :returns: Time in seconds that occured between the values.
+        :returns: Time in seconds occurring since the instance.
         """
 
         return since_time(self.__source)
@@ -361,9 +361,9 @@ class Times:
         self,
     ) -> float:
         """
-        Determine the time in seconds that occured since instance.
+        Determine the time in seconds occurring since instance.
 
-        :returns: Time in seconds that occured between the values.
+        :returns: Time in seconds occurring since the instance.
         """
 
         return since_time(self.__source)
