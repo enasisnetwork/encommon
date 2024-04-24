@@ -106,12 +106,42 @@ Advanced Time Structures
    :show-inheritance:
    :noindex:
 
+.. autoclass:: encommon.times.Timer
+   :members:
+   :show-inheritance:
+   :noindex:
+
+.. autopydantic_model:: encommon.times.TimerParams
+   :members:
+   :show-inheritance:
+   :noindex:
+
 .. autoclass:: encommon.times.Timers
    :members:
    :show-inheritance:
    :noindex:
 
+.. autopydantic_model:: encommon.times.TimersParams
+   :members:
+   :show-inheritance:
+   :noindex:
+
 .. autoclass:: encommon.times.Window
+   :members:
+   :show-inheritance:
+   :noindex:
+
+.. autopydantic_model:: encommon.times.WindowParams
+   :members:
+   :show-inheritance:
+   :noindex:
+
+.. autoclass:: encommon.times.Windows
+   :members:
+   :show-inheritance:
+   :noindex:
+
+.. autopydantic_model:: encommon.times.WindowsParams
    :members:
    :show-inheritance:
    :noindex:
