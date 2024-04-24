@@ -27,7 +27,6 @@ from .windows import Windows
 
 __all__ = [
     'Duration',
-    'findtz',
     'Timer',
     'TimerParams',
     'Timers',
@@ -37,6 +36,7 @@ __all__ = [
     'WindowParams',
     'Windows',
     'WindowsParams',
+    'findtz',
     'parse_time',
     'shift_time',
     'since_time',

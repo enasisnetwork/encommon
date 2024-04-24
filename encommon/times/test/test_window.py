@@ -95,7 +95,7 @@ def test_Window(
     assert window.latest == (
         '1970-01-01T00:09:50Z')
 
-    assert window.walked is False
+    assert not window.walked
 
 
 
@@ -110,36 +110,6 @@ def test_Window_cover(
 
 
     window = Window(
-        window='* * * * *',
-        start=window.start,
-        stop=window.stop)
-
-    assert window.last == (
-        '1970-01-01T00:04:00Z')
-
-    assert window.next == (
-        '1970-01-01T00:05:00Z')
-
-    assert window.walked is False
-
-    for count in range(100):
-        if window.walked:
-            break
-        assert window.ready()
-
-    assert count == 5
-    assert not window.ready()
-
-    assert window.last == (
-        '1970-01-01T00:09:00Z')
-
-    assert window.next == (
-        '1970-01-01T00:10:00Z')
-
-    assert window.walked is True
-
-
-    window = Window(
         window={'minutes': 1},
         start=window.start,
         stop=window.stop)
@@ -150,7 +120,7 @@ def test_Window_cover(
     assert window.next == (
         '1970-01-01T00:05:00Z')
 
-    assert window.walked is False
+    assert not window.walked
 
     for count in range(100):
         if window.walked:
@@ -166,7 +136,37 @@ def test_Window_cover(
     assert window.next == (
         '1970-01-01T00:10:00Z')
 
-    assert window.walked is True
+    assert window.walked
+
+
+    window = Window(
+        window='* * * * *',
+        start=window.start,
+        stop=window.stop)
+
+    assert window.last == (
+        '1970-01-01T00:04:00Z')
+
+    assert window.next == (
+        '1970-01-01T00:05:00Z')
+
+    assert not window.walked
+
+    for count in range(100):
+        if window.walked:
+            break
+        assert window.ready()
+
+    assert count == 5
+    assert not window.ready()
+
+    assert window.last == (
+        '1970-01-01T00:09:00Z')
+
+    assert window.next == (
+        '1970-01-01T00:10:00Z')
+
+    assert window.walked
 
 
     anchor = Times('-0s@s')
@@ -185,7 +185,7 @@ def test_Window_cover(
         start=anchor.shift('-5s'),
         stop=anchor.shift('+5s'))
 
-    assert window.walked is False
+    assert not window.walked
 
     for count in range(100):
         if window.walked:
@@ -197,7 +197,7 @@ def test_Window_cover(
     assert 16 <= count <= 32
     assert not window.ready()
 
-    assert window.walked is True
+    assert window.walked
 
 
 
