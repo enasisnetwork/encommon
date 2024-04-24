@@ -13,12 +13,12 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from .common import PARSABLE
-from .timer import Timer
 from .times import Times
+from .window import Window
 
 if TYPE_CHECKING:
-    from .params import TimerParams
-    from .params import TimersParams
+    from .params import WindowParams
+    from .params import WindowsParams
 
 
 
@@ -28,6 +28,8 @@ CACHE_TABLE = (
      {0} (
       "group" text not null,
       "unique" text not null,
+      "last" text not null,
+      "next" text not null,
       "update" text not null,
      primary key (
       "group", "unique"));
@@ -35,41 +37,48 @@ CACHE_TABLE = (
 
 
 
-TIMERS = dict[str, Timer]
+WINDOWS = dict[str, Window]
 
 
 
-class Timers:
+class Windows:
     """
-    Track timers on unique key determining when to proceed.
+    Track windows on unique key determining when to proceed.
 
     .. warning::
        This class will use an in-memory database for cache,
        unless a cache file is explicity defined.
 
     :param params: Parameters for instantiating the instance.
+    :param start: Determine the start for scheduling window.
+    :param stop: Determine the ending for scheduling window.
     :param file: Optional path to file for SQLite database,
         allowing for state retention between the executions.
     :param table: Optional override for default table name.
     :param group: Optional override for default group name.
     """
 
-    __params: 'TimersParams'
+    __params: 'WindowsParams'
+
+    __start: Times
+    __stop: Times
 
     __sqlite: Connection
     __file: str
     __table: str
     __group: str
 
-    __timers: TIMERS
+    __windows: WINDOWS
 
 
-    def __init__(
+    def __init__(  # noqa: CFQ002
         self,
-        params: 'TimersParams',
+        params: 'WindowsParams',
         *,
+        start: PARSABLE = 'now',
+        stop: PARSABLE = '3000-01-01',
         file: str = ':memory:',
-        table: str = 'timers',
+        table: str = 'windows',
         group: str = 'default',
     ) -> None:
         """
@@ -77,6 +86,15 @@ class Timers:
         """
 
         self.__params = params
+
+
+        start = Times(start)
+        stop = Times(stop)
+
+        assert stop > start
+
+        self.__start = start
+        self.__stop = stop
 
 
         sqlite = SQLite(file)
@@ -93,7 +111,7 @@ class Timers:
         self.__group = group
 
 
-        self.__timers = {}
+        self.__windows = {}
 
         self.load_children()
 
@@ -101,7 +119,7 @@ class Timers:
     @property
     def params(
         self,
-    ) -> 'TimersParams':
+    ) -> 'WindowsParams':
         """
         Return the Pydantic model containing the configuration.
 
@@ -109,6 +127,32 @@ class Timers:
         """
 
         return self.__params
+
+
+    @property
+    def start(
+        self,
+    ) -> Times:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return Times(self.__start)
+
+
+    @property
+    def stop(
+        self,
+    ) -> Times:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return Times(self.__stop)
 
 
     @property
@@ -166,14 +210,14 @@ class Timers:
     @property
     def children(
         self,
-    ) -> dict[str, Timer]:
+    ) -> dict[str, Window]:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return dict(self.__timers)
+        return dict(self.__windows)
 
 
     def load_children(
@@ -184,14 +228,17 @@ class Timers:
         """
 
         params = self.__params
-        timers = self.__timers
+        windows = self.__windows
+
+        start = self.__start
+        stop = self.__stop
 
         sqlite = self.__sqlite
         table = self.__table
         group = self.__group
 
 
-        config = params.timers
+        config = params.windows
 
 
         cursor = sqlite.execute(
@@ -206,37 +253,56 @@ class Timers:
         for record in records:
 
             unique = record[1]
-            update = record[2]
+            next = record[3]
 
             if unique not in config:
                 continue
 
             _config = config[unique]
 
-            _config.start = update
+            _config.start = next
+            _config.anchor = next
 
 
         items = config.items()
 
         for key, value in items:
 
-            if key in timers:
+            if key in windows:
 
-                timer = timers[key]
+                window = windows[key]
 
-                timer.update(
+                window.update(
                     value.start)
 
                 continue
 
-            timer = Timer(
-                value.timer,
-                start=value.start)
+            _start = (
+                value.start or start)
 
-            timers[key] = timer
+            _stop = (
+                value.stop or stop)
+
+            if _start < start:
+                _start = start
+
+            if _stop > stop:
+                _stop = stop
+
+            _anchor = (
+                value.anchor or _start)
+
+            window = Window(
+                value.window,
+                start=_start,
+                stop=_stop,
+                anchor=_anchor,
+                delay=value.delay)
+
+            windows[key] = window
 
 
-        self.__timers = timers
+        self.__windows = windows
 
 
     def save_children(
@@ -246,7 +312,7 @@ class Timers:
         Save the child caches from the attribute into database.
         """
 
-        timers = self.__timers
+        windows = self.__windows
 
         sqlite = self.__sqlite
         table = self.__table
@@ -256,16 +322,20 @@ class Timers:
         insert = tuple[
             str,  # group
             str,  # unique
+            str,  # last
+            str,  # next
             str]  # update
 
         inserts: list[insert] = []
 
-        items = timers.items()
+        items = windows.items()
 
-        for unique, timer in items:
+        for unique, window in items:
 
             append = (
                 group, unique,
+                window.last.subsec,
+                window.next.subsec,
                 Times('now').subsec)
 
             inserts.append(append)
@@ -275,8 +345,9 @@ class Timers:
             f"""
             replace into {table}
             ("group", "unique",
+             "next", "last",
              "update")
-            values (?, ?, ?)
+            values (?, ?, ?, ?, ?)
             """)  # noqa: LIT003
 
         sqlite.executemany(
@@ -299,36 +370,36 @@ class Timers:
         :returns: Boolean indicating whether enough time passed.
         """
 
-        timers = self.__timers
+        windows = self.__windows
 
-        if unique not in timers:
+        if unique not in windows:
             raise ValueError('unique')
 
-        timer = timers[unique]
+        window = windows[unique]
 
-        return timer.ready(update)
+        return window.ready(update)
 
 
     def create(
         self,
         unique: str,
-        params: 'TimerParams',
-    ) -> Timer:
+        params: 'WindowParams',
+    ) -> Window:
         """
-        Create a new timer using the provided input parameters.
+        Create a new window using the provided input parameters.
 
         :param unique: Unique identifier for the related child.
         :param params: Parameters for instantiating the instance.
         """
 
-        timers = self.params.timers
+        windows = self.params.windows
 
         self.save_children()
 
-        if unique in timers:
+        if unique in windows:
             raise ValueError('unique')
 
-        timers[unique] = params
+        windows[unique] = params
 
         self.load_children()
 
@@ -341,20 +412,20 @@ class Timers:
         value: Optional[PARSABLE] = None,
     ) -> None:
         """
-        Update the timer from the provided parasable time value.
+        Update the window from the provided parasable time value.
 
         :param unique: Unique identifier for the related child.
-        :param value: Override the time updated for timer value.
+        :param value: Override the time updated for window value.
         """
 
-        timers = self.__timers
+        windows = self.__windows
 
-        if unique not in timers:
+        if unique not in windows:
             raise ValueError('unique')
 
-        timer = timers[unique]
+        window = windows[unique]
 
-        return timer.update(value)
+        return window.update(value)
 
 
     def delete(
@@ -362,14 +433,14 @@ class Timers:
         unique: str,
     ) -> None:
         """
-        Delete the timer from the internal dictionary reference.
+        Delete the window from the internal dictionary reference.
 
         :param unique: Unique identifier for the related child.
         """
 
-        timers = self.__timers
+        windows = self.__windows
 
-        if unique not in timers:
+        if unique not in windows:
             raise ValueError('unique')
 
-        del timers[unique]
+        del windows[unique]

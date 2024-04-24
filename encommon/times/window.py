@@ -14,7 +14,6 @@ from typing import Optional
 
 from croniter import croniter
 
-from .common import NUMERIC
 from .common import PARSABLE
 from .common import SCHEDULE
 from .parse import parse_time
@@ -32,43 +31,42 @@ class Window:
     Example
     -------
     >>> window = Window('* * * * *', '-4m@m')
-    >>> [window.walk() for _ in range(6)]
-    [True, True, True, True, True, False]
+    >>> [window.ready() for _ in range(5)]
+    [True, True, True, True, False]
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param start: Determine the start for scheduling window.
     :param stop: Determine the ending for scheduling window.
     :param anchor: Optionally define time anchor for window.
     :param delay: Period of time schedulng will be delayed.
     """
 
-    __schedule: SCHEDULE
+    __window: SCHEDULE
     __start: Times
     __stop: Times
     __anchor: Times
     __delay: float
 
-    __wilast: Times
-    __winext: Times
-    __walked: bool
+    __wlast: Times
+    __wnext: Times
 
 
     def __init__(
         self,
-        schedule: SCHEDULE,
-        start: PARSABLE = 'now',
-        stop: PARSABLE = '3000-01-01',
+        window: SCHEDULE,
+        start: Optional[PARSABLE] = None,
+        stop: Optional[PARSABLE] = None,
+        *,
         anchor: Optional[PARSABLE] = None,
-        delay: NUMERIC = 0,
+        delay: float = 0,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        if anchor is None:
-            anchor = start
+        anchor = anchor or start
 
-        schedule = copy(schedule)
+        window = copy(window)
         start = Times(start)
         stop = Times(stop)
         anchor = Times(anchor)
@@ -77,35 +75,31 @@ class Window:
         assert stop > start
 
 
-        self.__schedule = schedule
+        self.__window = window
         self.__start = start
         self.__stop = stop
         self.__anchor = anchor
         self.__delay = delay
 
 
-        wilast, winext = (
-            self.__wifunc(anchor))
+        wlast, wnext = (
+            self.__helper(anchor))
 
-        while winext > start:
-            wilast, winext = (
-                self.__wifunc(wilast, True))
+        while wnext > start:
+            wlast, wnext = (
+                self.__helper(wlast, True))
 
-        while winext < start:
-            wilast, winext = (
-                self.__wifunc(winext, False))
+        while wnext < start:
+            wlast, wnext = (
+                self.__helper(wnext, False))
 
-        self.__wilast = wilast
-        self.__winext = winext
+        self.__wlast = wlast
+        self.__wnext = wnext
 
-
-        latest = stop - delay
-
-        self.__walked = winext > latest
 
 
     @property
-    def schedule(
+    def window(
         self,
     ) -> SCHEDULE:
         """
@@ -114,7 +108,7 @@ class Window:
         :returns: Value for the attribute from class instance.
         """
 
-        return copy(self.__schedule)
+        return copy(self.__window)
 
 
     @property
@@ -166,7 +160,7 @@ class Window:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__delay
+        return float(self.__delay)
 
 
     @property
@@ -179,7 +173,7 @@ class Window:
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__wilast)
+        return Times(self.__wlast)
 
 
     @property
@@ -192,7 +186,31 @@ class Window:
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__winext)
+        return Times(self.__wnext)
+
+
+    @property
+    def soonest(
+        self,
+    ) -> Times:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+        return Times(Times() - self.delay)
+
+
+    @property
+    def latest(
+        self,
+    ) -> Times:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+        return Times(self.stop - self.delay)
 
 
     @property
@@ -205,10 +223,10 @@ class Window:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__walked
+        return self.next >= self.latest
 
 
-    def __wifunc(
+    def __helper(
         self,
         anchor: PARSABLE,
         backward: bool = False,
@@ -221,65 +239,74 @@ class Window:
         :returns: Next and previous windows for schedule window.
         """
 
-        if isinstance(self.__schedule, str):
+        window = self.__window
+
+        if isinstance(window, str):
             return window_croniter(
-                self.__schedule,
-                anchor, backward)
+                window, anchor, backward)
 
-        if isinstance(self.__schedule, dict):
+        if isinstance(window, dict):
             return window_interval(
-                self.__schedule,
-                anchor, backward)
+                window, anchor, backward)
+
+        raise NotImplementedError
 
 
-    def walk(  # noqa: CFQ004
+    def ready(  # noqa: CFQ004
         self,
         update: bool = True,
     ) -> bool:
         """
         Walk the internal time using current position in schedule.
 
-        :param update: Update internal scheduling for operation.
+        :param update: Determines whether or not time is updated.
         :returns: Boolean indicating outcome from the operation.
         """
 
-        stop = self.__stop
-        delay = self.__delay
-        winext = self.__winext
-        walked = self.__walked
+        wnext = self.__wnext
+
+        walked = self.walked
+        soonest = self.soonest
+
 
         if walked is True:
             return False
 
-
-        _wilast, _winext = (
-            self.__wifunc(winext))
-
-        soonest = Times() - delay
-        latest = stop - delay
-
-
-        if update is False:
-
-            if _winext > latest:
-                return not walked
-
-            if winext < soonest:
-                return True
-
-
-        elif _winext > latest:
-            self.__wilast = _wilast
-            self.__walked = True
+        if wnext > soonest:
             return False
 
-        elif self.__winext < soonest:
-            self.__wilast = _wilast
-            self.__winext = _winext
-            return True
+
+        wlast, wnext = (
+            self.__helper(wnext))
+
+        if update is True:
+            self.__wlast = wlast
+            self.__wnext = wnext
+
+        if wnext > soonest:
+            return False
+
+        return True
 
 
-        return False
+    def update(
+        self,
+        value: Optional[PARSABLE] = None,
+    ) -> None:
+        """
+        Update the window from the provided parasable time value.
+
+        :param value: Override the time updated for window value.
+        """
+
+        value = Times(
+            value or 'now')
+
+        wlast, wnext = (
+            self.__helper(value))
+
+        self.__wlast = wlast
+        self.__wnext = wnext
 
 
 
@@ -289,9 +316,9 @@ def window_croniter(  # noqa: CFQ004
     backward: bool = False,
 ) -> tuple[Times, Times]:
     """
-    Determine next and previous windows for cronjob schedule.
+    Determine next and previous times for cronjob schedule.
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param anchor: Optionally define time anchor for window.
     :param backward: Optionally operate the window backward.
     :returns: Next and previous windows for schedule window.
@@ -300,37 +327,46 @@ def window_croniter(  # noqa: CFQ004
     anchor = parse_time(anchor)
 
 
-    def _winext(
+    def _wnext(
         source: datetime,
     ) -> datetime:
-        return parse_time(
+
+        source = (
             _operator(source)
             .get_next())
 
+        return parse_time(source)
 
-    def _wilast(
+
+    def _wlast(
         source: datetime,
     ) -> datetime:
-        return parse_time(
+
+        source = (
             _operator(source)
             .get_prev())
+
+        return parse_time(source)
 
 
     def _operator(
         source: datetime,
     ) -> croniter:
-        return croniter(schedule, source)
+        return croniter(
+            schedule, source)
 
 
-    winext = _winext(anchor)
+    wnext = _wnext(anchor)
 
     if backward is True:
-        winext = _wilast(winext)
+        wnext = _wlast(wnext)
 
-    wilast = _wilast(winext)
+    wlast = _wlast(wnext)
 
 
-    return (Times(wilast), Times(winext))
+    return (
+        Times(wlast),
+        Times(wnext))
 
 
 
@@ -340,9 +376,9 @@ def window_interval(
     backward: bool = False,
 ) -> tuple[Times, Times]:
     """
-    Determine next and previous windows for interval schedule.
+    Determine next and previous times for interval schedule.
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param anchor: Optionally define time anchor for window.
     :param backward: Optionally operate the window backward.
     :returns: Next and previous windows for schedule window.
@@ -358,11 +394,14 @@ def window_interval(
 
 
     if backward is True:
-        winext = anpoch
-        wilast = anpoch - seconds
+        wnext = anpoch
+        wlast = anpoch - seconds
+
     else:
-        winext = anpoch + seconds
-        wilast = anpoch
+        wnext = anpoch + seconds
+        wlast = anpoch
 
 
-    return (Times(wilast), Times(winext))
+    return (
+        Times(wlast),
+        Times(wnext))

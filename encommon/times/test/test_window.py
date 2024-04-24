@@ -7,11 +7,13 @@ is permitted, for more information consult the project license file.
 
 
 
+from time import sleep
 from typing import TYPE_CHECKING
 
 from pytest import fixture
 from pytest import mark
 
+from ..times import Times
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
@@ -32,8 +34,10 @@ def window() -> Window:
     """
 
     return Window(
-        schedule='* * * * *',
-        start=330, stop=630)
+        window='* * * * *',
+        start=300,
+        stop=600,
+        delay=10)
 
 
 
@@ -50,14 +54,13 @@ def test_Window(
     attrs = list(window.__dict__)
 
     assert attrs == [
-        '_Window__schedule',
+        '_Window__window',
         '_Window__start',
         '_Window__stop',
         '_Window__anchor',
         '_Window__delay',
-        '_Window__wilast',
-        '_Window__winext',
-        '_Window__walked']
+        '_Window__wlast',
+        '_Window__wnext']
 
 
     assert inrepr(
@@ -71,19 +74,26 @@ def test_Window(
         window)
 
 
-    assert window.schedule == '* * * * *'
+    assert window.window == '* * * * *'
 
-    assert window.start == '1970-01-01T00:05:30Z'
+    assert window.start == (
+        '1970-01-01T00:05:00Z')
 
-    assert window.stop == '1970-01-01T00:10:30Z'
+    assert window.stop == (
+        '1970-01-01T00:10:00Z')
 
     assert window.anchor == window.start
 
-    assert window.delay == 0.0
+    assert str(window.delay) == '10.0'
 
-    assert window.last == '1970-01-01T00:05:00Z'
+    assert window.last == (
+        '1970-01-01T00:04:00Z')
 
-    assert window.next == '1970-01-01T00:06:00Z'
+    assert window.next == (
+        '1970-01-01T00:05:00Z')
+
+    assert window.latest == (
+        '1970-01-01T00:09:50Z')
 
     assert window.walked is False
 
@@ -100,54 +110,94 @@ def test_Window_cover(
 
 
     window = Window(
-        schedule='* * * * *',
+        window='* * * * *',
         start=window.start,
         stop=window.stop)
 
-    assert window.last == '1970-01-01T00:05:00Z'
-    assert window.next == '1970-01-01T00:06:00Z'
+    assert window.last == (
+        '1970-01-01T00:04:00Z')
+
+    assert window.next == (
+        '1970-01-01T00:05:00Z')
+
     assert window.walked is False
 
     for count in range(100):
-        if window.walk() is False:
+        if window.walked:
             break
-        assert window.walk(False)
-
-    assert count == 4
-    assert not window.walk()
-
-    assert window.last == '1970-01-01T00:10:00Z'
-    assert window.next == '1970-01-01T00:10:00Z'
-    assert window.walked is True
-
-
-    window = Window(
-        schedule={'minutes': 1},
-        start=window.start,
-        stop=window.stop)
-
-    assert window.last == '1970-01-01T00:04:30Z'
-    assert window.next == '1970-01-01T00:05:30Z'
-    assert window.walked is False
-
-    for count in range(100):
-        if window.walk() is False:
-            break
-        assert window.walk(False)
+        assert window.ready()
 
     assert count == 5
-    assert not window.walk()
+    assert not window.ready()
 
-    assert window.last == '1970-01-01T00:10:30Z'
-    assert window.next == '1970-01-01T00:10:30Z'
+    assert window.last == (
+        '1970-01-01T00:09:00Z')
+
+    assert window.next == (
+        '1970-01-01T00:10:00Z')
+
     assert window.walked is True
 
 
     window = Window(
-        schedule='* * * * *',
-        start='+5m', stop='+10m')
+        window={'minutes': 1},
+        start=window.start,
+        stop=window.stop)
 
-    assert not window.walk(False)
+    assert window.last == (
+        '1970-01-01T00:04:00Z')
+
+    assert window.next == (
+        '1970-01-01T00:05:00Z')
+
+    assert window.walked is False
+
+    for count in range(100):
+        if window.walked:
+            break
+        assert window.ready()
+
+    assert count == 5
+    assert not window.ready()
+
+    assert window.last == (
+        '1970-01-01T00:09:00Z')
+
+    assert window.next == (
+        '1970-01-01T00:10:00Z')
+
+    assert window.walked is True
+
+
+    anchor = Times('-0s@s')
+
+
+    window = Window(
+        window='* * * * *',
+        start=anchor.shift('+5m'),
+        stop=anchor.shift('+10m'))
+
+    assert not window.ready(False)
+
+
+    window = Window(
+        window={'seconds': 1},
+        start=anchor.shift('-5s'),
+        stop=anchor.shift('+5s'))
+
+    assert window.walked is False
+
+    for count in range(100):
+        if window.walked:
+            break
+        if window.ready():
+            continue
+        sleep(0.25)
+
+    assert 16 <= count <= 32
+    assert not window.ready()
+
+    assert window.walked is True
 
 
 
