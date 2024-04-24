@@ -35,6 +35,16 @@ class Config:
        Configuration loaded from files is validated with the
        Pydantic model :class:`encommon.config.Params`.
 
+    .. testsetup::
+       >>> from pathlib import Path
+       >>> path = str(getfixture('tmpdir'))
+
+    Example
+    -------
+    >>> config = Config()
+    >>> config.config
+    {'enconfig': None, 'enlogger': None, 'encrypts': None}
+
     :param files: Complete or relative path to config files.
     :param paths: Complete or relative path to config paths.
     :param cargs: Configuration arguments in dictionary form,

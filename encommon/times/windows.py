@@ -49,6 +49,18 @@ class Windows:
        This class will use an in-memory database for cache,
        unless a cache file is explicity defined.
 
+    .. testsetup::
+       >>> from .params import WindowParams
+       >>> from .params import WindowsParams
+
+    Example
+    -------
+    >>> source = {'one': WindowParams(window=1)}
+    >>> params = WindowsParams(windows=source)
+    >>> windows = Windows(params, '-2s', 'now')
+    >>> [windows.ready('one') for x in range(3)]
+    [True, True, False]
+
     :param params: Parameters for instantiating the instance.
     :param start: Determine the start for scheduling window.
     :param stop: Determine the ending for scheduling window.
@@ -74,9 +86,9 @@ class Windows:
     def __init__(  # noqa: CFQ002
         self,
         params: 'WindowsParams',
-        *,
         start: PARSABLE = 'now',
         stop: PARSABLE = '3000-01-01',
+        *,
         file: str = ':memory:',
         table: str = 'windows',
         group: str = 'default',

@@ -91,10 +91,17 @@ class WindowParams(BaseModel, extra='forbid'):
         Initialize instance for class using provided parameters.
         """
 
+        window = data.get('window')
         start = data.get('start')
         stop = data.get('stop')
         anchor = data.get('anchor')
         delay = data.get('delay')
+
+
+        numeric = (int, float)
+
+        if isinstance(window, numeric):
+            window = {'seconds': window}
 
 
         if start is not None:
@@ -106,6 +113,9 @@ class WindowParams(BaseModel, extra='forbid'):
         if anchor is not None:
             anchor = Times(stop)
 
+
+        if window is not None:
+            data['window'] = window
 
         if start is not None:
             data['start'] = start.subsec

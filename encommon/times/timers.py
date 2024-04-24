@@ -47,6 +47,22 @@ class Timers:
        This class will use an in-memory database for cache,
        unless a cache file is explicity defined.
 
+    .. testsetup::
+       >>> from .params import TimerParams
+       >>> from .params import TimersParams
+       >>> from time import sleep
+
+    Example
+    -------
+    >>> source = {'one': TimerParams(timer=1)}
+    >>> params = TimersParams(timers=source)
+    >>> timers = Timers(params)
+    >>> timers.ready('one')
+    False
+    >>> sleep(1)
+    >>> timers.ready('one')
+    True
+
     :param params: Parameters for instantiating the instance.
     :param file: Optional path to file for SQLite database,
         allowing for state retention between the executions.

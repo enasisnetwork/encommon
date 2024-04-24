@@ -148,6 +148,7 @@ Advanced Time Structures
 
 Datetime and Helpers
 ====================
+
 .. autofunction:: encommon.times.parse_time
    :noindex:
 

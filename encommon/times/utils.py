@@ -24,6 +24,11 @@ def findtz(
     """
     Return the located timezone object for the provided name.
 
+    Example
+    -------
+    >>> findtz('US/Central')
+    tzfile('/usr/share/zoneinfo/US/Central')
+
     :param tzname: Name of the timezone associated to source.
     :returns: Located timezone object for the provided name.
     """
@@ -126,6 +131,12 @@ def strftime(
 
     .. note::
        This function is extremely pedantic and cosmetic.
+
+    Example
+    -------
+    >>> dtime = datetime(2023, 1, 1)
+    >>> strftime(dtime, '%Y')
+    '2023'
 
     :param source: Python datetime instance containing source.
     :param format: Format for the timestamp string returned.

@@ -31,8 +31,25 @@ def test_WindowParams() -> None:
     Perform various tests associated with relevant routines.
     """
 
+
     params = WindowParams(
         window='* * * * *',
+        start='1980-01-01T00:00:00Z',
+        stop='1980-01-02T00:00:00Z',
+        anchor='1980-01-01T00:00:00Z',
+        delay=10)
+
+    assert params.start == (
+        '1980-01-01T00:00:00.000000+0000')
+
+    assert params.stop == (
+        '1980-01-02T00:00:00.000000+0000')
+
+    assert str(params.delay) == '10.0'
+
+
+    params = WindowParams(
+        window=60,
         start='1980-01-01T00:00:00Z',
         stop='1980-01-02T00:00:00Z',
         anchor='1980-01-01T00:00:00Z',
