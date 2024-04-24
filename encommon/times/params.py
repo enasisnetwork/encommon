@@ -12,6 +12,7 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+from .common import PARSABLE
 from .common import SCHEDULE
 from .times import Times
 
@@ -33,17 +34,26 @@ class TimerParams(BaseModel, extra='forbid'):
 
     def __init__(
         self,
-        **data: Any,
+        timer: int | float,
+        start: Optional[PARSABLE] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        start = data.get('start')
+        if timer is not None:
+            timer = float(timer)
 
         if start is not None:
             start = Times(start)
+
+
+        data: dict[str, Any] = {
+            'timer': timer}
+
+        if start is not None:
             data['start'] = start.subsec
+
 
         super().__init__(**data)
 
@@ -66,7 +76,7 @@ class WindowParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
 
-    :param schedule: Parameters for defining scheduled time.
+    :param window: Parameters for defining scheduled time.
     :param start: Determine the start for scheduling window.
     :param stop: Determine the ending for scheduling window.
     :param anchor: Optionally define time anchor for window.
@@ -85,16 +95,19 @@ class WindowParams(BaseModel, extra='forbid'):
 
     def __init__(
         self,
-        **data: Any,
+        window: SCHEDULE | int,
+        start: Optional[PARSABLE] = None,
+        stop: Optional[PARSABLE] = None,
+        anchor: Optional[PARSABLE] = None,
+        delay: Optional[int | float] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        start = data.get('start')
-        stop = data.get('stop')
-        anchor = data.get('anchor')
-        delay = data.get('delay')
+
+        if isinstance(window, int):
+            window = {'seconds': window}
 
 
         if start is not None:
@@ -106,6 +119,12 @@ class WindowParams(BaseModel, extra='forbid'):
         if anchor is not None:
             anchor = Times(stop)
 
+        if delay is not None:
+            delay = float(delay)
+
+
+        data: dict[str, Any] = {
+            'window': window}
 
         if start is not None:
             data['start'] = start.subsec
@@ -114,11 +133,10 @@ class WindowParams(BaseModel, extra='forbid'):
             data['stop'] = stop.subsec
 
         if anchor is not None:
-            data['anchor'] = stop.subsec
-
+            data['anchor'] = anchor.subsec
 
         if delay is not None:
-            data['delay'] = float(delay)
+            data['delay'] = delay
 
 
         super().__init__(**data)

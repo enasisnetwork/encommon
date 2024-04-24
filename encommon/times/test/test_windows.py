@@ -32,7 +32,7 @@ def windows(
     :returns: Newly constructed instance of related class.
     """
 
-    _windows: dict[str, Any] = {
+    source: dict[str, Any] = {
         'one': WindowParams(
             window='* * * * *',
             start=310,
@@ -45,7 +45,7 @@ def windows(
             delay=10)}
 
     params = WindowsParams(
-        windows=_windows)
+        windows=source)
 
     windows = Windows(
         params,

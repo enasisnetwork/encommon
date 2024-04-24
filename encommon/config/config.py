@@ -13,11 +13,11 @@ from typing import Callable
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from .common import config_paths
 from .files import ConfigFiles
 from .logger import Logger
 from .params import Params
 from .paths import ConfigPaths
+from .utils import config_paths
 from ..crypts import Crypts
 from ..types import merge_dicts
 from ..types import setate
@@ -34,6 +34,16 @@ class Config:
     .. note::
        Configuration loaded from files is validated with the
        Pydantic model :class:`encommon.config.Params`.
+
+    .. testsetup::
+       >>> from pathlib import Path
+       >>> path = str(getfixture('tmpdir'))
+
+    Example
+    -------
+    >>> config = Config()
+    >>> config.config
+    {'enconfig': None, 'enlogger': None, 'encrypts': None}
 
     :param files: Complete or relative path to config files.
     :param paths: Complete or relative path to config paths.
@@ -200,6 +210,8 @@ class Config:
     ) -> Logger:
         """
         Initialize the Python logging library using parameters.
+
+        :returns: Instance of Python logging library created.
         """
 
         if self.__logger is not None:
@@ -220,6 +232,8 @@ class Config:
     ) -> Crypts:
         """
         Initialize the encryption instance using the parameters.
+
+        :returns: Instance of the encryption instance created.
         """
 
         if self.__crypts is not None:
@@ -227,6 +241,8 @@ class Config:
 
         encrypts = (
             self.params.encrypts)
+
+        assert encrypts is not None
 
         self.__crypts = (
             Crypts(params=encrypts))

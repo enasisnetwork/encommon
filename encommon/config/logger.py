@@ -26,8 +26,7 @@ from typing import Literal
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from .common import LOGLEVELS
-from .common import config_path
+from .utils import config_path
 from ..times import Times
 from ..types import Empty
 from ..types.strings import COMMAD
@@ -44,6 +43,13 @@ if TYPE_CHECKING:
 
 LOGR_FILE = 'encommon.logger.file'
 LOGR_STDO = 'encommon.logger.stdo'
+
+LOGLEVELS = Literal[
+    'critical',
+    'debug',
+    'error',
+    'info',
+    'warning']
 
 LOGSEVERS = {
     'critical': int(CRITICAL),
@@ -270,6 +276,7 @@ class FileFormatter(Formatter):
         Specifically overrides method for formatting exceptions.
 
         :param ei: Exception information provided by the logger.
+        :returns: String representation for the filesystem path.
         """
 
         reason = super().formatException(ei)
@@ -316,6 +323,8 @@ class Logger:
     :param params: Parameters for instantiating the instance.
     """
 
+    __params: 'LoggerParams'
+
     __stdo_level: Optional[LOGLEVELS]
     __file_level: Optional[LOGLEVELS]
     __file_path: Optional[Path]
@@ -338,10 +347,19 @@ class Logger:
         Initialize instance for class using provided parameters.
         """
 
-        if params is not None:
-            stdo_level = params.stdo_level
-            file_level = params.file_level
-            file_path = params.file_path
+        from .params import LoggerParams
+
+        if params is None:
+            params = LoggerParams(
+                stdo_level=stdo_level,
+                file_level=file_level,
+                file_path=file_path)
+
+        self.__params = params
+
+        stdo_level = params.stdo_level
+        file_level = params.file_level
+        file_path = params.file_path
 
         if file_path is not None:
             file_path = config_path(file_path)
@@ -357,6 +375,19 @@ class Logger:
 
         self.__logr_stdo = logr_stdo
         self.__logr_file = logr_file
+
+
+    @property
+    def params(
+        self,
+    ) -> 'LoggerParams':
+        """
+        Return the Pydantic model containing the configuration.
+
+        :returns: Pydantic model containing the configuration.
+        """
+
+        return self.__params
 
 
     @property

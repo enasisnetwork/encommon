@@ -33,12 +33,12 @@ def timers(
     :returns: Newly constructed instance of related class.
     """
 
-    _timers: dict[str, Any] = {
+    source: dict[str, Any] = {
         'one': {'timer': 1},
         'two': {'timer': 1}}
 
     params = TimersParams(
-        timers=_timers)
+        timers=source)
 
     timers = Timers(
         params,

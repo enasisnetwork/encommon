@@ -110,7 +110,7 @@ def stats_path(
     Collect stats object for the complete or relative path.
 
     .. testsetup::
-       >>> from . import save_text
+       >>> from .files import save_text
        >>> path = Path(getfixture('tmpdir'))
        >>> file = path.joinpath('hello.txt')
        >>> save_text(file, 'Hello world!')

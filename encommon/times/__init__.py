@@ -7,7 +7,6 @@ is permitted, for more information consult the project license file.
 
 
 
-from .common import findtz
 from .duration import Duration
 from .params import TimerParams
 from .params import TimersParams
@@ -20,6 +19,7 @@ from .parse import string_time
 from .timer import Timer
 from .timers import Timers
 from .times import Times
+from .utils import findtz
 from .window import Window
 from .windows import Windows
 

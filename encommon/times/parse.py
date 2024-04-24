@@ -22,9 +22,9 @@ from .common import NUMERISH
 from .common import PARSABLE
 from .common import SNAPABLE
 from .common import STRINGNOW
-from .common import findtz
-from .common import strptime
-from .common import utcdatetime
+from .utils import findtz
+from .utils import strptime
+from .utils import utcdatetime
 
 if TYPE_CHECKING:
     from .times import Times  # noqa: F401
@@ -201,7 +201,7 @@ def since_time(
     stop: Optional[PARSABLE] = None,
 ) -> float:
     """
-    Determine the time in seconds that occured between values.
+    Determine the time in seconds occurring between values.
 
     Example
     -------
@@ -212,7 +212,7 @@ def since_time(
 
     :param start: Time in various forms that will be parsed.
     :param stop: Time in various forms that will be parsed.
-    :returns: Time in seconds that occured between the values.
+    :returns: Time in seconds occurring between the values.
     """
 
     start = parse_time(start)

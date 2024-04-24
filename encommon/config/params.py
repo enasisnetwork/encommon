@@ -7,11 +7,12 @@ is permitted, for more information consult the project license file.
 
 
 
+from pathlib import Path
 from typing import Optional
 
 from pydantic import BaseModel
 
-from .common import LOGLEVELS
+from .logger import LOGLEVELS
 from ..crypts import CryptsParams
 
 
@@ -43,6 +44,25 @@ class LoggerParams(BaseModel, extra='forbid'):
     stdo_level: Optional[LOGLEVELS] = None
     file_level: Optional[LOGLEVELS] = None
     file_path: Optional[str] = None
+
+
+    def __init__(
+        self,
+        stdo_level: Optional[LOGLEVELS] = None,
+        file_level: Optional[LOGLEVELS] = None,
+        file_path: Optional[str | Path] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        if file_path is not None:
+            file_path = str(file_path)
+
+        super().__init__(
+            stdo_level=stdo_level,
+            file_level=file_level,
+            file_path=file_path)
 
 
 

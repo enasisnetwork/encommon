@@ -7,9 +7,9 @@ is permitted, for more information consult the project license file.
 
 
 
-from ..common import config_load
-from ..common import config_path
-from ..common import config_paths
+from ..utils import config_load
+from ..utils import config_path
+from ..utils import config_paths
 from ... import PROJECT
 from ... import WORKSPACE
 

@@ -10,7 +10,6 @@ is permitted, for more information consult the project license file.
 from re import compile
 from re import match as re_match
 from re import sub as re_sub
-from typing import Optional
 from typing import TYPE_CHECKING
 
 from cryptography.fernet import Fernet
@@ -31,52 +30,49 @@ class Crypts:
     """
     Encrypt and decrypt values using passphrase dictionary.
 
+    .. testsetup::
+       >>> from .params import CryptsParams
+
     Example
     -------
     >>> phrase = Crypts.keygen()
-    >>> crypts = Crypts({'default': phrase})
+    >>> source = {'default': {'phrase': phrase}}
+    >>> params = CryptsParams(phrases=source)
+    >>> crypts = Crypts(params)
     >>> encrypt = crypts.encrypt('example')
+    >>> encrypt
+    '$ENCRYPT;1.0;default;...
     >>> crypts.decrypt(encrypt)
     'example'
 
-    :param phrases: Passphrases that are used in operations.
     :param params: Parameters for instantiating the instance.
     """
 
-    __phrases: dict[str, str]
+    __params: 'CryptsParams'
 
 
     def __init__(
         self,
-        phrases: Optional[dict[str, str]] = None,
-        params: Optional['CryptsParams'] = None,
+        params: 'CryptsParams',
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        phrases = phrases or {}
-
-        if params is not None:
-            phrases |= params.phrases
-
-        if 'default' not in phrases:
-            raise ValueError('default')
-
-        self.__phrases = dict(phrases)
+        self.__params = params
 
 
     @property
-    def phrases(
+    def params(
         self,
-    ) -> dict[str, str]:
+    ) -> 'CryptsParams':
         """
-        Return the value for the attribute from class instance.
+        Return the Pydantic model containing the configuration.
 
-        :returns: Value for the attribute from class instance.
+        :returns: Pydantic model containing the configuration.
         """
 
-        return dict(self.__phrases)
+        return self.__params
 
 
     def encrypt(
@@ -92,7 +88,9 @@ class Crypts:
         :returns: Encrypted value using the relevant passphrase.
         """
 
-        phrase = self.__phrases[unique]
+        phrases = self.params.phrases
+
+        phrase = phrases[unique].phrase
 
         encrypt = (
             Fernet(phrase)
@@ -115,6 +113,8 @@ class Crypts:
         :returns: Decrypted value using the relevant passphrase.
         """
 
+        phrases = self.params.phrases
+
         value = crypt_clean(value)
 
         if not re_match(ENCRYPT, value):
@@ -126,7 +126,7 @@ class Crypts:
         if version != '1.0':
             raise ValueError('version')
 
-        phrase = self.__phrases[unique]
+        phrase = phrases[unique].phrase
 
         return (
             Fernet(phrase)
@@ -157,6 +157,7 @@ def crypt_clean(
     Return the parsed and normalized encrypted string value.
 
     :param value: String value that will returned decrypted.
+    :returns: Parsed and normalized encrypted string value.
     """
 
     return re_sub(r'[\n\s]', SEMPTY, value)

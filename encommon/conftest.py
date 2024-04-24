@@ -38,7 +38,8 @@ def config_factory(
             '  stdo_level: info\n'
             'encrypts:\n'
             '  phrases:\n'
-            '    default: phrase\n'))
+            '    default:\n'
+            '      phrase: phrase\n'))
 
     config_log = f'{tmp_path}/config.log'
 
