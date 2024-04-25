@@ -33,4 +33,4 @@ class CryptsParams(BaseModel, extra='forbid'):
         Parameter is picked up by autodoc, please ignore.
     """
 
-    phrases: dict[str, CryptParams]
+    phrases: dict[str, CryptParams] = {}

@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
+from time import sleep
 from typing import Any
 
 from pytest import fixture
@@ -140,35 +141,23 @@ def test_Timers_cover(
     """
 
 
-    assert not timers.ready('one')
-
     assert timers.ready('two')
-
 
     timers.update('two', 'now')
 
     assert not timers.ready('two')
 
-    timers.load_children()
 
-    assert timers.ready('two')
-
-
-    timers.update('two', 'now')
-
-    assert not timers.ready('two')
-
-    timers.save_children()
-    timers.load_children()
-
-    assert not timers.ready('two')
+    timers = Timers()
 
 
-    params = TimerParams(
-        timer=1,
-        start='-1s')
+    params = TimerParams(timer=1)
 
     timers.create('fur', params)
+
+    assert not timers.ready('fur')
+
+    sleep(1)
 
     assert timers.ready('fur')
 

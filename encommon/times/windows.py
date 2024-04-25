@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from copy import deepcopy
 from sqlite3 import Connection
 from sqlite3 import connect as SQLite
 from typing import Optional
@@ -85,7 +86,7 @@ class Windows:
 
     def __init__(  # noqa: CFQ002
         self,
-        params: 'WindowsParams',
+        params: Optional['WindowsParams'] = None,
         start: PARSABLE = 'now',
         stop: PARSABLE = '3000-01-01',
         *,
@@ -97,7 +98,12 @@ class Windows:
         Initialize instance for class using provided parameters.
         """
 
-        self.__params = params
+        from .params import WindowsParams
+
+        if params is None:
+            params = WindowsParams()
+
+        self.__params = deepcopy(params)
 
 
         start = Times(start)
@@ -389,7 +395,12 @@ class Windows:
 
         window = windows[unique]
 
-        return window.ready(update)
+        ready = window.ready(update)
+
+        if ready is True:
+            self.save_children()
+
+        return ready
 
 
     def create(
@@ -407,14 +418,14 @@ class Windows:
 
         windows = self.params.windows
 
-        self.save_children()
-
         if unique in windows:
             raise ValueError('unique')
 
         windows[unique] = params
 
         self.load_children()
+
+        self.save_children()
 
         return self.children[unique]
 
@@ -437,6 +448,8 @@ class Windows:
             raise ValueError('unique')
 
         window = windows[unique]
+
+        self.save_children()
 
         return window.update(value)
 

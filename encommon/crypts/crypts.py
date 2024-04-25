@@ -7,9 +7,11 @@ is permitted, for more information consult the project license file.
 
 
 
+from copy import deepcopy
 from re import compile
 from re import match as re_match
 from re import sub as re_sub
+from typing import Optional
 from typing import TYPE_CHECKING
 
 from cryptography.fernet import Fernet
@@ -17,6 +19,7 @@ from cryptography.fernet import Fernet
 from ..types.strings import SEMPTY
 
 if TYPE_CHECKING:
+    from .params import CryptParams
     from .params import CryptsParams
 
 
@@ -53,13 +56,18 @@ class Crypts:
 
     def __init__(
         self,
-        params: 'CryptsParams',
+        params: Optional['CryptsParams'] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        self.__params = params
+        from .params import CryptsParams
+
+        if params is None:
+            params = CryptsParams()
+
+        self.__params = deepcopy(params)
 
 
     @property
@@ -89,6 +97,9 @@ class Crypts:
         """
 
         phrases = self.params.phrases
+
+        if unique not in phrases:
+            raise ValueError('unique')
 
         phrase = phrases[unique].phrase
 
@@ -132,6 +143,44 @@ class Crypts:
             Fernet(phrase)
             .decrypt(value.encode())
             .decode())
+
+
+    def create(
+        self,
+        unique: str,
+        params: 'CryptParams',
+    ) -> None:
+        """
+        Create a new phrase using the provided input parameters.
+
+        :param unique: Unique identifier of mapping passphrase.
+        :param params: Parameters for instantiating the instance.
+        """
+
+        phrases = self.params.phrases
+
+        if unique in phrases:
+            raise ValueError('unique')
+
+        phrases[unique] = params
+
+
+    def delete(
+        self,
+        unique: str,
+    ) -> None:
+        """
+        Delete the phrase from the internal dictionary reference.
+
+        :param unique: Unique identifier of mapping passphrase.
+        """
+
+        phrases = self.params.phrases
+
+        if unique not in phrases:
+            raise ValueError('unique')
+
+        del phrases[unique]
 
 
     @classmethod

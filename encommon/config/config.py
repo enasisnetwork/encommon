@@ -217,11 +217,10 @@ class Config:
         if self.__logger is not None:
             return self.__logger
 
-        enlogger = (
+        logger = Logger(
             self.params.enlogger)
 
-        self.__logger = (
-            Logger(params=enlogger))
+        self.__logger = logger
 
         return self.__logger
 
@@ -239,12 +238,9 @@ class Config:
         if self.__crypts is not None:
             return self.__crypts
 
-        encrypts = (
+        crypts = Crypts(
             self.params.encrypts)
 
-        assert encrypts is not None
-
-        self.__crypts = (
-            Crypts(params=encrypts))
+        self.__crypts = crypts
 
         return self.__crypts

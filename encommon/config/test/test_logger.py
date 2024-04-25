@@ -44,7 +44,7 @@ def logger(
         file_level='info',
         file_path=f'{tmp_path}/test.log')
 
-    return Logger(params=params)
+    return Logger(params)
 
 
 

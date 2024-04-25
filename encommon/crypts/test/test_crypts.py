@@ -14,6 +14,7 @@ from pytest import mark
 from pytest import raises
 
 from ..crypts import Crypts
+from ..params import CryptParams
 from ..params import CryptsParams
 from ...types import inrepr
 from ...types import instr
@@ -35,7 +36,7 @@ def crypts() -> Crypts:
     params = CryptsParams(
         phrases=source)
 
-    return Crypts(params=params)
+    return Crypts(params)
 
 
 
@@ -103,6 +104,28 @@ def test_Crypts_iterate(
 
 
 
+def test_Crypts_cover(
+    crypts: Crypts,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param crypts: Primary class instance for the encryption.
+    """
+
+
+    crypts = Crypts()
+
+
+    params = CryptParams(
+        phrase=Crypts.keygen())
+
+    crypts.create('testing', params)
+
+    crypts.delete('testing')
+
+
+
 def test_Crypts_raises(
     crypts: Crypts,
 ) -> None:
@@ -111,6 +134,16 @@ def test_Crypts_raises(
 
     :param crypts: Primary class instance for the encryption.
     """
+
+
+    _raises = raises(ValueError)
+
+    with _raises as reason:
+        crypts.encrypt('foo', 'dne')
+
+    _reason = str(reason.value)
+
+    assert _reason == 'unique'
 
 
     _raises = raises(ValueError)
@@ -132,3 +165,25 @@ def test_Crypts_raises(
     _reason = str(reason.value)
 
     assert _reason == 'version'
+
+
+    _raises = raises(ValueError)
+
+    params = CryptParams(phrase='foo')
+
+    with _raises as reason:
+        crypts.create('default', params)
+
+    _reason = str(reason.value)
+
+    assert _reason == 'unique'
+
+
+    _raises = raises(ValueError)
+
+    with _raises as reason:
+        crypts.delete('dne')
+
+    _reason = str(reason.value)
+
+    assert _reason == 'unique'
