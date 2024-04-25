@@ -68,7 +68,7 @@ class TimersParams(BaseModel, extra='forbid'):
         Parameter is picked up by autodoc, please ignore.
     """
 
-    timers: dict[str, TimerParams]
+    timers: dict[str, TimerParams] = {}
 
 
 
@@ -117,7 +117,7 @@ class WindowParams(BaseModel, extra='forbid'):
             stop = Times(stop)
 
         if anchor is not None:
-            anchor = Times(stop)
+            anchor = Times(anchor)
 
         if delay is not None:
             delay = float(delay)
@@ -152,4 +152,4 @@ class WindowsParams(BaseModel, extra='forbid'):
         Parameter is picked up by autodoc, please ignore.
     """
 
-    windows: dict[str, WindowParams]
+    windows: dict[str, WindowParams] = {}

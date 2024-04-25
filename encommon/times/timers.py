@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from copy import deepcopy
 from sqlite3 import Connection
 from sqlite3 import connect as SQLite
 from typing import Optional
@@ -82,7 +83,7 @@ class Timers:
 
     def __init__(
         self,
-        params: 'TimersParams',
+        params: Optional['TimersParams'] = None,
         *,
         file: str = ':memory:',
         table: str = 'timers',
@@ -92,7 +93,12 @@ class Timers:
         Initialize instance for class using provided parameters.
         """
 
-        self.__params = params
+        from .params import TimersParams
+
+        if params is None:
+            params = TimersParams()
+
+        self.__params = deepcopy(params)
 
 
         sqlite = SQLite(file)
@@ -322,7 +328,12 @@ class Timers:
 
         timer = timers[unique]
 
-        return timer.ready(update)
+        ready = timer.ready(update)
+
+        if ready is True:
+            self.save_children()
+
+        return ready
 
 
     def create(
@@ -340,14 +351,14 @@ class Timers:
 
         timers = self.params.timers
 
-        self.save_children()
-
         if unique in timers:
             raise ValueError('unique')
 
         timers[unique] = params
 
         self.load_children()
+
+        self.save_children()
 
         return self.children[unique]
 
@@ -370,6 +381,8 @@ class Timers:
             raise ValueError('unique')
 
         timer = timers[unique]
+
+        self.save_children()
 
         return timer.update(value)
 

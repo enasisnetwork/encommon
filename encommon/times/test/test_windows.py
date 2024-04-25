@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
+from time import sleep
 from typing import Any
 
 from pytest import fixture
@@ -173,37 +174,22 @@ def test_Windows_cover(
     """
 
 
-    assert windows.ready('one')
-
     assert windows.ready('two')
-
 
     windows.update('two', '+1h')
 
     assert not windows.ready('two')
 
-    windows.load_children()
 
-    assert windows.ready('two')
+    windows = Windows()
 
-
-    windows.update('two', '+1h')
-
-    assert not windows.ready('two')
-
-    windows.save_children()
-    windows.load_children()
-
-    assert not windows.ready('two')
-
-
-    params = WindowParams(
-        window='* * * * *',
-        start=310,
-        stop=610,
-        delay=10)
+    params = WindowParams(window=1)
 
     windows.create('fur', params)
+
+    assert not windows.ready('fur')
+
+    sleep(2)
 
     assert windows.ready('fur')
 

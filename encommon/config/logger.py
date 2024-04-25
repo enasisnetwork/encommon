@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from copy import deepcopy
 from json import dumps
 from logging import CRITICAL
 from logging import DEBUG
@@ -337,11 +338,11 @@ class Logger:
 
     def __init__(
         self,
+        params: Optional['LoggerParams'] = None,
         *,
         stdo_level: Optional[LOGLEVELS] = None,
         file_level: Optional[LOGLEVELS] = None,
         file_path: Optional[str | Path] = None,
-        params: Optional['LoggerParams'] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
@@ -355,7 +356,7 @@ class Logger:
                 file_level=file_level,
                 file_path=file_path)
 
-        self.__params = params
+        self.__params = deepcopy(params)
 
         stdo_level = params.stdo_level
         file_level = params.file_level
