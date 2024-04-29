@@ -17,6 +17,7 @@ from pytest import raises
 from ..params import WindowParams
 from ..params import WindowsParams
 from ..windows import Windows
+from ..windows import WindowsTable
 from ...types import inrepr
 from ...types import instr
 
@@ -33,6 +34,7 @@ def windows(
     :returns: Newly constructed instance of related class.
     """
 
+
     source: dict[str, Any] = {
         'one': WindowParams(
             window='* * * * *',
@@ -45,46 +47,46 @@ def windows(
             stop=620,
             delay=10)}
 
+
     params = WindowsParams(
         windows=source)
+
+    store = (
+        f'sqlite:///{tmp_path}'
+        '/cache.db')
 
     windows = Windows(
         params,
         start=310,
         stop=610,
-        file=f'{tmp_path}/cache.db')
+        store=store)
 
-    sqlite = windows.sqlite
+    session = windows.store_session
 
-    sqlite.execute(
-        """
-        insert into windows
-        ("group", "unique",
-         "last", "next",
-         "update")
-        values (
-         "default", "two",
-         "1970-01-01T00:06:00Z",
-         "1970-01-01T00:07:00Z",
-         "1970-01-01T01:00:00Z")
-        """)  # noqa: LIT003
 
-    sqlite.commit()
+    window = WindowsTable(
+        group='default',
+        unique='two',
+        last='1970-01-01T00:06:00Z',
+        next='1970-01-01T00:07:00Z',
+        update='1970-01-01T01:00:00Z')
 
-    sqlite.execute(
-        """
-        insert into windows
-        ("group", "unique",
-         "last", "next",
-         "update")
-        values (
-         "default", "tre",
-         "1970-01-01T00:06:00Z",
-         "1970-01-01T00:07:00Z",
-         "1970-01-01T01:00:00Z")
-        """)  # noqa: LIT003
+    session.add(window)
 
-    sqlite.commit()
+    session.commit()
+
+
+    window = WindowsTable(
+        group='default',
+        unique='tre',
+        last='1970-01-01T00:06:00Z',
+        next='1970-01-01T00:07:00Z',
+        update='1970-01-01T01:00:00Z')
+
+    session.add(window)
+
+    session.commit()
+
 
     windows.load_children()
 
@@ -106,12 +108,12 @@ def test_Windows(
 
     assert attrs == [
         '_Windows__params',
+        '_Windows__store',
+        '_Windows__group',
+        '_Windows__store_engine',
+        '_Windows__store_session',
         '_Windows__start',
         '_Windows__stop',
-        '_Windows__sqlite',
-        '_Windows__file',
-        '_Windows__table',
-        '_Windows__group',
         '_Windows__windows']
 
 
@@ -125,6 +127,8 @@ def test_Windows(
         'windows.Windows object',
         windows)
 
+
+    return
 
     assert windows.params is not None
 

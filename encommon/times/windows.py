@@ -8,37 +8,67 @@ is permitted, for more information consult the project license file.
 
 
 from copy import deepcopy
-from sqlite3 import Connection
-from sqlite3 import connect as SQLite
 from typing import Optional
 from typing import TYPE_CHECKING
 
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
+from sqlalchemy.orm import Session
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.decl_api import DeclarativeMeta
+
 from .common import PARSABLE
+from .params import WindowsParams
 from .times import Times
 from .window import Window
 
 if TYPE_CHECKING:
     from .params import WindowParams
-    from .params import WindowsParams
-
-
-
-CACHE_TABLE = (
-    """
-    create table if not exists
-     {0} (
-      "group" text not null,
-      "unique" text not null,
-      "last" text not null,
-      "next" text not null,
-      "update" text not null,
-     primary key (
-      "group", "unique"));
-    """)  # noqa: LIT003
 
 
 
 WINDOWS = dict[str, Window]
+
+
+
+SQLBase: DeclarativeMeta = declarative_base()
+
+
+
+class WindowsTable(SQLBase):
+    """
+    Schematic for the database operations using SQLAlchemy.
+
+    .. note::
+       Fields are not completely documented for this model.
+    """
+
+    __tablename__ = 'windows'
+
+    group: str = Column(
+        String,
+        primary_key=True,
+        nullable=False)
+
+    unique: str = Column(
+        String,
+        primary_key=True,
+        nullable=False)
+
+    last: str = Column(
+        String,
+        nullable=False)
+
+    next: str = Column(
+        String,
+        nullable=False)
+
+    update: str = Column(
+        String,
+        nullable=False)
 
 
 
@@ -65,45 +95,47 @@ class Windows:
     :param params: Parameters for instantiating the instance.
     :param start: Determine the start for scheduling window.
     :param stop: Determine the ending for scheduling window.
-    :param file: Optional path to file for SQLite database,
-        allowing for state retention between the executions.
-    :param table: Optional override for default table name.
+    :param store: Optional database path for keeping state.
     :param group: Optional override for default group name.
     """
 
     __params: 'WindowsParams'
 
+    __engine: Engine
+    __store: Session
+    __group: str
+
     __start: Times
     __stop: Times
-
-    __sqlite: Connection
-    __file: str
-    __table: str
-    __group: str
 
     __windows: WINDOWS
 
 
-    def __init__(  # noqa: CFQ002
+    def __init__(
         self,
         params: Optional['WindowsParams'] = None,
         start: PARSABLE = 'now',
         stop: PARSABLE = '3000-01-01',
         *,
-        file: str = ':memory:',
-        table: str = 'windows',
+        store: str = 'sqlite:///:memory:',
         group: str = 'default',
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        from .params import WindowsParams
+        params = deepcopy(params)
 
         if params is None:
             params = WindowsParams()
 
-        self.__params = deepcopy(params)
+        self.__params = params
+
+
+        self.__store = store
+        self.__group = group
+
+        self.__make_engine()
 
 
         start = Times(start)
@@ -115,23 +147,29 @@ class Windows:
         self.__stop = stop
 
 
-        sqlite = SQLite(file)
-
-        sqlite.execute(
-            CACHE_TABLE
-            .format(table))
-
-        sqlite.commit()
-
-        self.__sqlite = sqlite
-        self.__file = file
-        self.__table = table
-        self.__group = group
-
-
         self.__windows = {}
 
         self.load_children()
+
+
+    def __make_engine(
+        self,
+    ) -> None:
+        """
+        Construct instances using the configuration parameters.
+        """
+
+        store = self.__store
+
+        engine = create_engine(store)
+
+        (SQLBase.metadata
+         .create_all(engine))
+
+        session = sessionmaker(engine)
+
+        self.__store_engine = engine
+        self.__store_session = session
 
 
     @property
@@ -145,6 +183,58 @@ class Windows:
         """
 
         return self.__params
+
+
+    @property
+    def store(
+        self,
+    ) -> Engine:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__store
+
+
+    @property
+    def group(
+        self,
+    ) -> str:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__group
+
+
+    @property
+    def store_engine(
+        self,
+    ) -> Engine:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__store_engine
+
+
+    @property
+    def store_session(
+        self,
+    ) -> Session:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__store_session()
 
 
     @property
@@ -174,58 +264,6 @@ class Windows:
 
 
     @property
-    def sqlite(
-        self,
-    ) -> Connection:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return self.__sqlite
-
-
-    @property
-    def file(
-        self,
-    ) -> str:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return self.__file
-
-
-    @property
-    def table(
-        self,
-    ) -> str:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return self.__table
-
-
-    @property
-    def group(
-        self,
-    ) -> str:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return self.__group
-
-
-    @property
     def children(
         self,
     ) -> dict[str, Window]:
@@ -251,27 +289,24 @@ class Windows:
         start = self.__start
         stop = self.__stop
 
-        sqlite = self.__sqlite
-        table = self.__table
         group = self.__group
+
+        session = self.store_session
+        table = WindowsTable
 
 
         config = params.windows
 
 
-        cursor = sqlite.execute(
-            f"""
-            select * from {table}
-            where "group"="{group}"
-            order by "unique" asc
-            """)  # noqa: LIT003
+        records = (
+            session.query(table)
+            .filter(table.group == group)
+            .order_by(table.unique))
 
-        records = cursor.fetchall()
+        for record in records.all():
 
-        for record in records:
-
-            unique = record[1]
-            next = record[3]
+            unique = record.unique
+            next = record.next
 
             if unique not in config:
                 continue
@@ -332,47 +367,28 @@ class Windows:
 
         windows = self.__windows
 
-        sqlite = self.__sqlite
-        table = self.__table
         group = self.__group
 
+        session = self.store_session
 
-        insert = tuple[
-            str,  # group
-            str,  # unique
-            str,  # last
-            str,  # next
-            str]  # update
-
-        inserts: list[insert] = []
 
         items = windows.items()
 
         for unique, window in items:
 
-            append = (
-                group, unique,
-                window.last.subsec,
-                window.next.subsec,
-                Times('now').subsec)
+            update = Times('now')
 
-            inserts.append(append)
+            append = WindowsTable(
+                group=group,
+                unique=unique,
+                last=window.last.subsec,
+                next=window.next.subsec,
+                update=update.subsec)
+
+            session.merge(append)
 
 
-        statement = (
-            f"""
-            replace into {table}
-            ("group", "unique",
-             "next", "last",
-             "update")
-            values (?, ?, ?, ?, ?)
-            """)  # noqa: LIT003
-
-        sqlite.executemany(
-            statement,
-            tuple(sorted(inserts)))
-
-        sqlite.commit()
+        session.commit()
 
 
     def ready(
