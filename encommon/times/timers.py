@@ -15,10 +15,9 @@ from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Session
-from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.decl_api import DeclarativeMeta
 
 from .common import PARSABLE
 from .params import TimersParams
@@ -34,7 +33,10 @@ TIMERS = dict[str, Timer]
 
 
 
-SQLBase: DeclarativeMeta = declarative_base()
+class SQLBase(DeclarativeBase):
+    """
+    Some additional class that SQLAlchemy requires to work.
+    """
 
 
 
@@ -48,17 +50,17 @@ class TimersTable(SQLBase):
 
     __tablename__ = 'timers'
 
-    group: str = Column(
+    group = Column(
         String,
         primary_key=True,
         nullable=False)
 
-    unique: str = Column(
+    unique = Column(
         String,
         primary_key=True,
         nullable=False)
 
-    update: str = Column(
+    update = Column(
         String,
         nullable=False)
 
@@ -99,7 +101,9 @@ class Timers:
     __group: str
 
     __store_engine: Engine
-    __store_session: sessionmaker[Session]
+    __store_session: (
+        # pylint: disable=unsubscriptable-object
+        sessionmaker[Session])
 
     __timers: TIMERS
 
@@ -258,8 +262,8 @@ class Timers:
 
         for record in records.all():
 
-            unique = record.unique
-            update = record.update
+            unique = str(record.unique)
+            update = str(record.update)
 
             if unique not in config:
                 continue

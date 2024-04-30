@@ -128,23 +128,21 @@ def test_Windows(
         windows)
 
 
-    return
-
     assert windows.params is not None
+
+    assert windows.store[:6] == 'sqlite'
+
+    assert windows.group == 'default'
+
+    assert windows.store_engine is not None
+
+    assert windows.store_session is not None
 
     assert windows.start == (
         '1970-01-01T00:05:10Z')
 
     assert windows.stop == (
         '1970-01-01T00:10:10Z')
-
-    assert windows.sqlite is not None
-
-    assert windows.file[-8:] == 'cache.db'
-
-    assert windows.table == 'windows'
-
-    assert windows.group == 'default'
 
     assert len(windows.children) == 2
 

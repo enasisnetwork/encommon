@@ -15,10 +15,9 @@ from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy import create_engine
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Session
-from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.decl_api import DeclarativeMeta
 
 from .common import PARSABLE
 from .params import WindowsParams
@@ -34,7 +33,10 @@ WINDOWS = dict[str, Window]
 
 
 
-SQLBase: DeclarativeMeta = declarative_base()
+class SQLBase(DeclarativeBase):
+    """
+    Some additional class that SQLAlchemy requires to work.
+    """
 
 
 
@@ -48,25 +50,25 @@ class WindowsTable(SQLBase):
 
     __tablename__ = 'windows'
 
-    group: str = Column(
+    group = Column(
         String,
         primary_key=True,
         nullable=False)
 
-    unique: str = Column(
+    unique = Column(
         String,
         primary_key=True,
         nullable=False)
 
-    last: str = Column(
+    last = Column(
         String,
         nullable=False)
 
-    next: str = Column(
+    next = Column(
         String,
         nullable=False)
 
-    update: str = Column(
+    update = Column(
         String,
         nullable=False)
 
@@ -105,7 +107,9 @@ class Windows:
     __group: str
 
     __store_engine: Engine
-    __store_session: sessionmaker[Session]
+    __store_session: (
+        # pylint: disable=unsubscriptable-object
+        sessionmaker[Session])
 
     __start: Times
     __stop: Times
@@ -307,8 +311,8 @@ class Windows:
 
         for record in records.all():
 
-            unique = record.unique
-            next = record.next
+            unique = str(record.unique)
+            next = str(record.next)
 
             if unique not in config:
                 continue

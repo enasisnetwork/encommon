@@ -39,7 +39,8 @@ always_document_param_types = True
 intersphinx_mapping = {
     'pathlib': ('https://docs.python.org/3', None),
     'pytest': ('https://docs.pytest.org/latest', None),
-    'python': ('https://docs.python.org/3', None)}
+    'python': ('https://docs.python.org/3', None),
+    'sqlalchemy': ('https://docs.sqlalchemy.org/en/20', None)}
 
 nitpick_ignore = [
     ('py:class', 'pydantic.main.BaseModel')]

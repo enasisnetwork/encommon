@@ -113,17 +113,15 @@ def test_Timers(
         timers)
 
 
-    return
-
     assert timers.params is not None
 
-    assert timers.sqlite is not None
-
-    assert timers.file[-8:] == 'cache.db'
-
-    assert timers.table == 'timers'
+    assert timers.store[:6] == 'sqlite'
 
     assert timers.group == 'default'
+
+    assert timers.store_engine is not None
+
+    assert timers.store_session is not None
 
     assert len(timers.children) == 2
 
