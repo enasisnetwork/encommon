@@ -331,8 +331,7 @@ class Windows:
 
                 window = windows[key]
 
-                window.update(
-                    value.start)
+                window.update(value.start)
 
                 continue
 

@@ -281,8 +281,7 @@ class Timers:
 
                 timer = timers[key]
 
-                timer.update(
-                    value.start)
+                timer.update(value.start)
 
                 continue
 
