@@ -17,6 +17,7 @@ from pytest import raises
 from ..params import TimerParams
 from ..params import TimersParams
 from ..timers import Timers
+from ..timers import TimersTable
 from ..times import Times
 from ...types import inrepr
 from ...types import instr
@@ -34,40 +35,45 @@ def timers(
     :returns: Newly constructed instance of related class.
     """
 
+
     source: dict[str, Any] = {
         'one': {'timer': 1},
         'two': {'timer': 1}}
 
+
     params = TimersParams(
         timers=source)
 
+    store = (
+        f'sqlite:///{tmp_path}'
+        '/cache.db')
+
     timers = Timers(
         params,
-        file=f'{tmp_path}/cache.db')
+        store=store)
 
-    sqlite = timers.sqlite
+    session = timers.store_session
 
-    sqlite.execute(
-        """
-        insert into timers
-        ("group", "unique",
-         "update")
-        values (
-         "default", "two",
-         "1970-01-01T00:00:00Z")
-        """)  # noqa: LIT003
 
-    sqlite.execute(
-        """
-        insert into timers
-        ("group", "unique",
-         "update")
-        values (
-         "default", "tre",
-         "1970-01-01T00:00:00Z")
-        """)  # noqa: LIT003
+    timer = TimersTable(
+        group='default',
+        unique='two',
+        update='1970-01-01T00:00:00Z')
 
-    sqlite.commit()
+    session.add(timer)
+
+    session.commit()
+
+
+    timer = TimersTable(
+        group='default',
+        unique='tre',
+        update='1970-01-01T00:00:00Z')
+
+    session.add(timer)
+
+    session.commit()
+
 
     timers.load_children()
 
@@ -89,10 +95,10 @@ def test_Timers(
 
     assert attrs == [
         '_Timers__params',
-        '_Timers__sqlite',
-        '_Timers__file',
-        '_Timers__table',
+        '_Timers__store',
         '_Timers__group',
+        '_Timers__store_engine',
+        '_Timers__store_session',
         '_Timers__timers']
 
 
@@ -109,13 +115,13 @@ def test_Timers(
 
     assert timers.params is not None
 
-    assert timers.sqlite is not None
-
-    assert timers.file[-8:] == 'cache.db'
-
-    assert timers.table == 'timers'
+    assert timers.store[:6] == 'sqlite'
 
     assert timers.group == 'default'
+
+    assert timers.store_engine is not None
+
+    assert timers.store_session is not None
 
     assert len(timers.children) == 2
 

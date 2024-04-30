@@ -8,35 +8,61 @@ is permitted, for more information consult the project license file.
 
 
 from copy import deepcopy
-from sqlite3 import Connection
-from sqlite3 import connect as SQLite
 from typing import Optional
 from typing import TYPE_CHECKING
 
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Session
+from sqlalchemy.orm import sessionmaker
+
 from .common import PARSABLE
+from .params import TimersParams
 from .timer import Timer
 from .times import Times
 
 if TYPE_CHECKING:
     from .params import TimerParams
-    from .params import TimersParams
-
-
-
-CACHE_TABLE = (
-    """
-    create table if not exists
-     {0} (
-      "group" text not null,
-      "unique" text not null,
-      "update" text not null,
-     primary key (
-      "group", "unique"));
-    """)  # noqa: LIT003
 
 
 
 TIMERS = dict[str, Timer]
+
+
+
+class SQLBase(DeclarativeBase):
+    """
+    Some additional class that SQLAlchemy requires to work.
+    """
+
+
+
+class TimersTable(SQLBase):
+    """
+    Schematic for the database operations using SQLAlchemy.
+
+    .. note::
+       Fields are not completely documented for this model.
+    """
+
+    __tablename__ = 'timers'
+
+    group = Column(
+        String,
+        primary_key=True,
+        nullable=False)
+
+    unique = Column(
+        String,
+        primary_key=True,
+        nullable=False)
+
+    update = Column(
+        String,
+        nullable=False)
 
 
 
@@ -65,18 +91,19 @@ class Timers:
     True
 
     :param params: Parameters for instantiating the instance.
-    :param file: Optional path to file for SQLite database,
-        allowing for state retention between the executions.
-    :param table: Optional override for default table name.
+    :param store: Optional database path for keeping state.
     :param group: Optional override for default group name.
     """
 
     __params: 'TimersParams'
 
-    __sqlite: Connection
-    __file: str
-    __table: str
+    __store: str
     __group: str
+
+    __store_engine: Engine
+    __store_session: (
+        # pylint: disable=unsubscriptable-object
+        sessionmaker[Session])
 
     __timers: TIMERS
 
@@ -85,39 +112,50 @@ class Timers:
         self,
         params: Optional['TimersParams'] = None,
         *,
-        file: str = ':memory:',
-        table: str = 'timers',
+        store: str = 'sqlite:///:memory:',
         group: str = 'default',
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
-        from .params import TimersParams
+        params = deepcopy(params)
 
         if params is None:
             params = TimersParams()
 
-        self.__params = deepcopy(params)
+        self.__params = params
 
 
-        sqlite = SQLite(file)
-
-        sqlite.execute(
-            CACHE_TABLE
-            .format(table))
-
-        sqlite.commit()
-
-        self.__sqlite = sqlite
-        self.__file = file
-        self.__table = table
+        self.__store = store
         self.__group = group
+
+        self.__make_engine()
 
 
         self.__timers = {}
 
         self.load_children()
+
+
+    def __make_engine(
+        self,
+    ) -> None:
+        """
+        Construct instances using the configuration parameters.
+        """
+
+        store = self.__store
+
+        engine = create_engine(store)
+
+        (SQLBase.metadata
+         .create_all(engine))
+
+        session = sessionmaker(engine)
+
+        self.__store_engine = engine
+        self.__store_session = session
 
 
     @property
@@ -134,20 +172,7 @@ class Timers:
 
 
     @property
-    def sqlite(
-        self,
-    ) -> Connection:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return self.__sqlite
-
-
-    @property
-    def file(
+    def store(
         self,
     ) -> str:
         """
@@ -156,20 +181,7 @@ class Timers:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__file
-
-
-    @property
-    def table(
-        self,
-    ) -> str:
-        """
-        Return the value for the attribute from class instance.
-
-        :returns: Value for the attribute from class instance.
-        """
-
-        return self.__table
+        return self.__store
 
 
     @property
@@ -183,6 +195,32 @@ class Timers:
         """
 
         return self.__group
+
+
+    @property
+    def store_engine(
+        self,
+    ) -> Engine:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__store_engine
+
+
+    @property
+    def store_session(
+        self,
+    ) -> Session:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__store_session()
 
 
     @property
@@ -208,27 +246,24 @@ class Timers:
         params = self.__params
         timers = self.__timers
 
-        sqlite = self.__sqlite
-        table = self.__table
         group = self.__group
+
+        session = self.store_session
+        table = TimersTable
 
 
         config = params.timers
 
 
-        cursor = sqlite.execute(
-            f"""
-            select * from {table}
-            where "group"="{group}"
-            order by "unique" asc
-            """)  # noqa: LIT003
+        records = (
+            session.query(table)
+            .filter(table.group == group)
+            .order_by(table.unique))
 
-        records = cursor.fetchall()
+        for record in records.all():
 
-        for record in records:
-
-            unique = record[1]
-            update = record[2]
+            unique = str(record.unique)
+            update = str(record.update)
 
             if unique not in config:
                 continue
@@ -246,8 +281,7 @@ class Timers:
 
                 timer = timers[key]
 
-                timer.update(
-                    value.start)
+                timer.update(value.start)
 
                 continue
 
@@ -270,42 +304,26 @@ class Timers:
 
         timers = self.__timers
 
-        sqlite = self.__sqlite
-        table = self.__table
         group = self.__group
 
+        session = self.store_session
 
-        insert = tuple[
-            str,  # group
-            str,  # unique
-            str]  # update
-
-        inserts: list[insert] = []
 
         items = timers.items()
 
         for unique, timer in items:
 
-            append = (
-                group, unique,
-                Times('now').subsec)
+            update = Times('now')
 
-            inserts.append(append)
+            append = TimersTable(
+                group=group,
+                unique=unique,
+                update=update.subsec)
+
+            session.merge(append)
 
 
-        statement = (
-            f"""
-            replace into {table}
-            ("group", "unique",
-             "update")
-            values (?, ?, ?)
-            """)  # noqa: LIT003
-
-        sqlite.executemany(
-            statement,
-            tuple(sorted(inserts)))
-
-        sqlite.commit()
+        session.commit()
 
 
     def ready(
