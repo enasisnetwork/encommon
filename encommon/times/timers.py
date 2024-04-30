@@ -36,6 +36,9 @@ TIMERS = dict[str, Timer]
 class SQLBase(DeclarativeBase):
     """
     Some additional class that SQLAlchemy requires to work.
+
+    .. note::
+       Input parameters are not defined, check parent class.
     """
 
 

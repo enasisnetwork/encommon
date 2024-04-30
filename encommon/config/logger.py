@@ -266,6 +266,9 @@ class Message:
 class FileFormatter(Formatter):
     """
     Supplement class for built-in logger exception formatter.
+
+    .. note::
+       Input parameters are not defined, check parent class.
     """
 
 
