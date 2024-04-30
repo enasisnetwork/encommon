@@ -24,8 +24,6 @@ class TimerParams(BaseModel, extra='forbid'):
 
     :param timer: Seconds that are used for related timer.
     :param start: Optional time for when the timer started.
-    :param data: Keyword arguments passed to Pydantic model.
-        Parameter is picked up by autodoc, please ignore.
     """
 
     timer: float
@@ -81,8 +79,6 @@ class WindowParams(BaseModel, extra='forbid'):
     :param stop: Determine the ending for scheduling window.
     :param anchor: Optionally define time anchor for window.
     :param delay: Period of time schedulng will be delayed.
-    :param data: Keyword arguments passed to Pydantic model.
-        Parameter is picked up by autodoc, please ignore.
     """
 
     window: SCHEDULE

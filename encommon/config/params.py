@@ -37,8 +37,6 @@ class LoggerParams(BaseModel, extra='forbid'):
     :param stdo_level: Minimum level for the message to pass.
     :param file_level: Minimum level for the message to pass.
     :param file_path: Enables writing to the filesystem path.
-    :param data: Keyword arguments passed to Pydantic model.
-        Parameter is picked up by autodoc, please ignore.
     """
 
     stdo_level: Optional[LOGLEVELS] = None
