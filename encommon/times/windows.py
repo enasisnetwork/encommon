@@ -101,9 +101,11 @@ class Windows:
 
     __params: 'WindowsParams'
 
-    __engine: Engine
-    __store: Session
+    __store: str
     __group: str
+
+    __store_engine: Engine
+    __store_session: sessionmaker[Session]
 
     __start: Times
     __stop: Times
@@ -188,7 +190,7 @@ class Windows:
     @property
     def store(
         self,
-    ) -> Engine:
+    ) -> str:
         """
         Return the value for the attribute from class instance.
 

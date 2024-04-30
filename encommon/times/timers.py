@@ -99,7 +99,7 @@ class Timers:
     __group: str
 
     __store_engine: Engine
-    __store_session: Session
+    __store_session: sessionmaker[Session]
 
     __timers: TIMERS
 
@@ -170,7 +170,7 @@ class Timers:
     @property
     def store(
         self,
-    ) -> Engine:
+    ) -> str:
         """
         Return the value for the attribute from class instance.
 
