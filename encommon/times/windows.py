@@ -51,8 +51,6 @@ class WindowsTable(SQLBase):
        Fields are not completely documented for this model.
     """
 
-    __tablename__ = 'windows'
-
     group = Column(
         String,
         primary_key=True,
@@ -74,6 +72,8 @@ class WindowsTable(SQLBase):
     update = Column(
         String,
         nullable=False)
+
+    __tablename__ = 'windows'
 
 
 
@@ -301,18 +301,20 @@ class Windows:
         group = self.__group
 
         session = self.store_session
-        table = WindowsTable
-
 
         config = params.windows
 
 
-        records = (
-            session.query(table)
-            .filter(table.group == group)
-            .order_by(table.unique))
+        _table = WindowsTable
+        _group = _table.group
+        _unique = _table.unique
 
-        for record in records.all():
+        query = (
+            session.query(_table)
+            .filter(_group == group)
+            .order_by(_unique))
+
+        for record in query.all():
 
             unique = str(record.unique)
             next = str(record.next)
@@ -397,6 +399,7 @@ class Windows:
 
 
         session.commit()
+        session.close()
 
 
     def ready(
