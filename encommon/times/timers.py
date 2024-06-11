@@ -51,8 +51,6 @@ class TimersTable(SQLBase):
        Fields are not completely documented for this model.
     """
 
-    __tablename__ = 'timers'
-
     group = Column(
         String,
         primary_key=True,
@@ -66,6 +64,8 @@ class TimersTable(SQLBase):
     update = Column(
         String,
         nullable=False)
+
+    __tablename__ = 'timers'
 
 
 
@@ -252,18 +252,20 @@ class Timers:
         group = self.__group
 
         session = self.store_session
-        table = TimersTable
-
 
         config = params.timers
 
 
-        records = (
-            session.query(table)
-            .filter(table.group == group)
-            .order_by(table.unique))
+        _table = TimersTable
+        _group = _table.group
+        _unique = _table.unique
 
-        for record in records.all():
+        query = (
+            session.query(_table)
+            .filter(_group == group)
+            .order_by(_unique))
+
+        for record in query.all():
 
             unique = str(record.unique)
             update = str(record.update)
@@ -327,6 +329,7 @@ class Timers:
 
 
         session.commit()
+        session.close()
 
 
     def ready(
