@@ -240,13 +240,3 @@ def test_Windows_raises(
     _reason = str(reason.value)
 
     assert _reason == 'unique'
-
-
-    _raises = raises(ValueError)
-
-    with _raises as reason:
-        windows.delete('dne')
-
-    _reason = str(reason.value)
-
-    assert _reason == 'unique'

@@ -423,12 +423,33 @@ class Timers:
         """
         Delete the timer from the internal dictionary reference.
 
+        .. note::
+           This is a graceful method, will not raise exception
+           when the provided unique value does not exist.
+
         :param unique: Unique identifier for the related child.
         """
 
         timers = self.__timers
 
-        if unique not in timers:
-            raise ValueError('unique')
+        group = self.__group
 
-        del timers[unique]
+        session = self.store_session
+
+
+        if unique in timers:
+            del timers[unique]
+
+
+        _table = TimersTable
+        _group = _table.group
+        _unique = _table.unique
+
+        (session.query(_table)
+         .filter(_unique == unique)
+         .filter(_group == group)
+         .delete())
+
+
+        session.commit()
+        session.close()

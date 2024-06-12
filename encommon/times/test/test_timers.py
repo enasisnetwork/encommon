@@ -213,13 +213,3 @@ def test_Timers_raises(
     _reason = str(reason.value)
 
     assert _reason == 'unique'
-
-
-    _raises = raises(ValueError)
-
-    with _raises as reason:
-        timers.delete('dne')
-
-    _reason = str(reason.value)
-
-    assert _reason == 'unique'
