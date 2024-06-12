@@ -61,6 +61,10 @@ class TimersTable(SQLBase):
         primary_key=True,
         nullable=False)
 
+    last = Column(
+        String,
+        nullable=False)
+
     update = Column(
         String,
         nullable=False)
@@ -268,14 +272,14 @@ class Timers:
         for record in query.all():
 
             unique = str(record.unique)
-            update = str(record.update)
+            last = str(record.last)
 
             if unique not in config:
                 continue
 
             _config = config[unique]
 
-            _config.start = update
+            _config.start = last
 
 
         items = config.items()
@@ -323,6 +327,7 @@ class Timers:
             append = TimersTable(
                 group=group,
                 unique=unique,
+                last=timer.times.subsec,
                 update=update.subsec)
 
             session.merge(append)
@@ -373,12 +378,12 @@ class Timers:
         :returns: Newly constructed instance of related class.
         """
 
-        timers = self.params.timers
+        config = self.params.timers
 
-        if unique in timers:
+        if unique in config:
             raise ValueError('unique')
 
-        timers[unique] = params
+        config[unique] = params
 
         self.load_children()
 
@@ -406,9 +411,9 @@ class Timers:
 
         timer = timers[unique]
 
-        self.save_children()
+        timer.update(value)
 
-        return timer.update(value)
+        self.save_children()
 
 
     def delete(
