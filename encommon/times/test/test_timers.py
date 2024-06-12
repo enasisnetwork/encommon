@@ -58,6 +58,7 @@ def timers(
     timer = TimersTable(
         group='default',
         unique='two',
+        last='1970-01-01T00:00:00Z',
         update='1970-01-01T00:00:00Z')
 
     session.add(timer)
@@ -68,6 +69,7 @@ def timers(
     timer = TimersTable(
         group='default',
         unique='tre',
+        last='1970-01-01T00:00:00Z',
         update='1970-01-01T00:00:00Z')
 
     session.add(timer)

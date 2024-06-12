@@ -443,12 +443,12 @@ class Windows:
         :returns: Newly constructed instance of related class.
         """
 
-        windows = self.params.windows
+        config = self.params.windows
 
-        if unique in windows:
+        if unique in config:
             raise ValueError('unique')
 
-        windows[unique] = params
+        config[unique] = params
 
         self.load_children()
 
@@ -476,9 +476,9 @@ class Windows:
 
         window = windows[unique]
 
-        self.save_children()
+        window.update(value)
 
-        return window.update(value)
+        self.save_children()
 
 
     def delete(
