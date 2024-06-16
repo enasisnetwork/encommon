@@ -47,9 +47,13 @@ def config_factory(
         'enlogger/file_path': config_log,
         'enlogger/file_level': 'info'}
 
+    sargs = {
+        'custom/parameter': 'fart'}
+
     return Config(
         files=f'{tmp_path}/config.yml',
-        cargs=cargs)
+        cargs=cargs,
+        sargs=sargs)
 
 
 
