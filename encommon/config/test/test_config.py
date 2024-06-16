@@ -44,6 +44,7 @@ def test_Config(
         '_Config__model',
         '_Config__files',
         '_Config__cargs',
+        '_Config__sargs',
         '_Config__params',
         '_Config__paths',
         '_Config__logger',
@@ -70,6 +71,8 @@ def test_Config(
         config.paths)
 
     assert len(config.cargs) == 1
+
+    assert len(config.sargs) == 1
 
     assert len(config.config) == 3
 

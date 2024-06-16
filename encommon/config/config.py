@@ -49,12 +49,14 @@ class Config:
     :param paths: Complete or relative path to config paths.
     :param cargs: Configuration arguments in dictionary form,
         which will override contents from the config files.
+    :param sargs: Additional arguments on the command line.
     :param model: Override default config validation model.
     """
 
     __files: ConfigFiles
     __paths: ConfigPaths
     __cargs: dict[str, Any]
+    __sargs: dict[str, Any]
 
     __model: Callable  # type: ignore
 
@@ -69,6 +71,7 @@ class Config:
         files: Optional['PATHABLE'] = None,
         paths: Optional['PATHABLE'] = None,
         cargs: Optional[dict[str, Any]] = None,
+        sargs: Optional[dict[str, Any]] = None,
         model: Optional[Callable] = None,  # type: ignore
     ) -> None:
         """
@@ -78,12 +81,14 @@ class Config:
         files = files or []
         paths = paths or []
         cargs = cargs or {}
+        sargs = sargs or {}
 
         paths = list(config_paths(paths))
 
         self.__model = model or Params
         self.__files = ConfigFiles(files)
         self.__cargs = deepcopy(cargs)
+        self.__sargs = deepcopy(sargs)
 
         self.__params = None
 
@@ -140,6 +145,28 @@ class Config:
         cargs = deepcopy(self.__cargs)
 
         items = cargs.items()
+
+        for key, value in items:
+            setate(returned, key, value)
+
+        return deepcopy(returned)
+
+
+    @property
+    def sargs(
+        self,
+    ) -> dict[str, Any]:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        returned: dict[str, Any] = {}
+
+        sargs = deepcopy(self.__sargs)
+
+        items = sargs.items()
 
         for key, value in items:
             setate(returned, key, value)
