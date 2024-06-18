@@ -495,12 +495,18 @@ class Windows:
         :param unique: Unique identifier for the related child.
         """
 
+        params = self.__params
         windows = self.__windows
 
         group = self.__group
 
         session = self.store_session
 
+        config = params.windows
+
+
+        if unique in config:
+            del config[unique]
 
         if unique in windows:
             del windows[unique]

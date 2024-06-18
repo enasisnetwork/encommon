@@ -430,12 +430,18 @@ class Timers:
         :param unique: Unique identifier for the related child.
         """
 
+        params = self.__params
         timers = self.__timers
 
         group = self.__group
 
         session = self.store_session
 
+        config = params.timers
+
+
+        if unique in config:
+            del config[unique]
 
         if unique in timers:
             del timers[unique]
