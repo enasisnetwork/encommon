@@ -19,6 +19,7 @@ from .parse import string_time
 from .timer import Timer
 from .timers import Timers
 from .times import Times
+from .unitime import unitime
 from .utils import findtz
 from .window import Window
 from .windows import Windows
@@ -40,4 +41,5 @@ __all__ = [
     'parse_time',
     'shift_time',
     'since_time',
-    'string_time']
+    'string_time',
+    'unitime']
