@@ -93,6 +93,14 @@ Hashing Algorithms
    :show-inheritance:
    :noindex:
 
+Color Formatting
+================
+
+.. autoclass:: encommon.colors.Colors
+   :members:
+   :show-inheritance:
+   :noindex:
+
 Advanced Time Structures
 ========================
 
