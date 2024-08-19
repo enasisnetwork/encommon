@@ -9,27 +9,27 @@ is permitted, for more information consult the project license file.
 
 from pytest import mark
 
-from ..colors import Color
+from ..colors import Colors
 from ...types import lattrs
 
 
 
-def test_Color() -> None:
+def test_Colors() -> None:
     """
     Perform various tests associated with relevant routines.
     """
 
-    color = Color('000001')
+    color = Colors('000001')
 
 
     attrs = lattrs(color)
 
     assert attrs == [
-        '_Color__source']
+        '_Colors__source']
 
 
     assert repr(color) == (
-        "Color('#000001')")
+        "Colors('#000001')")
 
     assert hash(color) > 0
 
@@ -71,7 +71,7 @@ def test_Color() -> None:
      ('00ffff', (0, 255, 255)),
      ('ff00ff', (255, 0, 255)),
      ('800080', (128, 0, 128))])
-def test_Color_rgb(
+def test_Colors_rgb(
     source: str,
     expect: tuple[int, ...],
 ) -> None:
@@ -82,7 +82,7 @@ def test_Color_rgb(
     :param expect: Expected output from the testing routine.
     """
 
-    assert Color(source).rgb == expect
+    assert Colors(source).rgb == expect
 
 
 
@@ -99,7 +99,7 @@ def test_Color_rgb(
      ('00ffff', (53.8100, 78.7400, 106.9700)),
      ('ff00ff', (59.2900, 28.4800, 96.9800)),
      ('800080', (12.7984, 6.1477, 20.9342))])
-def test_Color_xyz(
+def test_Colors_xyz(
     source: str,
     expect: tuple[int, ...],
 ) -> None:
@@ -110,7 +110,7 @@ def test_Color_xyz(
     :param expect: Expected output from the testing routine.
     """
 
-    assert Color(source).xyz == expect
+    assert Colors(source).xyz == expect
 
 
 
@@ -127,7 +127,7 @@ def test_Color_xyz(
      ('00ffff', (0.2247, 0.3287)),
      ('ff00ff', (0.3209, 0.1542)),
      ('800080', (0.3209, 0.1542))])
-def test_Color_xy(
+def test_Colors_xy(
     source: str,
     expect: tuple[int, ...],
 ) -> None:
@@ -138,7 +138,7 @@ def test_Color_xy(
     :param expect: Expected output from the testing routine.
     """
 
-    assert Color(source).xy == expect
+    assert Colors(source).xy == expect
 
 
 
@@ -155,7 +155,7 @@ def test_Color_xy(
      ('00ffff', (180, 100, 50)),
      ('ff00ff', (300, 100, 50)),
      ('800080', (300, 100, 25))])
-def test_Color_hsl(
+def test_Colors_hsl(
     source: str,
     expect: tuple[int, ...],
 ) -> None:
@@ -166,17 +166,17 @@ def test_Color_hsl(
     :param expect: Expected output from the testing routine.
     """
 
-    assert Color(source).hsl == expect
+    assert Colors(source).hsl == expect
 
 
 
-def test_Color_cover() -> None:
+def test_Colors_cover() -> None:
     """
     Perform various tests associated with relevant routines.
     """
 
-    color1 = Color('000001')
-    color2 = Color('#000001')
+    color1 = Colors('000001')
+    color2 = Colors('#000001')
 
     assert not (color1 > None)  # type: ignore
     assert not (color1 >= None)  # type: ignore

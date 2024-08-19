@@ -14,13 +14,13 @@ from ..types import strplwr
 
 
 
-class Color:
+class Colors:
     """
     Covert colors to various forms using provided hex value.
 
     Example
     -------
-    >>> color = Color('#003333')
+    >>> color = Colors('#003333')
     >>> color.rgb
     (0, 51, 51)
     >>> color.hsl
@@ -32,12 +32,12 @@ class Color:
 
     Example
     -------
-    >>> color1 = Color('#003333')
-    >>> color2 = Color('#330000')
+    >>> color1 = Colors('#003333')
+    >>> color2 = Colors('#330000')
     >>> color1 - color2
-    Color('#32CCCD')
+    Colors('#32CCCD')
     >>> color1 + color2
-    Color('#333333')
+    Colors('#333333')
 
     :param source: Source color used when converting values.
     """
@@ -72,7 +72,7 @@ class Color:
 
         color = self.__str__()
 
-        return f"Color('{color}')"
+        return f"Colors('{color}')"
 
 
     def __hash__(
@@ -130,8 +130,8 @@ class Color:
 
     def __add__(
         self,
-        other: Union[int, str, 'Color'],
-    ) -> 'Color':
+        other: Union[int, str, 'Colors'],
+    ) -> 'Colors':
         """
         Built-in method for mathematically processing the value.
 
@@ -140,7 +140,7 @@ class Color:
         """
 
         if isinstance(other, str):
-            other = Color(other)
+            other = Colors(other)
 
         source = self.__int__()
         _source = int(other)
@@ -149,13 +149,13 @@ class Color:
 
         result = f'{outcome:06x}'
 
-        return Color(result)
+        return Colors(result)
 
 
     def __sub__(
         self,
-        other: Union[int, str, 'Color'],
-    ) -> 'Color':
+        other: Union[int, str, 'Colors'],
+    ) -> 'Colors':
         """
         Built-in method for mathematically processing the value.
 
@@ -164,7 +164,7 @@ class Color:
         """
 
         if isinstance(other, str):
-            other = Color(other)
+            other = Colors(other)
 
         source = self.__int__()
         _source = int(other)
@@ -173,7 +173,7 @@ class Color:
 
         result = f'{outcome:06x}'
 
-        return Color(result)
+        return Colors(result)
 
 
     def __eq__(
@@ -193,7 +193,7 @@ class Color:
                 other = f'{other:06x}'
 
             if isinstance(other, str):
-                other = Color(other)
+                other = Colors(other)
 
             assert hasattr(other, 'source')
 
@@ -223,7 +223,7 @@ class Color:
 
     def __gt__(
         self,
-        other: Union[int, str, 'Color'],
+        other: Union[int, str, 'Colors'],
     ) -> bool:
         """
         Built-in method for comparing this instance with another.
@@ -238,7 +238,7 @@ class Color:
                 other = f'{other:06x}'
 
             if isinstance(other, str):
-                other = Color(other)
+                other = Colors(other)
 
             assert hasattr(other, 'source')
 
@@ -254,7 +254,7 @@ class Color:
 
     def __ge__(
         self,
-        other: Union[int, str, 'Color'],
+        other: Union[int, str, 'Colors'],
     ) -> bool:
         """
         Built-in method for comparing this instance with another.
@@ -269,7 +269,7 @@ class Color:
                 other = f'{other:06x}'
 
             if isinstance(other, str):
-                other = Color(other)
+                other = Colors(other)
 
             assert hasattr(other, 'source')
 
@@ -285,7 +285,7 @@ class Color:
 
     def __lt__(
         self,
-        other: Union[int, str, 'Color'],
+        other: Union[int, str, 'Colors'],
     ) -> bool:
         """
         Built-in method for comparing this instance with another.
@@ -300,7 +300,7 @@ class Color:
                 other = f'{other:06x}'
 
             if isinstance(other, str):
-                other = Color(other)
+                other = Colors(other)
 
             assert hasattr(other, 'source')
 
@@ -316,7 +316,7 @@ class Color:
 
     def __le__(
         self,
-        other: Union[int, str, 'Color'],
+        other: Union[int, str, 'Colors'],
     ) -> bool:
         """
         Built-in method for comparing this instance with another.
@@ -331,7 +331,7 @@ class Color:
                 other = f'{other:06x}'
 
             if isinstance(other, str):
-                other = Color(other)
+                other = Colors(other)
 
             assert hasattr(other, 'source')
 
