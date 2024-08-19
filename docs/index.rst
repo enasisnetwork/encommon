@@ -164,6 +164,9 @@ Datetime and Helpers
 .. autofunction:: encommon.times.findtz
    :noindex:
 
+.. autofunction:: encommon.times.unitime
+   :noindex:
+
 Unique Python Types
 ===================
 
