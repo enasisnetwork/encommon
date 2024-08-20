@@ -24,7 +24,8 @@ SNAPABLE = compile(
     r'^(\-|\+)[\d\@a-z\-\+]+$')
 
 STRINGNOW = {
-    'None', 'null', 'now'}
+    'None', None,
+    'null', 'now'}
 
 
 

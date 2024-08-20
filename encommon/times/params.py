@@ -10,11 +10,15 @@ is permitted, for more information consult the project license file.
 from typing import Any
 from typing import Optional
 
-from pydantic import BaseModel
-
 from .common import PARSABLE
 from .common import SCHEDULE
 from .times import Times
+from ..types import BaseModel
+
+
+
+_TIMERS = dict[str, 'TimerParams']
+_WINDOWS = dict[str, 'WindowParams']
 
 
 
@@ -62,11 +66,24 @@ class TimersParams(BaseModel, extra='forbid'):
     Process and validate the core configuration parameters.
 
     :param timers: Seconds that are used for related timer.
-    :param data: Keyword arguments passed to Pydantic model.
-        Parameter is picked up by autodoc, please ignore.
     """
 
-    timers: dict[str, TimerParams] = {}
+    timers: _TIMERS
+
+
+    def __init__(
+        self,
+        timers: Optional[_TIMERS] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        if timers is None:
+            timers = {}
+
+        super().__init__(
+            timers=timers)
 
 
 
@@ -144,8 +161,21 @@ class WindowsParams(BaseModel, extra='forbid'):
     Process and validate the core configuration parameters.
 
     :param windows: Parameters for defining scheduled time.
-    :param data: Keyword arguments passed to Pydantic model.
-        Parameter is picked up by autodoc, please ignore.
     """
 
-    windows: dict[str, WindowParams] = {}
+    windows: _WINDOWS
+
+
+    def __init__(
+        self,
+        windows: Optional[_WINDOWS] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        if windows is None:
+            windows = {}
+
+        super().__init__(
+            windows=windows)

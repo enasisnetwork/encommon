@@ -9,6 +9,7 @@ is permitted, for more information consult the project license file.
 
 from contextlib import suppress
 from datetime import datetime
+from datetime import time as dtime
 from datetime import timedelta
 from typing import Optional
 
@@ -40,7 +41,6 @@ class Times:
     """
 
     __source: datetime
-    __hashed: int
 
 
     def __init__(
@@ -62,8 +62,6 @@ class Times:
             tzname=tzname)
 
         self.__source = parsed
-        self.__hashed = int(
-            self.mpoch * 1000)
 
 
     def __repr__(
@@ -87,7 +85,9 @@ class Times:
         :returns: Boolean indicating outcome from the operation.
         """
 
-        return int(1e9 + self.__hashed)
+        hashed = int(self.mpoch)
+
+        return int(1e9 + hashed)
 
 
     def __str__(
@@ -292,6 +292,19 @@ class Times:
 
 
     @property
+    def spoch(
+        self,
+    ) -> int:
+        """
+        Return the seconds since the Unix epoch for the instance.
+
+        :returns: Seconds since the Unix epoch for the instance.
+        """
+
+        return int(self.epoch)
+
+
+    @property
     def mpoch(
         self,
     ) -> float:
@@ -305,13 +318,26 @@ class Times:
 
 
     @property
+    def time(
+        self,
+    ) -> dtime:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__source.time()
+
+
+    @property
     def simple(
         self,
     ) -> str:
         """
-        Return the timestamp using provided format for instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Timestamp using provided format for instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.stamp(STAMP_SIMPLE)
@@ -322,9 +348,9 @@ class Times:
         self,
     ) -> str:
         """
-        Return the timestamp using provided format for instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Timestamp using provided format for instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.stamp(STAMP_SUBSEC)
@@ -335,9 +361,9 @@ class Times:
         self,
     ) -> str:
         """
-        Return the timestamp using provided format for instance.
+        Return the value for the attribute from class instance.
 
-        :returns: Timestamp using provided format for instance.
+        :returns: Value for the attribute from class instance.
         """
 
         return self.stamp(STAMP_HUMAN)
@@ -423,9 +449,14 @@ class Times:
 
         tzinfo = findtz(tzname)
 
-        parsed = source.astimezone(tzinfo)
+        if tzname is not None:
 
-        return strftime(parsed, format)
+            source = (
+                source
+                .astimezone(tzinfo))
+
+        return strftime(
+            source, format)
 
 
     def shift(
@@ -441,4 +472,31 @@ class Times:
 
         source = self.__source
 
-        return Times(notate, anchor=source)
+        return Times(
+            notate, anchor=source)
+
+
+    def shifz(
+        self,
+        tzname: str,
+    ) -> 'Times':
+        """
+        Return the new instance of object shifted using datetime.
+
+        :param tzname: Name of the timezone associated to source.
+            This is not relevant in timezone included in source.
+        :returns: New instance of the class using shifted time.
+        """
+
+        source = self.__source
+
+        tzinfo = findtz(tzname)
+
+        if tzname is not None:
+
+            source = (
+                source
+                .astimezone(tzinfo))
+
+        return Times(
+            source, tzname=tzname)

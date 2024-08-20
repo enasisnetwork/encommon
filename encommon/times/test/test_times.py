@@ -30,8 +30,7 @@ def test_Times() -> None:
     attrs = list(times.__dict__)
 
     assert attrs == [
-        '_Times__source',
-        '_Times__hashed']
+        '_Times__source']
 
 
     assert inrepr(
@@ -65,7 +64,11 @@ def test_Times() -> None:
 
     assert times.epoch == 0.0
 
+    assert times.spoch == 0
+
     assert times.mpoch == 0.0
+
+    assert str(times.time) == '00:00:00'
 
     assert times.simple == UNIXEPOCH
 
@@ -87,3 +90,33 @@ def test_Times() -> None:
 
     times = times.shift('+1y')
     assert times == '1971-01-01'
+
+    times = times.shifz('UTC-1')
+    assert times == (
+        '12/31/1970 23:00 -0100')
+
+
+
+def test_Times_tzname() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+    times1 = Times(
+        '1970-01-01T00:00:00Z')
+
+    times2 = times1.shifz(
+        'US/Central')
+
+
+    delta = times1 - times2
+
+    assert -1 < delta < 1
+
+
+    stamp1 = times1.stamp(
+        tzname='US/Central')
+
+    stamp2 = times2.stamp()
+
+    assert stamp1 == stamp2
