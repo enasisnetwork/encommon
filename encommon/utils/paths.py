@@ -13,6 +13,7 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from .match import rgxp_match
+from ..types import rplstr
 from ..types import sort_dict
 
 if TYPE_CHECKING:
@@ -50,13 +51,11 @@ def resolve_path(
 
         for old, new in items:
 
-            if isinstance(old, Path):
-                old = str(old)
+            old = str(old)
+            new = str(new)
 
-            if isinstance(new, Path):
-                new = str(new)
-
-            path = path.replace(old, new)
+            path = rplstr(
+                path, old, new)
 
     return Path(path).resolve()
 
