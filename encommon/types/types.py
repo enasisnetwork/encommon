@@ -7,18 +7,14 @@ is permitted, for more information consult the project license file.
 
 
 
-from pathlib import Path
+from typing import Any
 
 
 
-PROJECT = Path(__file__).parent
-WORKSPACE = PROJECT.parents[2]
-
-VERSION = (
-    (PROJECT / 'version.txt')
-    .read_text(encoding='utf-8')
-    .splitlines()[0].strip())
+DictStrAny = dict[str, Any]
 
 
 
-__version__ = VERSION
+NCTrue = True
+NCFalse = False
+NCNone = None

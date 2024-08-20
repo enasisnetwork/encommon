@@ -17,6 +17,7 @@ from .utils import config_load
 from .utils import config_path
 from .utils import config_paths
 from ..types import merge_dicts
+from ..types import sort_dict
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
@@ -110,6 +111,8 @@ class ConfigFiles:
                 dict2=deepcopy(source),
                 force=False)
 
+
+        merged = sort_dict(merged)
 
         self.__merged = merged
 

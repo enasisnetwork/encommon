@@ -84,8 +84,14 @@ def config_paths(
     :returns: New resolved filesystem path object instances.
     """
 
+    if replace is None:
+        replace = {}
+
+    replace = dict(replace)
+
     replace = {
         'PROJECT': PROJECT,
         'WORKSPACE': WORKSPACE}
 
-    return resolve_paths(paths, replace)
+    return resolve_paths(
+        paths, replace)

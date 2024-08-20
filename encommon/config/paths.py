@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING
 from .files import ConfigFile
 from .utils import config_path
 from .utils import config_paths
+from ..types import sort_dict
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
@@ -117,6 +118,8 @@ class ConfigPaths:
 
                 merged[key] = file.config
 
+
+        merged = sort_dict(merged)
 
         self.__merged = merged
 

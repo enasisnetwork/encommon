@@ -1,9 +1,9 @@
 {
-  "_/encommon_sample/PROJECT/_/config/test/samples/stark/tstark.yml": {
-    "name": "Tony Stark"
-  },
   "_/encommon_sample/PROJECT/_/config/test/samples/stark/common.yml": {
     "common": "Stark"
+  },
+  "_/encommon_sample/PROJECT/_/config/test/samples/stark/tstark.yml": {
+    "name": "Tony Stark"
   },
   "_/encommon_sample/PROJECT/_/config/test/samples/wayne/bwayne.yml": {
     "name": "Bruce Wayne"

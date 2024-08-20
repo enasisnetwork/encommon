@@ -14,12 +14,12 @@ from pytest import fixture
 from . import SAMPLES
 from ..paths import ConfigPath
 from ..paths import ConfigPaths
-from ... import ENPYRWS
 from ... import PROJECT
 from ...types import inrepr
 from ...types import instr
 from ...utils import load_sample
 from ...utils import prep_sample
+from ...utils.sample import ENPYRWS
 
 
 

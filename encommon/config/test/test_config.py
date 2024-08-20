@@ -13,13 +13,13 @@ from typing import TYPE_CHECKING
 from . import SAMPLES
 from ..logger import Logger
 from ..params import Params
-from ... import ENPYRWS
 from ... import PROJECT
 from ...crypts import Crypts
 from ...types import inrepr
 from ...types import instr
 from ...utils import load_sample
 from ...utils import prep_sample
+from ...utils.sample import ENPYRWS
 
 if TYPE_CHECKING:
     from ..config import Config
@@ -69,6 +69,10 @@ def test_Config(
     assert instr(
         'paths.ConfigPaths object',
         config.paths)
+
+    assert len(config.source) == 3
+
+    assert len(config.merged) == 5
 
     assert len(config.cargs) == 1
 

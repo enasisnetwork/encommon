@@ -9,11 +9,13 @@ is permitted, for more information consult the project license file.
 
 from _pytest.capture import CaptureFixture
 
+from ..stdout import ArrayColors
 from ..stdout import array_ansi
 from ..stdout import kvpair_ansi
 from ..stdout import make_ansi
 from ..stdout import print_ansi
 from ..stdout import strip_ansi
+from ...config import LoggerParams
 from ...times import Duration
 from ...times import Times
 from ...times.common import UNIXMPOCH
@@ -96,31 +98,6 @@ def test_array_ansi() -> None:  # noqa: CFQ001
         'list': [1, 2],
         'bool': False}
 
-    repeat = {
-        'dict': simple | {
-            'dict': simple}}
-
-    source = {
-        'str': 'value',
-        'int': 1,
-        'float': 1.0,
-        'complex': complex(3, 1),
-        'list': [simple],
-        'tuple': (simple,),
-        'range': range(1, 3),
-        'dict1': simple,
-        'dict2': simple,
-        'dict3': simple,
-        'set': {1, 2, 3},
-        'frozenset': {1, 2, 3},
-        'bool': True,
-        'none': None,
-        '_private': None,
-        'repeat': repeat,
-        'Empty': Empty,
-        'Duration': Duration(190802),
-        'Times': Times(0)}
-
 
     output = strip_ansi(
         array_ansi(simple))
@@ -161,6 +138,40 @@ def test_array_ansi() -> None:  # noqa: CFQ001
         '- 1\n'
         '- 2\n'
         '- 3')
+
+
+    colors = ArrayColors()
+
+    params = LoggerParams()
+
+    repeat = {
+        'dict': simple | {
+            'dict': simple}}
+
+    durate = Duration(190802)
+
+    source = {
+        'str': 'value',
+        'int': 1,
+        'float': 1.0,
+        'complex': complex(3, 1),
+        'list': [simple],
+        'tuple': (simple,),
+        'range': range(1, 3),
+        'dict1': simple,
+        'dict2': simple,
+        'dict3': simple,
+        'set': {1, 2, 3},
+        'frozenset': {1, 2, 3},
+        'bool': True,
+        'none': None,
+        '_private': None,
+        'repeat': repeat,
+        'colors': colors,
+        'params': params,
+        'Empty': Empty,
+        'Times': Times(0),
+        'Duration': durate}
 
 
     output = strip_ansi(
@@ -226,6 +237,59 @@ def test_array_ansi() -> None:  # noqa: CFQ001
         "      str: 'value'\n"
         '      list: REPEAT\n'
         '      bool: False\n'
+        f'colors: ArrayColors\n'
+        '  label: 37\n'
+        '  key: 97\n'
+        '  colon: 37\n'
+        '  hyphen: 37\n'
+        '  bool: 93\n'
+        '  none: 33\n'
+        '  str: 92\n'
+        '  num: 93\n'
+        '  times: 96\n'
+        '  empty: 36\n'
+        '  other: 91\n'
+        'params: LoggerParams\n'
+        '  stdo_level: None\n'
+        '  file_level: None\n'
+        '  file_path: None\n'
         'Empty: Empty\n'
-        'Duration: 2d5h\n'
-        f'Times: {UNIXMPOCH}')
+        f'Times: {UNIXMPOCH}\n'
+        'Duration: 2d5h')
+
+
+
+def test_array_ansi_cover() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+
+    colors = ArrayColors()
+
+    output = strip_ansi(
+        array_ansi(colors))
+
+    assert output == (
+        'label: 37\n'
+        'key: 97\n'
+        'colon: 37\n'
+        'hyphen: 37\n'
+        'bool: 93\n'
+        'none: 33\n'
+        'str: 92\n'
+        'num: 93\n'
+        'times: 96\n'
+        'empty: 36\n'
+        'other: 91')
+
+
+    params = LoggerParams()
+
+    output = strip_ansi(
+        array_ansi(params))
+
+    assert output == (
+        'stdo_level: None\n'
+        'file_level: None\n'
+        'file_path: None')

@@ -7,18 +7,17 @@ is permitted, for more information consult the project license file.
 
 
 
-from pathlib import Path
+from ..lists import inlist
 
 
 
-PROJECT = Path(__file__).parent
-WORKSPACE = PROJECT.parents[2]
+def test_inlist() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
 
-VERSION = (
-    (PROJECT / 'version.txt')
-    .read_text(encoding='utf-8')
-    .splitlines()[0].strip())
+    needle = 123
 
+    haystack = [123, 456]
 
-
-__version__ = VERSION
+    assert inlist(needle, haystack)
