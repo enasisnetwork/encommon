@@ -16,6 +16,7 @@ from pytest import fixture
 from ..logger import Logger
 from ..logger import Message
 from ..params import LoggerParams
+from ...times import Times
 from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
 from ...types import inrepr
@@ -196,6 +197,8 @@ def test_Logger_cover(
     :param caplog: pytest object for capturing log message.
     """
 
+    times = Times('now')
+
 
     def _logger_logs() -> None:
         logger.log_d(msg='pytest')
@@ -203,6 +206,7 @@ def test_Logger_cover(
         logger.log_e(msg='pytest')
         logger.log_i(msg='pytest')
         logger.log_w(msg='pytest')
+        logger.log_i(elapsed=times)
 
 
     def _logger_stdo() -> _CAPLOG:
@@ -229,16 +233,16 @@ def test_Logger_cover(
 
     _logger_logs()
 
-    assert len(_logger_stdo()) == 5
-    assert len(_logger_file()) == 5
+    assert len(_logger_stdo()) == 6
+    assert len(_logger_file()) == 6
 
     logger.stop()
 
 
     _logger_logs()
 
-    assert len(_logger_stdo()) == 5
-    assert len(_logger_file()) == 5
+    assert len(_logger_stdo()) == 6
+    assert len(_logger_file()) == 6
 
 
     logger.start()
@@ -256,13 +260,14 @@ def test_Logger_cover(
     assert message in str(stdo)
     assert message in str(file)
 
-    assert len(_logger_stdo()) == 6
-    assert len(_logger_file()) == 6
+    assert len(_logger_stdo()) == 7
+    assert len(_logger_file()) == 7
+
 
     logger.stop()
 
 
     _logger_logs()
 
-    assert len(_logger_stdo()) == 6
-    assert len(_logger_file()) == 6
+    assert len(_logger_stdo()) == 7
+    assert len(_logger_file()) == 7

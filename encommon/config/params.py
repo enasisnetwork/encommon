@@ -10,10 +10,9 @@ is permitted, for more information consult the project license file.
 from pathlib import Path
 from typing import Optional
 
-from pydantic import BaseModel
-
 from .logger import LOGLEVELS
 from ..crypts import CryptsParams
+from ..types import BaseModel
 
 
 

@@ -7,7 +7,13 @@ is permitted, for more information consult the project license file.
 
 
 
-from pydantic import BaseModel
+from typing import Optional
+
+from ..types import BaseModel
+
+
+
+_CRYPTS = dict[str, 'CryptParams']
 
 
 
@@ -29,8 +35,21 @@ class CryptsParams(BaseModel, extra='forbid'):
     Process and validate the core configuration parameters.
 
     :param phrases: Passphrases that are used in operations.
-    :param data: Keyword arguments passed to Pydantic model.
-        Parameter is picked up by autodoc, please ignore.
     """
 
-    phrases: dict[str, CryptParams] = {}
+    phrases: _CRYPTS
+
+
+    def __init__(
+        self,
+        phrases: Optional[_CRYPTS] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        if phrases is None:
+            phrases = {}
+
+        super().__init__(
+            phrases=phrases)

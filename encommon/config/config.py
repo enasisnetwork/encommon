@@ -67,8 +67,8 @@ class Config:
 
     def __init__(
         self,
-        *,
         files: Optional['PATHABLE'] = None,
+        *,
         paths: Optional['PATHABLE'] = None,
         cargs: Optional[dict[str, Any]] = None,
         sargs: Optional[dict[str, Any]] = None,
@@ -131,6 +131,61 @@ class Config:
 
 
     @property
+    def source(
+        self,
+    ) -> dict[str, Any]:
+        """
+        Return the configuration source loaded from the objects.
+
+        :returns: Configuration source loaded from the objects.
+        """
+
+        files = self.files
+
+        ferged = files.merged
+
+        merge_dicts(
+            dict1=ferged,
+            dict2=self.cargs,
+            force=True)
+
+        return deepcopy(ferged)
+
+
+    @property
+    def merged(
+        self,
+    ) -> dict[str, Any]:
+        """
+        Return the configuration source loaded from the objects.
+
+        :returns: Configuration source loaded from the objects.
+        """
+
+        files = self.files
+        paths = self.paths
+
+        ferged = files.merged
+        perged = paths.merged
+
+        merge_dicts(
+            dict1=ferged,
+            dict2=self.cargs,
+            force=True)
+
+        values = perged.values()
+
+        for merge in values:
+
+            merge_dicts(
+                dict1=ferged,
+                dict2=merge,
+                force=False)
+
+        return deepcopy(ferged)
+
+
+    @property
     def cargs(
         self,
     ) -> dict[str, Any]:
@@ -179,9 +234,9 @@ class Config:
         self,
     ) -> dict[str, Any]:
         """
-        Return the configuration in dictionary format for files.
+        Return the configuration dumped from the Pydantic model.
 
-        :returns: Configuration in dictionary format for files.
+        :returns: Configuration dumped from the Pydantic model.
         """
 
         return self.params.model_dump()
@@ -215,20 +270,12 @@ class Config:
         if params is not None:
             return params
 
-
-        merged = self.files.merged
-
-        merge_dicts(
-            dict1=merged,
-            dict2=self.cargs,
-            force=True)
-
-        params = self.model(**merged)
-
+        params = self.model(
+            **self.source)
 
         self.__params = params
 
-        return params
+        return self.__params
 
 
     @property
@@ -241,11 +288,14 @@ class Config:
         :returns: Instance of Python logging library created.
         """
 
-        if self.__logger is not None:
-            return self.__logger
+        logger = self.__logger
+        params = self.params
+
+        if logger is not None:
+            return logger
 
         logger = Logger(
-            self.params.enlogger)
+            params.enlogger)
 
         self.__logger = logger
 
@@ -262,11 +312,14 @@ class Config:
         :returns: Instance of the encryption instance created.
         """
 
-        if self.__crypts is not None:
-            return self.__crypts
+        crypts = self.__crypts
+        params = self.params
+
+        if crypts is not None:
+            return crypts
 
         crypts = Crypts(
-            self.params.encrypts)
+            params.encrypts)
 
         self.__crypts = crypts
 

@@ -7,22 +7,31 @@ is permitted, for more information consult the project license file.
 
 
 
+from dataclasses import asdict
 from dataclasses import dataclass
+from dataclasses import is_dataclass
 from re import compile
 from re import sub as re_sub
 from sys import stdout
 from typing import Any
 from typing import Literal
 from typing import Optional
+from typing import TYPE_CHECKING
 from typing import Union
+
+from pydantic import BaseModel
 
 from .common import JOINABLE
 from ..times import Duration
 from ..times import Times
 from ..types import Empty
+from ..types import clsname
 from ..types.strings import COMMAD
 from ..types.strings import NEWLINE
 from ..types.strings import SEMPTY
+
+if TYPE_CHECKING:
+    from _typeshed import DataclassInstance
 
 
 
@@ -34,7 +43,10 @@ ANSIARRAL = Union[
     tuple[Any, ...],
     set[Any]]
 
-ANSIARRAD = dict[Any, Any]
+ANSIARRAD = Union[
+    dict[Any, Any],
+    BaseModel,
+    'DataclassInstance']
 
 ANSIARRAY = Union[
     ANSIARRAL,
@@ -220,14 +232,21 @@ def array_ansi(  # noqa: CFQ001, CFQ004
             'list': list,
             'tuple': tuple,
             'dict': dict,
+            'BaseModel': BaseModel,
             'frozenset': frozenset,
             'set': set}
 
         items = typing.items()
 
-        for name, _type in items:
+        for name, typed in items:
 
-            if not isinstance(value, _type):
+            if isinstance(value, BaseModel):
+                name = clsname(value)
+
+            elif is_dataclass(value):
+                name = clsname(value)
+
+            elif not isinstance(value, typed):
                 continue
 
             output.append(
@@ -288,6 +307,12 @@ def array_ansi(  # noqa: CFQ001, CFQ004
         refers: Optional[set[int]] = None,
     ) -> None:
 
+        if isinstance(source, BaseModel):
+            source = source.model_dump()
+
+        if is_dataclass(source):
+            source = asdict(source)
+
         assert isinstance(source, dict)
 
         items = source.items()
@@ -325,17 +350,38 @@ def array_ansi(  # noqa: CFQ001, CFQ004
 
 
     def _process(
-        source: ANSIARRAD | ANSIARRAL,
+        source: ANSIARRAY,
         **kwargs: Any,
     ) -> None:
 
         if isinstance(source, dict):
             return _dict(source, **kwargs)
 
-        return _list(source, **kwargs)
+        if isinstance(source, BaseModel):
+            return _dict(source, **kwargs)
+
+        if is_dataclass(source):
+            return _dict(source, **kwargs)
+
+        assert isinstance(
+            source,
+            set | list | tuple)
+
+        _list(source, **kwargs)
+
+
+    if is_dataclass(source):
+
+        assert not isinstance(
+            source, type)
+
+        source = asdict(source)
 
 
     if isinstance(source, dict):
+        _dict(source, indent)
+
+    elif isinstance(source, BaseModel):
         _dict(source, indent)
 
     elif isinstance(source, list):

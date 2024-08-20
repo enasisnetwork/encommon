@@ -27,31 +27,42 @@ def config_factory(
     :returns: Newly constructed instance of related class.
     """
 
+    content = (
+        f"""
+
+        enconfig:
+          paths:
+            - '{SAMPLES}/stark'
+            - '{SAMPLES}/wayne'
+
+        enlogger:
+          stdo_level: info
+
+        encrypts:
+          phrases:
+            default:
+              phrase: phrase
+
+        """)  # noqa: LIT003
+
+    config_path = (
+        tmp_path / 'config.yml')
+
+    config_log = (
+        tmp_path / 'config.log')
+
     save_text(
-        f'{tmp_path}/config.yml',
-        content=(
-            'enconfig:\n'
-            '  paths:\n'
-            f"    - '{SAMPLES}/stark'\n"
-            f"    - '{SAMPLES}/wayne'\n"
-            'enlogger:\n'
-            '  stdo_level: info\n'
-            'encrypts:\n'
-            '  phrases:\n'
-            '    default:\n'
-            '      phrase: phrase\n'))
+        config_path, content)
 
-    config_log = f'{tmp_path}/config.log'
+    logger = {
+        'file_path': config_log,
+        'file_level': 'info'}
 
-    cargs = {
-        'enlogger/file_path': config_log,
-        'enlogger/file_level': 'info'}
-
-    sargs = {
-        'custom/parameter': 'fart'}
+    cargs = {'enlogger': logger}
+    sargs = {'cus/tom': 'fart'}
 
     return Config(
-        files=f'{tmp_path}/config.yml',
+        config_path,
         cargs=cargs,
         sargs=sargs)
 

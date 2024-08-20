@@ -122,6 +122,11 @@ class Message:
                 value = COMMAD.join(values)
 
 
+            if (isinstance(value, Times)
+                    and key == 'elapsed'):
+                value = value.since
+
+
             if (isinstance(value, float)
                     and key == 'elapsed'):
 

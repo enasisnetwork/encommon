@@ -21,22 +21,24 @@ SPACED = ' '
 
 
 
-def striplower(
-    value: str,
+def strplwr(
+    value: Any,  # noqa: ANN401
 ) -> str:
     """
     Return the provided string but stripped and lower cased.
 
     Example
     -------
-    >>> striplower('  Foo ')
+    >>> strplwr('  Foo ')
     'foo'
 
     :param value: String which will be stripped and lowered.
     :returns: Provided string but stripped and lower cased.
     """
 
-    return value.strip().lower()
+    _value = str(value)
+
+    return _value.strip().lower()
 
 
 
@@ -108,3 +110,26 @@ def instr(
     """
 
     return hasstr(str(haystack), needle)
+
+
+
+def rplstr(
+    source: str,
+    match: str,
+    value: Any,  # noqa: ANN401
+) -> str:
+    """
+    Return the source string with the match value replaced.
+
+    :param source: String that to be processed and returned.
+    :param match: What will be replaced within the string.
+    :param value: Replace value for the string is matched.
+    :returns: Source string with the match value replaced.
+    """
+
+    match = str(match)
+    value = str(value)
+
+    return (
+        str(source)
+        .replace(match, value))

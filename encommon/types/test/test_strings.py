@@ -10,16 +10,17 @@ is permitted, for more information consult the project license file.
 from ..strings import hasstr
 from ..strings import inrepr
 from ..strings import instr
-from ..strings import striplower
+from ..strings import rplstr
+from ..strings import strplwr
 
 
 
-def test_striplower() -> None:
+def test_strplwr() -> None:
     """
     Perform various tests associated with relevant routines.
     """
 
-    assert striplower(' Foo ') == 'foo'
+    assert strplwr(' Foo ') == 'foo'
 
 
 
@@ -59,3 +60,14 @@ def test_instr() -> None:
     item = MyClass()
 
     assert instr('MyClass', item)
+
+
+
+def test_rplstr() -> None:
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+    string = rplstr('foo', 'o', 'O')
+
+    assert string == 'fOO'
