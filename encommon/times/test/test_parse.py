@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from datetime import timedelta
+from datetime import timezone
 
 from pytest import mark
 
@@ -41,10 +42,10 @@ def test_parse_time() -> None:
         '12/31/1969 6:00pm',
         tzname='US/Central')
 
-    assert parsed.year == 1970
-    assert parsed.month == 1
-    assert parsed.day == 1
-    assert parsed.hour == 0
+    assert parsed.year == 1969
+    assert parsed.month == 12
+    assert parsed.day == 31
+    assert parsed.hour == 18
 
 
     parsed = parse_time(0)
@@ -139,7 +140,10 @@ def test_string_time() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    expect = utcdatetime(1980, 1, 1)
+    utc = timezone.utc
+    expect = (
+        utcdatetime(1980, 1, 1)
+        .astimezone(None))
 
 
     strings = [
@@ -151,7 +155,9 @@ def test_string_time() -> None:
 
     for string in strings:
 
-        parsed = string_time(string)
+        parsed = (
+            string_time(string)
+            .astimezone(utc))
 
         assert parsed == expect
 
@@ -170,9 +176,10 @@ def test_string_time() -> None:
     assert parsed == expect
 
 
-    parsed = string_time(
-        '1979-12-31 18:00:00',
-        tzname='US/Central')
+    parsed = (
+        string_time(
+            '1979-12-31 18:00:00',
+            tzname='US/Central'))
 
     assert parsed == expect
 

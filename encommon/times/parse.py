@@ -9,7 +9,6 @@ is permitted, for more information consult the project license file.
 
 from contextlib import suppress
 from datetime import datetime
-from datetime import timezone
 from re import match as re_match
 from typing import Optional
 from typing import TYPE_CHECKING
@@ -31,7 +30,7 @@ if TYPE_CHECKING:
 
 
 
-def parse_time(  # noqa: CFQ004
+def parse_time(
     source: Optional[PARSABLE] = None,
     *,
     anchor: Optional[PARSABLE] = None,
@@ -79,13 +78,19 @@ def parse_time(  # noqa: CFQ004
     :returns: Python datetime object containing related time.
     """
 
+
     if (source is not None
             and hasattr(source, 'source')):
+
         source = source.source
+        assert isinstance(
+            source, datetime)
+
 
     if (isinstance(source, str)
             and re_match(NUMERISH, source)):
         source = float(source)
+
 
     tzinfo = findtz(tzname)
 
@@ -94,8 +99,11 @@ def parse_time(  # noqa: CFQ004
         source = datetime.fromtimestamp(
             float(source), tz=tzinfo)
 
-    if str(source) in STRINGNOW:
-        return utcdatetime()
+
+    if source in STRINGNOW:
+        source = (
+            utcdatetime()
+            .astimezone(tzinfo))
 
     if source in ['max', float('inf')]:
         source = datetime.max
@@ -116,11 +124,15 @@ def parse_time(  # noqa: CFQ004
             formats=format,
             tzname=tzname)
 
-    if isinstance(source, datetime):
-        return (
-            source.replace(tzinfo=tzinfo)
-            .astimezone(timezone.utc))
 
+    if (isinstance(source, datetime)
+            and not source.tzinfo):
+        source = source.replace(
+            tzinfo=findtz(tzname))
+
+
+    if isinstance(source, datetime):
+        return source
 
     raise ValueError('source')  # NOCVR
 
@@ -155,7 +167,12 @@ def shift_time(
     anchor = parse_time(
         anchor, tzname=tzname)
 
-    return snap(anchor, notate)
+    parsed = snap(anchor, notate)
+
+    assert parsed.tzinfo is not None
+
+    return parse_time(
+        parsed, tzname=tzname)
 
 
 
@@ -186,10 +203,20 @@ def string_time(
     """
 
     if formats is not None:
+
         with suppress(ValueError):
-            return strptime(source, formats)
+
+            return strptime(
+                source, formats)
 
     parsed = parser.parse(source)
+
+    if parsed.tzinfo is None:
+
+        tzinfo = findtz(tzname)
+
+        parsed = parsed.replace(
+            tzinfo=tzinfo)
 
     return parse_time(
         parsed, tzname=tzname)
