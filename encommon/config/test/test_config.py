@@ -70,15 +70,15 @@ def test_Config(
         'paths.ConfigPaths object',
         config.paths)
 
-    assert len(config.source) == 3
-
-    assert len(config.merged) == 5
-
     assert len(config.cargs) == 1
 
     assert len(config.sargs) == 1
 
     assert len(config.config) == 3
+
+    assert len(config.basic) == 3
+
+    assert len(config.merge) == 5
 
     assert config.model is Params
 

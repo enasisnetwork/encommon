@@ -131,61 +131,6 @@ class Config:
 
 
     @property
-    def source(
-        self,
-    ) -> dict[str, Any]:
-        """
-        Return the configuration source loaded from the objects.
-
-        :returns: Configuration source loaded from the objects.
-        """
-
-        files = self.files
-
-        ferged = files.merged
-
-        merge_dicts(
-            dict1=ferged,
-            dict2=self.cargs,
-            force=True)
-
-        return deepcopy(ferged)
-
-
-    @property
-    def merged(
-        self,
-    ) -> dict[str, Any]:
-        """
-        Return the configuration source loaded from the objects.
-
-        :returns: Configuration source loaded from the objects.
-        """
-
-        files = self.files
-        paths = self.paths
-
-        ferged = files.merged
-        perged = paths.merged
-
-        merge_dicts(
-            dict1=ferged,
-            dict2=self.cargs,
-            force=True)
-
-        values = perged.values()
-
-        for merge in values:
-
-            merge_dicts(
-                dict1=ferged,
-                dict2=merge,
-                force=False)
-
-        return deepcopy(ferged)
-
-
-    @property
     def cargs(
         self,
     ) -> dict[str, Any]:
@@ -243,6 +188,61 @@ class Config:
 
 
     @property
+    def basic(
+        self,
+    ) -> dict[str, Any]:
+        """
+        Return the configuration source loaded from the objects.
+
+        :returns: Configuration source loaded from the objects.
+        """
+
+        files = self.files
+
+        ferged = files.merged
+
+        merge_dicts(
+            dict1=ferged,
+            dict2=self.cargs,
+            force=True)
+
+        return deepcopy(ferged)
+
+
+    @property
+    def merge(
+        self,
+    ) -> dict[str, Any]:
+        """
+        Return the configuration source loaded from the objects.
+
+        :returns: Configuration source loaded from the objects.
+        """
+
+        files = self.files
+        paths = self.paths
+
+        ferged = files.merged
+        perged = paths.merged
+
+        merge_dicts(
+            dict1=ferged,
+            dict2=self.cargs,
+            force=True)
+
+        values = perged.values()
+
+        for merge in values:
+
+            merge_dicts(
+                dict1=ferged,
+                dict2=merge,
+                force=False)
+
+        return deepcopy(ferged)
+
+
+    @property
     def model(
         self,
     ) -> Callable:  # type: ignore
@@ -271,7 +271,7 @@ class Config:
             return params
 
         params = self.model(
-            **self.source)
+            **self.basic)
 
         self.__params = params
 

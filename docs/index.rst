@@ -190,7 +190,7 @@ Python Type Utilities
 .. autofunction:: encommon.types.sort_dict
    :noindex:
 
-.. autofunction:: encommon.types.striplower
+.. autofunction:: encommon.types.strplwr
    :noindex:
 
 .. autofunction:: encommon.types.hasstr
@@ -200,6 +200,18 @@ Python Type Utilities
    :noindex:
 
 .. autofunction:: encommon.types.instr
+   :noindex:
+
+.. autofunction:: encommon.types.clsname
+   :noindex:
+
+.. autofunction:: encommon.types.lattrs
+   :noindex:
+
+.. autofunction:: encommon.types.inlist
+   :noindex:
+
+.. autofunction:: encommon.types.rplstr
    :noindex:
 
 Python Notation Helpers
@@ -239,6 +251,12 @@ Test Sample Utilities
    :noindex:
 
 .. autofunction:: encommon.utils.prep_sample
+   :noindex:
+
+.. autofunction:: encommon.utils.read_sample
+   :noindex:
+
+.. autofunction:: encommon.utils.rvrt_sample
    :noindex:
 
 Matching Expressions
