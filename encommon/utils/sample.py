@@ -7,54 +7,79 @@ is permitted, for more information consult the project license file.
 
 
 
+from dataclasses import asdict
+from dataclasses import is_dataclass
 from json import dumps
-from json import loads
+from os import environ
 from pathlib import Path
 from typing import Any
 from typing import Callable
 from typing import Optional
-from typing import TYPE_CHECKING
+
+from pydantic import BaseModel
 
 from .files import read_text
 from .files import save_text
-
-if TYPE_CHECKING:
-    from .common import REPLACE
+from ..types import rplstr
 
 
 
-def prep_sample(
+PREFIX = 'encommon_sample'
+
+ENPYRWS = (
+    environ.get('ENPYRWS') == '1')
+
+
+
+def prep_sample(  # noqa: CFQ004
     content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional['REPLACE'] = None,
-) -> Any:
-    """
-    Return the content after processing using JSON functions.
-
-    .. testsetup::
-       >>> from ..types import Empty
+    replace: Optional[dict[str, Any]] = None,
+    indent: Optional[int] = 2,
+) -> str:
+    r"""
+    Return the content after processing as the sample value.
 
     Example
     -------
     >>> prep_sample(['one', 'two'])
-    ['one', 'two']
+    '[\n  "one",\n  "two"\n]'
 
     Example
     -------
+    >>> from ..types import Empty
     >>> prep_sample({'one': Empty})
-    {'one': 'Empty'}
+    '{\n  "one": "Empty"\n}'
 
     :param content: Content that will be processed as JSON.
     :param default: Callable used when stringifying values.
     :param replace: Optional values to replace in the file.
-    :returns: Content after processing using JSON functions.
+    :returns: Content after processing as the sample value.
     """
 
-    content = dumps(
-        content, default=default)
 
-    prefix = 'encommon_sample'
+    def _default(
+        value: Any,  # noqa: ANN401
+    ) -> dict[str, Any] | str:
+
+        if is_dataclass(value):
+
+            assert not isinstance(
+                value, type)
+
+            return asdict(value)
+
+        if isinstance(value, BaseModel):
+            return value.model_dump()
+
+        return str(value)
+
+
+    content = dumps(
+        content,
+        default=_default,
+        indent=indent)
 
     replace = replace or {}
 
@@ -62,16 +87,14 @@ def prep_sample(
 
     for old, new in items:
 
-        if isinstance(old, Path):
-            old = str(old)
+        new = str(new)
 
-        if isinstance(new, Path):
-            new = str(new)
+        old = f'_/{PREFIX}/{old}/_'
 
-        content = content.replace(
-            new, f'_/{prefix}/{old}/_')
+        content = rplstr(
+            content, new, old)
 
-    return loads(content)
+    return str(content)
 
 
 
@@ -81,9 +104,9 @@ def load_sample(
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional['REPLACE'] = None,
-) -> Any:
-    """
+    replace: Optional[dict[str, Any]] = None,
+) -> str:
+    r"""
     Load the sample file and compare using provided content.
 
     .. testsetup::
@@ -96,20 +119,21 @@ def load_sample(
     -------
     >>> content = {'one': 'two'}
     >>> load_sample(sample, content)
-    {'one': 'two'}
+    '{\n  "one": "two"\n}'
 
     Example
     -------
     >>> load_sample(sample)
-    {'one': 'two'}
+    '{\n  "one": "two"\n}'
 
-    :param path: Complete or relative path for the sample.
+    :param path: Complete or relative path for sample file.
     :param update: Determine whether the sample is updated.
     :param content: Content that will be processed as JSON.
     :param default: Callable used when stringifying values.
     :param replace: Optional values to replace in the file.
     :returns: Content after processing using JSON functions.
     """
+
 
     path = Path(path).resolve()
 
@@ -123,18 +147,11 @@ def load_sample(
 
 
     def _save_sample() -> None:
-
-        dumped = dumps(
-            content, indent=2)
-
-        save_text(path, dumped)
+        save_text(path, content)
 
 
-    def _load_sample() -> Any:
-
-        loaded = read_text(path)
-
-        return loads(loaded)
+    def _load_sample() -> str:
+        return read_text(path)
 
 
     if path.exists():
@@ -150,3 +167,62 @@ def load_sample(
 
 
     return _load_sample()
+
+
+
+def read_sample(
+    sample: str,
+    *,
+    replace: Optional[dict[str, Any]] = None,
+    prefix: bool = True,
+) -> str:
+    """
+    Return the content after processing as the sample value.
+
+    :param sample: Content that will be processed as sample.
+    :param replace: Optional values to replace in the file.
+    :param prefix: Determine whether or not prefix is added.
+    :returns: Content after processing as the sample value.
+    """
+
+    replace = replace or {}
+
+    items = replace.items()
+
+    for new, old in items:
+
+        if prefix is True:
+            old = f'_/{PREFIX}/{old}/_'
+
+        sample = rplstr(
+            sample, new, old)
+
+    return str(sample)
+
+
+
+def rvrt_sample(
+    sample: str,
+    *,
+    replace: Optional[dict[str, Any]] = None,
+) -> str:
+    """
+    Return the content after processing as the sample value.
+
+    :param sample: Content that will be processed as sample.
+    :param replace: Optional values to replace in the file.
+    :returns: Content after processing as the sample value.
+    """
+
+    replace = replace or {}
+
+    items = replace.items()
+
+    for new, old in items:
+
+        new = f'_/{PREFIX}/{new}/_'
+
+        sample = rplstr(
+            sample, new, old)
+
+    return str(sample)
