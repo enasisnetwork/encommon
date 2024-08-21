@@ -121,6 +121,11 @@ def rplstr(
     """
     Return the source string with the match value replaced.
 
+    Example
+    -------
+    >>> rplstr('foo', 'foo', 'bar')
+    'bar'
+
     :param source: String that to be processed and returned.
     :param match: What will be replaced within the string.
     :param value: Replace value for the string is matched.

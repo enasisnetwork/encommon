@@ -28,10 +28,59 @@ class Times:
     """
     Interact with various time functions through one wrapper.
 
+    .. testsetup::
+       >>> times = Times('1/1/2000 12:00am')
+
     Example
     -------
-    >>> Times('1/1/2000 12:00am')
-    Times('2000-01-01T00:00:00.000000+0000')
+    >>> times = Times('1/1/2000 12:00am')
+    >>> times.stamp()
+    '2000-01-01T00:00:00.000000+0000'
+    >>> times.stamp('%m/%d/%Y')
+    '01/01/2000'
+
+    Example
+    -------
+    >>> times.epoch
+    946684800.0
+    >>> times.time
+    datetime.time(0, 0)
+    >>> times.simple
+    '2000-01-01T00:00:00+0000'
+    >>> times.human
+    '01/01/2000 12:00AM UTC'
+
+    Example
+    -------
+    >>> times.before
+    Times('1999-12-31T23:59:59.999999+0000')
+    >>> times.after
+    Times('2000-01-01T00:00:00.000001+0000')
+
+    Example
+    -------
+    >>> times.shift('-1d')
+    Times('1999-12-31T00:00:00.000000+0000')
+
+    Example
+    -------
+    >>> times.shifz('US/Central')
+    Times('1999-12-31T18:00:00.000000-0600')
+
+    Example
+    -------
+    >>> times = Times('-1s')
+    >>> int(times.since)
+    1
+
+    Example
+    -------
+    >>> times1 = Times('1/1/2000 12:00am')
+    >>> times2 = Times('1/1/2000 12:00am')
+    >>> times1 - times2
+    0.0
+    >>> times1 + times2
+    1893369600.0
 
     :param source: Time in various forms that will be parsed.
     :param anchor: Optional relative time; for snap notation.

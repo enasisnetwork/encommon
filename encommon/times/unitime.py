@@ -19,6 +19,15 @@ def unitime(
     """
     Return the seconds in integer format for provided input.
 
+    Example
+    -------
+    >>> unitime('1d')
+    86400
+    >>> unitime('1y')
+    31536000
+    >>> unitime('1w3d4h')
+    878400
+
     :param input: Input that will be converted into seconds.
     :returns: Seconds in integer format for provided input.
     """
