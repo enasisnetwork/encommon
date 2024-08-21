@@ -11,7 +11,7 @@ from typing import Optional
 
 from .common import NUMERIC
 from .common import PARSABLE
-from .times import Times
+from .time import Time
 
 
 
@@ -36,7 +36,7 @@ class Timer:
     """
 
     __timer: float
-    __times: Times
+    __time: Time
 
 
     def __init__(
@@ -50,10 +50,10 @@ class Timer:
         """
 
         timer = float(timer)
-        start = Times(start)
+        start = Time(start)
 
         self.__timer = timer
-        self.__times = start
+        self.__time = start
 
 
     @property
@@ -70,16 +70,16 @@ class Timer:
 
 
     @property
-    def times(
+    def time(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__times
+        return self.__time
 
 
     @property
@@ -92,7 +92,7 @@ class Timer:
         :returns: Seconds that have elapsed since the interval.
         """
 
-        return self.times.since
+        return self.time.since
 
 
     @property
@@ -141,7 +141,7 @@ class Timer:
         :param value: Override the time updated for timer value.
         """
 
-        value = Times(
+        value = Time(
             value or 'now')
 
-        self.__times = value
+        self.__time = value

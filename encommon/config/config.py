@@ -8,7 +8,6 @@ is permitted, for more information consult the project license file.
 
 
 from copy import deepcopy
-from typing import Any
 from typing import Callable
 from typing import Optional
 from typing import TYPE_CHECKING
@@ -19,6 +18,7 @@ from .params import Params
 from .paths import ConfigPaths
 from .utils import config_paths
 from ..crypts import Crypts
+from ..types import DictStrAny
 from ..types import merge_dicts
 from ..types import setate
 
@@ -55,8 +55,8 @@ class Config:
 
     __files: ConfigFiles
     __paths: ConfigPaths
-    __cargs: dict[str, Any]
-    __sargs: dict[str, Any]
+    __cargs: DictStrAny
+    __sargs: DictStrAny
 
     __model: Callable  # type: ignore
 
@@ -70,8 +70,8 @@ class Config:
         files: Optional['PATHABLE'] = None,
         *,
         paths: Optional['PATHABLE'] = None,
-        cargs: Optional[dict[str, Any]] = None,
-        sargs: Optional[dict[str, Any]] = None,
+        cargs: Optional[DictStrAny] = None,
+        sargs: Optional[DictStrAny] = None,
         model: Optional[Callable] = None,  # type: ignore
     ) -> None:
         """
@@ -133,14 +133,14 @@ class Config:
     @property
     def cargs(
         self,
-    ) -> dict[str, Any]:
+    ) -> DictStrAny:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        returned: dict[str, Any] = {}
+        returned: DictStrAny = {}
 
         cargs = deepcopy(self.__cargs)
 
@@ -155,14 +155,14 @@ class Config:
     @property
     def sargs(
         self,
-    ) -> dict[str, Any]:
+    ) -> DictStrAny:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        returned: dict[str, Any] = {}
+        returned: DictStrAny = {}
 
         sargs = deepcopy(self.__sargs)
 
@@ -177,7 +177,7 @@ class Config:
     @property
     def config(
         self,
-    ) -> dict[str, Any]:
+    ) -> DictStrAny:
         """
         Return the configuration dumped from the Pydantic model.
 
@@ -190,7 +190,7 @@ class Config:
     @property
     def basic(
         self,
-    ) -> dict[str, Any]:
+    ) -> DictStrAny:
         """
         Return the configuration source loaded from the objects.
 
@@ -199,7 +199,7 @@ class Config:
 
         files = self.files
 
-        ferged = files.merged
+        ferged = files.merge
 
         merge_dicts(
             dict1=ferged,
@@ -212,7 +212,7 @@ class Config:
     @property
     def merge(
         self,
-    ) -> dict[str, Any]:
+    ) -> DictStrAny:
         """
         Return the configuration source loaded from the objects.
 
@@ -222,8 +222,8 @@ class Config:
         files = self.files
         paths = self.paths
 
-        ferged = files.merged
-        perged = paths.merged
+        ferged = files.merge
+        perged = paths.merge
 
         merge_dicts(
             dict1=ferged,

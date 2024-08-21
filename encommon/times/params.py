@@ -7,13 +7,16 @@ is permitted, for more information consult the project license file.
 
 
 
-from typing import Any
+from typing import Annotated
 from typing import Optional
+
+from pydantic import Field
 
 from .common import PARSABLE
 from .common import SCHEDULE
-from .times import Times
+from .time import Time
 from ..types import BaseModel
+from ..types import DictStrAny
 
 
 
@@ -25,33 +28,40 @@ _WINDOWS = dict[str, 'WindowParams']
 class TimerParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
-
-    :param timer: Seconds that are used for related timer.
-    :param start: Optional time for when the timer started.
     """
 
-    timer: float
-    start: Optional[str] = None
+    timer: Annotated[
+        float,
+        Field(...,
+              description='Seconds used for the interval')]
+
+    start: Annotated[
+        str,
+        Field(...,
+              description='Optional value of timer start',
+              min_length=1)]
 
 
     def __init__(
         self,
         timer: int | float,
-        start: Optional[PARSABLE] = None,
+        start: PARSABLE = 'now',
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
+        data: DictStrAny = {}
+
+
         if timer is not None:
             timer = float(timer)
 
         if start is not None:
-            start = Times(start)
+            start = Time(start)
 
 
-        data: dict[str, Any] = {
-            'timer': timer}
+        data['timer'] = timer
 
         if start is not None:
             data['start'] = start.subsec
@@ -64,11 +74,13 @@ class TimerParams(BaseModel, extra='forbid'):
 class TimersParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
-
-    :param timers: Seconds that are used for related timer.
     """
 
-    timers: _TIMERS
+    timers: Annotated[
+        _TIMERS,
+        Field(...,
+              description='Seconds used for the interval',
+              min_length=0)]
 
 
     def __init__(
@@ -79,65 +91,81 @@ class TimersParams(BaseModel, extra='forbid'):
         Initialize instance for class using provided parameters.
         """
 
-        if timers is None:
-            timers = {}
+        timers = timers or {}
 
-        super().__init__(
-            timers=timers)
+        super().__init__(**{
+            'timers': timers})
 
 
 
 class WindowParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
-
-    :param window: Parameters for defining scheduled time.
-    :param start: Determine the start for scheduling window.
-    :param stop: Determine the ending for scheduling window.
-    :param anchor: Optionally define time anchor for window.
-    :param delay: Period of time schedulng will be delayed.
     """
 
-    window: SCHEDULE
+    window: Annotated[
+        SCHEDULE,
+        Field(...,
+              description='Period for scheduling window',
+              min_length=1)]
 
-    start: Optional[str] = None
-    stop: Optional[str] = None
-    anchor: Optional[str] = None
-    delay: float = 0.0
+    start: Annotated[
+        Optional[str],
+        Field(None,
+              description='Determine when scope begins',
+              min_length=1)]
+
+    stop: Annotated[
+        Optional[str],
+        Field(None,
+              description='Determine when scope ends',
+              min_length=1)]
+
+    anchor: Annotated[
+        Optional[str],
+        Field(None,
+              description='Optional anchor of the window',
+              min_length=1)]
+
+    delay: Annotated[
+        float,
+        Field(...,
+              description='Time period of schedule delay',
+              ge=0)]
 
 
     def __init__(
         self,
         window: SCHEDULE | int,
+        *,
         start: Optional[PARSABLE] = None,
         stop: Optional[PARSABLE] = None,
         anchor: Optional[PARSABLE] = None,
-        delay: Optional[int | float] = None,
+        delay: int | float = 0.0,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
         """
 
+        data: DictStrAny = {}
+
 
         if isinstance(window, int):
             window = {'seconds': window}
 
-
         if start is not None:
-            start = Times(start)
+            start = Time(start)
 
         if stop is not None:
-            stop = Times(stop)
+            stop = Time(stop)
 
         if anchor is not None:
-            anchor = Times(anchor)
+            anchor = Time(anchor)
 
-        if delay is not None:
-            delay = float(delay)
+        delay = float(delay)
 
 
-        data: dict[str, Any] = {
-            'window': window}
+        data['window'] = window
 
         if start is not None:
             data['start'] = start.subsec
@@ -148,8 +176,7 @@ class WindowParams(BaseModel, extra='forbid'):
         if anchor is not None:
             data['anchor'] = anchor.subsec
 
-        if delay is not None:
-            data['delay'] = delay
+        data['delay'] = delay
 
 
         super().__init__(**data)
@@ -159,11 +186,13 @@ class WindowParams(BaseModel, extra='forbid'):
 class WindowsParams(BaseModel, extra='forbid'):
     """
     Process and validate the core configuration parameters.
-
-    :param windows: Parameters for defining scheduled time.
     """
 
-    windows: _WINDOWS
+    windows: Annotated[
+        _WINDOWS,
+        Field(...,
+              description='Period for scheduling windows',
+              min_length=0)]
 
 
     def __init__(
@@ -174,8 +203,7 @@ class WindowsParams(BaseModel, extra='forbid'):
         Initialize instance for class using provided parameters.
         """
 
-        if windows is None:
-            windows = {}
+        windows = windows or {}
 
-        super().__init__(
-            windows=windows)
+        super().__init__(**{
+            'windows': windows})

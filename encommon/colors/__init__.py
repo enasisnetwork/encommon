@@ -7,8 +7,8 @@ is permitted, for more information consult the project license file.
 
 
 
-from .colors import Colors
+from .color import Color
 
 
 
-__all__ = ['Colors']
+__all__ = ['Color']

@@ -17,6 +17,7 @@ from ..paths import ConfigPaths
 from ... import PROJECT
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 from ...utils import load_sample
 from ...utils import prep_sample
 from ...utils.sample import ENPYRWS
@@ -52,7 +53,7 @@ def test_ConfigPath(
     path = ConfigPath(config_path)
 
 
-    attrs = list(path.__dict__)
+    attrs = lattrs(path)
 
     assert attrs == [
         'path',
@@ -86,11 +87,11 @@ def test_ConfigPaths(
     """
 
 
-    attrs = list(paths.__dict__)
+    attrs = lattrs(paths)
 
     assert attrs == [
         'paths', 'config',
-        '_ConfigPaths__merged']
+        '_ConfigPaths__merge']
 
 
     assert inrepr(
@@ -113,19 +114,19 @@ def test_ConfigPaths(
         'PROJECT': PROJECT}
 
     sample_path = (
-        f'{SAMPLES}/paths.json')
+        SAMPLES / 'paths.json')
 
     sample = load_sample(
         path=sample_path,
         update=ENPYRWS,
-        content=paths.merged,
+        content=paths.merge,
         replace=replaces)
 
     expect = prep_sample(
-        content=paths.merged,
+        content=paths.merge,
         replace=replaces)
 
-    assert sample == expect
+    assert expect == sample
 
 
 
@@ -138,7 +139,7 @@ def test_ConfigPaths_cover(
     :param paths: Custom fixture for the configuration paths.
     """
 
-    merged1 = paths.merged
-    merged2 = paths.merged
+    merge1 = paths.merge
+    merge2 = paths.merge
 
-    assert merged1 is not merged2
+    assert merge1 is not merge2

@@ -24,14 +24,63 @@ from .utils import strftime
 
 
 
-class Times:
+class Time:
     """
     Interact with various time functions through one wrapper.
 
+    .. testsetup::
+       >>> time = Time('1/1/2000 12:00am')
+
     Example
     -------
-    >>> Times('1/1/2000 12:00am')
-    Times('2000-01-01T00:00:00.000000+0000')
+    >>> time = Time('1/1/2000 12:00am')
+    >>> time.stamp()
+    '2000-01-01T00:00:00.000000+0000'
+    >>> time.stamp('%m/%d/%Y')
+    '01/01/2000'
+
+    Example
+    -------
+    >>> time.epoch
+    946684800.0
+    >>> time.time
+    datetime.time(0, 0)
+    >>> time.simple
+    '2000-01-01T00:00:00+0000'
+    >>> time.human
+    '01/01/2000 12:00AM UTC'
+
+    Example
+    -------
+    >>> time.before
+    Time('1999-12-31T23:59:59.999999+0000')
+    >>> time.after
+    Time('2000-01-01T00:00:00.000001+0000')
+
+    Example
+    -------
+    >>> time.shift('-1d')
+    Time('1999-12-31T00:00:00.000000+0000')
+
+    Example
+    -------
+    >>> time.shifz('US/Central')
+    Time('1999-12-31T18:00:00.000000-0600')
+
+    Example
+    -------
+    >>> time = Time('-1s')
+    >>> int(time.since)
+    1
+
+    Example
+    -------
+    >>> time1 = Time('1/1/2000 12:00am')
+    >>> time2 = Time('1/1/2000 12:00am')
+    >>> time1 - time2
+    0.0
+    >>> time1 + time2
+    1893369600.0
 
     :param source: Time in various forms that will be parsed.
     :param anchor: Optional relative time; for snap notation.
@@ -73,7 +122,7 @@ class Times:
         :returns: String representation for values from instance.
         """
 
-        return f"Times('{self.subsec}')"
+        return f"Time('{self.subsec}')"
 
 
     def __hash__(
@@ -398,7 +447,7 @@ class Times:
     @property
     def before(
         self,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return new object containing time just before the time.
 
@@ -410,13 +459,13 @@ class Times:
         source -= timedelta(
             microseconds=1)
 
-        return Times(source)
+        return Time(source)
 
 
     @property
     def after(
         self,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return new object containing time just after the time.
 
@@ -428,7 +477,7 @@ class Times:
         source += timedelta(
             microseconds=1)
 
-        return Times(source)
+        return Time(source)
 
 
     def stamp(
@@ -462,7 +511,7 @@ class Times:
     def shift(
         self,
         notate: str,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return the new instance of object shifted using snaptime.
 
@@ -472,14 +521,14 @@ class Times:
 
         source = self.__source
 
-        return Times(
+        return Time(
             notate, anchor=source)
 
 
     def shifz(
         self,
         tzname: str,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return the new instance of object shifted using datetime.
 
@@ -498,5 +547,5 @@ class Times:
                 source
                 .astimezone(tzinfo))
 
-        return Times(
+        return Time(
             source, tzname=tzname)

@@ -20,6 +20,7 @@ from pydantic import BaseModel
 
 from .files import read_text
 from .files import save_text
+from ..types import DictStrAny
 from ..types import rplstr
 
 
@@ -35,7 +36,7 @@ def prep_sample(  # noqa: CFQ004
     content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[dict[str, Any]] = None,
+    replace: Optional[DictStrAny] = None,
     indent: Optional[int] = 2,
 ) -> str:
     r"""
@@ -61,7 +62,7 @@ def prep_sample(  # noqa: CFQ004
 
     def _default(
         value: Any,  # noqa: ANN401
-    ) -> dict[str, Any] | str:
+    ) -> DictStrAny | str:
 
         if is_dataclass(value):
 
@@ -104,7 +105,7 @@ def load_sample(
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[dict[str, Any]] = None,
+    replace: Optional[DictStrAny] = None,
 ) -> str:
     r"""
     Load the sample file and compare using provided content.
@@ -173,7 +174,7 @@ def load_sample(
 def read_sample(
     sample: str,
     *,
-    replace: Optional[dict[str, Any]] = None,
+    replace: Optional[DictStrAny] = None,
     prefix: bool = True,
 ) -> str:
     """
@@ -204,7 +205,7 @@ def read_sample(
 def rvrt_sample(
     sample: str,
     *,
-    replace: Optional[dict[str, Any]] = None,
+    replace: Optional[DictStrAny] = None,
 ) -> str:
     """
     Return the content after processing as the sample value.

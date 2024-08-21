@@ -15,6 +15,7 @@ from typing import Optional
 from typing import Union
 
 from .empty import Empty
+from .types import DictStrAny
 
 
 
@@ -25,7 +26,7 @@ _RECURSE = dict
 
 
 _SETABLE = Union[
-    dict[str, Any],
+    DictStrAny,
     list[Any]]
 
 _GETABLE = Union[

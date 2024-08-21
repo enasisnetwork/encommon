@@ -16,11 +16,12 @@ from pytest import fixture
 from ..logger import Logger
 from ..logger import Message
 from ..params import LoggerParams
-from ...times import Times
+from ...times import Time
 from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 from ...utils import strip_ansi
 
 
@@ -70,7 +71,7 @@ def test_Message() -> None:
         elapsed=3.69420)
 
 
-    attrs = list(message.__dict__)
+    attrs = lattrs(message)
 
     assert attrs == [
         '_Message__level',
@@ -140,7 +141,7 @@ def test_Logger(
     """
 
 
-    attrs = list(logger.__dict__)
+    attrs = lattrs(logger)
 
     assert attrs == [
         '_Logger__params',
@@ -163,19 +164,19 @@ def test_Logger(
         logger)
 
 
-    assert logger.params is not None
+    assert logger.params
 
     assert logger.stdo_level == 'info'
 
     assert logger.file_level == 'info'
 
-    assert logger.file_path is not None
+    assert logger.file_path
 
-    assert logger.started is False
+    assert not logger.started
 
-    assert logger.logger_stdo is not None
+    assert logger.logger_stdo
 
-    assert logger.logger_file is not None
+    assert logger.logger_file
 
 
     logger.log_d(msg='pytest')
@@ -197,7 +198,7 @@ def test_Logger_cover(
     :param caplog: pytest object for capturing log message.
     """
 
-    times = Times('now')
+    time = Time('now')
 
 
     def _logger_logs() -> None:
@@ -206,7 +207,7 @@ def test_Logger_cover(
         logger.log_e(msg='pytest')
         logger.log_i(msg='pytest')
         logger.log_w(msg='pytest')
-        logger.log_i(elapsed=times)
+        logger.log_i(elapsed=time)
 
 
     def _logger_stdo() -> _CAPLOG:

@@ -11,10 +11,11 @@ from time import sleep
 
 from pytest import fixture
 
+from ..time import Time
 from ..timer import Timer
-from ..times import Times
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -40,11 +41,11 @@ def test_Timer(
     """
 
 
-    attrs = list(timer.__dict__)
+    attrs = lattrs(timer)
 
     assert attrs == [
         '_Timer__timer',
-        '_Timer__times']
+        '_Timer__time']
 
 
     assert inrepr(
@@ -60,7 +61,7 @@ def test_Timer(
 
     assert timer.timer == 1
 
-    assert timer.times >= Times('-1s')
+    assert timer.time >= Time('-1s')
 
     assert timer.since <= 1
 

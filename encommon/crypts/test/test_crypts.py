@@ -7,8 +7,6 @@ is permitted, for more information consult the project license file.
 
 
 
-from typing import Any
-
 from pytest import fixture
 from pytest import mark
 from pytest import raises
@@ -16,8 +14,10 @@ from pytest import raises
 from ..crypts import Crypts
 from ..params import CryptParams
 from ..params import CryptsParams
+from ...types import DictStrAny
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -29,7 +29,7 @@ def crypts() -> Crypts:
     :returns: Newly constructed instance of related class.
     """
 
-    source: dict[str, Any] = {
+    source: DictStrAny = {
         'default': {'phrase': Crypts.keygen()},
         'secrets': {'phrase': Crypts.keygen()}}
 
@@ -50,7 +50,7 @@ def test_Crypts(
     """
 
 
-    attrs = list(crypts.__dict__)
+    attrs = lattrs(crypts)
 
     assert attrs == [
         '_Crypts__params']
@@ -67,7 +67,7 @@ def test_Crypts(
         crypts)
 
 
-    assert crypts.params is not None
+    assert crypts.params
 
     assert len(crypts.keygen()) == 44
 

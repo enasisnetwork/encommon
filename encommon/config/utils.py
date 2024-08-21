@@ -8,7 +8,6 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
-from typing import Any
 from typing import Optional
 from typing import TYPE_CHECKING
 
@@ -17,6 +16,7 @@ from yaml import load
 
 from .. import PROJECT
 from .. import WORKSPACE
+from ..types import DictStrAny
 from ..utils import read_text
 from ..utils import resolve_path
 from ..utils import resolve_paths
@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 
 def config_load(
     path: str | Path,
-) -> dict[str, Any]:
+) -> DictStrAny:
     """
     Load configuration using the directory or file provided.
 

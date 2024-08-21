@@ -19,6 +19,12 @@ def inlist(
     """
     Return the boolean indicating whether needle in haystack.
 
+    Example
+    -------
+    >>> haystack = [1, 2, 3]
+    >>> inlist(2, haystack)
+    True
+
     :param needle: Provided item that may be within haystack.
     :param haystack: List of items which may contain needle.
     :returns: Boolean indicating whether needle in haystack.

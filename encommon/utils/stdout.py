@@ -23,7 +23,7 @@ from pydantic import BaseModel
 
 from .common import JOINABLE
 from ..times import Duration
-from ..times import Times
+from ..times import Time
 from ..types import Empty
 from ..types import clsname
 from ..types.strings import COMMAD
@@ -287,7 +287,7 @@ def array_ansi(  # noqa: CFQ001, CFQ004
         elif isinstance(source, Duration):
             color = colors.times
 
-        elif isinstance(source, Times):
+        elif isinstance(source, Time):
             color = colors.times
 
         elif source is Empty:

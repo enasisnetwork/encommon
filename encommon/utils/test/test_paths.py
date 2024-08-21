@@ -13,7 +13,7 @@ from ..paths import resolve_path
 from ..paths import resolve_paths
 from ..paths import stats_path
 from ... import PROJECT
-from ...times import Times
+from ...times import Time
 
 
 
@@ -67,9 +67,9 @@ def test_stats_path() -> None:
     stat = stats['/utils/paths.py']
 
     assert stat.st_ctime >= (
-        Times('2023-01-01').epoch)
+        Time('2023-01-01').epoch)
     assert stat.st_mtime >= (
-        Times('2023-01-01').epoch)
+        Time('2023-01-01').epoch)
 
     assert stat.st_size >= 2000
 

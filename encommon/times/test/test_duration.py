@@ -9,6 +9,7 @@ is permitted, for more information consult the project license file.
 
 from ..duration import Duration
 from ...types import inrepr
+from ...types import lattrs
 from ...types.strings import COMMAS
 
 
@@ -21,7 +22,7 @@ def test_Duration() -> None:
     durate = Duration(95401)
 
 
-    attrs = list(durate.__dict__)
+    attrs = lattrs(durate)
 
     assert attrs == [
         '_Duration__source',
@@ -58,7 +59,7 @@ def test_Duration() -> None:
 
     assert durate.source == 95401
 
-    assert durate.smart is True
+    assert durate.smart
 
     assert durate.groups == 7
 

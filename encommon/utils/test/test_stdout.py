@@ -17,7 +17,7 @@ from ..stdout import print_ansi
 from ..stdout import strip_ansi
 from ...config import LoggerParams
 from ...times import Duration
-from ...times import Times
+from ...times import Time
 from ...times.common import UNIXMPOCH
 from ...types import Empty
 
@@ -170,7 +170,7 @@ def test_array_ansi() -> None:  # noqa: CFQ001
         'colors': colors,
         'params': params,
         'Empty': Empty,
-        'Times': Times(0),
+        'Time': Time(0),
         'Duration': durate}
 
 
@@ -254,7 +254,7 @@ def test_array_ansi() -> None:  # noqa: CFQ001
         '  file_level: None\n'
         '  file_path: None\n'
         'Empty: Empty\n'
-        f'Times: {UNIXMPOCH}\n'
+        f'Time: {UNIXMPOCH}\n'
         'Duration: 2d5h')
 
 

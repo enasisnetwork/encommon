@@ -13,12 +13,13 @@ from typing import TYPE_CHECKING
 from pytest import fixture
 from pytest import mark
 
-from ..times import Times
+from ..time import Time
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 if TYPE_CHECKING:
     from ..common import PARSABLE
@@ -51,7 +52,7 @@ def test_Window(
     """
 
 
-    attrs = list(window.__dict__)
+    attrs = lattrs(window)
 
     assert attrs == [
         '_Window__window',
@@ -169,7 +170,7 @@ def test_Window_cover(
     assert window.walked
 
 
-    anchor = Times('-0s@s')
+    anchor = Time('-0s@s')
 
 
     window = Window(

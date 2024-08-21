@@ -9,18 +9,19 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 from time import sleep
-from typing import Any
 
 from pytest import fixture
 from pytest import raises
 
 from ..params import TimerParams
 from ..params import TimersParams
+from ..time import Time
 from ..timers import Timers
 from ..timers import TimersTable
-from ..times import Times
+from ...types import DictStrAny
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -36,7 +37,7 @@ def timers(
     """
 
 
-    source: dict[str, Any] = {
+    source: DictStrAny = {
         'one': {'timer': 1},
         'two': {'timer': 1}}
 
@@ -93,7 +94,7 @@ def test_Timers(
     """
 
 
-    attrs = list(timers.__dict__)
+    attrs = lattrs(timers)
 
     assert attrs == [
         '_Timers__params',
@@ -115,27 +116,27 @@ def test_Timers(
         timers)
 
 
-    assert timers.params is not None
+    assert timers.params
 
     assert timers.store[:6] == 'sqlite'
 
     assert timers.group == 'default'
 
-    assert timers.store_engine is not None
+    assert timers.store_engine
 
-    assert timers.store_session is not None
+    assert timers.store_session
 
     assert len(timers.children) == 2
 
 
     timer = timers.children['one']
 
-    assert timer.times >= Times('-1s')
+    assert timer.time >= Time('-1s')
 
 
     timer = timers.children['two']
 
-    assert timer.times == '1970-01-01'
+    assert timer.time == '1970-01-01'
 
 
 
