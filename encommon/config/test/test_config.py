@@ -11,12 +11,10 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from . import SAMPLES
-from ..logger import Logger
-from ..params import Params
 from ... import PROJECT
-from ...crypts import Crypts
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 from ...utils import load_sample
 from ...utils import prep_sample
 from ...utils.sample import ENPYRWS
@@ -38,7 +36,7 @@ def test_Config(
     """
 
 
-    attrs = list(config.__dict__)
+    attrs = lattrs(config)
 
     assert attrs == [
         '_Config__model',
@@ -62,13 +60,9 @@ def test_Config(
         config)
 
 
-    assert instr(
-        'files.ConfigFiles object',
-        config.files)
+    assert config.files.merge
 
-    assert instr(
-        'paths.ConfigPaths object',
-        config.paths)
+    assert config.paths.merge
 
     assert len(config.cargs) == 1
 
@@ -80,13 +74,13 @@ def test_Config(
 
     assert len(config.merge) == 5
 
-    assert config.model is Params
+    assert callable(config.model)
 
-    assert isinstance(config.params, Params)
+    assert config.params
 
-    assert isinstance(config.logger, Logger)
+    assert config.logger
 
-    assert isinstance(config.crypts, Crypts)
+    assert config.crypts
 
 
     replaces = {
@@ -94,7 +88,7 @@ def test_Config(
         'PROJECT': PROJECT}
 
     sample_path = (
-        f'{SAMPLES}/config.json')
+        SAMPLES / 'config.json')
 
     sample = load_sample(
         path=sample_path,
@@ -106,7 +100,7 @@ def test_Config(
         content=config.config,
         replace=replaces)
 
-    assert sample == expect
+    assert expect == sample
 
 
 

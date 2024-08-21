@@ -10,6 +10,7 @@ is permitted, for more information consult the project license file.
 from ..hashes import Hashes
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -21,7 +22,7 @@ def test_Hashes() -> None:
     hashes = Hashes('string')
 
 
-    attrs = list(hashes.__dict__)
+    attrs = lattrs(hashes)
 
     assert attrs == [
         '_Hashes__string']

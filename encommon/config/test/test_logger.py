@@ -21,6 +21,7 @@ from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 from ...utils import strip_ansi
 
 
@@ -70,7 +71,7 @@ def test_Message() -> None:
         elapsed=3.69420)
 
 
-    attrs = list(message.__dict__)
+    attrs = lattrs(message)
 
     assert attrs == [
         '_Message__level',
@@ -140,7 +141,7 @@ def test_Logger(
     """
 
 
-    attrs = list(logger.__dict__)
+    attrs = lattrs(logger)
 
     assert attrs == [
         '_Logger__params',
@@ -163,19 +164,19 @@ def test_Logger(
         logger)
 
 
-    assert logger.params is not None
+    assert logger.params
 
     assert logger.stdo_level == 'info'
 
     assert logger.file_level == 'info'
 
-    assert logger.file_path is not None
+    assert logger.file_path
 
-    assert logger.started is False
+    assert not logger.started
 
-    assert logger.logger_stdo is not None
+    assert logger.logger_stdo
 
-    assert logger.logger_file is not None
+    assert logger.logger_file
 
 
     logger.log_d(msg='pytest')

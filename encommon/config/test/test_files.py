@@ -16,6 +16,7 @@ from ..files import ConfigFile
 from ..files import ConfigFiles
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -49,7 +50,7 @@ def test_ConfigFile(
         f'{config_path}/config.yml')
 
 
-    attrs = list(file.__dict__)
+    attrs = lattrs(file)
 
     assert attrs == [
         'path',
@@ -83,12 +84,12 @@ def test_ConfigFiles(
     """
 
 
-    attrs = list(files.__dict__)
+    attrs = lattrs(files)
 
     assert attrs == [
         'paths',
         'config',
-        '_ConfigFiles__merged']
+        '_ConfigFiles__merge']
 
 
     assert inrepr(
@@ -106,7 +107,7 @@ def test_ConfigFiles(
 
     assert len(files.config) == 2
 
-    assert files.merged == {
+    assert files.merge == {
         'name': 'Bruce Wayne'}
 
 
@@ -120,7 +121,7 @@ def test_ConfigFiles_cover(
     :param files: Custom fixture for the configuration files.
     """
 
-    merged1 = files.merged
-    merged2 = files.merged
+    merge1 = files.merge
+    merge2 = files.merge
 
-    assert merged1 is not merged2
+    assert merge1 is not merge2

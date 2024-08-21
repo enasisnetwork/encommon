@@ -9,13 +9,13 @@ is permitted, for more information consult the project license file.
 
 from copy import deepcopy
 from pathlib import Path
-from typing import Any
 from typing import Optional
 from typing import TYPE_CHECKING
 
 from .utils import config_load
 from .utils import config_path
 from .utils import config_paths
+from ..types import DictStrAny
 from ..types import merge_dicts
 from ..types import sort_dict
 
@@ -32,7 +32,7 @@ class ConfigFile:
     """
 
     path: Path
-    config: dict[str, Any]
+    config: DictStrAny
 
 
     def __init__(
@@ -62,7 +62,7 @@ class ConfigFiles:
     paths: tuple[Path, ...]
     config: dict[str, ConfigFile]
 
-    __merged: Optional[dict[str, Any]]
+    __merge: Optional[DictStrAny]
 
 
     def __init__(
@@ -80,13 +80,13 @@ class ConfigFiles:
             str(x): ConfigFile(x)
             for x in self.paths}
 
-        self.__merged = None
+        self.__merge = None
 
 
     @property
-    def merged(
+    def merge(
         self,
-    ) -> dict[str, Any]:
+    ) -> DictStrAny:
         """
         Return the configuration in dictionary format for files.
 
@@ -94,12 +94,12 @@ class ConfigFiles:
         """
 
         config = self.config
-        merged = self.__merged
+        merge = self.__merge
 
-        if merged is not None:
-            return deepcopy(merged)
+        if merge is not None:
+            return deepcopy(merge)
 
-        merged = {}
+        merge = {}
 
 
         for file in config.values():
@@ -107,13 +107,13 @@ class ConfigFiles:
             source = file.config
 
             merge_dicts(
-                dict1=merged,
+                dict1=merge,
                 dict2=deepcopy(source),
                 force=False)
 
 
-        merged = sort_dict(merged)
+        merge = sort_dict(merge)
 
-        self.__merged = merged
+        self.__merge = merge
 
-        return deepcopy(merged)
+        return deepcopy(merge)

@@ -15,6 +15,7 @@ from ..timer import Timer
 from ..times import Times
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -40,7 +41,7 @@ def test_Timer(
     """
 
 
-    attrs = list(timer.__dict__)
+    attrs = lattrs(timer)
 
     assert attrs == [
         '_Timer__timer',

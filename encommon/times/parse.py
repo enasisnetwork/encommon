@@ -169,7 +169,7 @@ def shift_time(
 
     parsed = snap(anchor, notate)
 
-    assert parsed.tzinfo is not None
+    assert parsed.tzinfo
 
     return parse_time(
         parsed, tzname=tzname)

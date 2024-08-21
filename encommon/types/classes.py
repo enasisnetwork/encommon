@@ -7,8 +7,6 @@ is permitted, for more information consult the project license file.
 
 
 
-from typing import Any
-
 from pydantic import BaseModel as Pydantic
 
 from .types import DictStrAny
@@ -21,17 +19,6 @@ class BaseModel(Pydantic, extra='forbid'):
 
     :param data: Keyword arguments passed to Pydantic model.
     """
-
-
-    def __init__(
-        self,
-        **data: Any,
-    ) -> None:
-        """
-        Initialize instance for class using provided parameters.
-        """
-
-        super().__init__(**data)
 
 
     @property

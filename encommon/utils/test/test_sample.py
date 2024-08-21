@@ -151,7 +151,7 @@ def test_read_sample(
 
     expect = dumps(_EXPECT)
 
-    assert sample == expect
+    assert expect == sample
 
 
 
@@ -179,4 +179,4 @@ def test_rvrt_sample(
 
     expect = dumps(_EXPECT)
 
-    assert sample == expect
+    assert expect == sample

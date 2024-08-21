@@ -14,6 +14,7 @@ from ..common import UNIXMPOCH
 from ..times import Times
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -27,7 +28,7 @@ def test_Times() -> None:
         format=STAMP_SIMPLE)
 
 
-    attrs = list(times.__dict__)
+    attrs = lattrs(times)
 
     assert attrs == [
         '_Times__source']

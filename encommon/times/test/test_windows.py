@@ -9,7 +9,6 @@ is permitted, for more information consult the project license file.
 
 from pathlib import Path
 from time import sleep
-from typing import Any
 
 from pytest import fixture
 from pytest import raises
@@ -18,8 +17,10 @@ from ..params import WindowParams
 from ..params import WindowsParams
 from ..windows import Windows
 from ..windows import WindowsTable
+from ...types import DictStrAny
 from ...types import inrepr
 from ...types import instr
+from ...types import lattrs
 
 
 
@@ -35,7 +36,7 @@ def windows(
     """
 
 
-    source: dict[str, Any] = {
+    source: DictStrAny = {
         'one': WindowParams(
             window='* * * * *',
             start=310,
@@ -104,7 +105,7 @@ def test_Windows(
     """
 
 
-    attrs = list(windows.__dict__)
+    attrs = lattrs(windows)
 
     assert attrs == [
         '_Windows__params',
@@ -128,15 +129,15 @@ def test_Windows(
         windows)
 
 
-    assert windows.params is not None
+    assert windows.params
 
     assert windows.store[:6] == 'sqlite'
 
     assert windows.group == 'default'
 
-    assert windows.store_engine is not None
+    assert windows.store_engine
 
-    assert windows.store_session is not None
+    assert windows.store_session
 
     assert windows.start == (
         '1970-01-01T00:05:10Z')

@@ -10,6 +10,7 @@ is permitted, for more information consult the project license file.
 from copy import copy
 from copy import deepcopy
 
+from ..classes import lattrs
 from ..empty import Empty
 from ..empty import EmptyType
 
@@ -23,7 +24,7 @@ def test_EmptyType() -> None:
     empty = EmptyType()
 
 
-    attrs = list(empty.__dict__)
+    attrs = lattrs(empty)
 
     assert attrs == [
         '_EmptyType__empty']
