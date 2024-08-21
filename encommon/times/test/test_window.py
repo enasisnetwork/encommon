@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING
 from pytest import fixture
 from pytest import mark
 
-from ..times import Times
+from ..time import Time
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
@@ -170,7 +170,7 @@ def test_Window_cover(
     assert window.walked
 
 
-    anchor = Times('-0s@s')
+    anchor = Time('-0s@s')
 
 
     window = Window(

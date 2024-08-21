@@ -24,62 +24,62 @@ from .utils import strftime
 
 
 
-class Times:
+class Time:
     """
     Interact with various time functions through one wrapper.
 
     .. testsetup::
-       >>> times = Times('1/1/2000 12:00am')
+       >>> time = Time('1/1/2000 12:00am')
 
     Example
     -------
-    >>> times = Times('1/1/2000 12:00am')
-    >>> times.stamp()
+    >>> time = Time('1/1/2000 12:00am')
+    >>> time.stamp()
     '2000-01-01T00:00:00.000000+0000'
-    >>> times.stamp('%m/%d/%Y')
+    >>> time.stamp('%m/%d/%Y')
     '01/01/2000'
 
     Example
     -------
-    >>> times.epoch
+    >>> time.epoch
     946684800.0
-    >>> times.time
+    >>> time.time
     datetime.time(0, 0)
-    >>> times.simple
+    >>> time.simple
     '2000-01-01T00:00:00+0000'
-    >>> times.human
+    >>> time.human
     '01/01/2000 12:00AM UTC'
 
     Example
     -------
-    >>> times.before
-    Times('1999-12-31T23:59:59.999999+0000')
-    >>> times.after
-    Times('2000-01-01T00:00:00.000001+0000')
+    >>> time.before
+    Time('1999-12-31T23:59:59.999999+0000')
+    >>> time.after
+    Time('2000-01-01T00:00:00.000001+0000')
 
     Example
     -------
-    >>> times.shift('-1d')
-    Times('1999-12-31T00:00:00.000000+0000')
+    >>> time.shift('-1d')
+    Time('1999-12-31T00:00:00.000000+0000')
 
     Example
     -------
-    >>> times.shifz('US/Central')
-    Times('1999-12-31T18:00:00.000000-0600')
+    >>> time.shifz('US/Central')
+    Time('1999-12-31T18:00:00.000000-0600')
 
     Example
     -------
-    >>> times = Times('-1s')
-    >>> int(times.since)
+    >>> time = Time('-1s')
+    >>> int(time.since)
     1
 
     Example
     -------
-    >>> times1 = Times('1/1/2000 12:00am')
-    >>> times2 = Times('1/1/2000 12:00am')
-    >>> times1 - times2
+    >>> time1 = Time('1/1/2000 12:00am')
+    >>> time2 = Time('1/1/2000 12:00am')
+    >>> time1 - time2
     0.0
-    >>> times1 + times2
+    >>> time1 + time2
     1893369600.0
 
     :param source: Time in various forms that will be parsed.
@@ -122,7 +122,7 @@ class Times:
         :returns: String representation for values from instance.
         """
 
-        return f"Times('{self.subsec}')"
+        return f"Time('{self.subsec}')"
 
 
     def __hash__(
@@ -447,7 +447,7 @@ class Times:
     @property
     def before(
         self,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return new object containing time just before the time.
 
@@ -459,13 +459,13 @@ class Times:
         source -= timedelta(
             microseconds=1)
 
-        return Times(source)
+        return Time(source)
 
 
     @property
     def after(
         self,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return new object containing time just after the time.
 
@@ -477,7 +477,7 @@ class Times:
         source += timedelta(
             microseconds=1)
 
-        return Times(source)
+        return Time(source)
 
 
     def stamp(
@@ -511,7 +511,7 @@ class Times:
     def shift(
         self,
         notate: str,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return the new instance of object shifted using snaptime.
 
@@ -521,14 +521,14 @@ class Times:
 
         source = self.__source
 
-        return Times(
+        return Time(
             notate, anchor=source)
 
 
     def shifz(
         self,
         tzname: str,
-    ) -> 'Times':
+    ) -> 'Time':
         """
         Return the new instance of object shifted using datetime.
 
@@ -547,5 +547,5 @@ class Times:
                 source
                 .astimezone(tzinfo))
 
-        return Times(
+        return Time(
             source, tzname=tzname)

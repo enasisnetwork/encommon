@@ -96,7 +96,7 @@ Hashing Algorithms
 Color Formatting
 ================
 
-.. autoclass:: encommon.colors.Colors
+.. autoclass:: encommon.colors.Color
    :members:
    :show-inheritance:
    :noindex:
@@ -104,7 +104,7 @@ Color Formatting
 Advanced Time Structures
 ========================
 
-.. autoclass:: encommon.times.Times
+.. autoclass:: encommon.times.Time
    :members:
    :show-inheritance:
    :noindex:

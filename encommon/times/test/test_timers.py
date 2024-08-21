@@ -15,9 +15,9 @@ from pytest import raises
 
 from ..params import TimerParams
 from ..params import TimersParams
+from ..time import Time
 from ..timers import Timers
 from ..timers import TimersTable
-from ..times import Times
 from ...types import DictStrAny
 from ...types import inrepr
 from ...types import instr
@@ -131,12 +131,12 @@ def test_Timers(
 
     timer = timers.children['one']
 
-    assert timer.times >= Times('-1s')
+    assert timer.time >= Time('-1s')
 
 
     timer = timers.children['two']
 
-    assert timer.times == '1970-01-01'
+    assert timer.time == '1970-01-01'
 
 
 

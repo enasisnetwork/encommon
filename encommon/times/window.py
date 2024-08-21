@@ -17,7 +17,7 @@ from croniter import croniter
 from .common import PARSABLE
 from .common import SCHEDULE
 from .parse import parse_time
-from .times import Times
+from .time import Time
 
 
 
@@ -42,13 +42,13 @@ class Window:
     """
 
     __window: SCHEDULE
-    __start: Times
-    __stop: Times
-    __anchor: Times
+    __start: Time
+    __stop: Time
+    __anchor: Time
     __delay: float
 
-    __wlast: Times
-    __wnext: Times
+    __wlast: Time
+    __wnext: Time
 
 
     def __init__(
@@ -67,9 +67,9 @@ class Window:
         anchor = anchor or start
 
         window = copy(window)
-        start = Times(start)
-        stop = Times(stop)
-        anchor = Times(anchor)
+        start = Time(start)
+        stop = Time(stop)
+        anchor = Time(anchor)
         delay = float(delay)
 
         assert stop > start
@@ -114,40 +114,40 @@ class Window:
     @property
     def start(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__start)
+        return Time(self.__start)
 
 
     @property
     def stop(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__stop)
+        return Time(self.__stop)
 
 
     @property
     def anchor(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__anchor)
+        return Time(self.__anchor)
 
 
     @property
@@ -166,51 +166,51 @@ class Window:
     @property
     def last(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__wlast)
+        return Time(self.__wlast)
 
 
     @property
     def next(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__wnext)
+        return Time(self.__wnext)
 
 
     @property
     def soonest(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
-        return Times(Times() - self.delay)
+        return Time(Time() - self.delay)
 
 
     @property
     def latest(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
-        return Times(self.stop - self.delay)
+        return Time(self.stop - self.delay)
 
 
     @property
@@ -230,7 +230,7 @@ class Window:
         self,
         anchor: PARSABLE,
         backward: bool = False,
-    ) -> tuple[Times, Times]:
+    ) -> tuple[Time, Time]:
         """
         Determine next and last windows for window using anchor.
 
@@ -299,7 +299,7 @@ class Window:
         :param value: Override the time updated for window value.
         """
 
-        value = Times(
+        value = Time(
             value or 'now')
 
         wlast, wnext = (
@@ -314,7 +314,7 @@ def window_croniter(  # noqa: CFQ004
     schedule: str,
     anchor: PARSABLE,
     backward: bool = False,
-) -> tuple[Times, Times]:
+) -> tuple[Time, Time]:
     """
     Determine next and previous times for cronjob schedule.
 
@@ -365,8 +365,8 @@ def window_croniter(  # noqa: CFQ004
 
 
     return (
-        Times(wlast),
-        Times(wnext))
+        Time(wlast),
+        Time(wnext))
 
 
 
@@ -374,7 +374,7 @@ def window_interval(
     schedule: dict[str, int],
     anchor: PARSABLE,
     backward: bool = False,
-) -> tuple[Times, Times]:
+) -> tuple[Time, Time]:
     """
     Determine next and previous times for interval schedule.
 
@@ -403,5 +403,5 @@ def window_interval(
 
 
     return (
-        Times(wlast),
-        Times(wnext))
+        Time(wlast),
+        Time(wnext))

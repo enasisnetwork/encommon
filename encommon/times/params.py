@@ -14,7 +14,7 @@ from pydantic import Field
 
 from .common import PARSABLE
 from .common import SCHEDULE
-from .times import Times
+from .time import Time
 from ..types import BaseModel
 from ..types import DictStrAny
 
@@ -58,7 +58,7 @@ class TimerParams(BaseModel, extra='forbid'):
             timer = float(timer)
 
         if start is not None:
-            start = Times(start)
+            start = Time(start)
 
 
         data['timer'] = timer
@@ -154,13 +154,13 @@ class WindowParams(BaseModel, extra='forbid'):
             window = {'seconds': window}
 
         if start is not None:
-            start = Times(start)
+            start = Time(start)
 
         if stop is not None:
-            stop = Times(stop)
+            stop = Time(stop)
 
         if anchor is not None:
-            anchor = Times(anchor)
+            anchor = Time(anchor)
 
         delay = float(delay)
 

@@ -21,7 +21,7 @@ from sqlalchemy.orm import sessionmaker
 
 from .common import PARSABLE
 from .params import WindowsParams
-from .times import Times
+from .time import Time
 from .window import Window
 
 if TYPE_CHECKING:
@@ -114,8 +114,8 @@ class Windows:
         # pylint: disable=unsubscriptable-object
         sessionmaker[Session])
 
-    __start: Times
-    __stop: Times
+    __start: Time
+    __stop: Time
 
     __windows: WINDOWS
 
@@ -147,8 +147,8 @@ class Windows:
         self.__make_engine()
 
 
-        start = Times(start)
-        stop = Times(stop)
+        start = Time(start)
+        stop = Time(stop)
 
         assert stop > start
 
@@ -249,27 +249,27 @@ class Windows:
     @property
     def start(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__start)
+        return Time(self.__start)
 
 
     @property
     def stop(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__stop)
+        return Time(self.__stop)
 
 
     @property
@@ -386,7 +386,7 @@ class Windows:
 
         for unique, window in items:
 
-            update = Times('now')
+            update = Time('now')
 
             append = WindowsTable(
                 group=group,

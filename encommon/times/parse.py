@@ -26,7 +26,7 @@ from .utils import strptime
 from .utils import utcdatetime
 
 if TYPE_CHECKING:
-    from .times import Times  # noqa: F401
+    from .time import Time  # noqa: F401
 
 
 
@@ -51,7 +51,7 @@ def parse_time(
     +----------------------+----------------------------+
     | 'max', float('inf')  | Uses the maximum time      |
     +----------------------+----------------------------+
-    | object               | Provide datetime or Times  |
+    | object               | Provide datetime or Time   |
     +----------------------+----------------------------+
     | 2000-01-01T00:00:00Z | Uses strptime and dateutil |
     +----------------------+----------------------------+

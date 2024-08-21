@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING
 from typing import Union
 
 if TYPE_CHECKING:
-    from .times import Times
+    from .time import Time
 
 
 
@@ -33,7 +33,7 @@ NUMERIC = Union[int, float]
 
 PARSABLE = Union[
     str, NUMERIC,
-    datetime, 'Times']
+    datetime, 'Time']
 
 SCHEDULE = Union[
     str, dict[str, int]]

@@ -28,7 +28,7 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from .utils import config_path
-from ..times import Times
+from ..times import Time
 from ..types import Empty
 from ..types.strings import COMMAD
 from ..types.strings import COMMAS
@@ -83,7 +83,7 @@ class Message:
     """
 
     __level: LOGLEVELS
-    __time: Times
+    __time: Time
     __fields: dict[str, str] = {}
 
 
@@ -98,7 +98,7 @@ class Message:
         """
 
         self.__level = level
-        self.__time = Times(time)
+        self.__time = Time(time)
         self.__fields = {}
 
         items = kwargs.items()
@@ -122,7 +122,7 @@ class Message:
                 value = COMMAD.join(values)
 
 
-            if (isinstance(value, Times)
+            if (isinstance(value, Time)
                     and key == 'elapsed'):
                 value = value.since
 
@@ -188,14 +188,14 @@ class Message:
     @property
     def time(
         self,
-    ) -> Times:
+    ) -> Time:
         """
         Return the value for the attribute from class instance.
 
         :returns: Value for the attribute from class instance.
         """
 
-        return Times(self.__time)
+        return Time(self.__time)
 
 
     @property

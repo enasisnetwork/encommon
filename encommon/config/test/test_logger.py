@@ -16,7 +16,7 @@ from pytest import fixture
 from ..logger import Logger
 from ..logger import Message
 from ..params import LoggerParams
-from ...times import Times
+from ...times import Time
 from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
 from ...types import inrepr
@@ -198,7 +198,7 @@ def test_Logger_cover(
     :param caplog: pytest object for capturing log message.
     """
 
-    times = Times('now')
+    time = Time('now')
 
 
     def _logger_logs() -> None:
@@ -207,7 +207,7 @@ def test_Logger_cover(
         logger.log_e(msg='pytest')
         logger.log_i(msg='pytest')
         logger.log_w(msg='pytest')
-        logger.log_i(elapsed=times)
+        logger.log_i(elapsed=time)
 
 
     def _logger_stdo() -> _CAPLOG:

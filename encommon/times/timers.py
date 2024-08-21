@@ -21,8 +21,8 @@ from sqlalchemy.orm import sessionmaker
 
 from .common import PARSABLE
 from .params import TimersParams
+from .time import Time
 from .timer import Timer
-from .times import Times
 
 if TYPE_CHECKING:
     from .params import TimerParams
@@ -322,12 +322,12 @@ class Timers:
 
         for unique, timer in items:
 
-            update = Times('now')
+            update = Time('now')
 
             append = TimersTable(
                 group=group,
                 unique=unique,
-                last=timer.times.subsec,
+                last=timer.time.subsec,
                 update=update.subsec)
 
             session.merge(append)
