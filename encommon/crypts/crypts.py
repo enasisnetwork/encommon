@@ -48,7 +48,7 @@ class Crypts:
     >>> crypts.decrypt(encrypt)
     'example'
 
-    :param params: Parameters for instantiating the instance.
+    :param params: Parameters used to instantiate the class.
     """
 
     __params: 'CryptsParams'
@@ -154,7 +154,7 @@ class Crypts:
         Create a new phrase using the provided input parameters.
 
         :param unique: Unique identifier of mapping passphrase.
-        :param params: Parameters for instantiating the instance.
+        :param params: Parameters used to instantiate the class.
         """
 
         phrases = self.params.phrases

@@ -26,8 +26,8 @@ def test_BaseModel() -> None:
     params = LoggerParams(
         stdo_level='info')
 
-    dumped = params.model_dumped
-    pruned = params.model_pruned
+    dumped = params.endumped
+    pruned = params.enpruned
 
     assert dumped == {
         'file_level': None,

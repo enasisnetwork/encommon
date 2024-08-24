@@ -16,10 +16,10 @@ from typing import Any
 from typing import Callable
 from typing import Optional
 
-from pydantic import BaseModel
 
 from .files import read_text
 from .files import save_text
+from ..types import BaseModel
 from ..types import DictStrAny
 from ..types import rplstr
 
@@ -72,7 +72,7 @@ def prep_sample(  # noqa: CFQ004
             return asdict(value)
 
         if isinstance(value, BaseModel):
-            return value.model_dump()
+            return value.endumped
 
         return str(value)
 

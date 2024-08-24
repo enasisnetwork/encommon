@@ -175,19 +175,6 @@ class Config:
 
 
     @property
-    def config(
-        self,
-    ) -> DictStrAny:
-        """
-        Return the configuration dumped from the Pydantic model.
-
-        :returns: Configuration dumped from the Pydantic model.
-        """
-
-        return self.params.model_dump()
-
-
-    @property
     def basic(
         self,
     ) -> DictStrAny:
@@ -276,6 +263,19 @@ class Config:
         self.__params = params
 
         return self.__params
+
+
+    @property
+    def config(
+        self,
+    ) -> DictStrAny:
+        """
+        Return the configuration dumped from the Pydantic model.
+
+        :returns: Configuration dumped from the Pydantic model.
+        """
+
+        return self.params.endumped
 
 
     @property

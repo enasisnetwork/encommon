@@ -97,7 +97,7 @@ class Timers:
     >>> timers.ready('one')
     True
 
-    :param params: Parameters for instantiating the instance.
+    :param params: Parameters used to instantiate the class.
     :param store: Optional database path for keeping state.
     :param group: Optional override for default group name.
     """
@@ -374,7 +374,7 @@ class Timers:
         Create a new timer using the provided input parameters.
 
         :param unique: Unique identifier for the related child.
-        :param params: Parameters for instantiating the instance.
+        :param params: Parameters used to instantiate the class.
         :returns: Newly constructed instance of related class.
         """
 
