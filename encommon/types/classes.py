@@ -22,7 +22,7 @@ class BaseModel(Pydantic, extra='forbid'):
 
 
     @property
-    def model_dumped(
+    def endumped(
         self,
     ) -> DictStrAny:
         """
@@ -35,7 +35,7 @@ class BaseModel(Pydantic, extra='forbid'):
 
 
     @property
-    def model_pruned(
+    def enpruned(
         self,
     ) -> DictStrAny:
         """

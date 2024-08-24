@@ -329,7 +329,7 @@ class Logger:
     :param stdo_level: Minimum level for the message to pass.
     :param file_level: Minimum level for the message to pass.
     :param file_path: Enables writing to the filesystem path.
-    :param params: Parameters for instantiating the instance.
+    :param params: Parameters used to instantiate the class.
     """
 
     __params: 'LoggerParams'

@@ -68,8 +68,6 @@ def test_Config(
 
     assert len(config.sargs) == 1
 
-    assert len(config.config) == 3
-
     assert len(config.basic) == 3
 
     assert len(config.merge) == 5
@@ -77,6 +75,8 @@ def test_Config(
     assert callable(config.model)
 
     assert config.params
+
+    assert len(config.config) == 3
 
     assert config.logger
 
@@ -86,6 +86,39 @@ def test_Config(
     replaces = {
         'pytemp': tmp_path,
         'PROJECT': PROJECT}
+
+
+    sample_path = (
+        SAMPLES / 'basic.json')
+
+    sample = load_sample(
+        path=sample_path,
+        update=ENPYRWS,
+        content=config.basic,
+        replace=replaces)
+
+    expect = prep_sample(
+        content=config.basic,
+        replace=replaces)
+
+    assert expect == sample
+
+
+    sample_path = (
+        SAMPLES / 'merge.json')
+
+    sample = load_sample(
+        path=sample_path,
+        update=ENPYRWS,
+        content=config.merge,
+        replace=replaces)
+
+    expect = prep_sample(
+        content=config.merge,
+        replace=replaces)
+
+    assert expect == sample
+
 
     sample_path = (
         SAMPLES / 'config.json')

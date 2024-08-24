@@ -1,0 +1,22 @@
+{
+  "enconfig": {
+    "paths": [
+      "_/encommon_sample/PROJECT/_/config/test/samples/stark",
+      "_/encommon_sample/PROJECT/_/config/test/samples/wayne"
+    ]
+  },
+  "encrypts": {
+    "phrases": {
+      "default": {
+        "phrase": "phrase"
+      }
+    }
+  },
+  "enlogger": {
+    "stdo_level": "info",
+    "file_path": "_/encommon_sample/pytemp/_/config.log",
+    "file_level": "info"
+  },
+  "common": "Stark",
+  "name": "Tony Stark"
+}

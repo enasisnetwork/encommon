@@ -134,9 +134,7 @@ class Time:
         :returns: Boolean indicating outcome from the operation.
         """
 
-        hashed = int(self.mpoch)
-
-        return int(1e9 + hashed)
+        return hash(self.__source)
 
 
     def __str__(
