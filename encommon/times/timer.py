@@ -131,7 +131,7 @@ class Timer:
         return True
 
 
-    def waiting(
+    def pause(
         self,
         update: bool = True,
     ) -> bool:

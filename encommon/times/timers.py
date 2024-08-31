@@ -365,6 +365,23 @@ class Timers:
         return ready
 
 
+    def pause(
+        self,
+        unique: str,
+        update: bool = True,
+    ) -> bool:
+        """
+        Determine whether or not the appropriate time has passed.
+
+        :param unique: Unique identifier for the related child.
+        :param update: Determines whether or not time is updated.
+        :returns: Boolean indicating whether enough time passed.
+        """
+
+        return not self.ready(
+            unique, update)
+
+
     def create(
         self,
         unique: str,

@@ -151,10 +151,12 @@ def test_Timers_cover(
 
 
     assert timers.ready('two')
+    assert timers.pause('two')
 
     timers.update('two', 'now')
 
     assert not timers.ready('two')
+    assert timers.pause('two')
 
 
     timers = Timers()
@@ -165,10 +167,12 @@ def test_Timers_cover(
     timers.create('fur', params)
 
     assert not timers.ready('fur')
+    assert timers.pause('fur')
 
     sleep(1)
 
     assert timers.ready('fur')
+    assert timers.pause('fur')
 
     timers.delete('fur')
 

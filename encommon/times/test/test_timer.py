@@ -68,8 +68,7 @@ def test_Timer(
     assert timer.remains <= 1
 
     assert not timer.ready()
-
-    assert timer.waiting()
+    assert timer.pause()
 
 
     sleep(1)
@@ -79,11 +78,15 @@ def test_Timer(
     assert timer.remains == 0
 
     assert timer.ready()
+    assert timer.pause()
 
     assert not timer.ready()
+    assert timer.pause()
 
     timer.update('1980-01-01')
 
     assert timer.ready()
+    assert timer.pause()
 
     assert not timer.ready()
+    assert timer.pause()
