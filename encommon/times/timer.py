@@ -131,6 +131,20 @@ class Timer:
         return True
 
 
+    def pause(
+        self,
+        update: bool = True,
+    ) -> bool:
+        """
+        Determine whether or not the appropriate time has passed.
+
+        :param update: Determines whether or not time is updated.
+        :returns: Boolean indicating whether enough time passed.
+        """
+
+        return not self.ready(update)
+
+
     def update(
         self,
         value: Optional[PARSABLE] = None,
