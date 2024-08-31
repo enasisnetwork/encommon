@@ -69,6 +69,8 @@ def test_Timer(
 
     assert not timer.ready()
 
+    assert timer.waiting()
+
 
     sleep(1)
 
