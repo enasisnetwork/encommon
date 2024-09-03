@@ -69,7 +69,7 @@ make -s pytest
 
 1. Create [repository](https://github.com/enasisnetwork/encommon) release.
 
-1. Build the Python package.<br>
+1. Build the Python package.<br>Be sure no uncommited files in tree.
    ```
    make -s pypackage
    ```
