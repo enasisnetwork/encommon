@@ -133,7 +133,7 @@ class Message:
                 value = round(value, 2)
 
 
-            value = str(value)
+            value = str(value).strip()
 
             self.__fields[key] = value
 
@@ -573,6 +573,13 @@ class Logger:
 
         logr_stdo = self.__logr_stdo
         logr_file = self.__logr_file
+
+        # Prevent debug from creating
+        # new object each time called
+        if (level == 'debug'
+                and stdo_level != 'debug'
+                and file_level != 'debug'):
+            return None
 
         message = Message(level, **kwargs)
 

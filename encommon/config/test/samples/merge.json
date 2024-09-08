@@ -13,7 +13,7 @@
     }
   },
   "enlogger": {
-    "stdo_level": "info",
+    "stdo_level": "debug",
     "file_path": "_/encommon_sample/pytemp/_/config.log",
     "file_level": "info"
   },

@@ -36,7 +36,7 @@ def config_factory(
             - '{SAMPLES}/wayne'
 
         enlogger:
-          stdo_level: info
+          stdo_level: debug
 
         encrypts:
           phrases:
