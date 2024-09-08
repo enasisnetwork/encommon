@@ -42,7 +42,7 @@ def logger(
     """
 
     params = LoggerParams(
-        stdo_level='info',
+        stdo_level='debug',
         file_level='info',
         file_path=f'{tmp_path}/test.log')
 
@@ -166,7 +166,7 @@ def test_Logger(
 
     assert logger.params
 
-    assert logger.stdo_level == 'info'
+    assert logger.stdo_level == 'debug'
 
     assert logger.file_level == 'info'
 
@@ -199,6 +199,21 @@ def test_Logger_cover(
     """
 
     time = Time('now')
+
+
+    # Test preventing debug from
+    # any needless instantiation
+    setattr(
+        logger,
+        '_Logger__file_level',
+        'info')
+
+    # Test preventing debug from
+    # any needless instantiation
+    setattr(
+        logger,
+        '_Logger__stdo_level',
+        'info')
 
 
     def _logger_logs() -> None:
@@ -234,16 +249,16 @@ def test_Logger_cover(
 
     _logger_logs()
 
-    assert len(_logger_stdo()) == 6
-    assert len(_logger_file()) == 6
+    assert len(_logger_stdo()) == 5
+    assert len(_logger_file()) == 5
 
     logger.stop()
 
 
     _logger_logs()
 
-    assert len(_logger_stdo()) == 6
-    assert len(_logger_file()) == 6
+    assert len(_logger_stdo()) == 5
+    assert len(_logger_file()) == 5
 
 
     logger.start()
@@ -261,8 +276,8 @@ def test_Logger_cover(
     assert message in str(stdo)
     assert message in str(file)
 
-    assert len(_logger_stdo()) == 7
-    assert len(_logger_file()) == 7
+    assert len(_logger_stdo()) == 6
+    assert len(_logger_file()) == 6
 
 
     logger.stop()
@@ -270,5 +285,5 @@ def test_Logger_cover(
 
     _logger_logs()
 
-    assert len(_logger_stdo()) == 7
-    assert len(_logger_file()) == 7
+    assert len(_logger_stdo()) == 6
+    assert len(_logger_file()) == 6
