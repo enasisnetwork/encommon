@@ -21,6 +21,7 @@ from ..crypts import Crypts
 from ..types import DictStrAny
 from ..types import merge_dicts
 from ..types import setate
+from ..types import sort_dict
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
@@ -43,7 +44,7 @@ class Config:
     -------
     >>> config = Config()
     >>> config.config
-    {'enconfig': None, 'enlogger': None, 'encrypts': None}
+    {'enconfig': None, 'encrypts': None, 'enlogger': None}
 
     :param files: Complete or relative path to config files.
     :param paths: Complete or relative path to config paths.
@@ -275,7 +276,7 @@ class Config:
         :returns: Configuration dumped from the Pydantic model.
         """
 
-        return self.params.endumped
+        return sort_dict(self.params.endumped)
 
 
     @property
