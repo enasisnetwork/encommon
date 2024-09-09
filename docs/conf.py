@@ -35,9 +35,9 @@ html_theme = 'sphinx_rtd_theme'
 always_document_param_types = True
 
 intersphinx_mapping = {
+    'pydantic': ('https://docs.pydantic.dev/latest', None),
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None),
-    'pydantic': ('https://docs.pydantic.dev/latest', None),
     'sqlalchemy': ('https://docs.sqlalchemy.org/en/20', None)}
 
 nitpick_ignore = [
