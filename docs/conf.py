@@ -20,13 +20,11 @@ from encommon import VERSION  # noqa: E402
 project = 'encommon'
 copyright = '2024, Enasis Network'
 author = 'Enasis Network'
-master_doc = 'index'
 nitpicky = True
 version = VERSION
 
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx_autodoc_typehints',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
@@ -37,10 +35,31 @@ html_theme = 'sphinx_rtd_theme'
 always_document_param_types = True
 
 intersphinx_mapping = {
-    'pathlib': ('https://docs.python.org/3', None),
+    'pydantic': ('https://docs.pydantic.dev/latest', None),
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None),
     'sqlalchemy': ('https://docs.sqlalchemy.org/en/20', None)}
 
 nitpick_ignore = [
-    ('py:class', 'pydantic.main.BaseModel')]
+
+    # Seems to be an issue using Pydantic
+    ('py:class', 'Field'),
+    ('py:class', 'FieldInfo'),
+    ('py:class', 'Ge'),
+    ('py:class', 'Le'),
+    ('py:class', 'MinLen'),
+    ('py:class', 'NoneType'),
+
+    # Seems to be an issue using SQLAlchemy
+    ('py:class', 'MetaData'),
+    ('py:class', '_RegistryType'),
+    ('py:class', '_orm.registry'),
+    ('py:class', '_orm.Mapper'),
+    ('py:class', '_schema.MetaData'),
+    ('py:class', '_schema.Table'),
+
+    # Not sure what causes these warnings
+    ('py:class', 'DataclassInstance'),
+    ('py:class', 'PARSABLE'),
+    ('py:class', 'PATHABLE'),
+    ('py:class', 'REPLACE')]
