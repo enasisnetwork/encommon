@@ -5,16 +5,16 @@
       "_/encommon_sample/PROJECT/_/config/test/samples/wayne"
     ]
   },
-  "enlogger": {
-    "stdo_level": "debug",
-    "file_level": "info",
-    "file_path": "_/encommon_sample/pytemp/_/config.log"
-  },
   "encrypts": {
     "phrases": {
       "default": {
         "phrase": "phrase"
       }
     }
+  },
+  "enlogger": {
+    "stdo_level": "debug",
+    "file_level": "info",
+    "file_path": "_/encommon_sample/pytemp/_/config.log"
   }
 }
