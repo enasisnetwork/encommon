@@ -3,6 +3,7 @@
 types-croniter
 types-PyYAML
 types-python-dateutil
+types-netaddr
 
 pytest
 pytest-asyncio
