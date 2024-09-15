@@ -13,6 +13,8 @@ from .classes import lattrs
 from .dicts import merge_dicts
 from .dicts import sort_dict
 from .empty import Empty
+from .lists import dedup_list
+from .lists import fuzzy_list
 from .lists import inlist
 from .notate import delate
 from .notate import getate
@@ -32,6 +34,8 @@ from .types import NCTrue
 __all__ = [
     'BaseModel',
     'clsname',
+    'dedup_list',
+    'fuzzy_list',
     'delate',
     'DictStrAny',
     'Empty',

@@ -101,6 +101,28 @@ Color Formatting
    :show-inheritance:
    :noindex:
 
+Jinja2 Templating
+=================
+
+.. autoclass:: encommon.parse.Jinja2
+   :members:
+   :show-inheritance:
+   :noindex:
+
+Network Addresses
+=================
+
+.. autoclass:: encommon.parse.Network
+   :members:
+   :show-inheritance:
+   :noindex:
+
+.. autofunction:: encommon.parse.insubnet_ip
+   :noindex:
+
+.. autofunction:: encommon.parse.isvalid_ip
+   :noindex:
+
 Advanced Time Structures
 ========================
 
@@ -188,6 +210,12 @@ Python Type Utilities
    :noindex:
 
 .. autofunction:: encommon.types.sort_dict
+   :noindex:
+
+.. autofunction:: encommon.types.dedup_list
+   :noindex:
+
+.. autofunction:: encommon.types.fuzzy_list
    :noindex:
 
 .. autofunction:: encommon.types.strplwr
