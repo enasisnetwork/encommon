@@ -6,7 +6,6 @@ types-python-dateutil
 types-netaddr
 
 pytest
-pytest-asyncio
 pytest-clarity
 pytest-cov
 pytest-mypy

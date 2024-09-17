@@ -1,6 +1,6 @@
 # Enasis Network Common Library
 
-> :children_crossing: This project has not released its first major version.
+> :warning: This project has not released its first major version.
 
 Common classes and functions used in various public and private projects.
 
