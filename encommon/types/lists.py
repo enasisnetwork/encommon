@@ -22,15 +22,21 @@ def dedup_list(
     .. warning::
        This function will update the ``value`` reference.
 
+    Example
+    -------
+    >>> value = [1, 2, 2, 3]
+    >>> dedup_list(value)
+    [1, 2, 3]
+    >>> value
+    [1, 2, 3]
+
     :param value: List of values processed for duplication.
+    :param update: Indicate if to update provided reference.
     :returns: Provided list values with duplicates removed.
     """
 
     if update is False:
-
-        dedup = dict.fromkeys(value)
-
-        return list(dedup)
+        value = list(value)
 
 
     unique: list[Any] = []
@@ -56,6 +62,13 @@ def fuzzy_list(
 ) -> list[str]:
     """
     Return the provided values that match provided patterns.
+
+    Example
+    -------
+    >>> values = ['foo', 'bar', 'baz', 'bop']
+    >>> patterns = ['*o', 'ba*']
+    >>> fuzzy_list(values, patterns)
+    ['foo', 'bar', 'baz']
 
     :param values: Value or values to enumerate for matching.
     :param patterns: Patterns which values can match any one.

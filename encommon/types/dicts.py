@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from copy import deepcopy
 from typing import Any
 
 
@@ -14,11 +15,12 @@ from typing import Any
 def merge_dicts(
     dict1: dict[Any, Any],
     dict2: dict[Any, Any],
-    force: bool = False,
+    force: bool | None = False,
     *,
     merge_list: bool = True,
     merge_dict: bool = True,
-) -> None:
+    paranoid: bool = False,
+) -> dict[Any, Any]:
     """
     Recursively merge the contents of provided dictionaries.
 
@@ -30,20 +32,34 @@ def merge_dicts(
     >>> dict1 = {'a': 'b', 'c': [1]}
     >>> dict2 = {'a': 'B', 'c': [2]}
     >>> merge_dicts(dict1, dict2)
+    {'a': 'b', 'c': [1, 2]}
     >>> dict1
     {'a': 'b', 'c': [1, 2]}
 
     :param dict1: Primary dictionary which is merged into.
     :param dict2: Secondary dictionary for primary updates.
     :param force: Force overwriting concrete values in the
-        primary dictionary with those from secondary.
+        primary dictionary with those from secondary. When
+        ``None`` only overwrites if destination is ``None``.
     :param merge_list: Determines if merged or overwritten.
     :param merge_dict: Determines if merged or overwritten.
+    :param paranoid: Perform an initial deepcopy on both of
+        the provided dictionaries before performing merges.
+    :returns: Provided dictionary with the other merged in.
     """
+
+    if paranoid is True:
+        dict1 = deepcopy(dict1)
+        dict2 = deepcopy(dict2)
+
 
     for key, value in dict2.items():
 
         if key not in dict1:
+            dict1[key] = value
+
+        elif (dict1[key] is None
+                and force is None):
             dict1[key] = value
 
         elif (isinstance(dict1[key], list)
@@ -62,6 +78,9 @@ def merge_dicts(
 
         elif force is True:
             dict1[key] = value
+
+
+    return dict1
 
 
 
