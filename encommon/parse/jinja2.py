@@ -9,6 +9,8 @@ is permitted, for more information consult the project license file.
 
 from ast import literal_eval as leval
 from contextlib import suppress
+from copy import copy
+from copy import deepcopy
 from re import DOTALL
 from re import findall as re_findall
 from re import match as re_match
@@ -19,12 +21,24 @@ from typing import Optional
 from jinja2 import Environment
 from jinja2 import StrictUndefined
 
+from .network import Network
+from .network import insubnet_ip
+from .network import isvalid_ip
 from ..colors import Color
 from ..crypts import Hashes
 from ..times import Duration
 from ..times import Time
+from ..times import unitime
 from ..types import DictStrAny
+from ..types import dedup_list
 from ..types import fuzzy_list
+from ..types import hasstr
+from ..types import inlist
+from ..types import instr
+from ..types import merge_dicts
+from ..types import rplstr
+from ..types import sort_dict
+from ..types import strplwr
 from ..utils import fuzz_match
 from ..utils import rgxp_match
 
@@ -41,13 +55,47 @@ LITERAL = (
     '|True|False|None|'
     r'(\-?([1-9]\d*|0)(\.\d+)?))$')
 
+
+
 DEFAULT: dict[str, FILTER] = {
+
+    # Python builtins
+    'all': all,
+    'any': any,
+    'copy': copy,
+    'deepcopy': deepcopy,
+
+    # encommon.times
     'Duration': Duration,
-    'Color': Color,
-    'Hashes': Hashes,
     'Time': Time,
-    'fuzz_match': fuzz_match,
+
+    # encommon.colors
+    'Color': Color,
+
+    # encommon.crypts
+    'Hashes': Hashes,
+
+    # encommon.parse
+    'Network': Network,
+    'insubnet_ip': insubnet_ip,
+    'isvalid_ip': isvalid_ip,
+
+    # encommon.times
+    'unitime': unitime,
+
+    # encommon.types
+    'strplwr': strplwr,
+    'hasstr': hasstr,
+    'instr': instr,
+    'inlist': inlist,
+    'rplstr': rplstr,
+    'dedup_list': dedup_list,
     'fuzzy_list': fuzzy_list,
+    'merge_dicts': merge_dicts,
+    'sort_dict': sort_dict,
+
+    # encommon.utils
+    'fuzz_match': fuzz_match,
     'rgxp_match': rgxp_match}
 
 
@@ -164,7 +212,9 @@ class Jinja2:
         :returns: Provided input using the Jinja2 environment.
         """
 
-        statics = statics or {}
+        statics = (
+            dict(statics or {})
+            | self.__statics)
 
         parser = (
             self.__jinjenv
