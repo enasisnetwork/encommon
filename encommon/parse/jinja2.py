@@ -107,7 +107,7 @@ class Jinja2:
     Example
     -------
     >>> jinja2 = Jinja2()
-    >>> jinja2.parse('{{ 0 | Time}}')
+    >>> jinja2.parse('{{ 0 | Time }}')
     '1970-01-01T00:00:00.000000+0000'
 
     :param statics: Additional values available for parsing.
