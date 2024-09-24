@@ -35,27 +35,9 @@ html_theme = 'sphinx_rtd_theme'
 always_document_param_types = True
 
 intersphinx_mapping = {
+    'jinja2': ('https://jinja.palletsprojects.com/en/latest', None),
+    'netaddr': ('https://netaddr.readthedocs.io/en/latest', None),
     'pydantic': ('https://docs.pydantic.dev/latest', None),
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None),
-    'jinja2': ('https://jinja.palletsprojects.com/en/latest', None),
-    'netaddr': ('https://netaddr.readthedocs.io/en/stable', None),
     'sqlalchemy': ('https://docs.sqlalchemy.org/en/20', None)}
-
-nitpick_ignore = [
-
-    # Seems to be an issue using Pydantic
-    ('py:class', 'Field'),
-    ('py:class', 'FieldInfo'),
-    ('py:class', 'Ge'),
-    ('py:class', 'Le'),
-    ('py:class', 'MinLen'),
-    ('py:class', 'NoneType'),
-
-    # Seems to be an issue using SQLAlchemy
-    ('py:class', 'MetaData'),
-    ('py:class', '_RegistryType'),
-    ('py:class', '_orm.registry'),
-    ('py:class', '_orm.Mapper'),
-    ('py:class', '_schema.MetaData'),
-    ('py:class', '_schema.Table')]
