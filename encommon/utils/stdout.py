@@ -210,6 +210,8 @@ def array_ansi(  # noqa: CFQ001, CFQ004
 
     repeat = f'<c{colors.other}>REPEAT<c0>'
 
+    space: str = ' '
+
 
     def _append(
         prefix: str,
@@ -319,7 +321,7 @@ def array_ansi(  # noqa: CFQ001, CFQ004
         for key, value in items:
 
             prefix = (
-                f'{" " * indent}'
+                f'{space * indent}'
                 f'<c{colors.key}>{key}'
                 f'<c{colors.colon}>:<c0>')
 
@@ -340,7 +342,7 @@ def array_ansi(  # noqa: CFQ001, CFQ004
         for value in source:
 
             prefix = (
-                f'{" " * indent}'
+                f'{space * indent}'
                 f'<c{colors.hyphen}>-<c0>')
 
             _append(

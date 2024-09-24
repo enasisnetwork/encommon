@@ -43,7 +43,7 @@ def config_factory(
             default:
               phrase: phrase
 
-        """)  # noqa: LIT003
+        """)
 
     config_path = (
         tmp_path / 'config.yml')
