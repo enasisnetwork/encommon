@@ -38,6 +38,8 @@ intersphinx_mapping = {
     'pydantic': ('https://docs.pydantic.dev/latest', None),
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None),
+    'jinja2': ('https://jinja.palletsprojects.com/en/latest', None),
+    'netaddr': ('https://netaddr.readthedocs.io/en/stable', None),
     'sqlalchemy': ('https://docs.sqlalchemy.org/en/20', None)}
 
 nitpick_ignore = [
@@ -56,10 +58,4 @@ nitpick_ignore = [
     ('py:class', '_orm.registry'),
     ('py:class', '_orm.Mapper'),
     ('py:class', '_schema.MetaData'),
-    ('py:class', '_schema.Table'),
-
-    # Not sure what causes these warnings
-    ('py:class', 'DataclassInstance'),
-    ('py:class', 'PARSABLE'),
-    ('py:class', 'PATHABLE'),
-    ('py:class', 'REPLACE')]
+    ('py:class', '_schema.Table')]
