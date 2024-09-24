@@ -18,6 +18,8 @@ Should you venture into the sections below you will be able to use the
 ## Projects using library
 - [Enasis Network Remote Connect](https://github.com/enasisnetwork/enconnect)
 - [Enasis Network Homie Automate](https://github.com/enasisnetwork/enhomie)
+- [Enasis Network Chatting Robie](https://github.com/enasisnetwork/enrobie)
+- [Enasis Network Orchestrations](https://github.com/enasisnetwork/orchestro)
 
 ## Installing the package
 Installing stable from the PyPi repository
@@ -56,7 +58,7 @@ make -s pytest
 ```
 
 ## Version management
-:warning: Ensure that no changes are pending.
+> :warning: Ensure that no changes are pending.
 
 1. Rebuild the environment.
    ```
