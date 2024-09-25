@@ -109,7 +109,8 @@ def test_Timers(
         'timers.Timers object',
         timers)
 
-    assert hash(timers) > 0
+    assert isinstance(
+        hash(timers), int)
 
     assert instr(
         'timers.Timers object',

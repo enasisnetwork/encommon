@@ -38,7 +38,8 @@ def test_Time() -> None:
         "Time('1970-01-01T00:00",
         time)
 
-    assert hash(time) > 0
+    assert isinstance(
+        hash(time), int)
 
     assert instr(
         '1970-01-01T00:00:00.000',

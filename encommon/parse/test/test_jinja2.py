@@ -65,7 +65,8 @@ def test_Jinja2(
         'jinja2.Jinja2 object',
         jinja2)
 
-    assert hash(jinja2) > 0
+    assert isinstance(
+        hash(jinja2), int)
 
     assert instr(
         'jinja2.Jinja2 object',

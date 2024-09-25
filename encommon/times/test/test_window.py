@@ -68,7 +68,8 @@ def test_Window(
         'window.Window object',
         window)
 
-    assert hash(window) > 0
+    assert isinstance(
+        hash(window), int)
 
     assert instr(
         'window.Window object',

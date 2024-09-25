@@ -443,7 +443,9 @@ class Windows:
         :returns: Newly constructed instance of related class.
         """
 
-        config = self.params.windows
+        config = (
+            self.params
+            .windows)
 
         if unique in config:
             raise ValueError('unique')

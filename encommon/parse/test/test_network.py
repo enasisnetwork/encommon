@@ -37,7 +37,8 @@ def test_Network() -> None:
         "Network('12.34.",
         naddr)
 
-    assert hash(naddr) > 0
+    assert isinstance(
+        hash(naddr), int)
 
     assert instr(
         '12.34.56.7/32',

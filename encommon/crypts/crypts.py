@@ -62,12 +62,14 @@ class Crypts:
         Initialize instance for class using provided parameters.
         """
 
-        from .params import CryptsParams
+        from .params import (
+            CryptsParams)
 
         if params is None:
             params = CryptsParams()
 
-        self.__params = deepcopy(params)
+        self.__params = (
+            deepcopy(params))
 
 
     @property
@@ -96,16 +98,22 @@ class Crypts:
         :returns: Encrypted value using the relevant passphrase.
         """
 
-        phrases = self.params.phrases
+        phrases = (
+            self.params
+            .phrases)
 
         if unique not in phrases:
             raise ValueError('unique')
 
-        phrase = phrases[unique].phrase
+        phrase = (
+            phrases[unique]
+            .phrase)
+
+        encoded = value.encode()
 
         encrypt = (
             Fernet(phrase)
-            .encrypt(value.encode())
+            .encrypt(encoded)
             .decode())
 
         return (
@@ -124,11 +132,16 @@ class Crypts:
         :returns: Decrypted value using the relevant passphrase.
         """
 
-        phrases = self.params.phrases
+        phrases = (
+            self.params
+            .phrases)
 
         value = crypt_clean(value)
 
-        if not re_match(ENCRYPT, value):
+        match = re_match(
+            ENCRYPT, value)
+
+        if match is None:
             raise ValueError('string')
 
         version, unique, value = (
@@ -137,11 +150,15 @@ class Crypts:
         if version != '1.0':
             raise ValueError('version')
 
-        phrase = phrases[unique].phrase
+        phrase = (
+            phrases[unique]
+            .phrase)
+
+        encoded = value.encode()
 
         return (
             Fernet(phrase)
-            .decrypt(value.encode())
+            .decrypt(encoded)
             .decode())
 
 
@@ -157,7 +174,9 @@ class Crypts:
         :param params: Parameters used to instantiate the class.
         """
 
-        phrases = self.params.phrases
+        phrases = (
+            self.params
+            .phrases)
 
         if unique in phrases:
             raise ValueError('unique')
@@ -175,7 +194,9 @@ class Crypts:
         :param unique: Unique identifier of mapping passphrase.
         """
 
-        phrases = self.params.phrases
+        phrases = (
+            self.params
+            .phrases)
 
         if unique not in phrases:
             raise ValueError('unique')

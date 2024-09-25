@@ -84,10 +84,7 @@ class Color:
         :returns: Boolean indicating outcome from the operation.
         """
 
-        color = int(
-            self.__source, 16)
-
-        return int(1e9 + color)
+        return hash(self.__source)
 
 
     def __str__(

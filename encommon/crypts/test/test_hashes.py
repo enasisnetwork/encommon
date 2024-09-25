@@ -32,7 +32,8 @@ def test_Hashes() -> None:
         'hashes.Hashes object',
         hashes)
 
-    assert hash(hashes) > 0
+    assert isinstance(
+        hash(hashes), int)
 
     assert instr(
         'hashes.Hashes object',

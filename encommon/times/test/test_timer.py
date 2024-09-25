@@ -52,7 +52,8 @@ def test_Timer(
         'timer.Timer object',
         timer)
 
-    assert hash(timer) > 0
+    assert isinstance(
+        hash(timer), int)
 
     assert instr(
         'timer.Timer object',
