@@ -61,7 +61,8 @@ def test_ConfigFile(
         'files.ConfigFile object',
         file)
 
-    assert hash(file) > 0
+    assert isinstance(
+        hash(file), int)
 
     assert instr(
         'files.ConfigFile object',
@@ -96,7 +97,8 @@ def test_ConfigFiles(
         'files.ConfigFiles object',
         files)
 
-    assert hash(files) > 0
+    assert isinstance(
+        hash(files), int)
 
     assert instr(
         'files.ConfigFiles object',

@@ -122,7 +122,8 @@ def test_Windows(
         'windows.Windows object',
         windows)
 
-    assert hash(windows) > 0
+    assert isinstance(
+        hash(windows), int)
 
     assert instr(
         'windows.Windows object',

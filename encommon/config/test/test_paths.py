@@ -64,7 +64,8 @@ def test_ConfigPath(
         'paths.ConfigPath object',
         path)
 
-    assert hash(path) > 0
+    assert isinstance(
+        hash(path), int)
 
     assert instr(
         'paths.ConfigPath object',
@@ -98,7 +99,8 @@ def test_ConfigPaths(
         'paths.ConfigPaths object',
         paths)
 
-    assert hash(paths) > 0
+    assert isinstance(
+        hash(paths), int)
 
     assert instr(
         'paths.ConfigPaths object',

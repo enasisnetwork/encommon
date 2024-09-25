@@ -395,7 +395,9 @@ class Timers:
         :returns: Newly constructed instance of related class.
         """
 
-        config = self.params.timers
+        config = (
+            self.params
+            .timers)
 
         if unique in config:
             raise ValueError('unique')

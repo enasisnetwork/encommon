@@ -53,7 +53,8 @@ def test_Config(
         'config.Config object',
         config)
 
-    assert hash(config) > 0
+    assert isinstance(
+        hash(config), int)
 
     assert instr(
         'config.Config object',

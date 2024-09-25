@@ -137,7 +137,7 @@ class Duration:
         :returns: Boolean indicating outcome from the operation.
         """
 
-        return int(self.__source * 100000)
+        return hash(self.__source)
 
 
     def __str__(

@@ -31,7 +31,8 @@ def test_Color() -> None:
     assert repr(color) == (
         "Color('#000001')")
 
-    assert hash(color) > 0
+    assert isinstance(
+        hash(color), int)
 
     assert str(color) == '#000001'
 

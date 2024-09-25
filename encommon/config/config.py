@@ -185,7 +185,7 @@ class Config:
         :returns: Configuration source loaded from the objects.
         """
 
-        files = self.files
+        files = self.__files
 
         ferged = files.merge
 
@@ -207,8 +207,8 @@ class Config:
         :returns: Configuration source loaded from the objects.
         """
 
-        files = self.files
-        paths = self.paths
+        files = self.__files
+        paths = self.__paths
 
         ferged = files.merge
         perged = paths.merge

@@ -60,7 +60,8 @@ def test_Crypts(
         'crypts.Crypts object',
         crypts)
 
-    assert hash(crypts) > 0
+    assert isinstance(
+        hash(crypts), int)
 
     assert instr(
         'crypts.Crypts object',

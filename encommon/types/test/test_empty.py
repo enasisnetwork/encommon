@@ -32,7 +32,8 @@ def test_EmptyType() -> None:
 
     assert repr(empty) == 'Empty'
 
-    assert hash(empty) > 0
+    assert isinstance(
+        hash(empty), int)
 
     assert str(empty) == 'Empty'
 

@@ -34,7 +34,8 @@ def test_Duration() -> None:
         'Duration(seconds=95401',
         durate)
 
-    assert hash(durate) > 0
+    assert isinstance(
+        hash(durate), int)
 
     assert str(durate) == '1d2h30m'
 

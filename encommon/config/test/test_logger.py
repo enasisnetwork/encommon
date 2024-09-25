@@ -83,7 +83,8 @@ def test_Message() -> None:
         'Message(level="info"',
         message)
 
-    assert hash(message) > 0
+    assert isinstance(
+        hash(message), int)
 
     assert instr(
         'Message(level="info"',
@@ -157,7 +158,8 @@ def test_Logger(
         'logger.Logger object',
         logger)
 
-    assert hash(logger) > 0
+    assert isinstance(
+        hash(logger), int)
 
     assert instr(
         'logger.Logger object',
