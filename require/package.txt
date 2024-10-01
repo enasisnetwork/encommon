@@ -1,4 +1,4 @@
--r reqs-install.txt
+-r install.txt
 
 types-croniter
 types-PyYAML
