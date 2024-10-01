@@ -21,6 +21,13 @@ dynamic = ["version", "dependencies"]
 
 
 
+[project.urls]
+
+Source = "https://github.com/enasisnetwork/encommon"
+Documentation = "https://enasisnetwork.github.io/encommon/sphinx"
+
+
+
 [tool.setuptools.dynamic]
 
 version.attr = "encommon.__version__"
