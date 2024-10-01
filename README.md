@@ -4,6 +4,7 @@
 
 Common classes and functions used in various public and private projects.
 
+<a href="https://pypi.org/project/encommon"><img src="https://enasisnetwork.github.io/encommon/badges/pypi.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/flake8.txt"><img src="https://enasisnetwork.github.io/encommon/badges/flake8.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/pylint.txt"><img src="https://enasisnetwork.github.io/encommon/badges/pylint.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/mypy.txt"><img src="https://enasisnetwork.github.io/encommon/badges/mypy.png"></a><br>
@@ -11,7 +12,6 @@ Common classes and functions used in various public and private projects.
 <a href="https://enasisnetwork.github.io/encommon/validate/pytest.txt"><img src="https://enasisnetwork.github.io/encommon/badges/pytest.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/coverage.txt"><img src="https://enasisnetwork.github.io/encommon/badges/coverage.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/sphinx.txt"><img src="https://enasisnetwork.github.io/encommon/badges/sphinx.png"></a><br>
-<a href="https://pypi.org/project/encommon"><img src="https://enasisnetwork.github.io/encommon/badges/pypi.png"></a><br>
 
 ## Documentation
 Read [project documentation](https://enasisnetwork.github.io/encommon/sphinx)
