@@ -4,16 +4,20 @@
 
 Common classes and functions used in various public and private projects.
 
-[![](https://img.shields.io/github/actions/workflow/status/enasisnetwork/encommon/build.yml?style=flat-square&label=GitHub%20actions)](https://github.com/enasisnetwork/encommon/actions)<br>
-[![codecov](https://img.shields.io/codecov/c/github/enasisnetwork/encommon?token=7PGOXKJU0E&style=flat-square&logoColor=FFFFFF&label=Coverage)](https://codecov.io/gh/enasisnetwork/encommon)<br>
-[![](https://img.shields.io/readthedocs/encommon?style=flat-square&label=Read%20the%20Docs)](https://encommon.readthedocs.io)<br>
-[![](https://img.shields.io/pypi/v/encommon.svg?style=flat-square&label=PyPi%20version)](https://pypi.org/project/encommon)<br>
-[![](https://img.shields.io/pypi/dm/encommon?style=flat-square&label=PyPi%20downloads)](https://pypi.org/project/encommon)
+<a href="https://enasisnetwork.github.io/encommon/validate/flake8.txt"><img src="https://enasisnetwork.github.io/encommon/badges/flake8.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/pylint.txt"><img src="https://enasisnetwork.github.io/encommon/badges/pylint.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/mypy.txt"><img src="https://enasisnetwork.github.io/encommon/badges/mypy.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/yamllint.txt"><img src="https://enasisnetwork.github.io/encommon/badges/yamllint.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/pytest.txt"><img src="https://enasisnetwork.github.io/encommon/badges/pytest.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/coverage.txt"><img src="https://enasisnetwork.github.io/encommon/badges/coverage.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/sphinx.txt"><img src="https://enasisnetwork.github.io/encommon/badges/sphinx.png"></a><br>
+<a href="https://pypi.org/project/encommon"><img src="https://enasisnetwork.github.io/encommon/badges/pypi.png"></a><br>
 
 ## Documentation
-Documentation is on [Read the Docs](https://encommon.readthedocs.io).
+Read [project documentation](https://enasisnetwork.github.io/encommon/sphinx)
+built using the [Sphinx](https://www.sphinx-doc.org/) project.
 Should you venture into the sections below you will be able to use the
-`sphinx` recipe to build documention in the `docs/html` directory.
+`sphinx` recipe to build documention in the `sphinx/html` directory.
 
 ## Projects using library
 - [Enasis Network Remote Connect](https://github.com/enasisnetwork/enconnect)
@@ -85,7 +89,3 @@ make -s pytest
    ```
    make -s pypi-upload-prod
    ```
-
-1. Update [Read the Docs](https://encommon.readthedocs.io) documentation.
-
-1. Consider running builds on dependent projects.
