@@ -1,0 +1,21 @@
+encommon.colors.test package
+============================
+
+Submodules
+----------
+
+encommon.colors.test.test\_color module
+---------------------------------------
+
+.. automodule:: encommon.colors.test.test_color
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: encommon.colors.test
+   :members:
+   :undoc-members:
+   :show-inheritance:

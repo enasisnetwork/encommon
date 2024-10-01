@@ -1,0 +1,35 @@
+encommon package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   encommon.colors
+   encommon.config
+   encommon.crypts
+   encommon.parse
+   encommon.times
+   encommon.types
+   encommon.utils
+
+Submodules
+----------
+
+encommon.conftest module
+------------------------
+
+.. automodule:: encommon.conftest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: encommon
+   :members:
+   :undoc-members:
+   :show-inheritance:

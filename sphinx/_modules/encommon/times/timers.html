@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>encommon.times.timers &mdash; encommon  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            encommon
+          </a>
+              <div class="version">
+                0.20.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">encommon</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">encommon.times.timers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for encommon.times.timers</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
+
+<span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
+<span class="sd">is permitted, for more information consult the project license file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">String</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.engine</span> <span class="kn">import</span> <span class="n">Engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">DeclarativeBase</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">PARSABLE</span>
+<span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">TimersParams</span>
+<span class="kn">from</span> <span class="nn">.time</span> <span class="kn">import</span> <span class="n">Time</span>
+<span class="kn">from</span> <span class="nn">.timer</span> <span class="kn">import</span> <span class="n">Timer</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">TimerParams</span>
+
+
+
+<span class="n">TIMERS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Timer</span><span class="p">]</span>
+
+
+
+<div class="viewcode-block" id="SQLBase">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.timers.SQLBase">[docs]</a>
+<span class="k">class</span> <span class="nc">SQLBase</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Some additional class that SQLAlchemy requires to work.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       Input parameters are not defined, check parent class.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+
+
+<div class="viewcode-block" id="TimersTable">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.timers.TimersTable">[docs]</a>
+<span class="k">class</span> <span class="nc">TimersTable</span><span class="p">(</span><span class="n">SQLBase</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Schematic for the database operations using SQLAlchemy.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       Fields are not completely documented for this model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">group</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">String</span><span class="p">,</span>
+        <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">unique</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">String</span><span class="p">,</span>
+        <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">last</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">String</span><span class="p">,</span>
+        <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">update</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span>
+        <span class="n">String</span><span class="p">,</span>
+        <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;timers&#39;</span></div>
+
+
+
+
+<div class="viewcode-block" id="Timers">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers">[docs]</a>
+<span class="k">class</span> <span class="nc">Timers</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Track timers on unique key determining when to proceed.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">       This class will use an in-memory database for cache,</span>
+<span class="sd">       unless a cache file is explicity defined.</span>
+
+<span class="sd">    .. testsetup::</span>
+<span class="sd">       &gt;&gt;&gt; from .params import TimerParams</span>
+<span class="sd">       &gt;&gt;&gt; from .params import TimersParams</span>
+<span class="sd">       &gt;&gt;&gt; from time import sleep</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; source = {&#39;one&#39;: TimerParams(timer=1)}</span>
+<span class="sd">    &gt;&gt;&gt; params = TimersParams(timers=source)</span>
+<span class="sd">    &gt;&gt;&gt; timers = Timers(params)</span>
+<span class="sd">    &gt;&gt;&gt; timers.ready(&#39;one&#39;)</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; sleep(1)</span>
+<span class="sd">    &gt;&gt;&gt; timers.ready(&#39;one&#39;)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    :param params: Parameters used to instantiate the class.</span>
+<span class="sd">    :param store: Optional database path for keeping state.</span>
+<span class="sd">    :param group: Optional override for default group name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__params</span><span class="p">:</span> <span class="s1">&#39;TimersParams&#39;</span>
+
+    <span class="n">__store</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">__group</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="n">__store_engine</span><span class="p">:</span> <span class="n">Engine</span>
+    <span class="n">__store_session</span><span class="p">:</span> <span class="p">(</span>
+        <span class="c1"># pylint: disable=unsubscriptable-object</span>
+        <span class="n">sessionmaker</span><span class="p">[</span><span class="n">Session</span><span class="p">])</span>
+
+    <span class="n">__timers</span><span class="p">:</span> <span class="n">TIMERS</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;TimersParams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">store</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sqlite:///:memory:&#39;</span><span class="p">,</span>
+        <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize instance for class using provided parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">TimersParams</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__params</span> <span class="o">=</span> <span class="n">params</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__store</span> <span class="o">=</span> <span class="n">store</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__group</span> <span class="o">=</span> <span class="n">group</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__make_engine</span><span class="p">()</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_children</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">__make_engine</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construct instances using the configuration parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__store</span>
+
+        <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
+
+        <span class="p">(</span><span class="n">SQLBase</span><span class="o">.</span><span class="n">metadata</span>
+         <span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">))</span>
+
+        <span class="n">session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__store_engine</span> <span class="o">=</span> <span class="n">engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__store_session</span> <span class="o">=</span> <span class="n">session</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimersParams&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the Pydantic model containing the configuration.</span>
+
+<span class="sd">        :returns: Pydantic model containing the configuration.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">store</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__store</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">group</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">store_engine</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Engine</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__store_engine</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">store_session</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__store_session</span><span class="p">()</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">children</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Timer</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__timers</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Timers.load_children">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.load_children">[docs]</a>
+    <span class="k">def</span> <span class="nf">load_children</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construct the children instances for the primary class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
+        <span class="n">timers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span>
+
+        <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
+
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store_session</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">timers</span>
+
+
+        <span class="n">_table</span> <span class="o">=</span> <span class="n">TimersTable</span>
+        <span class="n">_group</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">group</span>
+        <span class="n">_unique</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">unique</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">_table</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_group</span> <span class="o">==</span> <span class="n">group</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">_unique</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+
+            <span class="n">unique</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">unique</span><span class="p">)</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">last</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">_config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+
+            <span class="n">_config</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">last</span>
+
+
+        <span class="n">items</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">timers</span><span class="p">:</span>
+
+                <span class="n">timer</span> <span class="o">=</span> <span class="n">timers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+                <span class="n">timer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+
+                <span class="k">continue</span>
+
+            <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span>
+                <span class="n">value</span><span class="o">.</span><span class="n">timer</span><span class="p">,</span>
+                <span class="n">start</span><span class="o">=</span><span class="n">value</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+
+            <span class="n">timers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">timer</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span> <span class="o">=</span> <span class="n">timers</span></div>
+
+
+
+<div class="viewcode-block" id="Timers.save_children">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.save_children">[docs]</a>
+    <span class="k">def</span> <span class="nf">save_children</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the child caches from the attribute into database.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">timers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span>
+
+        <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
+
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store_session</span>
+
+
+        <span class="n">items</span> <span class="o">=</span> <span class="n">timers</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">unique</span><span class="p">,</span> <span class="n">timer</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+
+            <span class="n">update</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">)</span>
+
+            <span class="n">append</span> <span class="o">=</span> <span class="n">TimersTable</span><span class="p">(</span>
+                <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+                <span class="n">unique</span><span class="o">=</span><span class="n">unique</span><span class="p">,</span>
+                <span class="n">last</span><span class="o">=</span><span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">subsec</span><span class="p">,</span>
+                <span class="n">update</span><span class="o">=</span><span class="n">update</span><span class="o">.</span><span class="n">subsec</span><span class="p">)</span>
+
+            <span class="n">session</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">append</span><span class="p">)</span>
+
+
+        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Timers.ready">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.ready">[docs]</a>
+    <span class="k">def</span> <span class="nf">ready</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine whether or not the appropriate time has passed.</span>
+
+<span class="sd">        :param unique: Unique identifier for the related child.</span>
+<span class="sd">        :param update: Determines whether or not time is updated.</span>
+<span class="sd">        :returns: Boolean indicating whether enough time passed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">timers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span>
+
+        <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">timers</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">timers</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+
+        <span class="n">ready</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ready</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">ready</span></div>
+
+
+
+<div class="viewcode-block" id="Timers.pause">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.pause">[docs]</a>
+    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine whether or not the appropriate time has passed.</span>
+
+<span class="sd">        :param unique: Unique identifier for the related child.</span>
+<span class="sd">        :param update: Determines whether or not time is updated.</span>
+<span class="sd">        :returns: Boolean indicating whether enough time passed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span>
+            <span class="n">unique</span><span class="p">,</span> <span class="n">update</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Timers.create">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.create">[docs]</a>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="s1">&#39;TimerParams&#39;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Timer</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new timer using the provided input parameters.</span>
+
+<span class="sd">        :param unique: Unique identifier for the related child.</span>
+<span class="sd">        :param params: Parameters used to instantiate the class.</span>
+<span class="sd">        :returns: Newly constructed instance of related class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+            <span class="o">.</span><span class="n">timers</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+
+        <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_children</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="Timers.update">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the timer from the provided parasable time value.</span>
+
+<span class="sd">        :param unique: Unique identifier for the related child.</span>
+<span class="sd">        :param value: Override the time updated for timer value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">timers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span>
+
+        <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">timers</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">timers</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+
+        <span class="n">timer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Timers.delete">
+<a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.delete">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete the timer from the internal dictionary reference.</span>
+
+<span class="sd">        .. note::</span>
+<span class="sd">           This is a graceful method, will not raise exception</span>
+<span class="sd">           when the provided unique value does not exist.</span>
+
+<span class="sd">        :param unique: Unique identifier for the related child.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
+        <span class="n">timers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__timers</span>
+
+        <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
+
+        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store_session</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">timers</span>
+
+
+        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">timers</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">timers</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+
+
+        <span class="n">_table</span> <span class="o">=</span> <span class="n">TimersTable</span>
+        <span class="n">_group</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">group</span>
+        <span class="n">_unique</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">unique</span>
+
+        <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">_table</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_unique</span> <span class="o">==</span> <span class="n">unique</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_group</span> <span class="o">==</span> <span class="n">group</span><span class="p">)</span>
+         <span class="o">.</span><span class="n">delete</span><span class="p">())</span>
+
+
+        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Enasis Network.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

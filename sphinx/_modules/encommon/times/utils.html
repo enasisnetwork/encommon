@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>encommon.times.utils &mdash; encommon  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            encommon
+          </a>
+              <div class="version">
+                0.20.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">encommon</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">encommon.times.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for encommon.times.utils</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
+
+<span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
+<span class="sd">is permitted, for more information consult the project license file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">suppress</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">tzinfo</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">gettz</span>
+
+
+
+<div class="viewcode-block" id="findtz">
+<a class="viewcode-back" href="../../../index.html#encommon.times.utils.findtz">[docs]</a>
+<span class="k">def</span> <span class="nf">findtz</span><span class="p">(</span>
+    <span class="n">tzname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tzinfo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the located timezone object for the provided name.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; findtz(&#39;US/Central&#39;)</span>
+<span class="sd">    tzfile(&#39;/usr/share/zoneinfo/US/Central&#39;)</span>
+
+<span class="sd">    :param tzname: Name of the timezone associated to source.</span>
+<span class="sd">    :returns: Located timezone object for the provided name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">tzname</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
+
+    <span class="n">tzinfo</span> <span class="o">=</span> <span class="n">gettz</span><span class="p">(</span><span class="n">tzname</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;tzname&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tzinfo</span></div>
+
+
+
+
+<div class="viewcode-block" id="utcdatetime">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.utils.utcdatetime">[docs]</a>
+<span class="k">def</span> <span class="nf">utcdatetime</span><span class="p">(</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the instance of datetime within the UTC timezone.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">       If no arguments are provided, returns current time.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; utcdatetime(1970, 1, 1)</span>
+<span class="sd">    datetime.datetime(1970, 1, 1, 0...</span>
+
+<span class="sd">    :param args: Positional arguments passed for downstream.</span>
+<span class="sd">    :param kwargs: Keyword arguments passed for downstream.</span>
+<span class="sd">    :returns: Instance of datetime within the UTC timezone.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tzinfo</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">tzinfo</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;tzinfo&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;tzinfo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tzinfo</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">))</span></div>
+
+
+
+
+<div class="viewcode-block" id="strptime">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.utils.strptime">[docs]</a>
+<span class="k">def</span> <span class="nf">strptime</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">formats</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parse provided time value with various supported formats.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; strptime(&#39;2023&#39;, &#39;%Y&#39;)</span>
+<span class="sd">    datetime.datetime(2023, 1, 1, 0...</span>
+
+<span class="sd">    :param source: Time in various forms that will be parsed.</span>
+<span class="sd">    :param formats: Various formats compatable with strptime.</span>
+<span class="sd">    :returns: Python datetime object containing related time.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tzinfo</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">formats</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span><span class="n">formats</span><span class="p">]</span>
+
+
+    <span class="k">def</span> <span class="nf">_strptime</span><span class="p">(</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">datetime</span>
+            <span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tzinfo</span><span class="p">))</span>
+
+
+    <span class="k">for</span> <span class="nb">format</span> <span class="ow">in</span> <span class="n">formats</span><span class="p">:</span>
+
+        <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">_strptime</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">)</span></div>
+
+
+
+
+<div class="viewcode-block" id="strftime">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.utils.strftime">[docs]</a>
+<span class="k">def</span> <span class="nf">strftime</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the timestamp string for datetime object provided.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">       This function is extremely pedantic and cosmetic.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; dtime = datetime(2023, 1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; strftime(dtime, &#39;%Y&#39;)</span>
+<span class="sd">    &#39;2023&#39;</span>
+
+<span class="sd">    :param source: Python datetime instance containing source.</span>
+<span class="sd">    :param format: Format for the timestamp string returned.</span>
+<span class="sd">    :returns: Timestamp string for datetime object provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">datetime</span>
+        <span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="nb">format</span><span class="p">))</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Enasis Network.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

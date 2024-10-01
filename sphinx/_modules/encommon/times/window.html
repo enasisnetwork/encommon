@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>encommon.times.window &mdash; encommon  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            encommon
+          </a>
+              <div class="version">
+                0.20.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">encommon</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">encommon.times.window</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for encommon.times.window</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
+
+<span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
+<span class="sd">is permitted, for more information consult the project license file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">croniter</span> <span class="kn">import</span> <span class="n">croniter</span>
+
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">PARSABLE</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">SCHEDULE</span>
+<span class="kn">from</span> <span class="nn">.parse</span> <span class="kn">import</span> <span class="n">parse_time</span>
+<span class="kn">from</span> <span class="nn">.time</span> <span class="kn">import</span> <span class="n">Time</span>
+
+
+
+<div class="viewcode-block" id="Window">
+<a class="viewcode-back" href="../../../index.html#encommon.times.window.Window">[docs]</a>
+<span class="k">class</span> <span class="nc">Window</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Process and operate crontab or interval based schedule.</span>
+
+<span class="sd">    .. testsetup::</span>
+<span class="sd">       &gt;&gt;&gt; from time import sleep</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; window = Window(&#39;* * * * *&#39;, &#39;-4m@m&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; [window.ready() for _ in range(5)]</span>
+<span class="sd">    [True, True, True, True, False]</span>
+
+<span class="sd">    :param window: Parameters for defining scheduled time.</span>
+<span class="sd">    :param start: Determine the start for scheduling window.</span>
+<span class="sd">    :param stop: Determine the ending for scheduling window.</span>
+<span class="sd">    :param anchor: Optionally define time anchor for window.</span>
+<span class="sd">    :param delay: Period of time schedulng will be delayed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__window</span><span class="p">:</span> <span class="n">SCHEDULE</span>
+    <span class="n">__start</span><span class="p">:</span> <span class="n">Time</span>
+    <span class="n">__stop</span><span class="p">:</span> <span class="n">Time</span>
+    <span class="n">__anchor</span><span class="p">:</span> <span class="n">Time</span>
+    <span class="n">__delay</span><span class="p">:</span> <span class="nb">float</span>
+
+    <span class="n">__wlast</span><span class="p">:</span> <span class="n">Time</span>
+    <span class="n">__wnext</span><span class="p">:</span> <span class="n">Time</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">window</span><span class="p">:</span> <span class="n">SCHEDULE</span><span class="p">,</span>
+        <span class="n">start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">stop</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">anchor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize instance for class using provided parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">anchor</span> <span class="o">=</span> <span class="n">anchor</span> <span class="ow">or</span> <span class="n">start</span>
+
+        <span class="n">window</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>
+        <span class="n">anchor</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+        <span class="n">delay</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">stop</span> <span class="o">&gt;</span> <span class="n">start</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__window</span> <span class="o">=</span> <span class="n">window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__start</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span> <span class="o">=</span> <span class="n">stop</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__anchor</span> <span class="o">=</span> <span class="n">anchor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__delay</span> <span class="o">=</span> <span class="n">delay</span>
+
+
+        <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">anchor</span><span class="p">))</span>
+
+        <span class="k">while</span> <span class="n">wnext</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">:</span>
+            <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">wlast</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+
+        <span class="k">while</span> <span class="n">wnext</span> <span class="o">&lt;</span> <span class="n">start</span><span class="p">:</span>
+            <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">wnext</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span> <span class="o">=</span> <span class="n">wlast</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span> <span class="o">=</span> <span class="n">wnext</span>
+
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">window</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SCHEDULE</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__window</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__start</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">anchor</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__anchor</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__delay</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">last</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">soonest</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="n">Time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">latest</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stop</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">delay</span><span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">walked</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the value for the attribute from class instance.</span>
+
+<span class="sd">        :returns: Value for the attribute from class instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest</span>
+
+
+    <span class="k">def</span> <span class="nf">__helper</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
+        <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine next and last windows for window using anchor.</span>
+
+<span class="sd">        :param anchor: Optionally define time anchor for window.</span>
+<span class="sd">        :param backward: Optionally operate the window backward.</span>
+<span class="sd">        :returns: Next and previous windows for schedule window.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">window</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__window</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">window_croniter</span><span class="p">(</span>
+                <span class="n">window</span><span class="p">,</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">backward</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">window</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">window_interval</span><span class="p">(</span>
+                <span class="n">window</span><span class="p">,</span> <span class="n">anchor</span><span class="p">,</span> <span class="n">backward</span><span class="p">)</span>
+
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+
+<div class="viewcode-block" id="Window.ready">
+<a class="viewcode-back" href="../../../index.html#encommon.times.window.Window.ready">[docs]</a>
+    <span class="k">def</span> <span class="nf">ready</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Walk the internal time using current position in schedule.</span>
+
+<span class="sd">        :param update: Determines whether or not time is updated.</span>
+<span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">wnext</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span>
+
+        <span class="n">walked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">walked</span>
+        <span class="n">soonest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">soonest</span>
+
+
+        <span class="k">if</span> <span class="n">walked</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">wnext</span> <span class="o">&gt;</span> <span class="n">soonest</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+
+        <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">update</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span> <span class="o">=</span> <span class="n">wlast</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span> <span class="o">=</span> <span class="n">wnext</span>
+
+        <span class="k">if</span> <span class="n">wnext</span> <span class="o">&gt;</span> <span class="n">soonest</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="Window.update">
+<a class="viewcode-back" href="../../../index.html#encommon.times.window.Window.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the window from the provided parasable time value.</span>
+
+<span class="sd">        :param value: Override the time updated for window value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span>
+            <span class="n">value</span> <span class="ow">or</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
+
+        <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span> <span class="o">=</span> <span class="n">wlast</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span> <span class="o">=</span> <span class="n">wnext</span></div>
+</div>
+
+
+
+
+<div class="viewcode-block" id="window_croniter">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.window.window_croniter">[docs]</a>
+<span class="k">def</span> <span class="nf">window_croniter</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
+    <span class="n">schedule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
+    <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine next and previous times for cronjob schedule.</span>
+
+<span class="sd">    :param window: Parameters for defining scheduled time.</span>
+<span class="sd">    :param anchor: Optionally define time anchor for window.</span>
+<span class="sd">    :param backward: Optionally operate the window backward.</span>
+<span class="sd">    :returns: Next and previous windows for schedule window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">anchor</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_wnext</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">_operator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">get_next</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_wlast</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">_operator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">get_prev</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_operator</span><span class="p">(</span>
+        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">croniter</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">croniter</span><span class="p">(</span>
+            <span class="n">schedule</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+
+
+    <span class="n">wnext</span> <span class="o">=</span> <span class="n">_wnext</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">backward</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">wnext</span> <span class="o">=</span> <span class="n">_wlast</span><span class="p">(</span><span class="n">wnext</span><span class="p">)</span>
+
+    <span class="n">wlast</span> <span class="o">=</span> <span class="n">_wlast</span><span class="p">(</span><span class="n">wnext</span><span class="p">)</span>
+
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">Time</span><span class="p">(</span><span class="n">wlast</span><span class="p">),</span>
+        <span class="n">Time</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span></div>
+
+
+
+
+<div class="viewcode-block" id="window_interval">
+<a class="viewcode-back" href="../../../encommon.times.html#encommon.times.window.window_interval">[docs]</a>
+<span class="k">def</span> <span class="nf">window_interval</span><span class="p">(</span>
+    <span class="n">schedule</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+    <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
+    <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine next and previous times for interval schedule.</span>
+
+<span class="sd">    :param window: Parameters for defining scheduled time.</span>
+<span class="sd">    :param anchor: Optionally define time anchor for window.</span>
+<span class="sd">    :param backward: Optionally operate the window backward.</span>
+<span class="sd">    :returns: Next and previous windows for schedule window.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">anpoch</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">parse_time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+
+    <span class="n">seconds</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">timedelta</span><span class="p">(</span><span class="o">**</span><span class="n">schedule</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+
+
+    <span class="k">if</span> <span class="n">backward</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">wnext</span> <span class="o">=</span> <span class="n">anpoch</span>
+        <span class="n">wlast</span> <span class="o">=</span> <span class="n">anpoch</span> <span class="o">-</span> <span class="n">seconds</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wnext</span> <span class="o">=</span> <span class="n">anpoch</span> <span class="o">+</span> <span class="n">seconds</span>
+        <span class="n">wlast</span> <span class="o">=</span> <span class="n">anpoch</span>
+
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">Time</span><span class="p">(</span><span class="n">wlast</span><span class="p">),</span>
+        <span class="n">Time</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Enasis Network.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

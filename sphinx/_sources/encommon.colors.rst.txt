@@ -1,0 +1,29 @@
+encommon.colors package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   encommon.colors.test
+
+Submodules
+----------
+
+encommon.colors.color module
+----------------------------
+
+.. automodule:: encommon.colors.color
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: encommon.colors
+   :members:
+   :undoc-members:
+   :show-inheritance:

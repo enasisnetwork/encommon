@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>encommon.utils package &mdash; encommon  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            encommon
+          </a>
+              <div class="version">
+                0.20.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">encommon.utils package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-encommon.utils.common">encommon.utils.common module</a></li>
+<li><a class="reference internal" href="#module-encommon.utils.files">encommon.utils.files module</a><ul>
+<li><a class="reference internal" href="#encommon.utils.files.read_text"><code class="docutils literal notranslate"><span class="pre">read_text()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.files.save_text"><code class="docutils literal notranslate"><span class="pre">save_text()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.utils.match">encommon.utils.match module</a><ul>
+<li><a class="reference internal" href="#encommon.utils.match.fuzz_match"><code class="docutils literal notranslate"><span class="pre">fuzz_match()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.match.rgxp_match"><code class="docutils literal notranslate"><span class="pre">rgxp_match()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.utils.paths">encommon.utils.paths module</a><ul>
+<li><a class="reference internal" href="#encommon.utils.paths.resolve_path"><code class="docutils literal notranslate"><span class="pre">resolve_path()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.paths.resolve_paths"><code class="docutils literal notranslate"><span class="pre">resolve_paths()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.paths.stats_path"><code class="docutils literal notranslate"><span class="pre">stats_path()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.utils.sample">encommon.utils.sample module</a><ul>
+<li><a class="reference internal" href="#encommon.utils.sample.load_sample"><code class="docutils literal notranslate"><span class="pre">load_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.sample.prep_sample"><code class="docutils literal notranslate"><span class="pre">prep_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.sample.read_sample"><code class="docutils literal notranslate"><span class="pre">read_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.sample.rvrt_sample"><code class="docutils literal notranslate"><span class="pre">rvrt_sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.utils.stdout">encommon.utils.stdout module</a><ul>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors"><code class="docutils literal notranslate"><span class="pre">ArrayColors</span></code></a><ul>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.bool"><code class="docutils literal notranslate"><span class="pre">ArrayColors.bool</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.colon"><code class="docutils literal notranslate"><span class="pre">ArrayColors.colon</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.empty"><code class="docutils literal notranslate"><span class="pre">ArrayColors.empty</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.hyphen"><code class="docutils literal notranslate"><span class="pre">ArrayColors.hyphen</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.key"><code class="docutils literal notranslate"><span class="pre">ArrayColors.key</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.label"><code class="docutils literal notranslate"><span class="pre">ArrayColors.label</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.none"><code class="docutils literal notranslate"><span class="pre">ArrayColors.none</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.num"><code class="docutils literal notranslate"><span class="pre">ArrayColors.num</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.other"><code class="docutils literal notranslate"><span class="pre">ArrayColors.other</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.str"><code class="docutils literal notranslate"><span class="pre">ArrayColors.str</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.ArrayColors.times"><code class="docutils literal notranslate"><span class="pre">ArrayColors.times</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#encommon.utils.stdout.array_ansi"><code class="docutils literal notranslate"><span class="pre">array_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.kvpair_ansi"><code class="docutils literal notranslate"><span class="pre">kvpair_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.make_ansi"><code class="docutils literal notranslate"><span class="pre">make_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.print_ansi"><code class="docutils literal notranslate"><span class="pre">print_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stdout.strip_ansi"><code class="docutils literal notranslate"><span class="pre">strip_ansi()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.utils">Module contents</a><ul>
+<li><a class="reference internal" href="#encommon.utils.array_ansi"><code class="docutils literal notranslate"><span class="pre">array_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.fuzz_match"><code class="docutils literal notranslate"><span class="pre">fuzz_match()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.kvpair_ansi"><code class="docutils literal notranslate"><span class="pre">kvpair_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.load_sample"><code class="docutils literal notranslate"><span class="pre">load_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.make_ansi"><code class="docutils literal notranslate"><span class="pre">make_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.prep_sample"><code class="docutils literal notranslate"><span class="pre">prep_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.print_ansi"><code class="docutils literal notranslate"><span class="pre">print_ansi()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.read_sample"><code class="docutils literal notranslate"><span class="pre">read_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.read_text"><code class="docutils literal notranslate"><span class="pre">read_text()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.resolve_path"><code class="docutils literal notranslate"><span class="pre">resolve_path()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.resolve_paths"><code class="docutils literal notranslate"><span class="pre">resolve_paths()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.rgxp_match"><code class="docutils literal notranslate"><span class="pre">rgxp_match()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.rvrt_sample"><code class="docutils literal notranslate"><span class="pre">rvrt_sample()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.save_text"><code class="docutils literal notranslate"><span class="pre">save_text()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.stats_path"><code class="docutils literal notranslate"><span class="pre">stats_path()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.utils.strip_ansi"><code class="docutils literal notranslate"><span class="pre">strip_ansi()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">encommon</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">encommon.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/encommon.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encommon-utils-package">
+<h1>encommon.utils package<a class="headerlink" href="#encommon-utils-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="encommon.utils.test.html">encommon.utils.test package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#module-encommon.utils.test.test_files">encommon.utils.test.test_files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_files.test_readsave_text"><code class="docutils literal notranslate"><span class="pre">test_readsave_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#module-encommon.utils.test.test_match">encommon.utils.test.test_match module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_match.test_fuzz_match"><code class="docutils literal notranslate"><span class="pre">test_fuzz_match()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_match.test_rgxp_match"><code class="docutils literal notranslate"><span class="pre">test_rgxp_match()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#module-encommon.utils.test.test_paths">encommon.utils.test.test_paths module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_paths.test_resolve_path"><code class="docutils literal notranslate"><span class="pre">test_resolve_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_paths.test_resolve_paths"><code class="docutils literal notranslate"><span class="pre">test_resolve_paths()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_paths.test_stats_path"><code class="docutils literal notranslate"><span class="pre">test_stats_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#module-encommon.utils.test.test_sample">encommon.utils.test.test_sample module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_sample.test_load_sample"><code class="docutils literal notranslate"><span class="pre">test_load_sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_sample.test_prep_sample"><code class="docutils literal notranslate"><span class="pre">test_prep_sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_sample.test_read_sample"><code class="docutils literal notranslate"><span class="pre">test_read_sample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_sample.test_rvrt_sample"><code class="docutils literal notranslate"><span class="pre">test_rvrt_sample()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#module-encommon.utils.test.test_stdout">encommon.utils.test.test_stdout module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_stdout.test_array_ansi"><code class="docutils literal notranslate"><span class="pre">test_array_ansi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_stdout.test_array_ansi_cover"><code class="docutils literal notranslate"><span class="pre">test_array_ansi_cover()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_stdout.test_kvpair_ansi"><code class="docutils literal notranslate"><span class="pre">test_kvpair_ansi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_stdout.test_make_ansi"><code class="docutils literal notranslate"><span class="pre">test_make_ansi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_stdout.test_print_ansi"><code class="docutils literal notranslate"><span class="pre">test_print_ansi()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="encommon.utils.test.html#encommon.utils.test.test_stdout.test_strip_ansi"><code class="docutils literal notranslate"><span class="pre">test_strip_ansi()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="encommon.utils.test.html#module-encommon.utils.test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-encommon.utils.common">
+<span id="encommon-utils-common-module"></span><h2>encommon.utils.common module<a class="headerlink" href="#module-encommon.utils.common" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+</section>
+<section id="module-encommon.utils.files">
+<span id="encommon-utils-files-module"></span><h2>encommon.utils.files module<a class="headerlink" href="#module-encommon.utils.files" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.files.read_text">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.files.</span></span><span class="sig-name descname"><span class="pre">read_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/files.html#read_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.files.read_text" title="Link to this definition"></a></dt>
+<dd><p>Read the text content from within the provided file path.</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path to the text file.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Text content that was read from the file path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.files.save_text">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.files.</span></span><span class="sig-name descname"><span class="pre">save_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/files.html#save_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.files.save_text" title="Link to this definition"></a></dt>
+<dd><p>Save the provided text content to the provided file path.</p>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path to the text file.</p>
+</dd>
+<dt class="field-even">param content<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content that will be written to the file.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Text content that was read from the file path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-encommon.utils.match">
+<span id="encommon-utils-match-module"></span><h2>encommon.utils.match module<a class="headerlink" href="#module-encommon.utils.match" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.match.fuzz_match">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.match.</span></span><span class="sig-name descname"><span class="pre">fuzz_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/match.html#fuzz_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.match.fuzz_match" title="Link to this definition"></a></dt>
+<dd><p>Determine whether or not values are included by patterns.</p>
+<section id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param values<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value or values to enumerate for matching.</p>
+</dd>
+<dt class="field-even">param patterns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Patterns which values can match any one.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Boolean indicating outcome from the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.match.rgxp_match">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.match.</span></span><span class="sig-name descname"><span class="pre">rgxp_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/match.html#rgxp_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.match.rgxp_match" title="Link to this definition"></a></dt>
+<dd><p>Determine whether or not values are included by patterns.</p>
+<section id="id4">
+<h3>Example<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Example<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param values<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value or values to enumerate for matching.</p>
+</dd>
+<dt class="field-even">param patterns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Patterns which values can match any one.</p>
+</dd>
+<dt class="field-odd">param complete<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether or not whole string must match.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean indicating outcome from the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-encommon.utils.paths">
+<span id="encommon-utils-paths-module"></span><h2>encommon.utils.paths module<a class="headerlink" href="#module-encommon.utils.paths" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.paths.resolve_path">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.paths.</span></span><span class="sig-name descname"><span class="pre">resolve_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">REPLACE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/paths.html#resolve_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.paths.resolve_path" title="Link to this definition"></a></dt>
+<dd><p>Resolve the provided path replacing the magic keywords.</p>
+<section id="id6">
+<h3>Example<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path</span><span class="p">(</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;/foo/bar&#39;)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path for processing.</p>
+</dd>
+<dt class="field-even">param replace<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional values to replace in the path.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>New resolved filesystem path object instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.paths.resolve_paths">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.paths.</span></span><span class="sig-name descname"><span class="pre">resolve_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PATHABLE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">REPLACE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/encommon/utils/paths.html#resolve_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.paths.resolve_paths" title="Link to this definition"></a></dt>
+<dd><p>Resolve the provided paths replacing the magic keywords.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will remove duplicative paths from the returned.</p>
+</div>
+<section id="id7">
+<h3>Example<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_paths</span><span class="p">([</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">])</span>
+<span class="go">(PosixPath(&#39;/foo/bar&#39;),)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param paths<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative paths for processing.</p>
+</dd>
+<dt class="field-even">param replace<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional values to replace in the path.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>New resolved filesystem path object instances.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.paths.stats_path">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.paths.</span></span><span class="sig-name descname"><span class="pre">stats_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">REPLACE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/os.html#os.stat_result" title="(in Python v3.12)"><span class="pre">stat_result</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/encommon/utils/paths.html#stats_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.paths.stats_path" title="Link to this definition"></a></dt>
+<dd><p>Collect stats object for the complete or relative path.</p>
+<section id="id8">
+<h3>Example<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="s1">&#39;/&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span> <span class="o">=</span> <span class="n">stats_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;/hello.txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">st_size</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path for enumeration.</p>
+</dd>
+<dt class="field-even">param replace<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional values to replace in the path.</p>
+</dd>
+<dt class="field-odd">param ignore<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Paths matching these patterns are ignored.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Metadata for files recursively found in path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-encommon.utils.sample">
+<span id="encommon-utils-sample-module"></span><h2>encommon.utils.sample module<a class="headerlink" href="#module-encommon.utils.sample" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.sample.load_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.sample.</span></span><span class="sig-name descname"><span class="pre">load_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path,</span> <span class="pre">content:</span> <span class="pre">~typing.Any</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">update:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">*,</span> <span class="pre">default:</span> <span class="pre">~typing.Callable[[~typing.Any],</span> <span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">replace:</span> <span class="pre">dict[str,</span> <span class="pre">~typing.Any]</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#load_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.sample.load_sample" title="Link to this definition"></a></dt>
+<dd><p>Load the sample file and compare using provided content.</p>
+<section id="id9">
+<h3>Example<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>Example<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path for sample file.</p>
+</dd>
+<dt class="field-even">param update<span class="colon">:</span></dt>
+<dd class="field-even"><p>Determine whether the sample is updated.</p>
+</dd>
+<dt class="field-odd">param content<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Content that will be processed as JSON.</p>
+</dd>
+<dt class="field-even">param default<span class="colon">:</span></dt>
+<dd class="field-even"><p>Callable used when stringifying values.</p>
+</dd>
+<dt class="field-odd">param replace<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional values to replace in the file.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing using JSON functions.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.sample.prep_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.sample.</span></span><span class="sig-name descname"><span class="pre">prep_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">content:</span> <span class="pre">~typing.Any,</span> <span class="pre">*,</span> <span class="pre">default:</span> <span class="pre">~typing.Callable[[~typing.Any],</span> <span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">replace:</span> <span class="pre">dict[str,</span> <span class="pre">~typing.Any]</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">indent:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">2</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#prep_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.sample.prep_sample" title="Link to this definition"></a></dt>
+<dd><p>Return the content after processing as the sample value.</p>
+<section id="id11">
+<h3>Example<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">&#39;[\n  &quot;one&quot;,\n  &quot;two&quot;\n]&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3>Example<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">Empty</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">Empty</span><span class="p">})</span>
+<span class="go">&#39;{\n  &quot;one&quot;: &quot;Empty&quot;\n}&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param content<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Content that will be processed as JSON.</p>
+</dd>
+<dt class="field-even">param default<span class="colon">:</span></dt>
+<dd class="field-even"><p>Callable used when stringifying values.</p>
+</dd>
+<dt class="field-odd">param replace<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional values to replace in the file.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing as the sample value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.sample.read_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.sample.</span></span><span class="sig-name descname"><span class="pre">read_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#read_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.sample.read_sample" title="Link to this definition"></a></dt>
+<dd><p>Return the content after processing as the sample value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample</strong> – Content that will be processed as sample.</p></li>
+<li><p><strong>replace</strong> – Optional values to replace in the file.</p></li>
+<li><p><strong>prefix</strong> – Determine whether or not prefix is added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing as the sample value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.sample.rvrt_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.sample.</span></span><span class="sig-name descname"><span class="pre">rvrt_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#rvrt_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.sample.rvrt_sample" title="Link to this definition"></a></dt>
+<dd><p>Return the content after processing as the sample value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample</strong> – Content that will be processed as sample.</p></li>
+<li><p><strong>replace</strong> – Optional values to replace in the file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing as the sample value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-encommon.utils.stdout">
+<span id="encommon-utils-stdout-module"></span><h2>encommon.utils.stdout module<a class="headerlink" href="#module-encommon.utils.stdout" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">encommon.utils.stdout.</span></span><span class="sig-name descname"><span class="pre">ArrayColors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">97</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hyphen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">93</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">none</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">92</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">93</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">96</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">36</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">91</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/encommon/utils/stdout.html#ArrayColors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stdout.ArrayColors" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Colors used to colorize the provided array like object.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.bool">
+<span class="sig-name descname"><span class="pre">bool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">93</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.bool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.colon">
+<span class="sig-name descname"><span class="pre">colon</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">37</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.colon" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">36</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.empty" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.hyphen">
+<span class="sig-name descname"><span class="pre">hyphen</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">37</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.hyphen" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.key">
+<span class="sig-name descname"><span class="pre">key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">97</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.key" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.label">
+<span class="sig-name descname"><span class="pre">label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">37</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.label" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.none">
+<span class="sig-name descname"><span class="pre">none</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.none" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.num">
+<span class="sig-name descname"><span class="pre">num</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">93</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.num" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.other">
+<span class="sig-name descname"><span class="pre">other</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">91</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.other" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.str">
+<span class="sig-name descname"><span class="pre">str</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">92</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.str" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="encommon.utils.stdout.ArrayColors.times">
+<span class="sig-name descname"><span class="pre">times</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">96</span></em><a class="headerlink" href="#encommon.utils.stdout.ArrayColors.times" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.stdout.array_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.stdout.</span></span><span class="sig-name descname"><span class="pre">array_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="encommon.types.html#encommon.types.classes.BaseModel" title="encommon.types.classes.BaseModel"><span class="pre">BaseModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataclassInstance</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#encommon.utils.stdout.ArrayColors" title="encommon.utils.stdout.ArrayColors"><span class="pre">ArrayColors</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ArrayColors(label=37,</span> <span class="pre">key=97,</span> <span class="pre">colon=37,</span> <span class="pre">hyphen=37,</span> <span class="pre">bool=93,</span> <span class="pre">none=33,</span> <span class="pre">str=92,</span> <span class="pre">num=93,</span> <span class="pre">times=96,</span> <span class="pre">empty=36,</span> <span class="pre">other=91)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#array_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stdout.array_ansi" title="Link to this definition"></a></dt>
+<dd><p>Print the ANSI colorized iterable to the standard output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This massive function should be refactored, possibly
+into a class with methods where there are functions.</p>
+</div>
+<section id="id13">
+<h3>Example<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_ansi</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+<span class="go">&quot;\x1b[0;97mfoo\x1b[0;37m:\x1b[0;0m...</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value in supported and iterable formats.</p>
+</dd>
+<dt class="field-even">param indent<span class="colon">:</span></dt>
+<dd class="field-even"><p>How many levels for initial indentation.</p>
+</dd>
+<dt class="field-odd">param colors<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Determine colors used with different types.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ANSI colorized string using inline directives.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.stdout.kvpair_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.stdout.</span></span><span class="sig-name descname"><span class="pre">kvpair_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#kvpair_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stdout.kvpair_ansi" title="Link to this definition"></a></dt>
+<dd><p>Process and colorize keys and values for standard output.</p>
+<section id="id14">
+<h3>Example<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kvpair_ansi</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
+<span class="go">&#39;\x1b[0;90mk\x1b[0;37m=&quot;\x1b[0;0m...</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param key<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String value to use for the key name portion.</p>
+</dd>
+<dt class="field-even">param value<span class="colon">:</span></dt>
+<dd class="field-even"><p>String value to use for the value portion.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ANSI colorized string using inline directives.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.stdout.make_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.stdout.</span></span><span class="sig-name descname"><span class="pre">make_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#make_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stdout.make_ansi" title="Link to this definition"></a></dt>
+<dd><p>Parse the string and replace directives with ANSI codes.</p>
+<section id="id15">
+<h3>Example<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
+<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param string<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String containing directives to replace.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Provided string with the directives replaced.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.stdout.print_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.stdout.</span></span><span class="sig-name descname"><span class="pre">print_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.12)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'stdout'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'print'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'stdout'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#print_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stdout.print_ansi" title="Link to this definition"></a></dt>
+<dd><p>Print the ANSI colorized string to the standard output.</p>
+<section id="id16">
+<h3>Example<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
+<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param string<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String processed using inline directives.</p>
+</dd>
+<dt class="field-even">param method<span class="colon">:</span></dt>
+<dd class="field-even"><p>Which method for standard output is used.</p>
+</dd>
+<dt class="field-odd">param output<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether or not hte output should be print.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ANSI colorized string using inline directives.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.stdout.strip_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.stdout.</span></span><span class="sig-name descname"><span class="pre">strip_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#strip_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stdout.strip_ansi" title="Link to this definition"></a></dt>
+<dd><p>Return the provided string with the ANSI codes removed.</p>
+<section id="id17">
+<h3>Example<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0;91mERROR</span><span class="se">\x1b</span><span class="s1">[0;0m&#39;</span><span class="p">)</span>
+<span class="go">&#39;ERROR&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param string<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String which contains ANSI codes to strip.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Provided string with the ANSI codes removed.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-encommon.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-encommon.utils" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.array_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">array_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.12)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="encommon.types.html#encommon.types.classes.BaseModel" title="encommon.types.classes.BaseModel"><span class="pre">BaseModel</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataclassInstance</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#encommon.utils.stdout.ArrayColors" title="encommon.utils.stdout.ArrayColors"><span class="pre">ArrayColors</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">ArrayColors(label=37,</span> <span class="pre">key=97,</span> <span class="pre">colon=37,</span> <span class="pre">hyphen=37,</span> <span class="pre">bool=93,</span> <span class="pre">none=33,</span> <span class="pre">str=92,</span> <span class="pre">num=93,</span> <span class="pre">times=96,</span> <span class="pre">empty=36,</span> <span class="pre">other=91)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#array_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.array_ansi" title="Link to this definition"></a></dt>
+<dd><p>Print the ANSI colorized iterable to the standard output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This massive function should be refactored, possibly
+into a class with methods where there are functions.</p>
+</div>
+<section id="id18">
+<h3>Example<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_ansi</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+<span class="go">&quot;\x1b[0;97mfoo\x1b[0;37m:\x1b[0;0m...</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param source<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value in supported and iterable formats.</p>
+</dd>
+<dt class="field-even">param indent<span class="colon">:</span></dt>
+<dd class="field-even"><p>How many levels for initial indentation.</p>
+</dd>
+<dt class="field-odd">param colors<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Determine colors used with different types.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ANSI colorized string using inline directives.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.fuzz_match">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">fuzz_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/match.html#fuzz_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.fuzz_match" title="Link to this definition"></a></dt>
+<dd><p>Determine whether or not values are included by patterns.</p>
+<section id="id19">
+<h3>Example<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="id20">
+<h3>Example<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param values<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value or values to enumerate for matching.</p>
+</dd>
+<dt class="field-even">param patterns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Patterns which values can match any one.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Boolean indicating outcome from the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.kvpair_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">kvpair_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#kvpair_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.kvpair_ansi" title="Link to this definition"></a></dt>
+<dd><p>Process and colorize keys and values for standard output.</p>
+<section id="id21">
+<h3>Example<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kvpair_ansi</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
+<span class="go">&#39;\x1b[0;90mk\x1b[0;37m=&quot;\x1b[0;0m...</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param key<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String value to use for the key name portion.</p>
+</dd>
+<dt class="field-even">param value<span class="colon">:</span></dt>
+<dd class="field-even"><p>String value to use for the value portion.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ANSI colorized string using inline directives.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.load_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">load_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">path:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">~pathlib.Path,</span> <span class="pre">content:</span> <span class="pre">~typing.Any</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">update:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">*,</span> <span class="pre">default:</span> <span class="pre">~typing.Callable[[~typing.Any],</span> <span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">replace:</span> <span class="pre">dict[str,</span> <span class="pre">~typing.Any]</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#load_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.load_sample" title="Link to this definition"></a></dt>
+<dd><p>Load the sample file and compare using provided content.</p>
+<section id="id22">
+<h3>Example<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id23">
+<h3>Example<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path for sample file.</p>
+</dd>
+<dt class="field-even">param update<span class="colon">:</span></dt>
+<dd class="field-even"><p>Determine whether the sample is updated.</p>
+</dd>
+<dt class="field-odd">param content<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Content that will be processed as JSON.</p>
+</dd>
+<dt class="field-even">param default<span class="colon">:</span></dt>
+<dd class="field-even"><p>Callable used when stringifying values.</p>
+</dd>
+<dt class="field-odd">param replace<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional values to replace in the file.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing using JSON functions.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.make_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">make_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#make_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.make_ansi" title="Link to this definition"></a></dt>
+<dd><p>Parse the string and replace directives with ANSI codes.</p>
+<section id="id24">
+<h3>Example<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
+<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param string<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String containing directives to replace.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Provided string with the directives replaced.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.prep_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">prep_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">content:</span> <span class="pre">~typing.Any,</span> <span class="pre">*,</span> <span class="pre">default:</span> <span class="pre">~typing.Callable[[~typing.Any],</span> <span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;class</span> <span class="pre">'str'&gt;,</span> <span class="pre">replace:</span> <span class="pre">dict[str,</span> <span class="pre">~typing.Any]</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None,</span> <span class="pre">indent:</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">2</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#prep_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.prep_sample" title="Link to this definition"></a></dt>
+<dd><p>Return the content after processing as the sample value.</p>
+<section id="id25">
+<h3>Example<a class="headerlink" href="#id25" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">&#39;[\n  &quot;one&quot;,\n  &quot;two&quot;\n]&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id26">
+<h3>Example<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">Empty</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">Empty</span><span class="p">})</span>
+<span class="go">&#39;{\n  &quot;one&quot;: &quot;Empty&quot;\n}&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param content<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Content that will be processed as JSON.</p>
+</dd>
+<dt class="field-even">param default<span class="colon">:</span></dt>
+<dd class="field-even"><p>Callable used when stringifying values.</p>
+</dd>
+<dt class="field-odd">param replace<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional values to replace in the file.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing as the sample value.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.print_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">print_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Literal" title="(in Python v3.12)"><span class="pre">Literal</span></a><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'stdout'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'print'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'stdout'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#print_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.print_ansi" title="Link to this definition"></a></dt>
+<dd><p>Print the ANSI colorized string to the standard output.</p>
+<section id="id27">
+<h3>Example<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
+<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param string<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String processed using inline directives.</p>
+</dd>
+<dt class="field-even">param method<span class="colon">:</span></dt>
+<dd class="field-even"><p>Which method for standard output is used.</p>
+</dd>
+<dt class="field-odd">param output<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether or not hte output should be print.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ANSI colorized string using inline directives.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.read_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">read_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#read_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.read_sample" title="Link to this definition"></a></dt>
+<dd><p>Return the content after processing as the sample value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample</strong> – Content that will be processed as sample.</p></li>
+<li><p><strong>replace</strong> – Optional values to replace in the file.</p></li>
+<li><p><strong>prefix</strong> – Determine whether or not prefix is added.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing as the sample value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.read_text">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">read_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/files.html#read_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.read_text" title="Link to this definition"></a></dt>
+<dd><p>Read the text content from within the provided file path.</p>
+<section id="id28">
+<h3>Example<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path to the text file.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Text content that was read from the file path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.resolve_path">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">resolve_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">REPLACE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/paths.html#resolve_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.resolve_path" title="Link to this definition"></a></dt>
+<dd><p>Resolve the provided path replacing the magic keywords.</p>
+<section id="id29">
+<h3>Example<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path</span><span class="p">(</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;/foo/bar&#39;)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path for processing.</p>
+</dd>
+<dt class="field-even">param replace<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional values to replace in the path.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>New resolved filesystem path object instance.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.resolve_paths">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">resolve_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PATHABLE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">REPLACE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/encommon/utils/paths.html#resolve_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.resolve_paths" title="Link to this definition"></a></dt>
+<dd><p>Resolve the provided paths replacing the magic keywords.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will remove duplicative paths from the returned.</p>
+</div>
+<section id="id30">
+<h3>Example<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_paths</span><span class="p">([</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">])</span>
+<span class="go">(PosixPath(&#39;/foo/bar&#39;),)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param paths<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative paths for processing.</p>
+</dd>
+<dt class="field-even">param replace<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional values to replace in the path.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>New resolved filesystem path object instances.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.rgxp_match">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">rgxp_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">complete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/match.html#rgxp_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.rgxp_match" title="Link to this definition"></a></dt>
+<dd><p>Determine whether or not values are included by patterns.</p>
+<section id="id31">
+<h3>Example<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="id32">
+<h3>Example<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param values<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Value or values to enumerate for matching.</p>
+</dd>
+<dt class="field-even">param patterns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Patterns which values can match any one.</p>
+</dd>
+<dt class="field-odd">param complete<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether or not whole string must match.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean indicating outcome from the operation.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.rvrt_sample">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">rvrt_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.12)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/sample.html#rvrt_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.rvrt_sample" title="Link to this definition"></a></dt>
+<dd><p>Return the content after processing as the sample value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample</strong> – Content that will be processed as sample.</p></li>
+<li><p><strong>replace</strong> – Optional values to replace in the file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content after processing as the sample value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.save_text">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">save_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/files.html#save_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.save_text" title="Link to this definition"></a></dt>
+<dd><p>Save the provided text content to the provided file path.</p>
+<section id="id33">
+<h3>Example<a class="headerlink" href="#id33" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">&#39;foo&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path to the text file.</p>
+</dd>
+<dt class="field-even">param content<span class="colon">:</span></dt>
+<dd class="field-even"><p>Content that will be written to the file.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Text content that was read from the file path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.stats_path">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">stats_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">REPLACE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/os.html#os.stat_result" title="(in Python v3.12)"><span class="pre">stat_result</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/encommon/utils/paths.html#stats_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.stats_path" title="Link to this definition"></a></dt>
+<dd><p>Collect stats object for the complete or relative path.</p>
+<section id="id34">
+<h3>Example<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="s1">&#39;/&#39;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span> <span class="o">=</span> <span class="n">stats_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;/hello.txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">st_size</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param path<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete or relative path for enumeration.</p>
+</dd>
+<dt class="field-even">param replace<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional values to replace in the path.</p>
+</dd>
+<dt class="field-odd">param ignore<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Paths matching these patterns are ignored.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Metadata for files recursively found in path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.utils.strip_ansi">
+<span class="sig-prename descclassname"><span class="pre">encommon.utils.</span></span><span class="sig-name descname"><span class="pre">strip_ansi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></span><a class="reference internal" href="_modules/encommon/utils/stdout.html#strip_ansi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.utils.strip_ansi" title="Link to this definition"></a></dt>
+<dd><p>Return the provided string with the ANSI codes removed.</p>
+<section id="id35">
+<h3>Example<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0;91mERROR</span><span class="se">\x1b</span><span class="s1">[0;0m&#39;</span><span class="p">)</span>
+<span class="go">&#39;ERROR&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param string<span class="colon">:</span></dt>
+<dd class="field-odd"><p>String which contains ANSI codes to strip.</p>
+</dd>
+<dt class="field-even">returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Provided string with the ANSI codes removed.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Enasis Network.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>encommon.times.test package &mdash; encommon  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            encommon
+          </a>
+              <div class="version">
+                0.20.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">encommon.times.test package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_duration">encommon.times.test.test_duration module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_duration.test_Duration"><code class="docutils literal notranslate"><span class="pre">test_Duration()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_duration.test_Duration_cover"><code class="docutils literal notranslate"><span class="pre">test_Duration_cover()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_duration.test_Duration_iterate"><code class="docutils literal notranslate"><span class="pre">test_Duration_iterate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_params">encommon.times.test.test_params module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_params.test_TimerParams"><code class="docutils literal notranslate"><span class="pre">test_TimerParams()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_params.test_WindowParams"><code class="docutils literal notranslate"><span class="pre">test_WindowParams()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_parse">encommon.times.test.test_parse module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_parse.test_parse_time"><code class="docutils literal notranslate"><span class="pre">test_parse_time()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_parse.test_shift_time"><code class="docutils literal notranslate"><span class="pre">test_shift_time()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_parse.test_since_time"><code class="docutils literal notranslate"><span class="pre">test_since_time()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_parse.test_string_time"><code class="docutils literal notranslate"><span class="pre">test_string_time()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_time">encommon.times.test.test_time module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_time.test_Time"><code class="docutils literal notranslate"><span class="pre">test_Time()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_time.test_Time_tzname"><code class="docutils literal notranslate"><span class="pre">test_Time_tzname()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_timer">encommon.times.test.test_timer module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_timer.test_Timer"><code class="docutils literal notranslate"><span class="pre">test_Timer()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_timer.timer"><code class="docutils literal notranslate"><span class="pre">timer()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_timers">encommon.times.test.test_timers module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_timers.test_Timers"><code class="docutils literal notranslate"><span class="pre">test_Timers()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_timers.test_Timers_cover"><code class="docutils literal notranslate"><span class="pre">test_Timers_cover()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_timers.test_Timers_raises"><code class="docutils literal notranslate"><span class="pre">test_Timers_raises()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_timers.timers"><code class="docutils literal notranslate"><span class="pre">timers()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_unitime">encommon.times.test.test_unitime module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_unitime.test_unitime"><code class="docutils literal notranslate"><span class="pre">test_unitime()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_utils">encommon.times.test.test_utils module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_utils.test_findtz"><code class="docutils literal notranslate"><span class="pre">test_findtz()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_utils.test_findtz_raises"><code class="docutils literal notranslate"><span class="pre">test_findtz_raises()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_utils.test_strptime"><code class="docutils literal notranslate"><span class="pre">test_strptime()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_utils.test_strptime_raises"><code class="docutils literal notranslate"><span class="pre">test_strptime_raises()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_utils.test_utcdatetime"><code class="docutils literal notranslate"><span class="pre">test_utcdatetime()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_window">encommon.times.test.test_window module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_window.test_Window"><code class="docutils literal notranslate"><span class="pre">test_Window()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_window.test_Window_cover"><code class="docutils literal notranslate"><span class="pre">test_Window_cover()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_window.test_window_croniter"><code class="docutils literal notranslate"><span class="pre">test_window_croniter()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_window.test_window_interval"><code class="docutils literal notranslate"><span class="pre">test_window_interval()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_window.window"><code class="docutils literal notranslate"><span class="pre">window()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test.test_windows">encommon.times.test.test_windows module</a><ul>
+<li><a class="reference internal" href="#encommon.times.test.test_windows.test_Windows"><code class="docutils literal notranslate"><span class="pre">test_Windows()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_windows.test_Windows_cover"><code class="docutils literal notranslate"><span class="pre">test_Windows_cover()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_windows.test_Windows_raises"><code class="docutils literal notranslate"><span class="pre">test_Windows_raises()</span></code></a></li>
+<li><a class="reference internal" href="#encommon.times.test.test_windows.windows"><code class="docutils literal notranslate"><span class="pre">windows()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-encommon.times.test">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">encommon</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">encommon.times.test package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/encommon.times.test.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encommon-times-test-package">
+<h1>encommon.times.test package<a class="headerlink" href="#encommon-times-test-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-encommon.times.test.test_duration">
+<span id="encommon-times-test-test-duration-module"></span><h2>encommon.times.test.test_duration module<a class="headerlink" href="#module-encommon.times.test.test_duration" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_duration.test_Duration">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_duration.</span></span><span class="sig-name descname"><span class="pre">test_Duration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_duration.html#test_Duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_duration.test_Duration" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_duration.test_Duration_cover">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_duration.</span></span><span class="sig-name descname"><span class="pre">test_Duration_cover</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_duration.html#test_Duration_cover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_duration.test_Duration_cover" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_duration.test_Duration_iterate">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_duration.</span></span><span class="sig-name descname"><span class="pre">test_Duration_iterate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_duration.html#test_Duration_iterate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_duration.test_Duration_iterate" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_params">
+<span id="encommon-times-test-test-params-module"></span><h2>encommon.times.test.test_params module<a class="headerlink" href="#module-encommon.times.test.test_params" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_params.test_TimerParams">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_params.</span></span><span class="sig-name descname"><span class="pre">test_TimerParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_params.html#test_TimerParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_params.test_TimerParams" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_params.test_WindowParams">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_params.</span></span><span class="sig-name descname"><span class="pre">test_WindowParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_params.html#test_WindowParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_params.test_WindowParams" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_parse">
+<span id="encommon-times-test-test-parse-module"></span><h2>encommon.times.test.test_parse module<a class="headerlink" href="#module-encommon.times.test.test_parse" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_parse.test_parse_time">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_parse.</span></span><span class="sig-name descname"><span class="pre">test_parse_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_parse.html#test_parse_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_parse.test_parse_time" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_parse.test_shift_time">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_parse.</span></span><span class="sig-name descname"><span class="pre">test_shift_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_parse.html#test_shift_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_parse.test_shift_time" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notate</strong> – Syntax compatable using snaptime library.</p></li>
+<li><p><strong>expect</strong> – Expected output from the testing routine.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_parse.test_since_time">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_parse.</span></span><span class="sig-name descname"><span class="pre">test_since_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_parse.html#test_since_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_parse.test_since_time" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_parse.test_string_time">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_parse.</span></span><span class="sig-name descname"><span class="pre">test_string_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_parse.html#test_string_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_parse.test_string_time" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_time">
+<span id="encommon-times-test-test-time-module"></span><h2>encommon.times.test.test_time module<a class="headerlink" href="#module-encommon.times.test.test_time" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_time.test_Time">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_time.</span></span><span class="sig-name descname"><span class="pre">test_Time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_time.html#test_Time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_time.test_Time" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_time.test_Time_tzname">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_time.</span></span><span class="sig-name descname"><span class="pre">test_Time_tzname</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_time.html#test_Time_tzname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_time.test_Time_tzname" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_timer">
+<span id="encommon-times-test-test-timer-module"></span><h2>encommon.times.test.test_timer module<a class="headerlink" href="#module-encommon.times.test.test_timer" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_timer.test_Timer">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_timer.</span></span><span class="sig-name descname"><span class="pre">test_Timer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.timer.Timer" title="encommon.times.timer.Timer"><span class="pre">Timer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_timer.html#test_Timer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_timer.test_Timer" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timer</strong> – Primary class instance for timer object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_timer.timer">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_timer.</span></span><span class="sig-name descname"><span class="pre">timer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="encommon.times.html#encommon.times.timer.Timer" title="encommon.times.timer.Timer"><span class="pre">Timer</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_timer.html#timer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_timer.timer" title="Link to this definition"></a></dt>
+<dd><p>Construct the instance for use in the downstream tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Newly constructed instance of related class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_timers">
+<span id="encommon-times-test-test-timers-module"></span><h2>encommon.times.test.test_timers module<a class="headerlink" href="#module-encommon.times.test.test_timers" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_timers.test_Timers">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_timers.</span></span><span class="sig-name descname"><span class="pre">test_Timers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.timers.Timers" title="encommon.times.timers.Timers"><span class="pre">Timers</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_timers.html#test_Timers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_timers.test_Timers" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timers</strong> – Primary class instance for timers object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_timers.test_Timers_cover">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_timers.</span></span><span class="sig-name descname"><span class="pre">test_Timers_cover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.timers.Timers" title="encommon.times.timers.Timers"><span class="pre">Timers</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_timers.html#test_Timers_cover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_timers.test_Timers_cover" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timers</strong> – Primary class instance for timers object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_timers.test_Timers_raises">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_timers.</span></span><span class="sig-name descname"><span class="pre">test_Timers_raises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.timers.Timers" title="encommon.times.timers.Timers"><span class="pre">Timers</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_timers.html#test_Timers_raises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_timers.test_Timers_raises" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timers</strong> – Primary class instance for timers object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_timers.timers">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_timers.</span></span><span class="sig-name descname"><span class="pre">timers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tmp_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="encommon.times.html#encommon.times.timers.Timers" title="encommon.times.timers.Timers"><span class="pre">Timers</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_timers.html#timers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_timers.timers" title="Link to this definition"></a></dt>
+<dd><p>Construct the instance for use in the downstream tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tmp_path</strong> – pytest object for temporal filesystem.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Newly constructed instance of related class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_unitime">
+<span id="encommon-times-test-test-unitime-module"></span><h2>encommon.times.test.test_unitime module<a class="headerlink" href="#module-encommon.times.test.test_unitime" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_unitime.test_unitime">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_unitime.</span></span><span class="sig-name descname"><span class="pre">test_unitime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_unitime.html#test_unitime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_unitime.test_unitime" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_utils">
+<span id="encommon-times-test-test-utils-module"></span><h2>encommon.times.test.test_utils module<a class="headerlink" href="#module-encommon.times.test.test_utils" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_utils.test_findtz">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_utils.</span></span><span class="sig-name descname"><span class="pre">test_findtz</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_utils.html#test_findtz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_utils.test_findtz" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_utils.test_findtz_raises">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_utils.</span></span><span class="sig-name descname"><span class="pre">test_findtz_raises</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_utils.html#test_findtz_raises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_utils.test_findtz_raises" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_utils.test_strptime">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_utils.</span></span><span class="sig-name descname"><span class="pre">test_strptime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_utils.html#test_strptime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_utils.test_strptime" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_utils.test_strptime_raises">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_utils.</span></span><span class="sig-name descname"><span class="pre">test_strptime_raises</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_utils.html#test_strptime_raises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_utils.test_strptime_raises" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_utils.test_utcdatetime">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_utils.</span></span><span class="sig-name descname"><span class="pre">test_utcdatetime</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_utils.html#test_utcdatetime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_utils.test_utcdatetime" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_window">
+<span id="encommon-times-test-test-window-module"></span><h2>encommon.times.test.test_window module<a class="headerlink" href="#module-encommon.times.test.test_window" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_window.test_Window">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_window.</span></span><span class="sig-name descname"><span class="pre">test_Window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.window.Window" title="encommon.times.window.Window"><span class="pre">Window</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_window.html#test_Window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_window.test_Window" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>window</strong> – Primary class instance for window object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_window.test_Window_cover">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_window.</span></span><span class="sig-name descname"><span class="pre">test_Window_cover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.window.Window" title="encommon.times.window.Window"><span class="pre">Window</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_window.html#test_Window_cover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_window.test_Window_cover" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>window</strong> – Primary class instance for window object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_window.test_window_croniter">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_window.</span></span><span class="sig-name descname"><span class="pre">test_window_croniter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PARSABLE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backward</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_window.html#test_window_croniter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_window.test_window_croniter" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> – Parameters for defining scheduled time.</p></li>
+<li><p><strong>anchor</strong> – Optionally define time anchor for window.</p></li>
+<li><p><strong>backward</strong> – Optionally operate the window backward.</p></li>
+<li><p><strong>expect</strong> – Expected output from the testing routine.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_window.test_window_interval">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_window.</span></span><span class="sig-name descname"><span class="pre">test_window_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PARSABLE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backward</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">expect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_window.html#test_window_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_window.test_window_interval" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> – Parameters for defining scheduled time.</p></li>
+<li><p><strong>anchor</strong> – Optionally define time anchor for window.</p></li>
+<li><p><strong>backward</strong> – Optionally operate the window backward.</p></li>
+<li><p><strong>expect</strong> – Expected output from the testing routine.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_window.window">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_window.</span></span><span class="sig-name descname"><span class="pre">window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="encommon.times.html#encommon.times.window.Window" title="encommon.times.window.Window"><span class="pre">Window</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_window.html#window"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_window.window" title="Link to this definition"></a></dt>
+<dd><p>Construct the instance for use in the downstream tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Newly constructed instance of related class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test.test_windows">
+<span id="encommon-times-test-test-windows-module"></span><h2>encommon.times.test.test_windows module<a class="headerlink" href="#module-encommon.times.test.test_windows" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_windows.test_Windows">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_windows.</span></span><span class="sig-name descname"><span class="pre">test_Windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.windows.Windows" title="encommon.times.windows.Windows"><span class="pre">Windows</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_windows.html#test_Windows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_windows.test_Windows" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>windows</strong> – Primary class instance for window object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_windows.test_Windows_cover">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_windows.</span></span><span class="sig-name descname"><span class="pre">test_Windows_cover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.windows.Windows" title="encommon.times.windows.Windows"><span class="pre">Windows</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_windows.html#test_Windows_cover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_windows.test_Windows_cover" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>windows</strong> – Primary class instance for window object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_windows.test_Windows_raises">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_windows.</span></span><span class="sig-name descname"><span class="pre">test_Windows_raises</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">windows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="encommon.times.html#encommon.times.windows.Windows" title="encommon.times.windows.Windows"><span class="pre">Windows</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_windows.html#test_Windows_raises"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_windows.test_Windows_raises" title="Link to this definition"></a></dt>
+<dd><p>Perform various tests associated with relevant routines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>windows</strong> – Primary class instance for window object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="encommon.times.test.test_windows.windows">
+<span class="sig-prename descclassname"><span class="pre">encommon.times.test.test_windows.</span></span><span class="sig-name descname"><span class="pre">windows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tmp_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.12)"><span class="pre">Path</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="encommon.times.html#encommon.times.windows.Windows" title="encommon.times.windows.Windows"><span class="pre">Windows</span></a></span></span><a class="reference internal" href="_modules/encommon/times/test/test_windows.html#windows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#encommon.times.test.test_windows.windows" title="Link to this definition"></a></dt>
+<dd><p>Construct the instance for use in the downstream tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tmp_path</strong> – pytest object for temporal filesystem.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Newly constructed instance of related class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-encommon.times.test">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-encommon.times.test" title="Link to this heading"></a></h2>
+<p>Functions and routines associated with Enasis Network Common Library.</p>
+<p>This file is part of Enasis Network software eco-system. Distribution
+is permitted, for more information consult the project license file.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Enasis Network.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
