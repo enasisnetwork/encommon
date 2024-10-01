@@ -8,15 +8,14 @@
     DONE
 >>> make sphinx
   ● Building Sphinx documentation..
-Running Sphinx v7.4.7
-loading translations [en]... done
+Running Sphinx v7.3.7
 making output directory... done
-loading intersphinx inventory 'jinja2' from https://jinja.palletsprojects.com/en/latest/objects.inv...
-loading intersphinx inventory 'netaddr' from https://netaddr.readthedocs.io/en/latest/objects.inv...
-loading intersphinx inventory 'pydantic' from https://docs.pydantic.dev/latest/objects.inv...
-loading intersphinx inventory 'pytest' from https://docs.pytest.org/latest/objects.inv...
-loading intersphinx inventory 'python' from https://docs.python.org/3/objects.inv...
-loading intersphinx inventory 'sqlalchemy' from https://docs.sqlalchemy.org/en/20/objects.inv...
+loading intersphinx inventory from https://jinja.palletsprojects.com/en/latest/objects.inv...
+loading intersphinx inventory from https://netaddr.readthedocs.io/en/latest/objects.inv...
+loading intersphinx inventory from https://docs.pydantic.dev/latest/objects.inv...
+loading intersphinx inventory from https://docs.pytest.org/latest/objects.inv...
+loading intersphinx inventory from https://docs.python.org/3/objects.inv...
+loading intersphinx inventory from https://docs.sqlalchemy.org/en/20/objects.inv...
 intersphinx inventory has moved: https://docs.pytest.org/latest/objects.inv -> https://docs.pytest.org/en/7.4.x/objects.inv
 building [mo]: targets for 0 po files that are out of date
 writing output... 
@@ -44,10 +43,9 @@ looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
 preparing documents... done
-copying assets... 
-copying static files... done
+copying assets... copying static files... done
 copying extra files... done
-copying assets: done
+done
 writing output... [  6%] encommon
 writing output... [ 12%] encommon.colors
 writing output... [ 18%] encommon.colors.test
@@ -136,7 +134,25 @@ highlighting module code... [100%] encommon.utils.test.test_stdout
 writing additional pages... search done
 dumping search index in English (code: en)... done
 dumping object inventory... done
-build succeeded, 218 warnings.
+postprocess html... [  6%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.html
+postprocess html... [ 12%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.colors.html
+postprocess html... [ 18%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.colors.test.html
+postprocess html... [ 24%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.config.html
+postprocess html... [ 29%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.config.test.html
+postprocess html... [ 35%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.crypts.html
+postprocess html... [ 41%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.crypts.test.html
+postprocess html... [ 47%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.parse.html
+postprocess html... [ 53%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.parse.test.html
+postprocess html... [ 59%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.times.html
+postprocess html... [ 65%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.times.test.html
+postprocess html... [ 71%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.types.html
+postprocess html... [ 76%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.types.test.html
+postprocess html... [ 82%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.utils.html
+postprocess html... [ 88%] /home/runner/work/encommon/encommon/main/sphinx/html/encommon.utils.test.html
+postprocess html... [ 94%] /home/runner/work/encommon/encommon/main/sphinx/html/index.html
+postprocess html... [100%] /home/runner/work/encommon/encommon/main/sphinx/html/modules.html
+
+build succeeded, 74 warnings.
 
 The HTML pages are in sphinx/html.
     DONE
