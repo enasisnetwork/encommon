@@ -1,5 +1,8 @@
+Enasis Network Common Library
+=============================
+
 Configuration Container
-=======================
+-----------------------
 
 .. autoclass:: encommon.config.Config
    :members:
@@ -12,7 +15,7 @@ Configuration Container
    :noindex:
 
 Parameters Container
-====================
+--------------------
 
 .. autopydantic_model:: encommon.config.Params
    :members:
@@ -20,7 +23,7 @@ Parameters Container
    :noindex:
 
 Configuration Content
-=====================
+---------------------
 
 .. autoclass:: encommon.config.ConfigFile
    :members:
@@ -43,7 +46,7 @@ Configuration Content
    :noindex:
 
 Configuration Logger
-====================
+--------------------
 
 .. autoclass:: encommon.config.Logger
    :members:
@@ -61,7 +64,7 @@ Configuration Logger
    :noindex:
 
 Configuration Utilities
-=======================
+-----------------------
 
 .. autofunction:: encommon.config.config_load
    :noindex:
@@ -73,7 +76,7 @@ Configuration Utilities
    :noindex:
 
 Encryption and Decryption
-=========================
+-------------------------
 
 .. autoclass:: encommon.crypts.Crypts
    :members:
@@ -86,7 +89,7 @@ Encryption and Decryption
    :noindex:
 
 Hashing Algorithms
-==================
+------------------
 
 .. autoclass:: encommon.crypts.Hashes
    :members:
@@ -94,7 +97,7 @@ Hashing Algorithms
    :noindex:
 
 Color Formatting
-================
+----------------
 
 .. autoclass:: encommon.colors.Color
    :members:
@@ -102,7 +105,7 @@ Color Formatting
    :noindex:
 
 Jinja2 Templating
-=================
+-----------------
 
 .. autoclass:: encommon.parse.Jinja2
    :members:
@@ -110,7 +113,7 @@ Jinja2 Templating
    :noindex:
 
 Network Addresses
-=================
+-----------------
 
 .. autoclass:: encommon.parse.Network
    :members:
@@ -124,7 +127,7 @@ Network Addresses
    :noindex:
 
 Advanced Time Structures
-========================
+------------------------
 
 .. autoclass:: encommon.times.Time
    :members:
@@ -177,7 +180,7 @@ Advanced Time Structures
    :noindex:
 
 Datetime and Helpers
-====================
+--------------------
 
 .. autofunction:: encommon.times.parse_time
    :noindex:
@@ -198,13 +201,13 @@ Datetime and Helpers
    :noindex:
 
 Unique Python Types
-===================
+-------------------
 
 .. autodata:: encommon.types.Empty
    :noindex:
 
 Python Type Utilities
-=====================
+---------------------
 
 .. autofunction:: encommon.types.merge_dicts
    :noindex:
@@ -243,7 +246,7 @@ Python Type Utilities
    :noindex:
 
 Python Notation Helpers
-=======================
+-----------------------
 
 .. autofunction:: encommon.types.getate
    :noindex:
@@ -255,7 +258,7 @@ Python Notation Helpers
    :noindex:
 
 Colorized Standard Output
-=========================
+-------------------------
 
 .. autofunction:: encommon.utils.array_ansi
    :noindex:
@@ -273,7 +276,7 @@ Colorized Standard Output
    :noindex:
 
 Test Sample Utilities
-=====================
+---------------------
 
 .. autofunction:: encommon.utils.load_sample
    :noindex:
@@ -288,7 +291,7 @@ Test Sample Utilities
    :noindex:
 
 Matching Expressions
-====================
+--------------------
 
 .. autofunction:: encommon.utils.fuzz_match
    :noindex:
@@ -297,7 +300,7 @@ Matching Expressions
    :noindex:
 
 File System and Paths
-=====================
+---------------------
 
 .. autofunction:: encommon.utils.read_text
    :noindex:
