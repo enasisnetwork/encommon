@@ -45,7 +45,7 @@ def test_Color() -> None:
 
     assert color == '000001'
     assert color != '000000'
-    assert color != int
+    assert color != int  # noqa
 
     assert color > 0
     assert color >= 1
