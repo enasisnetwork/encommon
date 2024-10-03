@@ -7,6 +7,7 @@ Common classes and functions used in various public and private projects.
 <a href="https://pypi.org/project/encommon"><img src="https://enasisnetwork.github.io/encommon/badges/pypi.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/flake8.txt"><img src="https://enasisnetwork.github.io/encommon/badges/flake8.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/pylint.txt"><img src="https://enasisnetwork.github.io/encommon/badges/pylint.png"></a><br>
+<a href="https://enasisnetwork.github.io/encommon/validate/ruff.txt"><img src="https://enasisnetwork.github.io/encommon/badges/ruff.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/mypy.txt"><img src="https://enasisnetwork.github.io/encommon/badges/mypy.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/yamllint.txt"><img src="https://enasisnetwork.github.io/encommon/badges/yamllint.png"></a><br>
 <a href="https://enasisnetwork.github.io/encommon/validate/pytest.txt"><img src="https://enasisnetwork.github.io/encommon/badges/pytest.png"></a><br>
