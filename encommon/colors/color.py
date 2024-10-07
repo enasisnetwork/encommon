@@ -192,7 +192,8 @@ class Color:
             if isinstance(other, str):
                 other = Color(other)
 
-            assert hasattr(other, 'source')
+            assert hasattr(
+                other, 'source')
 
             source = self.__source
             _source = other.source
@@ -237,7 +238,8 @@ class Color:
             if isinstance(other, str):
                 other = Color(other)
 
-            assert hasattr(other, 'source')
+            assert hasattr(
+                other, 'source')
 
             source = self.__source
             _source = other.source
@@ -268,7 +270,8 @@ class Color:
             if isinstance(other, str):
                 other = Color(other)
 
-            assert hasattr(other, 'source')
+            assert hasattr(
+                other, 'source')
 
             source = self.__source
             _source = other.source
@@ -299,7 +302,8 @@ class Color:
             if isinstance(other, str):
                 other = Color(other)
 
-            assert hasattr(other, 'source')
+            assert hasattr(
+                other, 'source')
 
             source = self.__source
             _source = other.source
@@ -330,7 +334,8 @@ class Color:
             if isinstance(other, str):
                 other = Color(other)
 
-            assert hasattr(other, 'source')
+            assert hasattr(
+                other, 'source')
 
             source = self.__source
             _source = other.source
