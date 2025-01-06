@@ -15,7 +15,7 @@
     <title>encommon.parse.test.test_network | encommon  documentation</title>
     <meta property="og:title" content="encommon.parse.test.test_network | encommon  documentation" />
     <meta name="twitter:title" content="encommon.parse.test.test_network | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../../search.html" />
@@ -150,20 +150,20 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">raises</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">pytest</span><span class="w"> </span><span class="kn">import</span> <span class="n">raises</span>
 </span><span id="line-11">
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">..network</span> <span class="kn">import</span> <span class="n">Network</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">..network</span> <span class="kn">import</span> <span class="n">insubnet_ip</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">..network</span> <span class="kn">import</span> <span class="n">isvalid_ip</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">...types</span> <span class="kn">import</span> <span class="n">inrepr</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">...types</span> <span class="kn">import</span> <span class="n">instr</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">...types</span> <span class="kn">import</span> <span class="n">lattrs</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">..network</span><span class="w"> </span><span class="kn">import</span> <span class="n">Network</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">..network</span><span class="w"> </span><span class="kn">import</span> <span class="n">insubnet_ip</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">..network</span><span class="w"> </span><span class="kn">import</span> <span class="n">isvalid_ip</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">...types</span><span class="w"> </span><span class="kn">import</span> <span class="n">inrepr</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">...types</span><span class="w"> </span><span class="kn">import</span> <span class="n">instr</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">...types</span><span class="w"> </span><span class="kn">import</span> <span class="n">lattrs</span>
 </span><span id="line-18">
 </span><span id="line-19">
 </span><span id="line-20">
 <div class="viewcode-block" id="test_Network">
 <a class="viewcode-back" href="../../../../encommon.parse.test.html#encommon.parse.test.test_network.test_Network">[docs]</a>
-</span><span id="line-21"><span class="k">def</span> <span class="nf">test_Network</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-21"><span class="k">def</span><span class="w"> </span><span class="nf">test_Network</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-22"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-23"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-24"><span class="sd">    &quot;&quot;&quot;</span>
@@ -233,7 +233,7 @@
 </span><span id="line-87">
 <div class="viewcode-block" id="test_Network_ipv4">
 <a class="viewcode-back" href="../../../../encommon.parse.test.html#encommon.parse.test.test_network.test_Network_ipv4">[docs]</a>
-</span><span id="line-88"><span class="k">def</span> <span class="nf">test_Network_ipv4</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-88"><span class="k">def</span><span class="w"> </span><span class="nf">test_Network_ipv4</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-89"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-90"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-91"><span class="sd">    &quot;&quot;&quot;</span>
@@ -277,7 +277,7 @@
 </span><span id="line-128">
 <div class="viewcode-block" id="test_Network_ipv6">
 <a class="viewcode-back" href="../../../../encommon.parse.test.html#encommon.parse.test.test_network.test_Network_ipv6">[docs]</a>
-</span><span id="line-129"><span class="k">def</span> <span class="nf">test_Network_ipv6</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-129"><span class="k">def</span><span class="w"> </span><span class="nf">test_Network_ipv6</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-130"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-131"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-132"><span class="sd">    &quot;&quot;&quot;</span>
@@ -326,7 +326,7 @@
 </span><span id="line-174">
 <div class="viewcode-block" id="test_isvalid_ip">
 <a class="viewcode-back" href="../../../../encommon.parse.test.html#encommon.parse.test.test_network.test_isvalid_ip">[docs]</a>
-</span><span id="line-175"><span class="k">def</span> <span class="nf">test_isvalid_ip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-175"><span class="k">def</span><span class="w"> </span><span class="nf">test_isvalid_ip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-176"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-177"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-178"><span class="sd">    &quot;&quot;&quot;</span>
@@ -342,7 +342,7 @@
 </span><span id="line-187">
 <div class="viewcode-block" id="test_insubnet_ip">
 <a class="viewcode-back" href="../../../../encommon.parse.test.html#encommon.parse.test.test_network.test_insubnet_ip">[docs]</a>
-</span><span id="line-188"><span class="k">def</span> <span class="nf">test_insubnet_ip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-188"><span class="k">def</span><span class="w"> </span><span class="nf">test_insubnet_ip</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-189"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-190"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-191"><span class="sd">    &quot;&quot;&quot;</span>

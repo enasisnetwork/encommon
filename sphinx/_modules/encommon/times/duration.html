@@ -15,7 +15,7 @@
     <title>encommon.times.duration | encommon  documentation</title>
     <meta property="og:title" content="encommon.times.duration | encommon  documentation" />
     <meta name="twitter:title" content="encommon.times.duration | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,13 +150,13 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">get_args</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_args</span>
 </span><span id="line-13">
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">COMMAS</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">SEMPTY</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">SPACED</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">COMMAS</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEMPTY</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPACED</span>
 </span><span id="line-17">
 </span><span id="line-18">
 </span><span id="line-19">
@@ -180,7 +180,7 @@
 </span><span id="line-37">
 <div class="viewcode-block" id="Duration">
 <a class="viewcode-back" href="../../../index.html#encommon.times.duration.Duration">[docs]</a>
-</span><span id="line-38"><span class="k">class</span> <span class="nc">Duration</span><span class="p">:</span>
+</span><span id="line-38"><span class="k">class</span><span class="w"> </span><span class="nc">Duration</span><span class="p">:</span>
 </span><span id="line-39"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-40"><span class="sd">    Convert the provided seconds in a human friendly format.</span>
 </span><span id="line-41">
@@ -242,7 +242,7 @@
 </span><span id="line-97">    <span class="n">__groups</span><span class="p">:</span> <span class="nb">int</span>
 </span><span id="line-98">
 </span><span id="line-99">
-</span><span id="line-100">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-100">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-101">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-102">        <span class="n">seconds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="line-103">        <span class="n">smart</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -257,7 +257,7 @@
 </span><span id="line-112">        <span class="bp">self</span><span class="o">.</span><span class="n">__groups</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
 </span><span id="line-113">
 </span><span id="line-114">
-</span><span id="line-115">    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span>
+</span><span id="line-115">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span>
 </span><span id="line-116">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-117">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-118"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -273,7 +273,7 @@
 </span><span id="line-128">            <span class="sa">f</span><span class="s1">&#39;groups=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">groups</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 </span><span id="line-129">
 </span><span id="line-130">
-</span><span id="line-131">    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span>
+</span><span id="line-131">    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span>
 </span><span id="line-132">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-133">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="line-134"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -285,7 +285,7 @@
 </span><span id="line-140">        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 </span><span id="line-141">
 </span><span id="line-142">
-</span><span id="line-143">    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span>
+</span><span id="line-143">    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span>
 </span><span id="line-144">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-145">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-146"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -297,7 +297,7 @@
 </span><span id="line-152">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">compact</span>
 </span><span id="line-153">
 </span><span id="line-154">
-</span><span id="line-155">    <span class="k">def</span> <span class="fm">__int__</span><span class="p">(</span>
+</span><span id="line-155">    <span class="k">def</span><span class="w"> </span><span class="fm">__int__</span><span class="p">(</span>
 </span><span id="line-156">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-157">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="line-158"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -309,7 +309,7 @@
 </span><span id="line-164">        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 </span><span id="line-165">
 </span><span id="line-166">
-</span><span id="line-167">    <span class="k">def</span> <span class="fm">__float__</span><span class="p">(</span>
+</span><span id="line-167">    <span class="k">def</span><span class="w"> </span><span class="fm">__float__</span><span class="p">(</span>
 </span><span id="line-168">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-169">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="line-170"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -321,7 +321,7 @@
 </span><span id="line-176">        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 </span><span id="line-177">
 </span><span id="line-178">
-</span><span id="line-179">    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span>
+</span><span id="line-179">    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span>
 </span><span id="line-180">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-181">        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
 </span><span id="line-182">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -338,7 +338,7 @@
 </span><span id="line-193">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span> <span class="o">+</span> <span class="n">other</span>
 </span><span id="line-194">
 </span><span id="line-195">
-</span><span id="line-196">    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span>
+</span><span id="line-196">    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span>
 </span><span id="line-197">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-198">        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
 </span><span id="line-199">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
@@ -355,7 +355,7 @@
 </span><span id="line-210">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span> <span class="o">-</span> <span class="n">other</span>
 </span><span id="line-211">
 </span><span id="line-212">
-</span><span id="line-213">    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span>
+</span><span id="line-213">    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span>
 </span><span id="line-214">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-215">        <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
 </span><span id="line-216">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -372,7 +372,7 @@
 </span><span id="line-227">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span> <span class="o">==</span> <span class="n">other</span>
 </span><span id="line-228">
 </span><span id="line-229">
-</span><span id="line-230">    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span>
+</span><span id="line-230">    <span class="k">def</span><span class="w"> </span><span class="fm">__ne__</span><span class="p">(</span>
 </span><span id="line-231">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-232">        <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
 </span><span id="line-233">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -386,7 +386,7 @@
 </span><span id="line-241">        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 </span><span id="line-242">
 </span><span id="line-243">
-</span><span id="line-244">    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span>
+</span><span id="line-244">    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span>
 </span><span id="line-245">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-246">        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
 </span><span id="line-247">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -403,7 +403,7 @@
 </span><span id="line-258">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span> <span class="o">&gt;</span> <span class="n">other</span>
 </span><span id="line-259">
 </span><span id="line-260">
-</span><span id="line-261">    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span>
+</span><span id="line-261">    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span>
 </span><span id="line-262">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-263">        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
 </span><span id="line-264">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -420,7 +420,7 @@
 </span><span id="line-275">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span> <span class="o">&gt;=</span> <span class="n">other</span>
 </span><span id="line-276">
 </span><span id="line-277">
-</span><span id="line-278">    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span>
+</span><span id="line-278">    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span>
 </span><span id="line-279">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-280">        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
 </span><span id="line-281">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -437,7 +437,7 @@
 </span><span id="line-292">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span> <span class="o">&lt;</span> <span class="n">other</span>
 </span><span id="line-293">
 </span><span id="line-294">
-</span><span id="line-295">    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span>
+</span><span id="line-295">    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span>
 </span><span id="line-296">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-297">        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
 </span><span id="line-298">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -455,7 +455,7 @@
 </span><span id="line-310">
 </span><span id="line-311">
 </span><span id="line-312">    <span class="nd">@property</span>
-</span><span id="line-313">    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span>
+</span><span id="line-313">    <span class="k">def</span><span class="w"> </span><span class="nf">source</span><span class="p">(</span>
 </span><span id="line-314">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-315">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="line-316"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -468,7 +468,7 @@
 </span><span id="line-323">
 </span><span id="line-324">
 </span><span id="line-325">    <span class="nd">@property</span>
-</span><span id="line-326">    <span class="k">def</span> <span class="nf">smart</span><span class="p">(</span>
+</span><span id="line-326">    <span class="k">def</span><span class="w"> </span><span class="nf">smart</span><span class="p">(</span>
 </span><span id="line-327">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-328">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="line-329"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -481,7 +481,7 @@
 </span><span id="line-336">
 </span><span id="line-337">
 </span><span id="line-338">    <span class="nd">@property</span>
-</span><span id="line-339">    <span class="k">def</span> <span class="nf">groups</span><span class="p">(</span>
+</span><span id="line-339">    <span class="k">def</span><span class="w"> </span><span class="nf">groups</span><span class="p">(</span>
 </span><span id="line-340">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-341">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 </span><span id="line-342"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -495,7 +495,7 @@
 </span><span id="line-350">
 <div class="viewcode-block" id="Duration.units">
 <a class="viewcode-back" href="../../../index.html#encommon.times.duration.Duration.units">[docs]</a>
-</span><span id="line-351">    <span class="k">def</span> <span class="nf">units</span><span class="p">(</span>
+</span><span id="line-351">    <span class="k">def</span><span class="w"> </span><span class="nf">units</span><span class="p">(</span>
 </span><span id="line-352">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-353">        <span class="n">short</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 </span><span id="line-354">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">DURAUNITS</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
@@ -557,7 +557,7 @@
 
 </span><span id="line-410">
 </span><span id="line-411">
-</span><span id="line-412">    <span class="k">def</span> <span class="nf">__duration</span><span class="p">(</span>
+</span><span id="line-412">    <span class="k">def</span><span class="w"> </span><span class="nf">__duration</span><span class="p">(</span>
 </span><span id="line-413">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-414">        <span class="n">delim</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SPACED</span><span class="p">,</span>
 </span><span id="line-415">        <span class="n">short</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -597,7 +597,7 @@
 </span><span id="line-449">
 </span><span id="line-450">
 </span><span id="line-451">    <span class="nd">@property</span>
-</span><span id="line-452">    <span class="k">def</span> <span class="nf">short</span><span class="p">(</span>
+</span><span id="line-452">    <span class="k">def</span><span class="w"> </span><span class="nf">short</span><span class="p">(</span>
 </span><span id="line-453">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-454">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-455"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -610,7 +610,7 @@
 </span><span id="line-462">
 </span><span id="line-463">
 </span><span id="line-464">    <span class="nd">@property</span>
-</span><span id="line-465">    <span class="k">def</span> <span class="nf">compact</span><span class="p">(</span>
+</span><span id="line-465">    <span class="k">def</span><span class="w"> </span><span class="nf">compact</span><span class="p">(</span>
 </span><span id="line-466">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-467">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-468"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -624,7 +624,7 @@
 </span><span id="line-476">
 </span><span id="line-477">
 </span><span id="line-478">    <span class="nd">@property</span>
-</span><span id="line-479">    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span>
+</span><span id="line-479">    <span class="k">def</span><span class="w"> </span><span class="nf">verbose</span><span class="p">(</span>
 </span><span id="line-480">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-481">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-482"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>

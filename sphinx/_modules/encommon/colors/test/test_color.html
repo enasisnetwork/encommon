@@ -15,7 +15,7 @@
     <title>encommon.colors.test.test_color | encommon  documentation</title>
     <meta property="og:title" content="encommon.colors.test.test_color | encommon  documentation" />
     <meta name="twitter:title" content="encommon.colors.test.test_color | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../../search.html" />
@@ -150,16 +150,16 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">mark</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">pytest</span><span class="w"> </span><span class="kn">import</span> <span class="n">mark</span>
 </span><span id="line-11">
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">..color</span> <span class="kn">import</span> <span class="n">Color</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">...types</span> <span class="kn">import</span> <span class="n">lattrs</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">..color</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">...types</span><span class="w"> </span><span class="kn">import</span> <span class="n">lattrs</span>
 </span><span id="line-14">
 </span><span id="line-15">
 </span><span id="line-16">
 <div class="viewcode-block" id="test_Color">
 <a class="viewcode-back" href="../../../../encommon.colors.test.html#encommon.colors.test.test_color.test_Color">[docs]</a>
-</span><span id="line-17"><span class="k">def</span> <span class="nf">test_Color</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-17"><span class="k">def</span><span class="w"> </span><span class="nf">test_Color</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-18"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-19"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-20"><span class="sd">    &quot;&quot;&quot;</span>
@@ -220,7 +220,7 @@
 </span><span id="line-72">     <span class="p">(</span><span class="s1">&#39;00ffff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)),</span>
 </span><span id="line-73">     <span class="p">(</span><span class="s1">&#39;ff00ff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)),</span>
 </span><span id="line-74">     <span class="p">(</span><span class="s1">&#39;800080&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">))])</span>
-</span><span id="line-75"><span class="k">def</span> <span class="nf">test_Color_rgb</span><span class="p">(</span>
+</span><span id="line-75"><span class="k">def</span><span class="w"> </span><span class="nf">test_Color_rgb</span><span class="p">(</span>
 </span><span id="line-76">    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-77">    <span class="n">expect</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
 </span><span id="line-78"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -251,7 +251,7 @@
 </span><span id="line-100">     <span class="p">(</span><span class="s1">&#39;00ffff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">53.8100</span><span class="p">,</span> <span class="mf">78.7400</span><span class="p">,</span> <span class="mf">106.9700</span><span class="p">)),</span>
 </span><span id="line-101">     <span class="p">(</span><span class="s1">&#39;ff00ff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">59.2900</span><span class="p">,</span> <span class="mf">28.4800</span><span class="p">,</span> <span class="mf">96.9800</span><span class="p">)),</span>
 </span><span id="line-102">     <span class="p">(</span><span class="s1">&#39;800080&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">12.7984</span><span class="p">,</span> <span class="mf">6.1477</span><span class="p">,</span> <span class="mf">20.9342</span><span class="p">))])</span>
-</span><span id="line-103"><span class="k">def</span> <span class="nf">test_Color_xyz</span><span class="p">(</span>
+</span><span id="line-103"><span class="k">def</span><span class="w"> </span><span class="nf">test_Color_xyz</span><span class="p">(</span>
 </span><span id="line-104">    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-105">    <span class="n">expect</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
 </span><span id="line-106"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -282,7 +282,7 @@
 </span><span id="line-128">     <span class="p">(</span><span class="s1">&#39;00ffff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2247</span><span class="p">,</span> <span class="mf">0.3287</span><span class="p">)),</span>
 </span><span id="line-129">     <span class="p">(</span><span class="s1">&#39;ff00ff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.3209</span><span class="p">,</span> <span class="mf">0.1542</span><span class="p">)),</span>
 </span><span id="line-130">     <span class="p">(</span><span class="s1">&#39;800080&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.3209</span><span class="p">,</span> <span class="mf">0.1542</span><span class="p">))])</span>
-</span><span id="line-131"><span class="k">def</span> <span class="nf">test_Color_xy</span><span class="p">(</span>
+</span><span id="line-131"><span class="k">def</span><span class="w"> </span><span class="nf">test_Color_xy</span><span class="p">(</span>
 </span><span id="line-132">    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-133">    <span class="n">expect</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
 </span><span id="line-134"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -313,7 +313,7 @@
 </span><span id="line-156">     <span class="p">(</span><span class="s1">&#39;00ffff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)),</span>
 </span><span id="line-157">     <span class="p">(</span><span class="s1">&#39;ff00ff&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)),</span>
 </span><span id="line-158">     <span class="p">(</span><span class="s1">&#39;800080&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">25</span><span class="p">))])</span>
-</span><span id="line-159"><span class="k">def</span> <span class="nf">test_Color_hsl</span><span class="p">(</span>
+</span><span id="line-159"><span class="k">def</span><span class="w"> </span><span class="nf">test_Color_hsl</span><span class="p">(</span>
 </span><span id="line-160">    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-161">    <span class="n">expect</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
 </span><span id="line-162"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -331,7 +331,7 @@
 </span><span id="line-173">
 <div class="viewcode-block" id="test_Color_cover">
 <a class="viewcode-back" href="../../../../encommon.colors.test.html#encommon.colors.test.test_color.test_Color_cover">[docs]</a>
-</span><span id="line-174"><span class="k">def</span> <span class="nf">test_Color_cover</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-174"><span class="k">def</span><span class="w"> </span><span class="nf">test_Color_cover</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-175"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-176"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-177"><span class="sd">    &quot;&quot;&quot;</span>

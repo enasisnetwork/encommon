@@ -15,7 +15,7 @@
     <title>encommon.utils.test.test_sample | encommon  documentation</title>
     <meta property="og:title" content="encommon.utils.test.test_sample | encommon  documentation" />
     <meta name="twitter:title" content="encommon.utils.test.test_sample | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../../search.html" />
@@ -150,19 +150,19 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">dumps</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">loads</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">json</span><span class="w"> </span><span class="kn">import</span> <span class="n">dumps</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">json</span><span class="w"> </span><span class="kn">import</span> <span class="n">loads</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 </span><span id="line-14">
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">..sample</span> <span class="kn">import</span> <span class="n">load_sample</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">..sample</span> <span class="kn">import</span> <span class="n">prep_sample</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">..sample</span> <span class="kn">import</span> <span class="n">read_sample</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">..sample</span> <span class="kn">import</span> <span class="n">rvrt_sample</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">ArrayColors</span>
-</span><span id="line-20"><span class="kn">from</span> <span class="nn">...</span> <span class="kn">import</span> <span class="n">PROJECT</span>
-</span><span id="line-21"><span class="kn">from</span> <span class="nn">...config</span> <span class="kn">import</span> <span class="n">LoggerParams</span>
-</span><span id="line-22"><span class="kn">from</span> <span class="nn">...utils.sample</span> <span class="kn">import</span> <span class="n">ENPYRWS</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">..sample</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_sample</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">..sample</span><span class="w"> </span><span class="kn">import</span> <span class="n">prep_sample</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">..sample</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_sample</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">..sample</span><span class="w"> </span><span class="kn">import</span> <span class="n">rvrt_sample</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayColors</span>
+</span><span id="line-20"><span class="kn">from</span><span class="w"> </span><span class="nn">...</span><span class="w"> </span><span class="kn">import</span> <span class="n">PROJECT</span>
+</span><span id="line-21"><span class="kn">from</span><span class="w"> </span><span class="nn">...config</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerParams</span>
+</span><span id="line-22"><span class="kn">from</span><span class="w"> </span><span class="nn">...utils.sample</span><span class="w"> </span><span class="kn">import</span> <span class="n">ENPYRWS</span>
 </span><span id="line-23">
 </span><span id="line-24">
 </span><span id="line-25">
@@ -190,7 +190,7 @@
 </span><span id="line-47">
 <div class="viewcode-block" id="test_prep_sample">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_sample.test_prep_sample">[docs]</a>
-</span><span id="line-48"><span class="k">def</span> <span class="nf">test_prep_sample</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-48"><span class="k">def</span><span class="w"> </span><span class="nf">test_prep_sample</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-49"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-50"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-51"><span class="sd">    &quot;&quot;&quot;</span>
@@ -230,7 +230,7 @@
 </span><span id="line-84">
 <div class="viewcode-block" id="test_load_sample">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_sample.test_load_sample">[docs]</a>
-</span><span id="line-85"><span class="k">def</span> <span class="nf">test_load_sample</span><span class="p">(</span>
+</span><span id="line-85"><span class="k">def</span><span class="w"> </span><span class="nf">test_load_sample</span><span class="p">(</span>
 </span><span id="line-86">    <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="line-87"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-88"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -278,7 +278,7 @@
 </span><span id="line-129">
 <div class="viewcode-block" id="test_read_sample">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_sample.test_read_sample">[docs]</a>
-</span><span id="line-130"><span class="k">def</span> <span class="nf">test_read_sample</span><span class="p">(</span>
+</span><span id="line-130"><span class="k">def</span><span class="w"> </span><span class="nf">test_read_sample</span><span class="p">(</span>
 </span><span id="line-131">    <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="line-132"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-133"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -309,7 +309,7 @@
 </span><span id="line-157">
 <div class="viewcode-block" id="test_rvrt_sample">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_sample.test_rvrt_sample">[docs]</a>
-</span><span id="line-158"><span class="k">def</span> <span class="nf">test_rvrt_sample</span><span class="p">(</span>
+</span><span id="line-158"><span class="k">def</span><span class="w"> </span><span class="nf">test_rvrt_sample</span><span class="p">(</span>
 </span><span id="line-159">    <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="line-160"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-161"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

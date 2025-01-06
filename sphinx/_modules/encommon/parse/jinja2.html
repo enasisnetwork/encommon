@@ -15,7 +15,7 @@
     <title>encommon.parse.jinja2 | encommon  documentation</title>
     <meta property="og:title" content="encommon.parse.jinja2 | encommon  documentation" />
     <meta name="twitter:title" content="encommon.parse.jinja2 | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,40 +150,40 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">ast</span> <span class="kn">import</span> <span class="n">literal_eval</span> <span class="k">as</span> <span class="n">leval</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">suppress</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">DOTALL</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">findall</span> <span class="k">as</span> <span class="n">re_findall</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">match</span> <span class="k">as</span> <span class="n">re_match</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">ast</span><span class="w"> </span><span class="kn">import</span> <span class="n">literal_eval</span> <span class="k">as</span> <span class="n">leval</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">suppress</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="n">DOTALL</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="n">findall</span> <span class="k">as</span> <span class="n">re_findall</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="n">match</span> <span class="k">as</span> <span class="n">re_match</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 </span><span id="line-20">
-</span><span id="line-21"><span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Environment</span>
-</span><span id="line-22"><span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">StrictUndefined</span>
+</span><span id="line-21"><span class="kn">from</span><span class="w"> </span><span class="nn">jinja2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Environment</span>
+</span><span id="line-22"><span class="kn">from</span><span class="w"> </span><span class="nn">jinja2</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrictUndefined</span>
 </span><span id="line-23">
-</span><span id="line-24"><span class="kn">from</span> <span class="nn">.network</span> <span class="kn">import</span> <span class="n">Network</span>
-</span><span id="line-25"><span class="kn">from</span> <span class="nn">.network</span> <span class="kn">import</span> <span class="n">insubnet_ip</span>
-</span><span id="line-26"><span class="kn">from</span> <span class="nn">.network</span> <span class="kn">import</span> <span class="n">isvalid_ip</span>
-</span><span id="line-27"><span class="kn">from</span> <span class="nn">..colors</span> <span class="kn">import</span> <span class="n">Color</span>
-</span><span id="line-28"><span class="kn">from</span> <span class="nn">..crypts</span> <span class="kn">import</span> <span class="n">Hashes</span>
-</span><span id="line-29"><span class="kn">from</span> <span class="nn">..times</span> <span class="kn">import</span> <span class="n">Duration</span>
-</span><span id="line-30"><span class="kn">from</span> <span class="nn">..times</span> <span class="kn">import</span> <span class="n">Time</span>
-</span><span id="line-31"><span class="kn">from</span> <span class="nn">..times</span> <span class="kn">import</span> <span class="n">unitime</span>
-</span><span id="line-32"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">DictStrAny</span>
-</span><span id="line-33"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">dedup_list</span>
-</span><span id="line-34"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">fuzzy_list</span>
-</span><span id="line-35"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">hasstr</span>
-</span><span id="line-36"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">inlist</span>
-</span><span id="line-37"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">instr</span>
-</span><span id="line-38"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">merge_dicts</span>
-</span><span id="line-39"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">rplstr</span>
-</span><span id="line-40"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">sort_dict</span>
-</span><span id="line-41"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">strplwr</span>
-</span><span id="line-42"><span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">fuzz_match</span>
-</span><span id="line-43"><span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">rgxp_match</span>
+</span><span id="line-24"><span class="kn">from</span><span class="w"> </span><span class="nn">.network</span><span class="w"> </span><span class="kn">import</span> <span class="n">Network</span>
+</span><span id="line-25"><span class="kn">from</span><span class="w"> </span><span class="nn">.network</span><span class="w"> </span><span class="kn">import</span> <span class="n">insubnet_ip</span>
+</span><span id="line-26"><span class="kn">from</span><span class="w"> </span><span class="nn">.network</span><span class="w"> </span><span class="kn">import</span> <span class="n">isvalid_ip</span>
+</span><span id="line-27"><span class="kn">from</span><span class="w"> </span><span class="nn">..colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span>
+</span><span id="line-28"><span class="kn">from</span><span class="w"> </span><span class="nn">..crypts</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hashes</span>
+</span><span id="line-29"><span class="kn">from</span><span class="w"> </span><span class="nn">..times</span><span class="w"> </span><span class="kn">import</span> <span class="n">Duration</span>
+</span><span id="line-30"><span class="kn">from</span><span class="w"> </span><span class="nn">..times</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
+</span><span id="line-31"><span class="kn">from</span><span class="w"> </span><span class="nn">..times</span><span class="w"> </span><span class="kn">import</span> <span class="n">unitime</span>
+</span><span id="line-32"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictStrAny</span>
+</span><span id="line-33"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">dedup_list</span>
+</span><span id="line-34"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">fuzzy_list</span>
+</span><span id="line-35"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">hasstr</span>
+</span><span id="line-36"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">inlist</span>
+</span><span id="line-37"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">instr</span>
+</span><span id="line-38"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">merge_dicts</span>
+</span><span id="line-39"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">rplstr</span>
+</span><span id="line-40"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">sort_dict</span>
+</span><span id="line-41"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">strplwr</span>
+</span><span id="line-42"><span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">fuzz_match</span>
+</span><span id="line-43"><span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">rgxp_match</span>
 </span><span id="line-44">
 </span><span id="line-45">
 </span><span id="line-46">
@@ -245,7 +245,7 @@
 </span><span id="line-102">
 <div class="viewcode-block" id="Jinja2">
 <a class="viewcode-back" href="../../../index.html#encommon.parse.jinja2.Jinja2">[docs]</a>
-</span><span id="line-103"><span class="k">class</span> <span class="nc">Jinja2</span><span class="p">:</span>
+</span><span id="line-103"><span class="k">class</span><span class="w"> </span><span class="nc">Jinja2</span><span class="p">:</span>
 </span><span id="line-104"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-105"><span class="sd">    Parse the provided input and intelligently return value.</span>
 </span><span id="line-106">
@@ -265,7 +265,7 @@
 </span><span id="line-120">    <span class="n">__jinjenv</span><span class="p">:</span> <span class="n">Environment</span>
 </span><span id="line-121">
 </span><span id="line-122">
-</span><span id="line-123">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-123">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-124">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-125">        <span class="n">statics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-126">        <span class="n">filters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FILTER</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -306,7 +306,7 @@
 </span><span id="line-161">
 </span><span id="line-162">
 </span><span id="line-163">    <span class="nd">@property</span>
-</span><span id="line-164">    <span class="k">def</span> <span class="nf">statics</span><span class="p">(</span>
+</span><span id="line-164">    <span class="k">def</span><span class="w"> </span><span class="nf">statics</span><span class="p">(</span>
 </span><span id="line-165">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-166">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-167"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -319,7 +319,7 @@
 </span><span id="line-174">
 </span><span id="line-175">
 </span><span id="line-176">    <span class="nd">@property</span>
-</span><span id="line-177">    <span class="k">def</span> <span class="nf">filters</span><span class="p">(</span>
+</span><span id="line-177">    <span class="k">def</span><span class="w"> </span><span class="nf">filters</span><span class="p">(</span>
 </span><span id="line-178">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-179">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FILTER</span><span class="p">]:</span>
 </span><span id="line-180"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -332,7 +332,7 @@
 </span><span id="line-187">
 </span><span id="line-188">
 </span><span id="line-189">    <span class="nd">@property</span>
-</span><span id="line-190">    <span class="k">def</span> <span class="nf">jinjenv</span><span class="p">(</span>
+</span><span id="line-190">    <span class="k">def</span><span class="w"> </span><span class="nf">jinjenv</span><span class="p">(</span>
 </span><span id="line-191">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-192">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Environment</span><span class="p">:</span>
 </span><span id="line-193"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -346,7 +346,7 @@
 </span><span id="line-201">
 <div class="viewcode-block" id="Jinja2.parser">
 <a class="viewcode-back" href="../../../index.html#encommon.parse.jinja2.Jinja2.parser">[docs]</a>
-</span><span id="line-202">    <span class="k">def</span> <span class="nf">parser</span><span class="p">(</span>
+</span><span id="line-202">    <span class="k">def</span><span class="w"> </span><span class="nf">parser</span><span class="p">(</span>
 </span><span id="line-203">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-204">        <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-205">        <span class="n">statics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -377,7 +377,7 @@
 </span><span id="line-229">
 <div class="viewcode-block" id="Jinja2.parse">
 <a class="viewcode-back" href="../../../index.html#encommon.parse.jinja2.Jinja2.parse">[docs]</a>
-</span><span id="line-230">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
+</span><span id="line-230">    <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
 </span><span id="line-231">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-232">        <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-233">        <span class="n">statics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -393,7 +393,7 @@
 </span><span id="line-243"><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="line-244">
 </span><span id="line-245">
-</span><span id="line-246">        <span class="k">def</span> <span class="nf">_final</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
+</span><span id="line-246">        <span class="k">def</span><span class="w"> </span><span class="nf">_final</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
 </span><span id="line-247">            <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-248">        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="line-249">
@@ -412,7 +412,7 @@
 </span><span id="line-262">            <span class="k">return</span> <span class="n">value</span>
 </span><span id="line-263">
 </span><span id="line-264">
-</span><span id="line-265">        <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span>
+</span><span id="line-265">        <span class="k">def</span><span class="w"> </span><span class="nf">_parse</span><span class="p">(</span>
 </span><span id="line-266">            <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-267">        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="line-268">
@@ -421,7 +421,7 @@
 </span><span id="line-271">                <span class="n">statics</span><span class="p">,</span> <span class="n">literal</span><span class="p">)</span>
 </span><span id="line-272">
 </span><span id="line-273">
-</span><span id="line-274">        <span class="k">def</span> <span class="nf">_parser</span><span class="p">(</span>
+</span><span id="line-274">        <span class="k">def</span><span class="w"> </span><span class="nf">_parser</span><span class="p">(</span>
 </span><span id="line-275">            <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-276">        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 </span><span id="line-277">
@@ -431,7 +431,7 @@
 </span><span id="line-281">            <span class="k">return</span> <span class="n">_final</span><span class="p">(</span><span class="n">parsed</span><span class="p">)</span>
 </span><span id="line-282">
 </span><span id="line-283">
-</span><span id="line-284">        <span class="k">def</span> <span class="nf">_found</span><span class="p">(</span>
+</span><span id="line-284">        <span class="k">def</span><span class="w"> </span><span class="nf">_found</span><span class="p">(</span>
 </span><span id="line-285">            <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-286">        <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
 </span><span id="line-287">

@@ -15,7 +15,7 @@
     <title>encommon.config.files | encommon  documentation</title>
     <meta property="og:title" content="encommon.config.files | encommon  documentation" />
     <meta name="twitter:title" content="encommon.config.files | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,26 +150,26 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 </span><span id="line-14">
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">config_load</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">config_path</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">config_paths</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">DictStrAny</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">merge_dicts</span>
-</span><span id="line-20"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">sort_dict</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">config_load</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">config_path</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">config_paths</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictStrAny</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">merge_dicts</span>
+</span><span id="line-20"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">sort_dict</span>
 </span><span id="line-21">
 </span><span id="line-22"><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="line-23">    <span class="kn">from</span> <span class="nn">..utils.common</span> <span class="kn">import</span> <span class="n">PATHABLE</span>
+</span><span id="line-23">    <span class="kn">from</span><span class="w"> </span><span class="nn">..utils.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">PATHABLE</span>
 </span><span id="line-24">
 </span><span id="line-25">
 </span><span id="line-26">
 <div class="viewcode-block" id="ConfigFile">
 <a class="viewcode-back" href="../../../index.html#encommon.config.files.ConfigFile">[docs]</a>
-</span><span id="line-27"><span class="k">class</span> <span class="nc">ConfigFile</span><span class="p">:</span>
+</span><span id="line-27"><span class="k">class</span><span class="w"> </span><span class="nc">ConfigFile</span><span class="p">:</span>
 </span><span id="line-28"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-29"><span class="sd">    Contain the configuration content from filesystem path.</span>
 </span><span id="line-30">
@@ -180,7 +180,7 @@
 </span><span id="line-35">    <span class="n">config</span><span class="p">:</span> <span class="n">DictStrAny</span>
 </span><span id="line-36">
 </span><span id="line-37">
-</span><span id="line-38">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-38">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-39">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-40">        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="line-41">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -196,7 +196,7 @@
 </span><span id="line-50">
 <div class="viewcode-block" id="ConfigFiles">
 <a class="viewcode-back" href="../../../index.html#encommon.config.files.ConfigFiles">[docs]</a>
-</span><span id="line-51"><span class="k">class</span> <span class="nc">ConfigFiles</span><span class="p">:</span>
+</span><span id="line-51"><span class="k">class</span><span class="w"> </span><span class="nc">ConfigFiles</span><span class="p">:</span>
 </span><span id="line-52"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-53"><span class="sd">    Enumerate files and store the contents on relative path.</span>
 </span><span id="line-54">
@@ -213,7 +213,7 @@
 </span><span id="line-65">    <span class="n">__merge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span>
 </span><span id="line-66">
 </span><span id="line-67">
-</span><span id="line-68">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-68">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-69">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-70">        <span class="n">paths</span><span class="p">:</span> <span class="s1">&#39;PATHABLE&#39;</span><span class="p">,</span>
 </span><span id="line-71">        <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -232,7 +232,7 @@
 </span><span id="line-84">
 </span><span id="line-85">
 </span><span id="line-86">    <span class="nd">@property</span>
-</span><span id="line-87">    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+</span><span id="line-87">    <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span>
 </span><span id="line-88">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-89">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-90"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>

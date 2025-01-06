@@ -15,7 +15,7 @@
     <title>encommon.times.timers | encommon  documentation</title>
     <meta property="og:title" content="encommon.times.timers | encommon  documentation" />
     <meta name="twitter:title" content="encommon.times.timers | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,25 +150,25 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 </span><span id="line-13">
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">String</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">sqlalchemy.engine</span> <span class="kn">import</span> <span class="n">Engine</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">DeclarativeBase</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
-</span><span id="line-20"><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Column</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">String</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Engine</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeclarativeBase</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">Session</span>
+</span><span id="line-20"><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">sessionmaker</span>
 </span><span id="line-21">
-</span><span id="line-22"><span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">PARSABLE</span>
-</span><span id="line-23"><span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">TimersParams</span>
-</span><span id="line-24"><span class="kn">from</span> <span class="nn">.time</span> <span class="kn">import</span> <span class="n">Time</span>
-</span><span id="line-25"><span class="kn">from</span> <span class="nn">.timer</span> <span class="kn">import</span> <span class="n">Timer</span>
+</span><span id="line-22"><span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">PARSABLE</span>
+</span><span id="line-23"><span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimersParams</span>
+</span><span id="line-24"><span class="kn">from</span><span class="w"> </span><span class="nn">.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
+</span><span id="line-25"><span class="kn">from</span><span class="w"> </span><span class="nn">.timer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 </span><span id="line-26">
 </span><span id="line-27"><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="line-28">    <span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">TimerParams</span>
+</span><span id="line-28">    <span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimerParams</span>
 </span><span id="line-29">
 </span><span id="line-30">
 </span><span id="line-31">
@@ -178,7 +178,7 @@
 </span><span id="line-35">
 <div class="viewcode-block" id="SQLBase">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.timers.SQLBase">[docs]</a>
-</span><span id="line-36"><span class="k">class</span> <span class="nc">SQLBase</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
+</span><span id="line-36"><span class="k">class</span><span class="w"> </span><span class="nc">SQLBase</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
 </span><span id="line-37"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-38"><span class="sd">    Some additional class that SQLAlchemy requires to work.</span>
 </span><span id="line-39">
@@ -191,7 +191,7 @@
 </span><span id="line-45">
 <div class="viewcode-block" id="TimersTable">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.timers.TimersTable">[docs]</a>
-</span><span id="line-46"><span class="k">class</span> <span class="nc">TimersTable</span><span class="p">(</span><span class="n">SQLBase</span><span class="p">):</span>
+</span><span id="line-46"><span class="k">class</span><span class="w"> </span><span class="nc">TimersTable</span><span class="p">(</span><span class="n">SQLBase</span><span class="p">):</span>
 </span><span id="line-47"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-48"><span class="sd">    Schematic for the database operations using SQLAlchemy.</span>
 </span><span id="line-49">
@@ -224,7 +224,7 @@
 </span><span id="line-75">
 <div class="viewcode-block" id="Timers">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers">[docs]</a>
-</span><span id="line-76"><span class="k">class</span> <span class="nc">Timers</span><span class="p">:</span>
+</span><span id="line-76"><span class="k">class</span><span class="w"> </span><span class="nc">Timers</span><span class="p">:</span>
 </span><span id="line-77"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-78"><span class="sd">    Track timers on unique key determining when to proceed.</span>
 </span><span id="line-79">
@@ -266,7 +266,7 @@
 </span><span id="line-115">    <span class="n">__timers</span><span class="p">:</span> <span class="n">TIMERS</span>
 </span><span id="line-116">
 </span><span id="line-117">
-</span><span id="line-118">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-118">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-119">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-120">        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;TimersParams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-121">        <span class="o">*</span><span class="p">,</span>
@@ -296,7 +296,7 @@
 </span><span id="line-145">        <span class="bp">self</span><span class="o">.</span><span class="n">load_children</span><span class="p">()</span>
 </span><span id="line-146">
 </span><span id="line-147">
-</span><span id="line-148">    <span class="k">def</span> <span class="nf">__make_engine</span><span class="p">(</span>
+</span><span id="line-148">    <span class="k">def</span><span class="w"> </span><span class="nf">__make_engine</span><span class="p">(</span>
 </span><span id="line-149">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-150">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-151"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -317,7 +317,7 @@
 </span><span id="line-166">
 </span><span id="line-167">
 </span><span id="line-168">    <span class="nd">@property</span>
-</span><span id="line-169">    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span>
+</span><span id="line-169">    <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span>
 </span><span id="line-170">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-171">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;TimersParams&#39;</span><span class="p">:</span>
 </span><span id="line-172"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -330,7 +330,7 @@
 </span><span id="line-179">
 </span><span id="line-180">
 </span><span id="line-181">    <span class="nd">@property</span>
-</span><span id="line-182">    <span class="k">def</span> <span class="nf">store</span><span class="p">(</span>
+</span><span id="line-182">    <span class="k">def</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span>
 </span><span id="line-183">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-184">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-185"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -343,7 +343,7 @@
 </span><span id="line-192">
 </span><span id="line-193">
 </span><span id="line-194">    <span class="nd">@property</span>
-</span><span id="line-195">    <span class="k">def</span> <span class="nf">group</span><span class="p">(</span>
+</span><span id="line-195">    <span class="k">def</span><span class="w"> </span><span class="nf">group</span><span class="p">(</span>
 </span><span id="line-196">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-197">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-198"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -356,7 +356,7 @@
 </span><span id="line-205">
 </span><span id="line-206">
 </span><span id="line-207">    <span class="nd">@property</span>
-</span><span id="line-208">    <span class="k">def</span> <span class="nf">store_engine</span><span class="p">(</span>
+</span><span id="line-208">    <span class="k">def</span><span class="w"> </span><span class="nf">store_engine</span><span class="p">(</span>
 </span><span id="line-209">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-210">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Engine</span><span class="p">:</span>
 </span><span id="line-211"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -369,7 +369,7 @@
 </span><span id="line-218">
 </span><span id="line-219">
 </span><span id="line-220">    <span class="nd">@property</span>
-</span><span id="line-221">    <span class="k">def</span> <span class="nf">store_session</span><span class="p">(</span>
+</span><span id="line-221">    <span class="k">def</span><span class="w"> </span><span class="nf">store_session</span><span class="p">(</span>
 </span><span id="line-222">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-223">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
 </span><span id="line-224"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -382,7 +382,7 @@
 </span><span id="line-231">
 </span><span id="line-232">
 </span><span id="line-233">    <span class="nd">@property</span>
-</span><span id="line-234">    <span class="k">def</span> <span class="nf">children</span><span class="p">(</span>
+</span><span id="line-234">    <span class="k">def</span><span class="w"> </span><span class="nf">children</span><span class="p">(</span>
 </span><span id="line-235">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-236">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Timer</span><span class="p">]:</span>
 </span><span id="line-237"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -396,7 +396,7 @@
 </span><span id="line-245">
 <div class="viewcode-block" id="Timers.load_children">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.load_children">[docs]</a>
-</span><span id="line-246">    <span class="k">def</span> <span class="nf">load_children</span><span class="p">(</span>
+</span><span id="line-246">    <span class="k">def</span><span class="w"> </span><span class="nf">load_children</span><span class="p">(</span>
 </span><span id="line-247">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-248">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-249"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -460,7 +460,7 @@
 </span><span id="line-306">
 <div class="viewcode-block" id="Timers.save_children">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.save_children">[docs]</a>
-</span><span id="line-307">    <span class="k">def</span> <span class="nf">save_children</span><span class="p">(</span>
+</span><span id="line-307">    <span class="k">def</span><span class="w"> </span><span class="nf">save_children</span><span class="p">(</span>
 </span><span id="line-308">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-309">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-310"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -496,7 +496,7 @@
 </span><span id="line-339">
 <div class="viewcode-block" id="Timers.ready">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.ready">[docs]</a>
-</span><span id="line-340">    <span class="k">def</span> <span class="nf">ready</span><span class="p">(</span>
+</span><span id="line-340">    <span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span>
 </span><span id="line-341">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-342">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-343">        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -527,7 +527,7 @@
 </span><span id="line-367">
 <div class="viewcode-block" id="Timers.pause">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.pause">[docs]</a>
-</span><span id="line-368">    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span>
+</span><span id="line-368">    <span class="k">def</span><span class="w"> </span><span class="nf">pause</span><span class="p">(</span>
 </span><span id="line-369">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-370">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-371">        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -547,7 +547,7 @@
 </span><span id="line-384">
 <div class="viewcode-block" id="Timers.create">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.create">[docs]</a>
-</span><span id="line-385">    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+</span><span id="line-385">    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
 </span><span id="line-386">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-387">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-388">        <span class="n">params</span><span class="p">:</span> <span class="s1">&#39;TimerParams&#39;</span><span class="p">,</span>
@@ -579,7 +579,7 @@
 </span><span id="line-413">
 <div class="viewcode-block" id="Timers.update">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.update">[docs]</a>
-</span><span id="line-414">    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+</span><span id="line-414">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
 </span><span id="line-415">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-416">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-417">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -606,7 +606,7 @@
 </span><span id="line-437">
 <div class="viewcode-block" id="Timers.delete">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timers.Timers.delete">[docs]</a>
-</span><span id="line-438">    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+</span><span id="line-438">    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>
 </span><span id="line-439">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-440">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-441">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>

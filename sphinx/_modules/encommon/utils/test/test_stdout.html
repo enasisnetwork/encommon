@@ -15,7 +15,7 @@
     <title>encommon.utils.test.test_stdout | encommon  documentation</title>
     <meta property="og:title" content="encommon.utils.test.test_stdout | encommon  documentation" />
     <meta name="twitter:title" content="encommon.utils.test.test_stdout | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../../search.html" />
@@ -150,25 +150,25 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">_pytest.capture</span> <span class="kn">import</span> <span class="n">CaptureFixture</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">_pytest.capture</span><span class="w"> </span><span class="kn">import</span> <span class="n">CaptureFixture</span>
 </span><span id="line-11">
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">ArrayColors</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">array_ansi</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">kvpair_ansi</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">make_ansi</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">print_ansi</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">..stdout</span> <span class="kn">import</span> <span class="n">strip_ansi</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">...config</span> <span class="kn">import</span> <span class="n">LoggerParams</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">...times</span> <span class="kn">import</span> <span class="n">Duration</span>
-</span><span id="line-20"><span class="kn">from</span> <span class="nn">...times</span> <span class="kn">import</span> <span class="n">Time</span>
-</span><span id="line-21"><span class="kn">from</span> <span class="nn">...times.common</span> <span class="kn">import</span> <span class="n">UNIXMPOCH</span>
-</span><span id="line-22"><span class="kn">from</span> <span class="nn">...types</span> <span class="kn">import</span> <span class="n">Empty</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayColors</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">array_ansi</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">kvpair_ansi</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_ansi</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">print_ansi</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">..stdout</span><span class="w"> </span><span class="kn">import</span> <span class="n">strip_ansi</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">...config</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerParams</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">...times</span><span class="w"> </span><span class="kn">import</span> <span class="n">Duration</span>
+</span><span id="line-20"><span class="kn">from</span><span class="w"> </span><span class="nn">...times</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
+</span><span id="line-21"><span class="kn">from</span><span class="w"> </span><span class="nn">...times.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNIXMPOCH</span>
+</span><span id="line-22"><span class="kn">from</span><span class="w"> </span><span class="nn">...types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Empty</span>
 </span><span id="line-23">
 </span><span id="line-24">
 </span><span id="line-25">
 <div class="viewcode-block" id="test_print_ansi">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_stdout.test_print_ansi">[docs]</a>
-</span><span id="line-26"><span class="k">def</span> <span class="nf">test_print_ansi</span><span class="p">(</span>
+</span><span id="line-26"><span class="k">def</span><span class="w"> </span><span class="nf">test_print_ansi</span><span class="p">(</span>
 </span><span id="line-27">    <span class="n">capsys</span><span class="p">:</span> <span class="n">CaptureFixture</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 </span><span id="line-28"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-29"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -188,7 +188,7 @@
 </span><span id="line-42">
 <div class="viewcode-block" id="test_make_ansi">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_stdout.test_make_ansi">[docs]</a>
-</span><span id="line-43"><span class="k">def</span> <span class="nf">test_make_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-43"><span class="k">def</span><span class="w"> </span><span class="nf">test_make_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-44"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-45"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-46"><span class="sd">    &quot;&quot;&quot;</span>
@@ -203,7 +203,7 @@
 </span><span id="line-54">
 <div class="viewcode-block" id="test_kvpair_ansi">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_stdout.test_kvpair_ansi">[docs]</a>
-</span><span id="line-55"><span class="k">def</span> <span class="nf">test_kvpair_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-55"><span class="k">def</span><span class="w"> </span><span class="nf">test_kvpair_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-56"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-57"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-58"><span class="sd">    &quot;&quot;&quot;</span>
@@ -231,7 +231,7 @@
 </span><span id="line-79">
 <div class="viewcode-block" id="test_strip_ansi">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_stdout.test_strip_ansi">[docs]</a>
-</span><span id="line-80"><span class="k">def</span> <span class="nf">test_strip_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-80"><span class="k">def</span><span class="w"> </span><span class="nf">test_strip_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-81"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-82"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-83"><span class="sd">    &quot;&quot;&quot;</span>
@@ -245,7 +245,7 @@
 </span><span id="line-90">
 <div class="viewcode-block" id="test_array_ansi">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_stdout.test_array_ansi">[docs]</a>
-</span><span id="line-91"><span class="k">def</span> <span class="nf">test_array_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CFQ001</span>
+</span><span id="line-91"><span class="k">def</span><span class="w"> </span><span class="nf">test_array_ansi</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># noqa: CFQ001</span>
 </span><span id="line-92"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-93"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-94"><span class="sd">    &quot;&quot;&quot;</span>
@@ -419,7 +419,7 @@
 </span><span id="line-261">
 <div class="viewcode-block" id="test_array_ansi_cover">
 <a class="viewcode-back" href="../../../../encommon.utils.test.html#encommon.utils.test.test_stdout.test_array_ansi_cover">[docs]</a>
-</span><span id="line-262"><span class="k">def</span> <span class="nf">test_array_ansi_cover</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-262"><span class="k">def</span><span class="w"> </span><span class="nf">test_array_ansi_cover</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-263"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-264"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-265"><span class="sd">    &quot;&quot;&quot;</span>

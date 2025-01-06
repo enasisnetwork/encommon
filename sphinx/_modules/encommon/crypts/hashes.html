@@ -15,7 +15,7 @@
     <title>encommon.crypts.hashes | encommon  documentation</title>
     <meta property="og:title" content="encommon.crypts.hashes | encommon  documentation" />
     <meta name="twitter:title" content="encommon.crypts.hashes | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,19 +150,19 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64encode</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">md5</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha1</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha512</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">NAMESPACE_DNS</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid3</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">base64</span><span class="w"> </span><span class="kn">import</span> <span class="n">b64encode</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">md5</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">sha1</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">sha256</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">hashlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">sha512</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">NAMESPACE_DNS</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">uuid</span><span class="w"> </span><span class="kn">import</span> <span class="n">uuid3</span>
 </span><span id="line-17">
 </span><span id="line-18">
 </span><span id="line-19">
 <div class="viewcode-block" id="Hashes">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.hashes.Hashes">[docs]</a>
-</span><span id="line-20"><span class="k">class</span> <span class="nc">Hashes</span><span class="p">:</span>
+</span><span id="line-20"><span class="k">class</span><span class="w"> </span><span class="nc">Hashes</span><span class="p">:</span>
 </span><span id="line-21"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-22"><span class="sd">    Create hash values using the provided at instantiation.</span>
 </span><span id="line-23">
@@ -184,7 +184,7 @@
 </span><span id="line-39">    <span class="n">__string</span><span class="p">:</span> <span class="nb">str</span>
 </span><span id="line-40">
 </span><span id="line-41">
-</span><span id="line-42">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-42">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-43">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-44">        <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-45">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -196,7 +196,7 @@
 </span><span id="line-51">
 </span><span id="line-52">
 </span><span id="line-53">    <span class="nd">@property</span>
-</span><span id="line-54">    <span class="k">def</span> <span class="nf">string</span><span class="p">(</span>
+</span><span id="line-54">    <span class="k">def</span><span class="w"> </span><span class="nf">string</span><span class="p">(</span>
 </span><span id="line-55">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-56">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-57"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -209,7 +209,7 @@
 </span><span id="line-64">
 </span><span id="line-65">
 </span><span id="line-66">    <span class="nd">@property</span>
-</span><span id="line-67">    <span class="k">def</span> <span class="nf">md5</span><span class="p">(</span>
+</span><span id="line-67">    <span class="k">def</span><span class="w"> </span><span class="nf">md5</span><span class="p">(</span>
 </span><span id="line-68">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-69">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-70"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -224,7 +224,7 @@
 </span><span id="line-79">
 </span><span id="line-80">
 </span><span id="line-81">    <span class="nd">@property</span>
-</span><span id="line-82">    <span class="k">def</span> <span class="nf">sha1</span><span class="p">(</span>
+</span><span id="line-82">    <span class="k">def</span><span class="w"> </span><span class="nf">sha1</span><span class="p">(</span>
 </span><span id="line-83">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-84">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-85"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -239,7 +239,7 @@
 </span><span id="line-94">
 </span><span id="line-95">
 </span><span id="line-96">    <span class="nd">@property</span>
-</span><span id="line-97">    <span class="k">def</span> <span class="nf">sha256</span><span class="p">(</span>
+</span><span id="line-97">    <span class="k">def</span><span class="w"> </span><span class="nf">sha256</span><span class="p">(</span>
 </span><span id="line-98">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-99">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-100"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -254,7 +254,7 @@
 </span><span id="line-109">
 </span><span id="line-110">
 </span><span id="line-111">    <span class="nd">@property</span>
-</span><span id="line-112">    <span class="k">def</span> <span class="nf">sha512</span><span class="p">(</span>
+</span><span id="line-112">    <span class="k">def</span><span class="w"> </span><span class="nf">sha512</span><span class="p">(</span>
 </span><span id="line-113">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-114">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-115"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -269,7 +269,7 @@
 </span><span id="line-124">
 </span><span id="line-125">
 </span><span id="line-126">    <span class="nd">@property</span>
-</span><span id="line-127">    <span class="k">def</span> <span class="nf">uuid</span><span class="p">(</span>
+</span><span id="line-127">    <span class="k">def</span><span class="w"> </span><span class="nf">uuid</span><span class="p">(</span>
 </span><span id="line-128">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-129">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-130"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -285,7 +285,7 @@
 </span><span id="line-140">
 </span><span id="line-141">
 </span><span id="line-142">    <span class="nd">@property</span>
-</span><span id="line-143">    <span class="k">def</span> <span class="nf">apache</span><span class="p">(</span>
+</span><span id="line-143">    <span class="k">def</span><span class="w"> </span><span class="nf">apache</span><span class="p">(</span>
 </span><span id="line-144">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-145">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-146"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>

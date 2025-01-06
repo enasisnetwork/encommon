@@ -15,7 +15,7 @@
     <title>encommon.times.params | encommon  documentation</title>
     <meta property="og:title" content="encommon.times.params | encommon  documentation" />
     <meta name="twitter:title" content="encommon.times.params | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,16 +150,16 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 </span><span id="line-12">
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
 </span><span id="line-14">
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">PARSABLE</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">SCHEDULE</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">.time</span> <span class="kn">import</span> <span class="n">Time</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">DictStrAny</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">PARSABLE</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">SCHEDULE</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictStrAny</span>
 </span><span id="line-20">
 </span><span id="line-21">
 </span><span id="line-22">
@@ -170,7 +170,7 @@
 </span><span id="line-27">
 <div class="viewcode-block" id="TimerParams">
 <a class="viewcode-back" href="../../../index.html#encommon.times.params.TimerParams">[docs]</a>
-</span><span id="line-28"><span class="k">class</span> <span class="nc">TimerParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
+</span><span id="line-28"><span class="k">class</span><span class="w"> </span><span class="nc">TimerParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
 </span><span id="line-29"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-30"><span class="sd">    Process and validate the core configuration parameters.</span>
 </span><span id="line-31"><span class="sd">    &quot;&quot;&quot;</span>
@@ -187,7 +187,7 @@
 </span><span id="line-42">              <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 </span><span id="line-43">
 </span><span id="line-44">
-</span><span id="line-45">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-45">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-46">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-47">        <span class="n">timer</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span>
 </span><span id="line-48">        <span class="n">start</span><span class="p">:</span> <span class="n">PARSABLE</span> <span class="o">=</span> <span class="s1">&#39;now&#39;</span><span class="p">,</span>
@@ -219,7 +219,7 @@
 </span><span id="line-73">
 <div class="viewcode-block" id="TimersParams">
 <a class="viewcode-back" href="../../../index.html#encommon.times.params.TimersParams">[docs]</a>
-</span><span id="line-74"><span class="k">class</span> <span class="nc">TimersParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
+</span><span id="line-74"><span class="k">class</span><span class="w"> </span><span class="nc">TimersParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
 </span><span id="line-75"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-76"><span class="sd">    Process and validate the core configuration parameters.</span>
 </span><span id="line-77"><span class="sd">    &quot;&quot;&quot;</span>
@@ -231,7 +231,7 @@
 </span><span id="line-83">              <span class="n">min_length</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
 </span><span id="line-84">
 </span><span id="line-85">
-</span><span id="line-86">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-86">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-87">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-88">        <span class="n">timers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_TIMERS</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-89">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -249,7 +249,7 @@
 </span><span id="line-100">
 <div class="viewcode-block" id="WindowParams">
 <a class="viewcode-back" href="../../../index.html#encommon.times.params.WindowParams">[docs]</a>
-</span><span id="line-101"><span class="k">class</span> <span class="nc">WindowParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
+</span><span id="line-101"><span class="k">class</span><span class="w"> </span><span class="nc">WindowParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
 </span><span id="line-102"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-103"><span class="sd">    Process and validate the core configuration parameters.</span>
 </span><span id="line-104"><span class="sd">    &quot;&quot;&quot;</span>
@@ -285,7 +285,7 @@
 </span><span id="line-134">              <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
 </span><span id="line-135">
 </span><span id="line-136">
-</span><span id="line-137">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-137">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-138">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-139">        <span class="n">window</span><span class="p">:</span> <span class="n">SCHEDULE</span> <span class="o">|</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="line-140">        <span class="o">*</span><span class="p">,</span>
@@ -337,7 +337,7 @@
 </span><span id="line-185">
 <div class="viewcode-block" id="WindowsParams">
 <a class="viewcode-back" href="../../../index.html#encommon.times.params.WindowsParams">[docs]</a>
-</span><span id="line-186"><span class="k">class</span> <span class="nc">WindowsParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
+</span><span id="line-186"><span class="k">class</span><span class="w"> </span><span class="nc">WindowsParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;forbid&#39;</span><span class="p">):</span>
 </span><span id="line-187"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-188"><span class="sd">    Process and validate the core configuration parameters.</span>
 </span><span id="line-189"><span class="sd">    &quot;&quot;&quot;</span>
@@ -349,7 +349,7 @@
 </span><span id="line-195">              <span class="n">min_length</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
 </span><span id="line-196">
 </span><span id="line-197">
-</span><span id="line-198">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-198">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-199">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-200">        <span class="n">windows</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">_WINDOWS</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-201">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>

@@ -15,7 +15,7 @@
     <title>encommon.times.utils | encommon  documentation</title>
     <meta property="og:title" content="encommon.times.utils | encommon  documentation" />
     <meta name="twitter:title" content="encommon.times.utils | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,20 +150,20 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">suppress</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timezone</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">tzinfo</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">suppress</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timezone</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">tzinfo</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 </span><span id="line-16">
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">gettz</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.tz</span><span class="w"> </span><span class="kn">import</span> <span class="n">gettz</span>
 </span><span id="line-18">
 </span><span id="line-19">
 </span><span id="line-20">
 <div class="viewcode-block" id="findtz">
 <a class="viewcode-back" href="../../../index.html#encommon.times.utils.findtz">[docs]</a>
-</span><span id="line-21"><span class="k">def</span> <span class="nf">findtz</span><span class="p">(</span>
+</span><span id="line-21"><span class="k">def</span><span class="w"> </span><span class="nf">findtz</span><span class="p">(</span>
 </span><span id="line-22">    <span class="n">tzname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-23"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tzinfo</span><span class="p">:</span>
 </span><span id="line-24"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -193,7 +193,7 @@
 </span><span id="line-47">
 <div class="viewcode-block" id="utcdatetime">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.utils.utcdatetime">[docs]</a>
-</span><span id="line-48"><span class="k">def</span> <span class="nf">utcdatetime</span><span class="p">(</span>
+</span><span id="line-48"><span class="k">def</span><span class="w"> </span><span class="nf">utcdatetime</span><span class="p">(</span>
 </span><span id="line-49">    <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-50">    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-51"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
@@ -230,7 +230,7 @@
 </span><span id="line-81">
 <div class="viewcode-block" id="strptime">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.utils.strptime">[docs]</a>
-</span><span id="line-82"><span class="k">def</span> <span class="nf">strptime</span><span class="p">(</span>
+</span><span id="line-82"><span class="k">def</span><span class="w"> </span><span class="nf">strptime</span><span class="p">(</span>
 </span><span id="line-83">    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-84">    <span class="n">formats</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 </span><span id="line-85"><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
@@ -253,7 +253,7 @@
 </span><span id="line-102">        <span class="n">formats</span> <span class="o">=</span> <span class="p">[</span><span class="n">formats</span><span class="p">]</span>
 </span><span id="line-103">
 </span><span id="line-104">
-</span><span id="line-105">    <span class="k">def</span> <span class="nf">_strptime</span><span class="p">(</span>
+</span><span id="line-105">    <span class="k">def</span><span class="w"> </span><span class="nf">_strptime</span><span class="p">(</span>
 </span><span id="line-106">        <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-107">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
 </span><span id="line-108">
@@ -276,7 +276,7 @@
 </span><span id="line-124">
 <div class="viewcode-block" id="strftime">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.utils.strftime">[docs]</a>
-</span><span id="line-125"><span class="k">def</span> <span class="nf">strftime</span><span class="p">(</span>
+</span><span id="line-125"><span class="k">def</span><span class="w"> </span><span class="nf">strftime</span><span class="p">(</span>
 </span><span id="line-126">    <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
 </span><span id="line-127">    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-128"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>

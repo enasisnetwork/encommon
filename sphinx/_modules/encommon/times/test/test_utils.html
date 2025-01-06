@@ -15,7 +15,7 @@
     <title>encommon.times.test.test_utils | encommon  documentation</title>
     <meta property="og:title" content="encommon.times.test.test_utils | encommon  documentation" />
     <meta name="twitter:title" content="encommon.times.test.test_utils | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../../search.html" />
@@ -150,21 +150,21 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">gettz</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.tz</span><span class="w"> </span><span class="kn">import</span> <span class="n">gettz</span>
 </span><span id="line-11">
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">raises</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">pytest</span><span class="w"> </span><span class="kn">import</span> <span class="n">raises</span>
 </span><span id="line-13">
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">..common</span> <span class="kn">import</span> <span class="n">STAMP_SIMPLE</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">..common</span> <span class="kn">import</span> <span class="n">UNIXEPOCH</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">findtz</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">strptime</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">utcdatetime</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">..common</span><span class="w"> </span><span class="kn">import</span> <span class="n">STAMP_SIMPLE</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">..common</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNIXEPOCH</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">findtz</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">strptime</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">utcdatetime</span>
 </span><span id="line-19">
 </span><span id="line-20">
 </span><span id="line-21">
 <div class="viewcode-block" id="test_utcdatetime">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_utils.test_utcdatetime">[docs]</a>
-</span><span id="line-22"><span class="k">def</span> <span class="nf">test_utcdatetime</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-22"><span class="k">def</span><span class="w"> </span><span class="nf">test_utcdatetime</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-23"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-24"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-25"><span class="sd">    &quot;&quot;&quot;</span>
@@ -196,7 +196,7 @@
 </span><span id="line-50">
 <div class="viewcode-block" id="test_strptime">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_utils.test_strptime">[docs]</a>
-</span><span id="line-51"><span class="k">def</span> <span class="nf">test_strptime</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-51"><span class="k">def</span><span class="w"> </span><span class="nf">test_strptime</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-52"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-53"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-54"><span class="sd">    &quot;&quot;&quot;</span>
@@ -217,7 +217,7 @@
 </span><span id="line-68">
 <div class="viewcode-block" id="test_strptime_raises">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_utils.test_strptime_raises">[docs]</a>
-</span><span id="line-69"><span class="k">def</span> <span class="nf">test_strptime_raises</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-69"><span class="k">def</span><span class="w"> </span><span class="nf">test_strptime_raises</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-70"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-71"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-72"><span class="sd">    &quot;&quot;&quot;</span>
@@ -236,7 +236,7 @@
 </span><span id="line-84">
 <div class="viewcode-block" id="test_findtz">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_utils.test_findtz">[docs]</a>
-</span><span id="line-85"><span class="k">def</span> <span class="nf">test_findtz</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-85"><span class="k">def</span><span class="w"> </span><span class="nf">test_findtz</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-86"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-87"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-88"><span class="sd">    &quot;&quot;&quot;</span>
@@ -251,7 +251,7 @@
 </span><span id="line-96">
 <div class="viewcode-block" id="test_findtz_raises">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_utils.test_findtz_raises">[docs]</a>
-</span><span id="line-97"><span class="k">def</span> <span class="nf">test_findtz_raises</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-97"><span class="k">def</span><span class="w"> </span><span class="nf">test_findtz_raises</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-98"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-99"><span class="sd">    Perform various tests associated with relevant routines.</span>
 </span><span id="line-100"><span class="sd">    &quot;&quot;&quot;</span>

@@ -15,7 +15,7 @@
     <title>encommon.crypts.crypts | encommon  documentation</title>
     <meta property="og:title" content="encommon.crypts.crypts | encommon  documentation" />
     <meta name="twitter:title" content="encommon.crypts.crypts | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,20 +150,20 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="nb">compile</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">match</span> <span class="k">as</span> <span class="n">re_match</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span> <span class="k">as</span> <span class="n">re_sub</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="nb">compile</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="n">match</span> <span class="k">as</span> <span class="n">re_match</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="n">sub</span> <span class="k">as</span> <span class="n">re_sub</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 </span><span id="line-16">
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">cryptography.fernet</span> <span class="kn">import</span> <span class="n">Fernet</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.fernet</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fernet</span>
 </span><span id="line-18">
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">SEMPTY</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEMPTY</span>
 </span><span id="line-20">
 </span><span id="line-21"><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="line-22">    <span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">CryptParams</span>
-</span><span id="line-23">    <span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">CryptsParams</span>
+</span><span id="line-22">    <span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">CryptParams</span>
+</span><span id="line-23">    <span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">CryptsParams</span>
 </span><span id="line-24">
 </span><span id="line-25">
 </span><span id="line-26">
@@ -174,7 +174,7 @@
 </span><span id="line-31">
 <div class="viewcode-block" id="Crypts">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.crypts.Crypts">[docs]</a>
-</span><span id="line-32"><span class="k">class</span> <span class="nc">Crypts</span><span class="p">:</span>
+</span><span id="line-32"><span class="k">class</span><span class="w"> </span><span class="nc">Crypts</span><span class="p">:</span>
 </span><span id="line-33"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-34"><span class="sd">    Encrypt and decrypt values using passphrase dictionary.</span>
 </span><span id="line-35">
@@ -199,7 +199,7 @@
 </span><span id="line-54">    <span class="n">__params</span><span class="p">:</span> <span class="s1">&#39;CryptsParams&#39;</span>
 </span><span id="line-55">
 </span><span id="line-56">
-</span><span id="line-57">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-57">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-58">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-59">        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;CryptsParams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-60">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -207,7 +207,7 @@
 </span><span id="line-62"><span class="sd">        Initialize instance for class using provided parameters.</span>
 </span><span id="line-63"><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="line-64">
-</span><span id="line-65">        <span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="p">(</span>
+</span><span id="line-65">        <span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
 </span><span id="line-66">            <span class="n">CryptsParams</span><span class="p">)</span>
 </span><span id="line-67">
 </span><span id="line-68">        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -218,7 +218,7 @@
 </span><span id="line-73">
 </span><span id="line-74">
 </span><span id="line-75">    <span class="nd">@property</span>
-</span><span id="line-76">    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span>
+</span><span id="line-76">    <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span>
 </span><span id="line-77">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-78">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;CryptsParams&#39;</span><span class="p">:</span>
 </span><span id="line-79"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -232,7 +232,7 @@
 </span><span id="line-87">
 <div class="viewcode-block" id="Crypts.encrypt">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.crypts.Crypts.encrypt">[docs]</a>
-</span><span id="line-88">    <span class="k">def</span> <span class="nf">encrypt</span><span class="p">(</span>
+</span><span id="line-88">    <span class="k">def</span><span class="w"> </span><span class="nf">encrypt</span><span class="p">(</span>
 </span><span id="line-89">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-90">        <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-91">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
@@ -271,7 +271,7 @@
 </span><span id="line-123">
 <div class="viewcode-block" id="Crypts.decrypt">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.crypts.Crypts.decrypt">[docs]</a>
-</span><span id="line-124">    <span class="k">def</span> <span class="nf">decrypt</span><span class="p">(</span>
+</span><span id="line-124">    <span class="k">def</span><span class="w"> </span><span class="nf">decrypt</span><span class="p">(</span>
 </span><span id="line-125">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-126">        <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-127">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -315,7 +315,7 @@
 </span><span id="line-164">
 <div class="viewcode-block" id="Crypts.create">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.crypts.Crypts.create">[docs]</a>
-</span><span id="line-165">    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span>
+</span><span id="line-165">    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
 </span><span id="line-166">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-167">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-168">        <span class="n">params</span><span class="p">:</span> <span class="s1">&#39;CryptParams&#39;</span><span class="p">,</span>
@@ -340,7 +340,7 @@
 </span><span id="line-186">
 <div class="viewcode-block" id="Crypts.delete">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.crypts.Crypts.delete">[docs]</a>
-</span><span id="line-187">    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span>
+</span><span id="line-187">    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>
 </span><span id="line-188">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-189">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-190">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -364,7 +364,7 @@
 <div class="viewcode-block" id="Crypts.keygen">
 <a class="viewcode-back" href="../../../index.html#encommon.crypts.crypts.Crypts.keygen">[docs]</a>
 </span><span id="line-207">    <span class="nd">@classmethod</span>
-</span><span id="line-208">    <span class="k">def</span> <span class="nf">keygen</span><span class="p">(</span>
+</span><span id="line-208">    <span class="k">def</span><span class="w"> </span><span class="nf">keygen</span><span class="p">(</span>
 </span><span id="line-209">        <span class="bp">cls</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
 </span><span id="line-210">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-211"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -383,7 +383,7 @@
 </span><span id="line-222">
 <div class="viewcode-block" id="crypt_clean">
 <a class="viewcode-back" href="../../../encommon.crypts.html#encommon.crypts.crypts.crypt_clean">[docs]</a>
-</span><span id="line-223"><span class="k">def</span> <span class="nf">crypt_clean</span><span class="p">(</span>
+</span><span id="line-223"><span class="k">def</span><span class="w"> </span><span class="nf">crypt_clean</span><span class="p">(</span>
 </span><span id="line-224">    <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-225"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-226"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

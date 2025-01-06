@@ -15,7 +15,7 @@
     <title>encommon.times.timer | encommon  documentation</title>
     <meta property="og:title" content="encommon.times.timer | encommon  documentation" />
     <meta name="twitter:title" content="encommon.times.timer | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,17 +150,17 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
 </span><span id="line-11">
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">NUMERIC</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">PARSABLE</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">.time</span> <span class="kn">import</span> <span class="n">Time</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">NUMERIC</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">PARSABLE</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
 </span><span id="line-15">
 </span><span id="line-16">
 </span><span id="line-17">
 <div class="viewcode-block" id="Timer">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timer.Timer">[docs]</a>
-</span><span id="line-18"><span class="k">class</span> <span class="nc">Timer</span><span class="p">:</span>
+</span><span id="line-18"><span class="k">class</span><span class="w"> </span><span class="nc">Timer</span><span class="p">:</span>
 </span><span id="line-19"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-20"><span class="sd">    Process and operate the timer using provided interval.</span>
 </span><span id="line-21">
@@ -184,7 +184,7 @@
 </span><span id="line-39">    <span class="n">__time</span><span class="p">:</span> <span class="n">Time</span>
 </span><span id="line-40">
 </span><span id="line-41">
-</span><span id="line-42">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-42">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-43">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-44">        <span class="n">timer</span><span class="p">:</span> <span class="n">NUMERIC</span><span class="p">,</span>
 </span><span id="line-45">        <span class="o">*</span><span class="p">,</span>
@@ -202,7 +202,7 @@
 </span><span id="line-57">
 </span><span id="line-58">
 </span><span id="line-59">    <span class="nd">@property</span>
-</span><span id="line-60">    <span class="k">def</span> <span class="nf">timer</span><span class="p">(</span>
+</span><span id="line-60">    <span class="k">def</span><span class="w"> </span><span class="nf">timer</span><span class="p">(</span>
 </span><span id="line-61">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-62">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="line-63"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -215,7 +215,7 @@
 </span><span id="line-70">
 </span><span id="line-71">
 </span><span id="line-72">    <span class="nd">@property</span>
-</span><span id="line-73">    <span class="k">def</span> <span class="nf">time</span><span class="p">(</span>
+</span><span id="line-73">    <span class="k">def</span><span class="w"> </span><span class="nf">time</span><span class="p">(</span>
 </span><span id="line-74">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-75">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
 </span><span id="line-76"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -228,7 +228,7 @@
 </span><span id="line-83">
 </span><span id="line-84">
 </span><span id="line-85">    <span class="nd">@property</span>
-</span><span id="line-86">    <span class="k">def</span> <span class="nf">since</span><span class="p">(</span>
+</span><span id="line-86">    <span class="k">def</span><span class="w"> </span><span class="nf">since</span><span class="p">(</span>
 </span><span id="line-87">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-88">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="line-89"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -241,7 +241,7 @@
 </span><span id="line-96">
 </span><span id="line-97">
 </span><span id="line-98">    <span class="nd">@property</span>
-</span><span id="line-99">    <span class="k">def</span> <span class="nf">remains</span><span class="p">(</span>
+</span><span id="line-99">    <span class="k">def</span><span class="w"> </span><span class="nf">remains</span><span class="p">(</span>
 </span><span id="line-100">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-101">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="line-102"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -258,7 +258,7 @@
 </span><span id="line-113">
 <div class="viewcode-block" id="Timer.ready">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timer.Timer.ready">[docs]</a>
-</span><span id="line-114">    <span class="k">def</span> <span class="nf">ready</span><span class="p">(</span>
+</span><span id="line-114">    <span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span>
 </span><span id="line-115">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-116">        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="line-117">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -281,7 +281,7 @@
 </span><span id="line-133">
 <div class="viewcode-block" id="Timer.pause">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timer.Timer.pause">[docs]</a>
-</span><span id="line-134">    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span>
+</span><span id="line-134">    <span class="k">def</span><span class="w"> </span><span class="nf">pause</span><span class="p">(</span>
 </span><span id="line-135">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-136">        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="line-137">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -298,7 +298,7 @@
 </span><span id="line-147">
 <div class="viewcode-block" id="Timer.update">
 <a class="viewcode-back" href="../../../index.html#encommon.times.timer.Timer.update">[docs]</a>
-</span><span id="line-148">    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span>
+</span><span id="line-148">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
 </span><span id="line-149">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-150">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-151">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>

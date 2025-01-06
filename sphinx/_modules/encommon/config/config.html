@@ -15,7 +15,7 @@
     <title>encommon.config.config | encommon  documentation</title>
     <meta property="og:title" content="encommon.config.config | encommon  documentation" />
     <meta name="twitter:title" content="encommon.config.config | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,30 +150,30 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
 </span><span id="line-14">
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">.files</span> <span class="kn">import</span> <span class="n">ConfigFiles</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">.params</span> <span class="kn">import</span> <span class="n">Params</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">.paths</span> <span class="kn">import</span> <span class="n">ConfigPaths</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">config_paths</span>
-</span><span id="line-20"><span class="kn">from</span> <span class="nn">..crypts</span> <span class="kn">import</span> <span class="n">Crypts</span>
-</span><span id="line-21"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">DictStrAny</span>
-</span><span id="line-22"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">merge_dicts</span>
-</span><span id="line-23"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">setate</span>
-</span><span id="line-24"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">sort_dict</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">.files</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigFiles</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">Params</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">.paths</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigPaths</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">config_paths</span>
+</span><span id="line-20"><span class="kn">from</span><span class="w"> </span><span class="nn">..crypts</span><span class="w"> </span><span class="kn">import</span> <span class="n">Crypts</span>
+</span><span id="line-21"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictStrAny</span>
+</span><span id="line-22"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">merge_dicts</span>
+</span><span id="line-23"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">setate</span>
+</span><span id="line-24"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">sort_dict</span>
 </span><span id="line-25">
 </span><span id="line-26"><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="line-27">    <span class="kn">from</span> <span class="nn">..utils.common</span> <span class="kn">import</span> <span class="n">PATHABLE</span>
+</span><span id="line-27">    <span class="kn">from</span><span class="w"> </span><span class="nn">..utils.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">PATHABLE</span>
 </span><span id="line-28">
 </span><span id="line-29">
 </span><span id="line-30">
 <div class="viewcode-block" id="Config">
 <a class="viewcode-back" href="../../../index.html#encommon.config.config.Config">[docs]</a>
-</span><span id="line-31"><span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+</span><span id="line-31"><span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
 </span><span id="line-32"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-33"><span class="sd">    Contain the configurations from the arguments and files.</span>
 </span><span id="line-34">
@@ -211,7 +211,7 @@
 </span><span id="line-66">    <span class="n">__crypts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Crypts</span><span class="p">]</span>
 </span><span id="line-67">
 </span><span id="line-68">
-</span><span id="line-69">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="line-69">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 </span><span id="line-70">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-71">        <span class="n">files</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;PATHABLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="line-72">        <span class="o">*</span><span class="p">,</span>
@@ -251,7 +251,7 @@
 </span><span id="line-106">
 </span><span id="line-107">
 </span><span id="line-108">    <span class="nd">@property</span>
-</span><span id="line-109">    <span class="k">def</span> <span class="nf">files</span><span class="p">(</span>
+</span><span id="line-109">    <span class="k">def</span><span class="w"> </span><span class="nf">files</span><span class="p">(</span>
 </span><span id="line-110">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-111">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigFiles</span><span class="p">:</span>
 </span><span id="line-112"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -264,7 +264,7 @@
 </span><span id="line-119">
 </span><span id="line-120">
 </span><span id="line-121">    <span class="nd">@property</span>
-</span><span id="line-122">    <span class="k">def</span> <span class="nf">paths</span><span class="p">(</span>
+</span><span id="line-122">    <span class="k">def</span><span class="w"> </span><span class="nf">paths</span><span class="p">(</span>
 </span><span id="line-123">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-124">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigPaths</span><span class="p">:</span>
 </span><span id="line-125"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -277,7 +277,7 @@
 </span><span id="line-132">
 </span><span id="line-133">
 </span><span id="line-134">    <span class="nd">@property</span>
-</span><span id="line-135">    <span class="k">def</span> <span class="nf">cargs</span><span class="p">(</span>
+</span><span id="line-135">    <span class="k">def</span><span class="w"> </span><span class="nf">cargs</span><span class="p">(</span>
 </span><span id="line-136">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-137">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-138"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -299,7 +299,7 @@
 </span><span id="line-154">
 </span><span id="line-155">
 </span><span id="line-156">    <span class="nd">@property</span>
-</span><span id="line-157">    <span class="k">def</span> <span class="nf">sargs</span><span class="p">(</span>
+</span><span id="line-157">    <span class="k">def</span><span class="w"> </span><span class="nf">sargs</span><span class="p">(</span>
 </span><span id="line-158">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-159">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-160"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -321,7 +321,7 @@
 </span><span id="line-176">
 </span><span id="line-177">
 </span><span id="line-178">    <span class="nd">@property</span>
-</span><span id="line-179">    <span class="k">def</span> <span class="nf">basic</span><span class="p">(</span>
+</span><span id="line-179">    <span class="k">def</span><span class="w"> </span><span class="nf">basic</span><span class="p">(</span>
 </span><span id="line-180">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-181">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-182"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -343,7 +343,7 @@
 </span><span id="line-198">
 </span><span id="line-199">
 </span><span id="line-200">    <span class="nd">@property</span>
-</span><span id="line-201">    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+</span><span id="line-201">    <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span>
 </span><span id="line-202">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-203">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-204"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -376,7 +376,7 @@
 </span><span id="line-231">
 </span><span id="line-232">
 </span><span id="line-233">    <span class="nd">@property</span>
-</span><span id="line-234">    <span class="k">def</span> <span class="nf">model</span><span class="p">(</span>
+</span><span id="line-234">    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span>
 </span><span id="line-235">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-236">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
 </span><span id="line-237"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -389,7 +389,7 @@
 </span><span id="line-244">
 </span><span id="line-245">
 </span><span id="line-246">    <span class="nd">@property</span>
-</span><span id="line-247">    <span class="k">def</span> <span class="nf">params</span><span class="p">(</span>
+</span><span id="line-247">    <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span>
 </span><span id="line-248">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-249">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Params</span><span class="p">:</span>
 </span><span id="line-250"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -412,7 +412,7 @@
 </span><span id="line-267">
 </span><span id="line-268">
 </span><span id="line-269">    <span class="nd">@property</span>
-</span><span id="line-270">    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span>
+</span><span id="line-270">    <span class="k">def</span><span class="w"> </span><span class="nf">config</span><span class="p">(</span>
 </span><span id="line-271">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-272">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
 </span><span id="line-273"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -425,7 +425,7 @@
 </span><span id="line-280">
 </span><span id="line-281">
 </span><span id="line-282">    <span class="nd">@property</span>
-</span><span id="line-283">    <span class="k">def</span> <span class="nf">logger</span><span class="p">(</span>
+</span><span id="line-283">    <span class="k">def</span><span class="w"> </span><span class="nf">logger</span><span class="p">(</span>
 </span><span id="line-284">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-285">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Logger</span><span class="p">:</span>
 </span><span id="line-286"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -449,7 +449,7 @@
 </span><span id="line-304">
 </span><span id="line-305">
 </span><span id="line-306">    <span class="nd">@property</span>
-</span><span id="line-307">    <span class="k">def</span> <span class="nf">crypts</span><span class="p">(</span>
+</span><span id="line-307">    <span class="k">def</span><span class="w"> </span><span class="nf">crypts</span><span class="p">(</span>
 </span><span id="line-308">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-309">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Crypts</span><span class="p">:</span>
 </span><span id="line-310"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>

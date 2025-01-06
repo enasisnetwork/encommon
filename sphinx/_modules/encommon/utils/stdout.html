@@ -15,7 +15,7 @@
     <title>encommon.utils.stdout | encommon  documentation</title>
     <meta property="og:title" content="encommon.utils.stdout | encommon  documentation" />
     <meta name="twitter:title" content="encommon.utils.stdout | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8d216cef" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
         <link rel="search" title="Search" href="../../../search.html" />
@@ -150,30 +150,30 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">asdict</span>
-</span><span id="line-11"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-</span><span id="line-12"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">is_dataclass</span>
-</span><span id="line-13"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="nb">compile</span>
-</span><span id="line-14"><span class="kn">from</span> <span class="nn">re</span> <span class="kn">import</span> <span class="n">sub</span> <span class="k">as</span> <span class="n">re_sub</span>
-</span><span id="line-15"><span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stdout</span>
-</span><span id="line-16"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-</span><span id="line-17"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
-</span><span id="line-18"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-</span><span id="line-19"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
-</span><span id="line-20"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdict</span>
+</span><span id="line-11"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+</span><span id="line-12"><span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_dataclass</span>
+</span><span id="line-13"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="nb">compile</span>
+</span><span id="line-14"><span class="kn">from</span><span class="w"> </span><span class="nn">re</span><span class="w"> </span><span class="kn">import</span> <span class="n">sub</span> <span class="k">as</span> <span class="n">re_sub</span>
+</span><span id="line-15"><span class="kn">from</span><span class="w"> </span><span class="nn">sys</span><span class="w"> </span><span class="kn">import</span> <span class="n">stdout</span>
+</span><span id="line-16"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span id="line-17"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+</span><span id="line-18"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-19"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+</span><span id="line-20"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
 </span><span id="line-21">
-</span><span id="line-22"><span class="kn">from</span> <span class="nn">.common</span> <span class="kn">import</span> <span class="n">JOINABLE</span>
-</span><span id="line-23"><span class="kn">from</span> <span class="nn">..times</span> <span class="kn">import</span> <span class="n">Duration</span>
-</span><span id="line-24"><span class="kn">from</span> <span class="nn">..times</span> <span class="kn">import</span> <span class="n">Time</span>
-</span><span id="line-25"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-</span><span id="line-26"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">Empty</span>
-</span><span id="line-27"><span class="kn">from</span> <span class="nn">..types</span> <span class="kn">import</span> <span class="n">clsname</span>
-</span><span id="line-28"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">COMMAD</span>
-</span><span id="line-29"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">NEWLINE</span>
-</span><span id="line-30"><span class="kn">from</span> <span class="nn">..types.strings</span> <span class="kn">import</span> <span class="n">SEMPTY</span>
+</span><span id="line-22"><span class="kn">from</span><span class="w"> </span><span class="nn">.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">JOINABLE</span>
+</span><span id="line-23"><span class="kn">from</span><span class="w"> </span><span class="nn">..times</span><span class="w"> </span><span class="kn">import</span> <span class="n">Duration</span>
+</span><span id="line-24"><span class="kn">from</span><span class="w"> </span><span class="nn">..times</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
+</span><span id="line-25"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+</span><span id="line-26"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Empty</span>
+</span><span id="line-27"><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">clsname</span>
+</span><span id="line-28"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">COMMAD</span>
+</span><span id="line-29"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">NEWLINE</span>
+</span><span id="line-30"><span class="kn">from</span><span class="w"> </span><span class="nn">..types.strings</span><span class="w"> </span><span class="kn">import</span> <span class="n">SEMPTY</span>
 </span><span id="line-31">
 </span><span id="line-32"><span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-</span><span id="line-33">    <span class="kn">from</span> <span class="nn">_typeshed</span> <span class="kn">import</span> <span class="n">DataclassInstance</span>
+</span><span id="line-33">    <span class="kn">from</span><span class="w"> </span><span class="nn">_typeshed</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataclassInstance</span>
 </span><span id="line-34">
 </span><span id="line-35">
 </span><span id="line-36">
@@ -203,7 +203,7 @@
 <div class="viewcode-block" id="ArrayColors">
 <a class="viewcode-back" href="../../../encommon.utils.html#encommon.utils.stdout.ArrayColors">[docs]</a>
 </span><span id="line-60"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="line-61"><span class="k">class</span> <span class="nc">ArrayColors</span><span class="p">:</span>
+</span><span id="line-61"><span class="k">class</span><span class="w"> </span><span class="nc">ArrayColors</span><span class="p">:</span>
 </span><span id="line-62"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-63"><span class="sd">    Colors used to colorize the provided array like object.</span>
 </span><span id="line-64"><span class="sd">    &quot;&quot;&quot;</span>
@@ -228,7 +228,7 @@
 </span><span id="line-82">
 <div class="viewcode-block" id="print_ansi">
 <a class="viewcode-back" href="../../../index.html#encommon.utils.stdout.print_ansi">[docs]</a>
-</span><span id="line-83"><span class="k">def</span> <span class="nf">print_ansi</span><span class="p">(</span>
+</span><span id="line-83"><span class="k">def</span><span class="w"> </span><span class="nf">print_ansi</span><span class="p">(</span>
 </span><span id="line-84">    <span class="n">string</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">SEMPTY</span><span class="p">,</span>
 </span><span id="line-85">    <span class="n">method</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;stdout&#39;</span><span class="p">,</span> <span class="s1">&#39;print&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;stdout&#39;</span><span class="p">,</span>
 </span><span id="line-86">    <span class="n">output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -262,7 +262,7 @@
 </span><span id="line-113">
 <div class="viewcode-block" id="make_ansi">
 <a class="viewcode-back" href="../../../index.html#encommon.utils.stdout.make_ansi">[docs]</a>
-</span><span id="line-114"><span class="k">def</span> <span class="nf">make_ansi</span><span class="p">(</span>
+</span><span id="line-114"><span class="k">def</span><span class="w"> </span><span class="nf">make_ansi</span><span class="p">(</span>
 </span><span id="line-115">    <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-116"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-117"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -287,7 +287,7 @@
 </span><span id="line-135">
 <div class="viewcode-block" id="kvpair_ansi">
 <a class="viewcode-back" href="../../../index.html#encommon.utils.stdout.kvpair_ansi">[docs]</a>
-</span><span id="line-136"><span class="k">def</span> <span class="nf">kvpair_ansi</span><span class="p">(</span>
+</span><span id="line-136"><span class="k">def</span><span class="w"> </span><span class="nf">kvpair_ansi</span><span class="p">(</span>
 </span><span id="line-137">    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-138">    <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 </span><span id="line-139"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -320,7 +320,7 @@
 </span><span id="line-165">
 <div class="viewcode-block" id="strip_ansi">
 <a class="viewcode-back" href="../../../index.html#encommon.utils.stdout.strip_ansi">[docs]</a>
-</span><span id="line-166"><span class="k">def</span> <span class="nf">strip_ansi</span><span class="p">(</span>
+</span><span id="line-166"><span class="k">def</span><span class="w"> </span><span class="nf">strip_ansi</span><span class="p">(</span>
 </span><span id="line-167">    <span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-168"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-169"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -342,7 +342,7 @@
 </span><span id="line-184">
 <div class="viewcode-block" id="array_ansi">
 <a class="viewcode-back" href="../../../index.html#encommon.utils.stdout.array_ansi">[docs]</a>
-</span><span id="line-185"><span class="k">def</span> <span class="nf">array_ansi</span><span class="p">(</span>  <span class="c1"># noqa: CFQ001, CFQ004</span>
+</span><span id="line-185"><span class="k">def</span><span class="w"> </span><span class="nf">array_ansi</span><span class="p">(</span>  <span class="c1"># noqa: CFQ001, CFQ004</span>
 </span><span id="line-186">    <span class="n">source</span><span class="p">:</span> <span class="n">ANSIARRAY</span><span class="p">,</span>
 </span><span id="line-187">    <span class="o">*</span><span class="p">,</span>
 </span><span id="line-188">    <span class="n">indent</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -373,7 +373,7 @@
 </span><span id="line-213">    <span class="n">space</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
 </span><span id="line-214">
 </span><span id="line-215">
-</span><span id="line-216">    <span class="k">def</span> <span class="nf">_append</span><span class="p">(</span>
+</span><span id="line-216">    <span class="k">def</span><span class="w"> </span><span class="nf">_append</span><span class="p">(</span>
 </span><span id="line-217">        <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="line-218">        <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 </span><span id="line-219">        <span class="n">indent</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -427,7 +427,7 @@
 </span><span id="line-267">            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </span><span id="line-268">
 </span><span id="line-269">
-</span><span id="line-270">    <span class="k">def</span> <span class="nf">_concrete</span><span class="p">(</span>
+</span><span id="line-270">    <span class="k">def</span><span class="w"> </span><span class="nf">_concrete</span><span class="p">(</span>
 </span><span id="line-271">        <span class="n">source</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 </span><span id="line-272">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-273">
@@ -462,7 +462,7 @@
 </span><span id="line-302">        <span class="k">return</span> <span class="n">string</span>
 </span><span id="line-303">
 </span><span id="line-304">
-</span><span id="line-305">    <span class="k">def</span> <span class="nf">_dict</span><span class="p">(</span>
+</span><span id="line-305">    <span class="k">def</span><span class="w"> </span><span class="nf">_dict</span><span class="p">(</span>
 </span><span id="line-306">        <span class="n">source</span><span class="p">:</span> <span class="n">ANSIARRAD</span><span class="p">,</span>
 </span><span id="line-307">        <span class="n">indent</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="line-308">        <span class="n">refers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -490,7 +490,7 @@
 </span><span id="line-330">                <span class="n">refers</span><span class="o">=</span><span class="n">refers</span> <span class="ow">or</span> <span class="nb">set</span><span class="p">())</span>
 </span><span id="line-331">
 </span><span id="line-332">
-</span><span id="line-333">    <span class="k">def</span> <span class="nf">_list</span><span class="p">(</span>
+</span><span id="line-333">    <span class="k">def</span><span class="w"> </span><span class="nf">_list</span><span class="p">(</span>
 </span><span id="line-334">        <span class="n">source</span><span class="p">:</span> <span class="n">ANSIARRAL</span><span class="p">,</span>
 </span><span id="line-335">        <span class="n">indent</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
 </span><span id="line-336">        <span class="n">refers</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -510,7 +510,7 @@
 </span><span id="line-350">                <span class="n">refers</span><span class="o">=</span><span class="n">refers</span> <span class="ow">or</span> <span class="nb">set</span><span class="p">())</span>
 </span><span id="line-351">
 </span><span id="line-352">
-</span><span id="line-353">    <span class="k">def</span> <span class="nf">_process</span><span class="p">(</span>
+</span><span id="line-353">    <span class="k">def</span><span class="w"> </span><span class="nf">_process</span><span class="p">(</span>
 </span><span id="line-354">        <span class="n">source</span><span class="p">:</span> <span class="n">ANSIARRAY</span><span class="p">,</span>
 </span><span id="line-355">        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 </span><span id="line-356">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
