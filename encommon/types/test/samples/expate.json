@@ -1,0 +1,202 @@
+{
+  "recurse_implode": {
+    "dict1": "dict1",
+    "str": "d1string",
+    "list": [
+      "d1list"
+    ],
+    "tuple": [
+      1,
+      2
+    ],
+    "dict": {
+      "key": "d1dict"
+    },
+    "bool": false,
+    "null": null,
+    "recurse": {
+      "dict1": "dict1",
+      "str": "d1string",
+      "list": [
+        "d1list"
+      ],
+      "tuple": [
+        1,
+        2
+      ],
+      "dict": {
+        "key": "d1dict"
+      },
+      "bool": false,
+      "null": null
+    },
+    "nested": [
+      {
+        "dict1": "dict1",
+        "str": "d1string",
+        "list": [
+          "d1list"
+        ],
+        "tuple": [
+          1,
+          2
+        ],
+        "dict": {
+          "key": "d1dict"
+        },
+        "bool": false,
+        "null": null
+      }
+    ]
+  },
+  "nocurse_noplode": {
+    "dict1": "dict1",
+    "str": "d1string",
+    "list": [
+      "d1list"
+    ],
+    "tuple": [
+      1,
+      2
+    ],
+    "dict": {
+      "key": "d1dict"
+    },
+    "bool": false,
+    "null": null,
+    "recurse": {
+      "dict1": "dict1",
+      "str": "d1string",
+      "list": [
+        "d1list"
+      ],
+      "tuple": [
+        1,
+        2
+      ],
+      "dict": {
+        "key": "d1dict"
+      },
+      "bool": false,
+      "null": null
+    },
+    "nested": [
+      {
+        "dict1": "dict1",
+        "str": "d1string",
+        "list": [
+          "d1list"
+        ],
+        "tuple": [
+          1,
+          2
+        ],
+        "dict": {
+          "key": "d1dict"
+        },
+        "bool": false,
+        "null": null
+      }
+    ]
+  },
+  "recurse_noplode": {
+    "dict1": "dict1",
+    "str": "d1string",
+    "list": [
+      "d1list"
+    ],
+    "tuple": [
+      1,
+      2
+    ],
+    "dict": {
+      "key": "d1dict"
+    },
+    "bool": false,
+    "null": null,
+    "recurse": {
+      "dict1": "dict1",
+      "str": "d1string",
+      "list": [
+        "d1list"
+      ],
+      "tuple": [
+        1,
+        2
+      ],
+      "dict": {
+        "key": "d1dict"
+      },
+      "bool": false,
+      "null": null
+    },
+    "nested": [
+      {
+        "dict1": "dict1",
+        "str": "d1string",
+        "list": [
+          "d1list"
+        ],
+        "tuple": [
+          1,
+          2
+        ],
+        "dict": {
+          "key": "d1dict"
+        },
+        "bool": false,
+        "null": null
+      }
+    ]
+  },
+  "nocurse_implode": {
+    "dict1": "dict1",
+    "str": "d1string",
+    "list": [
+      "d1list"
+    ],
+    "tuple": [
+      1,
+      2
+    ],
+    "dict": {
+      "key": "d1dict"
+    },
+    "bool": false,
+    "null": null,
+    "recurse": {
+      "dict1": "dict1",
+      "str": "d1string",
+      "list": [
+        "d1list"
+      ],
+      "tuple": [
+        1,
+        2
+      ],
+      "dict": {
+        "key": "d1dict"
+      },
+      "bool": false,
+      "null": null
+    },
+    "nested": [
+      {
+        "dict1": "dict1",
+        "str": "d1string",
+        "list": [
+          "d1list"
+        ],
+        "tuple": [
+          1,
+          2
+        ],
+        "dict": {
+          "key": "d1dict"
+        },
+        "bool": false,
+        "null": null
+      }
+    ]
+  }
+}

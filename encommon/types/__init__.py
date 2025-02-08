@@ -17,7 +17,9 @@ from .lists import dedup_list
 from .lists import fuzzy_list
 from .lists import inlist
 from .notate import delate
+from .notate import expate
 from .notate import getate
+from .notate import impate
 from .notate import setate
 from .strings import hasstr
 from .strings import inrepr
@@ -39,8 +41,10 @@ __all__ = [
     'delate',
     'DictStrAny',
     'Empty',
+    'expate',
     'getate',
     'hasstr',
+    'impate',
     'inlist',
     'inrepr',
     'instr',

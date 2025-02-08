@@ -8,6 +8,13 @@ is permitted, for more information consult the project license file.
 
 
 from copy import deepcopy
+from pathlib import Path
+
+
+
+SAMPLES = (
+    Path(__file__).parent
+    / 'samples')
 
 
 
