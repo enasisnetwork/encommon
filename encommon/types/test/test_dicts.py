@@ -140,6 +140,7 @@ def test_merge_dicts() -> None:  # noqa: CFQ001
     assert source is not _source
 
 
+
 def test_sort_dict() -> None:
     """
     Perform various tests associated with relevant routines.

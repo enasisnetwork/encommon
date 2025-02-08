@@ -193,6 +193,185 @@ def delate(
 
 
 
+def impate(  # noqa: CFQ001,CFQ004
+    source: DictStrAny | list[DictStrAny],
+    delim: str = '/',
+    parent: Optional[str] = None,
+    *,
+    implode_list: bool = True,
+    recurse_list: bool = True,
+) -> DictStrAny | list[DictStrAny]:
+    """
+    Implode the dictionary into a single depth of notation.
+
+    Example
+    -------
+    >>> impate({'foo': {'bar': 'baz'}})
+    {'foo/bar': 'baz'}
+
+    :param source: Dictionary object processed in notation.
+    :param delim: Override default delimiter between parts.
+    :param parent: Parent key prefix for downstream update.
+    :param implode_list: Determine whether list is imploded.
+    :param recurse_list: Determine whether flatten in list.
+    :returns: New dictionary that was recursively imploded.
+        It is also possible that a list of dictionary will
+        be returned when provided and implode_list is False.
+    """
+
+    _implode = implode_list
+    _recurse = recurse_list
+
+
+    def _proclist(
+        source: list[Any],
+        delim: str,
+        parent: Optional[str],
+    ) -> DictStrAny | list[Any]:
+
+
+        if _implode is False:
+
+            process = [
+                (impate(
+                    item, delim,
+                    implode_list=_implode,
+                    recurse_list=_recurse)
+                 if isinstance(item, dict | list)
+                 and _recurse is True
+                 else item)
+                for item in source]
+
+            return (
+                {parent: process}
+                if parent is not None
+                else process)
+
+
+        returned: DictStrAny = {}
+
+        for i, item in enumerate(source):
+
+            key = (
+                f'{parent}{delim}{i}'
+                if parent is not None
+                else str(i))
+
+            if (isinstance(item, dict | list)
+                    and _recurse is True):
+
+                implode = impate(
+                    item, delim, key,
+                    implode_list=_implode,
+                    recurse_list=_recurse)
+
+                assert isinstance(implode, dict)
+
+                returned.update(implode)
+
+            else:
+                returned[key] = item
+
+        return returned
+
+
+    def _procdict(
+        source: DictStrAny,
+        delim: str,
+        parent: Optional[str],
+    ) -> DictStrAny:
+
+        returned: DictStrAny = {}
+
+        for key, value in source.items():
+
+            key = (
+                f'{parent}{delim}{key}'
+                if parent is not None
+                else key)
+
+            if isinstance(value, dict):
+
+                implode = impate(
+                    value, delim, key,
+                    implode_list=_implode,
+                    recurse_list=_recurse)
+
+                assert isinstance(implode, dict)
+
+                returned |= implode
+
+            elif isinstance(value, list):
+
+                process = _proclist(
+                    value, delim, key)
+
+                returned |= (
+                    {key: process}
+                    if not isinstance(process, dict)
+                    else process)
+
+            else:
+                returned[key] = value
+
+        return returned
+
+
+    if isinstance(source, dict):
+        return _procdict(
+            source, delim, parent)
+
+    if isinstance(source, list):
+        return _proclist(
+            source, delim, parent)
+
+    raise ValueError('source')
+
+
+
+def expate(
+    source: DictStrAny,
+    delim: str = '/',
+) -> DictStrAny:
+    """
+    Explode the dictionary from a single depth of notation.
+
+    Example
+    -------
+    >>> expate({'foo/bar': 'baz'})
+    {'foo': {'bar': 'baz'}}
+
+    :param source: Dictionary object processed in notation.
+    :param delim: Override default delimiter between parts.
+    :returns: New dictionary that was recursively exploded.
+    """
+
+    returned: DictStrAny = {}
+
+
+    items = source.items()
+
+    for key, value in items:
+
+        if isinstance(value, list):
+            value = [
+                (expate(x, delim)
+                 if isinstance(x, dict)
+                 else x)
+                for x in value]
+
+        if isinstance(value, dict):
+            value = expate(value, delim)
+
+        setate(
+            returned, key,
+            value, delim)
+
+
+    return returned
+
+
+
 def _setpath(
     source: _SETABLE,
     path: str,
