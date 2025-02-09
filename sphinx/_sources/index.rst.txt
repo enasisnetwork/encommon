@@ -257,6 +257,12 @@ Python Notation Helpers
 .. autofunction:: encommon.types.delate
    :noindex:
 
+.. autofunction:: encommon.types.impate
+   :noindex:
+
+.. autofunction:: encommon.types.expate
+   :noindex:
+
 Colorized Standard Output
 -------------------------
 
