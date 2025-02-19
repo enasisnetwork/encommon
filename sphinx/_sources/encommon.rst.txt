@@ -23,13 +23,13 @@ encommon.conftest module
 
 .. automodule:: encommon.conftest
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

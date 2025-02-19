@@ -17,13 +17,13 @@ encommon.colors.color module
 
 .. automodule:: encommon.colors.color
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.colors
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

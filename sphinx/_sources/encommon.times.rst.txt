@@ -17,93 +17,93 @@ encommon.times.common module
 
 .. automodule:: encommon.times.common
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.duration module
 ------------------------------
 
 .. automodule:: encommon.times.duration
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.params module
 ----------------------------
 
 .. automodule:: encommon.times.params
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.parse module
 ---------------------------
 
 .. automodule:: encommon.times.parse
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.time module
 --------------------------
 
 .. automodule:: encommon.times.time
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.timer module
 ---------------------------
 
 .. automodule:: encommon.times.timer
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.timers module
 ----------------------------
 
 .. automodule:: encommon.times.timers
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.unitime module
 -----------------------------
 
 .. automodule:: encommon.times.unitime
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.utils module
 ---------------------------
 
 .. automodule:: encommon.times.utils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.window module
 ----------------------------
 
 .. automodule:: encommon.times.window
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.times.windows module
 -----------------------------
 
 .. automodule:: encommon.times.windows
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.times
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

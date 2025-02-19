@@ -9,21 +9,21 @@ encommon.crypts.test.test\_crypts module
 
 .. automodule:: encommon.crypts.test.test_crypts
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.crypts.test.test\_hashes module
 ----------------------------------------
 
 .. automodule:: encommon.crypts.test.test_hashes
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.crypts.test
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

@@ -9,13 +9,13 @@ encommon.colors.test.test\_color module
 
 .. automodule:: encommon.colors.test.test_color
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.colors.test
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

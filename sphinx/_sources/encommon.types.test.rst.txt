@@ -9,53 +9,53 @@ encommon.types.test.test\_classes module
 
 .. automodule:: encommon.types.test.test_classes
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.test.test\_dicts module
 --------------------------------------
 
 .. automodule:: encommon.types.test.test_dicts
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.test.test\_empty module
 --------------------------------------
 
 .. automodule:: encommon.types.test.test_empty
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.test.test\_lists module
 --------------------------------------
 
 .. automodule:: encommon.types.test.test_lists
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.test.test\_notate module
 ---------------------------------------
 
 .. automodule:: encommon.types.test.test_notate
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.test.test\_strings module
 ----------------------------------------
 
 .. automodule:: encommon.types.test.test_strings
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.types.test
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

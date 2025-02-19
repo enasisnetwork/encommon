@@ -9,45 +9,45 @@ encommon.config.test.test\_config module
 
 .. automodule:: encommon.config.test.test_config
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.test.test\_files module
 ---------------------------------------
 
 .. automodule:: encommon.config.test.test_files
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.test.test\_logger module
 ----------------------------------------
 
 .. automodule:: encommon.config.test.test_logger
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.test.test\_paths module
 ---------------------------------------
 
 .. automodule:: encommon.config.test.test_paths
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.test.test\_utils module
 ---------------------------------------
 
 .. automodule:: encommon.config.test.test_utils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.config.test
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

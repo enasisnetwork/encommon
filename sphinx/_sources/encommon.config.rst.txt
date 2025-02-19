@@ -17,53 +17,53 @@ encommon.config.config module
 
 .. automodule:: encommon.config.config
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.files module
 ----------------------------
 
 .. automodule:: encommon.config.files
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.logger module
 -----------------------------
 
 .. automodule:: encommon.config.logger
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.params module
 -----------------------------
 
 .. automodule:: encommon.config.params
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.paths module
 ----------------------------
 
 .. automodule:: encommon.config.paths
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.config.utils module
 ----------------------------
 
 .. automodule:: encommon.config.utils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.config
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

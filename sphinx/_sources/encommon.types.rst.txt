@@ -17,61 +17,61 @@ encommon.types.classes module
 
 .. automodule:: encommon.types.classes
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.dicts module
 ---------------------------
 
 .. automodule:: encommon.types.dicts
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.empty module
 ---------------------------
 
 .. automodule:: encommon.types.empty
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.lists module
 ---------------------------
 
 .. automodule:: encommon.types.lists
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.notate module
 ----------------------------
 
 .. automodule:: encommon.types.notate
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.strings module
 -----------------------------
 
 .. automodule:: encommon.types.strings
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.types.types module
 ---------------------------
 
 .. automodule:: encommon.types.types
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.types
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

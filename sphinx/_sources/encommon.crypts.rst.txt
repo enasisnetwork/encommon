@@ -17,29 +17,29 @@ encommon.crypts.crypts module
 
 .. automodule:: encommon.crypts.crypts
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.crypts.hashes module
 -----------------------------
 
 .. automodule:: encommon.crypts.hashes
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.crypts.params module
 -----------------------------
 
 .. automodule:: encommon.crypts.params
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.crypts
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

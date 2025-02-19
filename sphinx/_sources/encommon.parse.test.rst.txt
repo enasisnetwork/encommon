@@ -9,21 +9,21 @@ encommon.parse.test.test\_jinja2 module
 
 .. automodule:: encommon.parse.test.test_jinja2
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.parse.test.test\_network module
 ----------------------------------------
 
 .. automodule:: encommon.parse.test.test_network
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.parse.test
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

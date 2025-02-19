@@ -17,21 +17,21 @@ encommon.parse.jinja2 module
 
 .. automodule:: encommon.parse.jinja2
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.parse.network module
 -----------------------------
 
 .. automodule:: encommon.parse.network
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.parse
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:

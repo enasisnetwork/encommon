@@ -17,53 +17,53 @@ encommon.utils.common module
 
 .. automodule:: encommon.utils.common
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.utils.files module
 ---------------------------
 
 .. automodule:: encommon.utils.files
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.utils.match module
 ---------------------------
 
 .. automodule:: encommon.utils.match
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.utils.paths module
 ---------------------------
 
 .. automodule:: encommon.utils.paths
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.utils.sample module
 ----------------------------
 
 .. automodule:: encommon.utils.sample
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 encommon.utils.stdout module
 ----------------------------
 
 .. automodule:: encommon.utils.stdout
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: encommon.utils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
