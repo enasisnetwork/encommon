@@ -71,5 +71,5 @@ def test_datestamp(
         '<span class="_delim _colon">:</span>'
         '<span class="_value _seconds">00</span>'
         '<span class="_delim _space">&nbsp;</span>'
-        '<span class="_tzname">GMT</span>'
+        '<span class="_tzname">UTC</span>'
         '</div>')

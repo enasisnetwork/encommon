@@ -54,6 +54,9 @@ function datestamp(
   let source_tzname =
     _tzname(date);
 
+  if (source_tzname == 'GMT')
+    source_tzname = 'UTC';
+
 
   element.append(
     $('<span/>')
