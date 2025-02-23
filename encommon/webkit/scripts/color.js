@@ -21,6 +21,21 @@ function colordiv(
       'encommon_colordiv');
 
 
+  let known = [
+    'gray',
+    'red',
+    'blue',
+    'green',
+    'yellow',
+    'pink',
+    'teal'];
+
+  if (known.includes(input))
+    input =
+      'rgb(var(--color-'
+      + `${input}-dark))`;
+
+
   let value =
     $('<div/>')
     .addClass('_value');

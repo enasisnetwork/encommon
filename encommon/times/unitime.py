@@ -47,16 +47,19 @@ def unitime(
 
     if isinstance(input, str):
 
-        if re_match(NOTATE, input):
-            input = since_time(
-                'now', f'+{input}')
-
-        elif re_match(STRINT, input):
+        if re_match(STRINT, input):
             input = int(input)
 
         elif re_match(STRFLT, input):
             input = int(
                 input.split('.')[0])
+
+        elif re_match(NOTATE, input):
+            input = since_time(
+                'now', f'+{input}')
+
+        else:  # NOCVR
+            raise ValueError('input')
 
     if isinstance(input, float):
         input = int(input)
