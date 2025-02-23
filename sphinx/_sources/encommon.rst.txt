@@ -14,6 +14,7 @@ Subpackages
    encommon.times
    encommon.types
    encommon.utils
+   encommon.webkit
 
 Submodules
 ----------
