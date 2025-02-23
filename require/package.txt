@@ -11,5 +11,6 @@ pytest-clarity
 pytest-cov
 pytest-mypy
 pytest-randomly
+pytest-selenium
 pytest-sphinx
 pytest-xdist

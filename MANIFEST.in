@@ -2,3 +2,9 @@
 
 
 include encommon/version.txt
+
+recursive-include encommon/webkit *.css
+recursive-include encommon/webkit *.html
+recursive-include encommon/webkit *.js
+recursive-include encommon/webkit *.png
+recursive-include encommon/webkit *.svg

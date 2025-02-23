@@ -7,14 +7,27 @@ is permitted, for more information consult the project license file.
 
 
 
+from re import compile
 from re import match as re_match
 
+from .common import UNITIME
 from .parse import since_time
 
 
 
+NOTATE = compile(
+    r'^(\d+(s|m|h|d|w|y))*$')
+
+STRINT = compile(
+    r'^\d+$')
+
+STRFLT = compile(
+    r'^\d+\.\d+$')
+
+
+
 def unitime(
-    input: int | float | str,
+    input: UNITIME,
 ) -> int:
     """
     Return the seconds in integer format for provided input.
@@ -32,20 +45,16 @@ def unitime(
     :returns: Seconds in integer format for provided input.
     """
 
-    notate = r'^(\d+(s|m|h|d|w|y))*$'
-    strint = r'^\d+$'
-    strflt = r'^\d+\.\d+$'
-
     if isinstance(input, str):
 
-        if re_match(notate, input):
+        if re_match(NOTATE, input):
             input = since_time(
                 'now', f'+{input}')
 
-        elif re_match(strint, input):
+        elif re_match(STRINT, input):
             input = int(input)
 
-        elif re_match(strflt, input):
+        elif re_match(STRFLT, input):
             input = int(
                 input.split('.')[0])
 
