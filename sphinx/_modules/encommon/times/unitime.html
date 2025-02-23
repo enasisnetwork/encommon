@@ -192,23 +192,26 @@
 </span><span id="line-47">
 </span><span id="line-48">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 </span><span id="line-49">
-</span><span id="line-50">        <span class="k">if</span> <span class="n">re_match</span><span class="p">(</span><span class="n">NOTATE</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-</span><span id="line-51">            <span class="nb">input</span> <span class="o">=</span> <span class="n">since_time</span><span class="p">(</span>
-</span><span id="line-52">                <span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;+</span><span class="si">{</span><span class="nb">input</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</span><span id="line-53">
-</span><span id="line-54">        <span class="k">elif</span> <span class="n">re_match</span><span class="p">(</span><span class="n">STRINT</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-</span><span id="line-55">            <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span><span id="line-50">        <span class="k">if</span> <span class="n">re_match</span><span class="p">(</span><span class="n">STRINT</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+</span><span id="line-51">            <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span><span id="line-52">
+</span><span id="line-53">        <span class="k">elif</span> <span class="n">re_match</span><span class="p">(</span><span class="n">STRFLT</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+</span><span id="line-54">            <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
+</span><span id="line-55">                <span class="nb">input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 </span><span id="line-56">
-</span><span id="line-57">        <span class="k">elif</span> <span class="n">re_match</span><span class="p">(</span><span class="n">STRFLT</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-</span><span id="line-58">            <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-</span><span id="line-59">                <span class="nb">input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="line-57">        <span class="k">elif</span> <span class="n">re_match</span><span class="p">(</span><span class="n">NOTATE</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+</span><span id="line-58">            <span class="nb">input</span> <span class="o">=</span> <span class="n">since_time</span><span class="p">(</span>
+</span><span id="line-59">                <span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;+</span><span class="si">{</span><span class="nb">input</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </span><span id="line-60">
-</span><span id="line-61">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
-</span><span id="line-62">        <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span><span id="line-61">        <span class="k">else</span><span class="p">:</span>  <span class="c1"># NOCVR</span>
+</span><span id="line-62">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
 </span><span id="line-63">
-</span><span id="line-64">    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
-</span><span id="line-65">
-</span><span id="line-66">    <span class="k">return</span> <span class="nb">input</span></div>
+</span><span id="line-64">    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="line-65">        <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</span><span id="line-66">
+</span><span id="line-67">    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+</span><span id="line-68">
+</span><span id="line-69">    <span class="k">return</span> <span class="nb">input</span></div>
 
 </span></code></pre></div>
     </div></div>
