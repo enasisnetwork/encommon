@@ -23,6 +23,9 @@ NUMERISH = compile(
 SNAPABLE = compile(
     r'^(\-|\+)[\d\@a-z\-\+]+$')
 
+UNITIME = Union[
+    int | float | str]
+
 STRINGNOW = {
     'None', None,
     'null', 'now'}
