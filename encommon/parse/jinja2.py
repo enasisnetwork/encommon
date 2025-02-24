@@ -45,6 +45,7 @@ from ..utils import rgxp_match
 
 
 FILTER = Callable[..., Any]
+FILTERS = dict[str, FILTER]
 
 JINJA2 = (
     r'(\{\{.+?\}\})|'
@@ -57,7 +58,7 @@ LITERAL = (
 
 
 
-DEFAULT: dict[str, FILTER] = {
+DEFAULT: FILTERS = {
 
     # Python builtins
     'all': all,
@@ -115,7 +116,7 @@ class Jinja2:
     """
 
     __statics: DictStrAny
-    __filters: dict[str, FILTER]
+    __filters: FILTERS
 
     __jinjenv: Environment
 
@@ -123,7 +124,7 @@ class Jinja2:
     def __init__(
         self,
         statics: Optional[DictStrAny] = None,
-        filters: Optional[dict[str, FILTER]] = None,
+        filters: Optional[FILTERS] = None,
     ) -> None:
         """
         Initialize instance for class using provided parameters.
@@ -176,7 +177,7 @@ class Jinja2:
     @property
     def filters(
         self,
-    ) -> dict[str, FILTER]:
+    ) -> FILTERS:
         """
         Return the value for the attribute from class instance.
 
