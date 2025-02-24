@@ -91,7 +91,7 @@ encommon/webkit/test/test_color.py          7      0   100%
 encommon/webkit/test/test_content.py       23      0   100%
 encommon/webkit/test/test_datagrid.py       9      0   100%
 encommon/webkit/test/test_datetime.py       7      0   100%
-encommon/webkit/test/test_default.py       61      0   100%
+encommon/webkit/test/test_default.py       66      0   100%
 encommon/webkit/test/test_duration.py       7      0   100%
 encommon/webkit/test/test_helpers.py       78      0   100%
 encommon/webkit/test/test_image.py          7      0   100%
@@ -101,4 +101,4 @@ encommon/webkit/test/test_numeric.py       22      0   100%
 encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
-TOTAL                                    4200      0   100%
+TOTAL                                    4205      0   100%
