@@ -192,7 +192,7 @@ def test_default_showhide(
         '$("body>div")[0]'
         '.style.display;')
 
-    assert outcome == 'block'
+    assert outcome == SEMPTY
 
 
 
@@ -309,6 +309,32 @@ def test_default_attr(
         driver,
         'return $("body")'
         ' .attr("foo");',
+        wrap=False)
+
+    assert outcome == 'bar'
+
+
+
+def test_default_prop(
+    prepare: tuple['Content', WebDriver],
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param prepare: Driver and content loaded with scripts.
+    """
+
+    content, driver = prepare
+
+    _executejs(
+        driver,
+        '$("body")'
+        '.prop("foo", "bar")')
+
+    outcome = _executejs(
+        driver,
+        'return $("body")'
+        ' .prop("foo");',
         wrap=False)
 
     assert outcome == 'bar'
