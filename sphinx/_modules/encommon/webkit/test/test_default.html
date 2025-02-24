@@ -352,7 +352,7 @@
 </span><span id="line-192">        <span class="s1">&#39;$(&quot;body&gt;div&quot;)[0]&#39;</span>
 </span><span id="line-193">        <span class="s1">&#39;.style.display;&#39;</span><span class="p">)</span>
 </span><span id="line-194">
-</span><span id="line-195">    <span class="k">assert</span> <span class="n">outcome</span> <span class="o">==</span> <span class="s1">&#39;block&#39;</span></div>
+</span><span id="line-195">    <span class="k">assert</span> <span class="n">outcome</span> <span class="o">==</span> <span class="n">SEMPTY</span></div>
 
 </span><span id="line-196">
 </span><span id="line-197">
@@ -484,6 +484,35 @@
 </span><span id="line-312">        <span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span><span id="line-313">
 </span><span id="line-314">    <span class="k">assert</span> <span class="n">outcome</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span></div>
+
+</span><span id="line-315">
+</span><span id="line-316">
+</span><span id="line-317">
+<div class="viewcode-block" id="test_default_prop">
+<a class="viewcode-back" href="../../../../encommon.webkit.test.html#encommon.webkit.test.test_default.test_default_prop">[docs]</a>
+</span><span id="line-318"><span class="k">def</span><span class="w"> </span><span class="nf">test_default_prop</span><span class="p">(</span>
+</span><span id="line-319">    <span class="n">prepare</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="s1">&#39;Content&#39;</span><span class="p">,</span> <span class="n">WebDriver</span><span class="p">],</span>
+</span><span id="line-320"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-321"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-322"><span class="sd">    Perform various tests associated with relevant routines.</span>
+</span><span id="line-323">
+</span><span id="line-324"><span class="sd">    :param prepare: Driver and content loaded with scripts.</span>
+</span><span id="line-325"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-326">
+</span><span id="line-327">    <span class="n">content</span><span class="p">,</span> <span class="n">driver</span> <span class="o">=</span> <span class="n">prepare</span>
+</span><span id="line-328">
+</span><span id="line-329">    <span class="n">_executejs</span><span class="p">(</span>
+</span><span id="line-330">        <span class="n">driver</span><span class="p">,</span>
+</span><span id="line-331">        <span class="s1">&#39;$(&quot;body&quot;)&#39;</span>
+</span><span id="line-332">        <span class="s1">&#39;.prop(&quot;foo&quot;, &quot;bar&quot;)&#39;</span><span class="p">)</span>
+</span><span id="line-333">
+</span><span id="line-334">    <span class="n">outcome</span> <span class="o">=</span> <span class="n">_executejs</span><span class="p">(</span>
+</span><span id="line-335">        <span class="n">driver</span><span class="p">,</span>
+</span><span id="line-336">        <span class="s1">&#39;return $(&quot;body&quot;)&#39;</span>
+</span><span id="line-337">        <span class="s1">&#39; .prop(&quot;foo&quot;);&#39;</span><span class="p">,</span>
+</span><span id="line-338">        <span class="n">wrap</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="line-339">
+</span><span id="line-340">    <span class="k">assert</span> <span class="n">outcome</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span></div>
 
 </span></code></pre></div>
     </div></div>
