@@ -91,6 +91,9 @@ is permitted, for more information consult the project license file.
   $.prototype
     .attr = _enquery_attr;
 
+  $.prototype
+    .prop = _enquery_prop;
+
 })(window);
 
 
@@ -181,20 +184,51 @@ function _enquery_remcls(
 function _enquery_hide() {
   // Helper function for Enasis Network jQuery replacement.
 
-  let returned =
-    this.css('display', 'none');
 
-  return returned; }
+  function _each() {
+
+    let dataset = this.dataset;
+    let style = this.style;
+    let hide = dataset.enqHide;
+
+    if (hide === undefined
+        && style.display != 'none'
+        && !isempty(style.display))
+      dataset.enqHide =
+        style.display;
+
+    style.display = 'none'; }
+
+
+  return this.each(_each); }
 
 
 
 function _enquery_show() {
   // Helper function for Enasis Network jQuery replacement.
 
-  let returned =
-    this.css('display', 'block');
 
-  return returned; }
+  function _each() {
+
+    let dataset = this.dataset;
+    let style = this.style;
+    let hide = dataset.enqHide;
+
+    if (hide !== undefined) {
+      if (!isempty(hide))
+        style.display = hide;
+      else
+        style
+        .removeProperty('display');
+
+      delete dataset.enqHide; }
+
+    else
+      style
+      .removeProperty('display'); }
+
+
+  return this.each(_each); }
 
 
 
@@ -262,7 +296,7 @@ function _enquery_append(
       (x) => {
         const element =
           index < 1 ?
-          x : node.cloneNode(true);
+          x : x.cloneNode(true);
         this
         .appendChild(element); }); }
 
@@ -305,15 +339,47 @@ function _enquery_attr(
   if (this.length === 0)
     return undefined;
 
+
+  function _each() {
+    if (value === null)
+      this.removeAttribute(name);
+    else
+      this.setAttribute(
+        name, value); }
+
   if (value !== undefined)
-    this[0]
-      .setAttribute(name, value);
+    return this.each(_each);
+
 
   let returned =
     this[0]
     .getAttribute(name);
 
   return returned; }
+
+
+
+function _enquery_prop(
+  name,
+  value,
+) {
+  // Helper function for Enasis Network jQuery replacement.
+
+  if (this.length === 0)
+    return undefined;
+
+
+  function _each() {
+    if (value === null)
+      this.removeProperty(name);
+    else
+      this[name] = value; }
+
+    if (value !== undefined)
+    return this.each(_each);
+
+
+  return this[0][name]; }
 
 
 
