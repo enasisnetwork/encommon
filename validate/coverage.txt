@@ -27,7 +27,7 @@ encommon/crypts/test/__init__.py            0      0   100%
 encommon/crypts/test/test_crypts.py        64      0   100%
 encommon/crypts/test/test_hashes.py        24      0   100%
 encommon/parse/__init__.py                  5      0   100%
-encommon/parse/jinja2.py                  102      0   100%
+encommon/parse/jinja2.py                  103      0   100%
 encommon/parse/network.py                 123      0   100%
 encommon/parse/test/__init__.py             0      0   100%
 encommon/parse/test/test_jinja2.py         42      0   100%
@@ -101,4 +101,4 @@ encommon/webkit/test/test_numeric.py       22      0   100%
 encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
-TOTAL                                    4205      0   100%
+TOTAL                                    4206      0   100%
