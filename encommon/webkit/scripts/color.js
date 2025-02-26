@@ -14,7 +14,7 @@ is permitted, for more information consult the project license file.
  */
 function colordiv(
   input,
-  label,
+  label=null,
 ) {
 
   assert(!isnull(input));
