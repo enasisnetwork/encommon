@@ -43,6 +43,14 @@ jobs:
         uses: actions/setup-python@v4
         with: {python-version: '3.12'}
 
+      # Standard project construction
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      # Standard project construction
+      - name: Install jsdoc from NPM
+        run: sudo npm install -g jsdoc
+
       # Additional workflow dependency
       - name: Compile ImageMagick
         run: |
@@ -273,6 +281,17 @@ jobs:
 
           git config --global \
             user.name "GitHub Workflows"
+
+          rm -rf static/webkit
+          mkdir -p static/webkit/images
+          mkdir -p static/webkit/scripts
+          mkdir -p static/webkit/styles
+          cp main/encommon/webkit/images/*.svg \
+            static/webkit/images/
+          cp main/encommon/webkit/scripts/*.js \
+            static/webkit/scripts/
+          cp main/encommon/webkit/styles/*.css \
+            static/webkit/styles/
 
           rm -rf static/sphinx
           mkdir static/sphinx

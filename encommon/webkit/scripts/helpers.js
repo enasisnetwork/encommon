@@ -7,10 +7,14 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Assert the provided condition similar how using Python.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function assert(
   condition,
 ) {
-  // Assert the provided condition similar how using Python.
 
   if (condition)
     return true;
@@ -19,10 +23,12 @@ function assert(
 
 
 
+/**
+ * Attach the callback to the window session ready state.
+ */
 function whenready(
   callback,
 ) {
-  // Attach the callback to the window session ready state.
 
   assert(!isnull(callback));
 
@@ -39,10 +45,14 @@ function whenready(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isnull(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   let haystack = [null, undefined];
 
@@ -53,10 +63,14 @@ function isnull(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isempty(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (isstr(value))
     return value.length == 0;
@@ -77,10 +91,14 @@ function isempty(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isbool(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   let haystack = [true, false];
 
@@ -91,10 +109,14 @@ function isbool(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isstr(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (typeof value === 'string')
     return true;
@@ -103,10 +125,14 @@ function isstr(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isnum(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (typeof value === 'number')
     return true;
@@ -115,10 +141,14 @@ function isnum(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isquery(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   try {
 
@@ -131,10 +161,14 @@ function isquery(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isnode(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (value instanceof Node)
     return true;
@@ -143,10 +177,14 @@ function isnode(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isnodes(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (value instanceof NodeList)
     return true;
@@ -155,10 +193,14 @@ function isnodes(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function istime(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   let date =
     new Date(value);
@@ -170,10 +212,14 @@ function istime(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function islist(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (Array.isArray(value))
     return true;
@@ -182,10 +228,14 @@ function islist(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isdict(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (typeof(value) == 'object'
       && !isnull(value)
@@ -196,10 +246,14 @@ function isdict(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function istrue(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (value === true)
     return true;
@@ -208,10 +262,14 @@ function istrue(
 
 
 
+/**
+ * Return the boolean indicating the conditional outcome.
+ *
+ * @returns {Boolean} Boolean for the conditional outcome.
+ */
 function isfalse(
   value,
 ) {
-  // Return the boolean indicating the conditional outcome.
 
   if (value === false)
     return true;
@@ -220,10 +278,12 @@ function isfalse(
 
 
 
+/**
+ * Return the object value from the provided JSON string.
+ */
 function loads(
   value,
 ) {
-  // Return the object value from the provided JSON string.
 
   assert(isstr(value));
 
@@ -231,11 +291,13 @@ function loads(
 
 
 
+/**
+ * Return the JSON string from the provided object value.
+ */
 function dumps(
   value,
   indent=null,
 ) {
-  // Return the JSON string from the provided object value.
 
   assert(!isnull(value));
   assert(!isstr(value));

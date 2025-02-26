@@ -7,11 +7,15 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Construct for containing a wide variety of value types.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function numeric(
   value,
   unit=null,
 ) {
-  // Construct for containing a wide variety of value types.
 
   assert(!isnull(value));
 
@@ -65,10 +69,14 @@ function numeric(
 
 
 
+/**
+ * Construct for containing a wide variety of value types.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function numeric_count(
   value,
 ) {
-  // Construct for containing a wide variety of value types.
 
   assert(!isnull(value));
 
@@ -104,10 +112,14 @@ function numeric_count(
 
 
 
+/**
+ * Construct for containing a wide variety of value types.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function numeric_bytes(
   value,
 ) {
-  // Construct for containing a wide variety of value types.
 
   assert(!isnull(value));
 
@@ -143,10 +155,14 @@ function numeric_bytes(
 
 
 
+/**
+ * Construct for containing a wide variety of value types.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function numeric_ftemp(
   value,
 ) {
-  // Construct for containing a wide variety of value types.
 
   assert(!isnull(value));
 
@@ -166,10 +182,14 @@ function numeric_ftemp(
 
 
 
+/**
+ * Construct for containing a wide variety of value types.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function numeric_cftemp(
   value,
 ) {
-  // Construct for containing a wide variety of value types.
 
   assert(!isnull(value));
 

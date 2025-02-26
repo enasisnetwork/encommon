@@ -7,11 +7,15 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Construct for containing the values that are tag like.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function tagues(
   values,
   brafter=true,
 ) {
-  // Construct for containing the values that are tag like.
 
   assert(!isnull(values));
 

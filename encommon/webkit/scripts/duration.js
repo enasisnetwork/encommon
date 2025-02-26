@@ -7,10 +7,14 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Convert the provided seconds in a human friendly format.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function duration(
   seconds,
 ) {
-  // Convert the provided seconds in a human friendly format.
 
   assert(!isnull(seconds));
 
@@ -128,10 +132,12 @@ function duration(
 
 
 
+/**
+ * Determine the time in seconds occurring since instance.
+ */
 function _since(
   value,
 ) {
-  // Determine the time in seconds occurring since instance.
 
   assert(!isnull(value));
 

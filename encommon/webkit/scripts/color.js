@@ -7,11 +7,15 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Construct element for displaying the specified color.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function colordiv(
   input,
   label=null,
 ) {
-  // Construct element for displaying the specified color.
 
   assert(!isnull(input));
 

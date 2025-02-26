@@ -7,12 +7,16 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Construct for containing the value status information.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function statate(
   status,
   label=null,
   small=null,
 ) {
-  // Construct for containing the value status information.
 
   assert(!isnull(status));
 
