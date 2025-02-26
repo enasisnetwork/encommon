@@ -7,10 +7,14 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Return the timestamp using provided format for instance.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function datestamp(
   value,
 ) {
-  // Return the timestamp using provided format for instance.
 
   assert(!isnull(value));
 
@@ -140,10 +144,12 @@ function datestamp(
 
 
 
+/**
+ * Return the located timezone object for the provided date.
+ */
 function _tzname(
   date,
 ) {
-  // Return the located timezone object for the provided date.
 
   assert(!isnull(date));
 

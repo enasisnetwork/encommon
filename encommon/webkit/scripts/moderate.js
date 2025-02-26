@@ -7,12 +7,16 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Construct for containing a wide variety of value types.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function moderate(
   label=null,
   icon=null,
   small=null,
 ) {
-  // Construct for containing a wide variety of value types.
 
 
   let element =

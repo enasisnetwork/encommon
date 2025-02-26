@@ -274,6 +274,17 @@ jobs:
           git config --global \
             user.name "GitHub Workflows"
 
+          rm -rf static/webkit
+          mkdir -p static/webkit/images
+          mkdir -p static/webkit/scripts
+          mkdir -p static/webkit/styles
+          cp main/encommon/webkit/images/*.svg \
+            static/webkit/images/
+          cp main/encommon/webkit/scripts/*.js \
+            static/webkit/scripts/
+          cp main/encommon/webkit/styles/*.css \
+            static/webkit/styles/
+
           rm -rf static/sphinx
           mkdir static/sphinx
           cp -r main/sphinx/html/* static/sphinx/

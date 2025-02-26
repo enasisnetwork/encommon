@@ -7,11 +7,15 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Construct the table with the header using the contents.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function datagrid(
   fields,
   values,
 ) {
-  // Construct the table with the header using the contents.
 
   assert(!isnull(fields));
   assert(!isnull(values));
@@ -34,10 +38,14 @@ function datagrid(
 
 
 
+/**
+ * Construct the header for use with the table contents.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _table_header(
   fields,
 ) {
-  // Construct the header for use with the table contents.
 
   let element = $('<thead/>');
   let trow = $('<tr/>');
@@ -63,11 +71,15 @@ function _table_header(
 
 
 
+/**
+ * Construct the records for use with the table contents.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _table_records(
   fields,
   values,
 ) {
-  // Construct the records for use with the table contents.
 
   let element = $('<tbody/>');
 

@@ -27,7 +27,8 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
-    'sphinxcontrib.autodoc_pydantic']
+    'sphinxcontrib.autodoc_pydantic',
+    'sphinx_js']
 
 html_theme = 'sphinxawesome_theme'
 
@@ -40,3 +41,6 @@ intersphinx_mapping = {
     'pytest': ('https://docs.pytest.org/latest', None),
     'python': ('https://docs.python.org/3', None),
     'sqlalchemy': ('https://docs.sqlalchemy.org/en/20', None)}
+
+js_source_path = [
+    '../encommon/webkit/scripts']

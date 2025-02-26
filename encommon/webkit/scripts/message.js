@@ -7,11 +7,15 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Generate the severity based toast like message element.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function message(
   level,
   about=null,
 ) {
-  // Generate the severity based toast like message element.
 
   assert(!isnull(level));
 

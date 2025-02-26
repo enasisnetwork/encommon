@@ -7,11 +7,15 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Return the simple construct for SVG based icon images.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function svgicon(
   image,
   dimension=null,
 ) {
-  // Return the simple construct for SVG based icon images.
 
   assert(!isnull(image));
 

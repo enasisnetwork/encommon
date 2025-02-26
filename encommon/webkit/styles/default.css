@@ -13,11 +13,11 @@ is permitted, for more information consult the project license file.
 
 :root {
 
-  --background: var(--color-teal-back);
-  --foreground: var(--color-text-lite);
-
   --pretty: var(--color-teal-lite);
   --gritty: var(--color-teal-dark);
+
+  --background: var(--color-teal-back);
+  --foreground: var(--color-text-lite);
 
   --scroll: var(--color-teal-dark); }
 

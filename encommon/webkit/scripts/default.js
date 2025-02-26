@@ -7,8 +7,10 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * jQuery like object for use in Enasis Network projects.
+ */
 (function (global) {
-  // jQuery like object for use in Enasis Network projects.
 
   'use strict';
 
@@ -98,11 +100,13 @@ is permitted, for more information consult the project license file.
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ */
 function _enquery(
   source,
   selector,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   const create = /^<(\w+)\/>$/;
 
@@ -127,10 +131,14 @@ function _enquery(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_each(
   element,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   let items = this.elements;
 
@@ -142,11 +150,15 @@ function _enquery_each(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_css(
   name,
   value,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   function _each() {
     this.style[name] = value; }
@@ -155,10 +167,14 @@ function _enquery_css(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_addcls(
   name,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   function _each() {
     this.classList
@@ -168,10 +184,14 @@ function _enquery_addcls(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_remcls(
   name,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   function _each() {
     this.classList
@@ -181,8 +201,12 @@ function _enquery_remcls(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_hide() {
-  // Helper function for Enasis Network jQuery replacement.
 
 
   function _each() {
@@ -204,8 +228,12 @@ function _enquery_hide() {
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_show() {
-  // Helper function for Enasis Network jQuery replacement.
 
 
   function _each() {
@@ -232,10 +260,15 @@ function _enquery_show() {
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element
+ *                   or the text value in first element.
+ */
 function _enquery_text(
   text,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   if (text === undefined) {
 
@@ -253,10 +286,15 @@ function _enquery_text(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element
+ *                   or the HTML value in first element.
+ */
 function _enquery_html(
   html,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   if (html === undefined) {
 
@@ -280,10 +318,14 @@ function _enquery_html(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_append(
   element,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   assert(element.enquery)
 
@@ -305,10 +347,14 @@ function _enquery_append(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_replace(
   element,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   assert(element.enquery)
 
@@ -330,11 +376,16 @@ function _enquery_replace(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element
+ *                   or the attr value in first element.
+ */
 function _enquery_attr(
   name,
   value,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   if (this.length === 0)
     return undefined;
@@ -359,11 +410,16 @@ function _enquery_attr(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element
+ *                   or the prop value in first element.
+ */
 function _enquery_prop(
   name,
   value,
 ) {
-  // Helper function for Enasis Network jQuery replacement.
 
   if (this.length === 0)
     return undefined;
@@ -383,6 +439,11 @@ function _enquery_prop(
 
 
 
+/**
+ * Helper function for Enasis Network jQuery replacement.
+ *
+ * @returns {Object} jQuery-like object for the element.
+ */
 function _enquery_clone() {
 
   let clones =
