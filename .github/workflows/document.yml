@@ -300,6 +300,7 @@ jobs:
           cd static
           git add badges
           git add sphinx
+          git add webkit
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
