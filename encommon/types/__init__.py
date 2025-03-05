@@ -13,6 +13,7 @@ from .classes import lattrs
 from .dicts import merge_dicts
 from .dicts import sort_dict
 from .empty import Empty
+from .funcs import funcname
 from .lists import dedup_list
 from .lists import fuzzy_list
 from .lists import inlist
@@ -42,6 +43,7 @@ __all__ = [
     'DictStrAny',
     'Empty',
     'expate',
+    'funcname',
     'getate',
     'hasstr',
     'impate',

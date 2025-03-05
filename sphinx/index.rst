@@ -236,6 +236,9 @@ Python Type Utilities
 .. autofunction:: encommon.types.clsname
    :noindex:
 
+.. autofunction:: encommon.types.funcname
+   :noindex:
+
 .. autofunction:: encommon.types.lattrs
    :noindex:
 
