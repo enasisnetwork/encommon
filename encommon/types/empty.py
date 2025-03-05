@@ -78,9 +78,9 @@ class EmptyType:
         self,
     ) -> int:
         """
-        Built-in method called when performing hashing operation.
+        Built-in method used when performing hashing operations.
 
-        :returns: Boolean indicating outcome from the operation.
+        :returns: Integer hash value for the internal reference.
         """
 
         return hash(EmptyType)
