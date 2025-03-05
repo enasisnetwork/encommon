@@ -55,10 +55,11 @@ encommon/times/unitime.py                  19      0   100%
 encommon/times/utils.py                    33      0   100%
 encommon/times/window.py                  117      0   100%
 encommon/times/windows.py                 165      0   100%
-encommon/types/__init__.py                 24      0   100%
+encommon/types/__init__.py                 25      0   100%
 encommon/types/classes.py                  16      0   100%
 encommon/types/dicts.py                    21      0   100%
 encommon/types/empty.py                    24      0   100%
+encommon/types/funcs.py                    15      0   100%
 encommon/types/lists.py                    25      0   100%
 encommon/types/notate.py                  141      0   100%
 encommon/types/strings.py                  19      0   100%
@@ -66,6 +67,7 @@ encommon/types/test/__init__.py            11      0   100%
 encommon/types/test/test_classes.py        15      0   100%
 encommon/types/test/test_dicts.py          30      0   100%
 encommon/types/test/test_empty.py          23      0   100%
+encommon/types/test/test_funcs.py          11      0   100%
 encommon/types/test/test_lists.py          21      0   100%
 encommon/types/test/test_notate.py        166      0   100%
 encommon/types/test/test_strings.py        24      0   100%
@@ -101,4 +103,4 @@ encommon/webkit/test/test_numeric.py       22      0   100%
 encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
-TOTAL                                    4206      0   100%
+TOTAL                                    4233      0   100%
