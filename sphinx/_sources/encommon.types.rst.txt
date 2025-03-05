@@ -36,6 +36,14 @@ encommon.types.empty module
    :show-inheritance:
    :undoc-members:
 
+encommon.types.funcs module
+---------------------------
+
+.. automodule:: encommon.types.funcs
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 encommon.types.lists module
 ---------------------------
 

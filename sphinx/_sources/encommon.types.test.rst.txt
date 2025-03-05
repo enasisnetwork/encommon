@@ -28,6 +28,14 @@ encommon.types.test.test\_empty module
    :show-inheritance:
    :undoc-members:
 
+encommon.types.test.test\_funcs module
+--------------------------------------
+
+.. automodule:: encommon.types.test.test_funcs
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 encommon.types.test.test\_lists module
 --------------------------------------
 

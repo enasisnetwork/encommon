@@ -12,9 +12,9 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
   
-    <title>encommon.types.empty | encommon  documentation</title>
-    <meta property="og:title" content="encommon.types.empty | encommon  documentation" />
-    <meta name="twitter:title" content="encommon.types.empty | encommon  documentation" />
+    <title>encommon.types.funcs | encommon  documentation</title>
+    <meta property="og:title" content="encommon.types.funcs | encommon  documentation" />
+    <meta name="twitter:title" content="encommon.types.funcs | encommon  documentation" />
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=e72c8e07" />
       <link rel="stylesheet" type="text/css" href="../../../_static/theme.css?v=42baaae4" />
       <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
@@ -136,11 +136,11 @@
        href="../../index.html">Module code</a>
     
 <div class="mr-1">/</div><span aria-current="page"
-        class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">encommon.types.empty</span>
+        class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">encommon.types.funcs</span>
 </nav>
 
     <div id="content" role="main">
-      <h1>Source code for encommon.types.empty</h1><div class="highlight"><pre>
+      <h1>Source code for encommon.types.funcs</h1><div class="highlight"><pre>
 <span></span><code><span id="line-1"><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-2"><span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 </span><span id="line-3">
@@ -150,142 +150,53 @@
 </span><span id="line-7">
 </span><span id="line-8">
 </span><span id="line-9">
-</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="line-10"><span class="kn">from</span><span class="w"> </span><span class="nn">inspect</span><span class="w"> </span><span class="kn">import</span> <span class="n">currentframe</span>
 </span><span id="line-11">
 </span><span id="line-12">
 </span><span id="line-13">
-<div class="viewcode-block" id="EmptyType">
-<a class="viewcode-back" href="../../../encommon.types.html#encommon.types.empty.EmptyType">[docs]</a>
-</span><span id="line-14"><span class="k">class</span><span class="w"> </span><span class="nc">EmptyType</span><span class="p">:</span>
+<div class="viewcode-block" id="funcname">
+<a class="viewcode-back" href="../../../index.html#encommon.types.funcs.funcname">[docs]</a>
+</span><span id="line-14"><span class="k">def</span><span class="w"> </span><span class="nf">funcname</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="line-15"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-16"><span class="sd">    Useful for representing empty or absent value with typing.</span>
+</span><span id="line-16"><span class="sd">    Return the current function name where code is running.</span>
 </span><span id="line-17">
-</span><span id="line-18"><span class="sd">    .. testsetup::</span>
-</span><span id="line-19"><span class="sd">       &gt;&gt;&gt; from copy import deepcopy</span>
+</span><span id="line-18"><span class="sd">    :returns: Current function name where code is running.</span>
+</span><span id="line-19"><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="line-20">
-</span><span id="line-21"><span class="sd">    Example</span>
-</span><span id="line-22"><span class="sd">    -------</span>
-</span><span id="line-23"><span class="sd">    &gt;&gt;&gt; &#39;foo&#39; if Empty else &#39;bar&#39;</span>
-</span><span id="line-24"><span class="sd">    &#39;bar&#39;</span>
+</span><span id="line-21">    <span class="n">frame</span> <span class="o">=</span> <span class="n">currentframe</span><span class="p">()</span>
+</span><span id="line-22">
+</span><span id="line-23">    <span class="k">assert</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+</span><span id="line-24">        <span class="s1">&#39;Frame not present&#39;</span><span class="p">)</span>
 </span><span id="line-25">
-</span><span id="line-26"><span class="sd">    Example</span>
-</span><span id="line-27"><span class="sd">    -------</span>
-</span><span id="line-28"><span class="sd">    &gt;&gt;&gt; deepcopy(Empty) is Empty</span>
-</span><span id="line-29"><span class="sd">    True</span>
-</span><span id="line-30"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="line-31">
-</span><span id="line-32">    <span class="n">__empty</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;EmptyType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="line-26">    <span class="n">caller</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_back</span>
+</span><span id="line-27">
+</span><span id="line-28">    <span class="k">assert</span> <span class="n">caller</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+</span><span id="line-29">        <span class="s1">&#39;Caller not present&#39;</span><span class="p">)</span>
+</span><span id="line-30">
+</span><span id="line-31">    <span class="n">name</span> <span class="o">=</span> <span class="n">caller</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span>
+</span><span id="line-32">    <span class="n">focals</span> <span class="o">=</span> <span class="n">caller</span><span class="o">.</span><span class="n">f_locals</span>
 </span><span id="line-33">
 </span><span id="line-34">
-</span><span id="line-35">    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-</span><span id="line-36">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-37">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-38"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-39"><span class="sd">        Initialize instance for class using provided parameters.</span>
-</span><span id="line-40"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="line-35">    <span class="k">if</span> <span class="s1">&#39;self&#39;</span> <span class="ow">in</span> <span class="n">focals</span><span class="p">:</span>
+</span><span id="line-36">
+</span><span id="line-37">        <span class="n">parent</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-38">            <span class="n">focals</span><span class="p">[</span><span class="s1">&#39;self&#39;</span><span class="p">]</span>
+</span><span id="line-39">            <span class="o">.</span><span class="vm">__class__</span>
+</span><span id="line-40">            <span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="line-41">
-</span><span id="line-42">        <span class="bp">self</span><span class="o">.</span><span class="n">__empty</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="line-42">        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
 </span><span id="line-43">
-</span><span id="line-44">
-</span><span id="line-45">    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span>
-</span><span id="line-46">        <span class="bp">cls</span><span class="p">,</span>
-</span><span id="line-47">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;EmptyType&#39;</span><span class="p">:</span>
-</span><span id="line-48"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-49"><span class="sd">        Built-in method called when creating new class instance.</span>
-</span><span id="line-50">
-</span><span id="line-51"><span class="sd">        :returns: Same instance of class that first instantiated.</span>
-</span><span id="line-52"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-53">
-</span><span id="line-54">        <span class="n">empty</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__empty</span>
-</span><span id="line-55">
-</span><span id="line-56">        <span class="k">if</span> <span class="n">empty</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-57">            <span class="k">return</span> <span class="n">empty</span>
-</span><span id="line-58">
-</span><span id="line-59">        <span class="bp">cls</span><span class="o">.</span><span class="n">__empty</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-60">            <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">))</span>
-</span><span id="line-61">
-</span><span id="line-62">        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__empty</span>
-</span><span id="line-63">
-</span><span id="line-64">
-</span><span id="line-65">    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span>
-</span><span id="line-66">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-67">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-68"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-69"><span class="sd">        Built-in method for representing the values for instance.</span>
-</span><span id="line-70">
-</span><span id="line-71"><span class="sd">        :returns: String representation for values from instance.</span>
-</span><span id="line-72"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-73">
-</span><span id="line-74">        <span class="k">return</span> <span class="s1">&#39;Empty&#39;</span>
-</span><span id="line-75">
-</span><span id="line-76">
-</span><span id="line-77">    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span>
-</span><span id="line-78">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-79">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="line-80"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-81"><span class="sd">        Built-in method used when performing hashing operations.</span>
-</span><span id="line-82">
-</span><span id="line-83"><span class="sd">        :returns: Integer hash value for the internal reference.</span>
-</span><span id="line-84"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-85">
-</span><span id="line-86">        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="n">EmptyType</span><span class="p">)</span>
-</span><span id="line-87">
-</span><span id="line-88">
-</span><span id="line-89">    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span>
-</span><span id="line-90">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-91">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="line-92"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-93"><span class="sd">        Built-in method for representing the values for instance.</span>
-</span><span id="line-94">
-</span><span id="line-95"><span class="sd">        :returns: String representation for values from instance.</span>
-</span><span id="line-96"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-97">
-</span><span id="line-98">        <span class="k">return</span> <span class="s1">&#39;Empty&#39;</span>
-</span><span id="line-99">
-</span><span id="line-100">
-</span><span id="line-101">    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span>
-</span><span id="line-102">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-103">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="line-104"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-105"><span class="sd">        Built-in method representing boolean value for instance.</span>
-</span><span id="line-106">
-</span><span id="line-107"><span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-</span><span id="line-108"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-109">
-</span><span id="line-110">        <span class="k">return</span> <span class="kc">False</span>
-</span><span id="line-111">
-</span><span id="line-112">
-</span><span id="line-113">    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span>
-</span><span id="line-114">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-115">        <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
-</span><span id="line-116">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="line-117"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-118"><span class="sd">        Built-in method for comparing this instance with another.</span>
-</span><span id="line-119">
-</span><span id="line-120"><span class="sd">        :param other: Other value being compared with instance.</span>
-</span><span id="line-121"><span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-</span><span id="line-122"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-123">
-</span><span id="line-124">        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
-</span><span id="line-125">
-</span><span id="line-126">
-</span><span id="line-127">    <span class="k">def</span><span class="w"> </span><span class="fm">__ne__</span><span class="p">(</span>
-</span><span id="line-128">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-129">        <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
-</span><span id="line-130">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-</span><span id="line-131"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-132"><span class="sd">        Built-in method for comparing this instance with another.</span>
-</span><span id="line-133">
-</span><span id="line-134"><span class="sd">        :param other: Other value being compared with instance.</span>
-</span><span id="line-135"><span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-</span><span id="line-136"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-137">
-</span><span id="line-138">        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+</span><span id="line-44">    <span class="k">elif</span> <span class="s1">&#39;cls&#39;</span> <span class="ow">in</span> <span class="n">focals</span><span class="p">:</span>
+</span><span id="line-45">
+</span><span id="line-46">        <span class="n">parent</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-47">            <span class="n">focals</span><span class="p">[</span><span class="s1">&#39;cls&#39;</span><span class="p">]</span>
+</span><span id="line-48">            <span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span id="line-49">
+</span><span id="line-50">        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+</span><span id="line-51">
+</span><span id="line-52">
+</span><span id="line-53">    <span class="k">return</span> <span class="n">name</span></div>
 
-</span><span id="line-139">
-</span><span id="line-140">
-</span><span id="line-141">
-</span><span id="line-142"><span class="n">Empty</span> <span class="o">=</span> <span class="n">EmptyType</span><span class="p">()</span>
 </span></code></pre></div>
     </div></div>
         </main>

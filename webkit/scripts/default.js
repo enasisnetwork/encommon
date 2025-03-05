@@ -432,7 +432,7 @@ function _enquery_prop(
       this[name] = value; }
 
     if (value !== undefined)
-    return this.each(_each);
+      return this.each(_each);
 
 
   return this[0][name]; }
