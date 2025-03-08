@@ -317,6 +317,9 @@ File System and Paths
 .. autofunction:: encommon.utils.save_text
    :noindex:
 
+.. autofunction:: encommon.utils.append_text
+   :noindex:
+
 .. autofunction:: encommon.utils.resolve_path
    :noindex:
 
