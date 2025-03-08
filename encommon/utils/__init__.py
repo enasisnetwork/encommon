@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from .files import append_text
 from .files import read_text
 from .files import save_text
 from .match import fuzz_match
@@ -27,6 +28,7 @@ from .stdout import strip_ansi
 
 
 __all__ = [
+    'append_text',
     'array_ansi',
     'fuzz_match',
     'kvpair_ansi',

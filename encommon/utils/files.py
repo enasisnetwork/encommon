@@ -23,6 +23,8 @@ def read_text(
 
     Example
     -------
+    >>> path.exists()
+    False
     >>> save_text(path, 'foo')
     'foo'
     >>> read_text(path)
@@ -52,6 +54,8 @@ def save_text(
 
     Example
     -------
+    >>> path.exists()
+    False
     >>> save_text(path, 'foo')
     'foo'
     >>> read_text(path)
@@ -69,3 +73,38 @@ def save_text(
         encoding='utf-8')
 
     return read_text(path)
+
+
+
+def append_text(
+    path: str | Path,
+    content: str,
+) -> None:
+    """
+    Append the provided text content into provided file path.
+
+    .. testsetup::
+       >>> tmpdir = getfixture('tmpdir')
+       >>> path = Path(f'{tmpdir}/text.txt')
+
+    Example
+    -------
+    >>> path.exists()
+    False
+    >>> append_text(path, 'foo')
+    >>> append_text(path, 'foo')
+    >>> read_text(path)
+    'foofoo'
+
+    :param path: Complete or relative path to the text file.
+    :param content: Content that will be written to the file.
+    """
+
+    path = Path(path).resolve()
+
+    with path.open(
+        mode='a',
+        encoding='utf-8',
+    ) as file:
+
+        file.write(f'{content}')
