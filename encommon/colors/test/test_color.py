@@ -84,6 +84,7 @@ def test_Color_rgb(
     """
 
     assert Color(source).rgb == expect
+    assert Color.from_rgb(*expect) == source
 
 
 
@@ -155,7 +156,7 @@ def test_Color_xy(
      ('ffff00', (60, 100, 50)),
      ('00ffff', (180, 100, 50)),
      ('ff00ff', (300, 100, 50)),
-     ('800080', (300, 100, 25))])
+     ('80007F', (300, 100, 25))])
 def test_Color_hsl(
     source: str,
     expect: tuple[int, ...],
@@ -168,6 +169,7 @@ def test_Color_hsl(
     """
 
     assert Color(source).hsl == expect
+    assert Color.from_hsl(*expect) == source
 
 
 
