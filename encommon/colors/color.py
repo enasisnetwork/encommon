@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from colorsys import hls_to_rgb
 from contextlib import suppress
 from typing import Union
 
@@ -59,6 +60,51 @@ class Color:
         source = strplwr(source)
 
         self.__source = source
+
+
+    @classmethod
+    def from_hsl(
+        cls,
+        hue: int,
+        sat: int,
+        lev: int,
+    ) -> 'Color':
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        h, s, l = (  # noqa: E741
+            hue / 360,
+            sat / 100,
+            lev / 100)
+
+        r, g, b = hls_to_rgb(h, l, s)
+
+        color = (
+            f'{round(r * 255):02X}'
+            f'{round(g * 255):02X}'
+            f'{round(b * 255):02X}')
+
+        return cls(color)
+
+
+    @classmethod
+    def from_rgb(
+        cls,
+        red: int,
+        green: int,
+        blue: int,
+    ) -> 'Color':
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        value = (
+            f'{red:02X}'
+            f'{green:02X}'
+            f'{blue:02X}')
+
+        return cls(value)
 
 
     def __repr__(
