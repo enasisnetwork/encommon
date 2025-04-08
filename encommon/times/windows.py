@@ -109,8 +109,8 @@ class Windows:
     __store: str
     __group: str
 
-    __store_engine: Engine
-    __store_session: (
+    __sengine: Engine
+    __session: (
         # pylint: disable=unsubscriptable-object
         sessionmaker[Session])
 
@@ -168,17 +168,18 @@ class Windows:
         Construct instances using the configuration parameters.
         """
 
-        store = self.__store
-
-        engine = create_engine(store)
+        sengine = create_engine(
+            self.__store,
+            pool_pre_ping=True)
 
         (SQLBase.metadata
-         .create_all(engine))
+         .create_all(sengine))
 
-        session = sessionmaker(engine)
+        session = (
+            sessionmaker(sengine))
 
-        self.__store_engine = engine
-        self.__store_session = session
+        self.__sengine = sengine
+        self.__session = session
 
 
     @property
@@ -230,7 +231,7 @@ class Windows:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__store_engine
+        return self.__sengine
 
 
     @property
@@ -243,7 +244,7 @@ class Windows:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__store_session()
+        return self.__session()
 
 
     @property
