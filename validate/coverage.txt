@@ -2,9 +2,9 @@ Name                                    Stmts   Miss  Cover
 -----------------------------------------------------------
 encommon/__init__.py                        5      0   100%
 encommon/colors/__init__.py                 2      0   100%
-encommon/colors/color.py                  175      0   100%
+encommon/colors/color.py                  186      0   100%
 encommon/colors/test/__init__.py            0      0   100%
-encommon/colors/test/test_color.py         48      0   100%
+encommon/colors/test/test_color.py         50      0   100%
 encommon/config/__init__.py                14      0   100%
 encommon/config/config.py                 111      0   100%
 encommon/config/files.py                   37      0   100%
@@ -103,4 +103,4 @@ encommon/webkit/test/test_numeric.py       22      0   100%
 encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
-TOTAL                                    4243      0   100%
+TOTAL                                    4256      0   100%
