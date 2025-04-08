@@ -100,8 +100,8 @@ def test_Timers(
         '_Timers__params',
         '_Timers__store',
         '_Timers__group',
-        '_Timers__store_engine',
-        '_Timers__store_session',
+        '_Timers__sengine',
+        '_Timers__session',
         '_Timers__timers']
 
 

@@ -111,8 +111,8 @@ def test_Windows(
         '_Windows__params',
         '_Windows__store',
         '_Windows__group',
-        '_Windows__store_engine',
-        '_Windows__store_session',
+        '_Windows__sengine',
+        '_Windows__session',
         '_Windows__start',
         '_Windows__stop',
         '_Windows__windows']
