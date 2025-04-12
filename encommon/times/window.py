@@ -331,22 +331,22 @@ def window_croniter(  # noqa: CFQ004
         source: datetime,
     ) -> datetime:
 
-        source = (
+        parse = (
             _operator(source)
             .get_next())
 
-        return parse_time(source)
+        return parse_time(parse)
 
 
     def _wlast(
         source: datetime,
     ) -> datetime:
 
-        source = (
+        parse = (
             _operator(source)
             .get_prev())
 
-        return parse_time(source)
+        return parse_time(parse)
 
 
     def _operator(
