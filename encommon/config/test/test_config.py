@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 
 
 
-def test_Config(
+def test_Config(  # noqa: CFQ001
     tmp_path: Path,
     config: 'Config',
 ) -> None:
@@ -46,7 +46,8 @@ def test_Config(
         '_Config__params',
         '_Config__paths',
         '_Config__logger',
-        '_Config__crypts']
+        '_Config__crypts',
+        '_Config__jinja2']
 
 
     assert inrepr(
@@ -82,6 +83,8 @@ def test_Config(
     assert config.logger
 
     assert config.crypts
+
+    assert config.jinja2
 
 
     replaces = {
@@ -135,6 +138,26 @@ def test_Config(
         replace=replaces)
 
     assert expect == sample
+
+
+
+def test_Config_jinja2(
+    config: 'Config',
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param config: Primary class instance for configuration.
+    """
+
+    jinja2 = config.jinja2
+    j2parse = jinja2.parse
+
+    parsed = j2parse(
+        '{{ foo }}',
+        {'foo': 'bar'})
+
+    assert parsed == 'bar'
 
 
 
