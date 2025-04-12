@@ -6,13 +6,13 @@ encommon/colors/color.py                  186      0   100%
 encommon/colors/test/__init__.py            0      0   100%
 encommon/colors/test/test_color.py         50      0   100%
 encommon/config/__init__.py                14      0   100%
-encommon/config/config.py                 111      0   100%
+encommon/config/config.py                 118      0   100%
 encommon/config/files.py                   37      0   100%
 encommon/config/logger.py                 194      0   100%
 encommon/config/params.py                  23      0   100%
 encommon/config/paths.py                   39      0   100%
 encommon/config/test/__init__.py            2      0   100%
-encommon/config/test/test_config.py        47      0   100%
+encommon/config/test/test_config.py        53      0   100%
 encommon/config/test/test_files.py         33      0   100%
 encommon/config/test/test_logger.py        91      0   100%
 encommon/config/test/test_paths.py         41      0   100%
@@ -27,10 +27,10 @@ encommon/crypts/test/__init__.py            0      0   100%
 encommon/crypts/test/test_crypts.py        64      0   100%
 encommon/crypts/test/test_hashes.py        24      0   100%
 encommon/parse/__init__.py                  5      0   100%
-encommon/parse/jinja2.py                  103      0   100%
+encommon/parse/jinja2.py                  118      0   100%
 encommon/parse/network.py                 123      0   100%
 encommon/parse/test/__init__.py             0      0   100%
-encommon/parse/test/test_jinja2.py         42      0   100%
+encommon/parse/test/test_jinja2.py         57      0   100%
 encommon/parse/test/test_network.py        84      0   100%
 encommon/times/__init__.py                 17      0   100%
 encommon/times/common.py                   18      0   100%
@@ -103,4 +103,4 @@ encommon/webkit/test/test_numeric.py       22      0   100%
 encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
-TOTAL                                    4256      0   100%
+TOTAL                                    4299      0   100%
