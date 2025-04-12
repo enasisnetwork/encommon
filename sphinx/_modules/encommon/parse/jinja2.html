@@ -481,6 +481,62 @@
 </span><span id="line-331">
 </span><span id="line-332">
 </span><span id="line-333">        <span class="k">return</span> <span class="n">value</span></div>
+
+</span><span id="line-334">
+</span><span id="line-335">
+<div class="viewcode-block" id="Jinja2.set_static">
+<a class="viewcode-back" href="../../../index.html#encommon.parse.jinja2.Jinja2.set_static">[docs]</a>
+</span><span id="line-336">    <span class="k">def</span><span class="w"> </span><span class="nf">set_static</span><span class="p">(</span>
+</span><span id="line-337">        <span class="bp">self</span><span class="p">,</span>
+</span><span id="line-338">        <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="line-339">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="line-340">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-341"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-342"><span class="sd">        Simply add the provided static into internal reference.</span>
+</span><span id="line-343">
+</span><span id="line-344"><span class="sd">        :param key: Where item will be inserted into reference.</span>
+</span><span id="line-345"><span class="sd">        :param value: Item that will be inserted into internal.</span>
+</span><span id="line-346"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="line-347">
+</span><span id="line-348">        <span class="n">statics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__statics</span>
+</span><span id="line-349">
+</span><span id="line-350">        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-351">
+</span><span id="line-352">            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">statics</span><span class="p">:</span>
+</span><span id="line-353">                <span class="k">del</span> <span class="n">statics</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span><span id="line-354">
+</span><span id="line-355">            <span class="k">return</span> <span class="kc">None</span>
+</span><span id="line-356">
+</span><span id="line-357">        <span class="n">statics</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+</span><span id="line-358">
+</span><span id="line-359">
+<div class="viewcode-block" id="Jinja2.set_filter">
+<a class="viewcode-back" href="../../../index.html#encommon.parse.jinja2.Jinja2.set_filter">[docs]</a>
+</span><span id="line-360">    <span class="k">def</span><span class="w"> </span><span class="nf">set_filter</span><span class="p">(</span>
+</span><span id="line-361">        <span class="bp">self</span><span class="p">,</span>
+</span><span id="line-362">        <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="line-363">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FILTER</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="line-364">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-365"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-366"><span class="sd">        Simply add the provided filter into internal reference.</span>
+</span><span id="line-367">
+</span><span id="line-368"><span class="sd">        :param key: Where item will be inserted into reference.</span>
+</span><span id="line-369"><span class="sd">        :param value: Item that will be inserted into internal.</span>
+</span><span id="line-370"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="line-371">
+</span><span id="line-372">        <span class="n">jinjenv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jinjenv</span>
+</span><span id="line-373">
+</span><span id="line-374">        <span class="n">filters</span> <span class="o">=</span> <span class="n">jinjenv</span><span class="o">.</span><span class="n">filters</span>
+</span><span id="line-375">
+</span><span id="line-376">        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-377">
+</span><span id="line-378">            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">filters</span><span class="p">:</span>
+</span><span id="line-379">                <span class="k">del</span> <span class="n">filters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</span><span id="line-380">
+</span><span id="line-381">            <span class="k">return</span> <span class="kc">None</span>
+</span><span id="line-382">
+</span><span id="line-383">        <span class="n">filters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
 </div>
 
 </span></code></pre></div>

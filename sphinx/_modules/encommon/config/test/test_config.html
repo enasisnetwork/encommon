@@ -169,7 +169,7 @@
 </span><span id="line-26">
 <div class="viewcode-block" id="test_Config">
 <a class="viewcode-back" href="../../../../encommon.config.test.html#encommon.config.test.test_config.test_Config">[docs]</a>
-</span><span id="line-27"><span class="k">def</span><span class="w"> </span><span class="nf">test_Config</span><span class="p">(</span>
+</span><span id="line-27"><span class="k">def</span><span class="w"> </span><span class="nf">test_Config</span><span class="p">(</span>  <span class="c1"># noqa: CFQ001</span>
 </span><span id="line-28">    <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 </span><span id="line-29">    <span class="n">config</span><span class="p">:</span> <span class="s1">&#39;Config&#39;</span><span class="p">,</span>
 </span><span id="line-30"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -191,121 +191,147 @@
 </span><span id="line-46">        <span class="s1">&#39;_Config__params&#39;</span><span class="p">,</span>
 </span><span id="line-47">        <span class="s1">&#39;_Config__paths&#39;</span><span class="p">,</span>
 </span><span id="line-48">        <span class="s1">&#39;_Config__logger&#39;</span><span class="p">,</span>
-</span><span id="line-49">        <span class="s1">&#39;_Config__crypts&#39;</span><span class="p">]</span>
-</span><span id="line-50">
+</span><span id="line-49">        <span class="s1">&#39;_Config__crypts&#39;</span><span class="p">,</span>
+</span><span id="line-50">        <span class="s1">&#39;_Config__jinja2&#39;</span><span class="p">]</span>
 </span><span id="line-51">
-</span><span id="line-52">    <span class="k">assert</span> <span class="n">inrepr</span><span class="p">(</span>
-</span><span id="line-53">        <span class="s1">&#39;config.Config object&#39;</span><span class="p">,</span>
-</span><span id="line-54">        <span class="n">config</span><span class="p">)</span>
-</span><span id="line-55">
-</span><span id="line-56">    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span>
-</span><span id="line-57">        <span class="nb">hash</span><span class="p">(</span><span class="n">config</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
-</span><span id="line-58">
-</span><span id="line-59">    <span class="k">assert</span> <span class="n">instr</span><span class="p">(</span>
-</span><span id="line-60">        <span class="s1">&#39;config.Config object&#39;</span><span class="p">,</span>
-</span><span id="line-61">        <span class="n">config</span><span class="p">)</span>
-</span><span id="line-62">
+</span><span id="line-52">
+</span><span id="line-53">    <span class="k">assert</span> <span class="n">inrepr</span><span class="p">(</span>
+</span><span id="line-54">        <span class="s1">&#39;config.Config object&#39;</span><span class="p">,</span>
+</span><span id="line-55">        <span class="n">config</span><span class="p">)</span>
+</span><span id="line-56">
+</span><span id="line-57">    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span>
+</span><span id="line-58">        <span class="nb">hash</span><span class="p">(</span><span class="n">config</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
+</span><span id="line-59">
+</span><span id="line-60">    <span class="k">assert</span> <span class="n">instr</span><span class="p">(</span>
+</span><span id="line-61">        <span class="s1">&#39;config.Config object&#39;</span><span class="p">,</span>
+</span><span id="line-62">        <span class="n">config</span><span class="p">)</span>
 </span><span id="line-63">
-</span><span id="line-64">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">merge</span>
-</span><span id="line-65">
-</span><span id="line-66">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">merge</span>
-</span><span id="line-67">
-</span><span id="line-68">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">cargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span id="line-69">
-</span><span id="line-70">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">sargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span id="line-71">
-</span><span id="line-72">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">basic</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
-</span><span id="line-73">
-</span><span id="line-74">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">merge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
-</span><span id="line-75">
-</span><span id="line-76">    <span class="k">assert</span> <span class="nb">callable</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
-</span><span id="line-77">
-</span><span id="line-78">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">params</span>
-</span><span id="line-79">
-</span><span id="line-80">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
-</span><span id="line-81">
-</span><span id="line-82">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">logger</span>
-</span><span id="line-83">
-</span><span id="line-84">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">crypts</span>
-</span><span id="line-85">
+</span><span id="line-64">
+</span><span id="line-65">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">merge</span>
+</span><span id="line-66">
+</span><span id="line-67">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">paths</span><span class="o">.</span><span class="n">merge</span>
+</span><span id="line-68">
+</span><span id="line-69">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">cargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span id="line-70">
+</span><span id="line-71">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">sargs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span id="line-72">
+</span><span id="line-73">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">basic</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span id="line-74">
+</span><span id="line-75">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">merge</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+</span><span id="line-76">
+</span><span id="line-77">    <span class="k">assert</span> <span class="nb">callable</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
+</span><span id="line-78">
+</span><span id="line-79">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">params</span>
+</span><span id="line-80">
+</span><span id="line-81">    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span id="line-82">
+</span><span id="line-83">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">logger</span>
+</span><span id="line-84">
+</span><span id="line-85">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">crypts</span>
 </span><span id="line-86">
-</span><span id="line-87">    <span class="n">replaces</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="line-88">        <span class="s1">&#39;pytemp&#39;</span><span class="p">:</span> <span class="n">tmp_path</span><span class="p">,</span>
-</span><span id="line-89">        <span class="s1">&#39;PROJECT&#39;</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">}</span>
-</span><span id="line-90">
-</span><span id="line-91">
-</span><span id="line-92">    <span class="n">sample_path</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-93">        <span class="n">SAMPLES</span> <span class="o">/</span> <span class="s1">&#39;basic.json&#39;</span><span class="p">)</span>
+</span><span id="line-87">    <span class="k">assert</span> <span class="n">config</span><span class="o">.</span><span class="n">jinja2</span>
+</span><span id="line-88">
+</span><span id="line-89">
+</span><span id="line-90">    <span class="n">replaces</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="line-91">        <span class="s1">&#39;pytemp&#39;</span><span class="p">:</span> <span class="n">tmp_path</span><span class="p">,</span>
+</span><span id="line-92">        <span class="s1">&#39;PROJECT&#39;</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">}</span>
+</span><span id="line-93">
 </span><span id="line-94">
-</span><span id="line-95">    <span class="n">sample</span> <span class="o">=</span> <span class="n">load_sample</span><span class="p">(</span>
-</span><span id="line-96">        <span class="n">path</span><span class="o">=</span><span class="n">sample_path</span><span class="p">,</span>
-</span><span id="line-97">        <span class="n">update</span><span class="o">=</span><span class="n">ENPYRWS</span><span class="p">,</span>
-</span><span id="line-98">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">basic</span><span class="p">,</span>
-</span><span id="line-99">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
-</span><span id="line-100">
-</span><span id="line-101">    <span class="n">expect</span> <span class="o">=</span> <span class="n">prep_sample</span><span class="p">(</span>
-</span><span id="line-102">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">basic</span><span class="p">,</span>
-</span><span id="line-103">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
-</span><span id="line-104">
-</span><span id="line-105">    <span class="k">assert</span> <span class="n">expect</span> <span class="o">==</span> <span class="n">sample</span>
-</span><span id="line-106">
+</span><span id="line-95">    <span class="n">sample_path</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-96">        <span class="n">SAMPLES</span> <span class="o">/</span> <span class="s1">&#39;basic.json&#39;</span><span class="p">)</span>
+</span><span id="line-97">
+</span><span id="line-98">    <span class="n">sample</span> <span class="o">=</span> <span class="n">load_sample</span><span class="p">(</span>
+</span><span id="line-99">        <span class="n">path</span><span class="o">=</span><span class="n">sample_path</span><span class="p">,</span>
+</span><span id="line-100">        <span class="n">update</span><span class="o">=</span><span class="n">ENPYRWS</span><span class="p">,</span>
+</span><span id="line-101">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">basic</span><span class="p">,</span>
+</span><span id="line-102">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
+</span><span id="line-103">
+</span><span id="line-104">    <span class="n">expect</span> <span class="o">=</span> <span class="n">prep_sample</span><span class="p">(</span>
+</span><span id="line-105">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">basic</span><span class="p">,</span>
+</span><span id="line-106">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
 </span><span id="line-107">
-</span><span id="line-108">    <span class="n">sample_path</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-109">        <span class="n">SAMPLES</span> <span class="o">/</span> <span class="s1">&#39;merge.json&#39;</span><span class="p">)</span>
+</span><span id="line-108">    <span class="k">assert</span> <span class="n">expect</span> <span class="o">==</span> <span class="n">sample</span>
+</span><span id="line-109">
 </span><span id="line-110">
-</span><span id="line-111">    <span class="n">sample</span> <span class="o">=</span> <span class="n">load_sample</span><span class="p">(</span>
-</span><span id="line-112">        <span class="n">path</span><span class="o">=</span><span class="n">sample_path</span><span class="p">,</span>
-</span><span id="line-113">        <span class="n">update</span><span class="o">=</span><span class="n">ENPYRWS</span><span class="p">,</span>
-</span><span id="line-114">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span>
-</span><span id="line-115">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
-</span><span id="line-116">
-</span><span id="line-117">    <span class="n">expect</span> <span class="o">=</span> <span class="n">prep_sample</span><span class="p">(</span>
-</span><span id="line-118">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span>
-</span><span id="line-119">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
-</span><span id="line-120">
-</span><span id="line-121">    <span class="k">assert</span> <span class="n">expect</span> <span class="o">==</span> <span class="n">sample</span>
-</span><span id="line-122">
+</span><span id="line-111">    <span class="n">sample_path</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-112">        <span class="n">SAMPLES</span> <span class="o">/</span> <span class="s1">&#39;merge.json&#39;</span><span class="p">)</span>
+</span><span id="line-113">
+</span><span id="line-114">    <span class="n">sample</span> <span class="o">=</span> <span class="n">load_sample</span><span class="p">(</span>
+</span><span id="line-115">        <span class="n">path</span><span class="o">=</span><span class="n">sample_path</span><span class="p">,</span>
+</span><span id="line-116">        <span class="n">update</span><span class="o">=</span><span class="n">ENPYRWS</span><span class="p">,</span>
+</span><span id="line-117">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span>
+</span><span id="line-118">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
+</span><span id="line-119">
+</span><span id="line-120">    <span class="n">expect</span> <span class="o">=</span> <span class="n">prep_sample</span><span class="p">(</span>
+</span><span id="line-121">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span>
+</span><span id="line-122">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
 </span><span id="line-123">
-</span><span id="line-124">    <span class="n">sample_path</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-125">        <span class="n">SAMPLES</span> <span class="o">/</span> <span class="s1">&#39;config.json&#39;</span><span class="p">)</span>
+</span><span id="line-124">    <span class="k">assert</span> <span class="n">expect</span> <span class="o">==</span> <span class="n">sample</span>
+</span><span id="line-125">
 </span><span id="line-126">
-</span><span id="line-127">    <span class="n">sample</span> <span class="o">=</span> <span class="n">load_sample</span><span class="p">(</span>
-</span><span id="line-128">        <span class="n">path</span><span class="o">=</span><span class="n">sample_path</span><span class="p">,</span>
-</span><span id="line-129">        <span class="n">update</span><span class="o">=</span><span class="n">ENPYRWS</span><span class="p">,</span>
-</span><span id="line-130">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
-</span><span id="line-131">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
-</span><span id="line-132">
-</span><span id="line-133">    <span class="n">expect</span> <span class="o">=</span> <span class="n">prep_sample</span><span class="p">(</span>
-</span><span id="line-134">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
-</span><span id="line-135">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
-</span><span id="line-136">
-</span><span id="line-137">    <span class="k">assert</span> <span class="n">expect</span> <span class="o">==</span> <span class="n">sample</span></div>
-
-</span><span id="line-138">
+</span><span id="line-127">    <span class="n">sample_path</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-128">        <span class="n">SAMPLES</span> <span class="o">/</span> <span class="s1">&#39;config.json&#39;</span><span class="p">)</span>
+</span><span id="line-129">
+</span><span id="line-130">    <span class="n">sample</span> <span class="o">=</span> <span class="n">load_sample</span><span class="p">(</span>
+</span><span id="line-131">        <span class="n">path</span><span class="o">=</span><span class="n">sample_path</span><span class="p">,</span>
+</span><span id="line-132">        <span class="n">update</span><span class="o">=</span><span class="n">ENPYRWS</span><span class="p">,</span>
+</span><span id="line-133">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+</span><span id="line-134">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
+</span><span id="line-135">
+</span><span id="line-136">    <span class="n">expect</span> <span class="o">=</span> <span class="n">prep_sample</span><span class="p">(</span>
+</span><span id="line-137">        <span class="n">content</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+</span><span id="line-138">        <span class="n">replace</span><span class="o">=</span><span class="n">replaces</span><span class="p">)</span>
 </span><span id="line-139">
-</span><span id="line-140">
+</span><span id="line-140">    <span class="k">assert</span> <span class="n">expect</span> <span class="o">==</span> <span class="n">sample</span></div>
+
+</span><span id="line-141">
+</span><span id="line-142">
+</span><span id="line-143">
+<div class="viewcode-block" id="test_Config_jinja2">
+<a class="viewcode-back" href="../../../../encommon.config.test.html#encommon.config.test.test_config.test_Config_jinja2">[docs]</a>
+</span><span id="line-144"><span class="k">def</span><span class="w"> </span><span class="nf">test_Config_jinja2</span><span class="p">(</span>
+</span><span id="line-145">    <span class="n">config</span><span class="p">:</span> <span class="s1">&#39;Config&#39;</span><span class="p">,</span>
+</span><span id="line-146"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-147"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-148"><span class="sd">    Perform various tests associated with relevant routines.</span>
+</span><span id="line-149">
+</span><span id="line-150"><span class="sd">    :param config: Primary class instance for configuration.</span>
+</span><span id="line-151"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-152">
+</span><span id="line-153">    <span class="n">jinja2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">jinja2</span>
+</span><span id="line-154">    <span class="n">j2parse</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">parse</span>
+</span><span id="line-155">
+</span><span id="line-156">    <span class="n">parsed</span> <span class="o">=</span> <span class="n">j2parse</span><span class="p">(</span>
+</span><span id="line-157">        <span class="s1">&#39;{{ foo }}&#39;</span><span class="p">,</span>
+</span><span id="line-158">        <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
+</span><span id="line-159">
+</span><span id="line-160">    <span class="k">assert</span> <span class="n">parsed</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span></div>
+
+</span><span id="line-161">
+</span><span id="line-162">
+</span><span id="line-163">
 <div class="viewcode-block" id="test_Config_cover">
 <a class="viewcode-back" href="../../../../encommon.config.test.html#encommon.config.test.test_config.test_Config_cover">[docs]</a>
-</span><span id="line-141"><span class="k">def</span><span class="w"> </span><span class="nf">test_Config_cover</span><span class="p">(</span>
-</span><span id="line-142">    <span class="n">config</span><span class="p">:</span> <span class="s1">&#39;Config&#39;</span><span class="p">,</span>
-</span><span id="line-143"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-144"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-145"><span class="sd">    Perform various tests associated with relevant routines.</span>
-</span><span id="line-146">
-</span><span id="line-147"><span class="sd">    :param config: Primary class instance for configuration.</span>
-</span><span id="line-148"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="line-149">
-</span><span id="line-150">
-</span><span id="line-151">    <span class="n">logger1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">logger</span>
-</span><span id="line-152">    <span class="n">logger2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">logger</span>
-</span><span id="line-153">
-</span><span id="line-154">    <span class="k">assert</span> <span class="n">logger1</span> <span class="ow">is</span> <span class="n">logger2</span>
-</span><span id="line-155">
-</span><span id="line-156">
-</span><span id="line-157">    <span class="n">crypts1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">crypts</span>
-</span><span id="line-158">    <span class="n">crypts2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">crypts</span>
-</span><span id="line-159">
-</span><span id="line-160">    <span class="k">assert</span> <span class="n">crypts1</span> <span class="ow">is</span> <span class="n">crypts2</span></div>
+</span><span id="line-164"><span class="k">def</span><span class="w"> </span><span class="nf">test_Config_cover</span><span class="p">(</span>
+</span><span id="line-165">    <span class="n">config</span><span class="p">:</span> <span class="s1">&#39;Config&#39;</span><span class="p">,</span>
+</span><span id="line-166"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-167"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-168"><span class="sd">    Perform various tests associated with relevant routines.</span>
+</span><span id="line-169">
+</span><span id="line-170"><span class="sd">    :param config: Primary class instance for configuration.</span>
+</span><span id="line-171"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-172">
+</span><span id="line-173">
+</span><span id="line-174">    <span class="n">logger1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">logger</span>
+</span><span id="line-175">    <span class="n">logger2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">logger</span>
+</span><span id="line-176">
+</span><span id="line-177">    <span class="k">assert</span> <span class="n">logger1</span> <span class="ow">is</span> <span class="n">logger2</span>
+</span><span id="line-178">
+</span><span id="line-179">
+</span><span id="line-180">    <span class="n">crypts1</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">crypts</span>
+</span><span id="line-181">    <span class="n">crypts2</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">crypts</span>
+</span><span id="line-182">
+</span><span id="line-183">    <span class="k">assert</span> <span class="n">crypts1</span> <span class="ow">is</span> <span class="n">crypts2</span></div>
 
 </span></code></pre></div>
     </div></div>
