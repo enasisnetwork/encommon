@@ -11,6 +11,7 @@ from typing import Any
 
 from pytest import fixture
 from pytest import mark
+from pytest import raises
 
 from ..jinja2 import Jinja2
 from ... import PROJECT
@@ -171,7 +172,7 @@ def test_Jinja2_literal(
      ('{{ "01" }}', '01'),
      ('-01', '-01'),
      ('{{ "-01" }}', '-01')])
-def test_Jinja2_cover(
+def test_Jinja2_parse(
     jinja2: Jinja2,
     value: Any,  # noqa: ANN401
     expect: Any,  # noqa: ANN401
@@ -189,3 +190,43 @@ def test_Jinja2_cover(
     parsed = parse(value)
 
     assert parsed == expect
+
+
+
+def test_Jinja2_cover(
+    jinja2: Jinja2,
+) -> None:
+    """
+    Perform various tests associated with relevant routines.
+
+    :param jinja2: Parsing class for the Jinja2 templating.
+    """
+
+    parse = jinja2.parse
+
+
+    jinja2.set_static(
+        'key', 'value')
+
+    parsed = parse('{{ key }}')
+
+    assert parsed == 'value'
+
+    jinja2.set_static('key')
+
+    with raises(Exception):
+        parse('{{ key }}')
+
+
+    jinja2.set_filter(
+        'float', float)
+
+    parsed = parse(
+        '{{ 1 | float }}')
+
+    assert parsed == 1.0
+
+    jinja2.set_filter('float')
+
+    with raises(Exception):
+        parse('{{ 1 | float }}')

@@ -71,4 +71,5 @@ def test_lattrs(
         '_Config__params',
         '_Config__paths',
         '_Config__logger',
-        '_Config__crypts']
+        '_Config__crypts',
+        '_Config__jinja2']

@@ -18,6 +18,7 @@ from .params import Params
 from .paths import ConfigPaths
 from .utils import config_paths
 from ..crypts import Crypts
+from ..parse import Jinja2
 from ..types import DictStrAny
 from ..types import merge_dicts
 from ..types import setate
@@ -64,6 +65,7 @@ class Config:
     __params: Optional[Params]
     __logger: Optional[Logger]
     __crypts: Optional[Crypts]
+    __jinja2: Jinja2
 
 
     def __init__(
@@ -103,6 +105,11 @@ class Config:
 
         self.__logger = None
         self.__crypts = None
+
+        jinja2 = Jinja2({
+            'config': self})
+
+        self.__jinja2 = jinja2
 
 
     @property
@@ -325,3 +332,16 @@ class Config:
         self.__crypts = crypts
 
         return self.__crypts
+
+
+    @property
+    def jinja2(
+        self,
+    ) -> Jinja2:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__jinja2

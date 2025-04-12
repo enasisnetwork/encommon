@@ -331,3 +331,53 @@ class Jinja2:
 
 
         return value
+
+
+    def set_static(
+        self,
+        key: str,
+        value: Optional[Any] = None,
+    ) -> None:
+        """
+        Simply add the provided static into internal reference.
+
+        :param key: Where item will be inserted into reference.
+        :param value: Item that will be inserted into internal.
+        """
+
+        statics = self.__statics
+
+        if value is None:
+
+            if key in statics:
+                del statics[key]
+
+            return None
+
+        statics[key] = value
+
+
+    def set_filter(
+        self,
+        key: str,
+        value: Optional[FILTER] = None,
+    ) -> None:
+        """
+        Simply add the provided filter into internal reference.
+
+        :param key: Where item will be inserted into reference.
+        :param value: Item that will be inserted into internal.
+        """
+
+        jinjenv = self.__jinjenv
+
+        filters = jinjenv.filters
+
+        if value is None:
+
+            if key in filters:
+                del filters[key]
+
+            return None
+
+        filters[key] = value
