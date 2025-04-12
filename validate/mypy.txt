@@ -1,9 +1,4 @@
 >>> make mypy
   ● Executing mypy in encommon..
-    DONE
-  ● Executing mypy in sphinx..
-    DONE
-  ● Executing mypy on makefile.py..
-    DONE
-  ● Executing mypy on makebadge.py..
-    DONE
+encommon/times/window.py:335: error: Incompatible types in assignment (expression has type "float", variable has type "datetime")  [assignment]
+encommon/times/window.py:346: error: Incompatible types in assignment (expression has type "float", variable has type "datetime")  [assignment]
