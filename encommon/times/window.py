@@ -31,8 +31,8 @@ class Window:
     Example
     -------
     >>> window = Window('* * * * *', '-4m@m')
-    >>> [window.ready() for _ in range(5)]
-    [True, True, True, True, False]
+    >>> [window.ready() for _ in range(6)]
+    [True, True, True, True, True, False]
 
     :param window: Parameters for defining scheduled time.
     :param start: Determine the start for scheduling window.
@@ -252,7 +252,7 @@ class Window:
         raise NotImplementedError
 
 
-    def ready(  # noqa: CFQ004
+    def ready(
         self,
         update: bool = True,
     ) -> bool:
@@ -283,8 +283,6 @@ class Window:
             self.__wlast = wlast
             self.__wnext = wnext
 
-        if wnext > soonest:
-            return False
 
         return True
 

@@ -187,7 +187,9 @@ def test_Windows_cover(
 
     windows = Windows()
 
-    params = WindowParams(window=1)
+    params = WindowParams(
+        window=1,
+        start='+1s')
 
     windows.create('fur', params)
 
