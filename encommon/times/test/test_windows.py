@@ -169,7 +169,7 @@ def test_Windows(
 
 
 def test_Windows_cover(
-    windows: 'Windows',
+    windows: Windows,
 ) -> None:
     """
     Perform various tests associated with relevant routines.
@@ -179,13 +179,17 @@ def test_Windows_cover(
 
 
     assert windows.ready('two')
+    assert windows.ready('two')
+    assert windows.pause('two')
 
     windows.update('two', '+1h')
 
     assert not windows.ready('two')
+    assert windows.pause('two')
 
 
     windows = Windows()
+
 
     params = WindowParams(
         window=1,
@@ -194,10 +198,13 @@ def test_Windows_cover(
     windows.create('fur', params)
 
     assert not windows.ready('fur')
+    assert windows.pause('fur')
 
     sleep(2)
 
     assert windows.ready('fur')
+    assert windows.ready('fur')
+    assert windows.pause('fur')
 
     windows.delete('fur')
 
