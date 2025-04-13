@@ -94,8 +94,8 @@ class Windows:
     >>> source = {'one': WindowParams(window=1)}
     >>> params = WindowsParams(windows=source)
     >>> windows = Windows(params, '-2s', 'now')
-    >>> [windows.ready('one') for x in range(3)]
-    [True, True, False]
+    >>> [windows.ready('one') for x in range(4)]
+    [True, True, True, False]
 
     :param params: Parameters used to instantiate the class.
     :param start: Determine the start for scheduling window.
