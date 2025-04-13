@@ -320,7 +320,7 @@
 <div class="viewcode-block" id="test_Windows_cover">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_windows.test_Windows_cover">[docs]</a>
 </span><span id="line-171"><span class="k">def</span><span class="w"> </span><span class="nf">test_Windows_cover</span><span class="p">(</span>
-</span><span id="line-172">    <span class="n">windows</span><span class="p">:</span> <span class="s1">&#39;Windows&#39;</span><span class="p">,</span>
+</span><span id="line-172">    <span class="n">windows</span><span class="p">:</span> <span class="n">Windows</span><span class="p">,</span>
 </span><span id="line-173"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="line-174"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="line-175"><span class="sd">    Perform various tests associated with relevant routines.</span>
@@ -330,74 +330,81 @@
 </span><span id="line-179">
 </span><span id="line-180">
 </span><span id="line-181">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">)</span>
-</span><span id="line-182">
-</span><span id="line-183">    <span class="n">windows</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;+1h&#39;</span><span class="p">)</span>
+</span><span id="line-182">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">)</span>
+</span><span id="line-183">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">)</span>
 </span><span id="line-184">
-</span><span id="line-185">    <span class="k">assert</span> <span class="ow">not</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">)</span>
+</span><span id="line-185">    <span class="n">windows</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;+1h&#39;</span><span class="p">)</span>
 </span><span id="line-186">
-</span><span id="line-187">
-</span><span id="line-188">    <span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">()</span>
+</span><span id="line-187">    <span class="k">assert</span> <span class="ow">not</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">)</span>
+</span><span id="line-188">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">)</span>
 </span><span id="line-189">
-</span><span id="line-190">    <span class="n">params</span> <span class="o">=</span> <span class="n">WindowParams</span><span class="p">(</span>
-</span><span id="line-191">        <span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="line-192">        <span class="n">start</span><span class="o">=</span><span class="s1">&#39;+1s&#39;</span><span class="p">)</span>
+</span><span id="line-190">
+</span><span id="line-191">    <span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">()</span>
+</span><span id="line-192">
 </span><span id="line-193">
-</span><span id="line-194">    <span class="n">windows</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span><span id="line-195">
-</span><span id="line-196">    <span class="k">assert</span> <span class="ow">not</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
+</span><span id="line-194">    <span class="n">params</span> <span class="o">=</span> <span class="n">WindowParams</span><span class="p">(</span>
+</span><span id="line-195">        <span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="line-196">        <span class="n">start</span><span class="o">=</span><span class="s1">&#39;+1s&#39;</span><span class="p">)</span>
 </span><span id="line-197">
-</span><span id="line-198">    <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="line-198">    <span class="n">windows</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </span><span id="line-199">
-</span><span id="line-200">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
-</span><span id="line-201">
-</span><span id="line-202">    <span class="n">windows</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span></div>
-
-</span><span id="line-203">
+</span><span id="line-200">    <span class="k">assert</span> <span class="ow">not</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
+</span><span id="line-201">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
+</span><span id="line-202">
+</span><span id="line-203">    <span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </span><span id="line-204">
-</span><span id="line-205">
+</span><span id="line-205">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
+</span><span id="line-206">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
+</span><span id="line-207">    <span class="k">assert</span> <span class="n">windows</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span>
+</span><span id="line-208">
+</span><span id="line-209">    <span class="n">windows</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;fur&#39;</span><span class="p">)</span></div>
+
+</span><span id="line-210">
+</span><span id="line-211">
+</span><span id="line-212">
 <div class="viewcode-block" id="test_Windows_raises">
 <a class="viewcode-back" href="../../../../encommon.times.test.html#encommon.times.test.test_windows.test_Windows_raises">[docs]</a>
-</span><span id="line-206"><span class="k">def</span><span class="w"> </span><span class="nf">test_Windows_raises</span><span class="p">(</span>
-</span><span id="line-207">    <span class="n">windows</span><span class="p">:</span> <span class="n">Windows</span><span class="p">,</span>
-</span><span id="line-208"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-209"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-210"><span class="sd">    Perform various tests associated with relevant routines.</span>
-</span><span id="line-211">
-</span><span id="line-212"><span class="sd">    :param windows: Primary class instance for window object.</span>
-</span><span id="line-213"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="line-214">
-</span><span id="line-215">
-</span><span id="line-216">    <span class="n">_raises</span> <span class="o">=</span> <span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
-</span><span id="line-217">
-</span><span id="line-218">    <span class="k">with</span> <span class="n">_raises</span> <span class="k">as</span> <span class="n">reason</span><span class="p">:</span>
-</span><span id="line-219">        <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;dne&#39;</span><span class="p">)</span>
-</span><span id="line-220">
-</span><span id="line-221">    <span class="n">_reason</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="line-213"><span class="k">def</span><span class="w"> </span><span class="nf">test_Windows_raises</span><span class="p">(</span>
+</span><span id="line-214">    <span class="n">windows</span><span class="p">:</span> <span class="n">Windows</span><span class="p">,</span>
+</span><span id="line-215"><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-216"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-217"><span class="sd">    Perform various tests associated with relevant routines.</span>
+</span><span id="line-218">
+</span><span id="line-219"><span class="sd">    :param windows: Primary class instance for window object.</span>
+</span><span id="line-220"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-221">
 </span><span id="line-222">
-</span><span id="line-223">    <span class="k">assert</span> <span class="n">_reason</span> <span class="o">==</span> <span class="s1">&#39;unique&#39;</span>
+</span><span id="line-223">    <span class="n">_raises</span> <span class="o">=</span> <span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
 </span><span id="line-224">
-</span><span id="line-225">
-</span><span id="line-226">    <span class="n">_raises</span> <span class="o">=</span> <span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
+</span><span id="line-225">    <span class="k">with</span> <span class="n">_raises</span> <span class="k">as</span> <span class="n">reason</span><span class="p">:</span>
+</span><span id="line-226">        <span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;dne&#39;</span><span class="p">)</span>
 </span><span id="line-227">
-</span><span id="line-228">    <span class="n">params</span> <span class="o">=</span> <span class="n">WindowParams</span><span class="p">(</span>
-</span><span id="line-229">        <span class="n">window</span><span class="o">=</span><span class="s1">&#39;* * * * *&#39;</span><span class="p">)</span>
-</span><span id="line-230">
-</span><span id="line-231">    <span class="k">with</span> <span class="n">_raises</span> <span class="k">as</span> <span class="n">reason</span><span class="p">:</span>
-</span><span id="line-232">        <span class="n">windows</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-</span><span id="line-233">
-</span><span id="line-234">    <span class="n">_reason</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-</span><span id="line-235">
-</span><span id="line-236">    <span class="k">assert</span> <span class="n">_reason</span> <span class="o">==</span> <span class="s1">&#39;unique&#39;</span>
+</span><span id="line-228">    <span class="n">_reason</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="line-229">
+</span><span id="line-230">    <span class="k">assert</span> <span class="n">_reason</span> <span class="o">==</span> <span class="s1">&#39;unique&#39;</span>
+</span><span id="line-231">
+</span><span id="line-232">
+</span><span id="line-233">    <span class="n">_raises</span> <span class="o">=</span> <span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
+</span><span id="line-234">
+</span><span id="line-235">    <span class="n">params</span> <span class="o">=</span> <span class="n">WindowParams</span><span class="p">(</span>
+</span><span id="line-236">        <span class="n">window</span><span class="o">=</span><span class="s1">&#39;* * * * *&#39;</span><span class="p">)</span>
 </span><span id="line-237">
-</span><span id="line-238">
-</span><span id="line-239">    <span class="n">_raises</span> <span class="o">=</span> <span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
+</span><span id="line-238">    <span class="k">with</span> <span class="n">_raises</span> <span class="k">as</span> <span class="n">reason</span><span class="p">:</span>
+</span><span id="line-239">        <span class="n">windows</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </span><span id="line-240">
-</span><span id="line-241">    <span class="k">with</span> <span class="n">_raises</span> <span class="k">as</span> <span class="n">reason</span><span class="p">:</span>
-</span><span id="line-242">        <span class="n">windows</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;dne&#39;</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
-</span><span id="line-243">
-</span><span id="line-244">    <span class="n">_reason</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="line-241">    <span class="n">_reason</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="line-242">
+</span><span id="line-243">    <span class="k">assert</span> <span class="n">_reason</span> <span class="o">==</span> <span class="s1">&#39;unique&#39;</span>
+</span><span id="line-244">
 </span><span id="line-245">
-</span><span id="line-246">    <span class="k">assert</span> <span class="n">_reason</span> <span class="o">==</span> <span class="s1">&#39;unique&#39;</span></div>
+</span><span id="line-246">    <span class="n">_raises</span> <span class="o">=</span> <span class="n">raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
+</span><span id="line-247">
+</span><span id="line-248">    <span class="k">with</span> <span class="n">_raises</span> <span class="k">as</span> <span class="n">reason</span><span class="p">:</span>
+</span><span id="line-249">        <span class="n">windows</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s1">&#39;dne&#39;</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
+</span><span id="line-250">
+</span><span id="line-251">    <span class="n">_reason</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="line-252">
+</span><span id="line-253">    <span class="k">assert</span> <span class="n">_reason</span> <span class="o">==</span> <span class="s1">&#39;unique&#39;</span></div>
 
 </span></code></pre></div>
     </div></div>

@@ -591,110 +591,130 @@
 
 </span><span id="line-432">
 </span><span id="line-433">
-<div class="viewcode-block" id="Windows.create">
-<a class="viewcode-back" href="../../../index.html#encommon.times.windows.Windows.create">[docs]</a>
-</span><span id="line-434">    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+<div class="viewcode-block" id="Windows.pause">
+<a class="viewcode-back" href="../../../index.html#encommon.times.windows.Windows.pause">[docs]</a>
+</span><span id="line-434">    <span class="k">def</span><span class="w"> </span><span class="nf">pause</span><span class="p">(</span>
 </span><span id="line-435">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-436">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="line-437">        <span class="n">params</span><span class="p">:</span> <span class="s1">&#39;WindowParams&#39;</span><span class="p">,</span>
-</span><span id="line-438">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Window</span><span class="p">:</span>
+</span><span id="line-437">        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="line-438">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="line-439"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-440"><span class="sd">        Create a new window using the provided input parameters.</span>
+</span><span id="line-440"><span class="sd">        Determine whether or not the appropriate time has passed.</span>
 </span><span id="line-441">
 </span><span id="line-442"><span class="sd">        :param unique: Unique identifier for the related child.</span>
-</span><span id="line-443"><span class="sd">        :param params: Parameters used to instantiate the class.</span>
-</span><span id="line-444"><span class="sd">        :returns: Newly constructed instance of related class.</span>
+</span><span id="line-443"><span class="sd">        :param update: Determines whether or not time is updated.</span>
+</span><span id="line-444"><span class="sd">        :returns: Boolean indicating whether enough time passed.</span>
 </span><span id="line-445"><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="line-446">
-</span><span id="line-447">        <span class="n">config</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-448">            <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
-</span><span id="line-449">            <span class="o">.</span><span class="n">windows</span><span class="p">)</span>
-</span><span id="line-450">
-</span><span id="line-451">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
-</span><span id="line-452">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
-</span><span id="line-453">
-</span><span id="line-454">        <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span>
-</span><span id="line-455">
-</span><span id="line-456">        <span class="bp">self</span><span class="o">.</span><span class="n">load_children</span><span class="p">()</span>
-</span><span id="line-457">
-</span><span id="line-458">        <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span>
-</span><span id="line-459">
-</span><span id="line-460">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span></div>
+</span><span id="line-447">        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span>
+</span><span id="line-448">            <span class="n">unique</span><span class="p">,</span> <span class="n">update</span><span class="p">)</span></div>
 
-</span><span id="line-461">
-</span><span id="line-462">
+</span><span id="line-449">
+</span><span id="line-450">
+<div class="viewcode-block" id="Windows.create">
+<a class="viewcode-back" href="../../../index.html#encommon.times.windows.Windows.create">[docs]</a>
+</span><span id="line-451">    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+</span><span id="line-452">        <span class="bp">self</span><span class="p">,</span>
+</span><span id="line-453">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="line-454">        <span class="n">params</span><span class="p">:</span> <span class="s1">&#39;WindowParams&#39;</span><span class="p">,</span>
+</span><span id="line-455">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Window</span><span class="p">:</span>
+</span><span id="line-456"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-457"><span class="sd">        Create a new window using the provided input parameters.</span>
+</span><span id="line-458">
+</span><span id="line-459"><span class="sd">        :param unique: Unique identifier for the related child.</span>
+</span><span id="line-460"><span class="sd">        :param params: Parameters used to instantiate the class.</span>
+</span><span id="line-461"><span class="sd">        :returns: Newly constructed instance of related class.</span>
+</span><span id="line-462"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="line-463">
+</span><span id="line-464">        <span class="n">config</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-465">            <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+</span><span id="line-466">            <span class="o">.</span><span class="n">windows</span><span class="p">)</span>
+</span><span id="line-467">
+</span><span id="line-468">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+</span><span id="line-469">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+</span><span id="line-470">
+</span><span id="line-471">        <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span>
+</span><span id="line-472">
+</span><span id="line-473">        <span class="bp">self</span><span class="o">.</span><span class="n">load_children</span><span class="p">()</span>
+</span><span id="line-474">
+</span><span id="line-475">        <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span>
+</span><span id="line-476">
+</span><span id="line-477">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span></div>
+
+</span><span id="line-478">
+</span><span id="line-479">
 <div class="viewcode-block" id="Windows.update">
 <a class="viewcode-back" href="../../../index.html#encommon.times.windows.Windows.update">[docs]</a>
-</span><span id="line-463">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
-</span><span id="line-464">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-465">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="line-466">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="line-467">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-468"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-469"><span class="sd">        Update the window from the provided parasable time value.</span>
-</span><span id="line-470">
-</span><span id="line-471"><span class="sd">        :param unique: Unique identifier for the related child.</span>
-</span><span id="line-472"><span class="sd">        :param value: Override the time updated for window value.</span>
-</span><span id="line-473"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-474">
-</span><span id="line-475">        <span class="n">windows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__windows</span>
-</span><span id="line-476">
-</span><span id="line-477">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">windows</span><span class="p">:</span>
-</span><span id="line-478">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
-</span><span id="line-479">
-</span><span id="line-480">        <span class="n">window</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
-</span><span id="line-481">
-</span><span id="line-482">        <span class="n">window</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-</span><span id="line-483">
-</span><span id="line-484">        <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span></div>
+</span><span id="line-480">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
+</span><span id="line-481">        <span class="bp">self</span><span class="p">,</span>
+</span><span id="line-482">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="line-483">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="line-484">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-485"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-486"><span class="sd">        Update the window from the provided parasable time value.</span>
+</span><span id="line-487">
+</span><span id="line-488"><span class="sd">        :param unique: Unique identifier for the related child.</span>
+</span><span id="line-489"><span class="sd">        :param value: Override the time updated for window value.</span>
+</span><span id="line-490"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="line-491">
+</span><span id="line-492">        <span class="n">windows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__windows</span>
+</span><span id="line-493">
+</span><span id="line-494">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">windows</span><span class="p">:</span>
+</span><span id="line-495">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+</span><span id="line-496">
+</span><span id="line-497">        <span class="n">window</span> <span class="o">=</span> <span class="n">windows</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+</span><span id="line-498">
+</span><span id="line-499">        <span class="n">window</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="line-500">
+</span><span id="line-501">        <span class="bp">self</span><span class="o">.</span><span class="n">save_children</span><span class="p">()</span></div>
 
-</span><span id="line-485">
-</span><span id="line-486">
+</span><span id="line-502">
+</span><span id="line-503">
 <div class="viewcode-block" id="Windows.delete">
 <a class="viewcode-back" href="../../../index.html#encommon.times.windows.Windows.delete">[docs]</a>
-</span><span id="line-487">    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>
-</span><span id="line-488">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-489">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="line-490">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-491"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-492"><span class="sd">        Delete the window from the internal dictionary reference.</span>
-</span><span id="line-493">
-</span><span id="line-494"><span class="sd">        .. note::</span>
-</span><span id="line-495"><span class="sd">           This is a graceful method, will not raise exception</span>
-</span><span id="line-496"><span class="sd">           when the provided unique value does not exist.</span>
-</span><span id="line-497">
-</span><span id="line-498"><span class="sd">        :param unique: Unique identifier for the related child.</span>
-</span><span id="line-499"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-500">
-</span><span id="line-501">        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
-</span><span id="line-502">        <span class="n">windows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__windows</span>
-</span><span id="line-503">
-</span><span id="line-504">        <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
-</span><span id="line-505">
-</span><span id="line-506">        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store_session</span>
-</span><span id="line-507">
-</span><span id="line-508">        <span class="n">config</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">windows</span>
-</span><span id="line-509">
+</span><span id="line-504">    <span class="k">def</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>
+</span><span id="line-505">        <span class="bp">self</span><span class="p">,</span>
+</span><span id="line-506">        <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="line-507">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-508"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-509"><span class="sd">        Delete the window from the internal dictionary reference.</span>
 </span><span id="line-510">
-</span><span id="line-511">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
-</span><span id="line-512">            <span class="k">del</span> <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
-</span><span id="line-513">
-</span><span id="line-514">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">windows</span><span class="p">:</span>
-</span><span id="line-515">            <span class="k">del</span> <span class="n">windows</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
-</span><span id="line-516">
+</span><span id="line-511"><span class="sd">        .. note::</span>
+</span><span id="line-512"><span class="sd">           This is a graceful method, will not raise exception</span>
+</span><span id="line-513"><span class="sd">           when the provided unique value does not exist.</span>
+</span><span id="line-514">
+</span><span id="line-515"><span class="sd">        :param unique: Unique identifier for the related child.</span>
+</span><span id="line-516"><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="line-517">
-</span><span id="line-518">        <span class="n">_table</span> <span class="o">=</span> <span class="n">WindowsTable</span>
-</span><span id="line-519">        <span class="n">_group</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">group</span>
-</span><span id="line-520">        <span class="n">_unique</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">unique</span>
-</span><span id="line-521">
-</span><span id="line-522">        <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">_table</span><span class="p">)</span>
-</span><span id="line-523">         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_unique</span> <span class="o">==</span> <span class="n">unique</span><span class="p">)</span>
-</span><span id="line-524">         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_group</span> <span class="o">==</span> <span class="n">group</span><span class="p">)</span>
-</span><span id="line-525">         <span class="o">.</span><span class="n">delete</span><span class="p">())</span>
+</span><span id="line-518">        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
+</span><span id="line-519">        <span class="n">windows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__windows</span>
+</span><span id="line-520">
+</span><span id="line-521">        <span class="n">group</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
+</span><span id="line-522">
+</span><span id="line-523">        <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">store_session</span>
+</span><span id="line-524">
+</span><span id="line-525">        <span class="n">config</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">windows</span>
 </span><span id="line-526">
 </span><span id="line-527">
-</span><span id="line-528">        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
-</span><span id="line-529">        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+</span><span id="line-528">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+</span><span id="line-529">            <span class="k">del</span> <span class="n">config</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+</span><span id="line-530">
+</span><span id="line-531">        <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">windows</span><span class="p">:</span>
+</span><span id="line-532">            <span class="k">del</span> <span class="n">windows</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
+</span><span id="line-533">
+</span><span id="line-534">
+</span><span id="line-535">        <span class="n">_table</span> <span class="o">=</span> <span class="n">WindowsTable</span>
+</span><span id="line-536">        <span class="n">_group</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">group</span>
+</span><span id="line-537">        <span class="n">_unique</span> <span class="o">=</span> <span class="n">_table</span><span class="o">.</span><span class="n">unique</span>
+</span><span id="line-538">
+</span><span id="line-539">        <span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">_table</span><span class="p">)</span>
+</span><span id="line-540">         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_unique</span> <span class="o">==</span> <span class="n">unique</span><span class="p">)</span>
+</span><span id="line-541">         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_group</span> <span class="o">==</span> <span class="n">group</span><span class="p">)</span>
+</span><span id="line-542">         <span class="o">.</span><span class="n">delete</span><span class="p">())</span>
+</span><span id="line-543">
+</span><span id="line-544">
+</span><span id="line-545">        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span><span id="line-546">        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
 </div>
 
 </span></code></pre></div>
