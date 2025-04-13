@@ -245,8 +245,8 @@
 </span><span id="line-94"><span class="sd">    &gt;&gt;&gt; source = {&#39;one&#39;: WindowParams(window=1)}</span>
 </span><span id="line-95"><span class="sd">    &gt;&gt;&gt; params = WindowsParams(windows=source)</span>
 </span><span id="line-96"><span class="sd">    &gt;&gt;&gt; windows = Windows(params, &#39;-2s&#39;, &#39;now&#39;)</span>
-</span><span id="line-97"><span class="sd">    &gt;&gt;&gt; [windows.ready(&#39;one&#39;) for x in range(3)]</span>
-</span><span id="line-98"><span class="sd">    [True, True, False]</span>
+</span><span id="line-97"><span class="sd">    &gt;&gt;&gt; [windows.ready(&#39;one&#39;) for x in range(4)]</span>
+</span><span id="line-98"><span class="sd">    [True, True, True, False]</span>
 </span><span id="line-99">
 </span><span id="line-100"><span class="sd">    :param params: Parameters used to instantiate the class.</span>
 </span><span id="line-101"><span class="sd">    :param start: Determine the start for scheduling window.</span>

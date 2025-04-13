@@ -1679,8 +1679,8 @@ is permitted, for more information consult the project license file.</p>
 <section id="id21">
 <h3>Example<a class="headerlink" href="#id21" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id21'">¶</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">'* * * * *'</span><span class="p">,</span> <span class="s1">'-4m@m'</span><span class="p">)</span>
-</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
-</span><span id="line-3"><span class="go">[True, True, True, True, False]</span>
+</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+</span><span id="line-3"><span class="go">[True, True, True, True, True, False]</span>
 </span></code></pre></div>
 </div>
 <dl class="field-list simple">
@@ -1906,8 +1906,8 @@ unless a cache file is explicity defined.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 </span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">WindowsParams</span><span class="p">(</span><span class="n">windows</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 </span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">'-2s'</span><span class="p">,</span> <span class="s1">'now'</span><span class="p">)</span>
-</span><span id="line-4"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-</span><span id="line-5"><span class="go">[True, True, False]</span>
+</span><span id="line-4"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</span><span id="line-5"><span class="go">[True, True, True, False]</span>
 </span></code></pre></div>
 </div>
 <dl class="field-list simple">
@@ -2941,8 +2941,8 @@ when the provided unique value does not exist.</p>
 <section id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id36'">¶</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">'* * * * *'</span><span class="p">,</span> <span class="s1">'-4m@m'</span><span class="p">)</span>
-</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
-</span><span id="line-3"><span class="go">[True, True, True, True, False]</span>
+</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+</span><span id="line-3"><span class="go">[True, True, True, True, True, False]</span>
 </span></code></pre></div>
 </div>
 <dl class="field-list simple">
@@ -3263,8 +3263,8 @@ unless a cache file is explicity defined.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 </span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">WindowsParams</span><span class="p">(</span><span class="n">windows</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 </span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">'-2s'</span><span class="p">,</span> <span class="s1">'now'</span><span class="p">)</span>
-</span><span id="line-4"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
-</span><span id="line-5"><span class="go">[True, True, False]</span>
+</span><span id="line-4"><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</span><span id="line-5"><span class="go">[True, True, True, False]</span>
 </span></code></pre></div>
 </div>
 <dl class="field-list simple">

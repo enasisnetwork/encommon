@@ -176,8 +176,8 @@
 </span><span id="line-31"><span class="sd">    Example</span>
 </span><span id="line-32"><span class="sd">    -------</span>
 </span><span id="line-33"><span class="sd">    &gt;&gt;&gt; window = Window(&#39;* * * * *&#39;, &#39;-4m@m&#39;)</span>
-</span><span id="line-34"><span class="sd">    &gt;&gt;&gt; [window.ready() for _ in range(5)]</span>
-</span><span id="line-35"><span class="sd">    [True, True, True, True, False]</span>
+</span><span id="line-34"><span class="sd">    &gt;&gt;&gt; [window.ready() for _ in range(6)]</span>
+</span><span id="line-35"><span class="sd">    [True, True, True, True, True, False]</span>
 </span><span id="line-36">
 </span><span id="line-37"><span class="sd">    :param window: Parameters for defining scheduled time.</span>
 </span><span id="line-38"><span class="sd">    :param start: Determine the start for scheduling window.</span>
@@ -399,7 +399,7 @@
 </span><span id="line-254">
 <div class="viewcode-block" id="Window.ready">
 <a class="viewcode-back" href="../../../index.html#encommon.times.window.Window.ready">[docs]</a>
-</span><span id="line-255">    <span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
+</span><span id="line-255">    <span class="k">def</span><span class="w"> </span><span class="nf">ready</span><span class="p">(</span>
 </span><span id="line-256">        <span class="bp">self</span><span class="p">,</span>
 </span><span id="line-257">        <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="line-258">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -430,138 +430,136 @@
 </span><span id="line-283">            <span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span> <span class="o">=</span> <span class="n">wlast</span>
 </span><span id="line-284">            <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span> <span class="o">=</span> <span class="n">wnext</span>
 </span><span id="line-285">
-</span><span id="line-286">        <span class="k">if</span> <span class="n">wnext</span> <span class="o">&gt;</span> <span class="n">soonest</span><span class="p">:</span>
-</span><span id="line-287">            <span class="k">return</span> <span class="kc">False</span>
-</span><span id="line-288">
-</span><span id="line-289">        <span class="k">return</span> <span class="kc">True</span></div>
+</span><span id="line-286">
+</span><span id="line-287">        <span class="k">return</span> <span class="kc">True</span></div>
 
-</span><span id="line-290">
-</span><span id="line-291">
+</span><span id="line-288">
+</span><span id="line-289">
 <div class="viewcode-block" id="Window.update">
 <a class="viewcode-back" href="../../../index.html#encommon.times.window.Window.update">[docs]</a>
-</span><span id="line-292">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
-</span><span id="line-293">        <span class="bp">self</span><span class="p">,</span>
-</span><span id="line-294">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="line-295">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="line-296"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-297"><span class="sd">        Update the window from the provided parasable time value.</span>
-</span><span id="line-298">
-</span><span id="line-299"><span class="sd">        :param value: Override the time updated for window value.</span>
-</span><span id="line-300"><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="line-301">
-</span><span id="line-302">        <span class="n">value</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span>
-</span><span id="line-303">            <span class="n">value</span> <span class="ow">or</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
-</span><span id="line-304">
-</span><span id="line-305">        <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-306">            <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
-</span><span id="line-307">
-</span><span id="line-308">        <span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span> <span class="o">=</span> <span class="n">wlast</span>
-</span><span id="line-309">        <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span> <span class="o">=</span> <span class="n">wnext</span></div>
+</span><span id="line-290">    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
+</span><span id="line-291">        <span class="bp">self</span><span class="p">,</span>
+</span><span id="line-292">        <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="line-293">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="line-294"><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-295"><span class="sd">        Update the window from the provided parasable time value.</span>
+</span><span id="line-296">
+</span><span id="line-297"><span class="sd">        :param value: Override the time updated for window value.</span>
+</span><span id="line-298"><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="line-299">
+</span><span id="line-300">        <span class="n">value</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span>
+</span><span id="line-301">            <span class="n">value</span> <span class="ow">or</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
+</span><span id="line-302">
+</span><span id="line-303">        <span class="n">wlast</span><span class="p">,</span> <span class="n">wnext</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-304">            <span class="bp">self</span><span class="o">.</span><span class="n">__helper</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</span><span id="line-305">
+</span><span id="line-306">        <span class="bp">self</span><span class="o">.</span><span class="n">__wlast</span> <span class="o">=</span> <span class="n">wlast</span>
+</span><span id="line-307">        <span class="bp">self</span><span class="o">.</span><span class="n">__wnext</span> <span class="o">=</span> <span class="n">wnext</span></div>
 </div>
 
+</span><span id="line-308">
+</span><span id="line-309">
 </span><span id="line-310">
-</span><span id="line-311">
-</span><span id="line-312">
 <div class="viewcode-block" id="window_croniter">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.window.window_croniter">[docs]</a>
-</span><span id="line-313"><span class="k">def</span><span class="w"> </span><span class="nf">window_croniter</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
-</span><span id="line-314">    <span class="n">schedule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="line-315">    <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
-</span><span id="line-316">    <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="line-317"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
-</span><span id="line-318"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-319"><span class="sd">    Determine next and previous times for cronjob schedule.</span>
-</span><span id="line-320">
-</span><span id="line-321"><span class="sd">    :param window: Parameters for defining scheduled time.</span>
-</span><span id="line-322"><span class="sd">    :param anchor: Optionally define time anchor for window.</span>
-</span><span id="line-323"><span class="sd">    :param backward: Optionally operate the window backward.</span>
-</span><span id="line-324"><span class="sd">    :returns: Next and previous windows for schedule window.</span>
-</span><span id="line-325"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-311"><span class="k">def</span><span class="w"> </span><span class="nf">window_croniter</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
+</span><span id="line-312">    <span class="n">schedule</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="line-313">    <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
+</span><span id="line-314">    <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="line-315"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
+</span><span id="line-316"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-317"><span class="sd">    Determine next and previous times for cronjob schedule.</span>
+</span><span id="line-318">
+</span><span id="line-319"><span class="sd">    :param window: Parameters for defining scheduled time.</span>
+</span><span id="line-320"><span class="sd">    :param anchor: Optionally define time anchor for window.</span>
+</span><span id="line-321"><span class="sd">    :param backward: Optionally operate the window backward.</span>
+</span><span id="line-322"><span class="sd">    :returns: Next and previous windows for schedule window.</span>
+</span><span id="line-323"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-324">
+</span><span id="line-325">    <span class="n">anchor</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
 </span><span id="line-326">
-</span><span id="line-327">    <span class="n">anchor</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
-</span><span id="line-328">
-</span><span id="line-329">
-</span><span id="line-330">    <span class="k">def</span><span class="w"> </span><span class="nf">_wnext</span><span class="p">(</span>
-</span><span id="line-331">        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
-</span><span id="line-332">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-</span><span id="line-333">
-</span><span id="line-334">        <span class="n">parse</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-335">            <span class="n">_operator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
-</span><span id="line-336">            <span class="o">.</span><span class="n">get_next</span><span class="p">())</span>
+</span><span id="line-327">
+</span><span id="line-328">    <span class="k">def</span><span class="w"> </span><span class="nf">_wnext</span><span class="p">(</span>
+</span><span id="line-329">        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+</span><span id="line-330">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+</span><span id="line-331">
+</span><span id="line-332">        <span class="n">parse</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-333">            <span class="n">_operator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</span><span id="line-334">            <span class="o">.</span><span class="n">get_next</span><span class="p">())</span>
+</span><span id="line-335">
+</span><span id="line-336">        <span class="k">return</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">parse</span><span class="p">)</span>
 </span><span id="line-337">
-</span><span id="line-338">        <span class="k">return</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">parse</span><span class="p">)</span>
-</span><span id="line-339">
-</span><span id="line-340">
-</span><span id="line-341">    <span class="k">def</span><span class="w"> </span><span class="nf">_wlast</span><span class="p">(</span>
-</span><span id="line-342">        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
-</span><span id="line-343">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-</span><span id="line-344">
-</span><span id="line-345">        <span class="n">parse</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-346">            <span class="n">_operator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
-</span><span id="line-347">            <span class="o">.</span><span class="n">get_prev</span><span class="p">())</span>
+</span><span id="line-338">
+</span><span id="line-339">    <span class="k">def</span><span class="w"> </span><span class="nf">_wlast</span><span class="p">(</span>
+</span><span id="line-340">        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+</span><span id="line-341">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
+</span><span id="line-342">
+</span><span id="line-343">        <span class="n">parse</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-344">            <span class="n">_operator</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</span><span id="line-345">            <span class="o">.</span><span class="n">get_prev</span><span class="p">())</span>
+</span><span id="line-346">
+</span><span id="line-347">        <span class="k">return</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">parse</span><span class="p">)</span>
 </span><span id="line-348">
-</span><span id="line-349">        <span class="k">return</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">parse</span><span class="p">)</span>
-</span><span id="line-350">
-</span><span id="line-351">
-</span><span id="line-352">    <span class="k">def</span><span class="w"> </span><span class="nf">_operator</span><span class="p">(</span>
-</span><span id="line-353">        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
-</span><span id="line-354">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">croniter</span><span class="p">:</span>
-</span><span id="line-355">        <span class="k">return</span> <span class="n">croniter</span><span class="p">(</span>
-</span><span id="line-356">            <span class="n">schedule</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
-</span><span id="line-357">
+</span><span id="line-349">
+</span><span id="line-350">    <span class="k">def</span><span class="w"> </span><span class="nf">_operator</span><span class="p">(</span>
+</span><span id="line-351">        <span class="n">source</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+</span><span id="line-352">    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">croniter</span><span class="p">:</span>
+</span><span id="line-353">        <span class="k">return</span> <span class="n">croniter</span><span class="p">(</span>
+</span><span id="line-354">            <span class="n">schedule</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
+</span><span id="line-355">
+</span><span id="line-356">
+</span><span id="line-357">    <span class="n">wnext</span> <span class="o">=</span> <span class="n">_wnext</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
 </span><span id="line-358">
-</span><span id="line-359">    <span class="n">wnext</span> <span class="o">=</span> <span class="n">_wnext</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
-</span><span id="line-360">
-</span><span id="line-361">    <span class="k">if</span> <span class="n">backward</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="line-362">        <span class="n">wnext</span> <span class="o">=</span> <span class="n">_wlast</span><span class="p">(</span><span class="n">wnext</span><span class="p">)</span>
+</span><span id="line-359">    <span class="k">if</span> <span class="n">backward</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="line-360">        <span class="n">wnext</span> <span class="o">=</span> <span class="n">_wlast</span><span class="p">(</span><span class="n">wnext</span><span class="p">)</span>
+</span><span id="line-361">
+</span><span id="line-362">    <span class="n">wlast</span> <span class="o">=</span> <span class="n">_wlast</span><span class="p">(</span><span class="n">wnext</span><span class="p">)</span>
 </span><span id="line-363">
-</span><span id="line-364">    <span class="n">wlast</span> <span class="o">=</span> <span class="n">_wlast</span><span class="p">(</span><span class="n">wnext</span><span class="p">)</span>
-</span><span id="line-365">
-</span><span id="line-366">
-</span><span id="line-367">    <span class="k">return</span> <span class="p">(</span>
-</span><span id="line-368">        <span class="n">Time</span><span class="p">(</span><span class="n">wlast</span><span class="p">),</span>
-</span><span id="line-369">        <span class="n">Time</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span></div>
+</span><span id="line-364">
+</span><span id="line-365">    <span class="k">return</span> <span class="p">(</span>
+</span><span id="line-366">        <span class="n">Time</span><span class="p">(</span><span class="n">wlast</span><span class="p">),</span>
+</span><span id="line-367">        <span class="n">Time</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span></div>
 
+</span><span id="line-368">
+</span><span id="line-369">
 </span><span id="line-370">
-</span><span id="line-371">
-</span><span id="line-372">
 <div class="viewcode-block" id="window_interval">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.window.window_interval">[docs]</a>
-</span><span id="line-373"><span class="k">def</span><span class="w"> </span><span class="nf">window_interval</span><span class="p">(</span>
-</span><span id="line-374">    <span class="n">schedule</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
-</span><span id="line-375">    <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
-</span><span id="line-376">    <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="line-377"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
-</span><span id="line-378"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="line-379"><span class="sd">    Determine next and previous times for interval schedule.</span>
-</span><span id="line-380">
-</span><span id="line-381"><span class="sd">    :param window: Parameters for defining scheduled time.</span>
-</span><span id="line-382"><span class="sd">    :param anchor: Optionally define time anchor for window.</span>
-</span><span id="line-383"><span class="sd">    :param backward: Optionally operate the window backward.</span>
-</span><span id="line-384"><span class="sd">    :returns: Next and previous windows for schedule window.</span>
-</span><span id="line-385"><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="line-386">
-</span><span id="line-387">    <span class="n">anpoch</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-388">        <span class="n">parse_time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
-</span><span id="line-389">        <span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
-</span><span id="line-390">
-</span><span id="line-391">    <span class="n">seconds</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="line-392">        <span class="n">timedelta</span><span class="p">(</span><span class="o">**</span><span class="n">schedule</span><span class="p">)</span>
-</span><span id="line-393">        <span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
-</span><span id="line-394">
-</span><span id="line-395">
-</span><span id="line-396">    <span class="k">if</span> <span class="n">backward</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-</span><span id="line-397">        <span class="n">wnext</span> <span class="o">=</span> <span class="n">anpoch</span>
-</span><span id="line-398">        <span class="n">wlast</span> <span class="o">=</span> <span class="n">anpoch</span> <span class="o">-</span> <span class="n">seconds</span>
-</span><span id="line-399">
-</span><span id="line-400">    <span class="k">else</span><span class="p">:</span>
-</span><span id="line-401">        <span class="n">wnext</span> <span class="o">=</span> <span class="n">anpoch</span> <span class="o">+</span> <span class="n">seconds</span>
-</span><span id="line-402">        <span class="n">wlast</span> <span class="o">=</span> <span class="n">anpoch</span>
-</span><span id="line-403">
-</span><span id="line-404">
-</span><span id="line-405">    <span class="k">return</span> <span class="p">(</span>
-</span><span id="line-406">        <span class="n">Time</span><span class="p">(</span><span class="n">wlast</span><span class="p">),</span>
-</span><span id="line-407">        <span class="n">Time</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span></div>
+</span><span id="line-371"><span class="k">def</span><span class="w"> </span><span class="nf">window_interval</span><span class="p">(</span>
+</span><span id="line-372">    <span class="n">schedule</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+</span><span id="line-373">    <span class="n">anchor</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
+</span><span id="line-374">    <span class="n">backward</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="line-375"><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Time</span><span class="p">,</span> <span class="n">Time</span><span class="p">]:</span>
+</span><span id="line-376"><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="line-377"><span class="sd">    Determine next and previous times for interval schedule.</span>
+</span><span id="line-378">
+</span><span id="line-379"><span class="sd">    :param window: Parameters for defining scheduled time.</span>
+</span><span id="line-380"><span class="sd">    :param anchor: Optionally define time anchor for window.</span>
+</span><span id="line-381"><span class="sd">    :param backward: Optionally operate the window backward.</span>
+</span><span id="line-382"><span class="sd">    :returns: Next and previous windows for schedule window.</span>
+</span><span id="line-383"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="line-384">
+</span><span id="line-385">    <span class="n">anpoch</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-386">        <span class="n">parse_time</span><span class="p">(</span><span class="n">anchor</span><span class="p">)</span>
+</span><span id="line-387">        <span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+</span><span id="line-388">
+</span><span id="line-389">    <span class="n">seconds</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="line-390">        <span class="n">timedelta</span><span class="p">(</span><span class="o">**</span><span class="n">schedule</span><span class="p">)</span>
+</span><span id="line-391">        <span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+</span><span id="line-392">
+</span><span id="line-393">
+</span><span id="line-394">    <span class="k">if</span> <span class="n">backward</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="line-395">        <span class="n">wnext</span> <span class="o">=</span> <span class="n">anpoch</span>
+</span><span id="line-396">        <span class="n">wlast</span> <span class="o">=</span> <span class="n">anpoch</span> <span class="o">-</span> <span class="n">seconds</span>
+</span><span id="line-397">
+</span><span id="line-398">    <span class="k">else</span><span class="p">:</span>
+</span><span id="line-399">        <span class="n">wnext</span> <span class="o">=</span> <span class="n">anpoch</span> <span class="o">+</span> <span class="n">seconds</span>
+</span><span id="line-400">        <span class="n">wlast</span> <span class="o">=</span> <span class="n">anpoch</span>
+</span><span id="line-401">
+</span><span id="line-402">
+</span><span id="line-403">    <span class="k">return</span> <span class="p">(</span>
+</span><span id="line-404">        <span class="n">Time</span><span class="p">(</span><span class="n">wlast</span><span class="p">),</span>
+</span><span id="line-405">        <span class="n">Time</span><span class="p">(</span><span class="n">wnext</span><span class="p">))</span></div>
 
 </span></code></pre></div>
     </div></div>
