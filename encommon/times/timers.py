@@ -9,9 +9,12 @@ is permitted, for more information consult the project license file.
 
 from copy import deepcopy
 from threading import Lock
+from typing import Annotated
 from typing import Optional
 from typing import TYPE_CHECKING
 from typing import Type
+
+from pydantic import Field
 
 from sqlalchemy import Column
 from sqlalchemy import String
@@ -25,6 +28,7 @@ from .common import PARSABLE
 from .params import TimersParams
 from .time import Time
 from .timer import Timer
+from ..types import BaseModel
 from ..types import DictStrAny
 
 if TYPE_CHECKING:
@@ -61,6 +65,75 @@ class TimersTable(DeclarativeBase):
     update = Column(
         String,
         nullable=False)
+
+
+
+class TimersRecord(BaseModel):
+    """
+    Contain the information of the record from the database.
+
+    :param record: Record from the SQLAlchemy query routine.
+    """
+
+    group: Annotated[
+        str,
+        Field(...,
+              description='Group the children by category',
+              min_length=1)]
+
+    unique: Annotated[
+        str,
+        Field(...,
+              description='Unique identifier for the child',
+              min_length=1)]
+
+    last: Annotated[
+        str,
+        Field(...,
+              description='Last interval for the period',
+              min_length=20,
+              max_length=32)]
+
+    update: Annotated[
+        str,
+        Field(...,
+              description='When the record was updated',
+              min_length=20,
+              max_length=32)]
+
+
+    def __init__(
+        self,
+        record: Optional[DeclarativeBase] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        fields = [
+            'group',
+            'unique',
+            'last',
+            'update']
+
+        params = {
+            x: getattr(record, x)
+            for x in fields}
+
+
+        timefs = [
+            'last',
+            'update']
+
+        params |= {
+            k: (Time(v).simple
+                if v else None)
+            for k, v in
+            params.items()
+            if k in timefs}
+
+
+        super().__init__(**params)
 
 
 
@@ -146,7 +219,7 @@ class Timers:
 
         self.__childs = {}
 
-        self.load_children()
+        self.__build_objects()
 
 
     def __build_engine(
@@ -168,6 +241,23 @@ class Timers:
 
         self.__sengine = sengine
         self.__session = session
+
+
+    def __build_objects(
+        self,
+    ) -> None:
+        """
+        Construct instances using the configuration parameters.
+        """
+
+        params = self.__params
+
+        items = (
+            params.timers
+            .items())
+
+        for name, item in items:
+            self.create(name, item)
 
 
     @property
@@ -261,67 +351,6 @@ class Timers:
         return dict(self.__childs)
 
 
-    def load_children(
-        self,
-    ) -> None:
-        """
-        Construct the children instances for the primary class.
-        """
-
-        params = self.__params
-        timers = self.__childs
-
-        group = self.__group
-
-        session = self.store_session
-
-        config = params.timers
-
-
-        table = self.__table
-        _group = table.group
-        _unique = table.unique
-
-        query = (
-            session.query(table)
-            .filter(_group == group)
-            .order_by(_unique))
-
-        for record in query.all():
-
-            unique = str(record.unique)
-            last = str(record.last)
-
-            if unique not in config:
-                continue
-
-            _config = config[unique]
-
-            _config.start = last
-
-
-        items = config.items()
-
-        for key, value in items:
-
-            if key in timers:
-
-                timer = timers[key]
-
-                timer.update(value.start)
-
-                continue
-
-            timer = Timer(
-                value.timer,
-                start=value.start)
-
-            timers[key] = timer
-
-
-        self.__childs = timers
-
-
     def save_children(
         self,
     ) -> None:
@@ -413,6 +442,52 @@ class Timers:
             unique, update)
 
 
+    def select(
+        self,
+        unique: str,
+    ) -> Optional[TimersRecord]:
+        """
+        Return the record from within the table in the database.
+
+        :returns: Record from within the table in the database.
+        """
+
+        sess = self.__session()
+        lock = self.__locker
+
+        table = self.__table
+        model = TimersRecord
+
+        table = self.__table
+        group = self.__group
+
+        _unique = table.unique
+        _group = table.group
+
+
+        with lock, sess as session:
+
+            query = (
+                session.query(table)
+                .filter(_unique == unique)
+                .filter(_group == group))
+
+            _records = list(query.all())
+
+
+        records = [
+            model(x)
+            for x in _records]
+
+
+        if len(records) == 0:
+            return None
+
+        assert len(records) == 1
+
+        return records[0]
+
+
     def create(
         self,
         unique: str,
@@ -427,20 +502,30 @@ class Timers:
         """
 
         childs = self.__childs
-        _params = self.params
 
-        config = _params.timers
-
-        if unique in config:
+        if unique in childs:
             raise ValueError('unique')
 
-        config[unique] = params
+        timer = params.timer
+        start = params.start
 
-        self.load_children()
+
+        select = self.select(unique)
+
+        if select is not None:
+            start = select.last
+
+
+        child = Timer(
+            timer=timer,
+            start=start)
+
+        childs[unique] = child
+
 
         self.save_children()
 
-        return childs[unique]
+        return child
 
 
     def update(
@@ -483,6 +568,7 @@ class Timers:
 
         sess = self.__session()
         lock = self.__locker
+        childs = self.__childs
 
         table = self.__table
         group = self.__group
@@ -500,15 +586,6 @@ class Timers:
 
             session.commit()
 
-
-        params = self.__params
-        config = params.timers
-
-        params = self.__params
-        childs = self.__childs
-
-        if unique in config:
-            del config[unique]
 
         if unique in childs:
             del childs[unique]

@@ -14,7 +14,6 @@ from pytest import fixture
 from pytest import raises
 
 from ..params import WindowParams
-from ..params import WindowsParams
 from ..windows import Windows
 from ...types import DictStrAny
 from ...types import inrepr
@@ -34,62 +33,66 @@ def windows(
     :returns: Newly constructed instance of related class.
     """
 
+    model = WindowParams
 
     source: DictStrAny = {
-        'one': WindowParams(
+        'one': model(
             window='* * * * *',
-            start=310,
+            start=300,
             stop=610,
             delay=10),
-        'two': WindowParams(
+        'two': model(
             window='* * * * *',
             start=300,
             stop=620,
             delay=10)}
 
 
-    params = WindowsParams(
-        windows=source)
-
     store = (
         f'sqlite:///{tmp_path}'
         '/cache.db')
 
     windows = Windows(
-        params,
         start=310,
         stop=610,
         store=store)
 
-    table = windows.store_table
-    session = windows.store_session
+    table = (
+        windows
+        .store_table)
+
+    session = (
+        windows
+        .store_session)
 
 
-    window = table(
+    record = table(
         group='default',
         unique='two',
         last='1970-01-01T00:06:00Z',
         next='1970-01-01T00:07:00Z',
         update='1970-01-01T01:00:00Z')
 
-    session.add(window)
+    session.merge(record)
 
-    session.commit()
-
-
-    window = table(
+    record = table(
         group='default',
         unique='tre',
         last='1970-01-01T00:06:00Z',
         next='1970-01-01T00:07:00Z',
         update='1970-01-01T01:00:00Z')
 
-    session.add(window)
+    session.merge(record)
 
     session.commit()
 
 
-    windows.load_children()
+    windows.create(
+        'one', source['one'])
+
+    windows.create(
+        'two', source['two'])
+
 
     return windows
 
@@ -165,10 +168,10 @@ def test_Windows(
     window = windows.children['two']
 
     assert window.next == (
-        '1970-01-01T00:08:00Z')
+        '1970-01-01T00:07:00Z')
 
     assert window.last == (
-        '1970-01-01T00:07:00Z')
+        '1970-01-01T00:06:00Z')
 
 
 
@@ -182,6 +185,7 @@ def test_Windows_cover(
     """
 
 
+    assert windows.ready('two')
     assert windows.ready('two')
     assert windows.ready('two')
     assert windows.pause('two')

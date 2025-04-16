@@ -9,9 +9,12 @@ is permitted, for more information consult the project license file.
 
 from copy import deepcopy
 from threading import Lock
+from typing import Annotated
 from typing import Optional
 from typing import TYPE_CHECKING
 from typing import Type
+
+from pydantic import Field
 
 from sqlalchemy import Column
 from sqlalchemy import String
@@ -25,6 +28,7 @@ from .common import PARSABLE
 from .params import WindowsParams
 from .time import Time
 from .window import Window
+from ..types import BaseModel
 from ..types import DictStrAny
 
 if TYPE_CHECKING:
@@ -65,6 +69,84 @@ class WindowsTable(DeclarativeBase):
     update = Column(
         String,
         nullable=False)
+
+
+
+class WindowsRecord(BaseModel):
+    """
+    Contain the information of the record from the database.
+
+    :param record: Record from the SQLAlchemy query routine.
+    """
+
+    group: Annotated[
+        str,
+        Field(...,
+              description='Group the children by category',
+              min_length=1)]
+
+    unique: Annotated[
+        str,
+        Field(...,
+              description='Unique identifier for the child',
+              min_length=1)]
+
+    last: Annotated[
+        str,
+        Field(...,
+              description='Last schedule for the period',
+              min_length=20,
+              max_length=32)]
+
+    next: Annotated[
+        str,
+        Field(...,
+              description='Next schedule for the period',
+              min_length=20,
+              max_length=32)]
+
+    update: Annotated[
+        str,
+        Field(...,
+              description='When the record was updated',
+              min_length=20,
+              max_length=32)]
+
+
+    def __init__(
+        self,
+        record: Optional[DeclarativeBase] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        fields = [
+            'group',
+            'unique',
+            'last',
+            'next',
+            'update']
+
+        params = {
+            x: getattr(record, x)
+            for x in fields}
+
+
+        timefs = [
+            'last',
+            'next',
+            'update']
+
+        params |= {
+            k: (Time(v).simple
+                if v else None)
+            for k, v in
+            params.items()
+            if k in timefs}
+
+
+        super().__init__(**params)
 
 
 
@@ -162,7 +244,7 @@ class Windows:
 
         self.__childs = {}
 
-        self.load_children()
+        self.__build_objects()
 
 
     def __build_engine(
@@ -184,6 +266,23 @@ class Windows:
 
         self.__sengine = sengine
         self.__session = session
+
+
+    def __build_objects(
+        self,
+    ) -> None:
+        """
+        Construct instances using the configuration parameters.
+        """
+
+        params = self.__params
+
+        items = (
+            params.windows
+            .items())
+
+        for name, item in items:
+            self.create(name, item)
 
 
     @property
@@ -303,89 +402,6 @@ class Windows:
         return dict(self.__childs)
 
 
-    def load_children(
-        self,
-    ) -> None:
-        """
-        Construct the children instances for the primary class.
-        """
-
-        params = self.__params
-        windows = self.__childs
-
-        start = self.__start
-        stop = self.__stop
-
-        group = self.__group
-
-        session = self.store_session
-
-        config = params.windows
-
-
-        table = self.__table
-        _group = table.group
-        _unique = table.unique
-
-        query = (
-            session.query(table)
-            .filter(_group == group)
-            .order_by(_unique))
-
-        for record in query.all():
-
-            unique = str(record.unique)
-            next = str(record.next)
-
-            if unique not in config:
-                continue
-
-            _config = config[unique]
-
-            _config.start = next
-            _config.anchor = next
-
-
-        items = config.items()
-
-        for key, value in items:
-
-            if key in windows:
-
-                window = windows[key]
-
-                window.update(value.start)
-
-                continue
-
-            _start = (
-                value.start or start)
-
-            _stop = (
-                value.stop or stop)
-
-            if _start < start:
-                _start = start
-
-            if _stop > stop:
-                _stop = stop
-
-            _anchor = (
-                value.anchor or _start)
-
-            window = Window(
-                value.window,
-                start=_start,
-                stop=_stop,
-                anchor=_anchor,
-                delay=value.delay)
-
-            windows[key] = window
-
-
-        self.__childs = windows
-
-
     def save_children(
         self,
     ) -> None:
@@ -479,6 +495,52 @@ class Windows:
             unique, update)
 
 
+    def select(
+        self,
+        unique: str,
+    ) -> Optional[WindowsRecord]:
+        """
+        Return the record from within the table in the database.
+
+        :returns: Record from within the table in the database.
+        """
+
+        sess = self.__session()
+        lock = self.__locker
+
+        table = self.__table
+        model = WindowsRecord
+
+        table = self.__table
+        group = self.__group
+
+        _unique = table.unique
+        _group = table.group
+
+
+        with lock, sess as session:
+
+            query = (
+                session.query(table)
+                .filter(_unique == unique)
+                .filter(_group == group))
+
+            _records = list(query.all())
+
+
+        records = [
+            model(x)
+            for x in _records]
+
+
+        if len(records) == 0:
+            return None
+
+        assert len(records) == 1
+
+        return records[0]
+
+
     def create(
         self,
         unique: str,
@@ -493,20 +555,57 @@ class Windows:
         """
 
         childs = self.__childs
-        _params = self.params
+        _start = self.__start
+        _stop = self.__stop
 
-        config = _params.windows
-
-        if unique in config:
+        if unique in childs:
             raise ValueError('unique')
 
-        config[unique] = params
+        window = params.window
+        start = params.start
+        stop = params.stop
+        anchor = params.anchor
+        delay = params.delay
 
-        self.load_children()
+
+        select = self.select(unique)
+
+        if select is not None:
+            start = select.next
+            anchor = select.next
+
+
+        child_start = Time(
+            start if start
+            else _start)
+
+        child_stop = Time(
+            stop if stop
+            else _stop)
+
+        anchor = anchor or start
+
+
+        if child_start < _start:
+            child_start = _start
+
+        if child_stop > _stop:
+            child_stop = _stop
+
+
+        child = Window(
+            window=window,
+            start=child_start,
+            stop=child_stop,
+            anchor=anchor,
+            delay=delay)
+
+        childs[unique] = child
+
 
         self.save_children()
 
-        return childs[unique]
+        return child
 
 
     def update(
@@ -549,6 +648,7 @@ class Windows:
 
         sess = self.__session()
         lock = self.__locker
+        childs = self.__childs
 
         table = self.__table
         group = self.__group
@@ -566,15 +666,6 @@ class Windows:
 
             session.commit()
 
-
-        params = self.__params
-        config = params.windows
-
-        params = self.__params
-        childs = self.__childs
-
-        if unique in config:
-            del config[unique]
 
         if unique in childs:
             del childs[unique]
