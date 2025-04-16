@@ -14,10 +14,8 @@ from pytest import fixture
 from pytest import raises
 
 from ..params import TimerParams
-from ..params import TimersParams
 from ..time import Time
 from ..timers import Timers
-from ..timers import TimersTable
 from ...types import DictStrAny
 from ...types import inrepr
 from ...types import instr
@@ -36,49 +34,54 @@ def timers(
     :returns: Newly constructed instance of related class.
     """
 
+    model = TimerParams
 
     source: DictStrAny = {
-        'one': {'timer': 1},
-        'two': {'timer': 1}}
+        'one': model(timer=1),
+        'two': model(timer=1)}
 
-
-    params = TimersParams(
-        timers=source)
 
     store = (
         f'sqlite:///{tmp_path}'
         '/cache.db')
 
     timers = Timers(
-        params,
         store=store)
 
-    session = timers.store_session
+    table = (
+        timers
+        .store_table)
+
+    session = (
+        timers
+        .store_session)
 
 
-    timer = TimersTable(
+    record = table(
         group='default',
         unique='two',
         last='1970-01-01T00:00:00Z',
         update='1970-01-01T00:00:00Z')
 
-    session.add(timer)
+    session.merge(record)
 
-    session.commit()
-
-
-    timer = TimersTable(
+    record = table(
         group='default',
         unique='tre',
         last='1970-01-01T00:00:00Z',
         update='1970-01-01T00:00:00Z')
 
-    session.add(timer)
+    session.merge(record)
 
     session.commit()
 
 
-    timers.load_children()
+    timers.create(
+        'one', source['one'])
+
+    timers.create(
+        'two', source['two'])
+
 
     return timers
 
@@ -100,9 +103,11 @@ def test_Timers(
         '_Timers__params',
         '_Timers__store',
         '_Timers__group',
+        '_Timers__table',
+        '_Timers__locker',
         '_Timers__sengine',
         '_Timers__session',
-        '_Timers__timers']
+        '_Timers__childs']
 
 
     assert inrepr(
@@ -122,6 +127,8 @@ def test_Timers(
     assert timers.store[:6] == 'sqlite'
 
     assert timers.group == 'default'
+
+    assert timers.store_table
 
     assert timers.store_engine
 

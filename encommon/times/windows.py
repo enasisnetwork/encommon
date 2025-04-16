@@ -8,8 +8,13 @@ is permitted, for more information consult the project license file.
 
 
 from copy import deepcopy
+from threading import Lock
+from typing import Annotated
 from typing import Optional
 from typing import TYPE_CHECKING
+from typing import Type
+
+from pydantic import Field
 
 from sqlalchemy import Column
 from sqlalchemy import String
@@ -23,6 +28,8 @@ from .common import PARSABLE
 from .params import WindowsParams
 from .time import Time
 from .window import Window
+from ..types import BaseModel
+from ..types import DictStrAny
 
 if TYPE_CHECKING:
     from .params import WindowParams
@@ -33,17 +40,7 @@ WINDOWS = dict[str, Window]
 
 
 
-class SQLBase(DeclarativeBase):
-    """
-    Some additional class that SQLAlchemy requires to work.
-
-    .. note::
-       Input parameters are not defined, check parent class.
-    """
-
-
-
-class WindowsTable(SQLBase):
+class WindowsTable(DeclarativeBase):
     """
     Schematic for the database operations using SQLAlchemy.
 
@@ -73,7 +70,83 @@ class WindowsTable(SQLBase):
         String,
         nullable=False)
 
-    __tablename__ = 'windows'
+
+
+class WindowsRecord(BaseModel):
+    """
+    Contain the information of the record from the database.
+
+    :param record: Record from the SQLAlchemy query routine.
+    """
+
+    group: Annotated[
+        str,
+        Field(...,
+              description='Group the children by category',
+              min_length=1)]
+
+    unique: Annotated[
+        str,
+        Field(...,
+              description='Unique identifier for the child',
+              min_length=1)]
+
+    last: Annotated[
+        str,
+        Field(...,
+              description='Last schedule for the period',
+              min_length=20,
+              max_length=32)]
+
+    next: Annotated[
+        str,
+        Field(...,
+              description='Next schedule for the period',
+              min_length=20,
+              max_length=32)]
+
+    update: Annotated[
+        str,
+        Field(...,
+              description='When the record was updated',
+              min_length=20,
+              max_length=32)]
+
+
+    def __init__(
+        self,
+        record: Optional[DeclarativeBase] = None,
+    ) -> None:
+        """
+        Initialize instance for class using provided parameters.
+        """
+
+        fields = [
+            'group',
+            'unique',
+            'last',
+            'next',
+            'update']
+
+        params = {
+            x: getattr(record, x)
+            for x in fields}
+
+
+        timefs = [
+            'last',
+            'next',
+            'update']
+
+        params |= {
+            k: (Time(v).simple
+                if v else None)
+            for k, v in
+            params.items()
+            if k in timefs}
+
+
+        super().__init__(**params)
 
 
 
@@ -108,6 +181,8 @@ class Windows:
 
     __store: str
     __group: str
+    __table: Type[WindowsTable]
+    __locker: Lock
 
     __sengine: Engine
     __session: (
@@ -117,16 +192,17 @@ class Windows:
     __start: Time
     __stop: Time
 
-    __windows: WINDOWS
+    __childs: WINDOWS
 
 
-    def __init__(
+    def __init__(  # noqa: CFQ002
         self,
         params: Optional['WindowsParams'] = None,
         start: PARSABLE = 'now',
         stop: PARSABLE = '3000-01-01',
         *,
         store: str = 'sqlite:///:memory:',
+        table: str = 'windows',
         group: str = 'default',
     ) -> None:
         """
@@ -144,7 +220,17 @@ class Windows:
         self.__store = store
         self.__group = group
 
-        self.__make_engine()
+        class SQLBase(DeclarativeBase):
+            pass
+
+        self.__table = type(
+            f'encommon_windows_{table}',
+            (SQLBase, WindowsTable),
+            {'__tablename__': table})
+
+        self.__locker = Lock()
+
+        self.__build_engine()
 
 
         start = Time(start)
@@ -156,12 +242,12 @@ class Windows:
         self.__stop = stop
 
 
-        self.__windows = {}
+        self.__childs = {}
 
-        self.load_children()
+        self.__build_objects()
 
 
-    def __make_engine(
+    def __build_engine(
         self,
     ) -> None:
         """
@@ -172,7 +258,7 @@ class Windows:
             self.__store,
             pool_pre_ping=True)
 
-        (SQLBase.metadata
+        (self.__table.metadata
          .create_all(sengine))
 
         session = (
@@ -180,6 +266,23 @@ class Windows:
 
         self.__sengine = sengine
         self.__session = session
+
+
+    def __build_objects(
+        self,
+    ) -> None:
+        """
+        Construct instances using the configuration parameters.
+        """
+
+        params = self.__params
+
+        items = (
+            params.windows
+            .items())
+
+        for name, item in items:
+            self.create(name, item)
 
 
     @property
@@ -219,6 +322,19 @@ class Windows:
         """
 
         return self.__group
+
+
+    @property
+    def store_table(
+        self,
+    ) -> Type[WindowsTable]:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__table
 
 
     @property
@@ -283,90 +399,7 @@ class Windows:
         :returns: Value for the attribute from class instance.
         """
 
-        return dict(self.__windows)
-
-
-    def load_children(
-        self,
-    ) -> None:
-        """
-        Construct the children instances for the primary class.
-        """
-
-        params = self.__params
-        windows = self.__windows
-
-        start = self.__start
-        stop = self.__stop
-
-        group = self.__group
-
-        session = self.store_session
-
-        config = params.windows
-
-
-        _table = WindowsTable
-        _group = _table.group
-        _unique = _table.unique
-
-        query = (
-            session.query(_table)
-            .filter(_group == group)
-            .order_by(_unique))
-
-        for record in query.all():
-
-            unique = str(record.unique)
-            next = str(record.next)
-
-            if unique not in config:
-                continue
-
-            _config = config[unique]
-
-            _config.start = next
-            _config.anchor = next
-
-
-        items = config.items()
-
-        for key, value in items:
-
-            if key in windows:
-
-                window = windows[key]
-
-                window.update(value.start)
-
-                continue
-
-            _start = (
-                value.start or start)
-
-            _stop = (
-                value.stop or stop)
-
-            if _start < start:
-                _start = start
-
-            if _stop > stop:
-                _stop = stop
-
-            _anchor = (
-                value.anchor or _start)
-
-            window = Window(
-                value.window,
-                start=_start,
-                stop=_stop,
-                anchor=_anchor,
-                delay=value.delay)
-
-            windows[key] = window
-
-
-        self.__windows = windows
+        return dict(self.__childs)
 
 
     def save_children(
@@ -376,31 +409,45 @@ class Windows:
         Save the child caches from the attribute into database.
         """
 
-        windows = self.__windows
+        sess = self.__session()
+        lock = self.__locker
 
+        table = self.__table
         group = self.__group
-
-        session = self.store_session
-
-
-        items = windows.items()
-
-        for unique, window in items:
-
-            update = Time('now')
-
-            append = WindowsTable(
-                group=group,
-                unique=unique,
-                last=window.last.subsec,
-                next=window.next.subsec,
-                update=update.subsec)
-
-            session.merge(append)
+        childs = self.__childs
 
 
-        session.commit()
-        session.close()
+        inserts: list[DictStrAny] = []
+
+        update = Time('now')
+
+
+        items = childs.items()
+
+        for unique, cache in items:
+
+            _last = cache.last.subsec
+            _next = cache.next.subsec
+            _update = update.subsec
+
+            inputs: DictStrAny = {
+                'group': group,
+                'unique': unique,
+                'last': _last,
+                'next': _next,
+                'update': _update}
+
+            inserts.append(inputs)
+
+
+        with lock, sess as session:
+
+            for insert in inserts:
+
+                session.merge(
+                    table(**insert))
+
+            session.commit()
 
 
     def ready(
@@ -416,14 +463,14 @@ class Windows:
         :returns: Boolean indicating whether enough time passed.
         """
 
-        windows = self.__windows
+        childs = self.__childs
 
-        if unique not in windows:
+        if unique not in childs:
             raise ValueError('unique')
 
-        window = windows[unique]
+        child = childs[unique]
 
-        ready = window.ready(update)
+        ready = child.ready(update)
 
         if ready is True:
             self.save_children()
@@ -448,6 +495,52 @@ class Windows:
             unique, update)
 
 
+    def select(
+        self,
+        unique: str,
+    ) -> Optional[WindowsRecord]:
+        """
+        Return the record from within the table in the database.
+
+        :returns: Record from within the table in the database.
+        """
+
+        sess = self.__session()
+        lock = self.__locker
+
+        table = self.__table
+        model = WindowsRecord
+
+        table = self.__table
+        group = self.__group
+
+        _unique = table.unique
+        _group = table.group
+
+
+        with lock, sess as session:
+
+            query = (
+                session.query(table)
+                .filter(_unique == unique)
+                .filter(_group == group))
+
+            _records = list(query.all())
+
+
+        records = [
+            model(x)
+            for x in _records]
+
+
+        if len(records) == 0:
+            return None
+
+        assert len(records) == 1
+
+        return records[0]
+
+
     def create(
         self,
         unique: str,
@@ -461,20 +554,58 @@ class Windows:
         :returns: Newly constructed instance of related class.
         """
 
-        config = (
-            self.params
-            .windows)
+        childs = self.__childs
+        _start = self.__start
+        _stop = self.__stop
 
-        if unique in config:
+        if unique in childs:
             raise ValueError('unique')
 
-        config[unique] = params
+        window = params.window
+        start = params.start
+        stop = params.stop
+        anchor = params.anchor
+        delay = params.delay
 
-        self.load_children()
+
+        select = self.select(unique)
+
+        if select is not None:
+            start = select.next
+            anchor = select.next
+
+
+        child_start = Time(
+            start if start
+            else _start)
+
+        child_stop = Time(
+            stop if stop
+            else _stop)
+
+        anchor = anchor or start
+
+
+        if child_start < _start:
+            child_start = _start
+
+        if child_stop > _stop:
+            child_stop = _stop
+
+
+        child = Window(
+            window=window,
+            start=child_start,
+            stop=child_stop,
+            anchor=anchor,
+            delay=delay)
+
+        childs[unique] = child
+
 
         self.save_children()
 
-        return self.children[unique]
+        return child
 
 
     def update(
@@ -489,14 +620,14 @@ class Windows:
         :param value: Override the time updated for window value.
         """
 
-        windows = self.__windows
+        childs = self.__childs
 
-        if unique not in windows:
+        if unique not in childs:
             raise ValueError('unique')
 
-        window = windows[unique]
+        child = childs[unique]
 
-        window.update(value)
+        child.update(value)
 
         self.save_children()
 
@@ -515,32 +646,26 @@ class Windows:
         :param unique: Unique identifier for the related child.
         """
 
-        params = self.__params
-        windows = self.__windows
+        sess = self.__session()
+        lock = self.__locker
+        childs = self.__childs
 
+        table = self.__table
         group = self.__group
 
-        session = self.store_session
-
-        config = params.windows
-
-
-        if unique in config:
-            del config[unique]
-
-        if unique in windows:
-            del windows[unique]
+        _unique = table.unique
+        _group = table.group
 
 
-        _table = WindowsTable
-        _group = _table.group
-        _unique = _table.unique
+        with lock, sess as session:
 
-        (session.query(_table)
-         .filter(_unique == unique)
-         .filter(_group == group)
-         .delete())
+            (session.query(table)
+             .filter(_unique == unique)
+             .filter(_group == group)
+             .delete())
+
+            session.commit()
 
 
-        session.commit()
-        session.close()
+        if unique in childs:
+            del childs[unique]

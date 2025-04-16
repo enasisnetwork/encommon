@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from contextlib import suppress
+from copy import deepcopy
 from datetime import datetime
 from re import match as re_match
 from typing import Optional
@@ -82,7 +83,9 @@ def parse_time(
     if (source is not None
             and hasattr(source, 'source')):
 
-        source = source.source
+        source = deepcopy(
+            source.source)
+
         assert isinstance(
             source, datetime)
 
@@ -106,10 +109,12 @@ def parse_time(
             .astimezone(tzinfo))
 
     if source in ['max', float('inf')]:
-        source = datetime.max
+        source = deepcopy(
+            datetime.max)
 
     if source in ['min', float('-inf')]:
-        source = datetime.min
+        source = deepcopy(
+            datetime.min)
 
     if (isinstance(source, str)
             and re_match(SNAPABLE, source)):
@@ -127,6 +132,7 @@ def parse_time(
 
     if (isinstance(source, datetime)
             and not source.tzinfo):
+        source = deepcopy(source)
         source = source.replace(
             tzinfo=findtz(tzname))
 
