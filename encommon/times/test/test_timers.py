@@ -17,7 +17,6 @@ from ..params import TimerParams
 from ..params import TimersParams
 from ..time import Time
 from ..timers import Timers
-from ..timers import TimersTable
 from ...types import DictStrAny
 from ...types import inrepr
 from ...types import instr
@@ -53,10 +52,11 @@ def timers(
         params,
         store=store)
 
+    table = timers.store_table
     session = timers.store_session
 
 
-    timer = TimersTable(
+    timer = table(
         group='default',
         unique='two',
         last='1970-01-01T00:00:00Z',
@@ -67,7 +67,7 @@ def timers(
     session.commit()
 
 
-    timer = TimersTable(
+    timer = table(
         group='default',
         unique='tre',
         last='1970-01-01T00:00:00Z',
@@ -100,9 +100,11 @@ def test_Timers(
         '_Timers__params',
         '_Timers__store',
         '_Timers__group',
+        '_Timers__table',
+        '_Timers__locker',
         '_Timers__sengine',
         '_Timers__session',
-        '_Timers__timers']
+        '_Timers__childs']
 
 
     assert inrepr(
@@ -122,6 +124,8 @@ def test_Timers(
     assert timers.store[:6] == 'sqlite'
 
     assert timers.group == 'default'
+
+    assert timers.store_table
 
     assert timers.store_engine
 

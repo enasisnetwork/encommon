@@ -8,8 +8,10 @@ is permitted, for more information consult the project license file.
 
 
 from copy import deepcopy
+from threading import Lock
 from typing import Optional
 from typing import TYPE_CHECKING
+from typing import Type
 
 from sqlalchemy import Column
 from sqlalchemy import String
@@ -23,6 +25,7 @@ from .common import PARSABLE
 from .params import TimersParams
 from .time import Time
 from .timer import Timer
+from ..types import DictStrAny
 
 if TYPE_CHECKING:
     from .params import TimerParams
@@ -33,17 +36,7 @@ TIMERS = dict[str, Timer]
 
 
 
-class SQLBase(DeclarativeBase):
-    """
-    Some additional class that SQLAlchemy requires to work.
-
-    .. note::
-       Input parameters are not defined, check parent class.
-    """
-
-
-
-class TimersTable(SQLBase):
+class TimersTable(DeclarativeBase):
     """
     Schematic for the database operations using SQLAlchemy.
 
@@ -68,8 +61,6 @@ class TimersTable(SQLBase):
     update = Column(
         String,
         nullable=False)
-
-    __tablename__ = 'timers'
 
 
 
@@ -106,13 +97,15 @@ class Timers:
 
     __store: str
     __group: str
+    __table: Type[TimersTable]
+    __locker: Lock
 
     __sengine: Engine
     __session: (
         # pylint: disable=unsubscriptable-object
         sessionmaker[Session])
 
-    __timers: TIMERS
+    __childs: TIMERS
 
 
     def __init__(
@@ -120,6 +113,7 @@ class Timers:
         params: Optional['TimersParams'] = None,
         *,
         store: str = 'sqlite:///:memory:',
+        table: str = 'timers',
         group: str = 'default',
     ) -> None:
         """
@@ -137,15 +131,25 @@ class Timers:
         self.__store = store
         self.__group = group
 
-        self.__make_engine()
+        class SQLBase(DeclarativeBase):
+            pass
+
+        self.__table = type(
+            f'encommon_timers_{table}',
+            (SQLBase, TimersTable),
+            {'__tablename__': table})
+
+        self.__locker = Lock()
+
+        self.__build_engine()
 
 
-        self.__timers = {}
+        self.__childs = {}
 
         self.load_children()
 
 
-    def __make_engine(
+    def __build_engine(
         self,
     ) -> None:
         """
@@ -156,7 +160,7 @@ class Timers:
             self.__store,
             pool_pre_ping=True)
 
-        (SQLBase.metadata
+        (self.__table.metadata
          .create_all(sengine))
 
         session = (
@@ -206,6 +210,19 @@ class Timers:
 
 
     @property
+    def store_table(
+        self,
+    ) -> Type[TimersTable]:
+        """
+        Return the value for the attribute from class instance.
+
+        :returns: Value for the attribute from class instance.
+        """
+
+        return self.__table
+
+
+    @property
     def store_engine(
         self,
     ) -> Engine:
@@ -241,7 +258,7 @@ class Timers:
         :returns: Value for the attribute from class instance.
         """
 
-        return dict(self.__timers)
+        return dict(self.__childs)
 
 
     def load_children(
@@ -252,7 +269,7 @@ class Timers:
         """
 
         params = self.__params
-        timers = self.__timers
+        timers = self.__childs
 
         group = self.__group
 
@@ -261,12 +278,12 @@ class Timers:
         config = params.timers
 
 
-        _table = TimersTable
-        _group = _table.group
-        _unique = _table.unique
+        table = self.__table
+        _group = table.group
+        _unique = table.unique
 
         query = (
-            session.query(_table)
+            session.query(table)
             .filter(_group == group)
             .order_by(_unique))
 
@@ -302,7 +319,7 @@ class Timers:
             timers[key] = timer
 
 
-        self.__timers = timers
+        self.__childs = timers
 
 
     def save_children(
@@ -312,30 +329,43 @@ class Timers:
         Save the child caches from the attribute into database.
         """
 
-        timers = self.__timers
+        sess = self.__session()
+        lock = self.__locker
 
+        table = self.__table
         group = self.__group
-
-        session = self.store_session
-
-
-        items = timers.items()
-
-        for unique, timer in items:
-
-            update = Time('now')
-
-            append = TimersTable(
-                group=group,
-                unique=unique,
-                last=timer.time.subsec,
-                update=update.subsec)
-
-            session.merge(append)
+        childs = self.__childs
 
 
-        session.commit()
-        session.close()
+        inserts: list[DictStrAny] = []
+
+        update = Time('now')
+
+
+        items = childs.items()
+
+        for unique, cache in items:
+
+            _last = cache.time.subsec
+            _update = update.subsec
+
+            inputs: DictStrAny = {
+                'group': group,
+                'unique': unique,
+                'last': _last,
+                'update': _update}
+
+            inserts.append(inputs)
+
+
+        with lock, sess as session:
+
+            for insert in inserts:
+
+                session.merge(
+                    table(**insert))
+
+            session.commit()
 
 
     def ready(
@@ -351,14 +381,14 @@ class Timers:
         :returns: Boolean indicating whether enough time passed.
         """
 
-        timers = self.__timers
+        childs = self.__childs
 
-        if unique not in timers:
+        if unique not in childs:
             raise ValueError('unique')
 
-        timer = timers[unique]
+        child = childs[unique]
 
-        ready = timer.ready(update)
+        ready = child.ready(update)
 
         if ready is True:
             self.save_children()
@@ -396,9 +426,10 @@ class Timers:
         :returns: Newly constructed instance of related class.
         """
 
-        config = (
-            self.params
-            .timers)
+        childs = self.__childs
+        _params = self.params
+
+        config = _params.timers
 
         if unique in config:
             raise ValueError('unique')
@@ -409,7 +440,7 @@ class Timers:
 
         self.save_children()
 
-        return self.children[unique]
+        return childs[unique]
 
 
     def update(
@@ -424,14 +455,14 @@ class Timers:
         :param value: Override the time updated for timer value.
         """
 
-        timers = self.__timers
+        childs = self.__childs
 
-        if unique not in timers:
+        if unique not in childs:
             raise ValueError('unique')
 
-        timer = timers[unique]
+        child = childs[unique]
 
-        timer.update(value)
+        child.update(value)
 
         self.save_children()
 
@@ -450,32 +481,34 @@ class Timers:
         :param unique: Unique identifier for the related child.
         """
 
-        params = self.__params
-        timers = self.__timers
+        sess = self.__session()
+        lock = self.__locker
 
+        table = self.__table
         group = self.__group
 
-        session = self.store_session
+        _unique = table.unique
+        _group = table.group
 
+
+        with lock, sess as session:
+
+            (session.query(table)
+             .filter(_unique == unique)
+             .filter(_group == group)
+             .delete())
+
+            session.commit()
+
+
+        params = self.__params
         config = params.timers
 
+        params = self.__params
+        childs = self.__childs
 
         if unique in config:
             del config[unique]
 
-        if unique in timers:
-            del timers[unique]
-
-
-        _table = TimersTable
-        _group = _table.group
-        _unique = _table.unique
-
-        (session.query(_table)
-         .filter(_unique == unique)
-         .filter(_group == group)
-         .delete())
-
-
-        session.commit()
-        session.close()
+        if unique in childs:
+            del childs[unique]
