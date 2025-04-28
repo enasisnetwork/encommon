@@ -30,6 +30,7 @@ from .time import Time
 from .timer import Timer
 from ..types import BaseModel
 from ..types import DictStrAny
+from ..types import LDictStrAny
 
 if TYPE_CHECKING:
     from .params import TimerParams
@@ -366,7 +367,7 @@ class Timers:
         childs = self.__childs
 
 
-        inserts: list[DictStrAny] = []
+        inserts: LDictStrAny = []
 
         update = Time('now')
 

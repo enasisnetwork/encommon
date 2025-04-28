@@ -28,6 +28,7 @@ from .strings import instr
 from .strings import rplstr
 from .strings import strplwr
 from .types import DictStrAny
+from .types import LDictStrAny
 from .types import NCFalse
 from .types import NCNone
 from .types import NCTrue
@@ -51,6 +52,7 @@ __all__ = [
     'inrepr',
     'instr',
     'lattrs',
+    'LDictStrAny',
     'merge_dicts',
     'rplstr',
     'setate',

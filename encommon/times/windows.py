@@ -30,6 +30,7 @@ from .time import Time
 from .window import Window
 from ..types import BaseModel
 from ..types import DictStrAny
+from ..types import LDictStrAny
 
 if TYPE_CHECKING:
     from .params import WindowParams
@@ -417,7 +418,7 @@ class Windows:
         childs = self.__childs
 
 
-        inserts: list[DictStrAny] = []
+        inserts: LDictStrAny = []
 
         update = Time('now')
 

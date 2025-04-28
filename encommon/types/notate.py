@@ -16,6 +16,7 @@ from typing import Union
 
 from .empty import Empty
 from .types import DictStrAny
+from .types import LDictStrAny
 
 
 
@@ -194,13 +195,13 @@ def delate(
 
 
 def impate(  # noqa: CFQ001,CFQ004
-    source: DictStrAny | list[DictStrAny],
+    source: DictStrAny | LDictStrAny,
     delim: str = '/',
     parent: Optional[str] = None,
     *,
     implode_list: bool = True,
     recurse_list: bool = True,
-) -> DictStrAny | list[DictStrAny]:
+) -> DictStrAny | LDictStrAny:
     """
     Implode the dictionary into a single depth of notation.
 
