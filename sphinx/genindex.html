@@ -1,174 +1,307 @@
+
 <!DOCTYPE html>
-<html lang="en"
-      data-content_root="./"
-      x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }"
-      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
-      class="scroll-smooth"
-      :class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
->
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta charset="utf-8" />
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="white" />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
-  
-    <title>Index | encommon  documentation</title>
-    <meta property="og:title" content="Index | encommon  documentation" />
-    <meta name="twitter:title" content="Index | encommon  documentation" />
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e72c8e07" />
-      <link rel="stylesheet" type="text/css" href="_static/theme.css?v=42baaae4" />
-      <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
-        <link rel="search" title="Search" href="search.html" />
-        <link rel="index" title="Index" href="#" />
 
-    <script>
-    <!-- Prevent Flash of wrong theme -->
-      const userPreference = localStorage.getItem('darkMode');
-      let mode;
-      if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        mode = 'dark';
-        document.documentElement.classList.add('dark');
-      } else {
-        mode = 'light';
-      }
-      if (!userPreference) {localStorage.setItem('darkMode', mode)}
-    </script>
-</head>
-  <body x-data="{ showSidebar: false, showScrollTop: false }" class="min-h-screen font-sans antialiased bg-background text-foreground" :class="{ 'overflow-hidden': showSidebar }">
-    <div x-cloak x-show="showSidebar" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" @click.self="showSidebar = false"></div><div id="page" class="relative flex flex-col min-h-screen"><a href="#content" class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100">
-      Skip to content
-    </a><header
-  class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur"><div class="container flex items-center h-14">
-    <div class="hidden mr-4 md:flex">
-      <a href="index.html" class="flex items-center mr-6"><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">encommon  documentation</span>
-      </a></div><button
-      class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden"
-      type="button" @click="showSidebar = true">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" aria-hidden="true"
-        fill="currentColor">
-        <path
-          d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z" />
-      </svg>
-      <span class="sr-only">Toggle navigation menu</span>
-    </button>
-    <div class="flex items-center justify-between flex-1 space-x-2 sm:space-x-4 md:justify-end">
-      <div class="flex-1 w-full md:w-auto md:flex-none"><form id="searchbox"
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; encommon  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.22.11" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
       action="search.html"
-      method="get"
-      class="relative flex items-center group"
-      @keydown.k.window.meta="$refs.search.focus()">
-  <input x-ref="search"
-          name="q"
-          id="search-input"
-          type="search"
-          aria-label="Search the docs"
-          placeholder="Search ..."
-          class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" />
-  <kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
-    <span class="text-xs">⌘</span>
-    K
-  </kbd>
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form>
-      </div>
-      <nav class="flex items-center space-x-1">
-        <button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'"
-          class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9"
-          type="button"
-          aria-label="Color theme switcher">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" fill="currentColor"
-            class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0">
-            <path
-              d="M480 685q45.456 0 77.228-31.772Q589 621.456 589 576q0-45.456-31.772-77.228Q525.456 467 480 467q-45.456 0-77.228 31.772Q371 530.544 371 576q0 45.456 31.772 77.228Q434.544 685 480 685Zm0 91q-83 0-141.5-58.5T280 576q0-83 58.5-141.5T480 376q83 0 141.5 58.5T680 576q0 83-58.5 141.5T480 776ZM80 621.5q-19.152 0-32.326-13.174T34.5 576q0-19.152 13.174-32.326T80 530.5h80q19.152 0 32.326 13.174T205.5 576q0 19.152-13.174 32.326T160 621.5H80Zm720 0q-19.152 0-32.326-13.174T754.5 576q0-19.152 13.174-32.326T800 530.5h80q19.152 0 32.326 13.174T925.5 576q0 19.152-13.174 32.326T880 621.5h-80Zm-320-320q-19.152 0-32.326-13.174T434.5 256v-80q0-19.152 13.174-32.326T480 130.5q19.152 0 32.326 13.174T525.5 176v80q0 19.152-13.174 32.326T480 301.5Zm0 720q-19.152 0-32.326-13.17Q434.5 995.152 434.5 976v-80q0-19.152 13.174-32.326T480 850.5q19.152 0 32.326 13.174T525.5 896v80q0 19.152-13.174 32.33-13.174 13.17-32.326 13.17ZM222.174 382.065l-43-42Q165.5 327.391 166 308.239t13.174-33.065q13.435-13.674 32.587-13.674t32.065 13.674l42.239 43q12.674 13.435 12.555 31.706-.12 18.272-12.555 31.946-12.674 13.674-31.445 13.413-18.772-.261-32.446-13.174Zm494 494.761-42.239-43q-12.674-13.435-12.674-32.087t12.674-31.565Q686.609 756.5 705.38 757q18.772.5 32.446 13.174l43 41.761Q794.5 824.609 794 843.761t-13.174 33.065Q767.391 890.5 748.239 890.5t-32.065-13.674Zm-42-494.761Q660.5 369.391 661 350.62q.5-18.772 13.174-32.446l41.761-43Q728.609 261.5 747.761 262t33.065 13.174q13.674 13.435 13.674 32.587t-13.674 32.065l-43 42.239q-13.435 12.674-31.706 12.555-18.272-.12-31.946-12.555Zm-495 494.761Q165.5 863.391 165.5 844.239t13.674-32.065l43-42.239q13.435-12.674 32.087-12.674t31.565 12.674Q299.5 782.609 299 801.38q-.5 18.772-13.174 32.446l-41.761 43Q231.391 890.5 212.239 890t-33.065-13.174ZM480 576Z" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" fill="currentColor"
-            class="absolute transition-all scale-0 rotate-90 dark:rotate-0 dark:scale-100">
-            <path
-              d="M480 936q-151 0-255.5-104.5T120 576q0-138 90-239.5T440 218q25-3 39 18t-1 44q-17 26-25.5 55t-8.5 61q0 90 63 153t153 63q31 0 61.5-9t54.5-25q21-14 43-1.5t19 39.5q-14 138-117.5 229T480 936Zm0-80q88 0 158-48.5T740 681q-20 5-40 8t-40 3q-123 0-209.5-86.5T364 396q0-20 3-40t8-40q-78 32-126.5 102T200 576q0 116 82 198t198 82Zm-10-270Z" />
-          </svg>
-        </button>
-      </nav>
-    </div>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">encommon  documentation</p>
+  
+</a></div>
+    
   </div>
-</header>
-
-    <div class="flex-1"><div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside id="left-sidebar"
-  class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky"
-  :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }">
-
-    <a href="index.html" class="!justify-start text-sm md:!hidden bg-background"><span class="font-bold text-clip whitespace-nowrap">encommon  documentation</span>
-    </a>
-
-    <div class="relative overflow-hidden md:overflow-auto my-4 md:my-0 h-[calc(100vh-8rem)] md:h-auto">
-      <div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
   
-</nav>
-      </div>
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
     </div>
-    <button type="button" @click="showSidebar = false"
-      class="absolute md:hidden right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100">
-      <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 96 960 960" fill="currentColor"
-        stroke="none" class="h-4 w-4">
-        <path
-          d="M480 632 284 828q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536 576l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480 632Z" />
-      </svg>
-    </button>
-  </aside>
-        <main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-<div class="w-full min-w-0 mx-auto">
-<nav aria-label="breadcrumbs"
-     class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
-  <a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground"
-     href="index.html">
-    <span class="hidden md:inline">encommon  documentation</span>
-    <svg xmlns="http://www.w3.org/2000/svg"
-         height="18"
-         width="18"
-         viewBox="0 96 960 960"
-         aria-label="Home"
-         fill="currentColor"
-         stroke="none"
-         class="md:hidden">
-      <path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z" />
-    </svg>
-  </a>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
   
-<div class="mr-1">/</div><span aria-current="page"
-        class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Index</span>
-</nav>
+  
+    <div class="navbar-persistent--mobile">
 
-<div id="content" role="main">
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
 
-  <h1 id="index">Index</h1>
-  <h2 id="A">A</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.html#encommon.parse.Network.address">address (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.address">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.address_cidr">address_cidr (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.address_cidr">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.address_host">address_host (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.address_host">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.after">after (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.after">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.WindowParams.anchor">anchor (encommon.times.params.WindowParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.Window.anchor">(encommon.times.Window property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.window.Window.anchor">(encommon.times.window.Window property)</a>
@@ -177,22 +310,22 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.apache">apache (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.apache">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.append_text">append_text() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.files.append_text">(in module encommon.utils.files)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.array_ansi">array_ansi() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.stdout.array_ansi">(in module encommon.utils.stdout)</a>
 </li>
       </ul></li>
@@ -201,50 +334,48 @@
       <li><a href="index.html#assert">assert() (built-in function)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="B">B</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.html#encommon.config.Config.basic">basic (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.basic">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.before">before (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.before">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.bool">bool (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Network.broadcast">broadcast (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.broadcast">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="C">C</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.html#encommon.config.Config.cargs">cargs (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.cargs">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.children">children (encommon.times.Timers property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.children">(encommon.times.timers.Timers property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.children">(encommon.times.Windows property)</a>
@@ -254,13 +385,13 @@
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.cidr">cidr (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.cidr">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.clsname">clsname() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.classes.clsname">(in module encommon.types.classes)</a>
 </li>
       </ul></li>
@@ -268,7 +399,7 @@
 </li>
       <li><a href="encommon.colors.html#encommon.colors.Color">Color (class in encommon.colors)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color">(class in encommon.colors.color)</a>
 </li>
       </ul></li>
@@ -276,19 +407,19 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.Duration.compact">compact (encommon.times.Duration property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration.compact">(encommon.times.duration.Duration property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config">Config (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config">(class in encommon.config.config)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.config">config (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.config">(encommon.config.config.Config property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.ConfigFile.config">(encommon.config.ConfigFile attribute)</a>
@@ -313,16 +444,16 @@
       <li><a href="encommon.html#encommon.conftest.config_factory">config_factory() (in module encommon.conftest)</a>
 </li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.html#encommon.config.config_load">config_load() (in module encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.utils.config_load">(in module encommon.config.utils)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.config_path">config_path() (in module encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.utils.config_path">(in module encommon.config.utils)</a>
 </li>
         <li><a href="encommon.html#encommon.conftest.config_path">(in module encommon.conftest)</a>
@@ -330,37 +461,37 @@
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.config_paths">config_paths() (in module encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.utils.config_paths">(in module encommon.config.utils)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.ConfigFile">ConfigFile (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.files.ConfigFile">(class in encommon.config.files)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.ConfigFiles">ConfigFiles (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.files.ConfigFiles">(class in encommon.config.files)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.ConfigPath">ConfigPath (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.paths.ConfigPath">(class in encommon.config.paths)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.ConfigPaths">ConfigPaths (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.paths.ConfigPaths">(class in encommon.config.paths)</a>
 </li>
       </ul></li>
       <li><a href="encommon.webkit.html#encommon.webkit.Content">Content (class in encommon.webkit)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.html#encommon.webkit.content.Content">(class in encommon.webkit.content)</a>
 </li>
       </ul></li>
@@ -368,7 +499,7 @@
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.Crypts.create">create() (encommon.crypts.Crypts method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.crypts.Crypts.create">(encommon.crypts.crypts.Crypts method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Timers.create">(encommon.times.Timers method)</a>
@@ -384,50 +515,49 @@
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.Crypts">Crypts (class in encommon.crypts)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.crypts.Crypts">(class in encommon.crypts.crypts)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.crypts">crypts (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.crypts">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.crypts.test.html#encommon.crypts.test.test_crypts.crypts">crypts() (in module encommon.crypts.test.test_crypts)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="D">D</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#datagrid">datagrid() (built-in function)</a>
 </li>
       <li><a href="index.html#datestamp">datestamp() (built-in function)</a>
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.Crypts.decrypt">decrypt() (encommon.crypts.Crypts method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.crypts.Crypts.decrypt">(encommon.crypts.crypts.Crypts method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.dedup_list">dedup_list() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.lists.dedup_list">(in module encommon.types.lists)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.delate">delate() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.notate.delate">(in module encommon.types.notate)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.WindowParams.delay">delay (encommon.times.params.WindowParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.Window.delay">(encommon.times.Window property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.window.Window.delay">(encommon.times.window.Window property)</a>
@@ -436,10 +566,10 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.crypts.html#encommon.crypts.Crypts.delete">delete() (encommon.crypts.Crypts method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.crypts.Crypts.delete">(encommon.crypts.crypts.Crypts method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Timers.delete">(encommon.times.Timers method)</a>
@@ -457,22 +587,21 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.Duration">Duration (class in encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration">(class in encommon.times.duration)</a>
 </li>
       </ul></li>
       <li><a href="index.html#duration">duration() (built-in function)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="E">E</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Time.elapsed">elapsed (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.elapsed">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
@@ -483,783 +612,782 @@
       <li>
     encommon
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.html#module-encommon">module</a>
 </li>
       </ul></li>
       <li>
     encommon.colors
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#module-encommon.colors">module</a>
 </li>
       </ul></li>
       <li>
     encommon.colors.color
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#module-encommon.colors.color">module</a>
 </li>
       </ul></li>
       <li>
     encommon.colors.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.test.html#module-encommon.colors.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.colors.test.test_color
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.test.html#module-encommon.colors.test.test_color">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.config
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config.config">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.files
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config.files">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.logger
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config.logger">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.params
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config.params">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.paths
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config.paths">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.test.html#module-encommon.config.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.test.test_config
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.test.html#module-encommon.config.test.test_config">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.test.test_files
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.test.html#module-encommon.config.test.test_files">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.test.test_logger
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.test.html#module-encommon.config.test.test_logger">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.test.test_paths
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.test.html#module-encommon.config.test.test_paths">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.test.test_utils
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.test.html#module-encommon.config.test.test_utils">module</a>
 </li>
       </ul></li>
       <li>
     encommon.config.utils
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#module-encommon.config.utils">module</a>
 </li>
       </ul></li>
       <li>
     encommon.conftest
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.html#module-encommon.conftest">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#module-encommon.crypts">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts.crypts
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#module-encommon.crypts.crypts">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts.hashes
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#module-encommon.crypts.hashes">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts.params
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#module-encommon.crypts.params">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.test.html#module-encommon.crypts.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts.test.test_crypts
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.test.html#module-encommon.crypts.test.test_crypts">module</a>
 </li>
       </ul></li>
       <li>
     encommon.crypts.test.test_hashes
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.test.html#module-encommon.crypts.test.test_hashes">module</a>
 </li>
       </ul></li>
       <li>
     encommon.parse
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#module-encommon.parse">module</a>
 </li>
       </ul></li>
       <li>
     encommon.parse.jinja2
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#module-encommon.parse.jinja2">module</a>
 </li>
       </ul></li>
       <li>
     encommon.parse.network
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#module-encommon.parse.network">module</a>
 </li>
       </ul></li>
       <li>
     encommon.parse.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.test.html#module-encommon.parse.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.parse.test.test_jinja2
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.test.html#module-encommon.parse.test.test_jinja2">module</a>
 </li>
       </ul></li>
       <li>
     encommon.parse.test.test_network
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.test.html#module-encommon.parse.test.test_network">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.common
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.common">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.duration
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.duration">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.params
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.params">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.parse
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.parse">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_duration
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_duration">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_params
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_params">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_parse
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_parse">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_time
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_time">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_timer
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_timer">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_timers
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_timers">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_unitime
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_unitime">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_utils
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_utils">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_window
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_window">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.test.test_windows
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.test.html#module-encommon.times.test.test_windows">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.time
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.time">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.timer
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.timer">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.timers
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.timers">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.unitime
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.unitime">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.utils
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.utils">module</a>
 </li>
       </ul></li>
       <li>
     encommon.times.window
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.window">module</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     encommon.times.windows
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#module-encommon.times.windows">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.classes
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.classes">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.dicts
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.dicts">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.empty
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.empty">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.funcs
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.funcs">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.lists
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.lists">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.notate
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.notate">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.strings
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.strings">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_classes
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_classes">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_dicts
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_dicts">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_empty
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_empty">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_funcs
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_funcs">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_lists
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_lists">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_notate
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_notate">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.test.test_strings
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.test.html#module-encommon.types.test.test_strings">module</a>
 </li>
       </ul></li>
       <li>
     encommon.types.types
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#module-encommon.types.types">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.common
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils.common">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.files
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils.files">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.match
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils.match">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.paths
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils.paths">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.sample
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils.sample">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.stdout
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#module-encommon.utils.stdout">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.test.html#module-encommon.utils.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.test.test_files
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.test.html#module-encommon.utils.test.test_files">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.test.test_match
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.test.html#module-encommon.utils.test.test_match">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.test.test_paths
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.test.html#module-encommon.utils.test.test_paths">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.test.test_sample
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.test.html#module-encommon.utils.test.test_sample">module</a>
 </li>
       </ul></li>
       <li>
     encommon.utils.test.test_stdout
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.test.html#module-encommon.utils.test.test_stdout">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.html#module-encommon.webkit">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.content
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.html#module-encommon.webkit.content">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.conftest
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.conftest">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_color
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_color">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_content
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_content">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_datagrid
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_datagrid">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_datetime
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_datetime">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_default
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_default">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_duration
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_duration">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_helpers
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_helpers">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_image
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_image">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_message
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_message">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_moderate
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_moderate">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_numeric
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_numeric">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_statate
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_statate">module</a>
 </li>
       </ul></li>
       <li>
     encommon.webkit.test.test_tagues
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#module-encommon.webkit.test.test_tagues">module</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Params.enconfig">enconfig (encommon.config.Params attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.params.Params.enconfig">(encommon.config.params.Params attribute)</a>
 </li>
       </ul></li>
       <li><a href="encommon.crypts.html#encommon.crypts.Crypts.encrypt">encrypt() (encommon.crypts.Crypts method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.crypts.Crypts.encrypt">(encommon.crypts.crypts.Crypts method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Params.encrypts">encrypts (encommon.config.Params attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.params.Params.encrypts">(encommon.config.params.Params attribute)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.BaseModel.endumped">endumped (encommon.types.BaseModel property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.classes.BaseModel.endumped">(encommon.types.classes.BaseModel property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Params.enlogger">enlogger (encommon.config.Params attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.params.Params.enlogger">(encommon.config.params.Params attribute)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.BaseModel.enpruned">enpruned (encommon.types.BaseModel property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.classes.BaseModel.enpruned">(encommon.types.classes.BaseModel property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.epoch">epoch (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.epoch">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.expate">expate() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.notate.expate">(in module encommon.types.notate)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="F">F</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.html#encommon.config.logger.Message.fields">fields (encommon.config.logger.Message property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.Message.fields">(encommon.config.Message property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.file_level">file_level (encommon.config.Logger property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.file_level">(encommon.config.logger.Logger property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.LoggerParams.file_level">(encommon.config.LoggerParams attribute)</a>
@@ -1269,13 +1397,13 @@
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.logger.Message.file_output">file_output (encommon.config.logger.Message property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.Message.file_output">(encommon.config.Message property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.file_path">file_path (encommon.config.Logger property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.file_path">(encommon.config.logger.Logger property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.LoggerParams.file_path">(encommon.config.LoggerParams attribute)</a>
@@ -1287,23 +1415,23 @@
 </li>
       <li><a href="encommon.config.html#encommon.config.Config.files">files (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.files">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.test.html#encommon.config.test.test_files.files">files() (in module encommon.config.test.test_files)</a>
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.filters">filters (encommon.parse.Jinja2 property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.filters">(encommon.parse.jinja2.Jinja2 property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.findtz">findtz() (in module encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.utils.findtz">(in module encommon.times.utils)</a>
 </li>
       </ul></li>
@@ -1311,50 +1439,49 @@
 </li>
       <li><a href="encommon.colors.html#encommon.colors.Color.from_hsl">from_hsl() (encommon.colors.Color class method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.from_hsl">(encommon.colors.color.Color class method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.colors.html#encommon.colors.Color.from_rgb">from_rgb() (encommon.colors.Color class method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.from_rgb">(encommon.colors.color.Color class method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.funcname">funcname() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.funcs.funcname">(in module encommon.types.funcs)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.fuzz_match">fuzz_match() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.match.fuzz_match">(in module encommon.utils.match)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.fuzzy_list">fuzzy_list() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.lists.fuzzy_list">(in module encommon.types.lists)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="G">G</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.types.html#encommon.types.getate">getate() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.notate.getate">(in module encommon.types.notate)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.group">group (encommon.times.Timers property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.group">(encommon.times.timers.Timers property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.timers.TimersRecord.group">(encommon.times.timers.TimersRecord attribute)</a>
@@ -1371,94 +1498,92 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Duration.groups">groups (encommon.times.Duration property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration.groups">(encommon.times.duration.Duration property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="H">H</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes">Hashes (class in encommon.crypts)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes">(class in encommon.crypts.hashes)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.hasstr">hasstr() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.strings.hasstr">(in module encommon.types.strings)</a>
 </li>
       </ul></li>
       <li><a href="encommon.colors.html#encommon.colors.Color.hsl">hsl (encommon.colors.Color property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.hsl">(encommon.colors.color.Color property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Time.human">human (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.human">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.hwaddr">hwaddr (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.hwaddr">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.hyphen">hyphen (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="I">I</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.webkit.html#encommon.webkit.Content.images">images() (encommon.webkit.Content class method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.html#encommon.webkit.content.Content.images">(encommon.webkit.content.Content class method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.impate">impate() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.notate.impate">(in module encommon.types.notate)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.inlist">inlist() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.lists.inlist">(in module encommon.types.lists)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.inrepr">inrepr() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.strings.inrepr">(in module encommon.types.strings)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.instr">instr() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.strings.instr">(in module encommon.types.strings)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.insubnet_ip">insubnet_ip() (in module encommon.parse)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.insubnet_ip">(in module encommon.parse.network)</a>
 </li>
       </ul></li>
@@ -1472,17 +1597,17 @@
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Network.islinklocal">islinklocal (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.islinklocal">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#islist">islist() (built-in function)</a>
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Network.islocalhost">islocalhost (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.islocalhost">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
@@ -1496,13 +1621,13 @@
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Network.isprivate">isprivate (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.isprivate">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.ispublic">ispublic (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.ispublic">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
@@ -1516,74 +1641,71 @@
 </li>
       <li><a href="encommon.parse.html#encommon.parse.isvalid_ip">isvalid_ip() (in module encommon.parse)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.isvalid_ip">(in module encommon.parse.network)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="J">J</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2">Jinja2 (class in encommon.parse)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2">(class in encommon.parse.jinja2)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.jinja2">jinja2 (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.jinja2">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.test.html#encommon.parse.test.test_jinja2.jinja2">jinja2() (in module encommon.parse.test.test_jinja2)</a>
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.jinjenv">jinjenv (encommon.parse.Jinja2 property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.jinjenv">(encommon.parse.jinja2.Jinja2 property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="K">K</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.key">key (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.Crypts.keygen">keygen() (encommon.crypts.Crypts class method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.crypts.Crypts.keygen">(encommon.crypts.crypts.Crypts class method)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.kvpair_ansi">kvpair_ansi() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.stdout.kvpair_ansi">(in module encommon.utils.stdout)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="L">L</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.label">label (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
       <li><a href="encommon.times.html#encommon.times.timers.TimersRecord.last">last (encommon.times.timers.TimersRecord attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.TimersTable.last">(encommon.times.timers.TimersTable attribute)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Window.last">(encommon.times.Window property)</a>
@@ -1597,25 +1719,25 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Window.latest">latest (encommon.times.Window property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.window.Window.latest">(encommon.times.window.Window property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.lattrs">lattrs() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.classes.lattrs">(in module encommon.types.classes)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.logger.Message.level">level (encommon.config.logger.Message property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.Message.level">(encommon.config.Message property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.load_sample">load_sample() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.sample.load_sample">(in module encommon.utils.sample)</a>
 </li>
       </ul></li>
@@ -1623,51 +1745,51 @@
 </li>
       <li><a href="encommon.config.html#encommon.config.Logger.log">log() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.log">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.html#encommon.config.Logger.log_c">log_c() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.log_c">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.log_d">log_d() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.log_d">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.log_e">log_e() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.log_e">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.log_i">log_i() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.log_i">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.log_w">log_w() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.log_w">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger">Logger (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger">(class in encommon.config.logger)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.logger">logger (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.logger">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
@@ -1675,38 +1797,37 @@
 </li>
       <li><a href="encommon.config.html#encommon.config.Logger.logger_file">logger_file (encommon.config.Logger property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.logger_file">(encommon.config.logger.Logger property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.logger_stdo">logger_stdo (encommon.config.Logger property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.logger_stdo">(encommon.config.logger.Logger property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="M">M</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.make_ansi">make_ansi() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.stdout.make_ansi">(in module encommon.utils.stdout)</a>
 </li>
       </ul></li>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.md5">md5 (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.md5">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.merge">merge (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.merge">(encommon.config.config.Config property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.ConfigFiles.merge">(encommon.config.ConfigFiles property)</a>
@@ -1720,13 +1841,13 @@
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.merge_dicts">merge_dicts() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.dicts.merge_dicts">(in module encommon.types.dicts)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Message">Message (class in encommon.config)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Message">(class in encommon.config.logger)</a>
 </li>
       </ul></li>
@@ -1734,13 +1855,13 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.timers.TimersTable.metadata">metadata (encommon.times.timers.TimersTable attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.windows.WindowsTable.metadata">(encommon.times.windows.WindowsTable attribute)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.model">model (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.model">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
@@ -1749,7 +1870,7 @@
       <li>
     module
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.html#module-encommon">encommon</a>
 </li>
         <li><a href="encommon.colors.html#module-encommon.colors">encommon.colors</a>
@@ -1956,47 +2077,46 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Time.mpoch">mpoch (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.mpoch">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="N">N</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.html#encommon.parse.Network.netmask">netmask (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.netmask">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network">Network (class in encommon.parse)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network">(class in encommon.parse.network)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.network">network (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.network">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.network_cidr">network_cidr (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.network_cidr">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Window.next">next (encommon.times.Window property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.window.Window.next">(encommon.times.window.Window property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.windows.WindowsRecord.next">(encommon.times.windows.WindowsRecord attribute)</a>
@@ -2005,7 +2125,7 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.none">none (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.num">num (encommon.utils.stdout.ArrayColors attribute)</a>
@@ -2021,30 +2141,28 @@
       <li><a href="index.html#numeric_ftemp">numeric_ftemp() (built-in function)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="O">O</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.other">other (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="P">P</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.html#encommon.parse.Network.padded">padded (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.padded">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.params">params (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.params">(encommon.config.config.Config property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.Logger.params">(encommon.config.Logger property)</a>
@@ -2066,25 +2184,25 @@
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.parse">parse() (encommon.parse.Jinja2 method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.parse">(encommon.parse.jinja2.Jinja2 method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.parse_time">parse_time() (in module encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.parse.parse_time">(in module encommon.times.parse)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.parser">parser() (encommon.parse.Jinja2 method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.parser">(encommon.parse.jinja2.Jinja2 method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.ConfigFile.path">path (encommon.config.ConfigFile attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.ConfigPath.path">(encommon.config.ConfigPath attribute)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.files.ConfigFile.path">(encommon.config.files.ConfigFile attribute)</a>
@@ -2094,7 +2212,7 @@
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Config.paths">paths (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.paths">(encommon.config.config.Config property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.ConfigFiles.paths">(encommon.config.ConfigFiles attribute)</a>
@@ -2111,12 +2229,12 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.config.test.html#encommon.config.test.test_paths.paths">paths() (in module encommon.config.test.test_paths)</a>
 </li>
       <li><a href="encommon.times.html#encommon.times.Timer.pause">pause() (encommon.times.Timer method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timer.Timer.pause">(encommon.times.timer.Timer method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Timers.pause">(encommon.times.Timers method)</a>
@@ -2132,19 +2250,19 @@
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.CryptsParams.phrases">phrases (encommon.crypts.CryptsParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.params.CryptsParams.phrases">(encommon.crypts.params.CryptsParams attribute)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.prep_sample">prep_sample() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.sample.prep_sample">(in module encommon.utils.sample)</a>
 </li>
       </ul></li>
       <li><a href="encommon.webkit.test.html#encommon.webkit.test.test_default.prepare">prepare() (in module encommon.webkit.test.test_default)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.test.html#encommon.webkit.test.test_helpers.prepare">(in module encommon.webkit.test.test_helpers)</a>
 </li>
         <li><a href="encommon.webkit.test.html#encommon.webkit.test.test_numeric.prepare">(in module encommon.webkit.test.test_numeric)</a>
@@ -2152,32 +2270,31 @@
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.print_ansi">print_ansi() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.stdout.print_ansi">(in module encommon.utils.stdout)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="R">R</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.read_sample">read_sample() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.sample.read_sample">(in module encommon.utils.sample)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.read_text">read_text() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.files.read_text">(in module encommon.utils.files)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timer.ready">ready() (encommon.times.Timer method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timer.Timer.ready">(encommon.times.timer.Timer method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Timers.ready">(encommon.times.Timers method)</a>
@@ -2195,80 +2312,79 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.timers.TimersTable.registry">registry (encommon.times.timers.TimersTable attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.windows.WindowsTable.registry">(encommon.times.windows.WindowsTable attribute)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timer.remains">remains (encommon.times.Timer property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timer.Timer.remains">(encommon.times.timer.Timer property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.utils.html#encommon.utils.resolve_path">resolve_path() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.paths.resolve_path">(in module encommon.utils.paths)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.resolve_paths">resolve_paths() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.paths.resolve_paths">(in module encommon.utils.paths)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Network.reverse">reverse (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.reverse">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.colors.html#encommon.colors.Color.rgb">rgb (encommon.colors.Color property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.rgb">(encommon.colors.color.Color property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.rgxp_match">rgxp_match() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.match.rgxp_match">(in module encommon.utils.match)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.rplstr">rplstr() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.strings.rplstr">(in module encommon.types.strings)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.rvrt_sample">rvrt_sample() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.sample.rvrt_sample">(in module encommon.utils.sample)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="S">S</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.types.test.html#encommon.types.test.test_notate.sample_expate">sample_expate() (in module encommon.types.test.test_notate)</a>
 </li>
       <li><a href="encommon.types.test.html#encommon.types.test.test_notate.sample_impate">sample_impate() (in module encommon.types.test.test_notate)</a>
 </li>
       <li><a href="encommon.config.html#encommon.config.Config.sargs">sargs (encommon.config.Config property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.config.Config.sargs">(encommon.config.config.Config property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.save_children">save_children() (encommon.times.Timers method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.save_children">(encommon.times.timers.Timers method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.save_children">(encommon.times.Windows method)</a>
@@ -2278,19 +2394,19 @@
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.save_text">save_text() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.files.save_text">(in module encommon.utils.files)</a>
 </li>
       </ul></li>
       <li><a href="encommon.webkit.html#encommon.webkit.Content.scripts">scripts() (encommon.webkit.Content class method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.html#encommon.webkit.content.Content.scripts">(encommon.webkit.content.Content class method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.select">select() (encommon.times.Timers method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.select">(encommon.times.timers.Timers method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.select">(encommon.times.Windows method)</a>
@@ -2300,73 +2416,73 @@
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.set_filter">set_filter() (encommon.parse.Jinja2 method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.set_filter">(encommon.parse.jinja2.Jinja2 method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.set_static">set_static() (encommon.parse.Jinja2 method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.set_static">(encommon.parse.jinja2.Jinja2 method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.setate">setate() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.notate.setate">(in module encommon.types.notate)</a>
 </li>
       </ul></li>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.sha1">sha1 (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.sha1">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.sha256">sha256 (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.sha256">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.sha512">sha512 (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.sha512">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.shift">shift() (encommon.times.Time method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.shift">(encommon.times.time.Time method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.shift_time">shift_time() (in module encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.parse.shift_time">(in module encommon.times.parse)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.shifz">shifz() (encommon.times.Time method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.shifz">(encommon.times.time.Time method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Duration.short">short (encommon.times.Duration property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration.short">(encommon.times.duration.Duration property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.simple">simple (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.simple">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.since">since (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.since">(encommon.times.time.Time property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Timer.since">(encommon.times.Timer property)</a>
@@ -2376,31 +2492,31 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.since_time">since_time() (in module encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.parse.since_time">(in module encommon.times.parse)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Duration.smart">smart (encommon.times.Duration property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration.smart">(encommon.times.duration.Duration property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Window.soonest">soonest (encommon.times.Window property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.window.Window.soonest">(encommon.times.window.Window property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.sort_dict">sort_dict() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.dicts.sort_dict">(in module encommon.types.dicts)</a>
 </li>
       </ul></li>
       <li><a href="encommon.colors.html#encommon.colors.Color.source">source (encommon.colors.Color property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.source">(encommon.colors.color.Color property)</a>
 </li>
         <li><a href="encommon.parse.html#encommon.parse.Network.source">(encommon.parse.Network property)</a>
@@ -2418,21 +2534,21 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.spoch">spoch (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.spoch">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.stamp">stamp() (encommon.times.Time method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.stamp">(encommon.times.time.Time method)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.params.TimerParams.start">start (encommon.times.params.TimerParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.params.WindowParams.start">(encommon.times.params.WindowParams attribute)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.TimerParams.start">(encommon.times.TimerParams attribute)</a>
@@ -2450,13 +2566,13 @@
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.start">start() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.start">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.started">started (encommon.config.Logger property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.started">(encommon.config.logger.Logger property)</a>
 </li>
       </ul></li>
@@ -2464,19 +2580,19 @@
 </li>
       <li><a href="encommon.parse.html#encommon.parse.Jinja2.statics">statics (encommon.parse.Jinja2 property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.jinja2.Jinja2.statics">(encommon.parse.jinja2.Jinja2 property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.stats_path">stats_path() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.paths.stats_path">(in module encommon.utils.paths)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.stdo_level">stdo_level (encommon.config.Logger property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.stdo_level">(encommon.config.logger.Logger property)</a>
 </li>
         <li><a href="encommon.config.html#encommon.config.LoggerParams.stdo_level">(encommon.config.LoggerParams attribute)</a>
@@ -2486,13 +2602,13 @@
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.logger.Message.stdo_output">stdo_output (encommon.config.logger.Message property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.Message.stdo_output">(encommon.config.Message property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.WindowParams.stop">stop (encommon.times.params.WindowParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.Window.stop">(encommon.times.Window property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.window.Window.stop">(encommon.times.window.Window property)</a>
@@ -2506,13 +2622,13 @@
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.Logger.stop">stop() (encommon.config.Logger method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.logger.Logger.stop">(encommon.config.logger.Logger method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.store">store (encommon.times.Timers property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.store">(encommon.times.timers.Timers property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.store">(encommon.times.Windows property)</a>
@@ -2522,7 +2638,7 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.store_engine">store_engine (encommon.times.Timers property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.store_engine">(encommon.times.timers.Timers property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.store_engine">(encommon.times.Windows property)</a>
@@ -2532,7 +2648,7 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.store_session">store_session (encommon.times.Timers property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.store_session">(encommon.times.timers.Timers property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.store_session">(encommon.times.Windows property)</a>
@@ -2542,7 +2658,7 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timers.store_table">store_table (encommon.times.Timers property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers.store_table">(encommon.times.timers.Timers property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Windows.store_table">(encommon.times.Windows property)</a>
@@ -2556,25 +2672,25 @@
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.string">string (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.string">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.string_time">string_time() (in module encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.parse.string_time">(in module encommon.times.parse)</a>
 </li>
       </ul></li>
       <li><a href="encommon.utils.html#encommon.utils.strip_ansi">strip_ansi() (in module encommon.utils)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.utils.html#encommon.utils.stdout.strip_ansi">(in module encommon.utils.stdout)</a>
 </li>
       </ul></li>
       <li><a href="encommon.types.html#encommon.types.strplwr">strplwr() (in module encommon.types)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.types.html#encommon.types.strings.strplwr">(in module encommon.types.strings)</a>
 </li>
       </ul></li>
@@ -2582,25 +2698,24 @@
 </li>
       <li><a href="encommon.webkit.html#encommon.webkit.Content.styles">styles() (encommon.webkit.Content class method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.webkit.html#encommon.webkit.content.Content.styles">(encommon.webkit.content.Content class method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Time.subsec">subsec (encommon.times.Time property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time.subsec">(encommon.times.time.Time property)</a>
 </li>
       </ul></li>
       <li><a href="index.html#svgicon">svgicon() (built-in function)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="T">T</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#tagues">tagues() (built-in function)</a>
 </li>
       <li><a href="encommon.utils.test.html#encommon.utils.test.test_files.test_append_text">test_append_text() (in module encommon.utils.test.test_files)</a>
@@ -2772,7 +2887,7 @@
       <li><a href="encommon.types.test.html#encommon.types.test.test_strings.test_instr">test_instr() (in module encommon.types.test.test_strings)</a>
 </li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.test.html#encommon.parse.test.test_network.test_insubnet_ip">test_insubnet_ip() (in module encommon.parse.test.test_network)</a>
 </li>
       <li><a href="encommon.parse.test.html#encommon.parse.test.test_network.test_isvalid_ip">test_isvalid_ip() (in module encommon.parse.test.test_network)</a>
@@ -2903,13 +3018,13 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.Time">Time (class in encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.time.Time">(class in encommon.times.time)</a>
 </li>
       </ul></li>
       <li><a href="encommon.config.html#encommon.config.logger.Message.time">time (encommon.config.logger.Message property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.config.html#encommon.config.Message.time">(encommon.config.Message property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Time.time">(encommon.times.Time property)</a>
@@ -2923,13 +3038,13 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Timer">Timer (class in encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timer.Timer">(class in encommon.times.timer)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.TimerParams.timer">timer (encommon.times.params.TimerParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.Timer.timer">(encommon.times.Timer property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.timer.Timer.timer">(encommon.times.timer.Timer property)</a>
@@ -2941,13 +3056,13 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.Timers">Timers (class in encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.Timers">(class in encommon.times.timers)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.TimersParams.timers">timers (encommon.times.params.TimersParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.TimersParams.timers">(encommon.times.TimersParams attribute)</a>
 </li>
       </ul></li>
@@ -2958,15 +3073,14 @@
       <li><a href="encommon.utils.html#encommon.utils.stdout.ArrayColors.times">times (encommon.utils.stdout.ArrayColors attribute)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="U">U</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.timers.TimersRecord.unique">unique (encommon.times.timers.TimersRecord attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.TimersTable.unique">(encommon.times.timers.TimersTable attribute)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.windows.WindowsRecord.unique">(encommon.times.windows.WindowsRecord attribute)</a>
@@ -2976,19 +3090,19 @@
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.unitime">unitime() (in module encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.unitime.unitime">(in module encommon.times.unitime)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.Duration.units">units() (encommon.times.Duration method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration.units">(encommon.times.duration.Duration method)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.timers.TimersRecord.update">update (encommon.times.timers.TimersRecord attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timers.TimersTable.update">(encommon.times.timers.TimersTable attribute)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.windows.WindowsRecord.update">(encommon.times.windows.WindowsRecord attribute)</a>
@@ -2997,10 +3111,10 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Timer.update">update() (encommon.times.Timer method)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.timer.Timer.update">(encommon.times.timer.Timer method)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.Timers.update">(encommon.times.Timers method)</a>
@@ -3020,41 +3134,39 @@
 </li>
       <li><a href="encommon.crypts.html#encommon.crypts.Hashes.uuid">uuid (encommon.crypts.Hashes property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.crypts.html#encommon.crypts.hashes.Hashes.uuid">(encommon.crypts.hashes.Hashes property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="V">V</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Duration.verbose">verbose (encommon.times.Duration property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.duration.Duration.verbose">(encommon.times.duration.Duration property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.parse.html#encommon.parse.Network.version">version (encommon.parse.Network property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.parse.html#encommon.parse.network.Network.version">(encommon.parse.network.Network property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="W">W</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.html#encommon.times.Window.walked">walked (encommon.times.Window property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.window.Window.walked">(encommon.times.window.Window property)</a>
 </li>
       </ul></li>
@@ -3062,13 +3174,13 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.Window">Window (class in encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.window.Window">(class in encommon.times.window)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.WindowParams.window">window (encommon.times.params.WindowParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.Window.window">(encommon.times.Window property)</a>
 </li>
         <li><a href="encommon.times.html#encommon.times.window.Window.window">(encommon.times.window.Window property)</a>
@@ -3077,7 +3189,7 @@
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.times.test.html#encommon.times.test.test_window.window">window() (in module encommon.times.test.test_window)</a>
 </li>
       <li><a href="encommon.times.html#encommon.times.window.window_croniter">window_croniter() (in module encommon.times.window)</a>
@@ -3086,13 +3198,13 @@
 </li>
       <li><a href="encommon.times.html#encommon.times.Windows">Windows (class in encommon.times)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.windows.Windows">(class in encommon.times.windows)</a>
 </li>
       </ul></li>
       <li><a href="encommon.times.html#encommon.times.params.WindowsParams.windows">windows (encommon.times.params.WindowsParams attribute)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.times.html#encommon.times.WindowsParams.windows">(encommon.times.WindowsParams attribute)</a>
 </li>
       </ul></li>
@@ -3101,54 +3213,99 @@
       <li><a href="encommon.times.html#encommon.times.windows.WindowsTable">WindowsTable (class in encommon.times.windows)</a>
 </li>
   </ul></td>
-  </tr>
-      </table>
-  
-  <h2 id="X">X</h2>
-  <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.colors.html#encommon.colors.Color.xy">xy (encommon.colors.Color property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.xy">(encommon.colors.color.Color property)</a>
 </li>
       </ul></li>
   </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul style="margin-left:0;list-style-type:none">
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="encommon.colors.html#encommon.colors.Color.xyz">xyz (encommon.colors.Color property)</a>
 
-      <ul style="list-style-type:none">
+      <ul>
         <li><a href="encommon.colors.html#encommon.colors.color.Color.xyz">(encommon.colors.color.Color property)</a>
 </li>
       </ul></li>
   </ul></td>
-  </tr>
-      </table>
-  
+</tr></table>
 
-</div></div>
-<aside id="right-sidebar" class="hidden text-sm xl:block">
-<div class="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-6 space-y-2">
-<a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#A">A</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#B">B</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#C">C</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#D">D</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#E">E</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#F">F</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#G">G</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#H">H</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#I">I</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#J">J</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#K">K</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#L">L</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#M">M</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#N">N</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#O">O</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#P">P</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#R">R</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#S">S</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#T">T</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#U">U</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#V">V</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#W">W</a><a class="pt-2 block text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-offset-[-1px]" href="#X">X</a>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
 </div>
-</aside>
-        </main>
-      </div>
-    </div><footer class="py-6 border-t border-border md:py-0">
-    <div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-      <div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-        <p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Enasis Network&nbsp;Built with <a class="font-medium underline underline-offset-4"
-    href="https://www.sphinx-doc.org"
-    rel="noreferrer">Sphinx 8.2.3</a></p>
-</div>
-</div>
-</footer>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
   </div>
   
-    <script src="_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script defer="defer" src="_static/theme.js?v=073f68d9"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-</body>
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Enasis Network.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
 </html>
