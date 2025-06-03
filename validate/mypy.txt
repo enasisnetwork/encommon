@@ -1,3 +1,4 @@
 >>> make mypy
   ● Executing mypy in encommon..
 encommon/webkit/test/__init__.py:36: error: Unused "type: ignore" comment  [unused-ignore]
+encommon/types/test/test_notate.py:13: error: Module "_pytest.python_api" has no attribute "RaisesContext"  [attr-defined]

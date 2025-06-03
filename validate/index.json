@@ -1,6 +1,6 @@
 {
   "flake8": "passing",
-  "pylint": "passing",
+  "pylint": "failing",
   "ruff": "passing",
   "mypy": "failing",
   "yamllint": "passing",
