@@ -297,9 +297,6 @@ jobs:
               < main/coverage.json)
           elif [[ "$OUTCOME" == "failure" ]]; then
             PYTEST="failing"
-            COVERAGE=$(jq \
-              '.totals.percent_covered_display' \
-              < main/coverage.json)
           fi
 
           OUTCOME="${{ steps.sphinx.outcome }}"
