@@ -10,6 +10,7 @@ loading intersphinx inventory 'pytest' from https://docs.pytest.org/latest/objec
 loading intersphinx inventory 'python' from https://docs.python.org/3/objects.inv ...
 loading intersphinx inventory 'sqlalchemy' from https://docs.sqlalchemy.org/en/20/objects.inv ...
 intersphinx inventory has moved: https://docs.pytest.org/latest/objects.inv -> https://docs.pytest.org/en/7.4.x/objects.inv
+[autosummary] generating autosummary for: encommon.colors.rst, encommon.colors.test.rst, encommon.config.rst, encommon.config.test.rst, encommon.crypts.rst, encommon.crypts.test.rst, encommon.parse.rst, encommon.parse.test.rst, encommon.rst, encommon.times.rst, encommon.times.test.rst, encommon.types.rst, encommon.types.test.rst, encommon.utils.rst, encommon.utils.test.rst, encommon.webkit.rst, encommon.webkit.test.rst, index.rst, modules.rst
 building [mo]: targets for 0 po files that are out of date
 writing output... 
 building [html]: targets for 19 source files that are out of date
@@ -34,7 +35,7 @@ highlighting module code... [  1%] encommon.colors.colorhighlighting module cod
 writing additional pages... search done
 dumping search index in English (code: en)... done
 dumping object inventory... done
-build succeeded, 343 warnings.
+build succeeded, 344 warnings.
 
 The HTML pages are in sphinx/html.
     DONE
