@@ -1,4 +1,9 @@
 >>> make pylint
   ● Executing pylint in encommon..
-************* Module encommon.types.test.test_notate
-encommon/types/test/test_notate.py:13:0: E0611: No name 'RaisesContext' in module '_pytest.python_api' (no-name-in-module)
+    DONE
+  ● Executing pylint in sphinx..
+    DONE
+  ● Executing pylint on makefile.py..
+    DONE
+  ● Executing pylint on makebadge.py..
+    DONE
