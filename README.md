@@ -1,6 +1,6 @@
 # Enasis Network Common Library
 
-> :warning: This project has not released its first major version.
+> This project has not released its first major version.
 
 Common classes and functions used in various public and private projects.
 
