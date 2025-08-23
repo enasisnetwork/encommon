@@ -33,7 +33,7 @@ def _executejs(
         if wrap else script)
 
     result = (
-        driver  # type: ignore[no-untyped-call]
+        driver
         .execute_script(script, *args))
 
     return result
