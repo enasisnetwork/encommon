@@ -19,7 +19,7 @@ def test_funcname() -> None:
     assert funcname() == 'test_funcname'
 
 
-    class Testing:
+    class Test:
 
         def test1(self) -> str:
             return funcname()
@@ -29,5 +29,8 @@ def test_funcname() -> None:
             return funcname()
 
 
-    assert Testing().test1() == 'Testing.test1'
-    assert Testing.test2() == 'Testing.test2'
+    method1 = Test().test1()
+    method2 = Test.test2()
+
+    assert method1 == 'Test.test1'
+    assert method2 == 'Test.test2'

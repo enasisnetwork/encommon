@@ -10,8 +10,7 @@ is permitted, for more information consult the project license file.
 from copy import deepcopy
 from pathlib import Path
 
-from _pytest.python_api import RaisesContext
-
+from pytest import RaisesExc
 from pytest import fixture
 from pytest import raises
 
@@ -250,7 +249,7 @@ def test_setate_raises() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    _raises: RaisesContext[
+    _raises: RaisesExc[
         ValueError | IndexError]
 
 
@@ -409,7 +408,7 @@ def test_impate_raises() -> None:
     Perform various tests associated with relevant routines.
     """
 
-    _raises: RaisesContext[ValueError]
+    _raises: RaisesExc[ValueError]
 
 
     _raises = raises(ValueError)
