@@ -295,7 +295,7 @@
     <span class="k">assert</span> <span class="n">funcname</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;test_funcname&#39;</span>
 
 
-    <span class="k">class</span><span class="w"> </span><span class="nc">Testing</span><span class="p">:</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="p">:</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">test1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">funcname</span><span class="p">()</span>
@@ -305,8 +305,11 @@
             <span class="k">return</span> <span class="n">funcname</span><span class="p">()</span>
 
 
-    <span class="k">assert</span> <span class="n">Testing</span><span class="p">()</span><span class="o">.</span><span class="n">test1</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Testing.test1&#39;</span>
-    <span class="k">assert</span> <span class="n">Testing</span><span class="o">.</span><span class="n">test2</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Testing.test2&#39;</span></div>
+    <span class="n">method1</span> <span class="o">=</span> <span class="n">Test</span><span class="p">()</span><span class="o">.</span><span class="n">test1</span><span class="p">()</span>
+    <span class="n">method2</span> <span class="o">=</span> <span class="n">Test</span><span class="o">.</span><span class="n">test2</span><span class="p">()</span>
+
+    <span class="k">assert</span> <span class="n">method1</span> <span class="o">==</span> <span class="s1">&#39;Test.test1&#39;</span>
+    <span class="k">assert</span> <span class="n">method2</span> <span class="o">==</span> <span class="s1">&#39;Test.test2&#39;</span></div>
 
 </pre></div>
 
