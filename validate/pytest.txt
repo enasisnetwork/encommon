@@ -3,7 +3,7 @@
 ============================= test session starts ==============================
 platform linux -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0 -- /home/runner/work/encommon/encommon/main/.venv-package/bin/python3
 cachedir: .pytest_cache
-Using --randomly-seed=2604834428
+Using --randomly-seed=521390918
 sensitiveurl: .*
 metadata: {'Python': '3.12.12', 'Platform': 'Linux-6.11.0-1018-azure-x86_64-with-glibc2.39', 'Packages': {'pytest': '8.4.2', 'pluggy': '1.6.0'}, 'Plugins': {'randomly': '4.0.1', 'html': '4.1.1', 'sphinx': '0.6.3', 'base-url': '2.1.0', 'cov': '7.0.0', 'clarity': '1.0.1', 'xdist': '3.8.0', 'selenium': '4.1.0', 'mypy': '1.0.1', 'metadata': '3.1.1', 'variables': '3.1.0'}, 'CI': 'true', 'JAVA_HOME': '/usr/lib/jvm/temurin-17-jdk-amd64', 'Base URL': '', 'Driver': None, 'Capabilities': {}}
 rootdir: /home/runner/work/encommon/encommon/main
@@ -15,619 +15,619 @@ created: 4/4 workers
 scheduling tests via LoadScheduling
 
 encommon/colors/color.py::encommon.colors.color.Color 
-encommon/types/test/test_notate.py::test_expate_cover 
-encommon/webkit/test/test_numeric.py::test_numeric 
-encommon/types/strings.py::encommon.types.strings.instr 
-[gw3] [  0%] PASSED encommon/types/strings.py::encommon.types.strings.instr 
-encommon/types/empty.py::encommon.types.empty.EmptyType 
-[gw1] [  0%] PASSED encommon/types/test/test_notate.py::test_expate_cover 
-[gw3] [  0%] PASSED encommon/types/empty.py::encommon.types.empty.EmptyType 
-[gw2] [  1%] PASSED encommon/colors/color.py::encommon.colors.color.Color 
-encommon/types/lists.py::encommon.types.lists.dedup_list 
-encommon/types/test/test_notate.py::test_delate_raises 
-encommon/config/config.py::encommon.config.config.Config 
-[gw1] [  1%] PASSED encommon/types/test/test_notate.py::test_delate_raises 
-encommon/types/test/test_notate.py::test_setate 
-[gw3] [  1%] PASSED encommon/types/lists.py::encommon.types.lists.dedup_list 
-[gw1] [  2%] PASSED encommon/types/test/test_notate.py::test_setate 
-encommon/times/timer.py::encommon.times.timer.Timer 
-encommon/types/test/test_notate.py::test_impate 
-[gw2] [  2%] PASSED encommon/config/config.py::encommon.config.config.Config 
-[gw1] [  2%] PASSED encommon/types/test/test_notate.py::test_impate 
-encommon/config/logger.py::encommon.config.logger.Message 
-encommon/times/test/test_timer.py::test_Timer 
-[gw2] [  3%] PASSED encommon/config/logger.py::encommon.config.logger.Message 
-encommon/config/logger.py::encommon.config.logger.Logger 
-[gw2] [  3%] PASSED encommon/config/logger.py::encommon.config.logger.Logger 
-encommon/crypts/hashes.py::encommon.crypts.hashes.Hashes 
-[gw2] [  3%] PASSED encommon/crypts/hashes.py::encommon.crypts.hashes.Hashes 
-encommon/crypts/crypts.py::encommon.crypts.crypts.Crypts 
-[gw2] [  4%] PASSED encommon/crypts/crypts.py::encommon.crypts.crypts.Crypts 
-encommon/parse/jinja2.py::encommon.parse.jinja2.Jinja2 
-[gw2] [  4%] PASSED encommon/parse/jinja2.py::encommon.parse.jinja2.Jinja2 
-encommon/times/parse.py::encommon.times.parse.parse_time 
-[gw2] [  4%] PASSED encommon/times/parse.py::encommon.times.parse.parse_time 
-encommon/times/parse.py::encommon.times.parse.since_time 
-[gw2] [  5%] PASSED encommon/times/parse.py::encommon.times.parse.since_time 
-encommon/times/duration.py::encommon.times.duration.Duration 
-[gw2] [  5%] PASSED encommon/times/duration.py::encommon.times.duration.Duration 
-encommon/times/parse.py::encommon.times.parse.shift_time 
-[gw2] [  5%] PASSED encommon/times/parse.py::encommon.times.parse.shift_time 
-encommon/times/parse.py::encommon.times.parse.string_time 
-[gw2] [  6%] PASSED encommon/times/parse.py::encommon.times.parse.string_time 
-encommon/types/notate.py::encommon.types.notate.impate 
-[gw2] [  6%] PASSED encommon/types/notate.py::encommon.types.notate.impate 
-encommon/times/utils.py::encommon.times.utils.utcdatetime 
-[gw2] [  6%] PASSED encommon/times/utils.py::encommon.times.utils.utcdatetime 
-encommon/types/strings.py::encommon.types.strings.hasstr 
-[gw2] [  7%] PASSED encommon/types/strings.py::encommon.types.strings.hasstr 
-encommon/types/dicts.py::encommon.types.dicts.sort_dict 
-[gw2] [  7%] PASSED encommon/types/dicts.py::encommon.types.dicts.sort_dict 
-encommon/times/time.py::encommon.times.time.Time 
-[gw2] [  7%] PASSED encommon/times/time.py::encommon.times.time.Time 
-encommon/types/notate.py::encommon.types.notate.setate 
-[gw2] [  8%] PASSED encommon/types/notate.py::encommon.types.notate.setate 
-encommon/times/unitime.py::encommon.times.unitime.unitime 
-[gw2] [  8%] PASSED encommon/times/unitime.py::encommon.times.unitime.unitime 
-encommon/utils/paths.py::encommon.utils.paths.resolve_path 
-[gw2] [  8%] PASSED encommon/utils/paths.py::encommon.utils.paths.resolve_path 
-encommon/utils/sample.py::encommon.utils.sample.prep_sample 
-[gw2] [  9%] PASSED encommon/utils/sample.py::encommon.utils.sample.prep_sample 
-encommon/utils/stdout.py::encommon.utils.stdout.array_ansi 
-[gw2] [  9%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.array_ansi 
-encommon/utils/files.py::encommon.utils.files.save_text 
-[gw2] [  9%] PASSED encommon/utils/files.py::encommon.utils.files.save_text 
-encommon/utils/stdout.py::encommon.utils.stdout.strip_ansi 
-[gw2] [ 10%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.strip_ansi 
-encommon/utils/stdout.py::encommon.utils.stdout.print_ansi 
-[gw2] [ 10%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.print_ansi 
-encommon/utils/stdout.py::encommon.utils.stdout.kvpair_ansi 
-[gw2] [ 10%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.kvpair_ansi 
-encommon/utils/paths.py::encommon.utils.paths.stats_path 
-[gw2] [ 11%] PASSED encommon/utils/paths.py::encommon.utils.paths.stats_path 
-encommon/utils/match.py::encommon.utils.match.fuzz_match 
-[gw2] [ 11%] PASSED encommon/utils/match.py::encommon.utils.match.fuzz_match 
-encommon/utils/stdout.py::encommon.utils.stdout.make_ansi 
-[gw2] [ 11%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.make_ansi 
-encommon/utils/files.py::encommon.utils.files.read_text 
-[gw2] [ 12%] PASSED encommon/utils/files.py::encommon.utils.files.read_text 
-encommon/utils/sample.py::encommon.utils.sample.load_sample 
-[gw2] [ 12%] PASSED encommon/utils/sample.py::encommon.utils.sample.load_sample 
-encommon/utils/paths.py::encommon.utils.paths.resolve_paths 
-[gw2] [ 12%] PASSED encommon/utils/paths.py::encommon.utils.paths.resolve_paths 
-encommon/utils/match.py::encommon.utils.match.rgxp_match 
-[gw2] [ 13%] PASSED encommon/utils/match.py::encommon.utils.match.rgxp_match 
-encommon/utils/files.py::encommon.utils.files.append_text 
-[gw2] [ 13%] PASSED encommon/utils/files.py::encommon.utils.files.append_text 
-encommon/times/test/test_unitime.py::test_unitime 
-[gw2] [ 13%] PASSED encommon/times/test/test_unitime.py::test_unitime 
-encommon/webkit/test/test_moderate.py::test_moderate 
-[gw3] [ 14%] PASSED encommon/times/timer.py::encommon.times.timer.Timer 
-encommon/times/windows.py::encommon.times.windows.Windows 
-[gw1] [ 14%] PASSED encommon/times/test/test_timer.py::test_Timer 
-encommon/times/test/test_utils.py::test_utcdatetime 
-[gw1] [ 14%] PASSED encommon/times/test/test_utils.py::test_utcdatetime 
-encommon/times/test/test_utils.py::test_strptime_raises 
-[gw1] [ 14%] PASSED encommon/times/test/test_utils.py::test_strptime_raises 
-encommon/times/test/test_utils.py::test_strptime 
-[gw1] [ 15%] PASSED encommon/times/test/test_utils.py::test_strptime 
-encommon/times/test/test_utils.py::test_findtz 
-[gw1] [ 15%] PASSED encommon/times/test/test_utils.py::test_findtz 
-encommon/times/test/test_utils.py::test_findtz_raises 
-[gw3] [ 15%] PASSED encommon/times/windows.py::encommon.times.windows.Windows 
-encommon/types/lists.py::encommon.types.lists.fuzzy_list 
-[gw3] [ 16%] PASSED encommon/types/lists.py::encommon.types.lists.fuzzy_list 
-encommon/times/utils.py::encommon.times.utils.strptime 
-[gw3] [ 16%] PASSED encommon/times/utils.py::encommon.times.utils.strptime 
-encommon/types/lists.py::encommon.types.lists.inlist 
-[gw3] [ 16%] PASSED encommon/types/lists.py::encommon.types.lists.inlist 
-encommon/types/notate.py::encommon.types.notate.getate 
-[gw3] [ 17%] PASSED encommon/types/notate.py::encommon.types.notate.getate 
-encommon/types/strings.py::encommon.types.strings.inrepr 
-[gw3] [ 17%] PASSED encommon/types/strings.py::encommon.types.strings.inrepr 
-encommon/times/window.py::encommon.times.window.Window 
-[gw3] [ 17%] PASSED encommon/times/window.py::encommon.times.window.Window 
-encommon/types/notate.py::encommon.types.notate.delate 
-[gw3] [ 18%] PASSED encommon/types/notate.py::encommon.types.notate.delate 
-encommon/times/utils.py::encommon.times.utils.findtz 
-[gw3] [ 18%] PASSED encommon/times/utils.py::encommon.times.utils.findtz 
 encommon/times/utils.py::encommon.times.utils.strftime 
-[gw3] [ 18%] PASSED encommon/times/utils.py::encommon.times.utils.strftime 
-encommon/times/timers.py::encommon.times.timers.Timers 
-[gw1] [ 19%] PASSED encommon/times/test/test_utils.py::test_findtz_raises 
-encommon/utils/test/test_paths.py::test_resolve_paths 
-[gw1] [ 19%] PASSED encommon/utils/test/test_paths.py::test_resolve_paths 
-encommon/utils/test/test_paths.py::test_resolve_path 
-[gw1] [ 19%] PASSED encommon/utils/test/test_paths.py::test_resolve_path 
-encommon/utils/test/test_paths.py::test_stats_path 
-[gw1] [ 20%] PASSED encommon/utils/test/test_paths.py::test_stats_path 
-encommon/config/test/test_logger.py::test_Logger_cover 
-[gw1] [ 20%] PASSED encommon/config/test/test_logger.py::test_Logger_cover 
-encommon/config/test/test_logger.py::test_Logger 
-[gw1] [ 20%] PASSED encommon/config/test/test_logger.py::test_Logger 
-encommon/config/test/test_logger.py::test_Message 
-[gw1] [ 21%] PASSED encommon/config/test/test_logger.py::test_Message 
-encommon/config/test/test_files.py::test_ConfigFiles 
-[gw1] [ 21%] PASSED encommon/config/test/test_files.py::test_ConfigFiles 
-encommon/config/test/test_files.py::test_ConfigFile 
-[gw1] [ 21%] PASSED encommon/config/test/test_files.py::test_ConfigFile 
-encommon/config/test/test_files.py::test_ConfigFiles_cover 
-[gw1] [ 22%] PASSED encommon/config/test/test_files.py::test_ConfigFiles_cover 
-encommon/colors/test/test_color.py::test_Color_rgb[ff00cc-expect0] 
-[gw1] [ 22%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ff00cc-expect0] 
-encommon/colors/test/test_color.py::test_Color_xyz[808080-expect6] 
-[gw1] [ 22%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[808080-expect6] 
-encommon/colors/test/test_color.py::test_Color_xy[ff00cc-expect0] 
-[gw1] [ 23%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ff00cc-expect0] 
-encommon/colors/test/test_color.py::test_Color_hsl[ff00cc-expect0] 
-[gw1] [ 23%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ff00cc-expect0] 
-encommon/colors/test/test_color.py::test_Color 
-[gw1] [ 23%] PASSED encommon/colors/test/test_color.py::test_Color 
-encommon/colors/test/test_color.py::test_Color_xyz[00ff00-expect4] 
-[gw1] [ 24%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[00ff00-expect4] 
-encommon/colors/test/test_color.py::test_Color_xyz[800080-expect10] 
-[gw1] [ 24%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[800080-expect10] 
-encommon/colors/test/test_color.py::test_Color_xy[ff00ff-expect9] 
-[gw1] [ 24%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ff00ff-expect9] 
-encommon/colors/test/test_color.py::test_Color_cover 
-[gw1] [ 25%] PASSED encommon/colors/test/test_color.py::test_Color_cover 
-encommon/colors/test/test_color.py::test_Color_rgb[ff00ff-expect9] 
-[gw1] [ 25%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ff00ff-expect9] 
-encommon/colors/test/test_color.py::test_Color_xyz[000000-expect2] 
-[gw1] [ 25%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[000000-expect2] 
-encommon/colors/test/test_color.py::test_Color_hsl[ff00ff-expect9] 
-[gw1] [ 26%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ff00ff-expect9] 
-encommon/colors/test/test_color.py::test_Color_xyz[ffffff-expect1] 
-[gw1] [ 26%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ffffff-expect1] 
-encommon/colors/test/test_color.py::test_Color_xy[00ffff-expect8] 
-[gw1] [ 26%] PASSED encommon/colors/test/test_color.py::test_Color_xy[00ffff-expect8] 
-encommon/colors/test/test_color.py::test_Color_rgb[ff0000-expect3] 
-[gw1] [ 27%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ff0000-expect3] 
-encommon/colors/test/test_color.py::test_Color_rgb[0000ff-expect5] 
-[gw1] [ 27%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[0000ff-expect5] 
-encommon/colors/test/test_color.py::test_Color_xy[ff0000-expect3] 
-[gw1] [ 27%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ff0000-expect3] 
-encommon/colors/test/test_color.py::test_Color_xy[0000ff-expect5] 
-[gw1] [ 28%] PASSED encommon/colors/test/test_color.py::test_Color_xy[0000ff-expect5] 
-encommon/colors/test/test_color.py::test_Color_xyz[00ffff-expect8] 
-[gw1] [ 28%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[00ffff-expect8] 
-encommon/colors/test/test_color.py::test_Color_xy[ffffff-expect1] 
-[gw1] [ 28%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ffffff-expect1] 
-encommon/colors/test/test_color.py::test_Color_rgb[000000-expect2] 
-[gw1] [ 28%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[000000-expect2] 
-encommon/colors/test/test_color.py::test_Color_rgb[ffffff-expect1] 
-[gw1] [ 29%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ffffff-expect1] 
-encommon/colors/test/test_color.py::test_Color_xy[000000-expect2] 
-[gw1] [ 29%] PASSED encommon/colors/test/test_color.py::test_Color_xy[000000-expect2] 
-encommon/colors/test/test_color.py::test_Color_hsl[000000-expect2] 
-[gw1] [ 29%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[000000-expect2] 
-encommon/colors/test/test_color.py::test_Color_xyz[ff00ff-expect9] 
-[gw1] [ 30%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ff00ff-expect9] 
-encommon/colors/test/test_color.py::test_Color_hsl[ffffff-expect1] 
-[gw1] [ 30%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ffffff-expect1] 
-encommon/colors/test/test_color.py::test_Color_xy[800080-expect10] 
-[gw1] [ 30%] PASSED encommon/colors/test/test_color.py::test_Color_xy[800080-expect10] 
-encommon/colors/test/test_color.py::test_Color_hsl[00ff00-expect4] 
-[gw1] [ 31%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[00ff00-expect4] 
-encommon/colors/test/test_color.py::test_Color_xy[00ff00-expect4] 
-[gw1] [ 31%] PASSED encommon/colors/test/test_color.py::test_Color_xy[00ff00-expect4] 
-encommon/colors/test/test_color.py::test_Color_rgb[00ff00-expect4] 
-[gw1] [ 31%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[00ff00-expect4] 
-encommon/webkit/test/test_helpers.py::test_helpers_dumps 
-[gw3] [ 32%] PASSED encommon/times/timers.py::encommon.times.timers.Timers 
-encommon/types/dicts.py::encommon.types.dicts.merge_dicts 
-[gw3] [ 32%] PASSED encommon/types/dicts.py::encommon.types.dicts.merge_dicts 
-encommon/types/notate.py::encommon.types.notate.expate 
-[gw3] [ 32%] PASSED encommon/types/notate.py::encommon.types.notate.expate 
-encommon/types/strings.py::encommon.types.strings.strplwr 
-[gw3] [ 33%] PASSED encommon/types/strings.py::encommon.types.strings.strplwr 
-encommon/types/strings.py::encommon.types.strings.rplstr 
-[gw3] [ 33%] PASSED encommon/types/strings.py::encommon.types.strings.rplstr 
-encommon/colors/test/test_color.py::test_Color_rgb[00ffff-expect8] 
-[gw3] [ 33%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[00ffff-expect8] 
-encommon/colors/test/test_color.py::test_Color_hsl[00ffff-expect8] 
-[gw3] [ 34%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[00ffff-expect8] 
-encommon/colors/test/test_color.py::test_Color_hsl[80007F-expect10] 
-[gw3] [ 34%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[80007F-expect10] 
-encommon/colors/test/test_color.py::test_Color_hsl[808080-expect6] 
-[gw3] [ 34%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[808080-expect6] 
-encommon/colors/test/test_color.py::test_Color_rgb[808080-expect6] 
-[gw3] [ 35%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[808080-expect6] 
-encommon/colors/test/test_color.py::test_Color_xyz[ff00cc-expect0] 
-[gw3] [ 35%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ff00cc-expect0] 
-encommon/colors/test/test_color.py::test_Color_xy[808080-expect6] 
-[gw3] [ 35%] PASSED encommon/colors/test/test_color.py::test_Color_xy[808080-expect6] 
-encommon/colors/test/test_color.py::test_Color_xy[ffff00-expect7] 
-[gw3] [ 36%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ffff00-expect7] 
-encommon/colors/test/test_color.py::test_Color_rgb[800080-expect10] 
-[gw3] [ 36%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[800080-expect10] 
-encommon/colors/test/test_color.py::test_Color_rgb[ffff00-expect7] 
-[gw3] [ 36%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ffff00-expect7] 
-encommon/colors/test/test_color.py::test_Color_hsl[ffff00-expect7] 
-[gw3] [ 37%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ffff00-expect7] 
-encommon/colors/test/test_color.py::test_Color_hsl[ff0000-expect3] 
-[gw3] [ 37%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ff0000-expect3] 
-encommon/colors/test/test_color.py::test_Color_hsl[0000ff-expect5] 
-[gw3] [ 37%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[0000ff-expect5] 
-encommon/types/test/test_dicts.py::test_sort_dict 
-[gw3] [ 38%] PASSED encommon/types/test/test_dicts.py::test_sort_dict 
-encommon/webkit/test/test_default.py::test_default_replace 
-[gw1] [ 38%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_dumps 
-[gw2] [ 38%] PASSED encommon/webkit/test/test_moderate.py::test_moderate 
-[gw0] [ 39%] PASSED encommon/webkit/test/test_numeric.py::test_numeric 
-[gw3] [ 39%] PASSED encommon/webkit/test/test_default.py::test_default_replace 
-encommon/webkit/test/test_helpers.py::test_helpers_istrue 
-encommon/times/test/test_windows.py::test_Windows_raises 
-encommon/webkit/test/test_numeric.py::test_numeric_bytes 
-encommon/webkit/test/test_default.py::test_default_showhide 
-[gw2] [ 39%] PASSED encommon/times/test/test_windows.py::test_Windows_raises 
-encommon/times/test/test_windows.py::test_Windows 
-[gw2] [ 40%] PASSED encommon/times/test/test_windows.py::test_Windows 
-encommon/times/test/test_windows.py::test_Windows_cover 
-[gw1] [ 40%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_istrue 
-[gw0] [ 40%] PASSED encommon/webkit/test/test_numeric.py::test_numeric_bytes 
-encommon/webkit/test/test_helpers.py::test_helpers_isquery 
-encommon/webkit/test/test_numeric.py::test_numeric_count 
-[gw3] [ 41%] PASSED encommon/webkit/test/test_default.py::test_default_showhide 
-encommon/webkit/test/test_default.py::test_default_attr 
-[gw0] [ 41%] PASSED encommon/webkit/test/test_numeric.py::test_numeric_count 
-[gw1] [ 41%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isquery 
-encommon/config/test/test_config.py::test_Config_jinja2 
-encommon/webkit/test/test_helpers.py::test_helpers_isfalse 
-[gw0] [ 42%] PASSED encommon/config/test/test_config.py::test_Config_jinja2 
-encommon/config/test/test_config.py::test_Config_cover 
-[gw0] [ 42%] PASSED encommon/config/test/test_config.py::test_Config_cover 
-encommon/config/test/test_config.py::test_Config 
-[gw0] [ 42%] PASSED encommon/config/test/test_config.py::test_Config 
-encommon/webkit/test/test_datagrid.py::test_datagrid 
-[gw3] [ 42%] PASSED encommon/webkit/test/test_default.py::test_default_attr 
-[gw1] [ 43%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isfalse 
-encommon/webkit/test/test_helpers.py::test_helpers_loads 
-[gw0] [ 43%] PASSED encommon/webkit/test/test_datagrid.py::test_datagrid 
-encommon/webkit/test/test_image.py::test_image 
-[gw2] [ 43%] PASSED encommon/times/test/test_windows.py::test_Windows_cover 
-encommon/types/test/test_strings.py::test_hasstr 
-[gw2] [ 44%] PASSED encommon/types/test/test_strings.py::test_hasstr 
-encommon/types/test/test_strings.py::test_strplwr 
-[gw2] [ 44%] PASSED encommon/types/test/test_strings.py::test_strplwr 
-encommon/types/test/test_strings.py::test_instr 
-[gw2] [ 44%] PASSED encommon/types/test/test_strings.py::test_instr 
-encommon/types/test/test_strings.py::test_inrepr 
-[gw2] [ 45%] PASSED encommon/types/test/test_strings.py::test_inrepr 
-encommon/types/test/test_strings.py::test_rplstr 
-[gw2] [ 45%] PASSED encommon/types/test/test_strings.py::test_rplstr 
-encommon/times/test/test_time.py::test_Time_tzname 
-[gw2] [ 45%] PASSED encommon/times/test/test_time.py::test_Time_tzname 
-encommon/times/test/test_time.py::test_Time 
-[gw1] [ 46%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_loads 
-encommon/webkit/test/test_helpers.py::test_helpers_isdict 
-[gw0] [ 46%] PASSED encommon/webkit/test/test_image.py::test_image 
-encommon/webkit/test/test_default.py::test_default_append 
-[gw1] [ 46%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isdict 
-[gw3] [ 47%] PASSED encommon/webkit/test/test_default.py::test_default_append 
-encommon/webkit/test/test_helpers.py::test_helpers_assert 
-encommon/webkit/test/test_default.py::test_default_remClass 
-[gw2] [ 47%] PASSED encommon/times/test/test_time.py::test_Time 
-encommon/colors/test/test_color.py::test_Color_xyz[0000ff-expect5] 
-[gw2] [ 47%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[0000ff-expect5] 
-encommon/colors/test/test_color.py::test_Color_xyz[ff0000-expect3] 
-[gw2] [ 48%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ff0000-expect3] 
-encommon/colors/test/test_color.py::test_Color_xyz[ffff00-expect7] 
-[gw2] [ 48%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ffff00-expect7] 
-encommon/webkit/test/test_default.py::test_default_create 
-encommon/config/test/test_utils.py::test_config_path 
-[gw0] [ 48%] PASSED encommon/config/test/test_utils.py::test_config_path 
-encommon/config/test/test_utils.py::test_config_load 
-[gw0] [ 49%] PASSED encommon/config/test/test_utils.py::test_config_load 
-encommon/config/test/test_utils.py::test_config_paths 
-[gw0] [ 49%] PASSED encommon/config/test/test_utils.py::test_config_paths 
-encommon/types/test/test_notate.py::test_expate 
-[gw0] [ 49%] PASSED encommon/types/test/test_notate.py::test_expate 
-encommon/types/test/test_notate.py::test_setate_raises 
-[gw0] [ 50%] PASSED encommon/types/test/test_notate.py::test_setate_raises 
-encommon/types/test/test_notate.py::test_impate_raises 
-[gw0] [ 50%] PASSED encommon/types/test/test_notate.py::test_impate_raises 
-encommon/types/test/test_notate.py::test_setate_cover 
-[gw0] [ 50%] PASSED encommon/types/test/test_notate.py::test_setate_cover 
-encommon/types/test/test_notate.py::test_getate_cover 
-[gw0] [ 51%] PASSED encommon/types/test/test_notate.py::test_getate_cover 
-encommon/types/test/test_notate.py::test_delate 
-[gw0] [ 51%] PASSED encommon/types/test/test_notate.py::test_delate 
-encommon/types/test/test_notate.py::test_getate 
-[gw0] [ 51%] PASSED encommon/types/test/test_notate.py::test_getate 
-encommon/types/test/test_notate.py::test_impate_cover 
-[gw0] [ 52%] PASSED encommon/types/test/test_notate.py::test_impate_cover 
-encommon/times/test/test_parse.py::test_shift_time[-1mon-expect7] 
-[gw0] [ 52%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1mon-expect7] 
-encommon/times/test/test_parse.py::test_shift_time[-1y-expect1] 
-[gw0] [ 52%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1y-expect1] 
-encommon/times/test/test_parse.py::test_shift_time[-1mon@m-1mon-expect11] 
-[gw0] [ 53%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1mon@m-1mon-expect11] 
-encommon/times/test/test_parse.py::test_since_time 
-[gw0] [ 53%] PASSED encommon/times/test/test_parse.py::test_since_time 
-encommon/times/test/test_parse.py::test_shift_time[+1mon-expect6] 
-[gw0] [ 53%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1mon-expect6] 
-encommon/times/test/test_parse.py::test_shift_time[-1d@d-expect21] 
-[gw1] [ 54%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_assert 
-[gw0] [ 54%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1d@d-expect21] 
-encommon/times/test/test_parse.py::test_shift_time[-1d@d-30d-expect23] 
-[gw0] [ 54%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1d@d-30d-expect23] 
-encommon/times/test/test_parse.py::test_shift_time[+1d-expect18] 
-[gw0] [ 55%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1d-expect18] 
-encommon/times/test/test_parse.py::test_parse_time 
-[gw0] [ 55%] PASSED encommon/times/test/test_parse.py::test_parse_time 
-encommon/times/test/test_parse.py::test_shift_time[+1y-expect0] 
-[gw0] [ 55%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1y-expect0] 
-encommon/times/test/test_parse.py::test_shift_time[-1y@s-1h-expect5] 
-[gw0] [ 56%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1y@s-1h-expect5] 
-encommon/times/test/test_parse.py::test_shift_time[+1d@d-expect20] 
-[gw0] [ 56%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1d@d-expect20] 
-encommon/times/test/test_parse.py::test_shift_time[-1y@s-expect3] 
-[gw0] [ 56%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1y@s-expect3] 
-encommon/times/test/test_parse.py::test_shift_time[+1w@h-expect14] 
-[gw0] [ 57%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1w@h-expect14] 
-encommon/times/test/test_parse.py::test_shift_time[+1w@h+1w-expect16] 
-[gw0] [ 57%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1w@h+1w-expect16] 
-encommon/times/test/test_parse.py::test_shift_time[+1y@s+1h-expect4] 
-[gw0] [ 57%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1y@s+1h-expect4] 
-encommon/times/test/test_parse.py::test_shift_time[-1w@h-expect15] 
-encommon/webkit/test/test_helpers.py::test_helpers_isnum 
-[gw0] [ 57%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1w@h-expect15] 
-encommon/times/test/test_parse.py::test_string_time 
-[gw0] [ 58%] PASSED encommon/times/test/test_parse.py::test_string_time 
-encommon/times/test/test_parse.py::test_shift_time[-1w-expect13] 
-[gw0] [ 58%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1w-expect13] 
-encommon/times/test/test_parse.py::test_shift_time[+1d@d+30d-expect22] 
-[gw0] [ 58%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1d@d+30d-expect22] 
-encommon/times/test/test_timers.py::test_Timers 
-[gw3] [ 59%] PASSED encommon/webkit/test/test_default.py::test_default_remClass 
-encommon/webkit/test/test_default.py::test_default_styles 
-[gw0] [ 59%] PASSED encommon/times/test/test_timers.py::test_Timers 
-encommon/times/test/test_timers.py::test_Timers_raises 
-[gw0] [ 59%] PASSED encommon/times/test/test_timers.py::test_Timers_raises 
-encommon/times/test/test_timers.py::test_Timers_cover 
-[gw2] [ 60%] PASSED encommon/webkit/test/test_default.py::test_default_create 
-encommon/webkit/test/test_datetime.py::test_datestamp 
-[gw1] [ 60%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isnum 
-encommon/webkit/test/test_helpers.py::test_helpers_isempty 
-[gw3] [ 60%] PASSED encommon/webkit/test/test_default.py::test_default_styles 
-encommon/webkit/test/test_default.py::test_default_content 
-[gw2] [ 61%] PASSED encommon/webkit/test/test_datetime.py::test_datestamp 
-[gw0] [ 61%] PASSED encommon/times/test/test_timers.py::test_Timers_cover 
-encommon/webkit/test/test_tagues.py::test_tagues 
-[gw1] [ 61%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isempty 
-encommon/times/test/test_parse.py::test_shift_time[+1mon@m-expect8] 
-[gw2] [ 62%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1mon@m-expect8] 
-encommon/times/test/test_parse.py::test_shift_time[-1d-expect19] 
-[gw2] [ 62%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1d-expect19] 
-encommon/times/test/test_parse.py::test_shift_time[+1y@s-expect2] 
-[gw2] [ 62%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1y@s-expect2] 
-encommon/times/test/test_parse.py::test_shift_time[+1mon@m+1mon-expect10] 
-[gw2] [ 63%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1mon@m+1mon-expect10] 
-encommon/times/test/test_parse.py::test_shift_time[-1mon@m-expect9] 
-[gw2] [ 63%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1mon@m-expect9] 
-encommon/times/test/test_parse.py::test_shift_time[-1w@h-1w-expect17] 
-[gw2] [ 63%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1w@h-1w-expect17] 
-encommon/times/test/test_parse.py::test_shift_time[+1w-expect12] 
-[gw2] [ 64%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1w-expect12] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{'a': 'b'}-expect5] 
-[gw2] [ 64%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{'a': 'b'}-expect5] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_cover 
-[gw2] [ 64%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_cover 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[foo-foo] 
-[gw2] [ 65%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[foo-foo] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_0] 
-[gw2] [ 65%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_0] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "-01" }}--01] 
-[gw2] [ 65%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "-01" }}--01] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_recurse 
-encommon/webkit/test/test_helpers.py::test_helpers_isnode 
-[gw2] [ 66%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_recurse 
-encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 123 }}-123] 
-[gw2] [ 66%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 123 }}-123] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "01" }}-01] 
-[gw2] [ 66%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "01" }}-01] 
-[gw3] [ 67%] PASSED encommon/webkit/test/test_default.py::test_default_content 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 1 }}-1] 
-[gw2] [ 67%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 1 }}-1] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 1.2 }}-1.2] 
-[gw2] [ 67%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 1.2 }}-1.2] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_1] 
-[gw2] [ 68%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_1] 
-encommon/parse/test/test_jinja2.py::test_Jinja2 
-[gw2] [ 68%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0.0-1.0.0] 
-[gw2] [ 68%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0.0-1.0.0] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_0] 
-[gw2] [ 69%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_0] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[-01--01] 
-[gw2] [ 69%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[-01--01] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value14-expect14] 
-[gw2] [ 69%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value14-expect14] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | float }}-1.0] 
-[gw2] [ 70%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | float }}-1.0] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[[1, 2]-expect15] 
-[gw2] [ 70%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[[1, 2]-expect15] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 0 | Time }}-1970-01-01T00:00:00.000000+0000] 
-[gw2] [ 70%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 0 | Time }}-1970-01-01T00:00:00.000000+0000] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | int }}-1] 
-[gw2] [ 71%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | int }}-1] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1-1] 
-[gw2] [ 71%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1-1] 
-encommon/webkit/test/test_duration.py::test_duration 
-encommon/webkit/test/test_default.py::test_default_addClass 
-[gw0] [ 71%] PASSED encommon/webkit/test/test_tagues.py::test_tagues 
-encommon/utils/test/test_files.py::test_readsave_text 
-[gw0] [ 71%] PASSED encommon/utils/test/test_files.py::test_readsave_text 
-encommon/utils/test/test_files.py::test_append_text 
-[gw0] [ 72%] PASSED encommon/utils/test/test_files.py::test_append_text 
-encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ -1.2 }}--1.2] 
-[gw0] [ 72%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ -1.2 }}--1.2] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0-1.0] 
-[gw0] [ 72%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0-1.0] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value4-expect4] 
-[gw0] [ 73%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value4-expect4] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ none }}-None] 
-[gw0] [ 73%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ none }}-None] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[01-01] 
-[gw0] [ 73%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[01-01] 
-encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_1] 
-[gw0] [ 74%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_1] 
-encommon/types/test/test_lists.py::test_fuzzy_list 
-[gw1] [ 74%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isnode 
-[gw0] [ 74%] PASSED encommon/types/test/test_lists.py::test_fuzzy_list 
-encommon/types/test/test_lists.py::test_inlist 
-[gw0] [ 75%] PASSED encommon/types/test/test_lists.py::test_inlist 
-encommon/crypts/test/test_crypts.py::test_Crypts 
-[gw0] [ 75%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts 
-encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-default] 
-[gw0] [ 75%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-default] 
-encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-secrets] 
-[gw0] [ 76%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-secrets] 
-encommon/crypts/test/test_crypts.py::test_Crypts_cover 
-[gw0] [ 76%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_cover 
-encommon/crypts/test/test_crypts.py::test_Crypts_raises 
-[gw0] [ 76%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_raises 
-encommon/webkit/test/test_content.py::test_Content_cover 
-[gw0] [ 77%] PASSED encommon/webkit/test/test_content.py::test_Content_cover 
-encommon/webkit/test/test_content.py::test_Content 
-[gw0] [ 77%] PASSED encommon/webkit/test/test_content.py::test_Content 
-encommon/times/test/test_duration.py::test_Duration_cover 
-[gw0] [ 77%] PASSED encommon/times/test/test_duration.py::test_Duration_cover 
-encommon/times/test/test_duration.py::test_Duration_iterate 
-[gw0] [ 78%] PASSED encommon/times/test/test_duration.py::test_Duration_iterate 
-encommon/times/test/test_duration.py::test_Duration 
-[gw0] [ 78%] PASSED encommon/times/test/test_duration.py::test_Duration 
+encommon/utils/stdout.py::encommon.utils.stdout.strip_ansi 
 encommon/types/test/test_classes.py::test_lattrs 
-encommon/webkit/test/test_helpers.py::test_helpers_istime 
-[gw0] [ 78%] PASSED encommon/types/test/test_classes.py::test_lattrs 
-encommon/types/test/test_classes.py::test_BaseModel 
-[gw0] [ 79%] PASSED encommon/types/test/test_classes.py::test_BaseModel 
-encommon/types/test/test_classes.py::test_clsname 
-[gw3] [ 79%] PASSED encommon/webkit/test/test_default.py::test_default_addClass 
-[gw0] [ 79%] PASSED encommon/types/test/test_classes.py::test_clsname 
-encommon/config/test/test_paths.py::test_ConfigPaths 
-[gw0] [ 80%] PASSED encommon/config/test/test_paths.py::test_ConfigPaths 
-encommon/config/test/test_paths.py::test_ConfigPath 
-[gw0] [ 80%] PASSED encommon/config/test/test_paths.py::test_ConfigPath 
-encommon/webkit/test/test_default.py::test_default_prop 
-encommon/config/test/test_paths.py::test_ConfigPaths_cover 
-[gw2] [ 80%] PASSED encommon/webkit/test/test_duration.py::test_duration 
-[gw0] [ 81%] PASSED encommon/config/test/test_paths.py::test_ConfigPaths_cover 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-False-expect1] 
-[gw0] [ 81%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-False-expect1] 
-encommon/times/test/test_window.py::test_window_interval[window3-1-True-expect3] 
-[gw0] [ 81%] PASSED encommon/times/test/test_window.py::test_window_interval[window3-1-True-expect3] 
-encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3661-False-expect10] 
-[gw0] [ 82%] PASSED encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3661-False-expect10] 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-True-expect3] 
-[gw0] [ 82%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-True-expect3] 
-encommon/times/test/test_window.py::test_window_interval[window4-3559-False-expect4] 
-[gw0] [ 82%] PASSED encommon/times/test/test_window.py::test_window_interval[window4-3559-False-expect4] 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-3661-False-expect7] 
-[gw0] [ 83%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3661-False-expect7] 
-encommon/times/test/test_window.py::test_Window_cover 
-encommon/webkit/test/test_color.py::test_colordiv 
-[gw1] [ 83%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_istime 
-encommon/webkit/test/test_helpers.py::test_helpers_isbool 
-[gw3] [ 83%] PASSED encommon/webkit/test/test_default.py::test_default_prop 
-encommon/times/test/test_window.py::test_window_interval[window5-3659-False-expect5] 
-[gw3] [ 84%] PASSED encommon/times/test/test_window.py::test_window_interval[window5-3659-False-expect5] 
-encommon/times/test/test_window.py::test_window_interval[window2-0-True-expect2] 
-[gw3] [ 84%] PASSED encommon/times/test/test_window.py::test_window_interval[window2-0-True-expect2] 
-encommon/times/test/test_window.py::test_window_interval[window9-3660-False-expect9] 
-[gw3] [ 84%] PASSED encommon/times/test/test_window.py::test_window_interval[window9-3660-False-expect9] 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-3559-False-expect4] 
-[gw3] [ 85%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3559-False-expect4] 
-encommon/times/test/test_window.py::test_window_interval[window0-0-False-expect0] 
-[gw3] [ 85%] PASSED encommon/times/test/test_window.py::test_window_interval[window0-0-False-expect0] 
-encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3660-False-expect9] 
-[gw3] [ 85%] PASSED encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3660-False-expect9] 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-False-expect0] 
-[gw3] [ 85%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-False-expect0] 
-encommon/times/test/test_window.py::test_Window 
-[gw3] [ 86%] PASSED encommon/times/test/test_window.py::test_Window 
-encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3559-False-expect8] 
-[gw3] [ 86%] PASSED encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3559-False-expect8] 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-3660-False-expect6] 
-[gw3] [ 86%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3660-False-expect6] 
-encommon/times/test/test_window.py::test_window_interval[window7-3661-False-expect7] 
-[gw3] [ 87%] PASSED encommon/times/test/test_window.py::test_window_interval[window7-3661-False-expect7] 
-encommon/times/test/test_window.py::test_window_interval[window8-3559-False-expect8] 
-[gw3] [ 87%] PASSED encommon/times/test/test_window.py::test_window_interval[window8-3559-False-expect8] 
-encommon/times/test/test_window.py::test_window_interval[window6-3660-False-expect6] 
-[gw3] [ 87%] PASSED encommon/times/test/test_window.py::test_window_interval[window6-3660-False-expect6] 
-encommon/times/test/test_window.py::test_window_interval[window1-1-False-expect1] 
-[gw3] [ 88%] PASSED encommon/times/test/test_window.py::test_window_interval[window1-1-False-expect1] 
-[gw2] [ 88%] PASSED encommon/webkit/test/test_color.py::test_colordiv 
-encommon/times/test/test_params.py::test_WindowParams 
-[gw3] [ 88%] PASSED encommon/times/test/test_params.py::test_WindowParams 
-encommon/times/test/test_params.py::test_TimerParams 
-[gw3] [ 89%] PASSED encommon/times/test/test_params.py::test_TimerParams 
-encommon/utils/test/test_sample.py::test_rvrt_sample 
-[gw3] [ 89%] PASSED encommon/utils/test/test_sample.py::test_rvrt_sample 
-encommon/utils/test/test_sample.py::test_prep_sample 
-[gw3] [ 89%] PASSED encommon/utils/test/test_sample.py::test_prep_sample 
-encommon/utils/test/test_sample.py::test_read_sample 
-[gw3] [ 90%] PASSED encommon/utils/test/test_sample.py::test_read_sample 
-encommon/utils/test/test_sample.py::test_load_sample 
-[gw3] [ 90%] PASSED encommon/utils/test/test_sample.py::test_load_sample 
-encommon/utils/test/test_match.py::test_rgxp_match 
-[gw3] [ 90%] PASSED encommon/utils/test/test_match.py::test_rgxp_match 
-encommon/utils/test/test_match.py::test_fuzz_match 
-[gw3] [ 91%] PASSED encommon/utils/test/test_match.py::test_fuzz_match 
-encommon/types/test/test_empty.py::test_EmptyType 
-[gw3] [ 91%] PASSED encommon/types/test/test_empty.py::test_EmptyType 
+[gw1] [  0%] PASSED encommon/times/utils.py::encommon.times.utils.strftime 
+[gw0] [  0%] PASSED encommon/colors/color.py::encommon.colors.color.Color 
+encommon/types/notate.py::encommon.types.notate.getate 
+[gw2] [  0%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.strip_ansi 
+encommon/config/logger.py::encommon.config.logger.Message 
+encommon/utils/sample.py::encommon.utils.sample.load_sample 
+[gw1] [  1%] PASSED encommon/types/notate.py::encommon.types.notate.getate 
+encommon/times/window.py::encommon.times.window.Window 
+[gw2] [  1%] PASSED encommon/utils/sample.py::encommon.utils.sample.load_sample 
+encommon/utils/paths.py::encommon.utils.paths.resolve_paths 
+[gw2] [  1%] PASSED encommon/utils/paths.py::encommon.utils.paths.resolve_paths 
+encommon/utils/paths.py::encommon.utils.paths.stats_path 
+[gw2] [  2%] PASSED encommon/utils/paths.py::encommon.utils.paths.stats_path 
+[gw1] [  2%] PASSED encommon/times/window.py::encommon.times.window.Window 
+encommon/types/lists.py::encommon.types.lists.inlist 
+encommon/utils/files.py::encommon.utils.files.append_text 
+[gw1] [  2%] PASSED encommon/types/lists.py::encommon.types.lists.inlist 
+[gw3] [  3%] PASSED encommon/types/test/test_classes.py::test_lattrs 
+encommon/times/test/test_time.py::test_Time_tzname 
+encommon/types/strings.py::encommon.types.strings.instr 
+[gw1] [  3%] PASSED encommon/types/strings.py::encommon.types.strings.instr 
+encommon/types/notate.py::encommon.types.notate.expate 
+[gw2] [  3%] PASSED encommon/utils/files.py::encommon.utils.files.append_text 
+encommon/utils/match.py::encommon.utils.match.fuzz_match 
+[gw1] [  4%] PASSED encommon/types/notate.py::encommon.types.notate.expate 
+encommon/types/strings.py::encommon.types.strings.rplstr 
+[gw1] [  4%] PASSED encommon/types/strings.py::encommon.types.strings.rplstr 
+encommon/types/empty.py::encommon.types.empty.EmptyType 
+[gw2] [  4%] PASSED encommon/utils/match.py::encommon.utils.match.fuzz_match 
+[gw1] [  5%] PASSED encommon/types/empty.py::encommon.types.empty.EmptyType 
+encommon/utils/stdout.py::encommon.utils.stdout.array_ansi 
+[gw0] [  5%] PASSED encommon/config/logger.py::encommon.config.logger.Message 
+encommon/times/utils.py::encommon.times.utils.findtz 
+encommon/config/config.py::encommon.config.config.Config 
+[gw2] [  5%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.array_ansi 
+encommon/utils/stdout.py::encommon.utils.stdout.kvpair_ansi 
+[gw2] [  6%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.kvpair_ansi 
+encommon/utils/files.py::encommon.utils.files.save_text 
+[gw0] [  6%] PASSED encommon/config/config.py::encommon.config.config.Config 
+[gw1] [  6%] PASSED encommon/times/utils.py::encommon.times.utils.findtz 
+[gw3] [  7%] PASSED encommon/times/test/test_time.py::test_Time_tzname 
+[gw2] [  7%] PASSED encommon/utils/files.py::encommon.utils.files.save_text 
+encommon/types/strings.py::encommon.types.strings.hasstr 
+encommon/times/test/test_time.py::test_Time 
+encommon/config/logger.py::encommon.config.logger.Logger 
+encommon/utils/paths.py::encommon.utils.paths.resolve_path 
+[gw1] [  7%] PASSED encommon/types/strings.py::encommon.types.strings.hasstr 
+[gw0] [  8%] PASSED encommon/config/logger.py::encommon.config.logger.Logger 
+[gw2] [  8%] PASSED encommon/utils/paths.py::encommon.utils.paths.resolve_path 
+encommon/utils/match.py::encommon.utils.match.rgxp_match 
+encommon/times/unitime.py::encommon.times.unitime.unitime 
+encommon/crypts/crypts.py::encommon.crypts.crypts.Crypts 
+[gw1] [  8%] PASSED encommon/times/unitime.py::encommon.times.unitime.unitime 
+encommon/times/windows.py::encommon.times.windows.Windows 
+[gw2] [  9%] PASSED encommon/utils/match.py::encommon.utils.match.rgxp_match 
+encommon/utils/stdout.py::encommon.utils.stdout.make_ansi 
+[gw2] [  9%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.make_ansi 
+encommon/utils/files.py::encommon.utils.files.read_text 
+[gw0] [  9%] PASSED encommon/crypts/crypts.py::encommon.crypts.crypts.Crypts 
+[gw2] [ 10%] PASSED encommon/utils/files.py::encommon.utils.files.read_text 
+encommon/crypts/hashes.py::encommon.crypts.hashes.Hashes 
+encommon/utils/sample.py::encommon.utils.sample.prep_sample 
+[gw0] [ 10%] PASSED encommon/crypts/hashes.py::encommon.crypts.hashes.Hashes 
+[gw2] [ 10%] PASSED encommon/utils/sample.py::encommon.utils.sample.prep_sample 
+encommon/utils/stdout.py::encommon.utils.stdout.print_ansi 
+encommon/parse/jinja2.py::encommon.parse.jinja2.Jinja2 
+[gw2] [ 11%] PASSED encommon/utils/stdout.py::encommon.utils.stdout.print_ansi 
 encommon/crypts/test/test_hashes.py::test_Hashes 
-[gw3] [ 91%] PASSED encommon/crypts/test/test_hashes.py::test_Hashes 
-encommon/utils/test/test_stdout.py::test_kvpair_ansi 
-encommon/parse/test/test_network.py::test_Network 
-[gw3] [ 92%] PASSED encommon/utils/test/test_stdout.py::test_kvpair_ansi 
-encommon/utils/test/test_stdout.py::test_print_ansi 
-[gw3] [ 92%] PASSED encommon/utils/test/test_stdout.py::test_print_ansi 
-encommon/utils/test/test_stdout.py::test_array_ansi 
-[gw2] [ 92%] PASSED encommon/parse/test/test_network.py::test_Network 
-encommon/parse/test/test_network.py::test_insubnet_ip 
-[gw3] [ 93%] PASSED encommon/utils/test/test_stdout.py::test_array_ansi 
-[gw2] [ 93%] PASSED encommon/parse/test/test_network.py::test_insubnet_ip 
-encommon/parse/test/test_network.py::test_Network_ipv4 
-encommon/utils/test/test_stdout.py::test_array_ansi_cover 
-[gw2] [ 93%] PASSED encommon/parse/test/test_network.py::test_Network_ipv4 
-encommon/parse/test/test_network.py::test_isvalid_ip 
-[gw2] [ 94%] PASSED encommon/parse/test/test_network.py::test_isvalid_ip 
-encommon/parse/test/test_network.py::test_Network_ipv6 
-[gw3] [ 94%] PASSED encommon/utils/test/test_stdout.py::test_array_ansi_cover 
-encommon/utils/test/test_stdout.py::test_strip_ansi 
-[gw2] [ 94%] PASSED encommon/parse/test/test_network.py::test_Network_ipv6 
-[gw3] [ 95%] PASSED encommon/utils/test/test_stdout.py::test_strip_ansi 
-encommon/types/test/test_lists.py::test_dedup_list 
-encommon/utils/test/test_stdout.py::test_make_ansi 
-[gw3] [ 95%] PASSED encommon/utils/test/test_stdout.py::test_make_ansi 
-[gw2] [ 95%] PASSED encommon/types/test/test_lists.py::test_dedup_list 
-encommon/webkit/test/test_message.py::test_message 
-encommon/webkit/test/test_statate.py::test_statate 
-[gw1] [ 96%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isbool 
-[gw3] [ 96%] PASSED encommon/webkit/test/test_message.py::test_message 
-[gw2] [ 96%] PASSED encommon/webkit/test/test_statate.py::test_statate 
-encommon/types/test/test_funcs.py::test_funcname 
-[gw3] [ 97%] PASSED encommon/types/test/test_funcs.py::test_funcname 
-encommon/webkit/test/test_helpers.py::test_helpers_whenready 
-[gw1] [ 97%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_whenready 
+[gw2] [ 11%] PASSED encommon/crypts/test/test_hashes.py::test_Hashes 
+encommon/types/test/test_empty.py::test_EmptyType 
+[gw2] [ 11%] PASSED encommon/types/test/test_empty.py::test_EmptyType 
+encommon/types/test/test_classes.py::test_clsname 
+[gw0] [ 12%] PASSED encommon/parse/jinja2.py::encommon.parse.jinja2.Jinja2 
+encommon/times/parse.py::encommon.times.parse.string_time 
+[gw0] [ 12%] PASSED encommon/times/parse.py::encommon.times.parse.string_time 
+encommon/times/parse.py::encommon.times.parse.shift_time 
+[gw2] [ 12%] PASSED encommon/types/test/test_classes.py::test_clsname 
+encommon/types/test/test_classes.py::test_BaseModel 
+[gw0] [ 13%] PASSED encommon/times/parse.py::encommon.times.parse.shift_time 
+encommon/times/parse.py::encommon.times.parse.parse_time 
+[gw2] [ 13%] PASSED encommon/types/test/test_classes.py::test_BaseModel 
+encommon/types/test/test_notate.py::test_getate_cover 
+[gw2] [ 13%] PASSED encommon/types/test/test_notate.py::test_getate_cover 
+[gw0] [ 14%] PASSED encommon/times/parse.py::encommon.times.parse.parse_time 
+encommon/times/duration.py::encommon.times.duration.Duration 
+encommon/types/test/test_notate.py::test_setate_cover 
+[gw2] [ 14%] PASSED encommon/types/test/test_notate.py::test_setate_cover 
+[gw0] [ 14%] PASSED encommon/times/duration.py::encommon.times.duration.Duration 
+encommon/types/test/test_notate.py::test_delate_raises 
+encommon/times/parse.py::encommon.times.parse.since_time 
+[gw2] [ 14%] PASSED encommon/types/test/test_notate.py::test_delate_raises 
+[gw1] [ 15%] PASSED encommon/times/windows.py::encommon.times.windows.Windows 
+encommon/types/test/test_notate.py::test_getate 
+[gw0] [ 15%] PASSED encommon/times/parse.py::encommon.times.parse.since_time 
+encommon/types/notate.py::encommon.types.notate.setate 
+encommon/types/dicts.py::encommon.types.dicts.merge_dicts 
+[gw2] [ 15%] PASSED encommon/types/test/test_notate.py::test_getate 
+[gw1] [ 16%] PASSED encommon/types/notate.py::encommon.types.notate.setate 
+encommon/types/notate.py::encommon.types.notate.impate 
+encommon/types/test/test_notate.py::test_impate_raises 
+[gw1] [ 16%] PASSED encommon/types/notate.py::encommon.types.notate.impate 
+[gw0] [ 16%] PASSED encommon/types/dicts.py::encommon.types.dicts.merge_dicts 
+encommon/times/time.py::encommon.times.time.Time 
+[gw2] [ 17%] PASSED encommon/types/test/test_notate.py::test_impate_raises 
+encommon/types/test/test_notate.py::test_delate 
+encommon/times/utils.py::encommon.times.utils.strptime 
+[gw2] [ 17%] PASSED encommon/types/test/test_notate.py::test_delate 
+encommon/types/test/test_notate.py::test_setate_raises 
+[gw2] [ 17%] PASSED encommon/types/test/test_notate.py::test_setate_raises 
+encommon/types/test/test_notate.py::test_expate 
+[gw1] [ 18%] PASSED encommon/times/utils.py::encommon.times.utils.strptime 
+encommon/times/utils.py::encommon.times.utils.utcdatetime 
+[gw0] [ 18%] PASSED encommon/times/time.py::encommon.times.time.Time 
+encommon/types/strings.py::encommon.types.strings.inrepr 
+[gw1] [ 18%] PASSED encommon/times/utils.py::encommon.times.utils.utcdatetime 
+encommon/types/lists.py::encommon.types.lists.dedup_list 
+[gw0] [ 19%] PASSED encommon/types/strings.py::encommon.types.strings.inrepr 
+[gw1] [ 19%] PASSED encommon/types/lists.py::encommon.types.lists.dedup_list 
+encommon/times/timer.py::encommon.times.timer.Timer 
+[gw2] [ 19%] PASSED encommon/types/test/test_notate.py::test_expate 
+encommon/times/timers.py::encommon.times.timers.Timers 
+encommon/types/test/test_notate.py::test_expate_cover 
+[gw2] [ 20%] PASSED encommon/types/test/test_notate.py::test_expate_cover 
+encommon/webkit/test/test_default.py::test_default_styles 
+[gw3] [ 20%] PASSED encommon/times/test/test_time.py::test_Time 
+encommon/utils/test/test_match.py::test_rgxp_match 
+[gw3] [ 20%] PASSED encommon/utils/test/test_match.py::test_rgxp_match 
+encommon/utils/test/test_match.py::test_fuzz_match 
+[gw3] [ 21%] PASSED encommon/utils/test/test_match.py::test_fuzz_match 
+encommon/webkit/test/test_datetime.py::test_datestamp 
+[gw1] [ 21%] PASSED encommon/times/timer.py::encommon.times.timer.Timer 
+encommon/types/lists.py::encommon.types.lists.fuzzy_list 
+[gw1] [ 21%] PASSED encommon/types/lists.py::encommon.types.lists.fuzzy_list 
 encommon/webkit/test/test_helpers.py::test_helpers_islist 
-[gw1] [ 97%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_islist 
-encommon/webkit/test/test_helpers.py::test_helpers_isstr 
-[gw1] [ 98%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isstr 
+[gw0] [ 22%] PASSED encommon/times/timers.py::encommon.times.timers.Timers 
+encommon/types/notate.py::encommon.types.notate.delate 
+[gw0] [ 22%] PASSED encommon/types/notate.py::encommon.types.notate.delate 
+encommon/types/dicts.py::encommon.types.dicts.sort_dict 
+[gw0] [ 22%] PASSED encommon/types/dicts.py::encommon.types.dicts.sort_dict 
+encommon/types/strings.py::encommon.types.strings.strplwr 
+[gw0] [ 23%] PASSED encommon/types/strings.py::encommon.types.strings.strplwr 
+encommon/webkit/test/test_default.py::test_default_showhide 
+[gw1] [ 23%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_islist 
+[gw2] [ 23%] PASSED encommon/webkit/test/test_default.py::test_default_styles 
+[gw0] [ 24%] PASSED encommon/webkit/test/test_default.py::test_default_showhide 
+[gw3] [ 24%] PASSED encommon/webkit/test/test_datetime.py::test_datestamp 
+encommon/webkit/test/test_helpers.py::test_helpers_isquery 
+encommon/webkit/test/test_default.py::test_default_addClass 
+encommon/webkit/test/test_default.py::test_default_append 
+encommon/webkit/test/test_statate.py::test_statate 
+[gw2] [ 24%] PASSED encommon/webkit/test/test_default.py::test_default_addClass 
+encommon/webkit/test/test_default.py::test_default_create 
+[gw0] [ 25%] PASSED encommon/webkit/test/test_default.py::test_default_append 
+[gw1] [ 25%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isquery 
+encommon/webkit/test/test_default.py::test_default_content 
+encommon/webkit/test/test_helpers.py::test_helpers_assert 
+[gw3] [ 25%] PASSED encommon/webkit/test/test_statate.py::test_statate 
+encommon/types/test/test_funcs.py::test_funcname 
+[gw3] [ 26%] PASSED encommon/types/test/test_funcs.py::test_funcname 
+encommon/webkit/test/test_message.py::test_message 
+[gw2] [ 26%] PASSED encommon/webkit/test/test_default.py::test_default_create 
+encommon/webkit/test/test_default.py::test_default_remClass 
+[gw0] [ 26%] PASSED encommon/webkit/test/test_default.py::test_default_content 
+encommon/webkit/test/test_default.py::test_default_prop 
+[gw1] [ 27%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_assert 
+encommon/webkit/test/test_helpers.py::test_helpers_dumps 
+[gw3] [ 27%] PASSED encommon/webkit/test/test_message.py::test_message 
+encommon/webkit/test/test_duration.py::test_duration 
+[gw2] [ 27%] PASSED encommon/webkit/test/test_default.py::test_default_remClass 
+[gw0] [ 28%] PASSED encommon/webkit/test/test_default.py::test_default_prop 
+encommon/webkit/test/test_default.py::test_default_replace 
+encommon/utils/test/test_files.py::test_append_text 
+[gw0] [ 28%] PASSED encommon/utils/test/test_files.py::test_append_text 
+encommon/utils/test/test_files.py::test_readsave_text 
+[gw0] [ 28%] PASSED encommon/utils/test/test_files.py::test_readsave_text 
+encommon/config/test/test_utils.py::test_config_path 
+[gw1] [ 28%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_dumps 
+[gw0] [ 29%] PASSED encommon/config/test/test_utils.py::test_config_path 
+encommon/config/test/test_utils.py::test_config_load 
+[gw0] [ 29%] PASSED encommon/config/test/test_utils.py::test_config_load 
+encommon/config/test/test_utils.py::test_config_paths 
+[gw0] [ 29%] PASSED encommon/config/test/test_utils.py::test_config_paths 
+encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-secrets] 
+[gw0] [ 30%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-secrets] 
+encommon/crypts/test/test_crypts.py::test_Crypts 
+[gw0] [ 30%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts 
+encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-default] 
+[gw0] [ 30%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_iterate[foo-default] 
+encommon/crypts/test/test_crypts.py::test_Crypts_raises 
+[gw0] [ 31%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_raises 
+encommon/crypts/test/test_crypts.py::test_Crypts_cover 
+[gw0] [ 31%] PASSED encommon/crypts/test/test_crypts.py::test_Crypts_cover 
+encommon/times/test/test_parse.py::test_shift_time[-1mon@m-expect9] 
+[gw0] [ 31%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1mon@m-expect9] 
+encommon/times/test/test_parse.py::test_shift_time[-1w-expect13] 
+[gw0] [ 32%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1w-expect13] 
+encommon/times/test/test_parse.py::test_string_time 
+encommon/webkit/test/test_helpers.py::test_helpers_loads 
+[gw0] [ 32%] PASSED encommon/times/test/test_parse.py::test_string_time 
+encommon/times/test/test_parse.py::test_shift_time[+1y@s+1h-expect4] 
+[gw0] [ 32%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1y@s+1h-expect4] 
+encommon/times/test/test_parse.py::test_shift_time[-1y@s-expect3] 
+[gw0] [ 33%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1y@s-expect3] 
+encommon/times/test/test_parse.py::test_shift_time[+1mon@m-expect8] 
+[gw0] [ 33%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1mon@m-expect8] 
+encommon/times/test/test_parse.py::test_shift_time[-1d@d-30d-expect23] 
+[gw0] [ 33%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1d@d-30d-expect23] 
+encommon/times/test/test_parse.py::test_shift_time[-1w@h-1w-expect17] 
+[gw0] [ 34%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1w@h-1w-expect17] 
+encommon/times/test/test_parse.py::test_shift_time[+1mon@m+1mon-expect10] 
+[gw0] [ 34%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1mon@m+1mon-expect10] 
+encommon/times/test/test_parse.py::test_shift_time[+1y@s-expect2] 
+[gw0] [ 34%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1y@s-expect2] 
+encommon/times/test/test_parse.py::test_shift_time[-1d-expect19] 
+[gw0] [ 35%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1d-expect19] 
+encommon/times/test/test_parse.py::test_shift_time[-1w@h-expect15] 
+[gw0] [ 35%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1w@h-expect15] 
+encommon/times/test/test_parse.py::test_shift_time[+1w@h-expect14] 
+[gw0] [ 35%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1w@h-expect14] 
+encommon/times/test/test_parse.py::test_shift_time[+1d@d-expect20] 
+[gw0] [ 36%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1d@d-expect20] 
+encommon/times/test/test_parse.py::test_shift_time[-1y-expect1] 
+[gw0] [ 36%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1y-expect1] 
+encommon/times/test/test_parse.py::test_shift_time[+1w@h+1w-expect16] 
+[gw0] [ 36%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1w@h+1w-expect16] 
+encommon/times/test/test_parse.py::test_shift_time[-1mon-expect7] 
+[gw0] [ 37%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1mon-expect7] 
+encommon/times/test/test_parse.py::test_shift_time[+1w-expect12] 
+[gw0] [ 37%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1w-expect12] 
+encommon/times/test/test_parse.py::test_shift_time[-1d@d-expect21] 
+[gw0] [ 37%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1d@d-expect21] 
+encommon/webkit/test/test_image.py::test_image 
+[gw3] [ 38%] PASSED encommon/webkit/test/test_duration.py::test_duration 
+encommon/config/test/test_files.py::test_ConfigFiles 
+[gw3] [ 38%] PASSED encommon/config/test/test_files.py::test_ConfigFiles 
+encommon/config/test/test_files.py::test_ConfigFile 
+[gw3] [ 38%] PASSED encommon/config/test/test_files.py::test_ConfigFile 
+encommon/config/test/test_files.py::test_ConfigFiles_cover 
+[gw3] [ 39%] PASSED encommon/config/test/test_files.py::test_ConfigFiles_cover 
 encommon/webkit/test/test_helpers.py::test_helpers_isnull 
-[gw0] [ 98%] PASSED encommon/times/test/test_window.py::test_Window_cover 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-3659-False-expect5] 
-[gw0] [ 98%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3659-False-expect5] 
-encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-True-expect2] 
-[gw0] [ 99%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-True-expect2] 
+[gw1] [ 39%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_loads 
+[gw0] [ 39%] PASSED encommon/webkit/test/test_image.py::test_image 
+[gw2] [ 40%] PASSED encommon/webkit/test/test_default.py::test_default_replace 
+encommon/webkit/test/test_helpers.py::test_helpers_isnode 
+encommon/types/test/test_lists.py::test_fuzzy_list 
+[gw0] [ 40%] PASSED encommon/types/test/test_lists.py::test_fuzzy_list 
+encommon/types/test/test_lists.py::test_dedup_list 
+encommon/webkit/test/test_default.py::test_default_attr 
+[gw0] [ 40%] PASSED encommon/types/test/test_lists.py::test_dedup_list 
+encommon/types/test/test_lists.py::test_inlist 
+[gw0] [ 41%] PASSED encommon/types/test/test_lists.py::test_inlist 
+encommon/webkit/test/test_tagues.py::test_tagues 
+[gw3] [ 41%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isnull 
+encommon/webkit/test/test_helpers.py::test_helpers_isempty 
+[gw1] [ 41%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isnode 
+encommon/webkit/test/test_helpers.py::test_helpers_istrue 
+[gw2] [ 42%] PASSED encommon/webkit/test/test_default.py::test_default_attr 
+[gw0] [ 42%] PASSED encommon/webkit/test/test_tagues.py::test_tagues 
+encommon/parse/test/test_network.py::test_Network_ipv6 
+[gw2] [ 42%] PASSED encommon/parse/test/test_network.py::test_Network_ipv6 
+encommon/parse/test/test_network.py::test_insubnet_ip 
+[gw2] [ 42%] PASSED encommon/parse/test/test_network.py::test_insubnet_ip 
+encommon/parse/test/test_network.py::test_isvalid_ip 
+[gw2] [ 43%] PASSED encommon/parse/test/test_network.py::test_isvalid_ip 
+encommon/parse/test/test_network.py::test_Network 
+[gw2] [ 43%] PASSED encommon/parse/test/test_network.py::test_Network 
+encommon/parse/test/test_network.py::test_Network_ipv4 
+[gw2] [ 43%] PASSED encommon/parse/test/test_network.py::test_Network_ipv4 
+encommon/times/test/test_parse.py::test_shift_time[+1d@d+30d-expect22] 
+[gw2] [ 44%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1d@d+30d-expect22] 
+encommon/times/test/test_parse.py::test_parse_time 
+encommon/webkit/test/test_content.py::test_Content_cover 
+[gw0] [ 44%] PASSED encommon/webkit/test/test_content.py::test_Content_cover 
+encommon/webkit/test/test_content.py::test_Content 
+[gw2] [ 44%] PASSED encommon/times/test/test_parse.py::test_parse_time 
+encommon/times/test/test_parse.py::test_shift_time[+1d-expect18] 
+[gw0] [ 45%] PASSED encommon/webkit/test/test_content.py::test_Content 
+[gw2] [ 45%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1d-expect18] 
+encommon/times/test/test_duration.py::test_Duration_iterate 
+encommon/times/test/test_parse.py::test_shift_time[-1mon@m-1mon-expect11] 
+[gw2] [ 45%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1mon@m-1mon-expect11] 
+encommon/times/test/test_parse.py::test_shift_time[-1y@s-1h-expect5] 
+[gw0] [ 46%] PASSED encommon/times/test/test_duration.py::test_Duration_iterate 
+encommon/times/test/test_duration.py::test_Duration 
+[gw2] [ 46%] PASSED encommon/times/test/test_parse.py::test_shift_time[-1y@s-1h-expect5] 
+encommon/times/test/test_parse.py::test_shift_time[+1y-expect0] 
+[gw0] [ 46%] PASSED encommon/times/test/test_duration.py::test_Duration 
+encommon/times/test/test_duration.py::test_Duration_cover 
+[gw0] [ 47%] PASSED encommon/times/test/test_duration.py::test_Duration_cover 
+encommon/config/test/test_logger.py::test_Logger_cover 
+[gw2] [ 47%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1y-expect0] 
+encommon/times/test/test_parse.py::test_since_time 
+[gw2] [ 47%] PASSED encommon/times/test/test_parse.py::test_since_time 
+encommon/times/test/test_parse.py::test_shift_time[+1mon-expect6] 
+[gw0] [ 48%] PASSED encommon/config/test/test_logger.py::test_Logger_cover 
+[gw2] [ 48%] PASSED encommon/times/test/test_parse.py::test_shift_time[+1mon-expect6] 
+encommon/config/test/test_logger.py::test_Message 
+[gw0] [ 48%] PASSED encommon/config/test/test_logger.py::test_Message 
+encommon/config/test/test_logger.py::test_Logger 
+encommon/types/test/test_strings.py::test_inrepr 
+[gw2] [ 49%] PASSED encommon/types/test/test_strings.py::test_inrepr 
+encommon/types/test/test_strings.py::test_rplstr 
+[gw2] [ 49%] PASSED encommon/types/test/test_strings.py::test_rplstr 
+encommon/utils/test/test_sample.py::test_prep_sample 
+[gw2] [ 49%] PASSED encommon/utils/test/test_sample.py::test_prep_sample 
+encommon/utils/test/test_sample.py::test_rvrt_sample 
+[gw0] [ 50%] PASSED encommon/config/test/test_logger.py::test_Logger 
+encommon/webkit/test/test_datagrid.py::test_datagrid 
+[gw2] [ 50%] PASSED encommon/utils/test/test_sample.py::test_rvrt_sample 
+encommon/utils/test/test_sample.py::test_read_sample 
+[gw2] [ 50%] PASSED encommon/utils/test/test_sample.py::test_read_sample 
+encommon/utils/test/test_sample.py::test_load_sample 
+[gw2] [ 51%] PASSED encommon/utils/test/test_sample.py::test_load_sample 
+encommon/times/test/test_params.py::test_WindowParams 
+[gw2] [ 51%] PASSED encommon/times/test/test_params.py::test_WindowParams 
+encommon/times/test/test_params.py::test_TimerParams 
+[gw2] [ 51%] PASSED encommon/times/test/test_params.py::test_TimerParams 
 encommon/times/test/test_window.py::test_window_interval[window10-3661-False-expect10] 
-[gw0] [ 99%] PASSED encommon/times/test/test_window.py::test_window_interval[window10-3661-False-expect10] 
-[gw1] [ 99%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isnull 
+[gw2] [ 52%] PASSED encommon/times/test/test_window.py::test_window_interval[window10-3661-False-expect10] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-3660-False-expect6] 
+[gw2] [ 52%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3660-False-expect6] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-True-expect2] 
+[gw2] [ 52%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-True-expect2] 
+encommon/times/test/test_window.py::test_window_interval[window0-0-False-expect0] 
+[gw2] [ 53%] PASSED encommon/times/test/test_window.py::test_window_interval[window0-0-False-expect0] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-False-expect1] 
+[gw2] [ 53%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-False-expect1] 
+encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3661-False-expect10] 
+[gw2] [ 53%] PASSED encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3661-False-expect10] 
+encommon/times/test/test_window.py::test_window_interval[window3-1-True-expect3] 
+[gw2] [ 54%] PASSED encommon/times/test/test_window.py::test_window_interval[window3-1-True-expect3] 
+encommon/times/test/test_window.py::test_window_interval[window7-3661-False-expect7] 
+[gw2] [ 54%] PASSED encommon/times/test/test_window.py::test_window_interval[window7-3661-False-expect7] 
+encommon/times/test/test_window.py::test_window_interval[window8-3559-False-expect8] 
+[gw2] [ 54%] PASSED encommon/times/test/test_window.py::test_window_interval[window8-3559-False-expect8] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-True-expect3] 
+[gw2] [ 55%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-1-True-expect3] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-3661-False-expect7] 
+[gw2] [ 55%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3661-False-expect7] 
+encommon/times/test/test_window.py::test_window_interval[window1-1-False-expect1] 
+[gw2] [ 55%] PASSED encommon/times/test/test_window.py::test_window_interval[window1-1-False-expect1] 
+encommon/times/test/test_window.py::test_window_interval[window2-0-True-expect2] 
+[gw2] [ 56%] PASSED encommon/times/test/test_window.py::test_window_interval[window2-0-True-expect2] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-3659-False-expect5] 
+[gw2] [ 56%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3659-False-expect5] 
+encommon/times/test/test_window.py::test_window_interval[window6-3660-False-expect6] 
+[gw2] [ 56%] PASSED encommon/times/test/test_window.py::test_window_interval[window6-3660-False-expect6] 
+encommon/config/test/test_paths.py::test_ConfigPaths 
+[gw3] [ 57%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isempty 
+[gw2] [ 57%] PASSED encommon/config/test/test_paths.py::test_ConfigPaths 
+encommon/config/test/test_paths.py::test_ConfigPath 
+[gw2] [ 57%] PASSED encommon/config/test/test_paths.py::test_ConfigPath 
+encommon/webkit/test/test_helpers.py::test_helpers_istime 
+encommon/config/test/test_paths.py::test_ConfigPaths_cover 
+[gw2] [ 57%] PASSED encommon/config/test/test_paths.py::test_ConfigPaths_cover 
+encommon/times/test/test_windows.py::test_Windows_raises 
+[gw2] [ 58%] PASSED encommon/times/test/test_windows.py::test_Windows_raises 
+encommon/times/test/test_windows.py::test_Windows 
+[gw2] [ 58%] PASSED encommon/times/test/test_windows.py::test_Windows 
+encommon/times/test/test_windows.py::test_Windows_cover 
+[gw1] [ 58%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_istrue 
+encommon/webkit/test/test_helpers.py::test_helpers_isnum 
+[gw0] [ 59%] PASSED encommon/webkit/test/test_datagrid.py::test_datagrid 
+[gw3] [ 59%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_istime 
+[gw1] [ 59%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isnum 
+encommon/webkit/test/test_helpers.py::test_helpers_isdict 
+[gw1] [ 60%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isdict 
+encommon/webkit/test/test_helpers.py::test_helpers_whenready 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-3559-False-expect4] 
+[gw0] [ 60%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-3559-False-expect4] 
+encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-False-expect0] 
+[gw0] [ 60%] PASSED encommon/times/test/test_window.py::test_window_croniter[* * * * *-0-False-expect0] 
+encommon/times/test/test_window.py::test_Window 
+[gw0] [ 61%] PASSED encommon/times/test/test_window.py::test_Window 
+encommon/times/test/test_window.py::test_window_interval[window5-3659-False-expect5] 
+[gw0] [ 61%] PASSED encommon/times/test/test_window.py::test_window_interval[window5-3659-False-expect5] 
+encommon/times/test/test_window.py::test_Window_cover 
+[gw1] [ 61%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_whenready 
+encommon/webkit/test/test_helpers.py::test_helpers_isstr 
+encommon/types/test/test_dicts.py::test_sort_dict 
+[gw1] [ 62%] PASSED encommon/types/test/test_dicts.py::test_sort_dict 
 encommon/types/test/test_dicts.py::test_merge_dicts 
-[gw1] [100%] PASSED encommon/types/test/test_dicts.py::test_merge_dicts 
+[gw1] [ 62%] PASSED encommon/types/test/test_dicts.py::test_merge_dicts 
+encommon/types/test/test_notate.py::test_impate 
+[gw1] [ 62%] PASSED encommon/types/test/test_notate.py::test_impate 
+encommon/types/test/test_notate.py::test_setate 
+[gw1] [ 63%] PASSED encommon/types/test/test_notate.py::test_setate 
+encommon/types/test/test_notate.py::test_impate_cover 
+[gw1] [ 63%] PASSED encommon/types/test/test_notate.py::test_impate_cover 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 1 }}-1] 
+[gw1] [ 63%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 1 }}-1] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[foo-foo] 
+[gw1] [ 64%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[foo-foo] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ none }}-None] 
+[gw1] [ 64%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ none }}-None] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_0] 
+[gw1] [ 64%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_0] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_1] 
+[gw1] [ 65%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[100000-100000_1] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 1.2 }}-1.2] 
+[gw1] [ 65%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 1.2 }}-1.2] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_recurse 
+[gw1] [ 65%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_recurse 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | float }}-1.0] 
+[gw1] [ 66%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | float }}-1.0] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 0 | Time }}-1970-01-01T00:00:00.000000+0000] 
+[gw1] [ 66%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ 0 | Time }}-1970-01-01T00:00:00.000000+0000] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0-1.0] 
+[gw1] [ 66%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0-1.0] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ -1.2 }}--1.2] 
+[gw1] [ 67%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ -1.2 }}--1.2] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 123 }}-123] 
+[gw1] [ 67%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_literal[{{ 123 }}-123] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[01-01] 
+[gw1] [ 67%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[01-01] 
+encommon/parse/test/test_jinja2.py::test_Jinja2 
+[gw1] [ 68%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | int }}-1] 
+[gw1] [ 68%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "1" | int }}-1] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "-01" }}--01] 
+[gw1] [ 68%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "-01" }}--01] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1-1] 
+[gw1] [ 69%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1-1] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[-01--01] 
+[gw1] [ 69%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[-01--01] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_0] 
+[gw1] [ 69%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_0] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_1] 
+[gw1] [ 70%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[10.001-10.001_1] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0.0-1.0.0] 
+[gw1] [ 70%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[1.0.0-1.0.0] 
+encommon/times/test/test_timer.py::test_Timer 
+[gw3] [ 70%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isstr 
+encommon/webkit/test/test_helpers.py::test_helpers_isbool 
+[gw2] [ 71%] PASSED encommon/times/test/test_windows.py::test_Windows_cover 
+encommon/webkit/test/test_numeric.py::test_numeric 
+[gw3] [ 71%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isbool 
+encommon/webkit/test/test_helpers.py::test_helpers_isfalse 
+[gw1] [ 71%] PASSED encommon/times/test/test_timer.py::test_Timer 
+encommon/times/test/test_timers.py::test_Timers_raises 
+[gw2] [ 71%] PASSED encommon/webkit/test/test_numeric.py::test_numeric 
+[gw1] [ 72%] PASSED encommon/times/test/test_timers.py::test_Timers_raises 
+encommon/times/test/test_timers.py::test_Timers 
+encommon/webkit/test/test_numeric.py::test_numeric_bytes 
+[gw1] [ 72%] PASSED encommon/times/test/test_timers.py::test_Timers 
+encommon/times/test/test_timers.py::test_Timers_cover 
+[gw3] [ 72%] PASSED encommon/webkit/test/test_helpers.py::test_helpers_isfalse 
+[gw2] [ 73%] PASSED encommon/webkit/test/test_numeric.py::test_numeric_bytes 
+encommon/webkit/test/test_numeric.py::test_numeric_count 
+[gw2] [ 73%] PASSED encommon/webkit/test/test_numeric.py::test_numeric_count 
+encommon/webkit/test/test_color.py::test_colordiv 
+[gw1] [ 73%] PASSED encommon/times/test/test_timers.py::test_Timers_cover 
+encommon/webkit/test/test_moderate.py::test_moderate 
+encommon/times/test/test_unitime.py::test_unitime 
+[gw3] [ 74%] PASSED encommon/times/test/test_unitime.py::test_unitime 
+encommon/utils/test/test_stdout.py::test_array_ansi 
+[gw3] [ 74%] PASSED encommon/utils/test/test_stdout.py::test_array_ansi 
+encommon/utils/test/test_stdout.py::test_kvpair_ansi 
+[gw3] [ 74%] PASSED encommon/utils/test/test_stdout.py::test_kvpair_ansi 
+encommon/utils/test/test_stdout.py::test_strip_ansi 
+[gw3] [ 75%] PASSED encommon/utils/test/test_stdout.py::test_strip_ansi 
+encommon/utils/test/test_stdout.py::test_make_ansi 
+[gw3] [ 75%] PASSED encommon/utils/test/test_stdout.py::test_make_ansi 
+encommon/utils/test/test_stdout.py::test_array_ansi_cover 
+[gw3] [ 75%] PASSED encommon/utils/test/test_stdout.py::test_array_ansi_cover 
+encommon/utils/test/test_stdout.py::test_print_ansi 
+[gw3] [ 76%] PASSED encommon/utils/test/test_stdout.py::test_print_ansi 
+encommon/types/test/test_strings.py::test_hasstr 
+[gw3] [ 76%] PASSED encommon/types/test/test_strings.py::test_hasstr 
+encommon/types/test/test_strings.py::test_strplwr 
+[gw3] [ 76%] PASSED encommon/types/test/test_strings.py::test_strplwr 
+encommon/types/test/test_strings.py::test_instr 
+[gw3] [ 77%] PASSED encommon/types/test/test_strings.py::test_instr 
+encommon/config/test/test_config.py::test_Config 
+[gw3] [ 77%] PASSED encommon/config/test/test_config.py::test_Config 
+encommon/config/test/test_config.py::test_Config_cover 
+[gw3] [ 77%] PASSED encommon/config/test/test_config.py::test_Config_cover 
+encommon/times/test/test_utils.py::test_findtz 
+[gw3] [ 78%] PASSED encommon/times/test/test_utils.py::test_findtz 
+encommon/times/test/test_utils.py::test_strptime_raises 
+[gw2] [ 78%] PASSED encommon/webkit/test/test_color.py::test_colordiv 
+[gw3] [ 78%] PASSED encommon/times/test/test_utils.py::test_strptime_raises 
+encommon/times/test/test_utils.py::test_utcdatetime 
+[gw3] [ 79%] PASSED encommon/times/test/test_utils.py::test_utcdatetime 
+encommon/times/test/test_utils.py::test_strptime 
+[gw3] [ 79%] PASSED encommon/times/test/test_utils.py::test_strptime 
+encommon/times/test/test_utils.py::test_findtz_raises 
+[gw3] [ 79%] PASSED encommon/times/test/test_utils.py::test_findtz_raises 
+encommon/utils/test/test_paths.py::test_stats_path 
+[gw3] [ 80%] PASSED encommon/utils/test/test_paths.py::test_stats_path 
+encommon/utils/test/test_paths.py::test_resolve_path 
+[gw3] [ 80%] PASSED encommon/utils/test/test_paths.py::test_resolve_path 
+encommon/utils/test/test_paths.py::test_resolve_paths 
+[gw3] [ 80%] PASSED encommon/utils/test/test_paths.py::test_resolve_paths 
+encommon/colors/test/test_color.py::test_Color_rgb[00ffff-expect8] 
+[gw3] [ 81%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[00ffff-expect8] 
+encommon/colors/test/test_color.py::test_Color_xy[0000ff-expect5] 
+[gw3] [ 81%] PASSED encommon/colors/test/test_color.py::test_Color_xy[0000ff-expect5] 
+encommon/colors/test/test_color.py::test_Color_xy[ff0000-expect3] 
+[gw3] [ 81%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ff0000-expect3] 
+encommon/colors/test/test_color.py::test_Color_hsl[00ffff-expect8] 
+[gw3] [ 82%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[00ffff-expect8] 
+encommon/colors/test/test_color.py::test_Color_rgb[ff00ff-expect9] 
+[gw3] [ 82%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ff00ff-expect9] 
+encommon/colors/test/test_color.py::test_Color_hsl[ff00ff-expect9] 
+[gw3] [ 82%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ff00ff-expect9] 
+encommon/colors/test/test_color.py::test_Color_xyz[ffffff-expect1] 
+[gw3] [ 83%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ffffff-expect1] 
+encommon/colors/test/test_color.py::test_Color_xy[ffff00-expect7] 
+[gw3] [ 83%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ffff00-expect7] 
+encommon/colors/test/test_color.py::test_Color_xyz[000000-expect2] 
+[gw3] [ 83%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[000000-expect2] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_cover 
+encommon/colors/test/test_color.py::test_Color_xy[808080-expect6] 
+[gw3] [ 84%] PASSED encommon/colors/test/test_color.py::test_Color_xy[808080-expect6] 
+encommon/colors/test/test_color.py::test_Color_xyz[00ff00-expect4] 
+[gw3] [ 84%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[00ff00-expect4] 
+encommon/colors/test/test_color.py::test_Color_xyz[800080-expect10] 
+[gw3] [ 84%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[800080-expect10] 
+encommon/colors/test/test_color.py::test_Color_xy[00ff00-expect4] 
+[gw3] [ 85%] PASSED encommon/colors/test/test_color.py::test_Color_xy[00ff00-expect4] 
+encommon/colors/test/test_color.py::test_Color_rgb[ff00cc-expect0] 
+[gw3] [ 85%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ff00cc-expect0] 
+encommon/colors/test/test_color.py::test_Color_xyz[808080-expect6] 
+[gw3] [ 85%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[808080-expect6] 
+encommon/colors/test/test_color.py::test_Color_hsl[ff00cc-expect0] 
+[gw3] [ 85%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ff00cc-expect0] 
+[gw2] [ 86%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_cover 
+encommon/colors/test/test_color.py::test_Color_xyz[ffff00-expect7] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value4-expect4] 
+[gw2] [ 86%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value4-expect4] 
+[gw3] [ 86%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ffff00-expect7] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "01" }}-01] 
+encommon/colors/test/test_color.py::test_Color_xy[ffffff-expect1] 
+[gw3] [ 87%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ffffff-expect1] 
+[gw2] [ 87%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{{ "01" }}-01] 
+encommon/colors/test/test_color.py::test_Color_xy[000000-expect2] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{'a': 'b'}-expect5] 
+[gw3] [ 87%] PASSED encommon/colors/test/test_color.py::test_Color_xy[000000-expect2] 
+[gw2] [ 88%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[{'a': 'b'}-expect5] 
+encommon/colors/test/test_color.py::test_Color_cover 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value14-expect14] 
+[gw3] [ 88%] PASSED encommon/colors/test/test_color.py::test_Color_cover 
+encommon/colors/test/test_color.py::test_Color_xyz[ff0000-expect3] 
+[gw2] [ 88%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[value14-expect14] 
+[gw3] [ 89%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ff0000-expect3] 
+encommon/parse/test/test_jinja2.py::test_Jinja2_parse[[1, 2]-expect15] 
+encommon/colors/test/test_color.py::test_Color_xyz[0000ff-expect5] 
+[gw2] [ 89%] PASSED encommon/parse/test/test_jinja2.py::test_Jinja2_parse[[1, 2]-expect15] 
+[gw3] [ 89%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[0000ff-expect5] 
+encommon/colors/test/test_color.py::test_Color_hsl[00ff00-expect4] 
+encommon/colors/test/test_color.py::test_Color_xy[800080-expect10] 
+[gw3] [ 90%] PASSED encommon/colors/test/test_color.py::test_Color_xy[800080-expect10] 
+[gw2] [ 90%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[00ff00-expect4] 
+encommon/colors/test/test_color.py::test_Color_xy[ff00cc-expect0] 
+encommon/colors/test/test_color.py::test_Color_rgb[00ff00-expect4] 
+[gw3] [ 90%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ff00cc-expect0] 
+[gw2] [ 91%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[00ff00-expect4] 
+encommon/colors/test/test_color.py::test_Color_rgb[ffffff-expect1] 
+encommon/colors/test/test_color.py::test_Color_rgb[000000-expect2] 
+[gw3] [ 91%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ffffff-expect1] 
+[gw2] [ 91%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[000000-expect2] 
+encommon/colors/test/test_color.py::test_Color_xyz[ff00ff-expect9] 
+encommon/colors/test/test_color.py::test_Color_hsl[ffffff-expect1] 
+[gw3] [ 92%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ff00ff-expect9] 
+[gw2] [ 92%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ffffff-expect1] 
+encommon/colors/test/test_color.py::test_Color_hsl[000000-expect2] 
+encommon/colors/test/test_color.py::test_Color 
+[gw3] [ 92%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[000000-expect2] 
+[gw2] [ 93%] PASSED encommon/colors/test/test_color.py::test_Color 
+encommon/colors/test/test_color.py::test_Color_hsl[0000ff-expect5] 
+encommon/colors/test/test_color.py::test_Color_xyz[00ffff-expect8] 
+[gw3] [ 93%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[00ffff-expect8] 
+[gw2] [ 93%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[0000ff-expect5] 
+encommon/colors/test/test_color.py::test_Color_hsl[ff0000-expect3] 
+encommon/colors/test/test_color.py::test_Color_xy[00ffff-expect8] 
+[gw3] [ 94%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ff0000-expect3] 
+encommon/colors/test/test_color.py::test_Color_rgb[0000ff-expect5] 
+[gw2] [ 94%] PASSED encommon/colors/test/test_color.py::test_Color_xy[00ffff-expect8] 
+[gw3] [ 94%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[0000ff-expect5] 
+encommon/colors/test/test_color.py::test_Color_rgb[ff0000-expect3] 
+encommon/colors/test/test_color.py::test_Color_rgb[800080-expect10] 
+[gw2] [ 95%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ff0000-expect3] 
+[gw3] [ 95%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[800080-expect10] 
+encommon/colors/test/test_color.py::test_Color_hsl[ffff00-expect7] 
+encommon/colors/test/test_color.py::test_Color_rgb[ffff00-expect7] 
+[gw2] [ 95%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[ffff00-expect7] 
+[gw3] [ 96%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[ffff00-expect7] 
+encommon/colors/test/test_color.py::test_Color_xy[ff00ff-expect9] 
+encommon/colors/test/test_color.py::test_Color_hsl[80007F-expect10] 
+[gw2] [ 96%] PASSED encommon/colors/test/test_color.py::test_Color_xy[ff00ff-expect9] 
+[gw3] [ 96%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[80007F-expect10] 
+encommon/colors/test/test_color.py::test_Color_hsl[808080-expect6] 
+[gw2] [ 97%] PASSED encommon/colors/test/test_color.py::test_Color_hsl[808080-expect6] 
+encommon/colors/test/test_color.py::test_Color_rgb[808080-expect6] 
+encommon/colors/test/test_color.py::test_Color_xyz[ff00cc-expect0] 
+[gw3] [ 97%] PASSED encommon/colors/test/test_color.py::test_Color_rgb[808080-expect6] 
+[gw2] [ 97%] PASSED encommon/colors/test/test_color.py::test_Color_xyz[ff00cc-expect0] 
+[gw1] [ 98%] PASSED encommon/webkit/test/test_moderate.py::test_moderate 
+encommon/config/test/test_config.py::test_Config_jinja2 
+[gw1] [ 98%] PASSED encommon/config/test/test_config.py::test_Config_jinja2 
+[gw0] [ 98%] PASSED encommon/times/test/test_window.py::test_Window_cover 
+encommon/times/test/test_window.py::test_window_interval[window9-3660-False-expect9] 
+[gw0] [ 99%] PASSED encommon/times/test/test_window.py::test_window_interval[window9-3660-False-expect9] 
+encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3660-False-expect9] 
+[gw0] [ 99%] PASSED encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3660-False-expect9] 
+encommon/times/test/test_window.py::test_window_interval[window4-3559-False-expect4] 
+[gw0] [ 99%] PASSED encommon/times/test/test_window.py::test_window_interval[window4-3559-False-expect4] 
+encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3559-False-expect8] 
+[gw0] [100%] PASSED encommon/times/test/test_window.py::test_window_croniter[0 * * * *-3559-False-expect8] 
 
 ================================ tests coverage ================================
 _______________ coverage: platform linux, python 3.12.12-final-0 _______________
@@ -738,7 +738,7 @@ encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
 TOTAL                                    4378      0   100%
-============================= 307 passed in 27.65s =============================
+============================= 307 passed in 17.64s =============================
     DONE
   ● Write coveragepy output to htmlcov..
     DONE
