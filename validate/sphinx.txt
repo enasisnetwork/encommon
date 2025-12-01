@@ -1,6 +1,6 @@
 >>> make sphinx
   ● Building Sphinx documentation..
-Running Sphinx v8.2.3
+Running Sphinx v9.0.0
 loading translations [en]... done
 making output directory... done
 loading intersphinx inventory 'jinja2' from https://jinja.palletsprojects.com/en/latest/objects.inv ...
@@ -35,7 +35,7 @@ highlighting module code... [  1%] encommon.colors.colorhighlighting module cod
 writing additional pages... search done
 dumping search index in English (code: en)... done
 dumping object inventory... done
-build succeeded, 342 warnings.
+build succeeded, 350 warnings.
 
 The HTML pages are in sphinx/html.
     DONE
