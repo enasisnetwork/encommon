@@ -79,6 +79,7 @@ def test_stats_path() -> None:
         '/utils/files.py',
         '/utils/match.py',
         '/utils/paths.py',
+        '/utils/raises.py',
         '/utils/sample.py',
         '/utils/stdout.py',
         '/utils/test/__init__.py',

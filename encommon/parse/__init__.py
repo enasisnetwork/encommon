@@ -11,10 +11,12 @@ from .jinja2 import Jinja2
 from .network import Network
 from .network import insubnet_ip
 from .network import isvalid_ip
+from .patterns import isvalid_uuid
 
 
 __all__ = [
     'Jinja2',
     'Network',
     'insubnet_ip',
-    'isvalid_ip']
+    'isvalid_ip',
+    'isvalid_uuid']

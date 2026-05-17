@@ -10,6 +10,7 @@ is permitted, for more information consult the project license file.
 from .classes import BaseModel
 from .classes import clsname
 from .classes import lattrs
+from .dicts import delta_dicts
 from .dicts import merge_dicts
 from .dicts import sort_dict
 from .empty import Empty
@@ -22,6 +23,8 @@ from .notate import expate
 from .notate import getate
 from .notate import impate
 from .notate import setate
+from .process import process
+from .process import prune
 from .strings import hasstr
 from .strings import inrepr
 from .strings import instr
@@ -39,6 +42,7 @@ __all__ = [
     'BaseModel',
     'clsname',
     'dedup_list',
+    'delta_dicts',
     'fuzzy_list',
     'delate',
     'DictStrAny',
@@ -54,6 +58,8 @@ __all__ = [
     'lattrs',
     'LDictStrAny',
     'merge_dicts',
+    'process',
+    'prune',
     'rplstr',
     'setate',
     'sort_dict',

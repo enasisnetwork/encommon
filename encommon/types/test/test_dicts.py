@@ -13,8 +13,11 @@ from . import _DICT1
 from . import _DICT1R
 from . import _DICT2
 from . import _DICT2R
+from ..dicts import delta_dicts
 from ..dicts import merge_dicts
 from ..dicts import sort_dict
+from ..notate import delate
+from ..notate import setate
 
 
 
@@ -154,3 +157,117 @@ def test_sort_dict() -> None:
         'list': ['d1list'],
         'str': 'd1string',
         'null': None}
+
+
+
+def test_delta_dicts() -> None:  # noqa: CFQ001
+    """
+    Perform various tests associated with relevant routines.
+    """
+
+    source = deepcopy(_DICT1R)
+    update = deepcopy(_DICT2R)
+
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=source)
+
+    assert result == {}
+
+
+    result = delta_dicts(
+        dict1=source,
+        dict2={})
+
+    assert result == {}
+
+
+    result = delta_dicts(
+        dict1={},
+        dict2=update)
+
+    assert result == update
+
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result == update
+
+
+    setate(
+        source=source,
+        path='dict/key',
+        value='d2dict')
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result != update
+    assert 'dict' not in result
+
+    delate(
+        source=update,
+        path='dict')
+
+    assert result == update
+
+
+    # TEST partial list overlap
+
+    source['list'] = ['a', 'b']
+    update['list'] = ['b', 'd']
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result['list'] == ['d']
+
+
+    # TEST type mismatch at key
+
+    source['str'] = 'd1string'
+    update['str'] = ['a']
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result['str'] == ['a']
+
+
+    # TEST override with None
+
+    source['str'] = 'd1string'
+    update['str'] = None
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result['str'] is None
+
+
+    # TEST empty nested structures
+
+    source['dict'] = {'a': 'b'}
+    update['dict'] = {}
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result['dict'] == {}
+
+    source['list'] = ['a', 'b']
+    update['list'] = []
+
+    result = delta_dicts(
+        dict1=source,
+        dict2=update)
+
+    assert result['list'] == []

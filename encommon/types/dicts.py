@@ -74,7 +74,9 @@ def merge_dicts(
                 and merge_dict is True):
 
             merge_dicts(
-                dict1[key], value, force)
+                dict1=dict1[key],
+                dict2=value,
+                force=force)
 
         elif force is True:
             dict1[key] = value
@@ -109,3 +111,72 @@ def sort_dict(
         reverse=reverse)
 
     return dict(items)
+
+
+
+def delta_dicts(
+    dict1: dict[Any, Any],
+    dict2: dict[Any, Any],
+) -> dict[Any, Any]:
+    """
+    Return the values in second dictionary not in the first.
+
+    Example
+    -------
+    >>> dict1 = {'a': 'b', 'c': [1]}
+    >>> dict2 = {'a': 'B', 'c': [2]}
+    >>> delta_dicts(dict1, dict2)
+    {'a': 'B', 'c': [2]}
+
+    Example
+    -------
+    >>> dict1 = {"x": [1, 2]}
+    >>> dict2 = {"x": [1]}
+    >>> delta_dicts(dict1, dict2)
+    {'x': []}
+
+    :param dict1: Primary dictionary as the source of truth.
+    :param dict2: Secondary dictionary finding delta values.
+    :returns: Values in second dictionary not in the first.
+    """
+
+    delta: dict[Any, Any] = {}
+
+
+    for key, value in dict2.items():
+
+        if key not in dict1:
+            delta[key] = value
+            continue
+
+        bvalue = dict1[key]
+
+        if (isinstance(value, dict)
+                and isinstance(
+                    bvalue, dict)):
+
+            nested = delta_dicts(
+                dict1=bvalue,
+                dict2=value)
+
+            if (len(nested) >= 1
+                    or len(value) != len(bvalue)):
+                delta[key] = nested
+
+        elif (isinstance(value, list)
+                and isinstance(
+                    bvalue, list)):
+
+            appended = [
+                item for item in value
+                if item not in bvalue]
+
+            if (len(appended) >= 1
+                    or len(value) != len(bvalue)):
+                delta[key] = appended
+
+        elif value != bvalue:
+            delta[key] = value
+
+
+    return delta
