@@ -15,8 +15,8 @@ from pydantic import Field
 from .common import PARSABLE
 from .common import SCHEDULE
 from .time import Time
-from ..types import BaseModel
-from ..types import DictStrAny
+from ..types.classes import BaseModel
+from ..types.types import DictStrAny
 
 
 

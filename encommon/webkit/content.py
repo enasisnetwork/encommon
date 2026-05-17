@@ -10,7 +10,7 @@ is permitted, for more information consult the project license file.
 from pathlib import Path
 from typing import Optional
 
-from ..utils import read_text
+from ..utils.files import read_text
 
 
 

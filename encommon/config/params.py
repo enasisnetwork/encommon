@@ -15,8 +15,8 @@ from typing import Optional
 from pydantic import Field
 
 from .logger import LOGLEVELS
-from ..crypts import CryptsParams
-from ..types import BaseModel
+from ..crypts.params import CryptsParams
+from ..types.classes import BaseModel
 
 
 

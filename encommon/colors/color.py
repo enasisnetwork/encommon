@@ -11,7 +11,7 @@ from colorsys import hls_to_rgb
 from contextlib import suppress
 from typing import Union
 
-from ..types import strplwr
+from ..types.strings import strplwr
 
 
 

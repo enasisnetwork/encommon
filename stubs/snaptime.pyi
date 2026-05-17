@@ -7,19 +7,20 @@ is permitted, for more information consult the project license file.
 
 
 
-import datetime
+from datetime import datetime
+from datetime import tzinfo
 
 
 
 def snap(
-    dttm: datetime.datetime,
+    dttm: datetime,
     instruction: str,
-) -> datetime.datetime: ...
+) -> datetime: ...
 
 
 
 def snap_tz(
-    dttm: datetime.datetime,
+    dttm: datetime,
     instruction: str,
-    timezone: datetime.tzinfo,
-) -> datetime.datetime: ...
+    timezone: tzinfo,
+) -> datetime: ...

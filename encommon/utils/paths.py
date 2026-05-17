@@ -13,8 +13,8 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from .match import rgxp_match
-from ..types import rplstr
-from ..types import sort_dict
+from ..types.dicts import sort_dict
+from ..types.strings import rplstr
 
 if TYPE_CHECKING:
     from .common import PATHABLE
@@ -47,7 +47,10 @@ def resolve_path(
 
     if replace is not None:
 
-        items = replace.items()
+        items = (
+            replace.items()
+            if isinstance(replace, dict)
+            else replace)
 
         for old, new in items:
 

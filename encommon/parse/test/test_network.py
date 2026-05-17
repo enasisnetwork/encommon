@@ -12,9 +12,9 @@ from pytest import raises
 from ..network import Network
 from ..network import insubnet_ip
 from ..network import isvalid_ip
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 
 
 

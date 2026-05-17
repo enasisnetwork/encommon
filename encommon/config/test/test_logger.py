@@ -16,13 +16,13 @@ from pytest import fixture
 from ..logger import Logger
 from ..logger import Message
 from ..params import LoggerParams
-from ...times import Time
 from ...times.common import UNIXMPOCH
 from ...times.common import UNIXSPOCH
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
-from ...utils import strip_ansi
+from ...times.time import Time
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
+from ...utils.stdout import strip_ansi
 
 
 

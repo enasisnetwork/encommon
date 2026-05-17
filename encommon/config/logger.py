@@ -28,13 +28,13 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from .utils import config_path
-from ..times import Time
-from ..types import Empty
+from ..times.time import Time
+from ..types.empty import Empty
 from ..types.strings import COMMAD
 from ..types.strings import COMMAS
 from ..types.strings import SPACED
-from ..utils import kvpair_ansi
 from ..utils.common import JOINABLE
+from ..utils.stdout import kvpair_ansi
 
 if TYPE_CHECKING:
     from .params import LoggerParams

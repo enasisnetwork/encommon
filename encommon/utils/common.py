@@ -8,6 +8,7 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
+from typing import Any
 from typing import Union
 
 
@@ -19,12 +20,15 @@ JOINABLE = (list, tuple, set)
 PATHABLE = Union[
     str, Path,
     list[str | Path],
-    tuple[str | Path],
+    list[str],
+    list[Path],
+    tuple[str | Path, ...],
     set[str]]
 
 
 
 REPLACE = Union[
+    list[tuple[str, Any]],
     dict[str, str],
     dict[str, str | Path],
     dict[str, Path],

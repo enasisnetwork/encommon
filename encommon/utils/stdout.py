@@ -19,12 +19,13 @@ from typing import Optional
 from typing import TYPE_CHECKING
 from typing import Union
 
+from pydantic import BaseModel
+
 from .common import JOINABLE
-from ..times import Duration
-from ..times import Time
-from ..types import BaseModel
-from ..types import Empty
-from ..types import clsname
+from ..times.duration import Duration
+from ..times.time import Time
+from ..types.classes import clsname
+from ..types.empty import Empty
 from ..types.strings import COMMAD
 from ..types.strings import NEWLINE
 from ..types.strings import SEMPTY
@@ -309,7 +310,7 @@ def array_ansi(  # noqa: CFQ001, CFQ004
     ) -> None:
 
         if isinstance(source, BaseModel):
-            source = source.endumped
+            source = source.model_dump()
 
         if is_dataclass(source):
             source = asdict(source)

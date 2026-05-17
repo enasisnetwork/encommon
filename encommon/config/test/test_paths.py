@@ -15,12 +15,12 @@ from . import SAMPLES
 from ..paths import ConfigPath
 from ..paths import ConfigPaths
 from ... import PROJECT
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
-from ...utils import load_sample
-from ...utils import prep_sample
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 from ...utils.sample import ENPYRWS
+from ...utils.sample import load_sample
+from ...utils.sample import prep_sample
 
 
 
@@ -114,6 +114,7 @@ def test_ConfigPaths(
 
     replaces = {
         'PROJECT': PROJECT}
+
 
     sample_path = (
         SAMPLES / 'paths.json')

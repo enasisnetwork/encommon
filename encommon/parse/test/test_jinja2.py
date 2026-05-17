@@ -16,9 +16,9 @@ from pytest import raises
 from ..jinja2 import Jinja2
 from ... import PROJECT
 from ...times.common import UNIXMPOCH
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 
 
 

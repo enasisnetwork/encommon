@@ -8,9 +8,9 @@ is permitted, for more information consult the project license file.
 
 
 from ..hashes import Hashes
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 
 
 

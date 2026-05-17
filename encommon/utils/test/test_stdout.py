@@ -15,11 +15,11 @@ from ..stdout import kvpair_ansi
 from ..stdout import make_ansi
 from ..stdout import print_ansi
 from ..stdout import strip_ansi
-from ...config import LoggerParams
-from ...times import Duration
-from ...times import Time
+from ...config.params import LoggerParams
 from ...times.common import UNIXMPOCH
-from ...types import Empty
+from ...times.duration import Duration
+from ...times.time import Time
+from ...types.empty import Empty
 
 
 

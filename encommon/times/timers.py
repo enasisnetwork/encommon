@@ -12,7 +12,6 @@ from threading import Lock
 from typing import Annotated
 from typing import Optional
 from typing import TYPE_CHECKING
-from typing import Type
 
 from pydantic import Field
 
@@ -28,9 +27,9 @@ from .common import PARSABLE
 from .params import TimersParams
 from .time import Time
 from .timer import Timer
-from ..types import BaseModel
-from ..types import DictStrAny
-from ..types import LDictStrAny
+from ..types.classes import BaseModel
+from ..types.types import DictStrAny
+from ..types.types import LDictStrAny
 
 if TYPE_CHECKING:
     from .params import TimerParams
@@ -171,7 +170,7 @@ class Timers:
 
     __store: str
     __group: str
-    __table: Type[TimersTable]
+    __table: type[TimersTable]
     __locker: Lock
 
     __sengine: Engine
@@ -303,7 +302,7 @@ class Timers:
     @property
     def store_table(
         self,
-    ) -> Type[TimersTable]:
+    ) -> type[TimersTable]:
         """
         Return the value for the attribute from class instance.
 

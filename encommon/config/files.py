@@ -15,9 +15,9 @@ from typing import TYPE_CHECKING
 from .utils import config_load
 from .utils import config_path
 from .utils import config_paths
-from ..types import DictStrAny
-from ..types import merge_dicts
-from ..types import sort_dict
+from ..types.dicts import merge_dicts
+from ..types.dicts import sort_dict
+from ..types.types import DictStrAny
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE

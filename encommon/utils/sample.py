@@ -15,13 +15,17 @@ from pathlib import Path
 from typing import Any
 from typing import Callable
 from typing import Optional
+from typing import TYPE_CHECKING
 
+from pydantic import BaseModel
 
 from .files import read_text
 from .files import save_text
-from ..types import BaseModel
-from ..types import DictStrAny
-from ..types import rplstr
+from ..types.strings import rplstr
+from ..types.types import DictStrAny
+
+if TYPE_CHECKING:
+    from .common import REPLACE
 
 
 
@@ -36,7 +40,7 @@ def prep_sample(  # noqa: CFQ004
     content: Any,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[DictStrAny] = None,
+    replace: Optional['REPLACE'] = None,
     indent: Optional[int] = 2,
 ) -> str:
     r"""
@@ -72,7 +76,7 @@ def prep_sample(  # noqa: CFQ004
             return asdict(value)
 
         if isinstance(value, BaseModel):
-            return value.endumped
+            return value.model_dump()
 
         return str(value)
 
@@ -84,12 +88,14 @@ def prep_sample(  # noqa: CFQ004
 
     replace = replace or {}
 
-    items = replace.items()
+    items = (
+        replace.items()
+        if isinstance(replace, dict)
+        else replace)
 
     for old, new in items:
 
         new = str(new)
-
         old = f'_/{PREFIX}/{old}/_'
 
         content = rplstr(
@@ -105,7 +111,7 @@ def load_sample(
     update: bool = False,
     *,
     default: Callable[[Any], str] = str,
-    replace: Optional[DictStrAny] = None,
+    replace: Optional['REPLACE'] = None,
 ) -> str:
     r"""
     Load the sample file and compare using provided content.
@@ -174,7 +180,7 @@ def load_sample(
 def read_sample(
     sample: str,
     *,
-    replace: Optional[DictStrAny] = None,
+    replace: Optional['REPLACE'] = None,
     prefix: bool = True,
 ) -> str:
     """
@@ -188,9 +194,14 @@ def read_sample(
 
     replace = replace or {}
 
-    items = replace.items()
+    items = (
+        replace.items()
+        if isinstance(replace, dict)
+        else replace)
 
     for new, old in items:
+
+        new = str(new)
 
         if prefix is True:
             old = f'_/{PREFIX}/{old}/_'
@@ -205,7 +216,7 @@ def read_sample(
 def rvrt_sample(
     sample: str,
     *,
-    replace: Optional[DictStrAny] = None,
+    replace: Optional['REPLACE'] = None,
 ) -> str:
     """
     Return the content after processing as the sample value.
@@ -217,11 +228,15 @@ def rvrt_sample(
 
     replace = replace or {}
 
-    items = replace.items()
+    items = (
+        replace.items()
+        if isinstance(replace, dict)
+        else replace)
 
     for new, old in items:
 
         new = f'_/{PREFIX}/{new}/_'
+        old = str(old)
 
         sample = rplstr(
             sample, new, old)

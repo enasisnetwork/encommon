@@ -22,9 +22,9 @@ from ..notate import getate
 from ..notate import impate
 from ..notate import setate
 from ..types import DictStrAny
-from ...utils import load_sample
-from ...utils import prep_sample
 from ...utils.sample import ENPYRWS
+from ...utils.sample import load_sample
+from ...utils.sample import prep_sample
 
 
 

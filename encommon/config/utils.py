@@ -8,7 +8,6 @@ is permitted, for more information consult the project license file.
 
 
 from pathlib import Path
-from typing import Optional
 from typing import TYPE_CHECKING
 
 from yaml import SafeLoader
@@ -16,14 +15,13 @@ from yaml import load
 
 from .. import PROJECT
 from .. import WORKSPACE
-from ..types import DictStrAny
-from ..utils import read_text
-from ..utils import resolve_path
-from ..utils import resolve_paths
+from ..types.types import DictStrAny
+from ..utils.files import read_text
+from ..utils.paths import resolve_path
+from ..utils.paths import resolve_paths
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
-    from ..utils.common import REPLACE
 
 
 
@@ -40,7 +38,9 @@ def config_load(
     loaded = read_text(
         config_path(path))
 
-    parsed = load(loaded, SafeLoader)
+    parsed = load(
+        loaded,
+        SafeLoader)
 
     assert isinstance(parsed, dict)
 
@@ -65,13 +65,13 @@ def config_path(
         'PROJECT': PROJECT,
         'WORKSPACE': WORKSPACE}
 
-    return resolve_path(path, replace)
+    return resolve_path(
+        path, replace)
 
 
 
 def config_paths(
     paths: 'PATHABLE',
-    replace: Optional['REPLACE'] = None,
 ) -> tuple[Path, ...]:
     """
     Resolve the provided paths replacing the magic keywords.
@@ -80,14 +80,8 @@ def config_paths(
        This function simply wraps one from utils subpackage.
 
     :param paths: Complete or relative paths for processing.
-    :param replace: Optional values to replace in the path.
     :returns: New resolved filesystem path object instances.
     """
-
-    if replace is None:
-        replace = {}
-
-    replace = dict(replace)
 
     replace = {
         'PROJECT': PROJECT,

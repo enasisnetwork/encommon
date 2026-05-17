@@ -17,12 +17,12 @@ from .logger import Logger
 from .params import Params
 from .paths import ConfigPaths
 from .utils import config_paths
-from ..crypts import Crypts
-from ..parse import Jinja2
-from ..types import DictStrAny
-from ..types import merge_dicts
-from ..types import setate
-from ..types import sort_dict
+from ..crypts.crypts import Crypts
+from ..parse.jinja2 import Jinja2
+from ..types.dicts import merge_dicts
+from ..types.dicts import sort_dict
+from ..types.notate import setate
+from ..types.types import DictStrAny
 
 if TYPE_CHECKING:
     from ..utils.common import PATHABLE
@@ -52,7 +52,7 @@ class Config:
     :param cargs: Configuration arguments in dictionary form,
         which will override contents from the config files.
     :param sargs: Additional arguments on the command line.
-    :param model: Override default config validation model.
+    :param valid: Override default config validation model.
     """
 
     __files: ConfigFiles
@@ -60,7 +60,7 @@ class Config:
     __cargs: DictStrAny
     __sargs: DictStrAny
 
-    __model: Callable  # type: ignore
+    __valid: Callable  # type: ignore
 
     __params: Optional[Params]
     __logger: Optional[Logger]
@@ -75,7 +75,7 @@ class Config:
         paths: Optional['PATHABLE'] = None,
         cargs: Optional[DictStrAny] = None,
         sargs: Optional[DictStrAny] = None,
-        model: Optional[Callable] = None,  # type: ignore
+        valid: Optional[Callable] = None,  # type: ignore
     ) -> None:
         """
         Initialize instance for class using provided parameters.
@@ -86,9 +86,11 @@ class Config:
         cargs = cargs or {}
         sargs = sargs or {}
 
-        paths = list(config_paths(paths))
+        paths = [
+            str(x) for x in
+            config_paths(paths)]
 
-        self.__model = model or Params
+        self.__valid = valid or Params
         self.__files = ConfigFiles(files)
         self.__cargs = deepcopy(cargs)
         self.__sargs = deepcopy(sargs)
@@ -238,7 +240,7 @@ class Config:
 
 
     @property
-    def model(
+    def valid(
         self,
     ) -> Callable:  # type: ignore
         """
@@ -247,7 +249,7 @@ class Config:
         :returns: Value for the attribute from class instance.
         """
 
-        return self.__model
+        return self.__valid
 
 
     @property
@@ -265,7 +267,7 @@ class Config:
         if params is not None:
             return params
 
-        params = self.model(
+        params = self.valid(
             **self.basic)
 
         self.__params = params
@@ -283,7 +285,9 @@ class Config:
         :returns: Configuration dumped from the Pydantic model.
         """
 
-        return sort_dict(self.params.endumped)
+        return sort_dict(
+            self.params
+            .model_dump())
 
 
     @property

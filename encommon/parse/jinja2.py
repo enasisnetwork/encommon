@@ -24,23 +24,25 @@ from jinja2 import StrictUndefined
 from .network import Network
 from .network import insubnet_ip
 from .network import isvalid_ip
-from ..colors import Color
-from ..crypts import Hashes
-from ..times import Duration
-from ..times import Time
-from ..times import unitime
-from ..types import DictStrAny
-from ..types import dedup_list
-from ..types import fuzzy_list
-from ..types import hasstr
-from ..types import inlist
-from ..types import instr
-from ..types import merge_dicts
-from ..types import rplstr
-from ..types import sort_dict
-from ..types import strplwr
-from ..utils import fuzz_match
-from ..utils import rgxp_match
+from .. import PROJECT
+from .. import WORKSPACE
+from ..colors.color import Color
+from ..crypts.hashes import Hashes
+from ..times.duration import Duration
+from ..times.time import Time
+from ..times.unitime import unitime
+from ..types.dicts import merge_dicts
+from ..types.dicts import sort_dict
+from ..types.lists import dedup_list
+from ..types.lists import fuzzy_list
+from ..types.lists import inlist
+from ..types.strings import hasstr
+from ..types.strings import instr
+from ..types.strings import rplstr
+from ..types.strings import strplwr
+from ..types.types import DictStrAny
+from ..utils.match import fuzz_match
+from ..utils.match import rgxp_match
 
 
 
@@ -58,7 +60,15 @@ LITERAL = (
 
 
 
-DEFAULT: FILTERS = {
+DEFAULT_STATICS: DictStrAny = {
+
+    # encommon locations
+    'WORKSPACE': str(WORKSPACE),
+    'PROJECT': str(PROJECT)}
+
+
+
+DEFAULT_FILTERS: FILTERS = {
 
     # Python builtins
     'all': all,
@@ -133,9 +143,14 @@ class Jinja2:
         statics = dict(statics or {})
         filters = dict(filters or {})
 
-        items = DEFAULT.items()
+        sitems = DEFAULT_STATICS.items()
 
-        for key, filter in items:
+        for key, static in sitems:
+            statics[key] = static
+
+        fitems = DEFAULT_FILTERS.items()
+
+        for key, filter in fitems:
             filters[key] = filter
 
         self.__statics = statics

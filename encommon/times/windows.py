@@ -12,7 +12,6 @@ from threading import Lock
 from typing import Annotated
 from typing import Optional
 from typing import TYPE_CHECKING
-from typing import Type
 
 from pydantic import Field
 
@@ -28,9 +27,9 @@ from .common import PARSABLE
 from .params import WindowsParams
 from .time import Time
 from .window import Window
-from ..types import BaseModel
-from ..types import DictStrAny
-from ..types import LDictStrAny
+from ..types.classes import BaseModel
+from ..types.types import DictStrAny
+from ..types.types import LDictStrAny
 
 if TYPE_CHECKING:
     from .params import WindowParams
@@ -182,7 +181,7 @@ class Windows:
 
     __store: str
     __group: str
-    __table: Type[WindowsTable]
+    __table: type[WindowsTable]
     __locker: Lock
 
     __sengine: Engine
@@ -328,7 +327,7 @@ class Windows:
     @property
     def store_table(
         self,
-    ) -> Type[WindowsTable]:
+    ) -> type[WindowsTable]:
         """
         Return the value for the attribute from class instance.
 

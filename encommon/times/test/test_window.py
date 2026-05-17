@@ -17,9 +17,9 @@ from ..time import Time
 from ..window import Window
 from ..window import window_croniter
 from ..window import window_interval
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 
 if TYPE_CHECKING:
     from ..common import PARSABLE
