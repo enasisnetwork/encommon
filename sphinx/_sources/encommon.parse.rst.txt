@@ -1,14 +1,6 @@
 encommon.parse package
 ======================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   encommon.parse.test
-
 Submodules
 ----------
 
@@ -24,6 +16,14 @@ encommon.parse.network module
 -----------------------------
 
 .. automodule:: encommon.parse.network
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+encommon.parse.patterns module
+------------------------------
+
+.. automodule:: encommon.parse.patterns
    :members:
    :show-inheritance:
    :undoc-members:

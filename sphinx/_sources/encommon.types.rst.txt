@@ -1,14 +1,6 @@
 encommon.types package
 ======================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   encommon.types.test
-
 Submodules
 ----------
 
@@ -56,6 +48,14 @@ encommon.types.notate module
 ----------------------------
 
 .. automodule:: encommon.types.notate
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+encommon.types.process module
+-----------------------------
+
+.. automodule:: encommon.types.process
    :members:
    :show-inheritance:
    :undoc-members:

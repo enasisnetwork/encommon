@@ -1,14 +1,6 @@
 encommon.webkit package
 =======================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   encommon.webkit.test
-
 Submodules
 ----------
 

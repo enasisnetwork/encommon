@@ -1,14 +1,6 @@
 encommon.config package
 =======================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   encommon.config.test
-
 Submodules
 ----------
 

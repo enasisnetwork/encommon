@@ -1,14 +1,6 @@
 encommon.utils package
 ======================
 
-Subpackages
------------
-
-.. toctree::
-   :maxdepth: 4
-
-   encommon.utils.test
-
 Submodules
 ----------
 
@@ -16,6 +8,14 @@ encommon.utils.common module
 ----------------------------
 
 .. automodule:: encommon.utils.common
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+encommon.utils.diff module
+--------------------------
+
+.. automodule:: encommon.utils.diff
    :members:
    :show-inheritance:
    :undoc-members:
@@ -40,6 +40,14 @@ encommon.utils.paths module
 ---------------------------
 
 .. automodule:: encommon.utils.paths
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+encommon.utils.raises module
+----------------------------
+
+.. automodule:: encommon.utils.raises
    :members:
    :show-inheritance:
    :undoc-members:
