@@ -64,7 +64,7 @@ encommon/types/empty.py                    24      0   100%
 encommon/types/funcs.py                    15      0   100%
 encommon/types/lists.py                    25      0   100%
 encommon/types/notate.py                  142      0   100%
-encommon/types/process.py                  97      1    99%
+encommon/types/process.py                  96      0   100%
 encommon/types/strings.py                  19      0   100%
 encommon/types/test/__init__.py            11      0   100%
 encommon/types/test/test_classes.py        15      0   100%
@@ -78,6 +78,7 @@ encommon/types/test/test_strings.py        24      0   100%
 encommon/types/types.py                     6      0   100%
 encommon/utils/__init__.py                 18      0   100%
 encommon/utils/common.py                    5      0   100%
+encommon/utils/diff.py                     32      0   100%
 encommon/utils/files.py                    12      0   100%
 encommon/utils/match.py                    36      0   100%
 encommon/utils/paths.py                    44      0   100%
@@ -85,6 +86,7 @@ encommon/utils/raises.py                    1      0   100%
 encommon/utils/sample.py                   61      0   100%
 encommon/utils/stdout.py                  138      0   100%
 encommon/utils/test/__init__.py             0      0   100%
+encommon/utils/test/test_diff.py            8      0   100%
 encommon/utils/test/test_files.py          15      0   100%
 encommon/utils/test/test_match.py          19      0   100%
 encommon/utils/test/test_paths.py          21      0   100%
@@ -108,4 +110,4 @@ encommon/webkit/test/test_numeric.py       22      0   100%
 encommon/webkit/test/test_statate.py        7      0   100%
 encommon/webkit/test/test_tagues.py         7      0   100%
 -----------------------------------------------------------
-TOTAL                                    4660      1    99%
+TOTAL                                    4699      0   100%
