@@ -12,18 +12,17 @@ from json import dumps
 from json import loads
 from pathlib import Path
 
+from ..sample import PREFIX
 from ..sample import load_sample
 from ..sample import prep_sample
 from ..sample import read_sample
 from ..sample import rvrt_sample
 from ..stdout import ArrayColors
 from ... import PROJECT
-from ...config import LoggerParams
+from ...config.params import LoggerParams
 from ...utils.sample import ENPYRWS
 
 
-
-_PREFIX = 'encommon_sample'
 
 _SOURCE = {
     'list': ['bar', 'baz'],
@@ -35,8 +34,8 @@ _SOURCE = {
 _EXPECT = {
     'list': ['bar', 'baz'],
     'tuple': [1, 2],
-    'project': f'_/{_PREFIX}/PROJECT/_',
-    'other': f'_/{_PREFIX}/pytemp/_',
+    'project': f'_/{PREFIX}/PROJECT/_',
+    'other': f'_/{PREFIX}/pytemp/_',
     'devnull': '/dev/null'}
 
 _REPLACES = {

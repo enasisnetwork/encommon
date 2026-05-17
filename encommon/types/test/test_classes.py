@@ -11,31 +11,9 @@ from typing import TYPE_CHECKING
 
 from ..classes import clsname
 from ..classes import lattrs
-from ...config import LoggerParams
 
 if TYPE_CHECKING:
-    from ...config import Config
-
-
-
-def test_BaseModel() -> None:
-    """
-    Perform various tests associated with relevant routines.
-    """
-
-    params = LoggerParams(
-        stdo_level='info')
-
-    dumped = params.endumped
-    pruned = params.enpruned
-
-    assert dumped == {
-        'file_level': None,
-        'file_path': None,
-        'stdo_level': 'info'}
-
-    assert pruned == {
-        'stdo_level': 'info'}
+    from ...config.config import Config
 
 
 
@@ -64,7 +42,7 @@ def test_lattrs(
     attrs = lattrs(config)
 
     assert attrs == [
-        '_Config__model',
+        '_Config__valid',
         '_Config__files',
         '_Config__cargs',
         '_Config__sargs',

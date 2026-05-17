@@ -7,8 +7,8 @@ is permitted, for more information consult the project license file.
 
 
 
+from collections.abc import Sequence
 from typing import Any
-from typing import Sequence
 
 
 

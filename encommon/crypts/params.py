@@ -12,7 +12,7 @@ from typing import Optional
 
 from pydantic import Field
 
-from ..types import BaseModel
+from ..types.classes import BaseModel
 
 
 

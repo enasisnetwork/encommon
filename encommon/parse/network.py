@@ -439,7 +439,7 @@ def isvalid_ip(
     """
     Return the boolean indicating whether the value is valid.
 
-    :param value: Value that will be validated as an address.
+    :param value: Value that will be validated by function.
     :returns: Boolean indicating whether the value is valid.
     """
 

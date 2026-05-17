@@ -11,9 +11,9 @@ from pathlib import Path
 
 from pytest import fixture
 
-from .config import Config
+from .config.config import Config
 from .config.test import SAMPLES
-from .utils import save_text
+from .utils.files import save_text
 
 
 

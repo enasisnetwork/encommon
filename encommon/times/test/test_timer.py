@@ -13,9 +13,9 @@ from pytest import fixture
 
 from ..time import Time
 from ..timer import Timer
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 
 
 

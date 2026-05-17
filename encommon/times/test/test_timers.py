@@ -16,10 +16,10 @@ from pytest import raises
 from ..params import TimerParams
 from ..time import Time
 from ..timers import Timers
-from ...types import DictStrAny
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
+from ...types.types import DictStrAny
 
 
 

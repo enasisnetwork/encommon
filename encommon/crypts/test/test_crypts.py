@@ -14,10 +14,10 @@ from pytest import raises
 from ..crypts import Crypts
 from ..params import CryptParams
 from ..params import CryptsParams
-from ...types import DictStrAny
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
+from ...types.types import DictStrAny
 
 
 

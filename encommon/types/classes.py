@@ -9,8 +9,6 @@ is permitted, for more information consult the project license file.
 
 from pydantic import BaseModel as Pydantic
 
-from .types import DictStrAny
-
 
 
 class BaseModel(Pydantic, extra='forbid'):
@@ -19,33 +17,6 @@ class BaseModel(Pydantic, extra='forbid'):
 
     :param data: Keyword arguments passed to Pydantic model.
     """
-
-
-    @property
-    def endumped(
-        self,
-    ) -> DictStrAny:
-        """
-        Return the facts about the attributes from the instance.
-
-        :returns: Facts about the attributes from the instance.
-        """
-
-        return self.model_dump()
-
-
-    @property
-    def enpruned(
-        self,
-    ) -> DictStrAny:
-        """
-        Return the facts about the attributes from the instance.
-
-        :returns: Facts about the attributes from the instance.
-        """
-
-        return self.model_dump(
-            exclude_none=True)
 
 
 

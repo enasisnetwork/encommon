@@ -7,6 +7,7 @@ is permitted, for more information consult the project license file.
 
 
 
+from .diff import prep_diff
 from .files import append_text
 from .files import read_text
 from .files import save_text
@@ -15,6 +16,7 @@ from .match import rgxp_match
 from .paths import resolve_path
 from .paths import resolve_paths
 from .paths import stats_path
+from .raises import Unexpected
 from .sample import load_sample
 from .sample import prep_sample
 from .sample import read_sample
@@ -34,6 +36,7 @@ __all__ = [
     'kvpair_ansi',
     'load_sample',
     'make_ansi',
+    'prep_diff',
     'prep_sample',
     'print_ansi',
     'read_sample',
@@ -44,4 +47,5 @@ __all__ = [
     'rgxp_match',
     'save_text',
     'stats_path',
-    'strip_ansi']
+    'strip_ansi',
+    'Unexpected']

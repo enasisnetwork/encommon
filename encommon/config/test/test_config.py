@@ -12,12 +12,12 @@ from typing import TYPE_CHECKING
 
 from . import SAMPLES
 from ... import PROJECT
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
-from ...utils import load_sample
-from ...utils import prep_sample
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 from ...utils.sample import ENPYRWS
+from ...utils.sample import load_sample
+from ...utils.sample import prep_sample
 
 if TYPE_CHECKING:
     from ..config import Config
@@ -39,7 +39,7 @@ def test_Config(  # noqa: CFQ001
     attrs = lattrs(config)
 
     assert attrs == [
-        '_Config__model',
+        '_Config__valid',
         '_Config__files',
         '_Config__cargs',
         '_Config__sargs',
@@ -74,7 +74,7 @@ def test_Config(  # noqa: CFQ001
 
     assert len(config.merge) == 5
 
-    assert callable(config.model)
+    assert callable(config.valid)
 
     assert config.params
 

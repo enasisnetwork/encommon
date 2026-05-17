@@ -10,7 +10,7 @@ is permitted, for more information consult the project license file.
 from pytest import mark
 
 from ..color import Color
-from ...types import lattrs
+from ...types.classes import lattrs
 
 
 

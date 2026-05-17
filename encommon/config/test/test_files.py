@@ -14,9 +14,9 @@ from pytest import fixture
 from . import SAMPLES
 from ..files import ConfigFile
 from ..files import ConfigFiles
-from ...types import inrepr
-from ...types import instr
-from ...types import lattrs
+from ...types.classes import lattrs
+from ...types.strings import inrepr
+from ...types.strings import instr
 
 
 
