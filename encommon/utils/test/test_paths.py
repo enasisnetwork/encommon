@@ -76,6 +76,7 @@ def test_stats_path() -> None:
     assert list(stats) == [
         '/utils/__init__.py',
         '/utils/common.py',
+        '/utils/diff.py',
         '/utils/files.py',
         '/utils/match.py',
         '/utils/paths.py',
@@ -83,6 +84,7 @@ def test_stats_path() -> None:
         '/utils/sample.py',
         '/utils/stdout.py',
         '/utils/test/__init__.py',
+        '/utils/test/test_diff.py',
         '/utils/test/test_files.py',
         '/utils/test/test_match.py',
         '/utils/test/test_paths.py',
