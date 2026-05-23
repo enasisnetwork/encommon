@@ -11,12 +11,6 @@
 
 !/.github
 !/.yamllint
-!/sphinx/
-/sphinx/*
-!/sphinx/conf.py
-!/sphinx/index.rst
-!/sphinx/icon.png
-!/sphinx/style.css
 !/LICENSE
 !/Makefile
 !/MANIFEST.in
@@ -29,6 +23,15 @@
 !/require/package.txt
 !/setup.cfg
 !/stubs
+
+!/sphinx/
+/sphinx/*
+!/sphinx/conf.py
+!/sphinx/index.rst
+!/sphinx/_static
+/sphinx/_static/*
+!/sphinx/_static/icon.png
+!/sphinx/_static/style.css
 
 
 

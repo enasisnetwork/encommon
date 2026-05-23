@@ -94,7 +94,13 @@ jobs:
       - name: Build documentation
         id: sphinx
         working-directory: main
-        run: make -s sphinx
+        run: |
+
+          make -s sphinx
+
+          rsync -ltr --delete \
+            sphinx/html/ \
+            ../static/sphinx/
 
 
       # Construct additional content
@@ -267,16 +273,22 @@ jobs:
           mkdir -p static/webkit/images
           mkdir -p static/webkit/scripts
           mkdir -p static/webkit/styles
-          cp main/encommon/webkit/images/*.svg \
+
+          cp \
+            main/encommon/webkit/images/*.svg \
             static/webkit/images/
-          cp main/encommon/webkit/scripts/*.js \
+
+          cp \
+            main/encommon/webkit/scripts/*.js \
             static/webkit/scripts/
-          cp main/encommon/webkit/styles/*.css \
+
+          cp \
+            main/encommon/webkit/styles/*.css \
             static/webkit/styles/
 
-          rm -rf static/sphinx
-          mkdir static/sphinx
-          cp -r main/sphinx/html/* static/sphinx/
+          cp \
+            main/encommon/webkit/index.html \
+            static/webkit/
 
           cd static
           git add badges
