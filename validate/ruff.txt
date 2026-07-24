@@ -1,5 +1,6592 @@
 >>> make ruff
   ● Executing ruff in encommon..
-    DONE
-  ● Executing ruff in sphinx..
-    DONE
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/__init__.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from sys import flags
+   | |_____________________^
+   |
+help: Organize imports
+   |
+12 |
+   -
+   -
+13 | PROJECT = Path(__file__).parent
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/colors/__init__.py:10:1
+   |
+10 | from .color import Color
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+11 |
+   -
+   -
+12 | __all__ = ['Color']
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/colors/color.py:10:1
+   |
+10 | / from colorsys import hls_to_rgb
+11 | | from contextlib import suppress
+12 | | from typing import Union
+13 | |
+14 | | from ..types.strings import strplwr
+   | |___________________________________^
+   |
+help: Organize imports
+   |
+16 |
+   -
+17 | class Color:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `E741`)
+  --> encommon/colors/color.py:76:22
+   |
+74 |         """
+75 |
+76 |         h, s, l = (  # noqa: E741
+   |                      ^^^^^^^^^^^^
+77 |             hue / 360,
+78 |             sat / 100,
+   |
+help: Remove unused `noqa` directive
+   |
+75 |
+   -         h, s, l = (  # noqa: E741
+76 +         h, s, l = (
+77 |             hue / 360,
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/colors/test/test_color.py:10:1
+   |
+10 | / from pytest import mark
+11 | |
+12 | | from ..color import Color
+13 | | from ...types.classes import lattrs
+   | |___________________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from ..color import Color
+12 | from ...types.classes import lattrs
+   -
+13 + from ..color import Color
+14 |
+   |
+
+RUF100 [*] Unused blanket `noqa` directive
+  --> encommon/colors/test/test_color.py:48:26
+   |
+46 |     assert color == '000001'
+47 |     assert color != '000000'
+48 |     assert color != int  # noqa
+   |                          ^^^^^^
+49 |
+50 |     assert color > 0
+   |
+help: Remove unused `noqa` directive
+   |
+47 |     assert color != '000000'
+   -     assert color != int  # noqa
+48 +     assert color != int
+49 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/__init__.py:10:1
+   |
+10 | / from .config import Config
+11 | | from .files import ConfigFile
+12 | | from .files import ConfigFiles
+13 | | from .logger import Logger
+14 | | from .logger import Message
+15 | | from .params import ConfigParams
+16 | | from .params import LoggerParams
+17 | | from .params import Params
+18 | | from .paths import ConfigPath
+19 | | from .paths import ConfigPaths
+20 | | from .utils import config_load
+21 | | from .utils import config_path
+22 | | from .utils import config_paths
+   | |_______________________________^
+   |
+help: Organize imports
+   |
+10 | from .config import Config
+   - from .files import ConfigFile
+   - from .files import ConfigFiles
+   - from .logger import Logger
+   - from .logger import Message
+   - from .params import ConfigParams
+   - from .params import LoggerParams
+   - from .params import Params
+   - from .paths import ConfigPath
+   - from .paths import ConfigPaths
+   - from .utils import config_load
+   - from .utils import config_path
+   - from .utils import config_paths
+   -
+   -
+11 + from .files import ConfigFile, ConfigFiles
+12 + from .logger import Logger, Message
+13 + from .params import ConfigParams, LoggerParams, Params
+14 + from .paths import ConfigPath, ConfigPaths
+15 + from .utils import config_load, config_path, config_paths
+16 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/config.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from typing import Callable
+12 | | from typing import Optional
+13 | | from typing import TYPE_CHECKING
+14 | |
+15 | | from .files import ConfigFiles
+16 | | from .logger import Logger
+17 | | from .params import Params
+18 | | from .paths import ConfigPaths
+19 | | from .utils import config_paths
+20 | | from ..crypts.crypts import Crypts
+21 | | from ..parse.jinja2 import Jinja2
+22 | | from ..types.dicts import merge_dicts
+23 | | from ..types.dicts import sort_dict
+24 | | from ..types.notate import setate
+25 | | from ..types.types import DictStrAny
+   | |____________________________________^
+26 |
+27 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+10 | from copy import deepcopy
+   - from typing import Callable
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+11 + from typing import TYPE_CHECKING, Callable, Optional
+12 |
+13 + from ..crypts.crypts import Crypts
+14 + from ..parse.jinja2 import Jinja2
+15 + from ..types.dicts import merge_dicts, sort_dict
+16 + from ..types.notate import setate
+17 + from ..types.types import DictStrAny
+18 | from .files import ConfigFiles
+--------------------------------------------------------------------------------
+22 | from .utils import config_paths
+   - from ..crypts.crypts import Crypts
+   - from ..parse.jinja2 import Jinja2
+   - from ..types.dicts import merge_dicts
+   - from ..types.dicts import sort_dict
+   - from ..types.notate import setate
+   - from ..types.types import DictStrAny
+23 |
+   |
+
+UP035 [*] Import from `collections.abc` instead: `Callable`
+  --> encommon/config/config.py:11:1
+   |
+10 | from copy import deepcopy
+11 | from typing import Callable
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+12 | from typing import Optional
+13 | from typing import TYPE_CHECKING
+   |
+help: Import from `collections.abc`
+   |
+10 | from copy import deepcopy
+   - from typing import Callable
+11 + from collections.abc import Callable
+12 | from typing import Optional
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/config.py:65:15
+   |
+63 |     __valid: Callable  # type: ignore
+64 |
+65 |     __params: Optional[Params]
+   |               ^^^^^^^^^^^^^^^^
+66 |     __logger: Optional[Logger]
+67 |     __crypts: Optional[Crypts]
+   |
+help: Convert to `X | None`
+   |
+64 |
+   -     __params: Optional[Params]
+65 +     __params: Params | None
+66 |     __logger: Optional[Logger]
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/config.py:66:15
+   |
+65 |     __params: Optional[Params]
+66 |     __logger: Optional[Logger]
+   |               ^^^^^^^^^^^^^^^^
+67 |     __crypts: Optional[Crypts]
+68 |     __jinja2: Jinja2
+   |
+help: Convert to `X | None`
+   |
+65 |     __params: Optional[Params]
+   -     __logger: Optional[Logger]
+66 +     __logger: Logger | None
+67 |     __crypts: Optional[Crypts]
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/config.py:67:15
+   |
+65 |     __params: Optional[Params]
+66 |     __logger: Optional[Logger]
+67 |     __crypts: Optional[Crypts]
+   |               ^^^^^^^^^^^^^^^^
+68 |     __jinja2: Jinja2
+   |
+help: Convert to `X | None`
+   |
+66 |     __logger: Optional[Logger]
+   -     __crypts: Optional[Crypts]
+67 +     __crypts: Crypts | None
+68 |     __jinja2: Jinja2
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/config.py:76:16
+   |
+74 |         *,
+75 |         paths: Optional['PATHABLE'] = None,
+76 |         cargs: Optional[DictStrAny] = None,
+   |                ^^^^^^^^^^^^^^^^^^^^
+77 |         sargs: Optional[DictStrAny] = None,
+78 |         valid: Optional[Callable] = None,  # type: ignore
+   |
+help: Convert to `X | None`
+   |
+75 |         paths: Optional['PATHABLE'] = None,
+   -         cargs: Optional[DictStrAny] = None,
+76 +         cargs: DictStrAny | None = None,
+77 |         sargs: Optional[DictStrAny] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/config.py:77:16
+   |
+75 |         paths: Optional['PATHABLE'] = None,
+76 |         cargs: Optional[DictStrAny] = None,
+77 |         sargs: Optional[DictStrAny] = None,
+   |                ^^^^^^^^^^^^^^^^^^^^
+78 |         valid: Optional[Callable] = None,  # type: ignore
+79 |     ) -> None:
+   |
+help: Convert to `X | None`
+   |
+76 |         cargs: Optional[DictStrAny] = None,
+   -         sargs: Optional[DictStrAny] = None,
+77 +         sargs: DictStrAny | None = None,
+78 |         valid: Optional[Callable] = None,  # type: ignore
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/config.py:78:16
+   |
+76 |         cargs: Optional[DictStrAny] = None,
+77 |         sargs: Optional[DictStrAny] = None,
+78 |         valid: Optional[Callable] = None,  # type: ignore
+   |                ^^^^^^^^^^^^^^^^^^
+79 |     ) -> None:
+80 |         """
+   |
+help: Convert to `X | None`
+   |
+77 |         sargs: Optional[DictStrAny] = None,
+   -         valid: Optional[Callable] = None,  # type: ignore
+78 +         valid: Callable | None = None,  # type: ignore
+79 |     ) -> None:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/files.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from pathlib import Path
+12 | | from typing import Optional
+13 | | from typing import TYPE_CHECKING
+14 | |
+15 | | from .utils import config_load
+16 | | from .utils import config_path
+17 | | from .utils import config_paths
+18 | | from ..types.dicts import merge_dicts
+19 | | from ..types.dicts import sort_dict
+20 | | from ..types.types import DictStrAny
+   | |____________________________________^
+21 |
+22 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 | from pathlib import Path
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+12 + from typing import TYPE_CHECKING, Optional
+13 |
+   - from .utils import config_load
+   - from .utils import config_path
+   - from .utils import config_paths
+   - from ..types.dicts import merge_dicts
+   - from ..types.dicts import sort_dict
+14 + from ..types.dicts import merge_dicts, sort_dict
+15 | from ..types.types import DictStrAny
+16 + from .utils import config_load, config_path, config_paths
+17 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/files.py:65:14
+   |
+63 |     config: dict[str, ConfigFile]
+64 |
+65 |     __merge: Optional[DictStrAny]
+   |              ^^^^^^^^^^^^^^^^^^^^
+   |
+help: Convert to `X | None`
+   |
+64 |
+   -     __merge: Optional[DictStrAny]
+65 +     __merge: DictStrAny | None
+66 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/logger.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from json import dumps
+12 | | from logging import CRITICAL
+13 | | from logging import DEBUG
+14 | | from logging import ERROR
+15 | | from logging import FileHandler
+16 | | from logging import Formatter
+17 | | from logging import INFO
+18 | | from logging import Logger as _Logger
+19 | | from logging import NOTSET
+20 | | from logging import NullHandler
+21 | | from logging import StreamHandler
+22 | | from logging import WARNING
+23 | | from logging import getLogger
+24 | | from pathlib import Path
+25 | | from typing import Any
+26 | | from typing import Literal
+27 | | from typing import Optional
+28 | | from typing import TYPE_CHECKING
+29 | |
+30 | | from .utils import config_path
+31 | | from ..times.time import Time
+32 | | from ..types.empty import Empty
+33 | | from ..types.strings import COMMAD
+34 | | from ..types.strings import COMMAS
+35 | | from ..types.strings import SPACED
+36 | | from ..utils.common import JOINABLE
+37 | | from ..utils.stdout import kvpair_ansi
+   | |______________________________________^
+38 |
+39 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 | from json import dumps
+   - from logging import CRITICAL
+   - from logging import DEBUG
+   - from logging import ERROR
+   - from logging import FileHandler
+   - from logging import Formatter
+   - from logging import INFO
+12 + from logging import (
+13 +     CRITICAL,
+14 +     DEBUG,
+15 +     ERROR,
+16 +     INFO,
+17 +     NOTSET,
+18 +     WARNING,
+19 +     FileHandler,
+20 +     Formatter,
+21 +     NullHandler,
+22 +     StreamHandler,
+23 +     getLogger,
+24 + )
+25 | from logging import Logger as _Logger
+   - from logging import NOTSET
+   - from logging import NullHandler
+   - from logging import StreamHandler
+   - from logging import WARNING
+   - from logging import getLogger
+26 | from pathlib import Path
+   - from typing import Any
+   - from typing import Literal
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+27 + from typing import TYPE_CHECKING, Any, Literal, Optional
+28 |
+   - from .utils import config_path
+29 | from ..times.time import Time
+30 | from ..types.empty import Empty
+   - from ..types.strings import COMMAD
+   - from ..types.strings import COMMAS
+   - from ..types.strings import SPACED
+31 + from ..types.strings import COMMAD, COMMAS, SPACED
+32 | from ..utils.common import JOINABLE
+33 | from ..utils.stdout import kvpair_ansi
+34 + from .utils import config_path
+35 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/logger.py:40:5
+   |
+39 |   if TYPE_CHECKING:
+40 | /     from .params import LoggerParams
+41 | |     from ..times.common import PARSABLE
+   | |_______________________________________^
+   |
+help: Organize imports
+   |
+39 | if TYPE_CHECKING:
+40 +     from ..times.common import PARSABLE
+41 |     from .params import LoggerParams
+   -     from ..times.common import PARSABLE
+42 |
+   |
+
+RUF012 Mutable default value for class attribute
+  --> encommon/config/logger.py:87:32
+   |
+85 |     __level: LOGLEVELS
+86 |     __time: Time
+87 |     __fields: dict[str, str] = {}
+   |                                ^^
+   |
+help: Consider initializing in `__init__` or annotating with `typing.ClassVar`
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/config/logger.py:282:19
+    |
+280 |     def formatException(
+281 |         self,
+282 |         ei: Any,  # noqa: ANN401
+    |                   ^^^^^^^^^^^^^^
+283 |     ) -> str:
+284 |         """
+    |
+help: Remove unused `noqa` directive
+    |
+281 |         self,
+    -         ei: Any,  # noqa: ANN401
+282 +         ei: Any,
+283 |     ) -> str:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:337:19
+    |
+335 |     __params: 'LoggerParams'
+336 |
+337 |     __stdo_level: Optional[LOGLEVELS]
+    |                   ^^^^^^^^^^^^^^^^^^^
+338 |     __file_level: Optional[LOGLEVELS]
+339 |     __file_path: Optional[Path]
+    |
+help: Convert to `X | None`
+    |
+336 |
+    -     __stdo_level: Optional[LOGLEVELS]
+337 +     __stdo_level: LOGLEVELS | None
+338 |     __file_level: Optional[LOGLEVELS]
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:338:19
+    |
+337 |     __stdo_level: Optional[LOGLEVELS]
+338 |     __file_level: Optional[LOGLEVELS]
+    |                   ^^^^^^^^^^^^^^^^^^^
+339 |     __file_path: Optional[Path]
+    |
+help: Convert to `X | None`
+    |
+337 |     __stdo_level: Optional[LOGLEVELS]
+    -     __file_level: Optional[LOGLEVELS]
+338 +     __file_level: LOGLEVELS | None
+339 |     __file_path: Optional[Path]
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:339:18
+    |
+337 |     __stdo_level: Optional[LOGLEVELS]
+338 |     __file_level: Optional[LOGLEVELS]
+339 |     __file_path: Optional[Path]
+    |                  ^^^^^^^^^^^^^^
+340 |
+341 |     __started: bool
+    |
+help: Convert to `X | None`
+    |
+338 |     __file_level: Optional[LOGLEVELS]
+    -     __file_path: Optional[Path]
+339 +     __file_path: Path | None
+340 |
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:351:21
+    |
+349 |         params: Optional['LoggerParams'] = None,
+350 |         *,
+351 |         stdo_level: Optional[LOGLEVELS] = None,
+    |                     ^^^^^^^^^^^^^^^^^^^
+352 |         file_level: Optional[LOGLEVELS] = None,
+353 |         file_path: Optional[str | Path] = None,
+    |
+help: Convert to `X | None`
+    |
+350 |         *,
+    -         stdo_level: Optional[LOGLEVELS] = None,
+351 +         stdo_level: LOGLEVELS | None = None,
+352 |         file_level: Optional[LOGLEVELS] = None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:352:21
+    |
+350 |         *,
+351 |         stdo_level: Optional[LOGLEVELS] = None,
+352 |         file_level: Optional[LOGLEVELS] = None,
+    |                     ^^^^^^^^^^^^^^^^^^^
+353 |         file_path: Optional[str | Path] = None,
+354 |     ) -> None:
+    |
+help: Convert to `X | None`
+    |
+351 |         stdo_level: Optional[LOGLEVELS] = None,
+    -         file_level: Optional[LOGLEVELS] = None,
+352 +         file_level: LOGLEVELS | None = None,
+353 |         file_path: Optional[str | Path] = None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:353:20
+    |
+351 |         stdo_level: Optional[LOGLEVELS] = None,
+352 |         file_level: Optional[LOGLEVELS] = None,
+353 |         file_path: Optional[str | Path] = None,
+    |                    ^^^^^^^^^^^^^^^^^^^^
+354 |     ) -> None:
+355 |         """
+    |
+help: Convert to `X | None`
+    |
+352 |         file_level: Optional[LOGLEVELS] = None,
+    -         file_path: Optional[str | Path] = None,
+353 +         file_path: str | Path | None = None,
+354 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:405:10
+    |
+403 |     def stdo_level(
+404 |         self,
+405 |     ) -> Optional[LOGLEVELS]:
+    |          ^^^^^^^^^^^^^^^^^^^
+406 |         """
+407 |         Return the value for the attribute from class instance.
+    |
+help: Convert to `X | None`
+    |
+404 |         self,
+    -     ) -> Optional[LOGLEVELS]:
+405 +     ) -> LOGLEVELS | None:
+406 |         """
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:418:10
+    |
+416 |     def file_level(
+417 |         self,
+418 |     ) -> Optional[LOGLEVELS]:
+    |          ^^^^^^^^^^^^^^^^^^^
+419 |         """
+420 |         Return the value for the attribute from class instance.
+    |
+help: Convert to `X | None`
+    |
+417 |         self,
+    -     ) -> Optional[LOGLEVELS]:
+418 +     ) -> LOGLEVELS | None:
+419 |         """
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:431:10
+    |
+429 |     def file_path(
+430 |         self,
+431 |     ) -> Optional[Path]:
+    |          ^^^^^^^^^^^^^^
+432 |         """
+433 |         Return the value for the attribute from class instance.
+    |
+help: Convert to `X | None`
+    |
+430 |         self,
+    -     ) -> Optional[Path]:
+431 +     ) -> Path | None:
+432 |         """
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/config/logger.py:557:19
+    |
+555 |         level: Literal[LOGLEVELS],
+556 |         *,
+557 |         exc_info: Optional[Exception] = None,
+    |                   ^^^^^^^^^^^^^^^^^^^
+558 |         **kwargs: Any,
+559 |     ) -> None:
+    |
+help: Convert to `X | None`
+    |
+556 |         *,
+    -         exc_info: Optional[Exception] = None,
+557 +         exc_info: Exception | None = None,
+558 |         **kwargs: Any,
+    |
+
+RET501 [*] Do not explicitly `return None` in function if it is the only possible return value
+   --> encommon/config/logger.py:582:13
+    |
+580 |                 and stdo_level != 'debug'
+581 |                 and file_level != 'debug'):
+582 |             return None
+    |             ^^^^^^^^^^^
+583 |
+584 |         message = Message(level, **kwargs)
+    |
+help: Remove explicit `return None`
+    |
+581 |                 and file_level != 'debug'):
+    -             return None
+582 +             return
+583 |
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/params.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from typing import Annotated
+12 | | from typing import Any
+13 | | from typing import Optional
+14 | |
+15 | | from pydantic import Field
+16 | |
+17 | | from .logger import LOGLEVELS
+18 | | from ..crypts.params import CryptsParams
+19 | | from ..types.classes import BaseModel
+   | |_____________________________________^
+   |
+help: Organize imports
+   |
+10 | from pathlib import Path
+   - from typing import Annotated
+   - from typing import Any
+   - from typing import Optional
+11 + from typing import Annotated, Any, Optional
+12 |
+13 | from pydantic import Field
+14 |
+   - from .logger import LOGLEVELS
+15 | from ..crypts.params import CryptsParams
+16 | from ..types.classes import BaseModel
+   -
+17 + from .logger import LOGLEVELS
+18 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:29:9
+   |
+28 |     paths: Annotated[
+29 |         Optional[list[str]],
+   |         ^^^^^^^^^^^^^^^^^^^
+30 |         Field(None,
+31 |               description='Location of configuration files',
+   |
+help: Convert to `X | None`
+   |
+28 |     paths: Annotated[
+   -         Optional[list[str]],
+29 +         list[str] | None,
+30 |         Field(None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:42:9
+   |
+41 |     stdo_level: Annotated[
+42 |         Optional[LOGLEVELS],
+   |         ^^^^^^^^^^^^^^^^^^^
+43 |         Field(None,
+44 |               description='Minimum logging message level',
+   |
+help: Convert to `X | None`
+   |
+41 |     stdo_level: Annotated[
+   -         Optional[LOGLEVELS],
+42 +         LOGLEVELS | None,
+43 |         Field(None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:48:9
+   |
+47 |     file_level: Annotated[
+48 |         Optional[LOGLEVELS],
+   |         ^^^^^^^^^^^^^^^^^^^
+49 |         Field(None,
+50 |               description='Minimum logging message level',
+   |
+help: Convert to `X | None`
+   |
+47 |     file_level: Annotated[
+   -         Optional[LOGLEVELS],
+48 +         LOGLEVELS | None,
+49 |         Field(None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:54:9
+   |
+53 |     file_path: Annotated[
+54 |         Optional[str],
+   |         ^^^^^^^^^^^^^
+55 |         Field(None,
+56 |               description='Enable output to the log file',
+   |
+help: Convert to `X | None`
+   |
+53 |     file_path: Annotated[
+   -         Optional[str],
+54 +         str | None,
+55 |         Field(None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:84:9
+   |
+83 |     enconfig: Annotated[
+84 |         Optional[ConfigParams],
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+85 |         Field(None,
+86 |               description='Parameters for Config instance')]
+   |
+help: Convert to `X | None`
+   |
+83 |     enconfig: Annotated[
+   -         Optional[ConfigParams],
+84 +         ConfigParams | None,
+85 |         Field(None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:89:9
+   |
+88 |     enlogger: Annotated[
+89 |         Optional[LoggerParams],
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+90 |         Field(None,
+91 |               description='Parameters for Logger instance')]
+   |
+help: Convert to `X | None`
+   |
+88 |     enlogger: Annotated[
+   -         Optional[LoggerParams],
+89 +         LoggerParams | None,
+90 |         Field(None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/params.py:94:9
+   |
+93 |     encrypts: Annotated[
+94 |         Optional[CryptsParams],
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+95 |         Field(None,
+96 |               description='Parameters for Crypts instance')]
+   |
+help: Convert to `X | None`
+   |
+93 |     encrypts: Annotated[
+   -         Optional[CryptsParams],
+94 +         CryptsParams | None,
+95 |         Field(None,
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/paths.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from glob import glob
+12 | | from pathlib import Path
+13 | | from typing import Optional
+14 | | from typing import TYPE_CHECKING
+15 | |
+16 | | from .files import ConfigFile
+17 | | from .utils import config_path
+18 | | from .utils import config_paths
+19 | | from ..types.dicts import sort_dict
+20 | | from ..types.types import DictStrAny
+   | |____________________________________^
+21 |
+22 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 | from pathlib import Path
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+13 + from typing import TYPE_CHECKING, Optional
+14 |
+   - from .files import ConfigFile
+   - from .utils import config_path
+   - from .utils import config_paths
+15 | from ..types.dicts import sort_dict
+16 | from ..types.types import DictStrAny
+17 + from .files import ConfigFile
+18 + from .utils import config_path, config_paths
+19 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/config/paths.py:73:14
+   |
+71 |     config: dict[str, ConfigPath]
+72 |
+73 |     __merge: Optional[DictStrAny]
+   |              ^^^^^^^^^^^^^^^^^^^^
+   |
+help: Convert to `X | None`
+   |
+72 |
+   -     __merge: Optional[DictStrAny]
+73 +     __merge: DictStrAny | None
+74 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/test/__init__.py:10:1
+   |
+10 | from pathlib import Path
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+11 |
+   -
+   -
+12 | SAMPLES = (
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/test/test_config.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from typing import TYPE_CHECKING
+12 | |
+13 | | from . import SAMPLES
+14 | | from ... import PROJECT
+15 | | from ...types.classes import lattrs
+16 | | from ...types.strings import inrepr
+17 | | from ...types.strings import instr
+18 | | from ...utils.sample import ENPYRWS
+19 | | from ...utils.sample import load_sample
+20 | | from ...utils.sample import prep_sample
+   | |_______________________________________^
+21 |
+22 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 |
+   - from . import SAMPLES
+13 | from ... import PROJECT
+14 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   - from ...utils.sample import ENPYRWS
+   - from ...utils.sample import load_sample
+   - from ...utils.sample import prep_sample
+15 + from ...types.strings import inrepr, instr
+16 + from ...utils.sample import ENPYRWS, load_sample, prep_sample
+17 + from . import SAMPLES
+18 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/test/test_files.py:10:1
+   |
+10 | / from pathlib import Path
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from . import SAMPLES
+15 | | from ..files import ConfigFile
+16 | | from ..files import ConfigFiles
+17 | | from ...types.classes import lattrs
+18 | | from ...types.strings import inrepr
+19 | | from ...types.strings import instr
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+13 |
+   - from . import SAMPLES
+   - from ..files import ConfigFile
+   - from ..files import ConfigFiles
+14 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   -
+15 + from ...types.strings import inrepr, instr
+16 + from ..files import ConfigFile, ConfigFiles
+17 + from . import SAMPLES
+18 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/test/test_logger.py:10:1
+   |
+10 | / from pathlib import Path
+11 | |
+12 | | from _pytest.logging import LogCaptureFixture
+13 | |
+14 | | from pytest import fixture
+15 | |
+16 | | from ..logger import Logger
+17 | | from ..logger import Message
+18 | | from ..params import LoggerParams
+19 | | from ...times.common import UNIXMPOCH
+20 | | from ...times.common import UNIXSPOCH
+21 | | from ...times.time import Time
+22 | | from ...types.classes import lattrs
+23 | | from ...types.strings import inrepr
+24 | | from ...types.strings import instr
+25 | | from ...utils.stdout import strip_ansi
+   | |______________________________________^
+   |
+help: Organize imports
+   |
+12 | from _pytest.logging import LogCaptureFixture
+   -
+13 | from pytest import fixture
+14 |
+   - from ..logger import Logger
+   - from ..logger import Message
+   - from ..params import LoggerParams
+   - from ...times.common import UNIXMPOCH
+   - from ...times.common import UNIXSPOCH
+15 + from ...times.common import UNIXMPOCH, UNIXSPOCH
+16 | from ...times.time import Time
+17 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+18 + from ...types.strings import inrepr, instr
+19 | from ...utils.stdout import strip_ansi
+   -
+   -
+20 + from ..logger import Logger, Message
+21 + from ..params import LoggerParams
+22 |
+   |
+
+B010 [*] Do not call `setattr` with a constant attribute value. It is not any safer than normal property access.
+   --> encommon/config/test/test_logger.py:208:5
+    |
+206 |       # Test preventing debug from
+207 |       # any needless instantiation
+208 | /     setattr(
+209 | |         logger,
+210 | |         '_Logger__file_level',
+211 | |         'info')
+    | |_______________^
+212 |
+213 |       # Test preventing debug from
+    |
+help: Replace `setattr` with assignment
+    |
+207 |     # any needless instantiation
+    -     setattr(
+    -         logger,
+    -         '_Logger__file_level',
+    -         'info')
+208 +     logger._Logger__file_level = 'info'
+209 |
+    |
+
+B010 [*] Do not call `setattr` with a constant attribute value. It is not any safer than normal property access.
+   --> encommon/config/test/test_logger.py:215:5
+    |
+213 |       # Test preventing debug from
+214 |       # any needless instantiation
+215 | /     setattr(
+216 | |         logger,
+217 | |         '_Logger__stdo_level',
+218 | |         'info')
+    | |_______________^
+    |
+help: Replace `setattr` with assignment
+    |
+214 |     # any needless instantiation
+    -     setattr(
+    -         logger,
+    -         '_Logger__stdo_level',
+    -         'info')
+215 +     logger._Logger__stdo_level = 'info'
+216 |
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/test/test_paths.py:10:1
+   |
+10 | / from pathlib import Path
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from . import SAMPLES
+15 | | from ..paths import ConfigPath
+16 | | from ..paths import ConfigPaths
+17 | | from ... import PROJECT
+18 | | from ...types.classes import lattrs
+19 | | from ...types.strings import inrepr
+20 | | from ...types.strings import instr
+21 | | from ...utils.sample import ENPYRWS
+22 | | from ...utils.sample import load_sample
+23 | | from ...utils.sample import prep_sample
+   | |_______________________________________^
+   |
+help: Organize imports
+   |
+13 |
+   - from . import SAMPLES
+   - from ..paths import ConfigPath
+   - from ..paths import ConfigPaths
+14 | from ... import PROJECT
+15 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   - from ...utils.sample import ENPYRWS
+   - from ...utils.sample import load_sample
+   - from ...utils.sample import prep_sample
+   -
+16 + from ...types.strings import inrepr, instr
+17 + from ...utils.sample import ENPYRWS, load_sample, prep_sample
+18 + from ..paths import ConfigPath, ConfigPaths
+19 + from . import SAMPLES
+20 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/test/test_utils.py:10:1
+   |
+10 | / from ..utils import config_load
+11 | | from ..utils import config_path
+12 | | from ..utils import config_paths
+13 | | from ... import PROJECT
+14 | | from ... import WORKSPACE
+   | |_________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..utils import config_load
+   - from ..utils import config_path
+   - from ..utils import config_paths
+   - from ... import PROJECT
+   - from ... import WORKSPACE
+   -
+10 + from ... import PROJECT, WORKSPACE
+11 + from ..utils import config_load, config_path, config_paths
+12 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/config/utils.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from typing import TYPE_CHECKING
+12 | |
+13 | | from yaml import SafeLoader
+14 | | from yaml import load
+15 | |
+16 | | from .. import PROJECT
+17 | | from .. import WORKSPACE
+18 | | from ..types.types import DictStrAny
+19 | | from ..utils.files import read_text
+20 | | from ..utils.paths import resolve_path
+21 | | from ..utils.paths import resolve_paths
+   | |_______________________________________^
+22 |
+23 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 |
+   - from yaml import SafeLoader
+   - from yaml import load
+13 + from yaml import SafeLoader, load
+14 |
+   - from .. import PROJECT
+   - from .. import WORKSPACE
+15 + from .. import PROJECT, WORKSPACE
+16 | from ..types.types import DictStrAny
+17 | from ..utils.files import read_text
+   - from ..utils.paths import resolve_path
+   - from ..utils.paths import resolve_paths
+18 + from ..utils.paths import resolve_path, resolve_paths
+19 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/conftest.py:10:1
+   |
+10 | / from pathlib import Path
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from .config.config import Config
+15 | | from .config.test import SAMPLES
+16 | | from .utils.files import save_text
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+18 |
+   -
+19 | def config_factory(
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/__init__.py:10:1
+   |
+10 | / from .crypts import Crypts
+11 | | from .hashes import Hashes
+12 | | from .params import CryptsParams
+   | |________________________________^
+   |
+help: Organize imports
+   |
+13 |
+   -
+   -
+14 | __all__ = [
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/crypts.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from re import compile
+12 | | from re import match as re_match
+13 | | from re import sub as re_sub
+14 | | from typing import Optional
+15 | | from typing import TYPE_CHECKING
+16 | |
+17 | | from cryptography.fernet import Fernet
+18 | |
+19 | | from ..types.strings import SEMPTY
+   | |__________________________________^
+20 |
+21 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+13 | from re import sub as re_sub
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+14 + from typing import TYPE_CHECKING, Optional
+15 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/crypts.py:22:5
+   |
+21 |   if TYPE_CHECKING:
+22 | /     from .params import CryptParams
+23 | |     from .params import CryptsParams
+   | |____________________________________^
+   |
+help: Organize imports
+   |
+21 | if TYPE_CHECKING:
+   -     from .params import CryptParams
+   -     from .params import CryptsParams
+22 +     from .params import CryptParams, CryptsParams
+23 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/crypts.py:65:9
+   |
+63 |           """
+64 |
+65 | /         from .params import (
+66 | |             CryptsParams)
+   | |_________________________^
+67 |
+68 |           if params is None:
+   |
+help: Organize imports
+   |
+64 |
+   -         from .params import (
+   -             CryptsParams)
+65 +         from .params import CryptsParams
+66 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/hashes.py:10:1
+   |
+10 | / from base64 import b64encode
+11 | | from hashlib import md5
+12 | | from hashlib import sha1
+13 | | from hashlib import sha256
+14 | | from hashlib import sha512
+15 | | from uuid import NAMESPACE_DNS
+16 | | from uuid import uuid3
+   | |______________________^
+   |
+help: Organize imports
+   |
+10 | from base64 import b64encode
+   - from hashlib import md5
+   - from hashlib import sha1
+   - from hashlib import sha256
+   - from hashlib import sha512
+   - from uuid import NAMESPACE_DNS
+   - from uuid import uuid3
+   -
+11 + from hashlib import md5, sha1, sha256, sha512
+12 + from uuid import NAMESPACE_DNS, uuid3
+13 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/params.py:10:1
+   |
+10 | / from typing import Annotated
+11 | | from typing import Optional
+12 | |
+13 | | from pydantic import Field
+14 | |
+15 | | from ..types.classes import BaseModel
+   | |_____________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from typing import Annotated
+   - from typing import Optional
+10 + from typing import Annotated, Optional
+11 |
+12 | from pydantic import Field
+13 |
+14 | from ..types.classes import BaseModel
+   -
+   -
+15 |
+   |
+
+PIE804 [*] Unnecessary `dict` kwargs
+  --> encommon/crypts/params.py:43:26
+   |
+41 |           """
+42 |
+43 |           super().__init__(**{
+   |  __________________________^
+44 | |             'phrase': phrase})
+   | |_____________________________^
+   |
+help: Remove unnecessary kwargs
+   |
+42 |
+   -         super().__init__(**{
+   -             'phrase': phrase})
+43 +         super().__init__(phrase=phrase)
+44 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/crypts/params.py:62:18
+   |
+60 |     def __init__(
+61 |         self,
+62 |         phrases: Optional[_CRYPTS] = None,
+   |                  ^^^^^^^^^^^^^^^^^
+63 |     ) -> None:
+64 |         """
+   |
+help: Convert to `X | None`
+   |
+61 |         self,
+   -         phrases: Optional[_CRYPTS] = None,
+62 +         phrases: _CRYPTS | None = None,
+63 |     ) -> None:
+   |
+
+PIE804 [*] Unnecessary `dict` kwargs
+  --> encommon/crypts/params.py:70:26
+   |
+68 |           phrases = phrases or {}
+69 |
+70 |           super().__init__(**{
+   |  __________________________^
+71 | |             'phrases': phrases})
+   | |_______________________________^
+   |
+help: Remove unnecessary kwargs
+   |
+69 |
+   -         super().__init__(**{
+   -             'phrases': phrases})
+70 +         super().__init__(phrases=phrases)
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/test/test_crypts.py:10:1
+   |
+10 | / from pytest import fixture
+11 | | from pytest import mark
+12 | | from pytest import raises
+13 | |
+14 | | from ..crypts import Crypts
+15 | | from ..params import CryptParams
+16 | | from ..params import CryptsParams
+17 | | from ...types.classes import lattrs
+18 | | from ...types.strings import inrepr
+19 | | from ...types.strings import instr
+20 | | from ...types.types import DictStrAny
+   | |_____________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from pytest import fixture
+   - from pytest import mark
+   - from pytest import raises
+10 + from pytest import fixture, mark, raises
+11 |
+   - from ..crypts import Crypts
+   - from ..params import CryptParams
+   - from ..params import CryptsParams
+12 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+13 + from ...types.strings import inrepr, instr
+14 | from ...types.types import DictStrAny
+   -
+15 + from ..crypts import Crypts
+16 + from ..params import CryptParams, CryptsParams
+17 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/crypts/test/test_hashes.py:10:1
+   |
+10 | / from ..hashes import Hashes
+11 | | from ...types.classes import lattrs
+12 | | from ...types.strings import inrepr
+13 | | from ...types.strings import instr
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..hashes import Hashes
+10 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   -
+11 + from ...types.strings import inrepr, instr
+12 + from ..hashes import Hashes
+13 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/__init__.py:10:1
+   |
+10 | / from .jinja2 import Jinja2
+11 | | from .network import Network
+12 | | from .network import insubnet_ip
+13 | | from .network import isvalid_ip
+14 | | from .patterns import isvalid_uuid
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+10 | from .jinja2 import Jinja2
+   - from .network import Network
+   - from .network import insubnet_ip
+   - from .network import isvalid_ip
+11 + from .network import Network, insubnet_ip, isvalid_ip
+12 | from .patterns import isvalid_uuid
+   -
+13 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/jinja2.py:10:1
+   |
+10 | / from ast import literal_eval as leval
+11 | | from contextlib import suppress
+12 | | from copy import copy
+13 | | from copy import deepcopy
+14 | | from re import DOTALL
+15 | | from re import findall as re_findall
+16 | | from re import match as re_match
+17 | | from typing import Any
+18 | | from typing import Callable
+19 | | from typing import Optional
+20 | |
+21 | | from jinja2 import Environment
+22 | | from jinja2 import StrictUndefined
+23 | |
+24 | | from .network import Network
+25 | | from .network import insubnet_ip
+26 | | from .network import isvalid_ip
+27 | | from .. import PROJECT
+28 | | from .. import WORKSPACE
+29 | | from ..colors.color import Color
+30 | | from ..crypts.hashes import Hashes
+31 | | from ..times.duration import Duration
+32 | | from ..times.time import Time
+33 | | from ..times.unitime import unitime
+34 | | from ..types.dicts import merge_dicts
+35 | | from ..types.dicts import sort_dict
+36 | | from ..types.lists import dedup_list
+37 | | from ..types.lists import fuzzy_list
+38 | | from ..types.lists import inlist
+39 | | from ..types.strings import hasstr
+40 | | from ..types.strings import instr
+41 | | from ..types.strings import rplstr
+42 | | from ..types.strings import strplwr
+43 | | from ..types.types import DictStrAny
+44 | | from ..utils.match import fuzz_match
+45 | | from ..utils.match import rgxp_match
+   | |____________________________________^
+   |
+help: Organize imports
+   |
+11 | from contextlib import suppress
+   - from copy import copy
+   - from copy import deepcopy
+12 + from copy import copy, deepcopy
+13 | from re import DOTALL
+14 | from re import findall as re_findall
+15 | from re import match as re_match
+   - from typing import Any
+   - from typing import Callable
+   - from typing import Optional
+16 + from typing import Any, Callable, Optional
+17 |
+   - from jinja2 import Environment
+   - from jinja2 import StrictUndefined
+18 + from jinja2 import Environment, StrictUndefined
+19 |
+   - from .network import Network
+   - from .network import insubnet_ip
+   - from .network import isvalid_ip
+   - from .. import PROJECT
+   - from .. import WORKSPACE
+20 + from .. import PROJECT, WORKSPACE
+21 | from ..colors.color import Color
+--------------------------------------------------------------------------------
+25 | from ..times.unitime import unitime
+   - from ..types.dicts import merge_dicts
+   - from ..types.dicts import sort_dict
+   - from ..types.lists import dedup_list
+   - from ..types.lists import fuzzy_list
+   - from ..types.lists import inlist
+   - from ..types.strings import hasstr
+   - from ..types.strings import instr
+   - from ..types.strings import rplstr
+   - from ..types.strings import strplwr
+26 + from ..types.dicts import merge_dicts, sort_dict
+27 + from ..types.lists import dedup_list, fuzzy_list, inlist
+28 + from ..types.strings import hasstr, instr, rplstr, strplwr
+29 | from ..types.types import DictStrAny
+   - from ..utils.match import fuzz_match
+   - from ..utils.match import rgxp_match
+   -
+   -
+30 + from ..utils.match import fuzz_match, rgxp_match
+31 + from .network import Network, insubnet_ip, isvalid_ip
+32 |
+   |
+
+UP035 [*] Import from `collections.abc` instead: `Callable`
+  --> encommon/parse/jinja2.py:18:1
+   |
+16 | from re import match as re_match
+17 | from typing import Any
+18 | from typing import Callable
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+19 | from typing import Optional
+   |
+help: Import from `collections.abc`
+   |
+17 | from typing import Any
+   - from typing import Callable
+18 + from collections.abc import Callable
+19 | from typing import Optional
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/jinja2.py:136:18
+    |
+134 |     def __init__(
+135 |         self,
+136 |         statics: Optional[DictStrAny] = None,
+    |                  ^^^^^^^^^^^^^^^^^^^^
+137 |         filters: Optional[FILTERS] = None,
+138 |     ) -> None:
+    |
+help: Convert to `X | None`
+    |
+135 |         self,
+    -         statics: Optional[DictStrAny] = None,
+136 +         statics: DictStrAny | None = None,
+137 |         filters: Optional[FILTERS] = None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/jinja2.py:137:18
+    |
+135 |         self,
+136 |         statics: Optional[DictStrAny] = None,
+137 |         filters: Optional[FILTERS] = None,
+    |                  ^^^^^^^^^^^^^^^^^
+138 |     ) -> None:
+139 |         """
+    |
+help: Convert to `X | None`
+    |
+136 |         statics: Optional[DictStrAny] = None,
+    -         filters: Optional[FILTERS] = None,
+137 +         filters: FILTERS | None = None,
+138 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/jinja2.py:221:18
+    |
+219 |         self,
+220 |         value: str,
+221 |         statics: Optional[DictStrAny] = None,
+    |                  ^^^^^^^^^^^^^^^^^^^^
+222 |     ) -> Any:
+223 |         """
+    |
+help: Convert to `X | None`
+    |
+220 |         value: str,
+    -         statics: Optional[DictStrAny] = None,
+221 +         statics: DictStrAny | None = None,
+222 |     ) -> Any:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/jinja2.py:249:18
+    |
+247 |         self,
+248 |         value: Any,
+249 |         statics: Optional[DictStrAny] = None,
+    |                  ^^^^^^^^^^^^^^^^^^^^
+250 |         literal: bool = True,
+251 |     ) -> Any:
+    |
+help: Convert to `X | None`
+    |
+248 |         value: Any,
+    -         statics: Optional[DictStrAny] = None,
+249 +         statics: DictStrAny | None = None,
+250 |         literal: bool = True,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/jinja2.py:354:16
+    |
+352 |         self,
+353 |         key: str,
+354 |         value: Optional[Any] = None,
+    |                ^^^^^^^^^^^^^
+355 |     ) -> None:
+356 |         """
+    |
+help: Convert to `X | None`
+    |
+353 |         key: str,
+    -         value: Optional[Any] = None,
+354 +         value: Any | None = None,
+355 |     ) -> None:
+    |
+
+RET501 [*] Do not explicitly `return None` in function if it is the only possible return value
+   --> encommon/parse/jinja2.py:370:13
+    |
+368 |                 del statics[key]
+369 |
+370 |             return None
+    |             ^^^^^^^^^^^
+371 |
+372 |         statics[key] = value
+    |
+help: Remove explicit `return None`
+    |
+369 |
+    -             return None
+370 +             return
+371 |
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/jinja2.py:378:16
+    |
+376 |         self,
+377 |         key: str,
+378 |         value: Optional[FILTER] = None,
+    |                ^^^^^^^^^^^^^^^^
+379 |     ) -> None:
+380 |         """
+    |
+help: Convert to `X | None`
+    |
+377 |         key: str,
+    -         value: Optional[FILTER] = None,
+378 +         value: FILTER | None = None,
+379 |     ) -> None:
+    |
+
+RET501 [*] Do not explicitly `return None` in function if it is the only possible return value
+   --> encommon/parse/jinja2.py:396:13
+    |
+394 |                 del filters[key]
+395 |
+396 |             return None
+    |             ^^^^^^^^^^^
+397 |
+398 |         filters[key] = value
+    |
+help: Remove explicit `return None`
+    |
+395 |
+    -             return None
+396 +             return
+397 |
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/network.py:10:1
+   |
+10 | / from contextlib import suppress
+11 | | from typing import Any
+12 | | from typing import Optional
+13 | |
+14 | | from netaddr import IPAddress
+15 | | from netaddr import IPNetwork
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+10 | from contextlib import suppress
+   - from typing import Any
+   - from typing import Optional
+   -
+   - from netaddr import IPAddress
+   - from netaddr import IPNetwork
+11 + from typing import Any, Optional
+12 |
+13 + from netaddr import IPAddress, IPNetwork
+14 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/parse/network.py:238:10
+    |
+236 |     def broadcast(
+237 |         self,
+238 |     ) -> Optional[str]:
+    |          ^^^^^^^^^^^^^
+239 |         """
+240 |         Return the value for the attribute from class instance.
+    |
+help: Convert to `X | None`
+    |
+237 |         self,
+    -     ) -> Optional[str]:
+238 +     ) -> str | None:
+239 |         """
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/parse/network.py:437:18
+    |
+436 | def isvalid_ip(
+437 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+438 | ) -> bool:
+439 |     """
+    |
+help: Remove unused `noqa` directive
+    |
+436 | def isvalid_ip(
+    -     value: Any,  # noqa: ANN401
+437 +     value: Any,
+438 | ) -> bool:
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> encommon/parse/network.py:452:12
+    |
+450 |         return True
+451 |
+452 |     except Exception:
+    |            ^^^^^^^^^
+453 |         return False
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/patterns.py:10:1
+   |
+10 | / from re import compile
+11 | | from re import match as re_match
+12 | | from typing import Any
+13 | | from uuid import UUID
+   | |_____________________^
+   |
+help: Organize imports
+   |
+14 |
+   -
+   -
+15 | VALID_UUID = compile(
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/parse/patterns.py:25:18
+   |
+24 | def isvalid_uuid(
+25 |     value: Any,  # noqa: ANN401
+   |                  ^^^^^^^^^^^^^^
+26 | ) -> bool:
+27 |     """
+   |
+help: Remove unused `noqa` directive
+   |
+24 | def isvalid_uuid(
+   -     value: Any,  # noqa: ANN401
+25 +     value: Any,
+26 | ) -> bool:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/test/test_jinja2.py:10:1
+   |
+10 | / from typing import Any
+11 | |
+12 | | from pytest import fixture
+13 | | from pytest import mark
+14 | | from pytest import raises
+15 | |
+16 | | from ..jinja2 import Jinja2
+17 | | from ... import PROJECT
+18 | | from ...times.common import UNIXMPOCH
+19 | | from ...types.classes import lattrs
+20 | | from ...types.strings import inrepr
+21 | | from ...types.strings import instr
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from pytest import fixture
+   - from pytest import mark
+   - from pytest import raises
+12 + from pytest import fixture, mark, raises
+13 |
+   - from ..jinja2 import Jinja2
+14 | from ... import PROJECT
+15 | from ...times.common import UNIXMPOCH
+16 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   -
+17 + from ...types.strings import inrepr, instr
+18 + from ..jinja2 import Jinja2
+19 |
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/parse/test/test_jinja2.py:124:18
+    |
+122 | def test_Jinja2_literal(
+123 |     jinja2: Jinja2,
+124 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+125 |     expect: Any,  # noqa: ANN401
+126 | ) -> None:
+    |
+help: Remove unused `noqa` directive
+    |
+123 |     jinja2: Jinja2,
+    -     value: Any,  # noqa: ANN401
+124 +     value: Any,
+125 |     expect: Any,  # noqa: ANN401
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/parse/test/test_jinja2.py:125:19
+    |
+123 |     jinja2: Jinja2,
+124 |     value: Any,  # noqa: ANN401
+125 |     expect: Any,  # noqa: ANN401
+    |                   ^^^^^^^^^^^^^^
+126 | ) -> None:
+127 |     """
+    |
+help: Remove unused `noqa` directive
+    |
+124 |     value: Any,  # noqa: ANN401
+    -     expect: Any,  # noqa: ANN401
+125 +     expect: Any,
+126 | ) -> None:
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/parse/test/test_jinja2.py:177:18
+    |
+175 | def test_Jinja2_parse(
+176 |     jinja2: Jinja2,
+177 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+178 |     expect: Any,  # noqa: ANN401
+179 | ) -> None:
+    |
+help: Remove unused `noqa` directive
+    |
+176 |     jinja2: Jinja2,
+    -     value: Any,  # noqa: ANN401
+177 +     value: Any,
+178 |     expect: Any,  # noqa: ANN401
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/parse/test/test_jinja2.py:178:19
+    |
+176 |     jinja2: Jinja2,
+177 |     value: Any,  # noqa: ANN401
+178 |     expect: Any,  # noqa: ANN401
+    |                   ^^^^^^^^^^^^^^
+179 | ) -> None:
+180 |     """
+    |
+help: Remove unused `noqa` directive
+    |
+177 |     value: Any,  # noqa: ANN401
+    -     expect: Any,  # noqa: ANN401
+178 +     expect: Any,
+179 | ) -> None:
+    |
+
+B017 Do not assert blind exception: `Exception`
+   --> encommon/parse/test/test_jinja2.py:217:10
+    |
+215 |     jinja2.set_static('key')
+216 |
+217 |     with raises(Exception):
+    |          ^^^^^^^^^^^^^^^^^
+218 |         parse('{{ key }}')
+    |
+
+B017 Do not assert blind exception: `Exception`
+   --> encommon/parse/test/test_jinja2.py:231:10
+    |
+229 |     jinja2.set_filter('float')
+230 |
+231 |     with raises(Exception):
+    |          ^^^^^^^^^^^^^^^^^
+232 |         parse('{{ 1 | float }}')
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/test/test_network.py:10:1
+   |
+10 | / from pytest import raises
+11 | |
+12 | | from ..network import Network
+13 | | from ..network import insubnet_ip
+14 | | from ..network import isvalid_ip
+15 | | from ...types.classes import lattrs
+16 | | from ...types.strings import inrepr
+17 | | from ...types.strings import instr
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from ..network import Network
+   - from ..network import insubnet_ip
+   - from ..network import isvalid_ip
+12 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   -
+13 + from ...types.strings import inrepr, instr
+14 + from ..network import Network, insubnet_ip, isvalid_ip
+15 |
+   |
+
+B018 Found useless expression. Either assign it to a variable or remove it.
+   --> encommon/parse/test/test_network.py:157:9
+    |
+156 |     with raises(ValueError):
+157 |         naddr.padded
+    |         ^^^^^^^^^^^^
+158 |
+159 |     with raises(ValueError):
+    |
+
+B018 Found useless expression. Either assign it to a variable or remove it.
+   --> encommon/parse/test/test_network.py:160:9
+    |
+159 |     with raises(ValueError):
+160 |         naddr.reverse
+    |         ^^^^^^^^^^^^^
+161 |
+162 |     with raises(ValueError):
+    |
+
+B018 Found useless expression. Either assign it to a variable or remove it.
+   --> encommon/parse/test/test_network.py:163:9
+    |
+162 |     with raises(ValueError):
+163 |         naddr.hwaddr
+    |         ^^^^^^^^^^^^
+164 |
+165 |     assert not naddr.ispublic
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/parse/test/test_patterns.py:10:1
+   |
+10 | / from uuid import uuid4
+11 | |
+12 | | from ..patterns import isvalid_uuid
+   | |___________________________________^
+   |
+help: Organize imports
+   |
+14 |
+   -
+15 | def test_isvalid_uuid() -> None:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/__init__.py:10:1
+   |
+10 | / from .duration import Duration
+11 | | from .params import TimerParams
+12 | | from .params import TimersParams
+13 | | from .params import WindowParams
+14 | | from .params import WindowsParams
+15 | | from .parse import parse_time
+16 | | from .parse import shift_time
+17 | | from .parse import since_time
+18 | | from .parse import string_time
+19 | | from .time import Time
+20 | | from .timer import Timer
+21 | | from .timers import Timers
+22 | | from .unitime import unitime
+23 | | from .utils import findtz
+24 | | from .window import Window
+25 | | from .windows import Windows
+   | |____________________________^
+   |
+help: Organize imports
+   |
+10 | from .duration import Duration
+   - from .params import TimerParams
+   - from .params import TimersParams
+   - from .params import WindowParams
+   - from .params import WindowsParams
+   - from .parse import parse_time
+   - from .parse import shift_time
+   - from .parse import since_time
+   - from .parse import string_time
+11 + from .params import TimerParams, TimersParams, WindowParams, WindowsParams
+12 + from .parse import parse_time, shift_time, since_time, string_time
+13 | from .time import Time
+--------------------------------------------------------------------------------
+19 | from .windows import Windows
+   -
+   -
+20 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> encommon/times/__init__.py:29:11
+   |
+29 |   __all__ = [
+   |  ___________^
+30 | |     'Duration',
+31 | |     'Timer',
+32 | |     'TimerParams',
+33 | |     'Timers',
+34 | |     'TimersParams',
+35 | |     'Time',
+36 | |     'Window',
+37 | |     'WindowParams',
+38 | |     'Windows',
+39 | |     'WindowsParams',
+40 | |     'findtz',
+41 | |     'parse_time',
+42 | |     'shift_time',
+43 | |     'since_time',
+44 | |     'string_time',
+45 | |     'unitime']
+   | |______________^
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+30 |     'Duration',
+31 +     'Time',
+32 |     'Timer',
+33 |     'TimerParams',
+34 |     'Timers',
+35 |     'TimersParams',
+   -     'Time',
+36 |     'Window',
+--------------------------------------------------------------------------------
+44 |     'string_time',
+   -     'unitime']
+45 +     'unitime',
+46 + ]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/common.py:10:1
+   |
+10 | / from datetime import datetime
+11 | | from re import compile
+12 | | from typing import TYPE_CHECKING
+13 | | from typing import Union
+   | |________________________^
+14 |
+15 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 | from re import compile
+   - from typing import TYPE_CHECKING
+   - from typing import Union
+12 + from typing import TYPE_CHECKING, Union
+13 |
+   |
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/times/common.py:26:11
+   |
+24 |       r'^(\-|\+)[\d\@a-z\-\+]+$')
+25 |
+26 |   UNITIME = Union[
+   |  ___________^
+27 | |     int | float | str]
+   | |______________________^
+28 |
+29 |   STRINGNOW = {
+   |
+help: Convert to `X | Y`
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/times/common.py:35:11
+   |
+35 | NUMERIC = Union[int, float]
+   |           ^^^^^^^^^^^^^^^^^
+36 |
+37 | PARSABLE = Union[
+   |
+help: Convert to `X | Y`
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/times/common.py:41:12
+   |
+39 |       datetime, 'Time']
+40 |
+41 |   SCHEDULE = Union[
+   |  ____________^
+42 | |     str, dict[str, int]]
+   | |________________________^
+   |
+help: Convert to `X | Y`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/duration.py:10:1
+   |
+10 | / from typing import Literal
+11 | | from typing import Union
+12 | | from typing import get_args
+13 | |
+14 | | from ..types.strings import COMMAS
+15 | | from ..types.strings import SEMPTY
+16 | | from ..types.strings import SPACED
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from typing import Literal
+   - from typing import Union
+   - from typing import get_args
+   -
+   - from ..types.strings import COMMAS
+   - from ..types.strings import SEMPTY
+   - from ..types.strings import SPACED
+   -
+10 + from typing import Literal, Union, get_args
+11 |
+12 + from ..types.strings import COMMAS, SEMPTY, SPACED
+13 |
+   |
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/times/duration.py:33:13
+   |
+31 |       get_args(DURASHORT)))
+32 |
+33 |   DURAUNITS = Union[
+   |  _____________^
+34 | |     DURAGROUP, DURASHORT]
+   | |_________________________^
+   |
+help: Convert to `X | Y`
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:102:18
+    |
+100 |     def __init__(
+101 |         self,
+102 |         seconds: int | float,
+    |                  ^^^^^^^^^^^
+103 |         smart: bool = True,
+104 |         groups: int = len(DURAMAPS),
+    |
+help: Remove redundant type
+    |
+101 |         self,
+    -         seconds: int | float,
+102 +         seconds: float,
+103 |         smart: bool = True,
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:181:16
+    |
+179 |     def __add__(
+180 |         self,
+181 |         other: Union['Duration', int, float],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+182 |     ) -> float:
+183 |         """
+    |
+help: Remove redundant type
+    |
+180 |         self,
+    -         other: Union['Duration', int, float],
+181 +         other: Union['Duration', float],
+182 |     ) -> float:
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:198:16
+    |
+196 |     def __sub__(
+197 |         self,
+198 |         other: Union['Duration', int, float],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+199 |     ) -> float:
+200 |         """
+    |
+help: Remove redundant type
+    |
+197 |         self,
+    -         other: Union['Duration', int, float],
+198 +         other: Union['Duration', float],
+199 |     ) -> float:
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:246:16
+    |
+244 |     def __gt__(
+245 |         self,
+246 |         other: Union['Duration', int, float],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+247 |     ) -> bool:
+248 |         """
+    |
+help: Remove redundant type
+    |
+245 |         self,
+    -         other: Union['Duration', int, float],
+246 +         other: Union['Duration', float],
+247 |     ) -> bool:
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:263:16
+    |
+261 |     def __ge__(
+262 |         self,
+263 |         other: Union['Duration', int, float],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+264 |     ) -> bool:
+265 |         """
+    |
+help: Remove redundant type
+    |
+262 |         self,
+    -         other: Union['Duration', int, float],
+263 +         other: Union['Duration', float],
+264 |     ) -> bool:
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:280:16
+    |
+278 |     def __lt__(
+279 |         self,
+280 |         other: Union['Duration', int, float],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+281 |     ) -> bool:
+282 |         """
+    |
+help: Remove redundant type
+    |
+279 |         self,
+    -         other: Union['Duration', int, float],
+280 +         other: Union['Duration', float],
+281 |     ) -> bool:
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/duration.py:297:16
+    |
+295 |     def __le__(
+296 |         self,
+297 |         other: Union['Duration', int, float],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+298 |     ) -> bool:
+299 |         """
+    |
+help: Remove redundant type
+    |
+296 |         self,
+    -         other: Union['Duration', int, float],
+297 +         other: Union['Duration', float],
+298 |     ) -> bool:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/params.py:10:1
+   |
+10 | / from typing import Annotated
+11 | | from typing import Optional
+12 | |
+13 | | from pydantic import Field
+14 | |
+15 | | from .common import PARSABLE
+16 | | from .common import SCHEDULE
+17 | | from .time import Time
+18 | | from ..types.classes import BaseModel
+19 | | from ..types.types import DictStrAny
+   | |____________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from typing import Annotated
+   - from typing import Optional
+10 + from typing import Annotated, Optional
+11 |
+12 | from pydantic import Field
+13 |
+   - from .common import PARSABLE
+   - from .common import SCHEDULE
+   - from .time import Time
+14 | from ..types.classes import BaseModel
+15 | from ..types.types import DictStrAny
+   -
+   -
+16 + from .common import PARSABLE, SCHEDULE
+17 + from .time import Time
+18 |
+   |
+
+PYI041 [*] Use `float` instead of `int | float`
+  --> encommon/times/params.py:47:16
+   |
+45 |     def __init__(
+46 |         self,
+47 |         timer: int | float,
+   |                ^^^^^^^^^^^
+48 |         start: PARSABLE = 'now',
+49 |     ) -> None:
+   |
+help: Remove redundant type
+   |
+46 |         self,
+   -         timer: int | float,
+47 +         timer: float,
+48 |         start: PARSABLE = 'now',
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/params.py:88:17
+   |
+86 |     def __init__(
+87 |         self,
+88 |         timers: Optional[_TIMERS] = None,
+   |                 ^^^^^^^^^^^^^^^^^
+89 |     ) -> None:
+90 |         """
+   |
+help: Convert to `X | None`
+   |
+87 |         self,
+   -         timers: Optional[_TIMERS] = None,
+88 +         timers: _TIMERS | None = None,
+89 |     ) -> None:
+   |
+
+PIE804 [*] Unnecessary `dict` kwargs
+  --> encommon/times/params.py:96:26
+   |
+94 |           timers = timers or {}
+95 |
+96 |           super().__init__(**{
+   |  __________________________^
+97 | |             'timers': timers})
+   | |_____________________________^
+   |
+help: Remove unnecessary kwargs
+   |
+95 |
+   -         super().__init__(**{
+   -             'timers': timers})
+96 +         super().__init__(timers=timers)
+97 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:113:9
+    |
+112 |     start: Annotated[
+113 |         Optional[str],
+    |         ^^^^^^^^^^^^^
+114 |         Field(None,
+115 |               description='Determine when scope begins',
+    |
+help: Convert to `X | None`
+    |
+112 |     start: Annotated[
+    -         Optional[str],
+113 +         str | None,
+114 |         Field(None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:119:9
+    |
+118 |     stop: Annotated[
+119 |         Optional[str],
+    |         ^^^^^^^^^^^^^
+120 |         Field(None,
+121 |               description='Determine when scope ends',
+    |
+help: Convert to `X | None`
+    |
+118 |     stop: Annotated[
+    -         Optional[str],
+119 +         str | None,
+120 |         Field(None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:125:9
+    |
+124 |     anchor: Annotated[
+125 |         Optional[str],
+    |         ^^^^^^^^^^^^^
+126 |         Field(None,
+127 |               description='Optional anchor of the window',
+    |
+help: Convert to `X | None`
+    |
+124 |     anchor: Annotated[
+    -         Optional[str],
+125 +         str | None,
+126 |         Field(None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:141:16
+    |
+139 |         window: SCHEDULE | int,
+140 |         *,
+141 |         start: Optional[PARSABLE] = None,
+    |                ^^^^^^^^^^^^^^^^^^
+142 |         stop: Optional[PARSABLE] = None,
+143 |         anchor: Optional[PARSABLE] = None,
+    |
+help: Convert to `X | None`
+    |
+140 |         *,
+    -         start: Optional[PARSABLE] = None,
+141 +         start: PARSABLE | None = None,
+142 |         stop: Optional[PARSABLE] = None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:142:15
+    |
+140 |         *,
+141 |         start: Optional[PARSABLE] = None,
+142 |         stop: Optional[PARSABLE] = None,
+    |               ^^^^^^^^^^^^^^^^^^
+143 |         anchor: Optional[PARSABLE] = None,
+144 |         delay: int | float = 0.0,
+    |
+help: Convert to `X | None`
+    |
+141 |         start: Optional[PARSABLE] = None,
+    -         stop: Optional[PARSABLE] = None,
+142 +         stop: PARSABLE | None = None,
+143 |         anchor: Optional[PARSABLE] = None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:143:17
+    |
+141 |         start: Optional[PARSABLE] = None,
+142 |         stop: Optional[PARSABLE] = None,
+143 |         anchor: Optional[PARSABLE] = None,
+    |                 ^^^^^^^^^^^^^^^^^^
+144 |         delay: int | float = 0.0,
+145 |     ) -> None:
+    |
+help: Convert to `X | None`
+    |
+142 |         stop: Optional[PARSABLE] = None,
+    -         anchor: Optional[PARSABLE] = None,
+143 +         anchor: PARSABLE | None = None,
+144 |         delay: int | float = 0.0,
+    |
+
+PYI041 [*] Use `float` instead of `int | float`
+   --> encommon/times/params.py:144:16
+    |
+142 |         stop: Optional[PARSABLE] = None,
+143 |         anchor: Optional[PARSABLE] = None,
+144 |         delay: int | float = 0.0,
+    |                ^^^^^^^^^^^
+145 |     ) -> None:
+146 |         """
+    |
+help: Remove redundant type
+    |
+143 |         anchor: Optional[PARSABLE] = None,
+    -         delay: int | float = 0.0,
+144 +         delay: float = 0.0,
+145 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/params.py:200:18
+    |
+198 |     def __init__(
+199 |         self,
+200 |         windows: Optional[_WINDOWS] = None,
+    |                  ^^^^^^^^^^^^^^^^^^
+201 |     ) -> None:
+202 |         """
+    |
+help: Convert to `X | None`
+    |
+199 |         self,
+    -         windows: Optional[_WINDOWS] = None,
+200 +         windows: _WINDOWS | None = None,
+201 |     ) -> None:
+    |
+
+PIE804 [*] Unnecessary `dict` kwargs
+   --> encommon/times/params.py:208:26
+    |
+206 |           windows = windows or {}
+207 |
+208 |           super().__init__(**{
+    |  __________________________^
+209 | |             'windows': windows})
+    | |_______________________________^
+    |
+help: Remove unnecessary kwargs
+    |
+207 |
+    -         super().__init__(**{
+    -             'windows': windows})
+208 +         super().__init__(windows=windows)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/parse.py:10:1
+   |
+10 | / from contextlib import suppress
+11 | | from copy import deepcopy
+12 | | from datetime import datetime
+13 | | from re import match as re_match
+14 | | from typing import Optional
+15 | | from typing import TYPE_CHECKING
+16 | |
+17 | | from dateutil import parser
+18 | |
+19 | | from snaptime import snap
+20 | |
+21 | | from .common import NUMERISH
+22 | | from .common import PARSABLE
+23 | | from .common import SNAPABLE
+24 | | from .common import STRINGNOW
+25 | | from .utils import findtz
+26 | | from .utils import strptime
+27 | | from .utils import utcdatetime
+   | |______________________________^
+28 |
+29 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+13 | from re import match as re_match
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+14 + from typing import TYPE_CHECKING, Optional
+15 |
+16 | from dateutil import parser
+   -
+17 | from snaptime import snap
+18 |
+   - from .common import NUMERISH
+   - from .common import PARSABLE
+   - from .common import SNAPABLE
+   - from .common import STRINGNOW
+   - from .utils import findtz
+   - from .utils import strptime
+   - from .utils import utcdatetime
+19 + from .common import NUMERISH, PARSABLE, SNAPABLE, STRINGNOW
+20 + from .utils import findtz, strptime, utcdatetime
+21 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/parse.py:35:13
+   |
+34 | def parse_time(
+35 |     source: Optional[PARSABLE] = None,
+   |             ^^^^^^^^^^^^^^^^^^
+36 |     *,
+37 |     anchor: Optional[PARSABLE] = None,
+   |
+help: Convert to `X | None`
+   |
+34 | def parse_time(
+   -     source: Optional[PARSABLE] = None,
+35 +     source: PARSABLE | None = None,
+36 |     *,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/parse.py:37:13
+   |
+35 |     source: Optional[PARSABLE] = None,
+36 |     *,
+37 |     anchor: Optional[PARSABLE] = None,
+   |             ^^^^^^^^^^^^^^^^^^
+38 |     format: Optional[str] = None,
+39 |     tzname: Optional[str] = None,
+   |
+help: Convert to `X | None`
+   |
+36 |     *,
+   -     anchor: Optional[PARSABLE] = None,
+37 +     anchor: PARSABLE | None = None,
+38 |     format: Optional[str] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/parse.py:38:13
+   |
+36 |     *,
+37 |     anchor: Optional[PARSABLE] = None,
+38 |     format: Optional[str] = None,
+   |             ^^^^^^^^^^^^^
+39 |     tzname: Optional[str] = None,
+40 | ) -> datetime:
+   |
+help: Convert to `X | None`
+   |
+37 |     anchor: Optional[PARSABLE] = None,
+   -     format: Optional[str] = None,
+38 +     format: str | None = None,
+39 |     tzname: Optional[str] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/parse.py:39:13
+   |
+37 |     anchor: Optional[PARSABLE] = None,
+38 |     format: Optional[str] = None,
+39 |     tzname: Optional[str] = None,
+   |             ^^^^^^^^^^^^^
+40 | ) -> datetime:
+41 |     """
+   |
+help: Convert to `X | None`
+   |
+38 |     format: Optional[str] = None,
+   -     tzname: Optional[str] = None,
+39 +     tzname: str | None = None,
+40 | ) -> datetime:
+   |
+
+DTZ901 Use of `datetime.datetime.max` without timezone information
+   --> encommon/times/parse.py:113:13
+    |
+111 |     if source in ['max', float('inf')]:
+112 |         source = deepcopy(
+113 |             datetime.max)
+    |             ^^^^^^^^^^^^
+114 |
+115 |     if source in ['min', float('-inf')]:
+    |
+help: Replace with `datetime.datetime.max.replace(tzinfo=...)`
+
+DTZ901 Use of `datetime.datetime.min` without timezone information
+   --> encommon/times/parse.py:117:13
+    |
+115 |     if source in ['min', float('-inf')]:
+116 |         source = deepcopy(
+117 |             datetime.min)
+    |             ^^^^^^^^^^^^
+118 |
+119 |     if (isinstance(source, str)
+    |
+help: Replace with `datetime.datetime.min.replace(tzinfo=...)`
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/parse.py:149:13
+    |
+147 | def shift_time(
+148 |     notate: str,
+149 |     anchor: Optional[PARSABLE] = None,
+    |             ^^^^^^^^^^^^^^^^^^
+150 |     *,
+151 |     tzname: Optional[str] = None,
+    |
+help: Convert to `X | None`
+    |
+148 |     notate: str,
+    -     anchor: Optional[PARSABLE] = None,
+149 +     anchor: PARSABLE | None = None,
+150 |     *,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/parse.py:151:13
+    |
+149 |     anchor: Optional[PARSABLE] = None,
+150 |     *,
+151 |     tzname: Optional[str] = None,
+    |             ^^^^^^^^^^^^^
+152 | ) -> datetime:
+153 |     """
+    |
+help: Convert to `X | None`
+    |
+150 |     *,
+    -     tzname: Optional[str] = None,
+151 +     tzname: str | None = None,
+152 | ) -> datetime:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/parse.py:188:14
+    |
+186 |     source: str,
+187 |     *,
+188 |     formats: Optional[str | list[str]] = None,
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+189 |     tzname: Optional[str] = None,
+190 | ) -> datetime:
+    |
+help: Convert to `X | None`
+    |
+187 |     *,
+    -     formats: Optional[str | list[str]] = None,
+188 +     formats: str | list[str] | None = None,
+189 |     tzname: Optional[str] = None,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/parse.py:189:13
+    |
+187 |     *,
+188 |     formats: Optional[str | list[str]] = None,
+189 |     tzname: Optional[str] = None,
+    |             ^^^^^^^^^^^^^
+190 | ) -> datetime:
+191 |     """
+    |
+help: Convert to `X | None`
+    |
+188 |     formats: Optional[str | list[str]] = None,
+    -     tzname: Optional[str] = None,
+189 +     tzname: str | None = None,
+190 | ) -> datetime:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/parse.py:234:11
+    |
+232 | def since_time(
+233 |     start: PARSABLE,
+234 |     stop: Optional[PARSABLE] = None,
+    |           ^^^^^^^^^^^^^^^^^^
+235 | ) -> float:
+236 |     """
+    |
+help: Convert to `X | None`
+    |
+233 |     start: PARSABLE,
+    -     stop: Optional[PARSABLE] = None,
+234 +     stop: PARSABLE | None = None,
+235 | ) -> float:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_duration.py:10:1
+   |
+10 | / from ..duration import Duration
+11 | | from ...types.classes import lattrs
+12 | | from ...types.strings import COMMAS
+13 | | from ...types.strings import inrepr
+   | |___________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..duration import Duration
+10 | from ...types.classes import lattrs
+   - from ...types.strings import COMMAS
+   - from ...types.strings import inrepr
+   -
+11 + from ...types.strings import COMMAS, inrepr
+12 + from ..duration import Duration
+13 |
+   |
+
+PLR0124 Name compared with itself, consider replacing `durate == durate`
+  --> encommon/times/test/test_duration.py:51:12
+   |
+49 |     assert durate - durate == 0
+50 |
+51 |     assert durate == durate
+   |            ^^^^^^
+52 |     assert durate != Duration(60)
+53 |     assert durate != 'invalid'
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_params.py:10:1
+   |
+10 | / from ..params import TimerParams
+11 | | from ..params import WindowParams
+   | |_________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..params import TimerParams
+   - from ..params import WindowParams
+   -
+10 + from ..params import TimerParams, WindowParams
+11 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_parse.py:10:1
+   |
+10 | / from datetime import timedelta
+11 | | from datetime import timezone
+12 | |
+13 | | from pytest import mark
+14 | |
+15 | | from ..parse import parse_time
+16 | | from ..parse import shift_time
+17 | | from ..parse import since_time
+18 | | from ..parse import string_time
+19 | | from ..utils import utcdatetime
+   | |_______________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from datetime import timedelta
+   - from datetime import timezone
+10 + from datetime import timedelta, timezone
+11 |
+12 | from pytest import mark
+13 |
+   - from ..parse import parse_time
+   - from ..parse import shift_time
+   - from ..parse import since_time
+   - from ..parse import string_time
+14 + from ..parse import parse_time, shift_time, since_time, string_time
+15 | from ..utils import utcdatetime
+   -
+16 |
+   |
+
+UP017 [*] Use `datetime.UTC` alias
+   --> encommon/times/test/test_parse.py:143:11
+    |
+141 |     """
+142 |
+143 |     utc = timezone.utc
+    |           ^^^^^^^^^^^^
+144 |     expect = (
+145 |         utcdatetime(1980, 1, 1)
+    |
+help: Convert to `datetime.UTC` alias
+    |
+10  | from datetime import timedelta
+    - from datetime import timezone
+11  + from datetime import timezone, UTC
+12  |
+--------------------------------------------------------------------------------
+142 |
+    -     utc = timezone.utc
+143 +     utc = UTC
+144 |     expect = (
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_time.py:10:1
+   |
+10 | / from ..common import STAMP_SIMPLE
+11 | | from ..common import UNIXEPOCH
+12 | | from ..common import UNIXHPOCH
+13 | | from ..common import UNIXMPOCH
+14 | | from ..time import Time
+15 | | from ...types.classes import lattrs
+16 | | from ...types.strings import inrepr
+17 | | from ...types.strings import instr
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..common import STAMP_SIMPLE
+   - from ..common import UNIXEPOCH
+   - from ..common import UNIXHPOCH
+   - from ..common import UNIXMPOCH
+   - from ..time import Time
+10 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   -
+11 + from ...types.strings import inrepr, instr
+12 + from ..common import STAMP_SIMPLE, UNIXEPOCH, UNIXHPOCH, UNIXMPOCH
+13 + from ..time import Time
+14 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_timer.py:10:1
+   |
+10 | / from time import sleep
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from ..time import Time
+15 | | from ..timer import Timer
+16 | | from ...types.classes import lattrs
+17 | | from ...types.strings import inrepr
+18 | | from ...types.strings import instr
+   | |__________________________________^
+   |
+help: Organize imports
+   |
+13 |
+14 + from ...types.classes import lattrs
+15 + from ...types.strings import inrepr, instr
+16 | from ..time import Time
+17 | from ..timer import Timer
+   - from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   -
+18 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_timers.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from time import sleep
+12 | |
+13 | | from pytest import fixture
+14 | | from pytest import raises
+15 | |
+16 | | from ..params import TimerParams
+17 | | from ..time import Time
+18 | | from ..timers import Timers
+19 | | from ...types.classes import lattrs
+20 | | from ...types.strings import inrepr
+21 | | from ...types.strings import instr
+22 | | from ...types.types import DictStrAny
+   | |_____________________________________^
+   |
+help: Organize imports
+   |
+12 |
+   - from pytest import fixture
+   - from pytest import raises
+13 + from pytest import fixture, raises
+14 |
+15 + from ...types.classes import lattrs
+16 + from ...types.strings import inrepr, instr
+17 + from ...types.types import DictStrAny
+18 | from ..params import TimerParams
+19 | from ..time import Time
+20 | from ..timers import Timers
+   - from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+   - from ...types.types import DictStrAny
+   -
+21 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_unitime.py:10:1
+   |
+10 | from ..unitime import unitime
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+12 |
+   -
+13 | def test_unitime() -> None:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_utils.py:10:1
+   |
+10 | / from dateutil.tz import gettz
+11 | |
+12 | | from pytest import raises
+13 | |
+14 | | from ..common import STAMP_SIMPLE
+15 | | from ..common import UNIXEPOCH
+16 | | from ..utils import findtz
+17 | | from ..utils import strptime
+18 | | from ..utils import utcdatetime
+   | |_______________________________^
+   |
+help: Organize imports
+   |
+10 | from dateutil.tz import gettz
+   -
+11 | from pytest import raises
+12 |
+   - from ..common import STAMP_SIMPLE
+   - from ..common import UNIXEPOCH
+   - from ..utils import findtz
+   - from ..utils import strptime
+   - from ..utils import utcdatetime
+   -
+13 + from ..common import STAMP_SIMPLE, UNIXEPOCH
+14 + from ..utils import findtz, strptime, utcdatetime
+15 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_window.py:10:1
+   |
+10 | / from time import sleep
+11 | | from typing import TYPE_CHECKING
+12 | |
+13 | | from pytest import fixture
+14 | | from pytest import mark
+15 | |
+16 | | from ..time import Time
+17 | | from ..window import Window
+18 | | from ..window import window_croniter
+19 | | from ..window import window_interval
+20 | | from ...types.classes import lattrs
+21 | | from ...types.strings import inrepr
+22 | | from ...types.strings import instr
+   | |__________________________________^
+23 |
+24 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 |
+   - from pytest import fixture
+   - from pytest import mark
+13 + from pytest import fixture, mark
+14 |
+15 + from ...types.classes import lattrs
+16 + from ...types.strings import inrepr, instr
+17 | from ..time import Time
+   - from ..window import Window
+   - from ..window import window_croniter
+   - from ..window import window_interval
+   - from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+18 + from ..window import Window, window_croniter, window_interval
+19 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/test/test_windows.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from time import sleep
+12 | |
+13 | | from pytest import fixture
+14 | | from pytest import raises
+15 | |
+16 | | from ..params import WindowParams
+17 | | from ..windows import Windows
+18 | | from ...types.classes import lattrs
+19 | | from ...types.strings import inrepr
+20 | | from ...types.strings import instr
+21 | | from ...types.types import DictStrAny
+   | |_____________________________________^
+   |
+help: Organize imports
+   |
+12 |
+   - from pytest import fixture
+   - from pytest import raises
+13 + from pytest import fixture, raises
+14 |
+   - from ..params import WindowParams
+   - from ..windows import Windows
+15 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+16 + from ...types.strings import inrepr, instr
+17 | from ...types.types import DictStrAny
+   -
+18 + from ..params import WindowParams
+19 + from ..windows import Windows
+20 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/time.py:10:1
+   |
+10 | / from contextlib import suppress
+11 | | from datetime import datetime
+12 | | from datetime import time as dtime
+13 | | from datetime import timedelta
+14 | | from typing import Optional
+15 | |
+16 | | from .common import PARSABLE
+17 | | from .common import STAMP_HUMAN
+18 | | from .common import STAMP_SIMPLE
+19 | | from .common import STAMP_SUBSEC
+20 | | from .parse import parse_time
+21 | | from .parse import since_time
+22 | | from .utils import findtz
+23 | | from .utils import strftime
+   | |___________________________^
+   |
+help: Organize imports
+   |
+10 | from contextlib import suppress
+   - from datetime import datetime
+11 + from datetime import datetime, timedelta
+12 | from datetime import time as dtime
+   - from datetime import timedelta
+13 | from typing import Optional
+14 |
+   - from .common import PARSABLE
+   - from .common import STAMP_HUMAN
+   - from .common import STAMP_SIMPLE
+   - from .common import STAMP_SUBSEC
+   - from .parse import parse_time
+   - from .parse import since_time
+   - from .utils import findtz
+   - from .utils import strftime
+   -
+15 + from .common import PARSABLE, STAMP_HUMAN, STAMP_SIMPLE, STAMP_SUBSEC
+16 + from .parse import parse_time, since_time
+17 + from .utils import findtz, strftime
+18 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/time.py:97:17
+   |
+95 |     def __init__(
+96 |         self,
+97 |         source: Optional[PARSABLE] = None,
+   |                 ^^^^^^^^^^^^^^^^^^
+98 |         *,
+99 |         anchor: Optional[PARSABLE] = None,
+   |
+help: Convert to `X | None`
+   |
+96 |         self,
+   -         source: Optional[PARSABLE] = None,
+97 +         source: PARSABLE | None = None,
+98 |         *,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/time.py:99:17
+    |
+ 97 |         source: Optional[PARSABLE] = None,
+ 98 |         *,
+ 99 |         anchor: Optional[PARSABLE] = None,
+    |                 ^^^^^^^^^^^^^^^^^^
+100 |         format: str = STAMP_SUBSEC,
+101 |         tzname: Optional[str] = None,
+    |
+help: Convert to `X | None`
+    |
+98  |         *,
+    -         anchor: Optional[PARSABLE] = None,
+99  +         anchor: PARSABLE | None = None,
+100 |         format: str = STAMP_SUBSEC,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/time.py:101:17
+    |
+ 99 |         anchor: Optional[PARSABLE] = None,
+100 |         format: str = STAMP_SUBSEC,
+101 |         tzname: Optional[str] = None,
+    |                 ^^^^^^^^^^^^^
+102 |     ) -> None:
+103 |         """
+    |
+help: Convert to `X | None`
+    |
+100 |         format: str = STAMP_SUBSEC,
+    -         tzname: Optional[str] = None,
+101 +         tzname: str | None = None,
+102 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/time.py:484:17
+    |
+482 |         self,
+483 |         format: str = STAMP_SUBSEC,
+484 |         tzname: Optional[str] = None,
+    |                 ^^^^^^^^^^^^^
+485 |     ) -> str:
+486 |         """
+    |
+help: Convert to `X | None`
+    |
+483 |         format: str = STAMP_SUBSEC,
+    -         tzname: Optional[str] = None,
+484 +         tzname: str | None = None,
+485 |     ) -> str:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/timer.py:10:1
+   |
+10 | / from typing import Optional
+11 | |
+12 | | from .common import NUMERIC
+13 | | from .common import PARSABLE
+14 | | from .time import Time
+   | |______________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from .common import NUMERIC
+   - from .common import PARSABLE
+12 + from .common import NUMERIC, PARSABLE
+13 | from .time import Time
+   -
+14 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/timer.py:46:16
+   |
+44 |         timer: NUMERIC,
+45 |         *,
+46 |         start: Optional[PARSABLE] = None,
+   |                ^^^^^^^^^^^^^^^^^^
+47 |     ) -> None:
+48 |         """
+   |
+help: Convert to `X | None`
+   |
+45 |         *,
+   -         start: Optional[PARSABLE] = None,
+46 +         start: PARSABLE | None = None,
+47 |     ) -> None:
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/timer.py:150:16
+    |
+148 |     def update(
+149 |         self,
+150 |         value: Optional[PARSABLE] = None,
+    |                ^^^^^^^^^^^^^^^^^^
+151 |     ) -> None:
+152 |         """
+    |
+help: Convert to `X | None`
+    |
+149 |         self,
+    -         value: Optional[PARSABLE] = None,
+150 +         value: PARSABLE | None = None,
+151 |     ) -> None:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/timers.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from threading import Lock
+12 | | from typing import Annotated
+13 | | from typing import Optional
+14 | | from typing import TYPE_CHECKING
+15 | |
+16 | | from pydantic import Field
+17 | |
+18 | | from sqlalchemy import Column
+19 | | from sqlalchemy import String
+20 | | from sqlalchemy import create_engine
+21 | | from sqlalchemy.engine import Engine
+22 | | from sqlalchemy.orm import DeclarativeBase
+23 | | from sqlalchemy.orm import Session
+24 | | from sqlalchemy.orm import sessionmaker
+25 | |
+26 | | from .common import PARSABLE
+27 | | from .params import TimersParams
+28 | | from .time import Time
+29 | | from .timer import Timer
+30 | | from ..types.classes import BaseModel
+31 | | from ..types.types import DictStrAny
+32 | | from ..types.types import LDictStrAny
+   | |_____________________________________^
+33 |
+34 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 | from threading import Lock
+   - from typing import Annotated
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+12 + from typing import TYPE_CHECKING, Annotated, Optional
+13 |
+14 | from pydantic import Field
+   -
+   - from sqlalchemy import Column
+   - from sqlalchemy import String
+   - from sqlalchemy import create_engine
+15 + from sqlalchemy import Column, String, create_engine
+16 | from sqlalchemy.engine import Engine
+   - from sqlalchemy.orm import DeclarativeBase
+   - from sqlalchemy.orm import Session
+   - from sqlalchemy.orm import sessionmaker
+17 + from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
+18 |
+19 + from ..types.classes import BaseModel
+20 + from ..types.types import DictStrAny, LDictStrAny
+21 | from .common import PARSABLE
+22 | from .params import TimersParams
+23 | from .time import Time
+24 | from .timer import Timer
+   - from ..types.classes import BaseModel
+   - from ..types.types import DictStrAny
+   - from ..types.types import LDictStrAny
+25 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/timers.py:107:17
+    |
+105 |     def __init__(
+106 |         self,
+107 |         record: Optional[DeclarativeBase] = None,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+108 |     ) -> None:
+109 |         """
+    |
+help: Convert to `X | None`
+    |
+106 |         self,
+    -         record: Optional[DeclarativeBase] = None,
+107 +         record: DeclarativeBase | None = None,
+108 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/timers.py:448:10
+    |
+446 |         self,
+447 |         unique: str,
+448 |     ) -> Optional[TimersRecord]:
+    |          ^^^^^^^^^^^^^^^^^^^^^^
+449 |         """
+450 |         Return the record from within the table in the database.
+    |
+help: Convert to `X | None`
+    |
+447 |         unique: str,
+    -     ) -> Optional[TimersRecord]:
+448 +     ) -> TimersRecord | None:
+449 |         """
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/timers.py:534:16
+    |
+532 |         self,
+533 |         unique: str,
+534 |         value: Optional[PARSABLE] = None,
+    |                ^^^^^^^^^^^^^^^^^^
+535 |     ) -> None:
+536 |         """
+    |
+help: Convert to `X | None`
+    |
+533 |         unique: str,
+    -         value: Optional[PARSABLE] = None,
+534 +         value: PARSABLE | None = None,
+535 |     ) -> None:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/unitime.py:10:1
+   |
+10 | / from re import compile
+11 | | from re import match as re_match
+12 | |
+13 | | from .common import UNITIME
+14 | | from .parse import since_time
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+15 |
+   -
+   -
+16 | NOTATE = compile(
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/utils.py:10:1
+   |
+10 | / from contextlib import suppress
+11 | | from datetime import datetime
+12 | | from datetime import timezone
+13 | | from datetime import tzinfo
+14 | | from typing import Any
+15 | | from typing import Optional
+16 | |
+17 | | from dateutil.tz import gettz
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+10 | from contextlib import suppress
+   - from datetime import datetime
+   - from datetime import timezone
+   - from datetime import tzinfo
+   - from typing import Any
+   - from typing import Optional
+11 + from datetime import datetime, timezone, tzinfo
+12 + from typing import Any, Optional
+13 |
+14 | from dateutil.tz import gettz
+   -
+15 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/utils.py:22:13
+   |
+21 | def findtz(
+22 |     tzname: Optional[str] = None,
+   |             ^^^^^^^^^^^^^
+23 | ) -> tzinfo:
+24 |     """
+   |
+help: Convert to `X | None`
+   |
+21 | def findtz(
+   -     tzname: Optional[str] = None,
+22 +     tzname: str | None = None,
+23 | ) -> tzinfo:
+   |
+
+UP017 [*] Use `datetime.UTC` alias
+  --> encommon/times/utils.py:37:16
+   |
+36 |     if tzname is None:
+37 |         return timezone.utc
+   |                ^^^^^^^^^^^^
+38 |
+39 |     tzinfo = gettz(tzname)
+   |
+help: Convert to `datetime.UTC` alias
+   |
+12 | from datetime import timezone
+   - from datetime import tzinfo
+13 + from datetime import tzinfo, UTC
+14 | from typing import Any
+--------------------------------------------------------------------------------
+36 |     if tzname is None:
+   -         return timezone.utc
+37 +         return UTC
+38 |
+   |
+
+UP017 [*] Use `datetime.UTC` alias
+  --> encommon/times/utils.py:68:14
+   |
+66 |     """
+67 |
+68 |     tzinfo = timezone.utc
+   |              ^^^^^^^^^^^^
+69 |
+70 |     if not args and not kwargs:
+   |
+help: Convert to `datetime.UTC` alias
+   |
+12 | from datetime import timezone
+   - from datetime import tzinfo
+13 + from datetime import tzinfo, UTC
+14 | from typing import Any
+--------------------------------------------------------------------------------
+67 |
+   -     tzinfo = timezone.utc
+68 +     tzinfo = UTC
+69 |
+   |
+
+UP017 [*] Use `datetime.UTC` alias
+  --> encommon/times/utils.py:78:21
+   |
+76 |     return (
+77 |         datetime(*args, **kwargs)
+78 |         .astimezone(timezone.utc))
+   |                     ^^^^^^^^^^^^
+   |
+help: Convert to `datetime.UTC` alias
+   |
+12 | from datetime import timezone
+   - from datetime import tzinfo
+13 + from datetime import tzinfo, UTC
+14 | from typing import Any
+--------------------------------------------------------------------------------
+77 |         datetime(*args, **kwargs)
+   -         .astimezone(timezone.utc))
+78 +         .astimezone(UTC))
+79 |
+   |
+
+UP017 [*] Use `datetime.UTC` alias
+   --> encommon/times/utils.py:99:14
+    |
+ 97 |     """
+ 98 |
+ 99 |     tzinfo = timezone.utc
+    |              ^^^^^^^^^^^^
+100 |
+101 |     if isinstance(formats, str):
+    |
+help: Convert to `datetime.UTC` alias
+    |
+12  | from datetime import timezone
+    - from datetime import tzinfo
+13  + from datetime import tzinfo, UTC
+14  | from typing import Any
+--------------------------------------------------------------------------------
+98  |
+    -     tzinfo = timezone.utc
+99  +     tzinfo = UTC
+100 |
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/window.py:10:1
+   |
+10 | / from copy import copy
+11 | | from datetime import datetime
+12 | | from datetime import timedelta
+13 | | from typing import Optional
+14 | |
+15 | | from croniter import croniter
+16 | |
+17 | | from .common import PARSABLE
+18 | | from .common import SCHEDULE
+19 | | from .parse import parse_time
+20 | | from .time import Time
+   | |______________________^
+   |
+help: Organize imports
+   |
+10 | from copy import copy
+   - from datetime import datetime
+   - from datetime import timedelta
+11 + from datetime import datetime, timedelta
+12 | from typing import Optional
+13 |
+14 | from croniter import croniter
+15 |
+   - from .common import PARSABLE
+   - from .common import SCHEDULE
+16 + from .common import PARSABLE, SCHEDULE
+17 | from .parse import parse_time
+18 | from .time import Time
+   -
+19 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/window.py:57:16
+   |
+55 |         self,
+56 |         window: SCHEDULE,
+57 |         start: Optional[PARSABLE] = None,
+   |                ^^^^^^^^^^^^^^^^^^
+58 |         stop: Optional[PARSABLE] = None,
+59 |         *,
+   |
+help: Convert to `X | None`
+   |
+56 |         window: SCHEDULE,
+   -         start: Optional[PARSABLE] = None,
+57 +         start: PARSABLE | None = None,
+58 |         stop: Optional[PARSABLE] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/window.py:58:15
+   |
+56 |         window: SCHEDULE,
+57 |         start: Optional[PARSABLE] = None,
+58 |         stop: Optional[PARSABLE] = None,
+   |               ^^^^^^^^^^^^^^^^^^
+59 |         *,
+60 |         anchor: Optional[PARSABLE] = None,
+   |
+help: Convert to `X | None`
+   |
+57 |         start: Optional[PARSABLE] = None,
+   -         stop: Optional[PARSABLE] = None,
+58 +         stop: PARSABLE | None = None,
+59 |         *,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/times/window.py:60:17
+   |
+58 |         stop: Optional[PARSABLE] = None,
+59 |         *,
+60 |         anchor: Optional[PARSABLE] = None,
+   |                 ^^^^^^^^^^^^^^^^^^
+61 |         delay: float = 0,
+62 |     ) -> None:
+   |
+help: Convert to `X | None`
+   |
+59 |         *,
+   -         anchor: Optional[PARSABLE] = None,
+60 +         anchor: PARSABLE | None = None,
+61 |         delay: float = 0,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/window.py:292:16
+    |
+290 |     def update(
+291 |         self,
+292 |         value: Optional[PARSABLE] = None,
+    |                ^^^^^^^^^^^^^^^^^^
+293 |     ) -> None:
+294 |         """
+    |
+help: Convert to `X | None`
+    |
+291 |         self,
+    -         value: Optional[PARSABLE] = None,
+292 +         value: PARSABLE | None = None,
+293 |     ) -> None:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/times/windows.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from threading import Lock
+12 | | from typing import Annotated
+13 | | from typing import Optional
+14 | | from typing import TYPE_CHECKING
+15 | |
+16 | | from pydantic import Field
+17 | |
+18 | | from sqlalchemy import Column
+19 | | from sqlalchemy import String
+20 | | from sqlalchemy import create_engine
+21 | | from sqlalchemy.engine import Engine
+22 | | from sqlalchemy.orm import DeclarativeBase
+23 | | from sqlalchemy.orm import Session
+24 | | from sqlalchemy.orm import sessionmaker
+25 | |
+26 | | from .common import PARSABLE
+27 | | from .params import WindowsParams
+28 | | from .time import Time
+29 | | from .window import Window
+30 | | from ..types.classes import BaseModel
+31 | | from ..types.types import DictStrAny
+32 | | from ..types.types import LDictStrAny
+   | |_____________________________________^
+33 |
+34 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 | from threading import Lock
+   - from typing import Annotated
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+12 + from typing import TYPE_CHECKING, Annotated, Optional
+13 |
+14 | from pydantic import Field
+   -
+   - from sqlalchemy import Column
+   - from sqlalchemy import String
+   - from sqlalchemy import create_engine
+15 + from sqlalchemy import Column, String, create_engine
+16 | from sqlalchemy.engine import Engine
+   - from sqlalchemy.orm import DeclarativeBase
+   - from sqlalchemy.orm import Session
+   - from sqlalchemy.orm import sessionmaker
+17 + from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
+18 |
+19 + from ..types.classes import BaseModel
+20 + from ..types.types import DictStrAny, LDictStrAny
+21 | from .common import PARSABLE
+22 | from .params import WindowsParams
+23 | from .time import Time
+24 | from .window import Window
+   - from ..types.classes import BaseModel
+   - from ..types.types import DictStrAny
+   - from ..types.types import LDictStrAny
+25 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/windows.py:118:17
+    |
+116 |     def __init__(
+117 |         self,
+118 |         record: Optional[DeclarativeBase] = None,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+119 |     ) -> None:
+120 |         """
+    |
+help: Convert to `X | None`
+    |
+117 |         self,
+    -         record: Optional[DeclarativeBase] = None,
+118 +         record: DeclarativeBase | None = None,
+119 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/windows.py:501:10
+    |
+499 |         self,
+500 |         unique: str,
+501 |     ) -> Optional[WindowsRecord]:
+    |          ^^^^^^^^^^^^^^^^^^^^^^^
+502 |         """
+503 |         Return the record from within the table in the database.
+    |
+help: Convert to `X | None`
+    |
+500 |         unique: str,
+    -     ) -> Optional[WindowsRecord]:
+501 +     ) -> WindowsRecord | None:
+502 |         """
+    |
+
+PLR1730 [*] Replace `if` statement with `child_start = max(child_start, _start)`
+   --> encommon/times/windows.py:589:9
+    |
+589 | /         if child_start < _start:
+590 | |             child_start = _start
+    | |________________________________^
+591 |
+592 |           if child_stop > _stop:
+    |
+help: Replace with `child_start = max(child_start, _start)`
+    |
+588 |
+    -         if child_start < _start:
+    -             child_start = _start
+589 +         child_start = max(child_start, _start)
+590 |
+    |
+
+PLR1730 [*] Replace `if` statement with `child_stop = min(child_stop, _stop)`
+   --> encommon/times/windows.py:592:9
+    |
+590 |               child_start = _start
+591 |
+592 | /         if child_stop > _stop:
+593 | |             child_stop = _stop
+    | |______________________________^
+    |
+help: Replace with `child_stop = min(child_stop, _stop)`
+    |
+591 |
+    -         if child_stop > _stop:
+    -             child_stop = _stop
+592 +         child_stop = min(child_stop, _stop)
+593 |
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/times/windows.py:614:16
+    |
+612 |         self,
+613 |         unique: str,
+614 |         value: Optional[PARSABLE] = None,
+    |                ^^^^^^^^^^^^^^^^^^
+615 |     ) -> None:
+616 |         """
+    |
+help: Convert to `X | None`
+    |
+613 |         unique: str,
+    -         value: Optional[PARSABLE] = None,
+614 +         value: PARSABLE | None = None,
+615 |     ) -> None:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/__init__.py:10:1
+   |
+10 | / from .classes import BaseModel
+11 | | from .classes import clsname
+12 | | from .classes import lattrs
+13 | | from .dicts import delta_dicts
+14 | | from .dicts import merge_dicts
+15 | | from .dicts import sort_dict
+16 | | from .empty import Empty
+17 | | from .funcs import funcname
+18 | | from .lists import dedup_list
+19 | | from .lists import fuzzy_list
+20 | | from .lists import inlist
+21 | | from .notate import delate
+22 | | from .notate import expate
+23 | | from .notate import getate
+24 | | from .notate import impate
+25 | | from .notate import setate
+26 | | from .process import process
+27 | | from .process import prune
+28 | | from .strings import hasstr
+29 | | from .strings import inrepr
+30 | | from .strings import instr
+31 | | from .strings import rplstr
+32 | | from .strings import strplwr
+33 | | from .types import DictStrAny
+34 | | from .types import LDictStrAny
+35 | | from .types import NCFalse
+36 | | from .types import NCNone
+37 | | from .types import NCTrue
+   | |_________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from .classes import BaseModel
+   - from .classes import clsname
+   - from .classes import lattrs
+   - from .dicts import delta_dicts
+   - from .dicts import merge_dicts
+   - from .dicts import sort_dict
+10 + from .classes import BaseModel, clsname, lattrs
+11 + from .dicts import delta_dicts, merge_dicts, sort_dict
+12 | from .empty import Empty
+13 | from .funcs import funcname
+   - from .lists import dedup_list
+   - from .lists import fuzzy_list
+   - from .lists import inlist
+   - from .notate import delate
+   - from .notate import expate
+   - from .notate import getate
+   - from .notate import impate
+   - from .notate import setate
+   - from .process import process
+   - from .process import prune
+   - from .strings import hasstr
+   - from .strings import inrepr
+   - from .strings import instr
+   - from .strings import rplstr
+   - from .strings import strplwr
+   - from .types import DictStrAny
+   - from .types import LDictStrAny
+   - from .types import NCFalse
+   - from .types import NCNone
+   - from .types import NCTrue
+   -
+   -
+14 + from .lists import dedup_list, fuzzy_list, inlist
+15 + from .notate import delate, expate, getate, impate, setate
+16 + from .process import process, prune
+17 + from .strings import hasstr, inrepr, instr, rplstr, strplwr
+18 + from .types import DictStrAny, LDictStrAny, NCFalse, NCNone, NCTrue
+19 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> encommon/types/__init__.py:41:11
+   |
+41 |   __all__ = [
+   |  ___________^
+42 | |     'BaseModel',
+43 | |     'clsname',
+44 | |     'dedup_list',
+45 | |     'delta_dicts',
+46 | |     'fuzzy_list',
+47 | |     'delate',
+48 | |     'DictStrAny',
+49 | |     'Empty',
+50 | |     'expate',
+51 | |     'funcname',
+52 | |     'getate',
+53 | |     'hasstr',
+54 | |     'impate',
+55 | |     'inlist',
+56 | |     'inrepr',
+57 | |     'instr',
+58 | |     'lattrs',
+59 | |     'LDictStrAny',
+60 | |     'merge_dicts',
+61 | |     'process',
+62 | |     'prune',
+63 | |     'rplstr',
+64 | |     'setate',
+65 | |     'sort_dict',
+66 | |     'strplwr',
+67 | |     'NCTrue',
+68 | |     'NCFalse',
+69 | |     'NCNone']
+   | |_____________^
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+42 |     'BaseModel',
+43 +     'DictStrAny',
+44 +     'Empty',
+45 +     'LDictStrAny',
+46 +     'NCFalse',
+47 +     'NCNone',
+48 +     'NCTrue',
+49 |     'clsname',
+50 |     'dedup_list',
+   -     'delta_dicts',
+   -     'fuzzy_list',
+51 |     'delate',
+   -     'DictStrAny',
+   -     'Empty',
+52 +     'delta_dicts',
+53 |     'expate',
+54 |     'funcname',
+55 +     'fuzzy_list',
+56 |     'getate',
+--------------------------------------------------------------------------------
+62 |     'lattrs',
+   -     'LDictStrAny',
+63 |     'merge_dicts',
+--------------------------------------------------------------------------------
+69 |     'strplwr',
+   -     'NCTrue',
+   -     'NCFalse',
+   -     'NCNone']
+70 + ]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/classes.py:10:1
+   |
+10 | from pydantic import BaseModel as Pydantic
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+12 |
+   -
+13 | class BaseModel(Pydantic, extra='forbid'):
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/dicts.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from typing import Any
+   | |______________________^
+   |
+help: Organize imports
+   |
+13 |
+   -
+14 | def merge_dicts(
+   |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+  --> encommon/types/dicts.py:58:9
+   |
+56 |       for key, value in dict2.items():
+57 |
+58 | /         if key not in dict1:
+59 | |             dict1[key] = value
+60 | |
+61 | |         elif (dict1[key] is None
+62 | |                 and force is None):
+63 | |             dict1[key] = value
+   | |______________________________^
+64 |
+65 |           elif (isinstance(dict1[key], list)
+   |
+help: Combine `if` branches
+   |
+57 |
+   -         if key not in dict1:
+   -             dict1[key] = value
+   -
+   -         elif (dict1[key] is None
+58 +         if key not in dict1 or (dict1[key] is None
+59 |                 and force is None):
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/empty.py:10:1
+   |
+10 | from typing import Optional
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+12 |
+   -
+13 | class EmptyType:
+   |
+
+PYI034 `__new__` methods in classes like `EmptyType` usually return `self` at runtime
+  --> encommon/types/empty.py:45:9
+   |
+45 |     def __new__(
+   |         ^^^^^^^
+46 |         cls,
+47 |     ) -> 'EmptyType':
+   |
+help: Use `Self` as return type
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/funcs.py:10:1
+   |
+10 | from inspect import currentframe
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+12 |
+   -
+13 | def funcname() -> str:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/lists.py:10:1
+   |
+10 | / from collections.abc import Sequence
+11 | | from typing import Any
+   | |______________________^
+   |
+help: Organize imports
+   |
+13 |
+   -
+14 | def dedup_list(
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/lists.py:100:19
+    |
+ 99 | def inlist(
+100 |     needle: Any,  # noqa: ANN401
+    |                   ^^^^^^^^^^^^^^
+101 |     haystack: Sequence[Any],
+102 | ) -> bool:
+    |
+help: Remove unused `noqa` directive
+    |
+99  | def inlist(
+    -     needle: Any,  # noqa: ANN401
+100 +     needle: Any,
+101 |     haystack: Sequence[Any],
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/notate.py:10:1
+   |
+10 | / from contextlib import suppress
+11 | | from re import compile
+12 | | from re import match as re_match
+13 | | from typing import Any
+14 | | from typing import Optional
+15 | | from typing import Union
+16 | |
+17 | | from .empty import Empty
+18 | | from .types import DictStrAny
+19 | | from .types import LDictStrAny
+   | |______________________________^
+   |
+help: Organize imports
+   |
+12 | from re import match as re_match
+   - from typing import Any
+   - from typing import Optional
+   - from typing import Union
+13 + from typing import Any, Optional, Union
+14 |
+15 | from .empty import Empty
+   - from .types import DictStrAny
+   - from .types import LDictStrAny
+   -
+   -
+16 + from .types import DictStrAny, LDictStrAny
+17 |
+   |
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/types/notate.py:29:12
+   |
+29 |   _SETABLE = Union[
+   |  ____________^
+30 | |     DictStrAny,
+31 | |     list[Any]]
+   | |______________^
+32 |
+33 |   _GETABLE = Union[
+   |
+help: Convert to `X | Y`
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/types/notate.py:33:12
+   |
+31 |       list[Any]]
+32 |
+33 |   _GETABLE = Union[
+   |  ____________^
+34 | |     tuple[Any, ...],
+35 | |     _SETABLE]
+   | |_____________^
+   |
+help: Convert to `X | Y`
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/notate.py:42:14
+   |
+40 |     source: _GETABLE,
+41 |     path: str,
+42 |     default: Optional[Any] = None,
+   |              ^^^^^^^^^^^^^
+43 |     delim: str = '/',
+44 | ) -> Any:  # noqa: ANN401
+   |
+help: Convert to `X | None`
+   |
+41 |     path: str,
+   -     default: Optional[Any] = None,
+42 +     default: Any | None = None,
+43 |     delim: str = '/',
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/types/notate.py:44:12
+   |
+42 |     default: Optional[Any] = None,
+43 |     delim: str = '/',
+44 | ) -> Any:  # noqa: ANN401
+   |            ^^^^^^^^^^^^^^
+45 |     """
+46 |     Collect the value within the dictionary using notation.
+   |
+help: Remove unused `noqa` directive
+   |
+43 |     delim: str = '/',
+   - ) -> Any:  # noqa: ANN401
+44 + ) -> Any:
+45 |     """
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/notate.py:116:18
+    |
+114 |     source: _SETABLE,
+115 |     path: str,
+116 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+117 |     delim: str = '/',
+118 | ) -> None:
+    |
+help: Remove unused `noqa` directive
+    |
+115 |     path: str,
+    -     value: Any,  # noqa: ANN401
+116 +     value: Any,
+117 |     delim: str = '/',
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/types/notate.py:200:13
+    |
+198 |     source: DictStrAny | LDictStrAny,
+199 |     delim: str = '/',
+200 |     parent: Optional[str] = None,
+    |             ^^^^^^^^^^^^^
+201 |     *,
+202 |     implode_list: bool = True,
+    |
+help: Convert to `X | None`
+    |
+199 |     delim: str = '/',
+    -     parent: Optional[str] = None,
+200 +     parent: str | None = None,
+201 |     *,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/types/notate.py:230:17
+    |
+228 |         source: list[Any],
+229 |         delim: str,
+230 |         parent: Optional[str],
+    |                 ^^^^^^^^^^^^^
+231 |     ) -> DictStrAny | list[Any]:
+    |
+help: Convert to `X | None`
+    |
+229 |         delim: str,
+    -         parent: Optional[str],
+230 +         parent: str | None,
+231 |     ) -> DictStrAny | list[Any]:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/types/notate.py:282:17
+    |
+280 |         source: DictStrAny,
+281 |         delim: str,
+282 |         parent: Optional[str],
+    |                 ^^^^^^^^^^^^^
+283 |     ) -> DictStrAny:
+    |
+help: Convert to `X | None`
+    |
+281 |         delim: str,
+    -         parent: Optional[str],
+282 +         parent: str | None,
+283 |     ) -> DictStrAny:
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/notate.py:379:18
+    |
+377 |     source: _SETABLE,
+378 |     path: str,
+379 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+380 |     delim: str = '/',
+381 | ) -> None:
+    |
+help: Remove unused `noqa` directive
+    |
+378 |     path: str,
+    -     value: Any,  # noqa: ANN401
+379 +     value: Any,
+380 |     delim: str = '/',
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/notate.py:455:18
+    |
+453 |     source: _SETABLE,
+454 |     path: str,
+455 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+456 |     delim: str = '/',
+457 | ) -> None:
+    |
+help: Remove unused `noqa` directive
+    |
+454 |     path: str,
+    -     value: Any,  # noqa: ANN401
+455 +     value: Any,
+456 |     delim: str = '/',
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/process.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from fnmatch import fnmatch
+12 | | from inspect import isclass
+13 | | from re import match as re_match
+14 | | from typing import Any
+15 | | from typing import Callable
+16 | | from typing import Literal
+17 | | from typing import Optional
+18 | | from typing import TypeVar
+19 | |
+20 | | from .empty import Empty
+21 | | from .empty import EmptyType
+22 | | from .lists import dedup_list
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+13 | from re import match as re_match
+   - from typing import Any
+   - from typing import Callable
+   - from typing import Literal
+   - from typing import Optional
+   - from typing import TypeVar
+14 + from typing import Any, Callable, Literal, Optional, TypeVar
+15 |
+   - from .empty import Empty
+   - from .empty import EmptyType
+16 + from .empty import Empty, EmptyType
+17 | from .lists import dedup_list
+   -
+   -
+18 |
+   |
+
+UP035 [*] Import from `collections.abc` instead: `Callable`
+  --> encommon/types/process.py:15:1
+   |
+13 | from re import match as re_match
+14 | from typing import Any
+15 | from typing import Callable
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 | from typing import Literal
+17 | from typing import Optional
+   |
+help: Import from `collections.abc`
+   |
+14 | from typing import Any
+   - from typing import Callable
+15 + from collections.abc import Callable
+16 | from typing import Literal
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:63:19
+   |
+61 |     paranoid: bool = False,
+62 |     dedup_values: bool = False,
+63 |     allow_values: Optional[list[Any] | str] = None,
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+64 |     block_values: Optional[list[Any] | str] = None,
+65 |     allow_keys: Optional[list[Any] | str] = None,
+   |
+help: Convert to `X | None`
+   |
+62 |     dedup_values: bool = False,
+   -     allow_values: Optional[list[Any] | str] = None,
+63 +     allow_values: list[Any] | str | None = None,
+64 |     block_values: Optional[list[Any] | str] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:64:19
+   |
+62 |     dedup_values: bool = False,
+63 |     allow_values: Optional[list[Any] | str] = None,
+64 |     block_values: Optional[list[Any] | str] = None,
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+65 |     allow_keys: Optional[list[Any] | str] = None,
+66 |     block_keys: Optional[list[Any] | str] = None,
+   |
+help: Convert to `X | None`
+   |
+63 |     allow_values: Optional[list[Any] | str] = None,
+   -     block_values: Optional[list[Any] | str] = None,
+64 +     block_values: list[Any] | str | None = None,
+65 |     allow_keys: Optional[list[Any] | str] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:65:17
+   |
+63 |     allow_values: Optional[list[Any] | str] = None,
+64 |     block_values: Optional[list[Any] | str] = None,
+65 |     allow_keys: Optional[list[Any] | str] = None,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+66 |     block_keys: Optional[list[Any] | str] = None,
+67 |     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   |
+help: Convert to `X | None`
+   |
+64 |     block_values: Optional[list[Any] | str] = None,
+   -     allow_keys: Optional[list[Any] | str] = None,
+65 +     allow_keys: list[Any] | str | None = None,
+66 |     block_keys: Optional[list[Any] | str] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:66:17
+   |
+64 |     block_values: Optional[list[Any] | str] = None,
+65 |     allow_keys: Optional[list[Any] | str] = None,
+66 |     block_keys: Optional[list[Any] | str] = None,
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+67 |     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+68 |     block_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   |
+help: Convert to `X | None`
+   |
+65 |     allow_keys: Optional[list[Any] | str] = None,
+   -     block_keys: Optional[list[Any] | str] = None,
+66 +     block_keys: list[Any] | str | None = None,
+67 |     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:67:18
+   |
+65 |     allow_keys: Optional[list[Any] | str] = None,
+66 |     block_keys: Optional[list[Any] | str] = None,
+67 |     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 |     block_types: Optional[list[Any] | tuple[Any, ...]] = None,
+69 |     match_method: Literal['rematch', 'fnmatch'] = 'rematch',
+   |
+help: Convert to `X | None`
+   |
+66 |     block_keys: Optional[list[Any] | str] = None,
+   -     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+67 +     allow_types: list[Any] | tuple[Any, ...] | None = None,
+68 |     block_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:68:18
+   |
+66 |     block_keys: Optional[list[Any] | str] = None,
+67 |     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+68 |     block_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+69 |     match_method: Literal['rematch', 'fnmatch'] = 'rematch',
+70 |     prune_empty: bool = False,
+   |
+help: Convert to `X | None`
+   |
+67 |     allow_types: Optional[list[Any] | tuple[Any, ...]] = None,
+   -     block_types: Optional[list[Any] | tuple[Any, ...]] = None,
+68 +     block_types: list[Any] | tuple[Any, ...] | None = None,
+69 |     match_method: Literal['rematch', 'fnmatch'] = 'rematch',
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/types/process.py:71:16
+   |
+69 |     match_method: Literal['rematch', 'fnmatch'] = 'rematch',
+70 |     prune_empty: bool = False,
+71 |     processor: Optional[Callable[..., Any]] = None,
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+72 | ) -> ProcessSource:
+73 |     """
+   |
+help: Convert to `X | None`
+   |
+70 |     prune_empty: bool = False,
+   -     processor: Optional[Callable[..., Any]] = None,
+71 +     processor: Callable[..., Any] | None = None,
+72 | ) -> ProcessSource:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/process.py:122:23
+    |
+121 |     def _match(
+122 |         source: Any,  # noqa: ANN401
+    |                       ^^^^^^^^^^^^^^
+123 |         regexp: str,
+124 |     ) -> bool:
+    |
+help: Remove unused `noqa` directive
+    |
+121 |     def _match(
+    -         source: Any,  # noqa: ANN401
+122 +         source: Any,
+123 |         regexp: str,
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/types/process.py:128:9
+    |
+126 |           source = str(source)
+127 |
+128 | /         if (match_method == 'rematch'
+129 | |                 and re_match(regexp, source)):
+130 | |             return True
+131 | |
+132 | |         elif (match_method == 'fnmatch'
+133 | |                 and fnmatch(source, regexp)):
+134 | |             return True
+    | |_______________________^
+135 |
+136 |           return False
+    |
+help: Combine `if` branches
+    |
+128 |         if (match_method == 'rematch'
+    -                 and re_match(regexp, source)):
+    -             return True
+    -
+    -         elif (match_method == 'fnmatch'
+129 +                 and re_match(regexp, source)) or (match_method == 'fnmatch'
+130 |                 and fnmatch(source, regexp)):
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/process.py:140:22
+    |
+139 |     def _isempty(  # noqa: CFQ004
+140 |         value: Any,  # noqa: ANN401
+    |                      ^^^^^^^^^^^^^^
+141 |     ) -> bool:
+    |
+help: Remove unused `noqa` directive
+    |
+139 |     def _isempty(  # noqa: CFQ004
+    -         value: Any,  # noqa: ANN401
+140 +         value: Any,
+141 |     ) -> bool:
+    |
+
+SIM103 Return the condition directly
+   --> encommon/types/process.py:154:9
+    |
+152 |               return True
+153 |
+154 | /         if (isclass(value)
+155 | |                 and issubclass(value, EmptyType)):
+156 | |             return True
+157 | |
+158 | |         return False
+    | |____________________^
+    |
+help: Inline condition
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/process.py:162:23
+    |
+161 |     def _allowed(  # noqa: CFQ004
+162 |         target: Any,  # noqa: ANN401
+    |                       ^^^^^^^^^^^^^^
+163 |         allow: Optional[list[Any] | str],
+164 |         block: Optional[list[Any] | str],
+    |
+help: Remove unused `noqa` directive
+    |
+161 |     def _allowed(  # noqa: CFQ004
+    -         target: Any,  # noqa: ANN401
+162 +         target: Any,
+163 |         allow: Optional[list[Any] | str],
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/types/process.py:163:16
+    |
+161 |     def _allowed(  # noqa: CFQ004
+162 |         target: Any,  # noqa: ANN401
+163 |         allow: Optional[list[Any] | str],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+164 |         block: Optional[list[Any] | str],
+165 |     ) -> bool:
+    |
+help: Convert to `X | None`
+    |
+162 |         target: Any,  # noqa: ANN401
+    -         allow: Optional[list[Any] | str],
+163 +         allow: list[Any] | str | None,
+164 |         block: Optional[list[Any] | str],
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/types/process.py:164:16
+    |
+162 |         target: Any,  # noqa: ANN401
+163 |         allow: Optional[list[Any] | str],
+164 |         block: Optional[list[Any] | str],
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+165 |     ) -> bool:
+    |
+help: Convert to `X | None`
+    |
+163 |         allow: Optional[list[Any] | str],
+    -         block: Optional[list[Any] | str],
+164 +         block: list[Any] | str | None,
+165 |     ) -> bool:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/strings.py:10:1
+   |
+10 | from typing import Any
+   | ^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+11 |
+   -
+   -
+12 | COMMAS = ', '
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/types/strings.py:25:18
+   |
+24 | def strplwr(
+25 |     value: Any,  # noqa: ANN401
+   |                  ^^^^^^^^^^^^^^
+26 | ) -> str:
+27 |     """
+   |
+help: Remove unused `noqa` directive
+   |
+24 | def strplwr(
+   -     value: Any,  # noqa: ANN401
+25 +     value: Any,
+26 | ) -> str:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/types/strings.py:70:21
+   |
+68 | def inrepr(
+69 |     needle: str,
+70 |     haystack: Any,  # noqa: ANN401
+   |                     ^^^^^^^^^^^^^^
+71 | ) -> bool:
+72 |     """
+   |
+help: Remove unused `noqa` directive
+   |
+69 |     needle: str,
+   -     haystack: Any,  # noqa: ANN401
+70 +     haystack: Any,
+71 | ) -> bool:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/types/strings.py:94:21
+   |
+92 | def instr(
+93 |     needle: str,
+94 |     haystack: Any,  # noqa: ANN401
+   |                     ^^^^^^^^^^^^^^
+95 | ) -> bool:
+96 |     """
+   |
+help: Remove unused `noqa` directive
+   |
+93 |     needle: str,
+   -     haystack: Any,  # noqa: ANN401
+94 +     haystack: Any,
+95 | ) -> bool:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/types/strings.py:119:18
+    |
+117 |     source: str,
+118 |     match: str,
+119 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+120 | ) -> str:
+121 |     """
+    |
+help: Remove unused `noqa` directive
+    |
+118 |     match: str,
+    -     value: Any,  # noqa: ANN401
+119 +     value: Any,
+120 | ) -> str:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/__init__.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from pathlib import Path
+   | |________________________^
+   |
+help: Organize imports
+   |
+12 |
+   -
+   -
+13 | SAMPLES = (
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_classes.py:10:1
+   |
+10 | / from typing import TYPE_CHECKING
+11 | |
+12 | | from ..classes import clsname
+13 | | from ..classes import lattrs
+   | |____________________________^
+14 |
+15 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 |
+   - from ..classes import clsname
+   - from ..classes import lattrs
+12 + from ..classes import clsname, lattrs
+13 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_dicts.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | |
+12 | | from . import _DICT1
+13 | | from . import _DICT1R
+14 | | from . import _DICT2
+15 | | from . import _DICT2R
+16 | | from ..dicts import delta_dicts
+17 | | from ..dicts import merge_dicts
+18 | | from ..dicts import sort_dict
+19 | | from ..notate import delate
+20 | | from ..notate import setate
+   | |___________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from . import _DICT1
+   - from . import _DICT1R
+   - from . import _DICT2
+   - from . import _DICT2R
+   - from ..dicts import delta_dicts
+   - from ..dicts import merge_dicts
+   - from ..dicts import sort_dict
+   - from ..notate import delate
+   - from ..notate import setate
+   -
+12 + from ..dicts import delta_dicts, merge_dicts, sort_dict
+13 + from ..notate import delate, setate
+14 + from . import _DICT1, _DICT1R, _DICT2, _DICT2R
+15 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_empty.py:10:1
+   |
+10 | / from copy import copy
+11 | | from copy import deepcopy
+12 | |
+13 | | from ..classes import lattrs
+14 | | from ..empty import Empty
+15 | | from ..empty import EmptyType
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from copy import copy
+   - from copy import deepcopy
+10 + from copy import copy, deepcopy
+11 |
+12 | from ..classes import lattrs
+   - from ..empty import Empty
+   - from ..empty import EmptyType
+   -
+13 + from ..empty import Empty, EmptyType
+14 |
+   |
+
+PLR0124 Name compared with itself, consider replacing `Empty is Empty`
+  --> encommon/types/test/test_empty.py:43:12
+   |
+41 |     assert not (Empty or None)
+42 |     assert Empty is empty
+43 |     assert Empty is Empty
+   |            ^^^^^
+44 |     assert Empty is EmptyType()
+45 |     assert Empty == empty
+   |
+
+PLR0124 Name compared with itself, consider replacing `Empty == Empty`
+  --> encommon/types/test/test_empty.py:46:12
+   |
+44 |     assert Empty is EmptyType()
+45 |     assert Empty == empty
+46 |     assert Empty == Empty
+   |            ^^^^^
+47 |     assert Empty == EmptyType()
+48 |     assert Empty is not None
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_funcs.py:10:1
+   |
+10 | from ..funcs import funcname
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+12 |
+   -
+13 | def test_funcname() -> None:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_lists.py:10:1
+   |
+10 | / from ..lists import dedup_list
+11 | | from ..lists import fuzzy_list
+12 | | from ..lists import inlist
+   | |__________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..lists import dedup_list
+   - from ..lists import fuzzy_list
+   - from ..lists import inlist
+   -
+10 + from ..lists import dedup_list, fuzzy_list, inlist
+11 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_notate.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from pathlib import Path
+12 | |
+13 | | from pytest import RaisesExc
+14 | | from pytest import fixture
+15 | | from pytest import raises
+16 | |
+17 | | from . import SAMPLES
+18 | | from . import _DICT1R
+19 | | from ..notate import delate
+20 | | from ..notate import expate
+21 | | from ..notate import getate
+22 | | from ..notate import impate
+23 | | from ..notate import setate
+24 | | from ..types import DictStrAny
+25 | | from ...utils.sample import ENPYRWS
+26 | | from ...utils.sample import load_sample
+27 | | from ...utils.sample import prep_sample
+   | |_______________________________________^
+   |
+help: Organize imports
+   |
+12 |
+   - from pytest import RaisesExc
+   - from pytest import fixture
+   - from pytest import raises
+13 + from pytest import RaisesExc, fixture, raises
+14 |
+   - from . import SAMPLES
+   - from . import _DICT1R
+   - from ..notate import delate
+   - from ..notate import expate
+   - from ..notate import getate
+   - from ..notate import impate
+   - from ..notate import setate
+15 + from ...utils.sample import ENPYRWS, load_sample, prep_sample
+16 + from ..notate import delate, expate, getate, impate, setate
+17 | from ..types import DictStrAny
+   - from ...utils.sample import ENPYRWS
+   - from ...utils.sample import load_sample
+   - from ...utils.sample import prep_sample
+   -
+   -
+18 + from . import _DICT1R, SAMPLES
+19 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_process.py:10:1
+   |
+10 | / from typing import Any
+11 | |
+12 | | from ..empty import Empty
+13 | | from ..empty import EmptyType
+14 | | from ..notate import expate
+15 | | from ..process import process
+16 | | from ..process import prune
+   | |___________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from ..empty import Empty
+   - from ..empty import EmptyType
+12 + from ..empty import Empty, EmptyType
+13 | from ..notate import expate
+   - from ..process import process
+   - from ..process import prune
+   -
+14 + from ..process import process, prune
+15 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/test/test_strings.py:10:1
+   |
+10 | / from ..strings import hasstr
+11 | | from ..strings import inrepr
+12 | | from ..strings import instr
+13 | | from ..strings import rplstr
+14 | | from ..strings import strplwr
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..strings import hasstr
+   - from ..strings import inrepr
+   - from ..strings import instr
+   - from ..strings import rplstr
+   - from ..strings import strplwr
+   -
+10 + from ..strings import hasstr, inrepr, instr, rplstr, strplwr
+11 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/types/types.py:10:1
+   |
+10 | from typing import Any
+   | ^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+11 |
+   -
+   -
+12 | DictStrAny = dict[str, Any]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/__init__.py:10:1
+   |
+10 | / from .diff import prep_diff
+11 | | from .files import append_text
+12 | | from .files import read_text
+13 | | from .files import save_text
+14 | | from .match import fuzz_match
+15 | | from .match import rgxp_match
+16 | | from .paths import resolve_path
+17 | | from .paths import resolve_paths
+18 | | from .paths import stats_path
+19 | | from .raises import Unexpected
+20 | | from .sample import load_sample
+21 | | from .sample import prep_sample
+22 | | from .sample import read_sample
+23 | | from .sample import rvrt_sample
+24 | | from .stdout import array_ansi
+25 | | from .stdout import kvpair_ansi
+26 | | from .stdout import make_ansi
+27 | | from .stdout import print_ansi
+28 | | from .stdout import strip_ansi
+   | |______________________________^
+   |
+help: Organize imports
+   |
+10 | from .diff import prep_diff
+   - from .files import append_text
+   - from .files import read_text
+   - from .files import save_text
+   - from .match import fuzz_match
+   - from .match import rgxp_match
+   - from .paths import resolve_path
+   - from .paths import resolve_paths
+   - from .paths import stats_path
+11 + from .files import append_text, read_text, save_text
+12 + from .match import fuzz_match, rgxp_match
+13 + from .paths import resolve_path, resolve_paths, stats_path
+14 | from .raises import Unexpected
+   - from .sample import load_sample
+   - from .sample import prep_sample
+   - from .sample import read_sample
+   - from .sample import rvrt_sample
+   - from .stdout import array_ansi
+   - from .stdout import kvpair_ansi
+   - from .stdout import make_ansi
+   - from .stdout import print_ansi
+   - from .stdout import strip_ansi
+   -
+   -
+15 + from .sample import load_sample, prep_sample, read_sample, rvrt_sample
+16 + from .stdout import array_ansi, kvpair_ansi, make_ansi, print_ansi, strip_ansi
+17 |
+   |
+
+RUF022 [*] `__all__` is not sorted
+  --> encommon/utils/__init__.py:32:11
+   |
+32 |   __all__ = [
+   |  ___________^
+33 | |     'append_text',
+34 | |     'array_ansi',
+35 | |     'fuzz_match',
+36 | |     'kvpair_ansi',
+37 | |     'load_sample',
+38 | |     'make_ansi',
+39 | |     'prep_diff',
+40 | |     'prep_sample',
+41 | |     'print_ansi',
+42 | |     'read_sample',
+43 | |     'read_text',
+44 | |     'rvrt_sample',
+45 | |     'resolve_path',
+46 | |     'resolve_paths',
+47 | |     'rgxp_match',
+48 | |     'save_text',
+49 | |     'stats_path',
+50 | |     'strip_ansi',
+51 | |     'Unexpected']
+   | |_________________^
+   |
+help: Apply an isort-style sorting to `__all__`
+   |
+32 | __all__ = [
+33 +     'Unexpected',
+34 |     'append_text',
+--------------------------------------------------------------------------------
+44 |     'read_text',
+   -     'rvrt_sample',
+45 |     'resolve_path',
+46 |     'resolve_paths',
+47 |     'rgxp_match',
+48 +     'rvrt_sample',
+49 |     'save_text',
+50 |     'stats_path',
+51 |     'strip_ansi',
+   -     'Unexpected']
+52 + ]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/common.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from typing import Any
+12 | | from typing import Union
+   | |________________________^
+   |
+help: Organize imports
+   |
+10 | from pathlib import Path
+   - from typing import Any
+   - from typing import Union
+   -
+   -
+11 + from typing import Any, Union
+12 |
+   |
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/utils/common.py:20:12
+   |
+20 |   PATHABLE = Union[
+   |  ____________^
+21 | |     str, Path,
+22 | |     list[str | Path],
+23 | |     list[str],
+24 | |     list[Path],
+25 | |     tuple[str | Path, ...],
+26 | |     set[str]]
+   | |_____________^
+   |
+help: Convert to `X | Y`
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/utils/common.py:30:11
+   |
+30 |   REPLACE = Union[
+   |  ___________^
+31 | |     list[tuple[str, Any]],
+32 | |     dict[str, str],
+33 | |     dict[str, str | Path],
+34 | |     dict[str, Path],
+35 | |     dict[str, str],
+36 | |     dict[str | Path, str],
+37 | |     dict[Path, str]]
+   | |____________________^
+   |
+help: Convert to `X | Y`
+
+PYI016 [*] Duplicate union member `dict[str, str]`
+  --> encommon/utils/common.py:35:5
+   |
+33 |     dict[str, str | Path],
+34 |     dict[str, Path],
+35 |     dict[str, str],
+   |     ^^^^^^^^^^^^^^
+36 |     dict[str | Path, str],
+37 |     dict[Path, str]]
+   |
+help: Remove duplicate union member `dict[str, str]`
+   |
+29 |
+   - REPLACE = Union[
+   -     list[tuple[str, Any]],
+   -     dict[str, str],
+   -     dict[str, str | Path],
+   -     dict[str, Path],
+   -     dict[str, str],
+   -     dict[str | Path, str],
+   -     dict[Path, str]]
+30 + REPLACE = Union[list[tuple[str, Any]], dict[str, str], dict[str, str | Path], dict[str, Path], dict[str | Path, str], dict[Path, str]]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/diff.py:10:1
+   |
+10 | / from difflib import unified_diff
+11 | | from typing import Optional
+12 | |
+13 | | from .match import rgxp_match
+14 | | from .stdout import strip_ansi
+   | |______________________________^
+   |
+help: Organize imports
+   |
+16 |
+   -
+17 | def prep_diff(
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/utils/diff.py:22:12
+   |
+20 |     string2: str,
+21 |     *,
+22 |     paths: Optional[tuple[str, str]] = None,
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^
+23 |     ignore: Optional[list[str]] = None,
+24 |     ordered: bool = False,
+   |
+help: Convert to `X | None`
+   |
+21 |     *,
+   -     paths: Optional[tuple[str, str]] = None,
+22 +     paths: tuple[str, str] | None = None,
+23 |     ignore: Optional[list[str]] = None,
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/utils/diff.py:23:13
+   |
+21 |     *,
+22 |     paths: Optional[tuple[str, str]] = None,
+23 |     ignore: Optional[list[str]] = None,
+   |             ^^^^^^^^^^^^^^^^^^^
+24 |     ordered: bool = False,
+25 |     colors: bool = True,
+   |
+help: Convert to `X | None`
+   |
+22 |     paths: Optional[tuple[str, str]] = None,
+   -     ignore: Optional[list[str]] = None,
+23 +     ignore: list[str] | None = None,
+24 |     ordered: bool = False,
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/files.py:10:1
+   |
+10 | from pathlib import Path
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+12 |
+   -
+13 | def read_text(
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/match.py:10:1
+   |
+10 | / from fnmatch import fnmatch
+11 | | from re import fullmatch as re_fmatch
+12 | | from re import match as re_match
+   | |________________________________^
+   |
+help: Organize imports
+   |
+14 |
+   -
+15 | def rgxp_match(
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/paths.py:10:1
+   |
+10 | / from os import stat_result
+11 | | from pathlib import Path
+12 | | from typing import Optional
+13 | | from typing import TYPE_CHECKING
+14 | |
+15 | | from .match import rgxp_match
+16 | | from ..types.dicts import sort_dict
+17 | | from ..types.strings import rplstr
+   | |__________________________________^
+18 |
+19 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+11 | from pathlib import Path
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+12 + from typing import TYPE_CHECKING, Optional
+13 |
+   - from .match import rgxp_match
+14 | from ..types.dicts import sort_dict
+15 | from ..types.strings import rplstr
+16 + from .match import rgxp_match
+17 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/paths.py:20:5
+   |
+19 |   if TYPE_CHECKING:
+20 | /     from .common import PATHABLE
+21 | |     from .common import REPLACE
+   | |_______________________________^
+   |
+help: Organize imports
+   |
+19 | if TYPE_CHECKING:
+   -     from .common import PATHABLE
+   -     from .common import REPLACE
+20 +     from .common import PATHABLE, REPLACE
+21 |
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/utils/paths.py:109:13
+    |
+107 |     path: str | Path,
+108 |     replace: Optional['REPLACE'] = None,
+109 |     ignore: Optional[list[str]] = None,
+    |             ^^^^^^^^^^^^^^^^^^^
+110 | ) -> STATS_PATH:
+111 |     """
+    |
+help: Convert to `X | None`
+    |
+108 |     replace: Optional['REPLACE'] = None,
+    -     ignore: Optional[list[str]] = None,
+109 +     ignore: list[str] | None = None,
+110 | ) -> STATS_PATH:
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/sample.py:10:1
+   |
+10 | / from dataclasses import asdict
+11 | | from dataclasses import is_dataclass
+12 | | from json import dumps
+13 | | from os import environ
+14 | | from pathlib import Path
+15 | | from typing import Any
+16 | | from typing import Callable
+17 | | from typing import Optional
+18 | | from typing import TYPE_CHECKING
+19 | |
+20 | | from pydantic import BaseModel
+21 | |
+22 | | from .files import read_text
+23 | | from .files import save_text
+24 | | from ..types.strings import rplstr
+25 | | from ..types.types import DictStrAny
+   | |____________________________________^
+26 |
+27 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+9  |
+   - from dataclasses import asdict
+   - from dataclasses import is_dataclass
+10 + from dataclasses import asdict, is_dataclass
+11 | from json import dumps
+12 | from os import environ
+13 | from pathlib import Path
+   - from typing import Any
+   - from typing import Callable
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+14 + from typing import TYPE_CHECKING, Any, Callable, Optional
+15 |
+16 | from pydantic import BaseModel
+17 |
+   - from .files import read_text
+   - from .files import save_text
+18 | from ..types.strings import rplstr
+19 | from ..types.types import DictStrAny
+20 + from .files import read_text, save_text
+21 |
+   |
+
+UP035 [*] Import from `collections.abc` instead: `Callable`
+  --> encommon/utils/sample.py:16:1
+   |
+14 | from pathlib import Path
+15 | from typing import Any
+16 | from typing import Callable
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+17 | from typing import Optional
+18 | from typing import TYPE_CHECKING
+   |
+help: Import from `collections.abc`
+   |
+15 | from typing import Any
+   - from typing import Callable
+16 + from collections.abc import Callable
+17 | from typing import Optional
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/utils/sample.py:44:13
+   |
+42 |     default: Callable[[Any], str] = str,
+43 |     replace: Optional['REPLACE'] = None,
+44 |     indent: Optional[int] = 2,
+   |             ^^^^^^^^^^^^^
+45 | ) -> str:
+46 |     r"""
+   |
+help: Convert to `X | None`
+   |
+43 |     replace: Optional['REPLACE'] = None,
+   -     indent: Optional[int] = 2,
+44 +     indent: int | None = 2,
+45 | ) -> str:
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/utils/sample.py:68:22
+   |
+67 |     def _default(
+68 |         value: Any,  # noqa: ANN401
+   |                      ^^^^^^^^^^^^^^
+69 |     ) -> DictStrAny | str:
+   |
+help: Remove unused `noqa` directive
+   |
+67 |     def _default(
+   -         value: Any,  # noqa: ANN401
+68 +         value: Any,
+69 |     ) -> DictStrAny | str:
+   |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/utils/sample.py:110:14
+    |
+108 | def load_sample(
+109 |     path: str | Path,
+110 |     content: Optional[Any] = None,
+    |              ^^^^^^^^^^^^^
+111 |     update: bool = False,
+112 |     *,
+    |
+help: Convert to `X | None`
+    |
+109 |     path: str | Path,
+    -     content: Optional[Any] = None,
+110 +     content: Any | None = None,
+111 |     update: bool = False,
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/utils/sample.py:147:13
+    |
+145 |     path = Path(path).resolve()
+146 |
+147 |     loaded: Optional[Any] = None
+    |             ^^^^^^^^^^^^^
+    |
+help: Convert to `X | None`
+    |
+146 |
+    -     loaded: Optional[Any] = None
+147 +     loaded: Any | None = None
+148 |
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/utils/sample.py:167:5
+    |
+165 |           loaded = _load_sample()
+166 |
+167 | /     if not path.exists():
+168 | |         _save_sample()
+169 | |
+170 | |     elif (update is True
+171 | |             and content is not None
+172 | |             and content != loaded):
+173 | |         _save_sample()
+    | |______________________^
+    |
+help: Combine `if` branches
+    |
+166 |
+    -     if not path.exists():
+    -         _save_sample()
+    -
+    -     elif (update is True
+167 +     if not path.exists() or (update is True
+168 |             and content is not None
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/stdout.py:10:1
+   |
+10 | / from dataclasses import asdict
+11 | | from dataclasses import dataclass
+12 | | from dataclasses import is_dataclass
+13 | | from re import compile
+14 | | from re import sub as re_sub
+15 | | from sys import stdout
+16 | | from typing import Any
+17 | | from typing import Literal
+18 | | from typing import Optional
+19 | | from typing import TYPE_CHECKING
+20 | | from typing import Union
+21 | |
+22 | | from pydantic import BaseModel
+23 | |
+24 | | from .common import JOINABLE
+25 | | from ..times.duration import Duration
+26 | | from ..times.time import Time
+27 | | from ..types.classes import clsname
+28 | | from ..types.empty import Empty
+29 | | from ..types.strings import COMMAD
+30 | | from ..types.strings import NEWLINE
+31 | | from ..types.strings import SEMPTY
+   | |__________________________________^
+32 |
+33 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+9  |
+   - from dataclasses import asdict
+   - from dataclasses import dataclass
+   - from dataclasses import is_dataclass
+10 + from dataclasses import asdict, dataclass, is_dataclass
+11 | from re import compile
+12 | from re import sub as re_sub
+13 | from sys import stdout
+   - from typing import Any
+   - from typing import Literal
+   - from typing import Optional
+   - from typing import TYPE_CHECKING
+   - from typing import Union
+14 + from typing import TYPE_CHECKING, Any, Literal, Optional, Union
+15 |
+16 | from pydantic import BaseModel
+17 |
+   - from .common import JOINABLE
+18 | from ..times.duration import Duration
+19 | from ..times.time import Time
+20 | from ..types.classes import clsname
+21 | from ..types.empty import Empty
+   - from ..types.strings import COMMAD
+   - from ..types.strings import NEWLINE
+   - from ..types.strings import SEMPTY
+22 + from ..types.strings import COMMAD, NEWLINE, SEMPTY
+23 + from .common import JOINABLE
+24 |
+   |
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/utils/stdout.py:41:13
+   |
+39 |       r'\x1b\[[^A-Za-z]*[A-Za-z]')
+40 |
+41 |   ANSIARRAL = Union[
+   |  _____________^
+42 | |     list[Any],
+43 | |     tuple[Any, ...],
+44 | |     set[Any]]
+   | |_____________^
+45 |
+46 |   ANSIARRAD = Union[
+   |
+help: Convert to `X | Y`
+
+UP007 Use `X | Y` for type annotations
+  --> encommon/utils/stdout.py:51:13
+   |
+49 |       'DataclassInstance']
+50 |
+51 |   ANSIARRAY = Union[
+   |  _____________^
+52 | |     ANSIARRAL,
+53 | |     ANSIARRAD]
+   | |______________^
+   |
+help: Convert to `X | Y`
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
+   --> encommon/utils/stdout.py:101:10
+    |
+ 99 |     :param output: Whether or not hte output should be print.
+100 |     :returns: ANSI colorized string using inline directives.
+101 |     """  # noqa: D301 LIT102
+    |          ^^^^^^^^^^^^^^^^^^^
+102 |
+103 |     string = make_ansi(string)
+    |
+help: Remove unused `noqa` directive
+    |
+100 |     :returns: ANSI colorized string using inline directives.
+    -     """  # noqa: D301 LIT102
+101 +     """
+102 |
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `T201`)
+   --> encommon/utils/stdout.py:109:28
+    |
+107 |             stdout.write(f'{string}\n')
+108 |         else:
+109 |             print(string)  # noqa: T201
+    |                            ^^^^^^^^^^^^
+110 |
+111 |     return string
+    |
+help: Remove unused `noqa` directive
+    |
+108 |         else:
+    -             print(string)  # noqa: T201
+109 +             print(string)
+110 |
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
+   --> encommon/utils/stdout.py:128:10
+    |
+126 |     :param string: String containing directives to replace.
+127 |     :returns: Provided string with the directives replaced.
+128 |     """  # noqa: D301 LIT102
+    |          ^^^^^^^^^^^^^^^^^^^
+129 |
+130 |     pattern = r'\<c([\d\;]+)\>'
+    |
+help: Remove unused `noqa` directive
+    |
+127 |     :returns: Provided string with the directives replaced.
+    -     """  # noqa: D301 LIT102
+128 +     """
+129 |
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/utils/stdout.py:139:18
+    |
+137 | def kvpair_ansi(
+138 |     key: str,
+139 |     value: Any,  # noqa: ANN401
+    |                  ^^^^^^^^^^^^^^
+140 | ) -> str:
+141 |     """
+    |
+help: Remove unused `noqa` directive
+    |
+138 |     key: str,
+    -     value: Any,  # noqa: ANN401
+139 +     value: Any,
+140 | ) -> str:
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
+   --> encommon/utils/stdout.py:152:10
+    |
+150 |     :param value: String value to use for the value portion.
+151 |     :returns: ANSI colorized string using inline directives.
+152 |     """  # noqa: D301 LIT102
+    |          ^^^^^^^^^^^^^^^^^^^
+153 |
+154 |     if isinstance(value, JOINABLE):
+    |
+help: Remove unused `noqa` directive
+    |
+151 |     :returns: ANSI colorized string using inline directives.
+    -     """  # noqa: D301 LIT102
+152 +     """
+153 |
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
+   --> encommon/utils/stdout.py:180:10
+    |
+178 |     :param string: String which contains ANSI codes to strip.
+179 |     :returns: Provided string with the ANSI codes removed.
+180 |     """  # noqa: D301 LIT102
+    |          ^^^^^^^^^^^^^^^^^^^
+181 |
+182 |     return re_sub(ANSICODE, SEMPTY, string)
+    |
+help: Remove unused `noqa` directive
+    |
+179 |     :returns: Provided string with the ANSI codes removed.
+    -     """  # noqa: D301 LIT102
+180 +     """
+181 |
+    |
+
+B008 Do not perform function call `ArrayColors` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable
+   --> encommon/utils/stdout.py:190:27
+    |
+188 |     *,
+189 |     indent: int = 0,
+190 |     colors: ArrayColors = ArrayColors(),
+    |                           ^^^^^^^^^^^^^
+191 | ) -> str:
+192 |     """
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
+   --> encommon/utils/stdout.py:208:10
+    |
+206 |     :param colors: Determine colors used with different types.
+207 |     :returns: ANSI colorized string using inline directives.
+208 |     """  # noqa: D301 LIT102
+    |          ^^^^^^^^^^^^^^^^^^^
+209 |
+210 |     output: list[str] = []
+    |
+help: Remove unused `noqa` directive
+    |
+207 |     :returns: ANSI colorized string using inline directives.
+    -     """  # noqa: D301 LIT102
+208 +     """
+209 |
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/utils/stdout.py:219:22
+    |
+217 |     def _append(
+218 |         prefix: str,
+219 |         value: Any,  # noqa: ANN401
+    |                      ^^^^^^^^^^^^^^
+220 |         indent: int,
+221 |         refers: set[int],
+    |
+help: Remove unused `noqa` directive
+    |
+218 |         prefix: str,
+    -         value: Any,  # noqa: ANN401
+219 +         value: Any,
+220 |         indent: int,
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/utils/stdout.py:245:13
+    |
+243 |           for name, typed in items:
+244 |
+245 | /             if isinstance(value, BaseModel):
+246 | |                 name = clsname(value)
+247 | |
+248 | |             elif is_dataclass(value):
+249 | |                 name = clsname(value)
+    | |_____________________________________^
+250 |
+251 |               elif not isinstance(value, typed):
+    |
+help: Combine `if` branches
+    |
+244 |
+    -             if isinstance(value, BaseModel):
+    -                 name = clsname(value)
+    -
+    -             elif is_dataclass(value):
+245 +             if isinstance(value, BaseModel) or is_dataclass(value):
+246 |                 name = clsname(value)
+    |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+   --> encommon/utils/stdout.py:272:23
+    |
+271 |     def _concrete(
+272 |         source: Any,  # noqa: ANN401
+    |                       ^^^^^^^^^^^^^^
+273 |     ) -> str:
+    |
+help: Remove unused `noqa` directive
+    |
+271 |     def _concrete(
+    -         source: Any,  # noqa: ANN401
+272 +         source: Any,
+273 |     ) -> str:
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/utils/stdout.py:289:9
+    |
+287 |               color = colors.none
+288 |
+289 | /         elif isinstance(source, Duration):
+290 | |             color = colors.times
+291 | |
+292 | |         elif isinstance(source, Time):
+293 | |             color = colors.times
+    | |________________________________^
+294 |
+295 |           elif source is Empty:
+    |
+help: Combine `if` branches
+    |
+288 |
+    -         elif isinstance(source, Duration):
+    -             color = colors.times
+    -
+    -         elif isinstance(source, Time):
+289 +         elif isinstance(source, Duration) or isinstance(source, Time):
+290 |             color = colors.times
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/utils/stdout.py:309:17
+    |
+307 |         source: ANSIARRAD,
+308 |         indent: int,
+309 |         refers: Optional[set[int]] = None,
+    |                 ^^^^^^^^^^^^^^^^^^
+310 |     ) -> None:
+    |
+help: Convert to `X | None`
+    |
+308 |         indent: int,
+    -         refers: Optional[set[int]] = None,
+309 +         refers: set[int] | None = None,
+310 |     ) -> None:
+    |
+
+UP045 [*] Use `X | None` for type annotations
+   --> encommon/utils/stdout.py:337:17
+    |
+335 |         source: ANSIARRAL,
+336 |         indent: int,
+337 |         refers: Optional[set[int]] = None,
+    |                 ^^^^^^^^^^^^^^^^^^
+338 |     ) -> None:
+    |
+help: Convert to `X | None`
+    |
+336 |         indent: int,
+    -         refers: Optional[set[int]] = None,
+337 +         refers: set[int] | None = None,
+338 |     ) -> None:
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/utils/stdout.py:383:5
+    |
+383 | /     if isinstance(source, dict):
+384 | |         _dict(source, indent)
+385 | |
+386 | |     elif isinstance(source, BaseModel):
+387 | |         _dict(source, indent)
+    | |_____________________________^
+388 |
+389 |       elif isinstance(source, list):
+    |
+help: Combine `if` branches
+    |
+382 |
+    -     if isinstance(source, dict):
+    -         _dict(source, indent)
+    -
+    -     elif isinstance(source, BaseModel):
+383 +     if isinstance(source, dict) or isinstance(source, BaseModel):
+384 |         _dict(source, indent)
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/utils/stdout.py:389:5
+    |
+387 |           _dict(source, indent)
+388 |
+389 | /     elif isinstance(source, list):
+390 | |         _list(source, indent)
+391 | |
+392 | |     elif isinstance(source, tuple):
+393 | |         _list(source, indent)
+    | |_____________________________^
+394 |
+395 |       elif isinstance(source, set):
+    |
+help: Combine `if` branches
+    |
+388 |
+    -     elif isinstance(source, list):
+    -         _list(source, indent)
+    -
+    -     elif isinstance(source, tuple):
+389 +     elif isinstance(source, list) or isinstance(source, tuple):
+390 |         _list(source, indent)
+    |
+
+SIM114 [*] Combine `if` branches using logical `or` operator
+   --> encommon/utils/stdout.py:392:5
+    |
+390 |           _list(source, indent)
+391 |
+392 | /     elif isinstance(source, tuple):
+393 | |         _list(source, indent)
+394 | |
+395 | |     elif isinstance(source, set):
+396 | |         _list(source, indent)
+    | |_____________________________^
+    |
+help: Combine `if` branches
+    |
+391 |
+    -     elif isinstance(source, tuple):
+    -         _list(source, indent)
+    -
+    -     elif isinstance(source, set):
+392 +     elif isinstance(source, tuple) or isinstance(source, set):
+393 |         _list(source, indent)
+    |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/test/test_diff.py:10:1
+   |
+10 | / from ..diff import prep_diff
+11 | | from ..stdout import strip_ansi
+   | |_______________________________^
+   |
+help: Organize imports
+   |
+13 |
+   -
+14 | def test_prep_diff() -> None:
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/test/test_files.py:10:1
+   |
+10 | / from pathlib import Path
+11 | |
+12 | | from ..files import append_text
+13 | | from ..files import read_text
+14 | | from ..files import save_text
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from ..files import append_text
+   - from ..files import read_text
+   - from ..files import save_text
+   -
+12 + from ..files import append_text, read_text, save_text
+13 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/test/test_match.py:10:1
+   |
+10 | / from ..match import fuzz_match
+11 | | from ..match import rgxp_match
+   | |______________________________^
+   |
+help: Organize imports
+   |
+9  |
+   - from ..match import fuzz_match
+   - from ..match import rgxp_match
+   -
+10 + from ..match import fuzz_match, rgxp_match
+11 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/test/test_paths.py:10:1
+   |
+10 | / from pathlib import PosixPath
+11 | |
+12 | | from ..paths import resolve_path
+13 | | from ..paths import resolve_paths
+14 | | from ..paths import stats_path
+15 | | from ... import PROJECT
+16 | | from ...times.time import Time
+   | |______________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from ..paths import resolve_path
+   - from ..paths import resolve_paths
+   - from ..paths import stats_path
+12 | from ... import PROJECT
+13 | from ...times.time import Time
+   -
+14 + from ..paths import resolve_path, resolve_paths, stats_path
+15 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/test/test_sample.py:10:1
+   |
+10 | / from copy import deepcopy
+11 | | from json import dumps
+12 | | from json import loads
+13 | | from pathlib import Path
+14 | |
+15 | | from ..sample import PREFIX
+16 | | from ..sample import load_sample
+17 | | from ..sample import prep_sample
+18 | | from ..sample import read_sample
+19 | | from ..sample import rvrt_sample
+20 | | from ..stdout import ArrayColors
+21 | | from ... import PROJECT
+22 | | from ...config.params import LoggerParams
+23 | | from ...utils.sample import ENPYRWS
+   | |___________________________________^
+   |
+help: Organize imports
+   |
+10 | from copy import deepcopy
+   - from json import dumps
+   - from json import loads
+11 + from json import dumps, loads
+12 | from pathlib import Path
+13 |
+   - from ..sample import PREFIX
+   - from ..sample import load_sample
+   - from ..sample import prep_sample
+   - from ..sample import read_sample
+   - from ..sample import rvrt_sample
+   - from ..stdout import ArrayColors
+14 | from ... import PROJECT
+15 | from ...config.params import LoggerParams
+16 | from ...utils.sample import ENPYRWS
+   -
+   -
+17 + from ..sample import PREFIX, load_sample, prep_sample, read_sample, rvrt_sample
+18 + from ..stdout import ArrayColors
+19 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/utils/test/test_stdout.py:10:1
+   |
+10 | / from _pytest.capture import CaptureFixture
+11 | |
+12 | | from ..stdout import ArrayColors
+13 | | from ..stdout import array_ansi
+14 | | from ..stdout import kvpair_ansi
+15 | | from ..stdout import make_ansi
+16 | | from ..stdout import print_ansi
+17 | | from ..stdout import strip_ansi
+18 | | from ...config.params import LoggerParams
+19 | | from ...times.common import UNIXMPOCH
+20 | | from ...times.duration import Duration
+21 | | from ...times.time import Time
+22 | | from ...types.empty import Empty
+   | |________________________________^
+   |
+help: Organize imports
+   |
+11 |
+   - from ..stdout import ArrayColors
+   - from ..stdout import array_ansi
+   - from ..stdout import kvpair_ansi
+   - from ..stdout import make_ansi
+   - from ..stdout import print_ansi
+   - from ..stdout import strip_ansi
+12 | from ...config.params import LoggerParams
+--------------------------------------------------------------------------------
+16 | from ...types.empty import Empty
+   -
+17 + from ..stdout import (
+18 +     ArrayColors,
+19 +     array_ansi,
+20 +     kvpair_ansi,
+21 +     make_ansi,
+22 +     print_ansi,
+23 +     strip_ansi,
+24 + )
+25 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/__init__.py:10:1
+   |
+10 | from .content import Content
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+help: Organize imports
+   |
+11 |
+   -
+   -
+12 | __all__ = [
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/content.py:10:1
+   |
+10 | / from pathlib import Path
+11 | | from typing import Optional
+12 | |
+13 | | from ..utils.files import read_text
+   | |___________________________________^
+   |
+help: Organize imports
+   |
+14 |
+   -
+   -
+15 | IMAGES = (
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/webkit/content.py:41:10
+   |
+39 |         cls,
+40 |         name: str,
+41 |     ) -> Optional[str]:
+   |          ^^^^^^^^^^^^^
+42 |         """
+43 |         Return the contents requested stored within the project.
+   |
+help: Convert to `X | None`
+   |
+40 |         name: str,
+   -     ) -> Optional[str]:
+41 +     ) -> str | None:
+42 |         """
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/webkit/content.py:61:10
+   |
+59 |         cls,
+60 |         name: str,
+61 |     ) -> Optional[str]:
+   |          ^^^^^^^^^^^^^
+62 |         """
+63 |         Return the contents requested stored within the project.
+   |
+help: Convert to `X | None`
+   |
+60 |         name: str,
+   -     ) -> Optional[str]:
+61 +     ) -> str | None:
+62 |         """
+   |
+
+UP045 [*] Use `X | None` for type annotations
+  --> encommon/webkit/content.py:81:10
+   |
+79 |         cls,
+80 |         name: str,
+81 |     ) -> Optional[str]:
+   |          ^^^^^^^^^^^^^
+82 |         """
+83 |         Return the contents requested stored within the project.
+   |
+help: Convert to `X | None`
+   |
+80 |         name: str,
+   -     ) -> Optional[str]:
+81 +     ) -> str | None:
+82 |         """
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/test/__init__.py:10:1
+   |
+10 | / from typing import Any
+11 | |
+12 | | from selenium.webdriver.remote.webdriver import WebDriver
+   | |_________________________________________________________^
+   |
+help: Organize imports
+   |
+14 |
+   -
+15 | def _executejs(
+   |
+
+RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
+  --> encommon/webkit/test/__init__.py:21:12
+   |
+19 |     *args: Any,
+20 |     wrap: bool = True,
+21 | ) -> Any:  # noqa: ANN401
+   |            ^^^^^^^^^^^^^^
+22 |     """
+23 |     Evaluate the provided JavaScript using the test driver.
+   |
+help: Remove unused `noqa` directive
+   |
+20 |     wrap: bool = True,
+   - ) -> Any:  # noqa: ANN401
+21 + ) -> Any:
+22 |     """
+   |
+
+UP035 [*] Import from `collections.abc` instead: `Iterator`
+  --> encommon/webkit/test/conftest.py:10:1
+   |
+10 | from typing import Iterator
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+11 |
+12 | from pytest import fixture
+   |
+help: Import from `collections.abc`
+   |
+9  |
+   - from typing import Iterator
+10 + from collections.abc import Iterator
+11 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/test/conftest.py:10:1
+   |
+10 | / from typing import Iterator
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from selenium import webdriver
+15 | | from selenium.webdriver.chrome.options import Options
+16 | | from selenium.webdriver.remote.webdriver import WebDriver
+17 | |
+18 | | from ..content import Content
+   | |_____________________________^
+   |
+help: Organize imports
+   |
+12 | from pytest import fixture
+   -
+13 | from selenium import webdriver
+--------------------------------------------------------------------------------
+17 | from ..content import Content
+   -
+18 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/test/test_content.py:10:1
+   |
+10 | / from typing import TYPE_CHECKING
+11 | |
+12 | | from ...types.classes import lattrs
+13 | | from ...types.strings import inrepr
+14 | | from ...types.strings import instr
+   | |__________________________________^
+15 |
+16 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 | from ...types.classes import lattrs
+   - from ...types.strings import inrepr
+   - from ...types.strings import instr
+13 + from ...types.strings import inrepr, instr
+14 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/test/test_default.py:10:1
+   |
+10 | / from typing import TYPE_CHECKING
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from selenium.webdriver.remote.webdriver import WebDriver
+15 | |
+16 | | from . import _executejs
+17 | | from ...types.strings import SEMPTY
+   | |___________________________________^
+18 |
+19 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 | from pytest import fixture
+   -
+13 | from selenium.webdriver.remote.webdriver import WebDriver
+14 |
+   - from . import _executejs
+15 | from ...types.strings import SEMPTY
+16 + from . import _executejs
+17 |
+   |
+
+RUF059 Unpacked variable `content` is never used
+  --> encommon/webkit/test/test_default.py:66:5
+   |
+64 |     """
+65 |
+66 |     content, driver = prepare
+   |     ^^^^^^^
+67 |
+68 |     outcome = _executejs(
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+  --> encommon/webkit/test/test_default.py:86:5
+   |
+84 |     """
+85 |
+86 |     content, driver = prepare
+   |     ^^^^^^^
+87 |
+88 |     _executejs(
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:113:5
+    |
+111 |     """
+112 |
+113 |     content, driver = prepare
+    |     ^^^^^^^
+114 |
+115 |     _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:138:5
+    |
+136 |     """
+137 |
+138 |     content, driver = prepare
+    |     ^^^^^^^
+139 |
+140 |     _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:163:5
+    |
+161 |     """
+162 |
+163 |     content, driver = prepare
+    |     ^^^^^^^
+164 |
+165 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:208:5
+    |
+206 |     """
+207 |
+208 |     content, driver = prepare
+    |     ^^^^^^^
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:245:5
+    |
+243 |     """
+244 |
+245 |     content, driver = prepare
+    |     ^^^^^^^
+246 |
+247 |     _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:273:5
+    |
+271 |     """
+272 |
+273 |     content, driver = prepare
+    |     ^^^^^^^
+274 |
+275 |     _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:301:5
+    |
+299 |     """
+300 |
+301 |     content, driver = prepare
+    |     ^^^^^^^
+302 |
+303 |     _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_default.py:327:5
+    |
+325 |     """
+326 |
+327 |     content, driver = prepare
+    |     ^^^^^^^
+328 |
+329 |     _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/test/test_helpers.py:10:1
+   |
+10 | / from typing import TYPE_CHECKING
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from selenium.webdriver.remote.webdriver import WebDriver
+15 | |
+16 | | from . import _executejs
+   | |________________________^
+17 |
+18 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 | from pytest import fixture
+   -
+13 | from selenium.webdriver.remote.webdriver import WebDriver
+   |
+
+RUF059 Unpacked variable `content` is never used
+  --> encommon/webkit/test/test_helpers.py:65:5
+   |
+63 |     """
+64 |
+65 |     content, driver = prepare
+   |     ^^^^^^^
+66 |
+67 |     outcome = _executejs(
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+  --> encommon/webkit/test/test_helpers.py:84:5
+   |
+82 |     """
+83 |
+84 |     content, driver = prepare
+   |     ^^^^^^^
+85 |
+86 |     _executejs(
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:102:5
+    |
+100 |     """
+101 |
+102 |     content, driver = prepare
+    |     ^^^^^^^
+103 |
+104 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:122:5
+    |
+120 |     """
+121 |
+122 |     content, driver = prepare
+    |     ^^^^^^^
+123 |
+124 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:143:5
+    |
+141 |     """
+142 |
+143 |     content, driver = prepare
+    |     ^^^^^^^
+144 |
+145 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:162:5
+    |
+160 |     """
+161 |
+162 |     content, driver = prepare
+    |     ^^^^^^^
+163 |
+164 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:187:5
+    |
+185 |     """
+186 |
+187 |     content, driver = prepare
+    |     ^^^^^^^
+188 |
+189 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:218:5
+    |
+216 |     """
+217 |
+218 |     content, driver = prepare
+    |     ^^^^^^^
+219 |
+220 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:239:5
+    |
+237 |     """
+238 |
+239 |     content, driver = prepare
+    |     ^^^^^^^
+240 |
+241 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:260:5
+    |
+258 |     """
+259 |
+260 |     content, driver = prepare
+    |     ^^^^^^^
+261 |
+262 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:279:5
+    |
+277 |     """
+278 |
+279 |     content, driver = prepare
+    |     ^^^^^^^
+280 |
+281 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:298:5
+    |
+296 |     """
+297 |
+298 |     content, driver = prepare
+    |     ^^^^^^^
+299 |
+300 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:317:5
+    |
+315 |     """
+316 |
+317 |     content, driver = prepare
+    |     ^^^^^^^
+318 |
+319 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:336:5
+    |
+334 |     """
+335 |
+336 |     content, driver = prepare
+    |     ^^^^^^^
+337 |
+338 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:355:5
+    |
+353 |     """
+354 |
+355 |     content, driver = prepare
+    |     ^^^^^^^
+356 |
+357 |     outcome = _executejs(
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_helpers.py:374:5
+    |
+372 |     """
+373 |
+374 |     content, driver = prepare
+    |     ^^^^^^^
+375 |
+376 |     dumped = '{"foo":"bar"}'
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> encommon/webkit/test/test_numeric.py:10:1
+   |
+10 | / from typing import TYPE_CHECKING
+11 | |
+12 | | from pytest import fixture
+13 | |
+14 | | from selenium.webdriver.remote.webdriver import WebDriver
+15 | |
+16 | | from . import _executejs
+   | |________________________^
+17 |
+18 |   if TYPE_CHECKING:
+   |
+help: Organize imports
+   |
+12 | from pytest import fixture
+   -
+13 | from selenium.webdriver.remote.webdriver import WebDriver
+   |
+
+RUF059 Unpacked variable `content` is never used
+  --> encommon/webkit/test/test_numeric.py:66:5
+   |
+64 |     """
+65 |
+66 |     content, driver = prepare
+   |     ^^^^^^^
+   |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_numeric.py:113:5
+    |
+111 |     """
+112 |
+113 |     content, driver = prepare
+    |     ^^^^^^^
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
+RUF059 Unpacked variable `content` is never used
+   --> encommon/webkit/test/test_numeric.py:145:5
+    |
+143 |     """
+144 |
+145 |     content, driver = prepare
+    |     ^^^^^^^
+    |
+help: Prefix it with an underscore or any other dummy variable pattern
+
