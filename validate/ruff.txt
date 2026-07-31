@@ -6,7 +6,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from pathlib import Path
 11 | | from sys import flags
    | |_____________________^
-   |
 help: Organize imports
    |
 12 |
@@ -20,7 +19,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from .color import Color
    | ^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 11 |
@@ -38,7 +36,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | |
 14 | | from ..types.strings import strplwr
    | |___________________________________^
-   |
 help: Organize imports
    |
 16 |
@@ -72,7 +69,6 @@ I001 [*] Import block is un-sorted or un-formatted
 12 | | from ..color import Color
 13 | | from ...types.classes import lattrs
    | |___________________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -118,7 +114,6 @@ I001 [*] Import block is un-sorted or un-formatted
 21 | | from .utils import config_path
 22 | | from .utils import config_paths
    | |_______________________________^
-   |
 help: Organize imports
    |
 10 | from .config import Config
@@ -358,7 +353,6 @@ UP045 [*] Use `X | None` for type annotations
 64 |
 65 |     __merge: Optional[DictStrAny]
    |              ^^^^^^^^^^^^^^^^^^^^
-   |
 help: Convert to `X | None`
    |
 64 |
@@ -457,7 +451,6 @@ I001 [*] Import block is un-sorted or un-formatted
 40 | /     from .params import LoggerParams
 41 | |     from ..times.common import PARSABLE
    | |_______________________________________^
-   |
 help: Organize imports
    |
 39 | if TYPE_CHECKING:
@@ -474,7 +467,6 @@ RUF012 Mutable default value for class attribute
 86 |     __time: Time
 87 |     __fields: dict[str, str] = {}
    |                                ^^
-   |
 help: Consider initializing in `__init__` or annotating with `typing.ClassVar`
 
 RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
@@ -705,7 +697,6 @@ I001 [*] Import block is un-sorted or un-formatted
 18 | | from ..crypts.params import CryptsParams
 19 | | from ..types.classes import BaseModel
    | |_____________________________________^
-   |
 help: Organize imports
    |
 10 | from pathlib import Path
@@ -885,7 +876,6 @@ UP045 [*] Use `X | None` for type annotations
 72 |
 73 |     __merge: Optional[DictStrAny]
    |              ^^^^^^^^^^^^^^^^^^^^
-   |
 help: Convert to `X | None`
    |
 72 |
@@ -899,7 +889,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from pathlib import Path
    | ^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 11 |
@@ -957,7 +946,6 @@ I001 [*] Import block is un-sorted or un-formatted
 18 | | from ...types.strings import inrepr
 19 | | from ...types.strings import instr
    | |__________________________________^
-   |
 help: Organize imports
    |
 13 |
@@ -994,7 +982,6 @@ I001 [*] Import block is un-sorted or un-formatted
 24 | | from ...types.strings import instr
 25 | | from ...utils.stdout import strip_ansi
    | |______________________________________^
-   |
 help: Organize imports
    |
 12 | from _pytest.logging import LogCaptureFixture
@@ -1054,7 +1041,6 @@ B010 [*] Do not call `setattr` with a constant attribute value. It is not any sa
 217 | |         '_Logger__stdo_level',
 218 | |         'info')
     | |_______________^
-    |
 help: Replace `setattr` with assignment
     |
 214 |     # any needless instantiation
@@ -1084,7 +1070,6 @@ I001 [*] Import block is un-sorted or un-formatted
 22 | | from ...utils.sample import load_sample
 23 | | from ...utils.sample import prep_sample
    | |_______________________________________^
-   |
 help: Organize imports
    |
 13 |
@@ -1115,7 +1100,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from ... import PROJECT
 14 | | from ... import WORKSPACE
    | |_________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -1178,7 +1162,6 @@ I001 [*] Import block is un-sorted or un-formatted
 15 | | from .config.test import SAMPLES
 16 | | from .utils.files import save_text
    | |__________________________________^
-   |
 help: Organize imports
    |
 18 |
@@ -1193,7 +1176,6 @@ I001 [*] Import block is un-sorted or un-formatted
 11 | | from .hashes import Hashes
 12 | | from .params import CryptsParams
    | |________________________________^
-   |
 help: Organize imports
    |
 13 |
@@ -1235,7 +1217,6 @@ I001 [*] Import block is un-sorted or un-formatted
 22 | /     from .params import CryptParams
 23 | |     from .params import CryptsParams
    | |____________________________________^
-   |
 help: Organize imports
    |
 21 | if TYPE_CHECKING:
@@ -1276,7 +1257,6 @@ I001 [*] Import block is un-sorted or un-formatted
 15 | | from uuid import NAMESPACE_DNS
 16 | | from uuid import uuid3
    | |______________________^
-   |
 help: Organize imports
    |
 10 | from base64 import b64encode
@@ -1302,7 +1282,6 @@ I001 [*] Import block is un-sorted or un-formatted
 14 | |
 15 | | from ..types.classes import BaseModel
    | |_____________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -1327,7 +1306,6 @@ PIE804 [*] Unnecessary `dict` kwargs
    |  __________________________^
 44 | |             'phrase': phrase})
    | |_____________________________^
-   |
 help: Remove unnecessary kwargs
    |
 42 |
@@ -1364,7 +1342,6 @@ PIE804 [*] Unnecessary `dict` kwargs
    |  __________________________^
 71 | |             'phrases': phrases})
    | |_______________________________^
-   |
 help: Remove unnecessary kwargs
    |
 69 |
@@ -1388,7 +1365,6 @@ I001 [*] Import block is un-sorted or un-formatted
 19 | | from ...types.strings import instr
 20 | | from ...types.types import DictStrAny
    | |_____________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -1419,7 +1395,6 @@ I001 [*] Import block is un-sorted or un-formatted
 12 | | from ...types.strings import inrepr
 13 | | from ...types.strings import instr
    | |__________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -1442,7 +1417,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from .network import isvalid_ip
 14 | | from .patterns import isvalid_uuid
    | |__________________________________^
-   |
 help: Organize imports
    |
 10 | from .jinja2 import Jinja2
@@ -1495,7 +1469,6 @@ I001 [*] Import block is un-sorted or un-formatted
 44 | | from ..utils.match import fuzz_match
 45 | | from ..utils.match import rgxp_match
    | |____________________________________^
-   |
 help: Organize imports
    |
 11 | from contextlib import suppress
@@ -1716,7 +1689,6 @@ I001 [*] Import block is un-sorted or un-formatted
 14 | | from netaddr import IPAddress
 15 | | from netaddr import IPNetwork
    | |_____________________________^
-   |
 help: Organize imports
    |
 10 | from contextlib import suppress
@@ -1784,7 +1756,6 @@ I001 [*] Import block is un-sorted or un-formatted
 12 | | from typing import Any
 13 | | from uuid import UUID
    | |_____________________^
-   |
 help: Organize imports
    |
 14 |
@@ -1826,7 +1797,6 @@ I001 [*] Import block is un-sorted or un-formatted
 20 | | from ...types.strings import inrepr
 21 | | from ...types.strings import instr
    | |__________________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -1951,7 +1921,6 @@ I001 [*] Import block is un-sorted or un-formatted
 16 | | from ...types.strings import inrepr
 17 | | from ...types.strings import instr
    | |__________________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -2004,7 +1973,6 @@ I001 [*] Import block is un-sorted or un-formatted
 11 | |
 12 | | from ..patterns import isvalid_uuid
    | |___________________________________^
-   |
 help: Organize imports
    |
 14 |
@@ -2032,7 +2000,6 @@ I001 [*] Import block is un-sorted or un-formatted
 24 | | from .window import Window
 25 | | from .windows import Windows
    | |____________________________^
-   |
 help: Organize imports
    |
 10 | from .duration import Duration
@@ -2076,7 +2043,6 @@ RUF022 [*] `__all__` is not sorted
 44 | |     'string_time',
 45 | |     'unitime']
    | |______________^
-   |
 help: Apply an isort-style sorting to `__all__`
    |
 30 |     'Duration',
@@ -2147,7 +2113,6 @@ UP007 Use `X | Y` for type annotations
    |  ____________^
 42 | |     str, dict[str, int]]
    | |________________________^
-   |
 help: Convert to `X | Y`
 
 I001 [*] Import block is un-sorted or un-formatted
@@ -2161,7 +2126,6 @@ I001 [*] Import block is un-sorted or un-formatted
 15 | | from ..types.strings import SEMPTY
 16 | | from ..types.strings import SPACED
    | |__________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -2188,7 +2152,6 @@ UP007 Use `X | Y` for type annotations
    |  _____________^
 34 | |     DURAGROUP, DURASHORT]
    | |_________________________^
-   |
 help: Convert to `X | Y`
 
 PYI041 [*] Use `float` instead of `int | float`
@@ -2331,7 +2294,6 @@ I001 [*] Import block is un-sorted or un-formatted
 18 | | from ..types.classes import BaseModel
 19 | | from ..types.types import DictStrAny
    | |____________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -2398,7 +2360,6 @@ PIE804 [*] Unnecessary `dict` kwargs
    |  __________________________^
 97 | |             'timers': timers})
    | |_____________________________^
-   |
 help: Remove unnecessary kwargs
    |
 95 |
@@ -2558,7 +2519,6 @@ PIE804 [*] Unnecessary `dict` kwargs
     |  __________________________^
 209 | |             'windows': windows})
     | |_______________________________^
-    |
 help: Remove unnecessary kwargs
     |
 207 |
@@ -2808,7 +2768,6 @@ I001 [*] Import block is un-sorted or un-formatted
 12 | | from ...types.strings import COMMAS
 13 | | from ...types.strings import inrepr
    | |___________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -2839,7 +2798,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from ..params import TimerParams
 11 | | from ..params import WindowParams
    | |_________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -2864,7 +2822,6 @@ I001 [*] Import block is un-sorted or un-formatted
 18 | | from ..parse import string_time
 19 | | from ..utils import utcdatetime
    | |_______________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -2919,7 +2876,6 @@ I001 [*] Import block is un-sorted or un-formatted
 16 | | from ...types.strings import inrepr
 17 | | from ...types.strings import instr
    | |__________________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -2951,7 +2907,6 @@ I001 [*] Import block is un-sorted or un-formatted
 17 | | from ...types.strings import inrepr
 18 | | from ...types.strings import instr
    | |__________________________________^
-   |
 help: Organize imports
    |
 13 |
@@ -2983,7 +2938,6 @@ I001 [*] Import block is un-sorted or un-formatted
 21 | | from ...types.strings import instr
 22 | | from ...types.types import DictStrAny
    | |_____________________________________^
-   |
 help: Organize imports
    |
 12 |
@@ -3010,7 +2964,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from ..unitime import unitime
    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 12 |
@@ -3031,7 +2984,6 @@ I001 [*] Import block is un-sorted or un-formatted
 17 | | from ..utils import strptime
 18 | | from ..utils import utcdatetime
    | |_______________________________^
-   |
 help: Organize imports
    |
 10 | from dateutil.tz import gettz
@@ -3105,7 +3057,6 @@ I001 [*] Import block is un-sorted or un-formatted
 20 | | from ...types.strings import instr
 21 | | from ...types.types import DictStrAny
    | |_____________________________________^
-   |
 help: Organize imports
    |
 12 |
@@ -3144,7 +3095,6 @@ I001 [*] Import block is un-sorted or un-formatted
 22 | | from .utils import findtz
 23 | | from .utils import strftime
    | |___________________________^
-   |
 help: Organize imports
    |
 10 | from contextlib import suppress
@@ -3250,7 +3200,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from .common import PARSABLE
 14 | | from .time import Time
    | |______________________^
-   |
 help: Organize imports
    |
 11 |
@@ -3423,7 +3372,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from .common import UNITIME
 14 | | from .parse import since_time
    | |_____________________________^
-   |
 help: Organize imports
    |
 15 |
@@ -3444,7 +3392,6 @@ I001 [*] Import block is un-sorted or un-formatted
 16 | |
 17 | | from dateutil.tz import gettz
    | |_____________________________^
-   |
 help: Organize imports
    |
 10 | from contextlib import suppress
@@ -3530,7 +3477,6 @@ UP017 [*] Use `datetime.UTC` alias
 77 |         datetime(*args, **kwargs)
 78 |         .astimezone(timezone.utc))
    |                     ^^^^^^^^^^^^
-   |
 help: Convert to `datetime.UTC` alias
    |
 12 | from datetime import timezone
@@ -3582,7 +3528,6 @@ I001 [*] Import block is un-sorted or un-formatted
 19 | | from .parse import parse_time
 20 | | from .time import Time
    | |______________________^
-   |
 help: Organize imports
    |
 10 | from copy import copy
@@ -3798,7 +3743,6 @@ PLR1730 [*] Replace `if` statement with `child_stop = min(child_stop, _stop)`
 592 | /         if child_stop > _stop:
 593 | |             child_stop = _stop
     | |______________________________^
-    |
 help: Replace with `child_stop = min(child_stop, _stop)`
     |
 591 |
@@ -3858,7 +3802,6 @@ I001 [*] Import block is un-sorted or un-formatted
 36 | | from .types import NCNone
 37 | | from .types import NCTrue
    | |_________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -3936,7 +3879,6 @@ RUF022 [*] `__all__` is not sorted
 68 | |     'NCFalse',
 69 | |     'NCNone']
    | |_____________^
-   |
 help: Apply an isort-style sorting to `__all__`
    |
 42 |     'BaseModel',
@@ -3975,7 +3917,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from pydantic import BaseModel as Pydantic
    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 12 |
@@ -3989,7 +3930,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from copy import deepcopy
 11 | | from typing import Any
    | |______________________^
-   |
 help: Organize imports
    |
 13 |
@@ -4028,7 +3968,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from typing import Optional
    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 12 |
@@ -4051,7 +3990,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from inspect import currentframe
    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 12 |
@@ -4065,7 +4003,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from collections.abc import Sequence
 11 | | from typing import Any
    | |______________________^
-   |
 help: Organize imports
    |
 13 |
@@ -4104,7 +4041,6 @@ I001 [*] Import block is un-sorted or un-formatted
 18 | | from .types import DictStrAny
 19 | | from .types import LDictStrAny
    | |______________________________^
-   |
 help: Organize imports
    |
 12 | from re import match as re_match
@@ -4145,7 +4081,6 @@ UP007 Use `X | Y` for type annotations
 34 | |     tuple[Any, ...],
 35 | |     _SETABLE]
    | |_____________^
-   |
 help: Convert to `X | Y`
 
 UP045 [*] Use `X | None` for type annotations
@@ -4307,7 +4242,6 @@ I001 [*] Import block is un-sorted or un-formatted
 21 | | from .empty import EmptyType
 22 | | from .lists import dedup_list
    | |_____________________________^
-   |
 help: Organize imports
    |
 13 | from re import match as re_match
@@ -4542,7 +4476,6 @@ SIM103 Return the condition directly
 157 | |
 158 | |         return False
     | |____________________^
-    |
 help: Inline condition
 
 RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
@@ -4602,7 +4535,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from typing import Any
    | ^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 11 |
@@ -4688,7 +4620,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from copy import deepcopy
 11 | | from pathlib import Path
    | |________________________^
-   |
 help: Organize imports
    |
 12 |
@@ -4732,7 +4663,6 @@ I001 [*] Import block is un-sorted or un-formatted
 19 | | from ..notate import delate
 20 | | from ..notate import setate
    | |___________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -4762,7 +4692,6 @@ I001 [*] Import block is un-sorted or un-formatted
 14 | | from ..empty import Empty
 15 | | from ..empty import EmptyType
    | |_____________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -4805,7 +4734,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from ..funcs import funcname
    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 12 |
@@ -4820,7 +4748,6 @@ I001 [*] Import block is un-sorted or un-formatted
 11 | | from ..lists import fuzzy_list
 12 | | from ..lists import inlist
    | |__________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -4854,7 +4781,6 @@ I001 [*] Import block is un-sorted or un-formatted
 26 | | from ...utils.sample import load_sample
 27 | | from ...utils.sample import prep_sample
    | |_______________________________________^
-   |
 help: Organize imports
    |
 12 |
@@ -4893,7 +4819,6 @@ I001 [*] Import block is un-sorted or un-formatted
 15 | | from ..process import process
 16 | | from ..process import prune
    | |___________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -4917,7 +4842,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from ..strings import rplstr
 14 | | from ..strings import strplwr
    | |_____________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -4936,7 +4860,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from typing import Any
    | ^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 11 |
@@ -4968,7 +4891,6 @@ I001 [*] Import block is un-sorted or un-formatted
 27 | | from .stdout import print_ansi
 28 | | from .stdout import strip_ansi
    | |______________________________^
-   |
 help: Organize imports
    |
 10 | from .diff import prep_diff
@@ -5025,7 +4947,6 @@ RUF022 [*] `__all__` is not sorted
 50 | |     'strip_ansi',
 51 | |     'Unexpected']
    | |_________________^
-   |
 help: Apply an isort-style sorting to `__all__`
    |
 32 | __all__ = [
@@ -5052,7 +4973,6 @@ I001 [*] Import block is un-sorted or un-formatted
 11 | | from typing import Any
 12 | | from typing import Union
    | |________________________^
-   |
 help: Organize imports
    |
 10 | from pathlib import Path
@@ -5076,7 +4996,6 @@ UP007 Use `X | Y` for type annotations
 25 | |     tuple[str | Path, ...],
 26 | |     set[str]]
    | |_____________^
-   |
 help: Convert to `X | Y`
 
 UP007 Use `X | Y` for type annotations
@@ -5092,7 +5011,6 @@ UP007 Use `X | Y` for type annotations
 36 | |     dict[str | Path, str],
 37 | |     dict[Path, str]]
    | |____________________^
-   |
 help: Convert to `X | Y`
 
 PYI016 [*] Duplicate union member `dict[str, str]`
@@ -5128,7 +5046,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from .match import rgxp_match
 14 | | from .stdout import strip_ansi
    | |______________________________^
-   |
 help: Organize imports
    |
 16 |
@@ -5177,7 +5094,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from pathlib import Path
    | ^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 12 |
@@ -5192,7 +5108,6 @@ I001 [*] Import block is un-sorted or un-formatted
 11 | | from re import fullmatch as re_fmatch
 12 | | from re import match as re_match
    | |________________________________^
-   |
 help: Organize imports
    |
 14 |
@@ -5236,7 +5151,6 @@ I001 [*] Import block is un-sorted or un-formatted
 20 | /     from .common import PATHABLE
 21 | |     from .common import REPLACE
    | |_______________________________^
-   |
 help: Organize imports
    |
 19 | if TYPE_CHECKING:
@@ -5389,7 +5303,6 @@ UP045 [*] Use `X | None` for type annotations
 146 |
 147 |     loaded: Optional[Any] = None
     |             ^^^^^^^^^^^^^
-    |
 help: Convert to `X | None`
     |
 146 |
@@ -5411,7 +5324,6 @@ SIM114 [*] Combine `if` branches using logical `or` operator
 172 | |             and content != loaded):
 173 | |         _save_sample()
     | |______________________^
-    |
 help: Combine `if` branches
     |
 166 |
@@ -5510,7 +5422,6 @@ UP007 Use `X | Y` for type annotations
 52 | |     ANSIARRAL,
 53 | |     ANSIARRAD]
    | |______________^
-   |
 help: Convert to `X | Y`
 
 RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
@@ -5827,7 +5738,6 @@ SIM114 [*] Combine `if` branches using logical `or` operator
 395 | |     elif isinstance(source, set):
 396 | |         _list(source, indent)
     | |_____________________________^
-    |
 help: Combine `if` branches
     |
 391 |
@@ -5845,7 +5755,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from ..diff import prep_diff
 11 | | from ..stdout import strip_ansi
    | |_______________________________^
-   |
 help: Organize imports
    |
 13 |
@@ -5862,7 +5771,6 @@ I001 [*] Import block is un-sorted or un-formatted
 13 | | from ..files import read_text
 14 | | from ..files import save_text
    | |_____________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -5880,7 +5788,6 @@ I001 [*] Import block is un-sorted or un-formatted
 10 | / from ..match import fuzz_match
 11 | | from ..match import rgxp_match
    | |______________________________^
-   |
 help: Organize imports
    |
 9  |
@@ -5902,7 +5809,6 @@ I001 [*] Import block is un-sorted or un-formatted
 15 | | from ... import PROJECT
 16 | | from ...times.time import Time
    | |______________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -5934,7 +5840,6 @@ I001 [*] Import block is un-sorted or un-formatted
 22 | | from ...config.params import LoggerParams
 23 | | from ...utils.sample import ENPYRWS
    | |___________________________________^
-   |
 help: Organize imports
    |
 10 | from copy import deepcopy
@@ -5976,7 +5881,6 @@ I001 [*] Import block is un-sorted or un-formatted
 21 | | from ...times.time import Time
 22 | | from ...types.empty import Empty
    | |________________________________^
-   |
 help: Organize imports
    |
 11 |
@@ -6006,7 +5910,6 @@ I001 [*] Import block is un-sorted or un-formatted
    |
 10 | from .content import Content
    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   |
 help: Organize imports
    |
 11 |
@@ -6023,7 +5926,6 @@ I001 [*] Import block is un-sorted or un-formatted
 12 | |
 13 | | from ..utils.files import read_text
    | |___________________________________^
-   |
 help: Organize imports
    |
 14 |
@@ -6093,7 +5995,6 @@ I001 [*] Import block is un-sorted or un-formatted
 11 | |
 12 | | from selenium.webdriver.remote.webdriver import WebDriver
    | |_________________________________________________________^
-   |
 help: Organize imports
    |
 14 |
@@ -6148,7 +6049,6 @@ I001 [*] Import block is un-sorted or un-formatted
 17 | |
 18 | | from ..content import Content
    | |_____________________________^
-   |
 help: Organize imports
    |
 12 | from pytest import fixture
@@ -6275,7 +6175,6 @@ RUF059 Unpacked variable `content` is never used
 207 |
 208 |     content, driver = prepare
     |     ^^^^^^^
-    |
 help: Prefix it with an underscore or any other dummy variable pattern
 
 RUF059 Unpacked variable `content` is never used
@@ -6567,7 +6466,6 @@ RUF059 Unpacked variable `content` is never used
 65 |
 66 |     content, driver = prepare
    |     ^^^^^^^
-   |
 help: Prefix it with an underscore or any other dummy variable pattern
 
 RUF059 Unpacked variable `content` is never used
@@ -6577,7 +6475,6 @@ RUF059 Unpacked variable `content` is never used
 112 |
 113 |     content, driver = prepare
     |     ^^^^^^^
-    |
 help: Prefix it with an underscore or any other dummy variable pattern
 
 RUF059 Unpacked variable `content` is never used
@@ -6587,6 +6484,5 @@ RUF059 Unpacked variable `content` is never used
 144 |
 145 |     content, driver = prepare
     |     ^^^^^^^
-    |
 help: Prefix it with an underscore or any other dummy variable pattern
 
