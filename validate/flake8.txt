@@ -1,5 +1,4 @@
 >>> make flake8
   ● Executing flake8 in encommon..
-    DONE
-  ● Executing flake8 in sphinx..
-    DONE
+encommon/times/parse.py:113:13: DTZ901 The use of `datetime.datetime.min` or `datetime.datetime.max` without `.replace(tzinfo=)` is not allowed.
+encommon/times/parse.py:117:13: DTZ901 The use of `datetime.datetime.min` or `datetime.datetime.max` without `.replace(tzinfo=)` is not allowed.
