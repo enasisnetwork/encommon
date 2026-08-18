@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.times.time</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -323,19 +323,19 @@
 <div class="viewcode-block" id="Time">
 <a class="viewcode-back" href="../../../index.html#encommon.times.time.Time">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Time</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Interact with various time functions through one wrapper.</span>
 
 <span class="sd">    .. testsetup::</span>
-<span class="sd">       &gt;&gt;&gt; time = Time(&#39;1/1/2000 12:00am&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; time = Time('1/1/2000 12:00am')</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; time = Time(&#39;1/1/2000 12:00am&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; time = Time('1/1/2000 12:00am')</span>
 <span class="sd">    &gt;&gt;&gt; time.stamp()</span>
-<span class="sd">    &#39;2000-01-01T00:00:00.000000+0000&#39;</span>
-<span class="sd">    &gt;&gt;&gt; time.stamp(&#39;%m/%d/%Y&#39;)</span>
-<span class="sd">    &#39;01/01/2000&#39;</span>
+<span class="sd">    '2000-01-01T00:00:00.000000+0000'</span>
+<span class="sd">    &gt;&gt;&gt; time.stamp('%m/%d/%Y')</span>
+<span class="sd">    '01/01/2000'</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
@@ -344,37 +344,37 @@
 <span class="sd">    &gt;&gt;&gt; time.time</span>
 <span class="sd">    datetime.time(0, 0)</span>
 <span class="sd">    &gt;&gt;&gt; time.simple</span>
-<span class="sd">    &#39;2000-01-01T00:00:00+0000&#39;</span>
+<span class="sd">    '2000-01-01T00:00:00+0000'</span>
 <span class="sd">    &gt;&gt;&gt; time.human</span>
-<span class="sd">    &#39;01/01/2000 12:00AM UTC&#39;</span>
+<span class="sd">    '01/01/2000 12:00AM UTC'</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
 <span class="sd">    &gt;&gt;&gt; time.before</span>
-<span class="sd">    Time(&#39;1999-12-31T23:59:59.999999+0000&#39;)</span>
+<span class="sd">    Time('1999-12-31T23:59:59.999999+0000')</span>
 <span class="sd">    &gt;&gt;&gt; time.after</span>
-<span class="sd">    Time(&#39;2000-01-01T00:00:00.000001+0000&#39;)</span>
+<span class="sd">    Time('2000-01-01T00:00:00.000001+0000')</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; time.shift(&#39;-1d&#39;)</span>
-<span class="sd">    Time(&#39;1999-12-31T00:00:00.000000+0000&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; time.shift('-1d')</span>
+<span class="sd">    Time('1999-12-31T00:00:00.000000+0000')</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; time.shifz(&#39;US/Central&#39;)</span>
-<span class="sd">    Time(&#39;1999-12-31T18:00:00.000000-0600&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; time.shifz('US/Central')</span>
+<span class="sd">    Time('1999-12-31T18:00:00.000000-0600')</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; time = Time(&#39;-1s&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; time = Time('-1s')</span>
 <span class="sd">    &gt;&gt;&gt; int(time.since)</span>
 <span class="sd">    1</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; time1 = Time(&#39;1/1/2000 12:00am&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; time2 = Time(&#39;1/1/2000 12:00am&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; time1 = Time('1/1/2000 12:00am')</span>
+<span class="sd">    &gt;&gt;&gt; time2 = Time('1/1/2000 12:00am')</span>
 <span class="sd">    &gt;&gt;&gt; time1 - time2</span>
 <span class="sd">    0.0</span>
 <span class="sd">    &gt;&gt;&gt; time1 + time2</span>
@@ -385,7 +385,7 @@
 <span class="sd">    :param format: Optional format when source is timestamp.</span>
 <span class="sd">    :param tzname: Name of the timezone associated to source.</span>
 <span class="sd">        This is not relevant in timezone included in source.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">__source</span><span class="p">:</span> <span class="n">datetime</span>
 
@@ -398,9 +398,9 @@
         <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">STAMP_SUBSEC</span><span class="p">,</span>
         <span class="n">tzname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span>
             <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
@@ -414,23 +414,23 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for representing the values for instance.</span>
 
 <span class="sd">        :returns: String representation for values from instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Time(&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subsec</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Time('</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subsec</span><span class="si">}</span><span class="s2">')"</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method used when performing hashing operations.</span>
 
 <span class="sd">        :returns: Integer hash value for the internal reference.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 
@@ -438,11 +438,11 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for representing the values for instance.</span>
 
 <span class="sd">        :returns: String representation for values from instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stamp</span><span class="p">()</span>
 
@@ -450,11 +450,11 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__int__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method representing numeric value for instance.</span>
 
 <span class="sd">        :returns: Numeric representation for value in instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span>
 
@@ -462,11 +462,11 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__float__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method representing numeric value for instance.</span>
 
 <span class="sd">        :returns: Numeric representation for value in instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span>
 
@@ -475,12 +475,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for mathematically processing the value.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Python timedelta object containing the answer.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">parse_time</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -493,12 +493,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for mathematically processing the value.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Python timedelta object containing the answer.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="p">(</span>
             <span class="n">parse_time</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -511,12 +511,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -534,12 +534,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
@@ -548,12 +548,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
@@ -564,12 +564,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
@@ -580,12 +580,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
@@ -596,12 +596,12 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="n">PARSABLE</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_time</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
@@ -612,11 +612,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">source</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">datetime</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -625,11 +625,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">epoch</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the seconds since the Unix epoch for the instance.</span>
 
 <span class="sd">        :returns: Seconds since the Unix epoch for the instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -640,11 +640,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">spoch</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the seconds since the Unix epoch for the instance.</span>
 
 <span class="sd">        :returns: Seconds since the Unix epoch for the instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="p">)</span>
 
@@ -653,11 +653,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">mpoch</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return milliseconds since the Unix epoch for the instance.</span>
 
 <span class="sd">        :returns: Seconds since the Unix epoch for the instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">*</span> <span class="mi">1000</span>
 
@@ -666,11 +666,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">time</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">dtime</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
@@ -679,11 +679,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">simple</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="n">STAMP_SIMPLE</span><span class="p">)</span>
 
@@ -692,11 +692,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">subsec</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="n">STAMP_SUBSEC</span><span class="p">)</span>
 
@@ -705,11 +705,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">human</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="n">STAMP_HUMAN</span><span class="p">)</span>
 
@@ -718,11 +718,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">elapsed</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Determine the time in seconds occurring since instance.</span>
 
 <span class="sd">        :returns: Time in seconds occurring since the instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="n">since_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 
@@ -731,11 +731,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">since</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Determine the time in seconds occurring since instance.</span>
 
 <span class="sd">        :returns: Time in seconds occurring since the instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="n">since_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 
@@ -743,12 +743,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">before</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Time'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return new object containing time just before the time.</span>
 
 <span class="sd">        :returns: Object containing time just before the time.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -761,12 +761,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">after</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Time'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return new object containing time just after the time.</span>
 
 <span class="sd">        :returns: Object containing time just after the time.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -783,14 +783,14 @@
         <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">STAMP_SUBSEC</span><span class="p">,</span>
         <span class="n">tzname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the timestamp using provided format for instance.</span>
 
 <span class="sd">        :param format: Optional format when source is timestamp.</span>
 <span class="sd">        :param tzname: Name of the timezone associated to source.</span>
 <span class="sd">            This is not relevant in timezone included in source.</span>
 <span class="sd">        :returns: Timestamp using provided format for instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -812,13 +812,13 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">shift</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">notate</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Time'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the new instance of object shifted using snaptime.</span>
 
 <span class="sd">        :param notate: Syntax compatable using snaptime library.</span>
 <span class="sd">        :returns: New instance of the class using shifted time.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -832,14 +832,14 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">shifz</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">tzname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Time&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Time'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the new instance of object shifted using datetime.</span>
 
 <span class="sd">        :param tzname: Name of the timezone associated to source.</span>
 <span class="sd">            This is not relevant in timezone included in source.</span>
 <span class="sd">        :returns: New instance of the class using shifted time.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 

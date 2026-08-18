@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.config.utils</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -326,12 +326,12 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">config_load</span><span class="p">(</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Load configuration using the directory or file provided.</span>
 
 <span class="sd">    :param path: Complete or relative path to configuration.</span>
 <span class="sd">    :returns: New resolved filesystem path object instance.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">loaded</span> <span class="o">=</span> <span class="n">read_text</span><span class="p">(</span>
         <span class="n">config_path</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
@@ -352,7 +352,7 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">config_path</span><span class="p">(</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Resolve the provided path replacing the magic keywords.</span>
 
 <span class="sd">    .. note::</span>
@@ -360,11 +360,11 @@
 
 <span class="sd">    :param path: Complete or relative path for processing.</span>
 <span class="sd">    :returns: New resolved filesystem path object instance.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">replace</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;PROJECT&#39;</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">,</span>
-        <span class="s1">&#39;WORKSPACE&#39;</span><span class="p">:</span> <span class="n">WORKSPACE</span><span class="p">}</span>
+        <span class="s1">'PROJECT'</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">,</span>
+        <span class="s1">'WORKSPACE'</span><span class="p">:</span> <span class="n">WORKSPACE</span><span class="p">}</span>
 
     <span class="k">return</span> <span class="n">resolve_path</span><span class="p">(</span>
         <span class="n">path</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span></div>
@@ -375,9 +375,9 @@
 <div class="viewcode-block" id="config_paths">
 <a class="viewcode-back" href="../../../index.html#encommon.config.utils.config_paths">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">config_paths</span><span class="p">(</span>
-    <span class="n">paths</span><span class="p">:</span> <span class="s1">&#39;PATHABLE&#39;</span><span class="p">,</span>
+    <span class="n">paths</span><span class="p">:</span> <span class="s1">'PATHABLE'</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Resolve the provided paths replacing the magic keywords.</span>
 
 <span class="sd">    .. note::</span>
@@ -385,11 +385,11 @@
 
 <span class="sd">    :param paths: Complete or relative paths for processing.</span>
 <span class="sd">    :returns: New resolved filesystem path object instances.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">replace</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;PROJECT&#39;</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">,</span>
-        <span class="s1">&#39;WORKSPACE&#39;</span><span class="p">:</span> <span class="n">WORKSPACE</span><span class="p">}</span>
+        <span class="s1">'PROJECT'</span><span class="p">:</span> <span class="n">PROJECT</span><span class="p">,</span>
+        <span class="s1">'WORKSPACE'</span><span class="p">:</span> <span class="n">WORKSPACE</span><span class="p">}</span>
 
     <span class="k">return</span> <span class="n">resolve_paths</span><span class="p">(</span>
         <span class="n">paths</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span></div>

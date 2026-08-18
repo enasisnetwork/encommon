@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.parse.patterns</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -311,9 +311,9 @@
 
 
 <span class="n">VALID_UUID</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span>
-    <span class="s1">&#39;^[0-9a-fA-F]</span><span class="si">{8}</span><span class="s1">-&#39;</span>
-    <span class="s1">&#39;([0-9a-fA-F]</span><span class="si">{4}</span><span class="s1">-)</span><span class="si">{3}</span><span class="s1">&#39;</span>
-    <span class="s1">&#39;[0-9a-fA-F]</span><span class="si">{12}</span><span class="s1">$&#39;</span><span class="p">)</span>
+    <span class="s1">'^[0-9a-fA-F]</span><span class="si">{8}</span><span class="s1">-'</span>
+    <span class="s1">'([0-9a-fA-F]</span><span class="si">{4}</span><span class="s1">-)</span><span class="si">{3}</span><span class="s1">'</span>
+    <span class="s1">'[0-9a-fA-F]</span><span class="si">{12}</span><span class="s1">$'</span><span class="p">)</span>
 
 
 
@@ -322,12 +322,12 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">isvalid_uuid</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the boolean indicating whether the value is valid.</span>
 
 <span class="sd">    :param value: Value that will be validated by function.</span>
 <span class="sd">    :returns: Boolean indicating whether the value is valid.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">True</span>

@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.parse.jinja2</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -346,82 +346,82 @@
 <span class="n">FILTERS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FILTER</span><span class="p">]</span>
 
 <span class="n">JINJA2</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="sa">r</span><span class="s1">&#39;(\{\{.+?\}\})|&#39;</span>
-    <span class="sa">r</span><span class="s1">&#39;(\{\%.+?\%\})&#39;</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s1">'(\{\{.+?\}\})|'</span>
+    <span class="sa">r</span><span class="s1">'(\{\%.+?\%\})'</span><span class="p">)</span>
 
 <span class="n">LITERAL</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="sa">r</span><span class="s1">&#39;^((\{([^\{%].+?)?\})|(\[(.+?|)\])&#39;</span>
-    <span class="s1">&#39;|True|False|None|&#39;</span>
-    <span class="sa">r</span><span class="s1">&#39;(\-?([1-9]\d*|0)(\.\d+)?))$&#39;</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s1">'^((\{([^\{%].+?)?\})|(\[(.+?|)\])'</span>
+    <span class="s1">'|True|False|None|'</span>
+    <span class="sa">r</span><span class="s1">'(\-?([1-9]\d*|0)(\.\d+)?))$'</span><span class="p">)</span>
 
 
 
 <span class="n">DEFAULT_STATICS</span><span class="p">:</span> <span class="n">DictStrAny</span> <span class="o">=</span> <span class="p">{</span>
 
     <span class="c1"># encommon locations</span>
-    <span class="s1">&#39;WORKSPACE&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">WORKSPACE</span><span class="p">),</span>
-    <span class="s1">&#39;PROJECT&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)}</span>
+    <span class="s1">'WORKSPACE'</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">WORKSPACE</span><span class="p">),</span>
+    <span class="s1">'PROJECT'</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)}</span>
 
 
 
 <span class="n">DEFAULT_FILTERS</span><span class="p">:</span> <span class="n">FILTERS</span> <span class="o">=</span> <span class="p">{</span>
 
     <span class="c1"># Python builtins</span>
-    <span class="s1">&#39;all&#39;</span><span class="p">:</span> <span class="nb">all</span><span class="p">,</span>
-    <span class="s1">&#39;any&#39;</span><span class="p">:</span> <span class="nb">any</span><span class="p">,</span>
-    <span class="s1">&#39;copy&#39;</span><span class="p">:</span> <span class="n">copy</span><span class="p">,</span>
-    <span class="s1">&#39;deepcopy&#39;</span><span class="p">:</span> <span class="n">deepcopy</span><span class="p">,</span>
+    <span class="s1">'all'</span><span class="p">:</span> <span class="nb">all</span><span class="p">,</span>
+    <span class="s1">'any'</span><span class="p">:</span> <span class="nb">any</span><span class="p">,</span>
+    <span class="s1">'copy'</span><span class="p">:</span> <span class="n">copy</span><span class="p">,</span>
+    <span class="s1">'deepcopy'</span><span class="p">:</span> <span class="n">deepcopy</span><span class="p">,</span>
 
     <span class="c1"># encommon.times</span>
-    <span class="s1">&#39;Duration&#39;</span><span class="p">:</span> <span class="n">Duration</span><span class="p">,</span>
-    <span class="s1">&#39;Time&#39;</span><span class="p">:</span> <span class="n">Time</span><span class="p">,</span>
+    <span class="s1">'Duration'</span><span class="p">:</span> <span class="n">Duration</span><span class="p">,</span>
+    <span class="s1">'Time'</span><span class="p">:</span> <span class="n">Time</span><span class="p">,</span>
 
     <span class="c1"># encommon.colors</span>
-    <span class="s1">&#39;Color&#39;</span><span class="p">:</span> <span class="n">Color</span><span class="p">,</span>
+    <span class="s1">'Color'</span><span class="p">:</span> <span class="n">Color</span><span class="p">,</span>
 
     <span class="c1"># encommon.crypts</span>
-    <span class="s1">&#39;Hashes&#39;</span><span class="p">:</span> <span class="n">Hashes</span><span class="p">,</span>
+    <span class="s1">'Hashes'</span><span class="p">:</span> <span class="n">Hashes</span><span class="p">,</span>
 
     <span class="c1"># encommon.parse</span>
-    <span class="s1">&#39;Network&#39;</span><span class="p">:</span> <span class="n">Network</span><span class="p">,</span>
-    <span class="s1">&#39;insubnet_ip&#39;</span><span class="p">:</span> <span class="n">insubnet_ip</span><span class="p">,</span>
-    <span class="s1">&#39;isvalid_ip&#39;</span><span class="p">:</span> <span class="n">isvalid_ip</span><span class="p">,</span>
+    <span class="s1">'Network'</span><span class="p">:</span> <span class="n">Network</span><span class="p">,</span>
+    <span class="s1">'insubnet_ip'</span><span class="p">:</span> <span class="n">insubnet_ip</span><span class="p">,</span>
+    <span class="s1">'isvalid_ip'</span><span class="p">:</span> <span class="n">isvalid_ip</span><span class="p">,</span>
 
     <span class="c1"># encommon.times</span>
-    <span class="s1">&#39;unitime&#39;</span><span class="p">:</span> <span class="n">unitime</span><span class="p">,</span>
+    <span class="s1">'unitime'</span><span class="p">:</span> <span class="n">unitime</span><span class="p">,</span>
 
     <span class="c1"># encommon.types</span>
-    <span class="s1">&#39;strplwr&#39;</span><span class="p">:</span> <span class="n">strplwr</span><span class="p">,</span>
-    <span class="s1">&#39;hasstr&#39;</span><span class="p">:</span> <span class="n">hasstr</span><span class="p">,</span>
-    <span class="s1">&#39;instr&#39;</span><span class="p">:</span> <span class="n">instr</span><span class="p">,</span>
-    <span class="s1">&#39;inlist&#39;</span><span class="p">:</span> <span class="n">inlist</span><span class="p">,</span>
-    <span class="s1">&#39;rplstr&#39;</span><span class="p">:</span> <span class="n">rplstr</span><span class="p">,</span>
-    <span class="s1">&#39;dedup_list&#39;</span><span class="p">:</span> <span class="n">dedup_list</span><span class="p">,</span>
-    <span class="s1">&#39;fuzzy_list&#39;</span><span class="p">:</span> <span class="n">fuzzy_list</span><span class="p">,</span>
-    <span class="s1">&#39;merge_dicts&#39;</span><span class="p">:</span> <span class="n">merge_dicts</span><span class="p">,</span>
-    <span class="s1">&#39;sort_dict&#39;</span><span class="p">:</span> <span class="n">sort_dict</span><span class="p">,</span>
+    <span class="s1">'strplwr'</span><span class="p">:</span> <span class="n">strplwr</span><span class="p">,</span>
+    <span class="s1">'hasstr'</span><span class="p">:</span> <span class="n">hasstr</span><span class="p">,</span>
+    <span class="s1">'instr'</span><span class="p">:</span> <span class="n">instr</span><span class="p">,</span>
+    <span class="s1">'inlist'</span><span class="p">:</span> <span class="n">inlist</span><span class="p">,</span>
+    <span class="s1">'rplstr'</span><span class="p">:</span> <span class="n">rplstr</span><span class="p">,</span>
+    <span class="s1">'dedup_list'</span><span class="p">:</span> <span class="n">dedup_list</span><span class="p">,</span>
+    <span class="s1">'fuzzy_list'</span><span class="p">:</span> <span class="n">fuzzy_list</span><span class="p">,</span>
+    <span class="s1">'merge_dicts'</span><span class="p">:</span> <span class="n">merge_dicts</span><span class="p">,</span>
+    <span class="s1">'sort_dict'</span><span class="p">:</span> <span class="n">sort_dict</span><span class="p">,</span>
 
     <span class="c1"># encommon.utils</span>
-    <span class="s1">&#39;fuzz_match&#39;</span><span class="p">:</span> <span class="n">fuzz_match</span><span class="p">,</span>
-    <span class="s1">&#39;rgxp_match&#39;</span><span class="p">:</span> <span class="n">rgxp_match</span><span class="p">}</span>
+    <span class="s1">'fuzz_match'</span><span class="p">:</span> <span class="n">fuzz_match</span><span class="p">,</span>
+    <span class="s1">'rgxp_match'</span><span class="p">:</span> <span class="n">rgxp_match</span><span class="p">}</span>
 
 
 
 <div class="viewcode-block" id="Jinja2">
 <a class="viewcode-back" href="../../../index.html#encommon.parse.jinja2.Jinja2">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Jinja2</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Parse the provided input and intelligently return value.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
 <span class="sd">    &gt;&gt;&gt; jinja2 = Jinja2()</span>
-<span class="sd">    &gt;&gt;&gt; jinja2.parse(&#39;{{ 0 | Time }}&#39;)</span>
-<span class="sd">    &#39;1970-01-01T00:00:00.000000+0000&#39;</span>
+<span class="sd">    &gt;&gt;&gt; jinja2.parse('{{ 0 | Time }}')</span>
+<span class="sd">    '1970-01-01T00:00:00.000000+0000'</span>
 
 <span class="sd">    :param statics: Additional values available for parsing.</span>
 <span class="sd">    :param filters: Additional filter functions for parsing.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">__statics</span><span class="p">:</span> <span class="n">DictStrAny</span>
     <span class="n">__filters</span><span class="p">:</span> <span class="n">FILTERS</span>
@@ -434,9 +434,9 @@
         <span class="n">statics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">filters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FILTERS</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">statics</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">statics</span> <span class="ow">or</span> <span class="p">{})</span>
         <span class="n">filters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">filters</span> <span class="ow">or</span> <span class="p">{})</span>
@@ -459,12 +459,12 @@
             <span class="n">autoescape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">cache_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">extensions</span><span class="o">=</span><span class="p">[</span>
-                <span class="s1">&#39;jinja2.ext.i18n&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;jinja2.ext.loopcontrols&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;jinja2.ext.do&#39;</span><span class="p">],</span>
+                <span class="s1">'jinja2.ext.i18n'</span><span class="p">,</span>
+                <span class="s1">'jinja2.ext.loopcontrols'</span><span class="p">,</span>
+                <span class="s1">'jinja2.ext.do'</span><span class="p">],</span>
             <span class="n">keep_trailing_newline</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">lstrip_blocks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">newline_sequence</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="n">newline_sequence</span><span class="o">=</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span>
             <span class="n">optimized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">trim_blocks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">undefined</span><span class="o">=</span><span class="n">StrictUndefined</span><span class="p">)</span>
@@ -478,11 +478,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">statics</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DictStrAny</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__statics</span><span class="p">)</span>
 
@@ -491,11 +491,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">filters</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FILTERS</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__filters</span><span class="p">)</span>
 
@@ -504,11 +504,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">jinjenv</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Environment</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jinjenv</span>
 
@@ -520,13 +520,13 @@
         <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">statics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the provided input using the Jinja2 environment.</span>
 
 <span class="sd">        :param value: Input that will be processed and returned.</span>
 <span class="sd">        :param statics: Additional values available for parsing.</span>
 <span class="sd">        :returns: Provided input using the Jinja2 environment.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">statics</span> <span class="o">=</span> <span class="p">(</span>
             <span class="nb">dict</span><span class="p">(</span><span class="n">statics</span> <span class="ow">or</span> <span class="p">{})</span>
@@ -552,14 +552,14 @@
         <span class="n">statics</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DictStrAny</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">literal</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the provided input using the Jinja2 environment.</span>
 
 <span class="sd">        :param value: Input that will be processed and returned.</span>
 <span class="sd">        :param statics: Additional values available for parsing.</span>
 <span class="sd">        :param literal: Determine if Python objects are evaled.</span>
 <span class="sd">        :returns: Provided input using the Jinja2 environment.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
 
         <span class="k">def</span><span class="w"> </span><span class="nf">_final</span><span class="p">(</span>  <span class="c1"># noqa: CFQ004</span>
@@ -659,12 +659,12 @@
         <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Simply add the provided static into internal reference.</span>
 
 <span class="sd">        :param key: Where item will be inserted into reference.</span>
 <span class="sd">        :param value: Item that will be inserted into internal.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">statics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__statics</span>
 
@@ -686,12 +686,12 @@
         <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FILTER</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Simply add the provided filter into internal reference.</span>
 
 <span class="sd">        :param key: Where item will be inserted into reference.</span>
 <span class="sd">        :param value: Item that will be inserted into internal.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">jinjenv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__jinjenv</span>
 

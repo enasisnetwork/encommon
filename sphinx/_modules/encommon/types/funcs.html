@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.types.funcs</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -310,42 +310,42 @@
 <div class="viewcode-block" id="funcname">
 <a class="viewcode-back" href="../../../index.html#encommon.types.funcs.funcname">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">funcname</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the current function name where code is running.</span>
 
 <span class="sd">    :returns: Current function name where code is running.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">frame</span> <span class="o">=</span> <span class="n">currentframe</span><span class="p">()</span>
 
     <span class="k">assert</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
-        <span class="s1">&#39;Frame not present&#39;</span><span class="p">)</span>
+        <span class="s1">'Frame not present'</span><span class="p">)</span>
 
     <span class="n">caller</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_back</span>
 
     <span class="k">assert</span> <span class="n">caller</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
-        <span class="s1">&#39;Caller not present&#39;</span><span class="p">)</span>
+        <span class="s1">'Caller not present'</span><span class="p">)</span>
 
     <span class="n">name</span> <span class="o">=</span> <span class="n">caller</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_name</span>
     <span class="n">focals</span> <span class="o">=</span> <span class="n">caller</span><span class="o">.</span><span class="n">f_locals</span>
 
 
-    <span class="k">if</span> <span class="s1">&#39;self&#39;</span> <span class="ow">in</span> <span class="n">focals</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">'self'</span> <span class="ow">in</span> <span class="n">focals</span><span class="p">:</span>
 
         <span class="n">parent</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">focals</span><span class="p">[</span><span class="s1">&#39;self&#39;</span><span class="p">]</span>
+            <span class="n">focals</span><span class="p">[</span><span class="s1">'self'</span><span class="p">]</span>
             <span class="o">.</span><span class="vm">__class__</span>
             <span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span>
 
-    <span class="k">elif</span> <span class="s1">&#39;cls&#39;</span> <span class="ow">in</span> <span class="n">focals</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="s1">'cls'</span> <span class="ow">in</span> <span class="n">focals</span><span class="p">:</span>
 
         <span class="n">parent</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">focals</span><span class="p">[</span><span class="s1">&#39;cls&#39;</span><span class="p">]</span>
+            <span class="n">focals</span><span class="p">[</span><span class="s1">'cls'</span><span class="p">]</span>
             <span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span>
 
 
     <span class="k">return</span> <span class="n">name</span></div>

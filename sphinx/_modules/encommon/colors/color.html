@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.colors.color</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -314,12 +314,12 @@
 <div class="viewcode-block" id="Color">
 <a class="viewcode-back" href="../../../index.html#encommon.colors.color.Color">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Color</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Covert colors to various forms using provided hex value.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; color = Color(&#39;#003333&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; color = Color('#003333')</span>
 <span class="sd">    &gt;&gt;&gt; color.rgb</span>
 <span class="sd">    (0, 51, 51)</span>
 <span class="sd">    &gt;&gt;&gt; color.hsl</span>
@@ -331,15 +331,15 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; color1 = Color(&#39;#003333&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; color2 = Color(&#39;#330000&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; color1 = Color('#003333')</span>
+<span class="sd">    &gt;&gt;&gt; color2 = Color('#330000')</span>
 <span class="sd">    &gt;&gt;&gt; color1 - color2</span>
-<span class="sd">    Color(&#39;#32CCCD&#39;)</span>
+<span class="sd">    Color('#32CCCD')</span>
 <span class="sd">    &gt;&gt;&gt; color1 + color2</span>
-<span class="sd">    Color(&#39;#333333&#39;)</span>
+<span class="sd">    Color('#333333')</span>
 
 <span class="sd">    :param source: Source color used when converting values.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">__source</span><span class="p">:</span> <span class="nb">str</span>
 
@@ -348,11 +348,11 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="k">if</span> <span class="n">source</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">source</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'#'</span><span class="p">:</span>
             <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
         <span class="n">source</span> <span class="o">=</span> <span class="n">strplwr</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
@@ -368,10 +368,10 @@
         <span class="n">hue</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">sat</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">lev</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Color'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="p">(</span>  <span class="c1"># noqa: E741</span>
             <span class="n">hue</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span>
@@ -381,9 +381,9 @@
         <span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">hls_to_rgb</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 
         <span class="n">color</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">'</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">'</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">color</span><span class="p">)</span></div>
 
@@ -397,15 +397,15 @@
         <span class="n">red</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">green</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">blue</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Color'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">value</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">red</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">green</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">&#39;</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">blue</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">red</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">'</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">green</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">'</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">blue</span><span class="si">:</span><span class="s1">02X</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
 
@@ -414,25 +414,25 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for representing the values for instance.</span>
 
 <span class="sd">        :returns: String representation for values from instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Color(&#39;</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Color('</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s2">')"</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method used when performing hashing operations.</span>
 
 <span class="sd">        :returns: Integer hash value for the internal reference.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">)</span>
 
@@ -440,25 +440,25 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for representing the values for instance.</span>
 
 <span class="sd">        :returns: String representation for values from instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;#</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'#</span><span class="si">{</span><span class="n">color</span><span class="si">}</span><span class="s1">'</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__int__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method representing numeric value for instance.</span>
 
 <span class="sd">        :returns: Numeric representation for value in instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__source</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 
@@ -466,25 +466,25 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__float__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method representing numeric value for instance.</span>
 
 <span class="sd">        :returns: Numeric representation for value in instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__int__</span><span class="p">())</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">'Color'</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Color'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for mathematically processing the value.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Python timedelta object containing the answer.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -494,21 +494,21 @@
 
         <span class="n">outcome</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">source</span> <span class="o">+</span> <span class="n">_source</span><span class="p">)</span>
 
-        <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">outcome</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
         <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">],</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Color&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">'Color'</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'Color'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for mathematically processing the value.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Python timedelta object containing the answer.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
@@ -518,7 +518,7 @@
 
         <span class="n">outcome</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">source</span> <span class="o">-</span> <span class="n">_source</span><span class="p">)</span>
 
-        <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">outcome</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">outcome</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
         <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
@@ -527,23 +527,23 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
             <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
+                <span class="n">other</span><span class="p">,</span> <span class="s1">'source'</span><span class="p">)</span>
 
             <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
             <span class="n">_source</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">source</span>
@@ -559,37 +559,37 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">],</span>
+        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">'Color'</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
             <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
+                <span class="n">other</span><span class="p">,</span> <span class="s1">'source'</span><span class="p">)</span>
 
             <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
             <span class="n">_source</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">source</span>
@@ -603,25 +603,25 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">],</span>
+        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">'Color'</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
             <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
+                <span class="n">other</span><span class="p">,</span> <span class="s1">'source'</span><span class="p">)</span>
 
             <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
             <span class="n">_source</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">source</span>
@@ -635,25 +635,25 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">],</span>
+        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">'Color'</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
             <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
+                <span class="n">other</span><span class="p">,</span> <span class="s1">'source'</span><span class="p">)</span>
 
             <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
             <span class="n">_source</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">source</span>
@@ -667,25 +667,25 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;Color&#39;</span><span class="p">],</span>
+        <span class="n">other</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s1">'Color'</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for comparing this instance with another.</span>
 
 <span class="sd">        :param other: Other value being compared with instance.</span>
 <span class="sd">        :returns: Boolean indicating outcome from the operation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">other</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">other</span><span class="si">:</span><span class="s1">06x</span><span class="si">}</span><span class="s1">'</span>
 
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">other</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
             <span class="k">assert</span> <span class="nb">hasattr</span><span class="p">(</span>
-                <span class="n">other</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">)</span>
+                <span class="n">other</span><span class="p">,</span> <span class="s1">'source'</span><span class="p">)</span>
 
             <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
             <span class="n">_source</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">source</span>
@@ -701,11 +701,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">source</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -714,11 +714,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">rgb</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">color</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__source</span>
 
@@ -732,11 +732,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">xyz</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">_red</span><span class="p">,</span> <span class="n">_grn</span><span class="p">,</span> <span class="n">_blu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgb</span>
 
@@ -798,11 +798,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">xy</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xyz</span>
 
@@ -822,11 +822,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">hsl</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">_red</span><span class="p">,</span> <span class="n">_grn</span><span class="p">,</span> <span class="n">_blu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rgb</span>
 

@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.types.lists</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -314,7 +314,7 @@
     <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
     <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the provided list values with duplicates removed.</span>
 
 <span class="sd">    .. warning::</span>
@@ -331,7 +331,7 @@
 <span class="sd">    :param value: List of values processed for duplication.</span>
 <span class="sd">    :param update: Indicate if to update provided reference.</span>
 <span class="sd">    :returns: Provided list values with duplicates removed.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="n">update</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
         <span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -361,20 +361,20 @@
     <span class="n">values</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
     <span class="n">patterns</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the provided values that match provided patterns.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; values = [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39;bop&#39;]</span>
-<span class="sd">    &gt;&gt;&gt; patterns = [&#39;*o&#39;, &#39;ba*&#39;]</span>
+<span class="sd">    &gt;&gt;&gt; values = ['foo', 'bar', 'baz', 'bop']</span>
+<span class="sd">    &gt;&gt;&gt; patterns = ['*o', 'ba*']</span>
 <span class="sd">    &gt;&gt;&gt; fuzzy_list(values, patterns)</span>
-<span class="sd">    [&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]</span>
+<span class="sd">    ['foo', 'bar', 'baz']</span>
 
 <span class="sd">    :param values: Value or values to enumerate for matching.</span>
 <span class="sd">    :param patterns: Patterns which values can match any one.</span>
 <span class="sd">    :returns: Provided values that match provided patterns.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">fuzz_match</span>
 
@@ -404,7 +404,7 @@
     <span class="n">needle</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
     <span class="n">haystack</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the boolean indicating whether needle in haystack.</span>
 
 <span class="sd">    Example</span>
@@ -416,7 +416,7 @@
 <span class="sd">    :param needle: Provided item that may be within haystack.</span>
 <span class="sd">    :param haystack: List of items which may contain needle.</span>
 <span class="sd">    :returns: Boolean indicating whether needle in haystack.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">return</span> <span class="n">needle</span> <span class="ow">in</span> <span class="n">haystack</span></div>
 

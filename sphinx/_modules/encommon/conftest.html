@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.conftest</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -318,20 +318,20 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">config_factory</span><span class="p">(</span>
     <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Construct the instance for use in the downstream tests.</span>
 
 <span class="sd">    :param tmp_path: pytest object for temporal filesystem.</span>
 <span class="sd">    :returns: Newly constructed instance of related class.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">content</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+        <span class="sa">f</span><span class="s2">"""</span>
 
 <span class="s2">        enconfig:</span>
 <span class="s2">          paths:</span>
-<span class="s2">            - &#39;</span><span class="si">{</span><span class="n">SAMPLES</span><span class="si">}</span><span class="s2">/stark&#39;</span>
-<span class="s2">            - &#39;</span><span class="si">{</span><span class="n">SAMPLES</span><span class="si">}</span><span class="s2">/wayne&#39;</span>
+<span class="s2">            - '</span><span class="si">{</span><span class="n">SAMPLES</span><span class="si">}</span><span class="s2">/stark'</span>
+<span class="s2">            - '</span><span class="si">{</span><span class="n">SAMPLES</span><span class="si">}</span><span class="s2">/wayne'</span>
 
 <span class="s2">        enlogger:</span>
 <span class="s2">          stdo_level: debug</span>
@@ -341,23 +341,23 @@
 <span class="s2">            default:</span>
 <span class="s2">              phrase: phrase</span>
 
-<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">        """</span><span class="p">)</span>
 
     <span class="n">config_path</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">tmp_path</span> <span class="o">/</span> <span class="s1">&#39;config.yml&#39;</span><span class="p">)</span>
+        <span class="n">tmp_path</span> <span class="o">/</span> <span class="s1">'config.yml'</span><span class="p">)</span>
 
     <span class="n">config_log</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">tmp_path</span> <span class="o">/</span> <span class="s1">&#39;config.log&#39;</span><span class="p">)</span>
+        <span class="n">tmp_path</span> <span class="o">/</span> <span class="s1">'config.log'</span><span class="p">)</span>
 
     <span class="n">save_text</span><span class="p">(</span>
         <span class="n">config_path</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
 
     <span class="n">logger</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;file_path&#39;</span><span class="p">:</span> <span class="n">config_log</span><span class="p">,</span>
-        <span class="s1">&#39;file_level&#39;</span><span class="p">:</span> <span class="s1">&#39;info&#39;</span><span class="p">}</span>
+        <span class="s1">'file_path'</span><span class="p">:</span> <span class="n">config_log</span><span class="p">,</span>
+        <span class="s1">'file_level'</span><span class="p">:</span> <span class="s1">'info'</span><span class="p">}</span>
 
-    <span class="n">cargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;enlogger&#39;</span><span class="p">:</span> <span class="n">logger</span><span class="p">}</span>
-    <span class="n">sargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cus/tom&#39;</span><span class="p">:</span> <span class="s1">&#39;fart&#39;</span><span class="p">}</span>
+    <span class="n">cargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'enlogger'</span><span class="p">:</span> <span class="n">logger</span><span class="p">}</span>
+    <span class="n">sargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'cus/tom'</span><span class="p">:</span> <span class="s1">'fart'</span><span class="p">}</span>
 
     <span class="k">return</span> <span class="n">Config</span><span class="p">(</span>
         <span class="n">config_path</span><span class="p">,</span>
@@ -373,12 +373,12 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">config_path</span><span class="p">(</span>
     <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Construct the directory and files needed for the tests.</span>
 
 <span class="sd">    :param tmp_path: pytest object for temporal filesystem.</span>
 <span class="sd">    :returns: New resolved filesystem path object instance.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">config_factory</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">)</span>
 
@@ -393,12 +393,12 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">config</span><span class="p">(</span>
     <span class="n">tmp_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Construct the instance for use in the downstream tests.</span>
 
 <span class="sd">    :param tmp_path: pytest object for temporal filesystem.</span>
 <span class="sd">    :returns: Newly constructed instance of related class.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">return</span> <span class="n">config_factory</span><span class="p">(</span><span class="n">tmp_path</span><span class="p">)</span></div>
 

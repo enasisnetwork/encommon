@@ -339,11 +339,11 @@
 <h3>Example: Common Methods<a class="headerlink" href="#example-common-methods" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mf">6048e4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">short</span>
-<span class="go">&#39;1y 11mon 5d&#39;</span>
+<span class="go">'1y 11mon 5d'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">compact</span>
-<span class="go">&#39;1y11mon5d&#39;</span>
+<span class="go">'1y11mon5d'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">verbose</span>
-<span class="go">&#39;1 year, 11 months, 5 days&#39;</span>
+<span class="go">'1 year, 11 months, 5 days'</span>
 </pre></div>
 </div>
 </section>
@@ -351,7 +351,7 @@
 <h3>Example: Dump the Units<a class="headerlink" href="#example-dump-the-units" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mf">6048e4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">units</span><span class="p">()</span>
-<span class="go">{&#39;year&#39;: 1, &#39;month&#39;: 11, &#39;day&#39;: 5}</span>
+<span class="go">{'year': 1, 'month': 11, 'day': 5}</span>
 </pre></div>
 </div>
 </section>
@@ -359,9 +359,9 @@
 <h3>Example: Disable Smart Seconds<a class="headerlink" href="#example-disable-smart-seconds" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">7201</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">compact</span>
-<span class="go">&#39;2h1s&#39;</span>
+<span class="go">'2h1s'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">verbose</span>
-<span class="go">&#39;2 hours, 1 second&#39;</span>
+<span class="go">'2 hours, 1 second'</span>
 </pre></div>
 </div>
 </section>
@@ -711,7 +711,7 @@ ensuring larger units are returned before smaller.</p>
 </div>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -749,14 +749,14 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Shift provided time value using snaptime relative syntax.</p>
 <section id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">&#39;-1h&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">'-1h'</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(1999, 12, 31, 23...</span>
 </pre></div>
 </div>
 </section>
 <section id="id3">
 <h3>Example<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">&#39;-1h@d&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">'-1h@d'</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(1999, 12, 31, 0...</span>
 </pre></div>
 </div>
@@ -784,14 +784,14 @@ This is not relevant in timezone included in anchor.</p>
 <dd><p>Parse provided time value with various supported formats.</p>
 <section id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">&#39;2000-01-01T00:00:00Z&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">'2000-01-01T00:00:00Z'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
 <h3>Example<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">&#39;2000/01/01&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">'2000/01/01'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -849,11 +849,11 @@ This is not relevant in timezone included in source.</p>
 <p>Interact with various time functions through one wrapper.</p>
 <section id="id7">
 <h3>Example<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">()</span>
-<span class="go">&#39;2000-01-01T00:00:00.000000+0000&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%Y&#39;</span><span class="p">)</span>
-<span class="go">&#39;01/01/2000&#39;</span>
+<span class="go">'2000-01-01T00:00:00.000000+0000'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="s1">'%m/</span><span class="si">%d</span><span class="s1">/%Y'</span><span class="p">)</span>
+<span class="go">'01/01/2000'</span>
 </pre></div>
 </div>
 </section>
@@ -864,38 +864,38 @@ This is not relevant in timezone included in source.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span>
 <span class="go">datetime.time(0, 0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">simple</span>
-<span class="go">&#39;2000-01-01T00:00:00+0000&#39;</span>
+<span class="go">'2000-01-01T00:00:00+0000'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">human</span>
-<span class="go">&#39;01/01/2000 12:00AM UTC&#39;</span>
+<span class="go">'01/01/2000 12:00AM UTC'</span>
 </pre></div>
 </div>
 </section>
 <section id="id9">
 <h3>Example<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">before</span>
-<span class="go">Time(&#39;1999-12-31T23:59:59.999999+0000&#39;)</span>
+<span class="go">Time('1999-12-31T23:59:59.999999+0000')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">after</span>
-<span class="go">Time(&#39;2000-01-01T00:00:00.000001+0000&#39;)</span>
+<span class="go">Time('2000-01-01T00:00:00.000001+0000')</span>
 </pre></div>
 </div>
 </section>
 <section id="id10">
 <h3>Example<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="s1">&#39;-1d&#39;</span><span class="p">)</span>
-<span class="go">Time(&#39;1999-12-31T00:00:00.000000+0000&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="s1">'-1d'</span><span class="p">)</span>
+<span class="go">Time('1999-12-31T00:00:00.000000+0000')</span>
 </pre></div>
 </div>
 </section>
 <section id="id11">
 <h3>Example<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shifz</span><span class="p">(</span><span class="s1">&#39;US/Central&#39;</span><span class="p">)</span>
-<span class="go">Time(&#39;1999-12-31T18:00:00.000000-0600&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shifz</span><span class="p">(</span><span class="s1">'US/Central'</span><span class="p">)</span>
+<span class="go">Time('1999-12-31T18:00:00.000000-0600')</span>
 </pre></div>
 </div>
 </section>
 <section id="id12">
 <h3>Example<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;-1s&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'-1s'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">since</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
@@ -903,8 +903,8 @@ This is not relevant in timezone included in source.</p>
 </section>
 <section id="id13">
 <h3>Example<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">time2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">-</span> <span class="n">time2</span>
 <span class="go">0.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">+</span> <span class="n">time2</span>
@@ -1354,13 +1354,13 @@ unless a cache file is explicity defined.</p>
 </div>
 <section id="id15">
 <h3>Example<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">TimerParams</span><span class="p">(</span><span class="n">timer</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">TimerParams</span><span class="p">(</span><span class="n">timer</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">TimersParams</span><span class="p">(</span><span class="n">timers</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span> <span class="o">=</span> <span class="n">Timers</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1562,11 +1562,11 @@ when the provided unique value does not exist.</p>
 <dd><p>Return the seconds in integer format for provided input.</p>
 <section id="id16">
 <h3>Example<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1d'</span><span class="p">)</span>
 <span class="go">86400</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1y'</span><span class="p">)</span>
 <span class="go">31536000</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1w3d4h&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1w3d4h'</span><span class="p">)</span>
 <span class="go">878400</span>
 </pre></div>
 </div>
@@ -1590,8 +1590,8 @@ when the provided unique value does not exist.</p>
 <dd><p>Return the located timezone object for the provided name.</p>
 <section id="id17">
 <h3>Example<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">findtz</span><span class="p">(</span><span class="s1">&#39;US/Central&#39;</span><span class="p">)</span>
-<span class="go">tzfile(&#39;/usr/share/zoneinfo/US/Central&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">findtz</span><span class="p">(</span><span class="s1">'US/Central'</span><span class="p">)</span>
+<span class="go">tzfile('/usr/share/zoneinfo/US/Central')</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1639,7 +1639,7 @@ when the provided unique value does not exist.</p>
 <dd><p>Parse provided time value with various supported formats.</p>
 <section id="id19">
 <h3>Example<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;2023&#39;</span><span class="p">,</span> <span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strptime</span><span class="p">(</span><span class="s1">'2023'</span><span class="p">,</span> <span class="s1">'%Y'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2023, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -1668,8 +1668,8 @@ when the provided unique value does not exist.</p>
 <section id="id20">
 <h3>Example<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dtime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">strftime</span><span class="p">(</span><span class="n">dtime</span><span class="p">,</span> <span class="s1">&#39;%Y&#39;</span><span class="p">)</span>
-<span class="go">&#39;2023&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">strftime</span><span class="p">(</span><span class="n">dtime</span><span class="p">,</span> <span class="s1">'%Y'</span><span class="p">)</span>
+<span class="go">'2023'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1696,7 +1696,7 @@ when the provided unique value does not exist.</p>
 <p>Process and operate crontab or interval based schedule.</p>
 <section id="id21">
 <h3>Example<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">&#39;* * * * *&#39;</span><span class="p">,</span> <span class="s1">&#39;-4m@m&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">'* * * * *'</span><span class="p">,</span> <span class="s1">'-4m@m'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
 <span class="go">[True, True, True, True, True, False]</span>
 </pre></div>
@@ -2042,10 +2042,10 @@ unless a cache file is explicity defined.</p>
 </div>
 <section id="id22">
 <h3>Example<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">WindowsParams</span><span class="p">(</span><span class="n">windows</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;-2s&#39;</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">'-2s'</span><span class="p">,</span> <span class="s1">'now'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
 <span class="go">[True, True, True, False]</span>
 </pre></div>
 </div>
@@ -2278,11 +2278,11 @@ when the provided unique value does not exist.</p>
 <h3>Example: Common Methods<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mf">6048e4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">short</span>
-<span class="go">&#39;1y 11mon 5d&#39;</span>
+<span class="go">'1y 11mon 5d'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">compact</span>
-<span class="go">&#39;1y11mon5d&#39;</span>
+<span class="go">'1y11mon5d'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">verbose</span>
-<span class="go">&#39;1 year, 11 months, 5 days&#39;</span>
+<span class="go">'1 year, 11 months, 5 days'</span>
 </pre></div>
 </div>
 </section>
@@ -2290,7 +2290,7 @@ when the provided unique value does not exist.</p>
 <h3>Example: Dump the Units<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mf">6048e4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">units</span><span class="p">()</span>
-<span class="go">{&#39;year&#39;: 1, &#39;month&#39;: 11, &#39;day&#39;: 5}</span>
+<span class="go">{'year': 1, 'month': 11, 'day': 5}</span>
 </pre></div>
 </div>
 </section>
@@ -2298,9 +2298,9 @@ when the provided unique value does not exist.</p>
 <h3>Example: Disable Smart Seconds<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">7201</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">compact</span>
-<span class="go">&#39;2h1s&#39;</span>
+<span class="go">'2h1s'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">verbose</span>
-<span class="go">&#39;2 hours, 1 second&#39;</span>
+<span class="go">'2 hours, 1 second'</span>
 </pre></div>
 </div>
 </section>
@@ -2587,13 +2587,13 @@ unless a cache file is explicity defined.</p>
 </div>
 <section id="id28">
 <h3>Example<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">TimerParams</span><span class="p">(</span><span class="n">timer</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">TimerParams</span><span class="p">(</span><span class="n">timer</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">TimersParams</span><span class="p">(</span><span class="n">timers</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span> <span class="o">=</span> <span class="n">Timers</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -2825,11 +2825,11 @@ when the provided unique value does not exist.</p>
 <p>Interact with various time functions through one wrapper.</p>
 <section id="id29">
 <h3>Example<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">()</span>
-<span class="go">&#39;2000-01-01T00:00:00.000000+0000&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%Y&#39;</span><span class="p">)</span>
-<span class="go">&#39;01/01/2000&#39;</span>
+<span class="go">'2000-01-01T00:00:00.000000+0000'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="s1">'%m/</span><span class="si">%d</span><span class="s1">/%Y'</span><span class="p">)</span>
+<span class="go">'01/01/2000'</span>
 </pre></div>
 </div>
 </section>
@@ -2840,38 +2840,38 @@ when the provided unique value does not exist.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span>
 <span class="go">datetime.time(0, 0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">simple</span>
-<span class="go">&#39;2000-01-01T00:00:00+0000&#39;</span>
+<span class="go">'2000-01-01T00:00:00+0000'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">human</span>
-<span class="go">&#39;01/01/2000 12:00AM UTC&#39;</span>
+<span class="go">'01/01/2000 12:00AM UTC'</span>
 </pre></div>
 </div>
 </section>
 <section id="id31">
 <h3>Example<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">before</span>
-<span class="go">Time(&#39;1999-12-31T23:59:59.999999+0000&#39;)</span>
+<span class="go">Time('1999-12-31T23:59:59.999999+0000')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">after</span>
-<span class="go">Time(&#39;2000-01-01T00:00:00.000001+0000&#39;)</span>
+<span class="go">Time('2000-01-01T00:00:00.000001+0000')</span>
 </pre></div>
 </div>
 </section>
 <section id="id32">
 <h3>Example<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="s1">&#39;-1d&#39;</span><span class="p">)</span>
-<span class="go">Time(&#39;1999-12-31T00:00:00.000000+0000&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="s1">'-1d'</span><span class="p">)</span>
+<span class="go">Time('1999-12-31T00:00:00.000000+0000')</span>
 </pre></div>
 </div>
 </section>
 <section id="id33">
 <h3>Example<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shifz</span><span class="p">(</span><span class="s1">&#39;US/Central&#39;</span><span class="p">)</span>
-<span class="go">Time(&#39;1999-12-31T18:00:00.000000-0600&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shifz</span><span class="p">(</span><span class="s1">'US/Central'</span><span class="p">)</span>
+<span class="go">Time('1999-12-31T18:00:00.000000-0600')</span>
 </pre></div>
 </div>
 </section>
 <section id="id34">
 <h3>Example<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;-1s&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'-1s'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">since</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
@@ -2879,8 +2879,8 @@ when the provided unique value does not exist.</p>
 </section>
 <section id="id35">
 <h3>Example<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">time2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">-</span> <span class="n">time2</span>
 <span class="go">0.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">+</span> <span class="n">time2</span>
@@ -3091,7 +3091,7 @@ This is not relevant in timezone included in source.</p>
 <p>Process and operate crontab or interval based schedule.</p>
 <section id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">&#39;* * * * *&#39;</span><span class="p">,</span> <span class="s1">&#39;-4m@m&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">'* * * * *'</span><span class="p">,</span> <span class="s1">'-4m@m'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
 <span class="go">[True, True, True, True, True, False]</span>
 </pre></div>
@@ -3339,10 +3339,10 @@ unless a cache file is explicity defined.</p>
 </div>
 <section id="id37">
 <h3>Example<a class="headerlink" href="#id37" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">WindowsParams</span><span class="p">(</span><span class="n">windows</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;-2s&#39;</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">'-2s'</span><span class="p">,</span> <span class="s1">'now'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
 <span class="go">[True, True, True, False]</span>
 </pre></div>
 </div>
@@ -3601,8 +3601,8 @@ when the provided unique value does not exist.</p>
 <dd><p>Return the located timezone object for the provided name.</p>
 <section id="id38">
 <h3>Example<a class="headerlink" href="#id38" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">findtz</span><span class="p">(</span><span class="s1">&#39;US/Central&#39;</span><span class="p">)</span>
-<span class="go">tzfile(&#39;/usr/share/zoneinfo/US/Central&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">findtz</span><span class="p">(</span><span class="s1">'US/Central'</span><span class="p">)</span>
+<span class="go">tzfile('/usr/share/zoneinfo/US/Central')</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3654,7 +3654,7 @@ when the provided unique value does not exist.</p>
 </div>
 <section id="id39">
 <h3>Example<a class="headerlink" href="#id39" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -3692,14 +3692,14 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Shift provided time value using snaptime relative syntax.</p>
 <section id="id41">
 <h3>Example<a class="headerlink" href="#id41" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">&#39;-1h&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">'-1h'</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(1999, 12, 31, 23...</span>
 </pre></div>
 </div>
 </section>
 <section id="id42">
 <h3>Example<a class="headerlink" href="#id42" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">&#39;-1h@d&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">'-1h@d'</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(1999, 12, 31, 0...</span>
 </pre></div>
 </div>
@@ -3753,14 +3753,14 @@ This is not relevant in timezone included in anchor.</p>
 <dd><p>Parse provided time value with various supported formats.</p>
 <section id="id44">
 <h3>Example<a class="headerlink" href="#id44" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">&#39;2000-01-01T00:00:00Z&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">'2000-01-01T00:00:00Z'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
 </section>
 <section id="id45">
 <h3>Example<a class="headerlink" href="#id45" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">&#39;2000/01/01&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">'2000/01/01'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -3788,11 +3788,11 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Return the seconds in integer format for provided input.</p>
 <section id="id46">
 <h3>Example<a class="headerlink" href="#id46" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1d'</span><span class="p">)</span>
 <span class="go">86400</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1y'</span><span class="p">)</span>
 <span class="go">31536000</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1w3d4h&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1w3d4h'</span><span class="p">)</span>
 <span class="go">878400</span>
 </pre></div>
 </div>

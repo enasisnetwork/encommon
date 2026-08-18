@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.types.dicts</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -319,7 +319,7 @@
     <span class="n">merge_dict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">paranoid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Recursively merge the contents of provided dictionaries.</span>
 
 <span class="sd">    .. warning::</span>
@@ -327,12 +327,12 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; dict1 = {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: [1]}</span>
-<span class="sd">    &gt;&gt;&gt; dict2 = {&#39;a&#39;: &#39;B&#39;, &#39;c&#39;: [2]}</span>
+<span class="sd">    &gt;&gt;&gt; dict1 = {'a': 'b', 'c': [1]}</span>
+<span class="sd">    &gt;&gt;&gt; dict2 = {'a': 'B', 'c': [2]}</span>
 <span class="sd">    &gt;&gt;&gt; merge_dicts(dict1, dict2)</span>
-<span class="sd">    {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: [1, 2]}</span>
+<span class="sd">    {'a': 'b', 'c': [1, 2]}</span>
 <span class="sd">    &gt;&gt;&gt; dict1</span>
-<span class="sd">    {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: [1, 2]}</span>
+<span class="sd">    {'a': 'b', 'c': [1, 2]}</span>
 
 <span class="sd">    :param dict1: Primary dictionary which is merged into.</span>
 <span class="sd">    :param dict2: Secondary dictionary for primary updates.</span>
@@ -344,7 +344,7 @@
 <span class="sd">    :param paranoid: Perform an initial deepcopy on both of</span>
 <span class="sd">        the provided dictionaries before performing merges.</span>
 <span class="sd">    :returns: Provided dictionary with the other merged in.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="n">paranoid</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">dict1</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">dict1</span><span class="p">)</span>
@@ -391,21 +391,21 @@
     <span class="n">value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Sort the keys within the dictionary and return new one.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; foo = {&#39;b&#39;: &#39;be&#39;, &#39;a&#39;: &#39;ey&#39;}</span>
+<span class="sd">    &gt;&gt;&gt; foo = {'b': 'be', 'a': 'ey'}</span>
 <span class="sd">    &gt;&gt;&gt; sort_dict(foo)</span>
-<span class="sd">    {&#39;a&#39;: &#39;ey&#39;, &#39;b&#39;: &#39;be&#39;}</span>
+<span class="sd">    {'a': 'ey', 'b': 'be'}</span>
 <span class="sd">    &gt;&gt;&gt; sort_dict(foo, True)</span>
-<span class="sd">    {&#39;b&#39;: &#39;be&#39;, &#39;a&#39;: &#39;ey&#39;}</span>
+<span class="sd">    {'b': 'be', 'a': 'ey'}</span>
 
 <span class="sd">    :param value: Dictionary whose keys are sorted into new.</span>
 <span class="sd">    :param reverse: Optionally reverse the sort direction.</span>
 <span class="sd">    :returns: New dictionary with keys sorted alphabetical.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
         <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
@@ -422,27 +422,27 @@
     <span class="n">dict1</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="n">dict2</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the values in second dictionary not in the first.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; dict1 = {&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: [1]}</span>
-<span class="sd">    &gt;&gt;&gt; dict2 = {&#39;a&#39;: &#39;B&#39;, &#39;c&#39;: [2]}</span>
+<span class="sd">    &gt;&gt;&gt; dict1 = {'a': 'b', 'c': [1]}</span>
+<span class="sd">    &gt;&gt;&gt; dict2 = {'a': 'B', 'c': [2]}</span>
 <span class="sd">    &gt;&gt;&gt; delta_dicts(dict1, dict2)</span>
-<span class="sd">    {&#39;a&#39;: &#39;B&#39;, &#39;c&#39;: [2]}</span>
+<span class="sd">    {'a': 'B', 'c': [2]}</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; dict1 = {&quot;x&quot;: [1, 2]}</span>
-<span class="sd">    &gt;&gt;&gt; dict2 = {&quot;x&quot;: [1]}</span>
+<span class="sd">    &gt;&gt;&gt; dict1 = {"x": [1, 2]}</span>
+<span class="sd">    &gt;&gt;&gt; dict2 = {"x": [1]}</span>
 <span class="sd">    &gt;&gt;&gt; delta_dicts(dict1, dict2)</span>
-<span class="sd">    {&#39;x&#39;: []}</span>
+<span class="sd">    {'x': []}</span>
 
 <span class="sd">    :param dict1: Primary dictionary as the source of truth.</span>
 <span class="sd">    :param dict2: Secondary dictionary finding delta values.</span>
 <span class="sd">    :returns: Values in second dictionary not in the first.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">delta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 

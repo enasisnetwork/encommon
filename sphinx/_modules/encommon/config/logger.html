@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.config.logger</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -338,29 +338,29 @@
 
 
 
-<span class="n">LOGR_FILE</span> <span class="o">=</span> <span class="s1">&#39;encommon.logger.file&#39;</span>
-<span class="n">LOGR_STDO</span> <span class="o">=</span> <span class="s1">&#39;encommon.logger.stdo&#39;</span>
+<span class="n">LOGR_FILE</span> <span class="o">=</span> <span class="s1">'encommon.logger.file'</span>
+<span class="n">LOGR_STDO</span> <span class="o">=</span> <span class="s1">'encommon.logger.stdo'</span>
 
 <span class="n">LOGLEVELS</span> <span class="o">=</span> <span class="n">Literal</span><span class="p">[</span>
-    <span class="s1">&#39;critical&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;debug&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;error&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;info&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;warning&#39;</span><span class="p">]</span>
+    <span class="s1">'critical'</span><span class="p">,</span>
+    <span class="s1">'debug'</span><span class="p">,</span>
+    <span class="s1">'error'</span><span class="p">,</span>
+    <span class="s1">'info'</span><span class="p">,</span>
+    <span class="s1">'warning'</span><span class="p">]</span>
 
 <span class="n">LOGSEVERS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;critical&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">CRITICAL</span><span class="p">),</span>
-    <span class="s1">&#39;debug&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">DEBUG</span><span class="p">),</span>
-    <span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">ERROR</span><span class="p">),</span>
-    <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">INFO</span><span class="p">),</span>
-    <span class="s1">&#39;warning&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">WARNING</span><span class="p">)}</span>
+    <span class="s1">'critical'</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">CRITICAL</span><span class="p">),</span>
+    <span class="s1">'debug'</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">DEBUG</span><span class="p">),</span>
+    <span class="s1">'error'</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">ERROR</span><span class="p">),</span>
+    <span class="s1">'info'</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">INFO</span><span class="p">),</span>
+    <span class="s1">'warning'</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">WARNING</span><span class="p">)}</span>
 
 
 
 <div class="viewcode-block" id="Message">
 <a class="viewcode-back" href="../../../index.html#encommon.config.logger.Message">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Message</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Format the provided keyword arguments for logging output.</span>
 
 <span class="sd">    .. note::</span>
@@ -371,14 +371,14 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; message = Message(&#39;info&#39;, &#39;1970-01-01&#39;, foo=&#39;bar&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; message = Message('info', '1970-01-01', foo='bar')</span>
 <span class="sd">    &gt;&gt;&gt; strip_ansi(message.stdo_output)</span>
-<span class="sd">    &#39;level=&quot;info&quot; time=&quot;1970-01-01T00:00:00Z&quot; foo=&quot;bar&quot;&#39;</span>
+<span class="sd">    'level="info" time="1970-01-01T00:00:00Z" foo="bar"'</span>
 
 <span class="sd">    :param level: Severity which log message is classified.</span>
 <span class="sd">    :param time: What time the log message actually occurred.</span>
 <span class="sd">    :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">__level</span><span class="p">:</span> <span class="n">LOGLEVELS</span>
     <span class="n">__time</span><span class="p">:</span> <span class="n">Time</span>
@@ -388,12 +388,12 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">level</span><span class="p">:</span> <span class="n">LOGLEVELS</span><span class="p">,</span>
-        <span class="n">time</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;PARSABLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">time</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'PARSABLE'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__level</span> <span class="o">=</span> <span class="n">level</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
@@ -404,7 +404,7 @@
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
 
 
-            <span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;__len__&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">'__len__'</span><span class="p">)</span>
                     <span class="ow">and</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)):</span>
                 <span class="k">continue</span>
 
@@ -421,12 +421,12 @@
 
 
             <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Time</span><span class="p">)</span>
-                    <span class="ow">and</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;elapsed&#39;</span><span class="p">):</span>
+                    <span class="ow">and</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">'elapsed'</span><span class="p">):</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">since</span>
 
 
             <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
-                    <span class="ow">and</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;elapsed&#39;</span><span class="p">):</span>
+                    <span class="ow">and</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">'elapsed'</span><span class="p">):</span>
 
                 <span class="n">value</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -439,33 +439,33 @@
     <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for representing the values for instance.</span>
 
 <span class="sd">        :returns: String representation for values from instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">fields</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span><span class="p">,</span>
-            <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="o">.</span><span class="n">subsec</span><span class="p">}</span>
+            <span class="s1">'level'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span><span class="p">,</span>
+            <span class="s1">'time'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="o">.</span><span class="n">subsec</span><span class="p">}</span>
 
         <span class="n">fields</span> <span class="o">|=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__fields</span><span class="p">)</span>
 
         <span class="n">message</span> <span class="o">=</span> <span class="n">COMMAS</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
-            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">=&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&quot;&#39;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span>
+            <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">="</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">"'</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span>
             <span class="ow">in</span> <span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
 
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Message(</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">'Message(</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s1">)'</span>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Built-in method for representing the values for instance.</span>
 
 <span class="sd">        :returns: String representation for values from instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
 
@@ -474,11 +474,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">level</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LOGLEVELS</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span>
 
@@ -487,11 +487,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">time</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="p">)</span>
 
@@ -500,11 +500,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">fields</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__fields</span><span class="p">)</span>
 
@@ -513,22 +513,22 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">stdo_output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Format keyword arguments for writing to standard output.</span>
 
 <span class="sd">        :returns: String representation for the standard output.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">fields</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span><span class="p">,</span>
-            <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="o">.</span><span class="n">simple</span><span class="p">}</span>
+            <span class="s1">'level'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span><span class="p">,</span>
+            <span class="s1">'time'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="o">.</span><span class="n">simple</span><span class="p">}</span>
 
         <span class="n">fields</span> <span class="o">|=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__fields</span><span class="p">)</span>
 
 
-        <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
-            <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;+0000&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">))</span>
+        <span class="n">fields</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">fields</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'+0000'</span><span class="p">,</span> <span class="s1">'Z'</span><span class="p">))</span>
 
 
         <span class="n">output</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
@@ -549,15 +549,15 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">file_output</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Format keyword arguments for writing to filesystem path.</span>
 
 <span class="sd">        :returns: String representation for the filesystem path.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">fields</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span><span class="p">,</span>
-            <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="o">.</span><span class="n">subsec</span><span class="p">}</span>
+            <span class="s1">'level'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__level</span><span class="p">,</span>
+            <span class="s1">'time'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">__time</span><span class="o">.</span><span class="n">subsec</span><span class="p">}</span>
 
         <span class="n">fields</span> <span class="o">|=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__fields</span><span class="p">)</span>
 
@@ -570,12 +570,12 @@
 <div class="viewcode-block" id="FileFormatter">
 <a class="viewcode-back" href="../../../encommon.config.html#encommon.config.logger.FileFormatter">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">FileFormatter</span><span class="p">(</span><span class="n">Formatter</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Supplement class for built-in logger exception formatter.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">       Input parameters are not defined, check parent class.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 
 <div class="viewcode-block" id="FileFormatter.formatException">
@@ -584,18 +584,18 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">ei</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Specifically overrides method for formatting exceptions.</span>
 
 <span class="sd">        :param ei: Exception information provided by the logger.</span>
 <span class="sd">        :returns: String representation for the filesystem path.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">reason</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">formatException</span><span class="p">(</span><span class="n">ei</span><span class="p">)</span>
 
         <span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span>
-            <span class="n">level</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">,</span>
-            <span class="n">status</span><span class="o">=</span><span class="s1">&#39;exception&#39;</span><span class="p">,</span>
+            <span class="n">level</span><span class="o">=</span><span class="s1">'error'</span><span class="p">,</span>
+            <span class="n">status</span><span class="o">=</span><span class="s1">'exception'</span><span class="p">,</span>
             <span class="n">reason</span><span class="o">=</span><span class="n">reason</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="n">file_output</span></div>
@@ -607,7 +607,7 @@
 <div class="viewcode-block" id="Logger">
 <a class="viewcode-back" href="../../../index.html#encommon.config.logger.Logger">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Logger</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Manage the file and standard output with logging library.</span>
 
 <span class="sd">    .. note::</span>
@@ -629,17 +629,17 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; logger = Logger(stdo_level=&#39;info&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; logger = Logger(stdo_level='info')</span>
 <span class="sd">    &gt;&gt;&gt; logger.start()</span>
-<span class="sd">    &gt;&gt;&gt; logger.log_i(message=&#39;testing&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; logger.log_i(message='testing')</span>
 
 <span class="sd">    :param stdo_level: Minimum level for the message to pass.</span>
 <span class="sd">    :param file_level: Minimum level for the message to pass.</span>
 <span class="sd">    :param file_path: Enables writing to the filesystem path.</span>
 <span class="sd">    :param params: Parameters used to instantiate the class.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">__params</span><span class="p">:</span> <span class="s1">&#39;LoggerParams&#39;</span>
+    <span class="n">__params</span><span class="p">:</span> <span class="s1">'LoggerParams'</span>
 
     <span class="n">__stdo_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LOGLEVELS</span><span class="p">]</span>
     <span class="n">__file_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LOGLEVELS</span><span class="p">]</span>
@@ -653,15 +653,15 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;LoggerParams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'LoggerParams'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
         <span class="n">stdo_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LOGLEVELS</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">file_level</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LOGLEVELS</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">file_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="kn">from</span><span class="w"> </span><span class="nn">.params</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoggerParams</span>
 
@@ -696,12 +696,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;LoggerParams&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'LoggerParams'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the Pydantic model containing the configuration.</span>
 
 <span class="sd">        :returns: Pydantic model containing the configuration.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
 
@@ -710,11 +710,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">stdo_level</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LOGLEVELS</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stdo_level</span>
 
@@ -723,11 +723,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">file_level</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">LOGLEVELS</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_level</span>
 
@@ -736,11 +736,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">file_path</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_path</span>
 
@@ -749,11 +749,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">started</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__started</span>
 
@@ -762,11 +762,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">logger_stdo</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Logger</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logr_stdo</span>
 
@@ -775,11 +775,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">logger_file</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Logger</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logr_file</span>
 
@@ -789,9 +789,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize the Python logging library using parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">stdo_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stdo_level</span>
         <span class="n">file_level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__file_level</span>
@@ -816,7 +816,7 @@
             <span class="n">handstdo</span> <span class="o">=</span> <span class="n">StreamHandler</span><span class="p">()</span>
 
             <span class="nb">format</span> <span class="o">=</span> <span class="n">Formatter</span><span class="p">(</span>
-                <span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="s1">'</span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">)</span>
 
             <span class="n">logr_stdo</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">handstdo</span><span class="p">]</span>
 
@@ -832,7 +832,7 @@
                 <span class="n">FileHandler</span><span class="p">(</span><span class="n">file_path</span><span class="p">))</span>
 
             <span class="nb">format</span> <span class="o">=</span> <span class="n">FileFormatter</span><span class="p">(</span>
-                <span class="s1">&#39;</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="s1">'</span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">)</span>
 
             <span class="n">logr_file</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="p">[</span><span class="n">handfile</span><span class="p">]</span>
 
@@ -849,9 +849,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Deinitialize the Python logging library using parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">logr_stdo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logr_stdo</span>
         <span class="n">logr_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__logr_file</span>
@@ -872,12 +872,12 @@
         <span class="n">exc_info</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare keyword arguments and log to configured output.</span>
 
 <span class="sd">        :param exc_info: Optional exception included with trace.</span>
 <span class="sd">        :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__started</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">return</span>
@@ -891,9 +891,9 @@
 
         <span class="c1"># Prevent debug from creating</span>
         <span class="c1"># new object each time called</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">level</span> <span class="o">==</span> <span class="s1">&#39;debug&#39;</span>
-                <span class="ow">and</span> <span class="n">stdo_level</span> <span class="o">!=</span> <span class="s1">&#39;debug&#39;</span>
-                <span class="ow">and</span> <span class="n">file_level</span> <span class="o">!=</span> <span class="s1">&#39;debug&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">level</span> <span class="o">==</span> <span class="s1">'debug'</span>
+                <span class="ow">and</span> <span class="n">stdo_level</span> <span class="o">!=</span> <span class="s1">'debug'</span>
+                <span class="ow">and</span> <span class="n">file_level</span> <span class="o">!=</span> <span class="s1">'debug'</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -920,13 +920,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare keyword arguments and log to configured output.</span>
 
 <span class="sd">        :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;critical&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'critical'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 
@@ -936,13 +936,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare keyword arguments and log to configured output.</span>
 
 <span class="sd">        :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;debug&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'debug'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 
@@ -952,13 +952,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare keyword arguments and log to configured output.</span>
 
 <span class="sd">        :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'error'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 
@@ -968,13 +968,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare keyword arguments and log to configured output.</span>
 
 <span class="sd">        :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'info'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 
@@ -984,13 +984,13 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Prepare keyword arguments and log to configured output.</span>
 
 <span class="sd">        :param kwargs: Keyword arguments for populating message.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;warning&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">'warning'</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.times.windows</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -339,12 +339,12 @@
 <div class="viewcode-block" id="WindowsTable">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.windows.WindowsTable">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">WindowsTable</span><span class="p">(</span><span class="n">DeclarativeBase</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Schematic for the database operations using SQLAlchemy.</span>
 
 <span class="sd">    .. note::</span>
 <span class="sd">       Fields are not completely documented for this model.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">group</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span>
         <span class="n">String</span><span class="p">,</span>
@@ -374,42 +374,42 @@
 <div class="viewcode-block" id="WindowsRecord">
 <a class="viewcode-back" href="../../../encommon.times.html#encommon.times.windows.WindowsRecord">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">WindowsRecord</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Contain the information of the record from the database.</span>
 
 <span class="sd">    :param record: Record from the SQLAlchemy query routine.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">group</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span>
         <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-              <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Group the children by category&#39;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s1">'Group the children by category'</span><span class="p">,</span>
               <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 
     <span class="n">unique</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span>
         <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-              <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Unique identifier for the child&#39;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s1">'Unique identifier for the child'</span><span class="p">,</span>
               <span class="n">min_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 
     <span class="n">last</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span>
         <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-              <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Last schedule for the period&#39;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s1">'Last schedule for the period'</span><span class="p">,</span>
               <span class="n">min_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
               <span class="n">max_length</span><span class="o">=</span><span class="mi">32</span><span class="p">)]</span>
 
     <span class="nb">next</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span>
         <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-              <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Next schedule for the period&#39;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s1">'Next schedule for the period'</span><span class="p">,</span>
               <span class="n">min_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
               <span class="n">max_length</span><span class="o">=</span><span class="mi">32</span><span class="p">)]</span>
 
     <span class="n">update</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span>
         <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
-              <span class="n">description</span><span class="o">=</span><span class="s1">&#39;When the record was updated&#39;</span><span class="p">,</span>
+              <span class="n">description</span><span class="o">=</span><span class="s1">'When the record was updated'</span><span class="p">,</span>
               <span class="n">min_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
               <span class="n">max_length</span><span class="o">=</span><span class="mi">32</span><span class="p">)]</span>
 
@@ -418,16 +418,16 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">record</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">DeclarativeBase</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;group&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;unique&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;last&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;next&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;update&#39;</span><span class="p">]</span>
+            <span class="s1">'group'</span><span class="p">,</span>
+            <span class="s1">'unique'</span><span class="p">,</span>
+            <span class="s1">'last'</span><span class="p">,</span>
+            <span class="s1">'next'</span><span class="p">,</span>
+            <span class="s1">'update'</span><span class="p">]</span>
 
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">x</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -435,9 +435,9 @@
 
 
         <span class="n">timefs</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s1">&#39;last&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;next&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;update&#39;</span><span class="p">]</span>
+            <span class="s1">'last'</span><span class="p">,</span>
+            <span class="s1">'next'</span><span class="p">,</span>
+            <span class="s1">'update'</span><span class="p">]</span>
 
         <span class="n">params</span> <span class="o">|=</span> <span class="p">{</span>
             <span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="n">Time</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">simple</span>
@@ -455,7 +455,7 @@
 <div class="viewcode-block" id="Windows">
 <a class="viewcode-back" href="../../../index.html#encommon.times.windows.Windows">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Windows</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Track windows on unique key determining when to proceed.</span>
 
 <span class="sd">    .. warning::</span>
@@ -468,10 +468,10 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; source = {&#39;one&#39;: WindowParams(window=1)}</span>
+<span class="sd">    &gt;&gt;&gt; source = {'one': WindowParams(window=1)}</span>
 <span class="sd">    &gt;&gt;&gt; params = WindowsParams(windows=source)</span>
-<span class="sd">    &gt;&gt;&gt; windows = Windows(params, &#39;-2s&#39;, &#39;now&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; [windows.ready(&#39;one&#39;) for x in range(4)]</span>
+<span class="sd">    &gt;&gt;&gt; windows = Windows(params, '-2s', 'now')</span>
+<span class="sd">    &gt;&gt;&gt; [windows.ready('one') for x in range(4)]</span>
 <span class="sd">    [True, True, True, False]</span>
 
 <span class="sd">    :param params: Parameters used to instantiate the class.</span>
@@ -479,9 +479,9 @@
 <span class="sd">    :param stop: Determine the ending for scheduling window.</span>
 <span class="sd">    :param store: Optional database path for keeping state.</span>
 <span class="sd">    :param group: Optional override for default group name.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
-    <span class="n">__params</span><span class="p">:</span> <span class="s1">&#39;WindowsParams&#39;</span>
+    <span class="n">__params</span><span class="p">:</span> <span class="s1">'WindowsParams'</span>
 
     <span class="n">__store</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">__group</span><span class="p">:</span> <span class="nb">str</span>
@@ -501,17 +501,17 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># noqa: CFQ002</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;WindowsParams&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">start</span><span class="p">:</span> <span class="n">PARSABLE</span> <span class="o">=</span> <span class="s1">&#39;now&#39;</span><span class="p">,</span>
-        <span class="n">stop</span><span class="p">:</span> <span class="n">PARSABLE</span> <span class="o">=</span> <span class="s1">&#39;3000-01-01&#39;</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">'WindowsParams'</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">start</span><span class="p">:</span> <span class="n">PARSABLE</span> <span class="o">=</span> <span class="s1">'now'</span><span class="p">,</span>
+        <span class="n">stop</span><span class="p">:</span> <span class="n">PARSABLE</span> <span class="o">=</span> <span class="s1">'3000-01-01'</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
-        <span class="n">store</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;sqlite:///:memory:&#39;</span><span class="p">,</span>
-        <span class="n">table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;windows&#39;</span><span class="p">,</span>
-        <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span>
+        <span class="n">store</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'sqlite:///:memory:'</span><span class="p">,</span>
+        <span class="n">table</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'windows'</span><span class="p">,</span>
+        <span class="n">group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'default'</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Initialize instance for class using provided parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
@@ -528,9 +528,9 @@
             <span class="k">pass</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__table</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s1">&#39;encommon_windows_</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">'encommon_windows_</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s1">'</span><span class="p">,</span>
             <span class="p">(</span><span class="n">SQLBase</span><span class="p">,</span> <span class="n">WindowsTable</span><span class="p">),</span>
-            <span class="p">{</span><span class="s1">&#39;__tablename__&#39;</span><span class="p">:</span> <span class="n">table</span><span class="p">})</span>
+            <span class="p">{</span><span class="s1">'__tablename__'</span><span class="p">:</span> <span class="n">table</span><span class="p">})</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__locker</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
 
@@ -554,9 +554,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__build_engine</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Construct instances using the configuration parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">sengine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__store</span><span class="p">,</span>
@@ -575,9 +575,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">__build_objects</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Construct instances using the configuration parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
 
@@ -592,12 +592,12 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">params</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;WindowsParams&#39;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">'WindowsParams'</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the Pydantic model containing the configuration.</span>
 
 <span class="sd">        :returns: Pydantic model containing the configuration.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__params</span>
 
@@ -606,11 +606,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__store</span>
 
@@ -619,11 +619,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">group</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__group</span>
 
@@ -632,11 +632,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">store_table</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">WindowsTable</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__table</span>
 
@@ -645,11 +645,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">store_engine</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Engine</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__sengine</span>
 
@@ -658,11 +658,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">store_session</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="p">()</span>
 
@@ -671,11 +671,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__start</span><span class="p">)</span>
 
@@ -684,11 +684,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Time</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="n">Time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__stop</span><span class="p">)</span>
 
@@ -697,11 +697,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">children</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Window</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the value for the attribute from class instance.</span>
 
 <span class="sd">        :returns: Value for the attribute from class instance.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__childs</span><span class="p">)</span>
 
@@ -711,9 +711,9 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">save_children</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Save the child caches from the attribute into database.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">sess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="p">()</span>
         <span class="n">lock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__locker</span>
@@ -725,7 +725,7 @@
 
         <span class="n">inserts</span><span class="p">:</span> <span class="n">LDictStrAny</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">update</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">)</span>
+        <span class="n">update</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'now'</span><span class="p">)</span>
 
 
         <span class="n">items</span> <span class="o">=</span> <span class="n">childs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
@@ -737,11 +737,11 @@
             <span class="n">_update</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">subsec</span>
 
             <span class="n">inputs</span><span class="p">:</span> <span class="n">DictStrAny</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span>
-                <span class="s1">&#39;unique&#39;</span><span class="p">:</span> <span class="n">unique</span><span class="p">,</span>
-                <span class="s1">&#39;last&#39;</span><span class="p">:</span> <span class="n">_last</span><span class="p">,</span>
-                <span class="s1">&#39;next&#39;</span><span class="p">:</span> <span class="n">_next</span><span class="p">,</span>
-                <span class="s1">&#39;update&#39;</span><span class="p">:</span> <span class="n">_update</span><span class="p">}</span>
+                <span class="s1">'group'</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span>
+                <span class="s1">'unique'</span><span class="p">:</span> <span class="n">unique</span><span class="p">,</span>
+                <span class="s1">'last'</span><span class="p">:</span> <span class="n">_last</span><span class="p">,</span>
+                <span class="s1">'next'</span><span class="p">:</span> <span class="n">_next</span><span class="p">,</span>
+                <span class="s1">'update'</span><span class="p">:</span> <span class="n">_update</span><span class="p">}</span>
 
             <span class="n">inserts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
@@ -764,18 +764,18 @@
         <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Determine whether or not the appropriate time has passed.</span>
 
 <span class="sd">        :param unique: Unique identifier for the related child.</span>
 <span class="sd">        :param update: Determines whether or not time is updated.</span>
 <span class="sd">        :returns: Boolean indicating whether enough time passed.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">childs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__childs</span>
 
         <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">childs</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'unique'</span><span class="p">)</span>
 
         <span class="n">child</span> <span class="o">=</span> <span class="n">childs</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
 
@@ -795,13 +795,13 @@
         <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">update</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Determine whether or not the appropriate time has passed.</span>
 
 <span class="sd">        :param unique: Unique identifier for the related child.</span>
 <span class="sd">        :param update: Determines whether or not time is updated.</span>
 <span class="sd">        :returns: Boolean indicating whether enough time passed.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span>
             <span class="n">unique</span><span class="p">,</span> <span class="n">update</span><span class="p">)</span></div>
@@ -814,11 +814,11 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WindowsRecord</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Return the record from within the table in the database.</span>
 
 <span class="sd">        :returns: Record from within the table in the database.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">sess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="p">()</span>
         <span class="n">lock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__locker</span>
@@ -862,22 +862,22 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">params</span><span class="p">:</span> <span class="s1">&#39;WindowParams&#39;</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="s1">'WindowParams'</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Window</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Create a new window using the provided input parameters.</span>
 
 <span class="sd">        :param unique: Unique identifier for the related child.</span>
 <span class="sd">        :param params: Parameters used to instantiate the class.</span>
 <span class="sd">        :returns: Newly constructed instance of related class.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">childs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__childs</span>
         <span class="n">_start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__start</span>
         <span class="n">_stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stop</span>
 
         <span class="k">if</span> <span class="n">unique</span> <span class="ow">in</span> <span class="n">childs</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'unique'</span><span class="p">)</span>
 
         <span class="n">window</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">window</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">start</span>
@@ -934,17 +934,17 @@
         <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PARSABLE</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Update the window from the provided parasable time value.</span>
 
 <span class="sd">        :param unique: Unique identifier for the related child.</span>
 <span class="sd">        :param value: Override the time updated for window value.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">childs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__childs</span>
 
         <span class="k">if</span> <span class="n">unique</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">childs</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unique&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'unique'</span><span class="p">)</span>
 
         <span class="n">child</span> <span class="o">=</span> <span class="n">childs</span><span class="p">[</span><span class="n">unique</span><span class="p">]</span>
 
@@ -960,7 +960,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">unique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Delete the window from the internal dictionary reference.</span>
 
 <span class="sd">        .. note::</span>
@@ -968,7 +968,7 @@
 <span class="sd">           when the provided unique value does not exist.</span>
 
 <span class="sd">        :param unique: Unique identifier for the related child.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
 
         <span class="n">sess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__session</span><span class="p">()</span>
         <span class="n">lock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__locker</span>

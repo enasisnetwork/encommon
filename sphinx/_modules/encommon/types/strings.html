@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.types.strings</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -307,13 +307,13 @@
 
 
 
-<span class="n">COMMAS</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span>
-<span class="n">COMMAD</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
+<span class="n">COMMAS</span> <span class="o">=</span> <span class="s1">', '</span>
+<span class="n">COMMAD</span> <span class="o">=</span> <span class="s1">','</span>
 
-<span class="n">NEWLINE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="n">NEWLINE</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span>
 
-<span class="n">SEMPTY</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-<span class="n">SPACED</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+<span class="n">SEMPTY</span> <span class="o">=</span> <span class="s1">''</span>
+<span class="n">SPACED</span> <span class="o">=</span> <span class="s1">' '</span>
 
 
 
@@ -322,17 +322,17 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">strplwr</span><span class="p">(</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the provided string but stripped and lower cased.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; strplwr(&#39;  Foo &#39;)</span>
-<span class="sd">    &#39;foo&#39;</span>
+<span class="sd">    &gt;&gt;&gt; strplwr('  Foo ')</span>
+<span class="sd">    'foo'</span>
 
 <span class="sd">    :param value: String which will be stripped and lowered.</span>
 <span class="sd">    :returns: Provided string but stripped and lower cased.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
@@ -347,20 +347,20 @@
     <span class="n">haystack</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">needle</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the boolean indicating if needle is in haystack.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; haystack = &#39;barfoobaz&#39;</span>
-<span class="sd">    &gt;&gt;&gt; needle = &#39;foo&#39;</span>
+<span class="sd">    &gt;&gt;&gt; haystack = 'barfoobaz'</span>
+<span class="sd">    &gt;&gt;&gt; needle = 'foo'</span>
 <span class="sd">    &gt;&gt;&gt; hasstr(haystack, needle)</span>
 <span class="sd">    True</span>
 
 <span class="sd">    :param haystack: Full string which may contain needle.</span>
 <span class="sd">    :param needle: Substring which may be within haystack.</span>
 <span class="sd">    :returns: Boolean indicating if needle is in haystack.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">return</span> <span class="n">needle</span> <span class="ow">in</span> <span class="n">haystack</span></div>
 
@@ -373,21 +373,21 @@
     <span class="n">needle</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">haystack</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the boolean indicating if needle is in haystack.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
 <span class="sd">    &gt;&gt;&gt; class MyClass: pass</span>
 <span class="sd">    &gt;&gt;&gt; haystack = MyClass()</span>
-<span class="sd">    &gt;&gt;&gt; needle = &#39;MyClass&#39;</span>
+<span class="sd">    &gt;&gt;&gt; needle = 'MyClass'</span>
 <span class="sd">    &gt;&gt;&gt; inrepr(needle, haystack)</span>
 <span class="sd">    True</span>
 
 <span class="sd">    :param needle: Substring which may be within haystack.</span>
 <span class="sd">    :param haystack: Object which is inspected for needle.</span>
 <span class="sd">    :returns: Boolean indicating if needle is in haystack.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">return</span> <span class="n">hasstr</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">haystack</span><span class="p">),</span> <span class="n">needle</span><span class="p">)</span></div>
 
@@ -400,21 +400,21 @@
     <span class="n">needle</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">haystack</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the boolean indicating if needle is in haystack.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
 <span class="sd">    &gt;&gt;&gt; class MyClass: pass</span>
 <span class="sd">    &gt;&gt;&gt; haystack = MyClass()</span>
-<span class="sd">    &gt;&gt;&gt; needle = &#39;MyClass&#39;</span>
+<span class="sd">    &gt;&gt;&gt; needle = 'MyClass'</span>
 <span class="sd">    &gt;&gt;&gt; instr(needle, haystack)</span>
 <span class="sd">    True</span>
 
 <span class="sd">    :param needle: Substring which may be within haystack.</span>
 <span class="sd">    :param haystack: Object which is inspected for needle.</span>
 <span class="sd">    :returns: Boolean indicating if needle is in haystack.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">return</span> <span class="n">hasstr</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">haystack</span><span class="p">),</span> <span class="n">needle</span><span class="p">)</span></div>
 
@@ -428,19 +428,19 @@
     <span class="n">match</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>  <span class="c1"># noqa: ANN401</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the source string with the match value replaced.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; rplstr(&#39;foo&#39;, &#39;foo&#39;, &#39;bar&#39;)</span>
-<span class="sd">    &#39;bar&#39;</span>
+<span class="sd">    &gt;&gt;&gt; rplstr('foo', 'foo', 'bar')</span>
+<span class="sd">    'bar'</span>
 
 <span class="sd">    :param source: String that to be processed and returned.</span>
 <span class="sd">    :param match: What will be replaced within the string.</span>
 <span class="sd">    :param value: Replace value for the string is matched.</span>
 <span class="sd">    :returns: Source string with the match value replaced.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">match</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
     <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>

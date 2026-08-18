@@ -294,7 +294,7 @@ Pydantic model <a class="reference internal" href="#encommon.config.Params" titl
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">config</span>
-<span class="go">{&#39;enconfig&#39;: None, &#39;encrypts&#39;: None, &#39;enlogger&#39;: None}</span>
+<span class="go">{'enconfig': None, 'encrypts': None, 'enlogger': None}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -640,9 +640,9 @@ which will override contents from the config files.</p>
 </div>
 <section id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stdo_level</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stdo_level</span><span class="o">=</span><span class="s1">'info'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">log_i</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s1">&#39;testing&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logger</span><span class="o">.</span><span class="n">log_i</span><span class="p">(</span><span class="n">message</span><span class="o">=</span><span class="s1">'testing'</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -885,9 +885,9 @@ which will override contents from the config files.</p>
 </div>
 <section id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;1970-01-01&#39;</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="s1">'info'</span><span class="p">,</span> <span class="s1">'1970-01-01'</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="s1">'bar'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">stdo_output</span><span class="p">)</span>
-<span class="go">&#39;level=&quot;info&quot; time=&quot;1970-01-01T00:00:00Z&quot; foo=&quot;bar&quot;&#39;</span>
+<span class="go">'level="info" time="1970-01-01T00:00:00Z" foo="bar"'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1069,7 +1069,7 @@ which will override contents from the config files.</p>
 <p>Covert colors to various forms using provided hex value.</p>
 <section id="id3">
 <h3>Example<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#003333&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">'#003333'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">color</span><span class="o">.</span><span class="n">rgb</span>
 <span class="go">(0, 51, 51)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">color</span><span class="o">.</span><span class="n">hsl</span>
@@ -1083,12 +1083,12 @@ which will override contents from the config files.</p>
 </section>
 <section id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">color1</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#003333&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">color2</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">&#39;#330000&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">color1</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">'#003333'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">color2</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s1">'#330000'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">color1</span> <span class="o">-</span> <span class="n">color2</span>
-<span class="go">Color(&#39;#32CCCD&#39;)</span>
+<span class="go">Color('#32CCCD')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">color1</span> <span class="o">+</span> <span class="n">color2</span>
-<span class="go">Color(&#39;#333333&#39;)</span>
+<span class="go">Color('#333333')</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1177,14 +1177,14 @@ which will override contents from the config files.</p>
 <section id="id5">
 <h3>Example<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phrase</span> <span class="o">=</span> <span class="n">Crypts</span><span class="o">.</span><span class="n">keygen</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;phrase&#39;</span><span class="p">:</span> <span class="n">phrase</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'default'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'phrase'</span><span class="p">:</span> <span class="n">phrase</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">CryptsParams</span><span class="p">(</span><span class="n">phrases</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crypts</span> <span class="o">=</span> <span class="n">Crypts</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span> <span class="o">=</span> <span class="n">crypts</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span> <span class="o">=</span> <span class="n">crypts</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">'example'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span>
-<span class="go">&#39;$ENCRYPT;1.0;default;...</span>
+<span class="go">'$ENCRYPT;1.0;default;...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crypts</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span>
-<span class="go">&#39;example&#39;</span>
+<span class="go">'example'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1312,17 +1312,17 @@ which will override contents from the config files.</p>
 <p>Create hash values using the provided at instantiation.</p>
 <section id="id6">
 <h3>Example<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span><span class="o">.</span><span class="n">sha256</span>
-<span class="go">&#39;473287f8298dba7163a897908958f7c0ea...</span>
+<span class="go">'473287f8298dba7163a897908958f7c0ea...</span>
 </pre></div>
 </div>
 </section>
 <section id="id7">
 <h3>Example<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span><span class="o">.</span><span class="n">uuid</span>
-<span class="go">&#39;38ffd1ed-2b4d-3c84-ae45-bf3bf354eee4&#39;</span>
+<span class="go">'38ffd1ed-2b4d-3c84-ae45-bf3bf354eee4'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1421,8 +1421,8 @@ which will override contents from the config files.</p>
 <section id="id8">
 <h3>Example<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jinja2</span> <span class="o">=</span> <span class="n">Jinja2</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">jinja2</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;{{ 0 | Time }}&#39;</span><span class="p">)</span>
-<span class="go">&#39;1970-01-01T00:00:00.000000+0000&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jinja2</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'{{ 0 | Time }}'</span><span class="p">)</span>
+<span class="go">'1970-01-01T00:00:00.000000+0000'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1768,11 +1768,11 @@ which will override contents from the config files.</p>
 <h3>Example: Common Methods<a class="headerlink" href="#example-common-methods" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mf">6048e4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">short</span>
-<span class="go">&#39;1y 11mon 5d&#39;</span>
+<span class="go">'1y 11mon 5d'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">compact</span>
-<span class="go">&#39;1y11mon5d&#39;</span>
+<span class="go">'1y11mon5d'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">verbose</span>
-<span class="go">&#39;1 year, 11 months, 5 days&#39;</span>
+<span class="go">'1 year, 11 months, 5 days'</span>
 </pre></div>
 </div>
 </section>
@@ -1780,7 +1780,7 @@ which will override contents from the config files.</p>
 <h3>Example: Dump the Units<a class="headerlink" href="#example-dump-the-units" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mf">6048e4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">units</span><span class="p">()</span>
-<span class="go">{&#39;year&#39;: 1, &#39;month&#39;: 11, &#39;day&#39;: 5}</span>
+<span class="go">{'year': 1, 'month': 11, 'day': 5}</span>
 </pre></div>
 </div>
 </section>
@@ -1788,9 +1788,9 @@ which will override contents from the config files.</p>
 <h3>Example: Disable Smart Seconds<a class="headerlink" href="#example-disable-smart-seconds" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span> <span class="o">=</span> <span class="n">Duration</span><span class="p">(</span><span class="mi">7201</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">compact</span>
-<span class="go">&#39;2h1s&#39;</span>
+<span class="go">'2h1s'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">durate</span><span class="o">.</span><span class="n">verbose</span>
-<span class="go">&#39;2 hours, 1 second&#39;</span>
+<span class="go">'2 hours, 1 second'</span>
 </pre></div>
 </div>
 </section>
@@ -2077,13 +2077,13 @@ unless a cache file is explicity defined.</p>
 </div>
 <section id="id10">
 <h3>Example<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">TimerParams</span><span class="p">(</span><span class="n">timer</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">TimerParams</span><span class="p">(</span><span class="n">timer</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">TimersParams</span><span class="p">(</span><span class="n">timers</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span> <span class="o">=</span> <span class="n">Timers</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timers</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -2315,11 +2315,11 @@ when the provided unique value does not exist.</p>
 <p>Interact with various time functions through one wrapper.</p>
 <section id="id11">
 <h3>Example<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">()</span>
-<span class="go">&#39;2000-01-01T00:00:00.000000+0000&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%Y&#39;</span><span class="p">)</span>
-<span class="go">&#39;01/01/2000&#39;</span>
+<span class="go">'2000-01-01T00:00:00.000000+0000'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">stamp</span><span class="p">(</span><span class="s1">'%m/</span><span class="si">%d</span><span class="s1">/%Y'</span><span class="p">)</span>
+<span class="go">'01/01/2000'</span>
 </pre></div>
 </div>
 </section>
@@ -2330,38 +2330,38 @@ when the provided unique value does not exist.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span>
 <span class="go">datetime.time(0, 0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">simple</span>
-<span class="go">&#39;2000-01-01T00:00:00+0000&#39;</span>
+<span class="go">'2000-01-01T00:00:00+0000'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">human</span>
-<span class="go">&#39;01/01/2000 12:00AM UTC&#39;</span>
+<span class="go">'01/01/2000 12:00AM UTC'</span>
 </pre></div>
 </div>
 </section>
 <section id="id13">
 <h3>Example<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">before</span>
-<span class="go">Time(&#39;1999-12-31T23:59:59.999999+0000&#39;)</span>
+<span class="go">Time('1999-12-31T23:59:59.999999+0000')</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">after</span>
-<span class="go">Time(&#39;2000-01-01T00:00:00.000001+0000&#39;)</span>
+<span class="go">Time('2000-01-01T00:00:00.000001+0000')</span>
 </pre></div>
 </div>
 </section>
 <section id="id14">
 <h3>Example<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="s1">&#39;-1d&#39;</span><span class="p">)</span>
-<span class="go">Time(&#39;1999-12-31T00:00:00.000000+0000&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="s1">'-1d'</span><span class="p">)</span>
+<span class="go">Time('1999-12-31T00:00:00.000000+0000')</span>
 </pre></div>
 </div>
 </section>
 <section id="id15">
 <h3>Example<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shifz</span><span class="p">(</span><span class="s1">&#39;US/Central&#39;</span><span class="p">)</span>
-<span class="go">Time(&#39;1999-12-31T18:00:00.000000-0600&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">shifz</span><span class="p">(</span><span class="s1">'US/Central'</span><span class="p">)</span>
+<span class="go">Time('1999-12-31T18:00:00.000000-0600')</span>
 </pre></div>
 </div>
 </section>
 <section id="id16">
 <h3>Example<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;-1s&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'-1s'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">since</span><span class="p">)</span>
 <span class="go">1</span>
 </pre></div>
@@ -2369,8 +2369,8 @@ when the provided unique value does not exist.</p>
 </section>
 <section id="id17">
 <h3>Example<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">time2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">-</span> <span class="n">time2</span>
 <span class="go">0.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time1</span> <span class="o">+</span> <span class="n">time2</span>
@@ -2581,7 +2581,7 @@ This is not relevant in timezone included in source.</p>
 <p>Process and operate crontab or interval based schedule.</p>
 <section id="id18">
 <h3>Example<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">&#39;* * * * *&#39;</span><span class="p">,</span> <span class="s1">&#39;-4m@m&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="s1">'* * * * *'</span><span class="p">,</span> <span class="s1">'-4m@m'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">window</span><span class="o">.</span><span class="n">ready</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
 <span class="go">[True, True, True, True, True, False]</span>
 </pre></div>
@@ -2829,10 +2829,10 @@ unless a cache file is explicity defined.</p>
 </div>
 <section id="id19">
 <h3>Example<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">WindowParams</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">WindowsParams</span><span class="p">(</span><span class="n">windows</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;-2s&#39;</span><span class="p">,</span> <span class="s1">&#39;now&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">windows</span> <span class="o">=</span> <span class="n">Windows</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">'-2s'</span><span class="p">,</span> <span class="s1">'now'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">windows</span><span class="o">.</span><span class="n">ready</span><span class="p">(</span><span class="s1">'one'</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
 <span class="go">[True, True, True, False]</span>
 </pre></div>
 </div>
@@ -3091,8 +3091,8 @@ when the provided unique value does not exist.</p>
 <dd><p>Return the located timezone object for the provided name.</p>
 <section id="id20">
 <h3>Example<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">findtz</span><span class="p">(</span><span class="s1">&#39;US/Central&#39;</span><span class="p">)</span>
-<span class="go">tzfile(&#39;/usr/share/zoneinfo/US/Central&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">findtz</span><span class="p">(</span><span class="s1">'US/Central'</span><span class="p">)</span>
+<span class="go">tzfile('/usr/share/zoneinfo/US/Central')</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3144,7 +3144,7 @@ when the provided unique value does not exist.</p>
 </div>
 <section id="id21">
 <h3>Example<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_time</span><span class="p">(</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_time</span><span class="p">(</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -3182,14 +3182,14 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Shift provided time value using snaptime relative syntax.</p>
 <section id="id23">
 <h3>Example<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">&#39;-1h&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">'-1h'</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(1999, 12, 31, 23...</span>
 </pre></div>
 </div>
 </section>
 <section id="id24">
 <h3>Example<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">&#39;-1h@d&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;1/1/2000 12:00am&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shift_time</span><span class="p">(</span><span class="s1">'-1h@d'</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">'1/1/2000 12:00am'</span><span class="p">)</span>
 <span class="go">datetime.datetime(1999, 12, 31, 0...</span>
 </pre></div>
 </div>
@@ -3243,14 +3243,14 @@ This is not relevant in timezone included in anchor.</p>
 <dd><p>Parse provided time value with various supported formats.</p>
 <section id="id26">
 <h3>Example<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">&#39;2000-01-01T00:00:00Z&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">'2000-01-01T00:00:00Z'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
 </section>
 <section id="id27">
 <h3>Example<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">&#39;2000/01/01&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">string_time</span><span class="p">(</span><span class="s1">'2000/01/01'</span><span class="p">)</span>
 <span class="go">datetime.datetime(2000, 1, 1, 0...</span>
 </pre></div>
 </div>
@@ -3278,11 +3278,11 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Return the seconds in integer format for provided input.</p>
 <section id="id28">
 <h3>Example<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1d&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1d'</span><span class="p">)</span>
 <span class="go">86400</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1y&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1y'</span><span class="p">)</span>
 <span class="go">31536000</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">&#39;1w3d4h&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">unitime</span><span class="p">(</span><span class="s1">'1w3d4h'</span><span class="p">)</span>
 <span class="go">878400</span>
 </pre></div>
 </div>
@@ -3363,19 +3363,19 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Return the values in second dictionary not in the first.</p>
 <section id="id30">
 <h3>Example<a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">delta_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
-<span class="go">{&#39;a&#39;: &#39;B&#39;, &#39;c&#39;: [2]}</span>
+<span class="go">{'a': 'B', 'c': [2]}</span>
 </pre></div>
 </div>
 </section>
 <section id="id31">
 <h3>Example<a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">delta_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
-<span class="go">{&#39;x&#39;: []}</span>
+<span class="go">{'x': []}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3398,10 +3398,10 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Return the provided values that match provided patterns.</p>
 <section id="id32">
 <h3>Example<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;bop&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*o&#39;</span><span class="p">,</span> <span class="s1">&#39;ba*&#39;</span><span class="p">]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">,</span> <span class="s1">'bop'</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'*o'</span><span class="p">,</span> <span class="s1">'ba*'</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fuzzy_list</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">patterns</span><span class="p">)</span>
-<span class="go">[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]</span>
+<span class="go">['foo', 'bar', 'baz']</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3424,10 +3424,10 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Delete the value within the dictionary using notation.</p>
 <section id="id33">
 <h3>Example<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">delate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;foo/bar&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'bar'</span><span class="p">:</span> <span class="s1">'baz'</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">'foo/bar'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span>
-<span class="go">{&#39;foo&#39;: {}}</span>
+<span class="go">{'foo': {}}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3450,8 +3450,8 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Explode the dictionary from a single depth of notation.</p>
 <section id="id34">
 <h3>Example<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">expate</span><span class="p">({</span><span class="s1">&#39;foo/bar&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">})</span>
-<span class="go">{&#39;foo&#39;: {&#39;bar&#39;: &#39;baz&#39;}}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">expate</span><span class="p">({</span><span class="s1">'foo/bar'</span><span class="p">:</span> <span class="s1">'baz'</span><span class="p">})</span>
+<span class="go">{'foo': {'bar': 'baz'}}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3485,17 +3485,17 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Collect the value within the dictionary using notation.</p>
 <section id="id35">
 <h3>Example<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">getate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;foo/bar&#39;</span><span class="p">)</span>
-<span class="go">&#39;baz&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'bar'</span><span class="p">:</span> <span class="s1">'baz'</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">getate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">'foo/bar'</span><span class="p">)</span>
+<span class="go">'baz'</span>
 </pre></div>
 </div>
 </section>
 <section id="id36">
 <h3>Example<a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">getate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;foo/1&#39;</span><span class="p">)</span>
-<span class="go">&#39;baz&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'bar'</span><span class="p">,</span> <span class="s1">'baz'</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">getate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">'foo/1'</span><span class="p">)</span>
+<span class="go">'baz'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3524,8 +3524,8 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Return the boolean indicating if needle is in haystack.</p>
 <section id="id37">
 <h3>Example<a class="headerlink" href="#id37" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">haystack</span> <span class="o">=</span> <span class="s1">&#39;barfoobaz&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">needle</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">haystack</span> <span class="o">=</span> <span class="s1">'barfoobaz'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">needle</span> <span class="o">=</span> <span class="s1">'foo'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hasstr</span><span class="p">(</span><span class="n">haystack</span><span class="p">,</span> <span class="n">needle</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
@@ -3550,8 +3550,8 @@ This is not relevant in timezone included in source.</p>
 <dd><p>Implode the dictionary into a single depth of notation.</p>
 <section id="id38">
 <h3>Example<a class="headerlink" href="#id38" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">impate</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">}})</span>
-<span class="go">{&#39;foo/bar&#39;: &#39;baz&#39;}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">impate</span><span class="p">({</span><span class="s1">'foo'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'bar'</span><span class="p">:</span> <span class="s1">'baz'</span><span class="p">}})</span>
+<span class="go">{'foo/bar': 'baz'}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3612,7 +3612,7 @@ be returned when provided and implode_list is False.</p>
 <h3>Example<a class="headerlink" href="#id40" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">:</span> <span class="k">pass</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">haystack</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">needle</span> <span class="o">=</span> <span class="s1">&#39;MyClass&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">needle</span> <span class="o">=</span> <span class="s1">'MyClass'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inrepr</span><span class="p">(</span><span class="n">needle</span><span class="p">,</span> <span class="n">haystack</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
@@ -3639,7 +3639,7 @@ be returned when provided and implode_list is False.</p>
 <h3>Example<a class="headerlink" href="#id41" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">MyClass</span><span class="p">:</span> <span class="k">pass</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">haystack</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">needle</span> <span class="o">=</span> <span class="s1">&#39;MyClass&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">needle</span> <span class="o">=</span> <span class="s1">'MyClass'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">instr</span><span class="p">(</span><span class="n">needle</span><span class="p">,</span> <span class="n">haystack</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
@@ -3682,12 +3682,12 @@ be returned when provided and implode_list is False.</p>
 </div>
 <section id="id42">
 <h3>Example<a class="headerlink" href="#id42" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="s1">'B'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">merge_dicts</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">)</span>
-<span class="go">{&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: [1, 2]}</span>
+<span class="go">{'a': 'b', 'c': [1, 2]}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dict1</span>
-<span class="go">{&#39;a&#39;: &#39;b&#39;, &#39;c&#39;: [1, 2]}</span>
+<span class="go">{'a': 'b', 'c': [1, 2]}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3735,11 +3735,11 @@ expression or fnmatch pattern, see <code class="docutils literal notranslate"><s
 </div>
 <section id="id43">
 <h3>Example<a class="headerlink" href="#id43" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">}}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'a'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'b'</span><span class="p">:</span> <span class="s1">'1'</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">process</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="go">{&#39;a&#39;: {&#39;b&#39;: 1}}</span>
+<span class="go">{'a': {'b': 1}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span>
-<span class="go">{&#39;a&#39;: {&#39;b&#39;: 1}}</span>
+<span class="go">{'a': {'b': 1}}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3781,8 +3781,8 @@ expression or fnmatch pattern, see <code class="docutils literal notranslate"><s
 <dd><p>Return the source string with the match value replaced.</p>
 <section id="id44">
 <h3>Example<a class="headerlink" href="#id44" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rplstr</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="go">&#39;bar&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rplstr</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">)</span>
+<span class="go">'bar'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3808,12 +3808,12 @@ expression or fnmatch pattern, see <code class="docutils literal notranslate"><s
 <dd><p>Define the value within the dictionary using notation.</p>
 <section id="id45">
 <h3>Example<a class="headerlink" href="#id45" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">][</span><span class="s1">&#39;bar&#39;</span><span class="p">]</span>
-<span class="go">&#39;baz&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">setate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">&#39;foo/bar&#39;</span><span class="p">,</span> <span class="s1">&#39;bop&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">][</span><span class="s1">&#39;bar&#39;</span><span class="p">]</span>
-<span class="go">&#39;bop&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'foo'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'bar'</span><span class="p">:</span> <span class="s1">'baz'</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="p">[</span><span class="s1">'foo'</span><span class="p">][</span><span class="s1">'bar'</span><span class="p">]</span>
+<span class="go">'baz'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="s1">'foo/bar'</span><span class="p">,</span> <span class="s1">'bop'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="p">[</span><span class="s1">'foo'</span><span class="p">][</span><span class="s1">'bar'</span><span class="p">]</span>
+<span class="go">'bop'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3839,11 +3839,11 @@ expression or fnmatch pattern, see <code class="docutils literal notranslate"><s
 <dd><p>Sort the keys within the dictionary and return new one.</p>
 <section id="id46">
 <h3>Example<a class="headerlink" href="#id46" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;ey&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">foo</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'b'</span><span class="p">:</span> <span class="s1">'be'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">:</span> <span class="s1">'ey'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sort_dict</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
-<span class="go">{&#39;a&#39;: &#39;ey&#39;, &#39;b&#39;: &#39;be&#39;}</span>
+<span class="go">{'a': 'ey', 'b': 'be'}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sort_dict</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="go">{&#39;b&#39;: &#39;be&#39;, &#39;a&#39;: &#39;ey&#39;}</span>
+<span class="go">{'b': 'be', 'a': 'ey'}</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3866,8 +3866,8 @@ expression or fnmatch pattern, see <code class="docutils literal notranslate"><s
 <dd><p>Return the provided string but stripped and lower cased.</p>
 <section id="id47">
 <h3>Example<a class="headerlink" href="#id47" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strplwr</span><span class="p">(</span><span class="s1">&#39;  Foo &#39;</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strplwr</span><span class="p">(</span><span class="s1">'  Foo '</span><span class="p">)</span>
+<span class="go">'foo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3892,10 +3892,10 @@ expression or fnmatch pattern, see <code class="docutils literal notranslate"><s
 <h3>Example<a class="headerlink" href="#id48" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="go">&#39;foofoo&#39;</span>
+<span class="go">'foofoo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3920,8 +3920,8 @@ into a class with methods where there are functions.</p>
 </div>
 <section id="id49">
 <h3>Example<a class="headerlink" href="#id49" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_ansi</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
-<span class="go">&quot;\x1b[0;97mfoo\x1b[0;37m:\x1b[0;0m...</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_ansi</span><span class="p">({</span><span class="s1">'foo'</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">})</span>
+<span class="go">"\x1b[0;97mfoo\x1b[0;37m:\x1b[0;0m...</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -3947,14 +3947,14 @@ into a class with methods where there are functions.</p>
 <dd><p>Determine whether or not values are included by patterns.</p>
 <section id="id50">
 <h3>Example<a class="headerlink" href="#id50" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'one'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on[a-z]'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 </section>
 <section id="id51">
 <h3>Example<a class="headerlink" href="#id51" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'uno'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on[a-z]'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -3978,8 +3978,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Process and colorize keys and values for standard output.</p>
 <section id="id52">
 <h3>Example<a class="headerlink" href="#id52" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kvpair_ansi</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
-<span class="go">&#39;\x1b[0;90mk\x1b[0;37m=&quot;\x1b[0;0m...</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kvpair_ansi</span><span class="p">(</span><span class="s1">'k'</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">)</span>
+<span class="go">'\x1b[0;90mk\x1b[0;37m="\x1b[0;0m...</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4002,16 +4002,16 @@ into a class with methods where there are functions.</p>
 <dd><p>Load the sample file and compare using provided content.</p>
 <section id="id53">
 <h3>Example<a class="headerlink" href="#id53" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="s1">'two'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
-<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+<span class="go">'{\n  "one": "two"\n}'</span>
 </pre></div>
 </div>
 </section>
 <section id="id54">
 <h3>Example<a class="headerlink" href="#id54" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+<span class="go">'{\n  "one": "two"\n}'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4043,8 +4043,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Parse the string and replace directives with ANSI codes.</p>
 <section id="id55">
 <h3>Example<a class="headerlink" href="#id55" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
-<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_ansi</span><span class="p">(</span><span class="s1">'&lt;c91&gt;ERROR&lt;c0&gt;'</span><span class="p">)</span>
+<span class="go">'\x1b[0;91mERROR\x1b[0;0m'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4085,16 +4085,16 @@ into a class with methods where there are functions.</p>
 <dd><p>Return the content after processing as the sample value.</p>
 <section id="id56">
 <h3>Example<a class="headerlink" href="#id56" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
-<span class="go">&#39;[\n  &quot;one&quot;,\n  &quot;two&quot;\n]&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">([</span><span class="s1">'one'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
+<span class="go">'[\n  "one",\n  "two"\n]'</span>
 </pre></div>
 </div>
 </section>
 <section id="id57">
 <h3>Example<a class="headerlink" href="#id57" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Empty</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">Empty</span><span class="p">})</span>
-<span class="go">&#39;{\n  &quot;one&quot;: &quot;Empty&quot;\n}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">({</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">Empty</span><span class="p">})</span>
+<span class="go">'{\n  "one": "Empty"\n}'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4120,8 +4120,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Print the ANSI colorized string to the standard output.</p>
 <section id="id58">
 <h3>Example<a class="headerlink" href="#id58" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
-<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_ansi</span><span class="p">(</span><span class="s1">'&lt;c91&gt;ERROR&lt;c0&gt;'</span><span class="p">)</span>
+<span class="go">'\x1b[0;91mERROR\x1b[0;0m'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4167,10 +4167,10 @@ into a class with methods where there are functions.</p>
 <h3>Example<a class="headerlink" href="#id59" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
+<span class="go">'foo'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="go">'foo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4207,8 +4207,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Resolve the provided path replacing the magic keywords.</p>
 <section id="id60">
 <h3>Example<a class="headerlink" href="#id60" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path</span><span class="p">(</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">)</span>
-<span class="go">PosixPath(&#39;/foo/bar&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path</span><span class="p">(</span><span class="s1">'/foo/bar'</span><span class="p">)</span>
+<span class="go">PosixPath('/foo/bar')</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4235,8 +4235,8 @@ into a class with methods where there are functions.</p>
 </div>
 <section id="id61">
 <h3>Example<a class="headerlink" href="#id61" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_paths</span><span class="p">([</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">])</span>
-<span class="go">(PosixPath(&#39;/foo/bar&#39;),)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_paths</span><span class="p">([</span><span class="s1">'/foo/bar'</span><span class="p">])</span>
+<span class="go">(PosixPath('/foo/bar'),)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4259,14 +4259,14 @@ into a class with methods where there are functions.</p>
 <dd><p>Determine whether or not values are included by patterns.</p>
 <section id="id62">
 <h3>Example<a class="headerlink" href="#id62" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'one'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on*'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 </section>
 <section id="id63">
 <h3>Example<a class="headerlink" href="#id63" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'uno'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on*'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -4295,10 +4295,10 @@ into a class with methods where there are functions.</p>
 <h3>Example<a class="headerlink" href="#id64" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
+<span class="go">'foo'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="go">'foo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4321,9 +4321,9 @@ into a class with methods where there are functions.</p>
 <dd><p>Collect stats object for the complete or relative path.</p>
 <section id="id65">
 <h3>Example<a class="headerlink" href="#id65" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="s1">&#39;/&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="s1">'/'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span> <span class="o">=</span> <span class="n">stats_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;/hello.txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">st_size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="p">[</span><span class="s1">'/hello.txt'</span><span class="p">]</span><span class="o">.</span><span class="n">st_size</span>
 <span class="go">12</span>
 </pre></div>
 </div>
@@ -4350,8 +4350,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Return the provided string with the ANSI codes removed.</p>
 <section id="id66">
 <h3>Example<a class="headerlink" href="#id66" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0;91mERROR</span><span class="se">\x1b</span><span class="s1">[0;0m&#39;</span><span class="p">)</span>
-<span class="go">&#39;ERROR&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="s1">'</span><span class="se">\x1b</span><span class="s1">[0;91mERROR</span><span class="se">\x1b</span><span class="s1">[0;0m'</span><span class="p">)</span>
+<span class="go">'ERROR'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4383,10 +4383,10 @@ into a class with methods where there are functions.</p>
 <h3>Example<a class="headerlink" href="#id67" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">append_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="go">&#39;foofoo&#39;</span>
+<span class="go">'foofoo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4411,8 +4411,8 @@ into a class with methods where there are functions.</p>
 </div>
 <section id="id69">
 <h3>Example<a class="headerlink" href="#id69" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_ansi</span><span class="p">({</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">})</span>
-<span class="go">&quot;\x1b[0;97mfoo\x1b[0;37m:\x1b[0;0m...</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array_ansi</span><span class="p">({</span><span class="s1">'foo'</span><span class="p">:</span> <span class="s1">'bar'</span><span class="p">})</span>
+<span class="go">"\x1b[0;97mfoo\x1b[0;37m:\x1b[0;0m...</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4438,14 +4438,14 @@ into a class with methods where there are functions.</p>
 <dd><p>Determine whether or not values are included by patterns.</p>
 <section id="id71">
 <h3>Example<a class="headerlink" href="#id71" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'one'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on[a-z]'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 </section>
 <section id="id72">
 <h3>Example<a class="headerlink" href="#id72" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on[a-z]&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'uno'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on[a-z]'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -4469,8 +4469,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Process and colorize keys and values for standard output.</p>
 <section id="id74">
 <h3>Example<a class="headerlink" href="#id74" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kvpair_ansi</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
-<span class="go">&#39;\x1b[0;90mk\x1b[0;37m=&quot;\x1b[0;0m...</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kvpair_ansi</span><span class="p">(</span><span class="s1">'k'</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">)</span>
+<span class="go">'\x1b[0;90mk\x1b[0;37m="\x1b[0;0m...</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4493,16 +4493,16 @@ into a class with methods where there are functions.</p>
 <dd><p>Load the sample file and compare using provided content.</p>
 <section id="id76">
 <h3>Example<a class="headerlink" href="#id76" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">content</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'one'</span><span class="p">:</span> <span class="s1">'two'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
-<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+<span class="go">'{\n  "one": "two"\n}'</span>
 </pre></div>
 </div>
 </section>
 <section id="id77">
 <h3>Example<a class="headerlink" href="#id77" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">load_sample</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="go">&#39;{\n  &quot;one&quot;: &quot;two&quot;\n}&#39;</span>
+<span class="go">'{\n  "one": "two"\n}'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4534,8 +4534,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Parse the string and replace directives with ANSI codes.</p>
 <section id="id79">
 <h3>Example<a class="headerlink" href="#id79" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
-<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">make_ansi</span><span class="p">(</span><span class="s1">'&lt;c91&gt;ERROR&lt;c0&gt;'</span><span class="p">)</span>
+<span class="go">'\x1b[0;91mERROR\x1b[0;0m'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4576,16 +4576,16 @@ into a class with methods where there are functions.</p>
 <dd><p>Return the content after processing as the sample value.</p>
 <section id="id82">
 <h3>Example<a class="headerlink" href="#id82" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
-<span class="go">&#39;[\n  &quot;one&quot;,\n  &quot;two&quot;\n]&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">([</span><span class="s1">'one'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
+<span class="go">'[\n  "one",\n  "two"\n]'</span>
 </pre></div>
 </div>
 </section>
 <section id="id83">
 <h3>Example<a class="headerlink" href="#id83" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">..types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Empty</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="n">Empty</span><span class="p">})</span>
-<span class="go">&#39;{\n  &quot;one&quot;: &quot;Empty&quot;\n}&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prep_sample</span><span class="p">({</span><span class="s1">'one'</span><span class="p">:</span> <span class="n">Empty</span><span class="p">})</span>
+<span class="go">'{\n  "one": "Empty"\n}'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4611,8 +4611,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Print the ANSI colorized string to the standard output.</p>
 <section id="id85">
 <h3>Example<a class="headerlink" href="#id85" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_ansi</span><span class="p">(</span><span class="s1">&#39;&lt;c91&gt;ERROR&lt;c0&gt;&#39;</span><span class="p">)</span>
-<span class="go">&#39;\x1b[0;91mERROR\x1b[0;0m&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_ansi</span><span class="p">(</span><span class="s1">'&lt;c91&gt;ERROR&lt;c0&gt;'</span><span class="p">)</span>
+<span class="go">'\x1b[0;91mERROR\x1b[0;0m'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4658,10 +4658,10 @@ into a class with methods where there are functions.</p>
 <h3>Example<a class="headerlink" href="#id88" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
+<span class="go">'foo'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="go">'foo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4698,8 +4698,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Resolve the provided path replacing the magic keywords.</p>
 <section id="id91">
 <h3>Example<a class="headerlink" href="#id91" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path</span><span class="p">(</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">)</span>
-<span class="go">PosixPath(&#39;/foo/bar&#39;)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path</span><span class="p">(</span><span class="s1">'/foo/bar'</span><span class="p">)</span>
+<span class="go">PosixPath('/foo/bar')</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4726,8 +4726,8 @@ into a class with methods where there are functions.</p>
 </div>
 <section id="id93">
 <h3>Example<a class="headerlink" href="#id93" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_paths</span><span class="p">([</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">])</span>
-<span class="go">(PosixPath(&#39;/foo/bar&#39;),)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_paths</span><span class="p">([</span><span class="s1">'/foo/bar'</span><span class="p">])</span>
+<span class="go">(PosixPath('/foo/bar'),)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4750,14 +4750,14 @@ into a class with methods where there are functions.</p>
 <dd><p>Determine whether or not values are included by patterns.</p>
 <section id="id95">
 <h3>Example<a class="headerlink" href="#id95" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'one'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on*'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">True</span>
 </pre></div>
 </div>
 </section>
 <section id="id96">
 <h3>Example<a class="headerlink" href="#id96" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">&#39;uno&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;on*&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rgxp_match</span><span class="p">(</span><span class="s1">'uno'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'on*'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
 <span class="go">False</span>
 </pre></div>
 </div>
@@ -4786,10 +4786,10 @@ into a class with methods where there are functions.</p>
 <h3>Example<a class="headerlink" href="#id98" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">save_text</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">)</span>
+<span class="go">'foo'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">read_text</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="go">&#39;foo&#39;</span>
+<span class="go">'foo'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -4812,9 +4812,9 @@ into a class with methods where there are functions.</p>
 <dd><p>Collect stats object for the complete or relative path.</p>
 <section id="id100">
 <h3>Example<a class="headerlink" href="#id100" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="s1">&#39;/&#39;</span><span class="p">}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">replace</span> <span class="o">=</span> <span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="s1">'/'</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span> <span class="o">=</span> <span class="n">stats_path</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;/hello.txt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">st_size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="p">[</span><span class="s1">'/hello.txt'</span><span class="p">]</span><span class="o">.</span><span class="n">st_size</span>
 <span class="go">12</span>
 </pre></div>
 </div>
@@ -4841,8 +4841,8 @@ into a class with methods where there are functions.</p>
 <dd><p>Return the provided string with the ANSI codes removed.</p>
 <section id="id102">
 <h3>Example<a class="headerlink" href="#id102" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\x1b</span><span class="s1">[0;91mERROR</span><span class="se">\x1b</span><span class="s1">[0;0m&#39;</span><span class="p">)</span>
-<span class="go">&#39;ERROR&#39;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">strip_ansi</span><span class="p">(</span><span class="s1">'</span><span class="se">\x1b</span><span class="s1">[0;91mERROR</span><span class="se">\x1b</span><span class="s1">[0;0m'</span><span class="p">)</span>
+<span class="go">'ERROR'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">

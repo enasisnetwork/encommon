@@ -294,12 +294,12 @@
                 <article class="bd-article">
                   
   <h1>Source code for encommon.times.unitime</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Functions and routines associated with Enasis Network Common Library.</span>
 
 <span class="sd">This file is part of Enasis Network software eco-system. Distribution</span>
 <span class="sd">is permitted, for more information consult the project license file.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 
@@ -312,13 +312,13 @@
 
 
 <span class="n">NOTATE</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span>
-    <span class="sa">r</span><span class="s1">&#39;^(\d+(s|m|h|d|w|y))*$&#39;</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s1">'^(\d+(s|m|h|d|w|y))*$'</span><span class="p">)</span>
 
 <span class="n">STRINT</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span>
-    <span class="sa">r</span><span class="s1">&#39;^\d+$&#39;</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s1">'^\d+$'</span><span class="p">)</span>
 
 <span class="n">STRFLT</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span>
-    <span class="sa">r</span><span class="s1">&#39;^\d+\.\d+$&#39;</span><span class="p">)</span>
+    <span class="sa">r</span><span class="s1">'^\d+\.\d+$'</span><span class="p">)</span>
 
 
 
@@ -327,21 +327,21 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">unitime</span><span class="p">(</span>
     <span class="nb">input</span><span class="p">:</span> <span class="n">UNITIME</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return the seconds in integer format for provided input.</span>
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; unitime(&#39;1d&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; unitime('1d')</span>
 <span class="sd">    86400</span>
-<span class="sd">    &gt;&gt;&gt; unitime(&#39;1y&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; unitime('1y')</span>
 <span class="sd">    31536000</span>
-<span class="sd">    &gt;&gt;&gt; unitime(&#39;1w3d4h&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; unitime('1w3d4h')</span>
 <span class="sd">    878400</span>
 
 <span class="sd">    :param input: Input that will be converted into seconds.</span>
 <span class="sd">    :returns: Seconds in integer format for provided input.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 
@@ -350,14 +350,14 @@
 
         <span class="k">elif</span> <span class="n">re_match</span><span class="p">(</span><span class="n">STRFLT</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
             <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-                <span class="nb">input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="nb">input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'.'</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
         <span class="k">elif</span> <span class="n">re_match</span><span class="p">(</span><span class="n">NOTATE</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
             <span class="nb">input</span> <span class="o">=</span> <span class="n">since_time</span><span class="p">(</span>
-                <span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;+</span><span class="si">{</span><span class="nb">input</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="s1">'now'</span><span class="p">,</span> <span class="sa">f</span><span class="s1">'+</span><span class="si">{</span><span class="nb">input</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># NOCVR</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'input'</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
         <span class="nb">input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>

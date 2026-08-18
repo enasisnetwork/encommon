@@ -335,14 +335,14 @@
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phrase</span> <span class="o">=</span> <span class="n">Crypts</span><span class="o">.</span><span class="n">keygen</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;phrase&#39;</span><span class="p">:</span> <span class="n">phrase</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'default'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'phrase'</span><span class="p">:</span> <span class="n">phrase</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">CryptsParams</span><span class="p">(</span><span class="n">phrases</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crypts</span> <span class="o">=</span> <span class="n">Crypts</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span> <span class="o">=</span> <span class="n">crypts</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span> <span class="o">=</span> <span class="n">crypts</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">'example'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span>
-<span class="go">&#39;$ENCRYPT;1.0;default;...</span>
+<span class="go">'$ENCRYPT;1.0;default;...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crypts</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span>
-<span class="go">&#39;example&#39;</span>
+<span class="go">'example'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -455,17 +455,17 @@
 <p>Create hash values using the provided at instantiation.</p>
 <section id="id1">
 <h3>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span><span class="o">.</span><span class="n">sha256</span>
-<span class="go">&#39;473287f8298dba7163a897908958f7c0ea...</span>
+<span class="go">'473287f8298dba7163a897908958f7c0ea...</span>
 </pre></div>
 </div>
 </section>
 <section id="id2">
 <h3>Example<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span><span class="o">.</span><span class="n">uuid</span>
-<span class="go">&#39;38ffd1ed-2b4d-3c84-ae45-bf3bf354eee4&#39;</span>
+<span class="go">'38ffd1ed-2b4d-3c84-ae45-bf3bf354eee4'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -631,14 +631,14 @@
 <section id="id3">
 <h3>Example<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">phrase</span> <span class="o">=</span> <span class="n">Crypts</span><span class="o">.</span><span class="n">keygen</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;phrase&#39;</span><span class="p">:</span> <span class="n">phrase</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'default'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'phrase'</span><span class="p">:</span> <span class="n">phrase</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">CryptsParams</span><span class="p">(</span><span class="n">phrases</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crypts</span> <span class="o">=</span> <span class="n">Crypts</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span> <span class="o">=</span> <span class="n">crypts</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span> <span class="o">=</span> <span class="n">crypts</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">'example'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">encrypt</span>
-<span class="go">&#39;$ENCRYPT;1.0;default;...</span>
+<span class="go">'$ENCRYPT;1.0;default;...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">crypts</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span>
-<span class="go">&#39;example&#39;</span>
+<span class="go">'example'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -766,17 +766,17 @@
 <p>Create hash values using the provided at instantiation.</p>
 <section id="id4">
 <h3>Example<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span><span class="o">.</span><span class="n">sha256</span>
-<span class="go">&#39;473287f8298dba7163a897908958f7c0ea...</span>
+<span class="go">'473287f8298dba7163a897908958f7c0ea...</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
 <h3>Example<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span> <span class="o">=</span> <span class="n">Hashes</span><span class="p">(</span><span class="s1">'string'</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hashes</span><span class="o">.</span><span class="n">uuid</span>
-<span class="go">&#39;38ffd1ed-2b4d-3c84-ae45-bf3bf354eee4&#39;</span>
+<span class="go">'38ffd1ed-2b4d-3c84-ae45-bf3bf354eee4'</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
