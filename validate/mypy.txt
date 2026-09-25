@@ -1,5 +1,10 @@
 >>> make mypy
   ● Executing mypy in encommon..
-    DONE
-  ● Executing mypy in sphinx..
-    DONE
+encommon/times/windows.py:517: error: Need type annotation for "_unique"  [var-annotated]
+encommon/times/windows.py:518: error: Need type annotation for "_group"  [var-annotated]
+encommon/times/windows.py:656: error: Need type annotation for "_unique"  [var-annotated]
+encommon/times/windows.py:657: error: Need type annotation for "_group"  [var-annotated]
+encommon/times/timers.py:464: error: Need type annotation for "_unique"  [var-annotated]
+encommon/times/timers.py:465: error: Need type annotation for "_group"  [var-annotated]
+encommon/times/timers.py:576: error: Need type annotation for "_unique"  [var-annotated]
+encommon/times/timers.py:577: error: Need type annotation for "_group"  [var-annotated]
