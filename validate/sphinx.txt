@@ -40,7 +40,7 @@ highlighting module code... [  2%] encommon.colors.colorhighlighting module cod
 writing additional pages... search done
 dumping search index in English (code: en)... done
 dumping object inventory... done
-build succeeded, 693 warnings.
+build succeeded, 536 warnings.
 
 The HTML pages are in sphinx/html.
     DONE
