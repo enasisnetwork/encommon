@@ -2646,30 +2646,6 @@ help: Convert to `X | None`
 40 | ) -> datetime:
    |
 
-DTZ901 Use of `datetime.datetime.max` without timezone information
-   --> encommon/times/parse.py:113:13
-    |
-111 |     if source in ['max', float('inf')]:
-112 |         source = deepcopy(
-113 |             datetime.max)
-    |             ^^^^^^^^^^^^
-114 |
-115 |     if source in ['min', float('-inf')]:
-    |
-help: Replace with `datetime.datetime.max.replace(tzinfo=...)`
-
-DTZ901 Use of `datetime.datetime.min` without timezone information
-   --> encommon/times/parse.py:117:13
-    |
-115 |     if source in ['min', float('-inf')]:
-116 |         source = deepcopy(
-117 |             datetime.min)
-    |             ^^^^^^^^^^^^
-118 |
-119 |     if (isinstance(source, str)
-    |
-help: Replace with `datetime.datetime.min.replace(tzinfo=...)`
-
 UP045 [*] Use `X | None` for type annotations
    --> encommon/times/parse.py:149:13
     |
@@ -3984,6 +3960,18 @@ PYI034 `__new__` methods in classes like `EmptyType` usually return `self` at ru
 47 |     ) -> 'EmptyType':
    |
 help: Use `Self` as return type
+   |
+9  |
+   - from typing import Optional
+10 + from typing import Optional, Self
+11 |
+--------------------------------------------------------------------------------
+46 |         cls,
+   -     ) -> 'EmptyType':
+47 +     ) -> Self:
+48 |         """
+   |
+note: This is an unsafe fix and may change runtime behavior
 
 I001 [*] Import block is un-sorted or un-formatted
   --> encommon/types/funcs.py:10:1
@@ -4477,6 +4465,17 @@ SIM103 Return the condition directly
 158 | |         return False
     | |____________________^
 help: Inline condition
+    |
+153 |
+    -         if (isclass(value)
+    -                 and issubclass(value, EmptyType)):
+    -             return True
+    -
+    -         return False
+154 +         return bool(isclass(value) and issubclass(value, EmptyType))
+155 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF100 [*] Unused `noqa` directive (non-enabled: `ANN401`)
    --> encommon/types/process.py:162:23
@@ -6119,6 +6118,13 @@ RUF059 Unpacked variable `content` is never used
 68 |     outcome = _executejs(
    |
 help: Prefix it with an underscore or any other dummy variable pattern
+   |
+65 |
+   -     content, driver = prepare
+66 +     _content, driver = prepare
+67 |
+   |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
   --> encommon/webkit/test/test_default.py:86:5
@@ -6131,6 +6137,13 @@ RUF059 Unpacked variable `content` is never used
 88 |     _executejs(
    |
 help: Prefix it with an underscore or any other dummy variable pattern
+   |
+85 |
+   -     content, driver = prepare
+86 +     _content, driver = prepare
+87 |
+   |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:113:5
@@ -6143,6 +6156,13 @@ RUF059 Unpacked variable `content` is never used
 115 |     _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+112 |
+    -     content, driver = prepare
+113 +     _content, driver = prepare
+114 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:138:5
@@ -6155,6 +6175,13 @@ RUF059 Unpacked variable `content` is never used
 140 |     _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+137 |
+    -     content, driver = prepare
+138 +     _content, driver = prepare
+139 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:163:5
@@ -6167,6 +6194,13 @@ RUF059 Unpacked variable `content` is never used
 165 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+162 |
+    -     content, driver = prepare
+163 +     _content, driver = prepare
+164 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:208:5
@@ -6176,6 +6210,13 @@ RUF059 Unpacked variable `content` is never used
 208 |     content, driver = prepare
     |     ^^^^^^^
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+207 |
+    -     content, driver = prepare
+208 +     _content, driver = prepare
+209 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:245:5
@@ -6188,6 +6229,13 @@ RUF059 Unpacked variable `content` is never used
 247 |     _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+244 |
+    -     content, driver = prepare
+245 +     _content, driver = prepare
+246 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:273:5
@@ -6200,6 +6248,13 @@ RUF059 Unpacked variable `content` is never used
 275 |     _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+272 |
+    -     content, driver = prepare
+273 +     _content, driver = prepare
+274 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:301:5
@@ -6212,6 +6267,13 @@ RUF059 Unpacked variable `content` is never used
 303 |     _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+300 |
+    -     content, driver = prepare
+301 +     _content, driver = prepare
+302 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_default.py:327:5
@@ -6224,6 +6286,13 @@ RUF059 Unpacked variable `content` is never used
 329 |     _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+326 |
+    -     content, driver = prepare
+327 +     _content, driver = prepare
+328 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 I001 [*] Import block is un-sorted or un-formatted
   --> encommon/webkit/test/test_helpers.py:10:1
@@ -6257,6 +6326,13 @@ RUF059 Unpacked variable `content` is never used
 67 |     outcome = _executejs(
    |
 help: Prefix it with an underscore or any other dummy variable pattern
+   |
+64 |
+   -     content, driver = prepare
+65 +     _content, driver = prepare
+66 |
+   |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
   --> encommon/webkit/test/test_helpers.py:84:5
@@ -6269,6 +6345,13 @@ RUF059 Unpacked variable `content` is never used
 86 |     _executejs(
    |
 help: Prefix it with an underscore or any other dummy variable pattern
+   |
+83 |
+   -     content, driver = prepare
+84 +     _content, driver = prepare
+85 |
+   |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:102:5
@@ -6281,6 +6364,13 @@ RUF059 Unpacked variable `content` is never used
 104 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+101 |
+    -     content, driver = prepare
+102 +     _content, driver = prepare
+103 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:122:5
@@ -6293,6 +6383,13 @@ RUF059 Unpacked variable `content` is never used
 124 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+121 |
+    -     content, driver = prepare
+122 +     _content, driver = prepare
+123 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:143:5
@@ -6305,6 +6402,13 @@ RUF059 Unpacked variable `content` is never used
 145 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+142 |
+    -     content, driver = prepare
+143 +     _content, driver = prepare
+144 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:162:5
@@ -6317,6 +6421,13 @@ RUF059 Unpacked variable `content` is never used
 164 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+161 |
+    -     content, driver = prepare
+162 +     _content, driver = prepare
+163 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:187:5
@@ -6329,6 +6440,13 @@ RUF059 Unpacked variable `content` is never used
 189 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+186 |
+    -     content, driver = prepare
+187 +     _content, driver = prepare
+188 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:218:5
@@ -6341,6 +6459,13 @@ RUF059 Unpacked variable `content` is never used
 220 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+217 |
+    -     content, driver = prepare
+218 +     _content, driver = prepare
+219 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:239:5
@@ -6353,6 +6478,13 @@ RUF059 Unpacked variable `content` is never used
 241 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+238 |
+    -     content, driver = prepare
+239 +     _content, driver = prepare
+240 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:260:5
@@ -6365,6 +6497,13 @@ RUF059 Unpacked variable `content` is never used
 262 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+259 |
+    -     content, driver = prepare
+260 +     _content, driver = prepare
+261 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:279:5
@@ -6377,6 +6516,13 @@ RUF059 Unpacked variable `content` is never used
 281 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+278 |
+    -     content, driver = prepare
+279 +     _content, driver = prepare
+280 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:298:5
@@ -6389,6 +6535,13 @@ RUF059 Unpacked variable `content` is never used
 300 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+297 |
+    -     content, driver = prepare
+298 +     _content, driver = prepare
+299 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:317:5
@@ -6401,6 +6554,13 @@ RUF059 Unpacked variable `content` is never used
 319 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+316 |
+    -     content, driver = prepare
+317 +     _content, driver = prepare
+318 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:336:5
@@ -6413,6 +6573,13 @@ RUF059 Unpacked variable `content` is never used
 338 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+335 |
+    -     content, driver = prepare
+336 +     _content, driver = prepare
+337 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:355:5
@@ -6425,6 +6592,13 @@ RUF059 Unpacked variable `content` is never used
 357 |     outcome = _executejs(
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+354 |
+    -     content, driver = prepare
+355 +     _content, driver = prepare
+356 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_helpers.py:374:5
@@ -6437,6 +6611,13 @@ RUF059 Unpacked variable `content` is never used
 376 |     dumped = '{"foo":"bar"}'
     |
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+373 |
+    -     content, driver = prepare
+374 +     _content, driver = prepare
+375 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 I001 [*] Import block is un-sorted or un-formatted
   --> encommon/webkit/test/test_numeric.py:10:1
@@ -6467,6 +6648,13 @@ RUF059 Unpacked variable `content` is never used
 66 |     content, driver = prepare
    |     ^^^^^^^
 help: Prefix it with an underscore or any other dummy variable pattern
+   |
+65 |
+   -     content, driver = prepare
+66 +     _content, driver = prepare
+67 |
+   |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_numeric.py:113:5
@@ -6476,6 +6664,13 @@ RUF059 Unpacked variable `content` is never used
 113 |     content, driver = prepare
     |     ^^^^^^^
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+112 |
+    -     content, driver = prepare
+113 +     _content, driver = prepare
+114 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
 RUF059 Unpacked variable `content` is never used
    --> encommon/webkit/test/test_numeric.py:145:5
@@ -6485,4 +6680,11 @@ RUF059 Unpacked variable `content` is never used
 145 |     content, driver = prepare
     |     ^^^^^^^
 help: Prefix it with an underscore or any other dummy variable pattern
+    |
+144 |
+    -     content, driver = prepare
+145 +     _content, driver = prepare
+146 |
+    |
+note: This is an unsafe fix and may change runtime behavior
 
