@@ -5531,17 +5531,6 @@ help: Remove unused `noqa` directive
 181 |
     |
 
-B008 Do not perform function call `ArrayColors` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable
-   --> encommon/utils/stdout.py:190:27
-    |
-188 |     *,
-189 |     indent: int = 0,
-190 |     colors: ArrayColors = ArrayColors(),
-    |                           ^^^^^^^^^^^^^
-191 | ) -> str:
-192 |     """
-    |
-
 RUF100 [*] Unused `noqa` directive (non-enabled: `D301`)
    --> encommon/utils/stdout.py:208:10
     |
